@@ -1,0 +1,7 @@
+<bean id="${triggerName}" class="org.springframework.scheduling.quartz.SimpleTriggerBean">
+	<property name="jobDetail" ref="${jobDetailBeanName}" />
+        <!-- 즉시 시작 -->
+	<property name="startDelay" value="${startDelay}" />
+   	<!-- 매 10초마다 실행 -->
+	<property name="repeatInterval" value="${repeatInterval}" />
+</bean>

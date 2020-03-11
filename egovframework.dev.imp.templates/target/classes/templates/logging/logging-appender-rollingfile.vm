@@ -1,0 +1,12 @@
+<appender name="${appenderName}" class="org.apache.log4j.rolling.RollingFileAppender">
+	<rollingPolicy class="org.apache.log4j.rolling.FixedWindowRollingPolicy">
+		<param name="FileNamePattern" value="${file}" />
+		<param name="MaxIndex" value="${maxIndex}" />
+	</rollingPolicy>
+	<triggeringPolicy class="org.apache.log4j.rolling.SizeBasedTriggeringPolicy">
+		<param name="MaxFileSize" value="${maxFileSize}" />
+	</triggeringPolicy>
+	<layout class="org.apache.log4j.PatternLayout">
+		<param name="ConversionPattern" value="${pattern}" />
+	</layout>
+</appender>

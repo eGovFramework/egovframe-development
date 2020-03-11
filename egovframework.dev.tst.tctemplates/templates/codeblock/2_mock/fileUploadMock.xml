@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0_07" class="java.beans.XMLDecoder"> 
+ <array class="egovframework.dev.tst.tcgenerator.CodeBlockInfo" length="1"> 
+  <void index="0"> 
+   <object class="egovframework.dev.tst.tcgenerator.CodeBlockInfo"> 
+    <void property="tcTemplateName"> 
+     <string>FileUpload Mock Test</string> 
+    </void> 
+    <void property="description"> 
+     <string>Mocking 으로 파일 업로드를 수행하는  테스트케이스 코드블럭을 복사합니다.</string> 
+    </void> 
+    <void property="codeBlockList"> 
+     <array class="java.lang.String" length="4"> 
+      <void index="0"> 
+       <string>Field</string> 
+      </void> 
+      <void index="1"> 
+       <string>SetUp Method</string> 
+      </void> 
+      <void index="2"> 
+       <string>파일 업로드 Test</string> 
+      </void>  
+      <void index="3"> 
+       <string>소스 전체</string> 
+      </void>
+     </array> 
+    </void> 
+    <void property="codeBlocks"> 
+     <array class="java.lang.String" length="4"> 
+      <void index="0"> 
+       <string><![CDATA[
+/** Tested object */
+private FileUploadController uploadController = null;
+
+/** Mock object of HttpServletResponse from Spring Mock framework */
+private MockHttpServletResponse response = null;
+       ]]></string> 
+      </void> 
+      <void index="1"> 
+       <string><![CDATA[
+/**
+ * 각 Test 메소드 시작 전마다 수행되는 메소드<br>
+ * 테스트에 사용될 test fixture를 여기에 준비한다.
+ * 
+ * @throws java.lang.Exception
+ */
+@Before
+public void setUp() throws Exception
+{
+    response = new MockHttpServletResponse();
+    uploadController = new FileUploadController();
+    uploadController.setFormView("form");
+    uploadController.setSuccessView("success");
+}
+       ]]></string> 
+      </void> 
+      <void index="2"> 
+       <string><![CDATA[
+/**
+ * Spring Framework을 사용하여 FileUpload 기능이 구현된 경우에 대한 테스트<br>
+ * 업로드한 파일을 Command 객체에 MultipartFile 타입의 property에 저장하므로 테스트용 파일이 잘 저장되었는지
+ * 테스트한다.
+ * 
+ * @throws Exception
+ */
+@Test
+public void testFileUpload() throws Exception
+{
+    // 업로드 테스트 대상 파일
+    String testfile = "uploadTest.txt";
+    String savedfile = "result_" + testfile;
+
+    // 파일업로드를 실행할 Mock Object
+    MockMultipartHttpServletRequest multipartRequest = new MockMultipartHttpServletRequest();
+    multipartRequest.setMethod("POST");
+
+    // confirm an exsitance of a test file
+    File tFile = FileUtils.toFile(getClass().getResource(
+            "/META-INF/mock/" + testfile));
+    assertNotNull(tFile);
+    assertTrue(tFile.exists());
+
+    // MultipartFile의 Mock 객체를 생성하여 파일 정보 저장
+    MockMultipartFile mockFile = new MockMultipartFile("testFile",
+            savedfile, null, getBytesFromTestfile(tFile));
+    multipartRequest.addFile(mockFile);
+
+    multipartRequest.addParameter("subject", "FileUpload Test");
+
+    ModelAndView modelView = uploadController.handleRequest(
+            multipartRequest, response);
+    assertEquals(uploadController.getSuccessView(), modelView.getViewName());
+
+    Map model = modelView.getModel();
+    FileUploadCommand command = (FileUploadCommand) model
+            .get(uploadController.getCommandName());
+
+    // confirm the information of an uploaded file
+    assertNotNull(command);
+    assertNotNull(command.getTestFile());
+
+    assertEquals(savedfile, command.getTestFile().getOriginalFilename());
+    assertTrue(command.getTestFile().getSize() > 0);
+
+    assertEquals("A file for an FileUploadMockTest", new String(command
+            .getTestFile().getBytes()));
+
+}
+
+/**
+ * get bytes from a given test file
+ *
+ * @param file
+ * @return bytes from a given test file
+ * @throws IOException
+*/
+private byte[] getBytesFromTestfile(File file) throws IOException
+{
+    return FileCopyUtils.copyToByteArray(file);
+}
+       ]]></string> 
+      </void> 
+      <void index="3"> 
+       <string><![CDATA[
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.mock.web.MockMultipartHttpServletRequest;
+import org.springframework.util.FileCopyUtils;
+import org.springframework.web.servlet.ModelAndView;
+import org.unitils.thirdparty.org.apache.commons.io.FileUtils;
+
+import egovframework.guideprogram.test.target.mock.FileUploadCommand;
+import egovframework.guideprogram.test.target.mock.FileUploadController;
+
+public class FileUploadMockTest
+{
+
+    /** Tested object */
+    private FileUploadController uploadController = null;
+
+    /** Mock object of HttpServletResponse from Spring Mock framework */
+    private MockHttpServletResponse response = null;
+
+    /**
+     * 각 Test 메소드 시작 전마다 수행되는 메소드<br>
+     * 테스트에 사용될 test fixture를 여기에 준비한다.
+     * 
+     * @throws java.lang.Exception
+     */
+    @Before
+    public void setUp() throws Exception
+    {
+        response = new MockHttpServletResponse();
+        uploadController = new FileUploadController();
+        uploadController.setFormView("form");
+        uploadController.setSuccessView("success");
+    }
+
+    /**
+     * Spring Framework을 사용하여 FileUpload 기능이 구현된 경우에 대한 테스트<br>
+     * 업로드한 파일을 Command 객체에 MultipartFile 타입의 property에 저장하므로 테스트용 파일이 잘 저장되었는지
+     * 테스트한다.
+     * 
+     * @throws Exception
+     */
+    @Test
+    public void testFileUpload() throws Exception
+    {
+        // 업로드 테스트 대상 파일
+        String testfile = "uploadTest.txt";
+        String savedfile = "result_" + testfile;
+
+        // 파일업로드를 실행할 Mock Object
+        MockMultipartHttpServletRequest multipartRequest = new MockMultipartHttpServletRequest();
+        multipartRequest.setMethod("POST");
+
+        // confirm an exsitance of a test file
+        File tFile = FileUtils.toFile(getClass().getResource(
+                "/META-INF/mock/" + testfile));
+        assertNotNull(tFile);
+        assertTrue(tFile.exists());
+
+        // MultipartFile의 Mock 객체를 생성하여 파일 정보 저장
+        MockMultipartFile mockFile = new MockMultipartFile("testFile",
+                savedfile, null, getBytesFromTestfile(tFile));
+        multipartRequest.addFile(mockFile);
+
+        multipartRequest.addParameter("subject", "FileUpload Test");
+
+        ModelAndView modelView = uploadController.handleRequest(
+                multipartRequest, response);
+        assertEquals(uploadController.getSuccessView(), modelView.getViewName());
+
+        Map model = modelView.getModel();
+        FileUploadCommand command = (FileUploadCommand) model
+                .get(uploadController.getCommandName());
+
+        // confirm the information of an uploaded file
+        assertNotNull(command);
+        assertNotNull(command.getTestFile());
+
+        assertEquals(savedfile, command.getTestFile().getOriginalFilename());
+        assertTrue(command.getTestFile().getSize() > 0);
+
+        assertEquals("A file for an FileUploadMockTest", new String(command
+                .getTestFile().getBytes()));
+
+    }
+
+    /**
+     * get bytes from a given test file
+     *
+     * @param file
+     * @return bytes from a given test file
+     * @throws IOException
+    */
+    private byte[] getBytesFromTestfile(File file) throws IOException
+    {
+        return FileCopyUtils.copyToByteArray(file);
+    }
+}
+       ]]></string> 
+      </void>
+     </array> 
+    </void> 
+   </object> 
+  </void> 
+ </array> 
+</java> 

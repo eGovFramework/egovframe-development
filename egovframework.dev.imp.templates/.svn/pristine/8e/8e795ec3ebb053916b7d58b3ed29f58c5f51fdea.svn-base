@@ -1,0 +1,4 @@
+txtAppenderName=appender
+txtLogFileName=./logs/file/sample.log
+cboAppend=true
+txtConversionPattern=%d %5p [%c] %m%n

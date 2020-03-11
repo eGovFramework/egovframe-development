@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0_07" class="java.beans.XMLDecoder"> 
+ <array class="egovframework.dev.tst.tcgenerator.CodeBlockInfo" length="1"> 
+  <void index="0"> 
+   <object class="egovframework.dev.tst.tcgenerator.CodeBlockInfo"> 
+    <void property="tcTemplateName"> 
+     <string>Constructor Test</string> 
+    </void> 
+    <void property="description"> 
+     <string>Constructor Test에 대한 테스트케이스 코드블럭을 복사합니다.</string> 
+    </void> 
+    <void property="codeBlockList"> 
+     <array class="java.lang.String" length="7"> 
+      <void index="0"> 
+       <string>Fileds</string> 
+      </void> 
+      <void index="1"> 
+       <string>Default Constructor</string> 
+      </void> 
+      <void index="2"> 
+       <string>Constructor One Arg</string> 
+      </void> 
+      <void index="3"> 
+       <string>Constructor Two Args</string> 
+      </void> 
+      <void index="4"> 
+       <string>Constructor Three Args</string> 
+      </void> 
+      <void index="5"> 
+       <string>Constructor Four Args</string> 
+      </void> 
+      <void index="6"> 
+       <string>소스 전체</string> 
+      </void>        
+     </array> 
+    </void> 
+    <void property="codeBlocks"> 
+     <array class="java.lang.String" length="7"> 
+      <void index="0"> 
+       <string><![CDATA[
+/** id */
+long id = 300;
+
+/** name */
+String name = new String("이이름");
+
+/** description */
+String description = new String("생성자 단위 테스트를 위해 만들어진 테스트용");
+
+/** addressList */
+List<AddressVo> addressList = Arrays.asList(new AddressVo("home", "homeaddress"), new AddressVo("office", "officeaddress"));
+       ]]></string> 
+      </void> 
+      <void index="1"> 
+       <string><![CDATA[
+/**
+ * 디폴트 생성자를 호출하여 각 디폴트 값이 제대로 세팅되었는지 확인
+ * 테스트용 데이터) UserVo 라는 테스트를 위한 Value Object
+ * 테스트 결과 ) UserVo 의 디폴트 생성자를 호출한 후 해당 클래스의 디폴트값 생성이 잘 되었는지 확인
+*/
+@Test
+public void testDefaultConstructor() {
+	UserVo userVo = new UserVo();
+	
+	assertEquals("디폴트 생성자가 디폴드 값 생성을 안 하는 경우 확인", 0, userVo.getId());
+	assertNull("디폴트 생성자가 디폴드 값 생성을 안 하는 경우 확인", userVo.getName());
+	assertNull("디폴트 생성자가 디폴드 값 생성을 안 하는 경우 확인", userVo.getDescription());
+	assertNull("디폴트 생성자가 디폴드 값 생성을 안 하는 경우 확인", userVo.getAddressList());
+}
+       ]]></string> 
+      </void> 
+      <void index="2"> 
+       <string><![CDATA[
+/**
+ * 디폴트 생성자를 호출하여 각 디폴트 값이 제대로 세팅되었는지 확인
+ * 테스트용 데이터) UserVo 라는 테스트를 위한 Value Object
+ * 테스트 결과 ) UserVo 의 인자 하나 필요한 생성자를 호출한 후 해당 인자의 값이 잘 세팅되었는지 확인
+*/
+@Test
+public void testConstructorOneArg() {
+	UserVo userVo = new UserVo(id);
+	
+	assertEquals("생성자를 이용해 값이 잘 세팅되었는지 확인", id, userVo.getId());
+}
+       ]]></string> 
+      </void> 
+      <void index="3"> 
+       <string><![CDATA[
+/**
+ * 디폴트 생성자를 호출하여 각 디폴트 값이 제대로 세팅되었는지 확인
+ * 테스트용 데이터) UserVo 라는 테스트를 위한 Value Object
+ * 테스트 결과 ) UserVo 의 인자 둘이 필요한 생성자를 호출한 후 해당 인자의 값이 잘 세팅되었는지 확인
+*/
+@Test
+public void testConstructorTwoArgs() {
+	UserVo userVo = new UserVo(id, name);
+	
+	assertEquals("생성자를 이용해 값이 잘 세팅되었는지 확인", id, userVo.getId());
+	assertEquals("생성자를 이용해 값이 잘 세팅되었는지 확인", name, userVo.getName());
+}       ]]></string> 
+      </void> 
+      <void index="4"> 
+       <string><![CDATA[
+/**
+ * 디폴트 생성자를 호출하여 각 디폴트 값이 제대로 세팅되었는지 확인
+ * 테스트용 데이터) UserVo 라는 테스트를 위한 Value Object
+ * 테스트 결과 ) UserVo 의 인자 셋이 필요한 생성자를 호출한 후 해당 인자의 값이 잘 세팅되었는지 확인
+*/
+@Test
+public void testConstructorThreeArgs() {
+	UserVo userVo = new UserVo(id, name, description);
+	
+	assertEquals("생성자를 이용해 값이 잘 세팅되었는지 확인", id, userVo.getId());
+	assertEquals("생성자를 이용해 값이 잘 세팅되었는지 확인", name, userVo.getName());
+	assertEquals("생성자를 이용해 값이 잘 세팅되었는지 확인", description, userVo.getDescription());
+}
+       ]]></string> 
+      </void> 
+      <void index="5"> 
+       <string><![CDATA[
+/**
+ * 디폴트 생성자를 호출하여 각 디폴트 값이 제대로 세팅되었는지 확인
+ * 테스트용 데이터) UserVo 라는 테스트를 위한 Value Object
+ * 테스트 결과 ) UserVo 의 인자 넷이 필요한 생성자를 호출한 후 해당 인자의 값이 잘 세팅되었는지 확인
+*/
+@Test
+public void testConstructorFourArgs() {
+	UserVo userVo = new UserVo(id, name, description, addressList);
+	
+	assertEquals("생성자를 이용해 값이 잘 세팅되었는지 확인", id, userVo.getId());
+	assertEquals("생성자를 이용해 값이 잘 세팅되었는지 확인", name, userVo.getName());
+	assertEquals("생성자를 이용해 값이 잘 세팅되었는지 확인", description, userVo.getDescription());
+	assertEquals("생성자를 이용해 값이 잘 세팅되었는지 확인", addressList, userVo.getAddressList());
+}       ]]></string> 
+      </void>
+      <void index="6"> 
+       <string><![CDATA[
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.junit.Test;
+
+import egovframework.guideprogram.test.target.basic.AddressVo;
+import egovframework.guideprogram.test.target.basic.UserVo;
+
+public class ConstructorTest {
+
+	/** id */
+	long id = 300;
+	
+	/** name */
+	String name = new String("이이름");
+	
+	/** description */
+	String description = new String("생성자 단위 테스트를 위해 만들어진 테스트용");
+	
+	/** addressList */
+	List<AddressVo> addressList = Arrays.asList(new AddressVo("home", "homeaddress"), new AddressVo("office", "officeaddress"));
+	
+	/**
+	 * 디폴트 생성자를 호출하여 각 디폴트 값이 제대로 세팅되었는지 확인
+	 * 테스트용 데이터) UserVo 라는 테스트를 위한 Value Object
+	 * 테스트 결과 ) UserVo 의 디폴트 생성자를 호출한 후 해당 클래스의 디폴트값 생성이 잘 되었는지 확인
+	*/
+	@Test
+	public void testDefaultConstructor() {
+		UserVo userVo = new UserVo();
+		
+		assertEquals("디폴트 생성자가 디폴드 값 생성을 안 하는 경우 확인", 0, userVo.getId());
+		assertNull("디폴트 생성자가 디폴드 값 생성을 안 하는 경우 확인", userVo.getName());
+		assertNull("디폴트 생성자가 디폴드 값 생성을 안 하는 경우 확인", userVo.getDescription());
+		assertNull("디폴트 생성자가 디폴드 값 생성을 안 하는 경우 확인", userVo.getAddressList());
+	}
+	
+	/**
+	 * 디폴트 생성자를 호출하여 각 디폴트 값이 제대로 세팅되었는지 확인
+	 * 테스트용 데이터) UserVo 라는 테스트를 위한 Value Object
+	 * 테스트 결과 ) UserVo 의 인자 하나 필요한 생성자를 호출한 후 해당 인자의 값이 잘 세팅되었는지 확인
+	*/
+	@Test
+	public void testConstructorOneArg() {
+		UserVo userVo = new UserVo(id);
+		
+		assertEquals("생성자를 이용해 값이 잘 세팅되었는지 확인", id, userVo.getId());
+	}
+	
+	/**
+	 * 디폴트 생성자를 호출하여 각 디폴트 값이 제대로 세팅되었는지 확인
+	 * 테스트용 데이터) UserVo 라는 테스트를 위한 Value Object
+	 * 테스트 결과 ) UserVo 의 인자 둘이 필요한 생성자를 호출한 후 해당 인자의 값이 잘 세팅되었는지 확인
+	*/
+	@Test
+	public void testConstructorTwoArgs() {
+		UserVo userVo = new UserVo(id, name);
+		
+		assertEquals("생성자를 이용해 값이 잘 세팅되었는지 확인", id, userVo.getId());
+		assertEquals("생성자를 이용해 값이 잘 세팅되었는지 확인", name, userVo.getName());
+	}
+	
+	/**
+	 * 디폴트 생성자를 호출하여 각 디폴트 값이 제대로 세팅되었는지 확인
+	 * 테스트용 데이터) UserVo 라는 테스트를 위한 Value Object
+	 * 테스트 결과 ) UserVo 의 인자 셋이 필요한 생성자를 호출한 후 해당 인자의 값이 잘 세팅되었는지 확인
+	*/
+	@Test
+	public void testConstructorThreeArgs() {
+		UserVo userVo = new UserVo(id, name, description);
+		
+		assertEquals("생성자를 이용해 값이 잘 세팅되었는지 확인", id, userVo.getId());
+		assertEquals("생성자를 이용해 값이 잘 세팅되었는지 확인", name, userVo.getName());
+		assertEquals("생성자를 이용해 값이 잘 세팅되었는지 확인", description, userVo.getDescription());
+	}
+	
+	/**
+	 * 디폴트 생성자를 호출하여 각 디폴트 값이 제대로 세팅되었는지 확인
+	 * 테스트용 데이터) UserVo 라는 테스트를 위한 Value Object
+	 * 테스트 결과 ) UserVo 의 인자 넷이 필요한 생성자를 호출한 후 해당 인자의 값이 잘 세팅되었는지 확인
+	*/
+	@Test
+	public void testConstructorFourArgs() {
+		UserVo userVo = new UserVo(id, name, description, addressList);
+		
+		assertEquals("생성자를 이용해 값이 잘 세팅되었는지 확인", id, userVo.getId());
+		assertEquals("생성자를 이용해 값이 잘 세팅되었는지 확인", name, userVo.getName());
+		assertEquals("생성자를 이용해 값이 잘 세팅되었는지 확인", description, userVo.getDescription());
+		assertEquals("생성자를 이용해 값이 잘 세팅되었는지 확인", addressList, userVo.getAddressList());
+	}
+}
+       ]]></string> 
+      </void>       
+     </array> 
+    </void> 
+   </object> 
+  </void> 
+ </array> 
+</java> 

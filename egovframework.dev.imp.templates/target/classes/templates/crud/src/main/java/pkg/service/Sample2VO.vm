@@ -1,0 +1,49 @@
+##
+#set($voPackage="${package}.service")
+#set($voClassName="${entity.pcName}VO")
+##
+##
+package $voPackage;
+
+import egovframework.rte.cmmn.SampleDefaultVO;
+
+/**
+ * @Class Name : ${voClassName}.java
+ * @Description : ${entity.pcName} VO class
+ * @Modification Information
+ * @
+ * @  수정일         수정자                   수정내용
+ * @ -------    --------    ---------------------------
+ * @ ${createDate}    ${author}          최초 생성
+ *
+ *  @author 실행환경 개발팀 ${author}
+ *  @since ${createDate}
+ *  @version 1.0
+ *  @see
+ *  
+ *  Copyright (C) 2009 by MOSPA  All right reserved.
+ */
+public class ${voClassName} extends SampleDefaultVO{
+    private static final long serialVersionUID = 1L;
+    
+#set($i=0)	
+#foreach($attribute in $attributes)
+    /** ${attribute.name} */
+    private ${attribute.javaType} ${attribute.ccName};
+    
+#set($i=$i+1)
+#end
+##
+#set($i=0)	
+#foreach($attribute in $attributes)
+    public ${attribute.javaType} get${attribute.pcName}() {
+        return this.${attribute.ccName};
+    }
+    
+    public void set${attribute.pcName}(${attribute.javaType} ${attribute.ccName}) {
+        this.${attribute.ccName} = ${attribute.ccName};
+    }
+    
+#set($i=$i+1)
+#end  
+}

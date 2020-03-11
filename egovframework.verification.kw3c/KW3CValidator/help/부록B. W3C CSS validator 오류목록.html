@@ -1,0 +1,766 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>무제 문서</title>
+<style type="text/css">
+.wpahr {
+	font-size: 25px;
+	font-family: "맑은 고딕";
+	text-align: center;
+}
+.부제목 {
+	font-size: 16px;
+}
+.부제목 {
+	font-size: 16px;
+}
+.부제목 {
+	font-size: 16px;
+}
+.일반 {
+	font-size: 13px;
+}
+.일반 {
+	font-family: "맑은 고딕";
+	font-size: 14px;
+}
+.부제목 {
+	font-size: 20px;
+	font-weight: bold;
+}
+.일반강조 {
+	font-weight: bold;
+	font-size: 18px;
+}
+.띄어쓰기 {
+	font-size: 1px;
+}
+.wpahr span {
+	font-weight: bold;
+}
+.wpahr span {
+	font-size: 24px;
+}
+.wpahr span {
+	color: #00F;
+}
+.일반 ul .일반 {
+	font-size: 14px;
+}
+.일반 {
+	font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+<p class="wpahr"><span lang="EN-US">W3C CSS Validator 오류 목록</span>
+  <![if !supportEmptyParas]>
+  &nbsp;
+  <![endif]></p>
+<ul>
+  <li class="일반"><span class="부제목">오류 분류 기준</span><span class="일반"> <![if !supportEmptyParas]>
+  &nbsp;
+  <![endif]></span>
+    <ul>
+      <li class="일반">심각 <span lang="EN-US">: </span>문서 전체를 해석하는데 심각한 오류가 발생할 수 있는 경우<span class="일반"> <![if !supportEmptyParas]>
+        &nbsp;
+        <![endif]></span></li>
+      <li><span class="일반"><span class="일반">위험 <span lang="EN-US">: </span>유효하지 않은 속성이나 속성 값을 사용해서 선언이 누락될 수 있는 경우
+        <![if !supportEmptyParas]>
+        &nbsp;
+        <![endif]></span></span></li>
+      <li><span class="일반"><span class="일반">보통 <span lang="EN-US">: </span>특정 미디어나 특정 환경에서만 발생하는 오류인 경우 
+        <![if !supportEmptyParas]>
+        &nbsp;
+        <![endif]></span></span></li>
+    </ul>
+  </li>
+</ul>
+<ul>
+  <li><span class="일반"><span class="부제목">「심각」 오류 목록</span></span></li>
+</ul>
+<blockquote>
+  <ul class="일반">
+    <li><span class="일반">generator.unrecognize: Parse Error</span>
+      <blockquote>
+        <p class="일반">구문분석오류    </p>
+      </blockquote>
+    </li>
+    <li>generator.dontmixhtml: Parse Error. Style sheets should not include HTML syntax.
+      <blockquote>
+        <p class="일반">구문분석오류<span lang="EN-US">. </span>스타일시트가 <span lang="EN-US">HTML </span>문법을 포함하지 않음
+          <![if !supportEmptyParas]>
+          &nbsp;
+        <![endif]> </p>
+      </blockquote>
+    </li>
+    <li>parser.semi-colon: attempt to find a semi-colon before the property name. add it
+      <blockquote>
+        <p class="일반">속성이름 전에 세미콜론을 찾기 위해 시도함
+          <![if !supportEmptyParas]>
+          &nbsp;
+        <![endif]> </p>
+      </blockquote>
+    </li>
+    <li>parser.unknown-dimension: Unknown dimension
+      <blockquote>
+        <p class="일반">알려지지 않은 차원
+          <![if !supportEmptyParas]>
+          &nbsp;
+        <![endif]> </p>
+      </blockquote>
+    </li>
+    <li>parser.charset: The @charset rule may only occur at the start of the style sheet. Please check that there are no spaces before it.
+      <blockquote>
+        <p><span lang="EN-US">@charset </span>규칙은 단지 스타일시트의 시작할 때 작성하는데<span lang="EN-US">, </span></p>
+        <p>공간이 있으면 오류로 분류될 수 있기 때문에 앞에 공간이 있는지를 검사해야 함 </p>
+      </blockquote>
+    </li>
+  </ul>
+</blockquote>
+<ul>
+  <li><span class="일반"><span class="부제목">「위험」 오류 목록</span></span>  </li>
+</ul>
+<blockquote>
+  <ul>
+    <li><span class="일반">error.invalid-color: Invalid RGB function</span>
+      <blockquote>
+        <p class="일반"><span class="일반">잘못된 <span lang="EN-US">RGB </span>함수</span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.operator: %s is an incorrect operator</span>
+      <blockquote>
+        <p><span class="일반"><span class="일반" lang="EN-US">%s</span><span class="일반">은<span lang="EN-US">(</span>는<span lang="EN-US">) </span>잘못된 연산자임</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.negative-value: %s negative values are not allowed</span>
+      <blockquote>
+        <p><span class="일반"><span class="일반" lang="EN-US">%s</span><span class="일반">의 음수 값은 허용되지 않음</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.few-value: too few values for the property %s</span>
+      <blockquote>
+        <p class="일반"><span class="일반">속성 <span lang="EN-US">%s</span>에 대해 매우 부족한 개수의 값</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.value: %s is not a %s value</span>
+      <blockquote>
+        <p><span class="일반"><span class="일반" lang="EN-US">%s</span><span class="일반">은 <span lang="EN-US">%s</span>의 값이 아님</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.percentage: percentage value expected</span>
+      <blockquote>
+        <p class="일반"><span class="일반">예상 백분율 값</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.shape: Invalid shape definition rect(&lt;top&gt;,&lt;right&gt;,&lt;bottom&gt;,&lt;l eft&gt;)</span>
+      <blockquote>
+        <p class="일반"><span class="일반">잘못된 모양 정의 <span lang="EN-US">rect (&lt;top&gt;,&lt;right&gt;,&lt;bottom&gt;,&lt;left&gt;)</span></span>
+          <span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.shape-separator: Invalid separator in shape definition. It must be a comma.</span>
+      <blockquote>
+        <p class="일반"><span class="일반">모양 정의에 잘못된 분리<span lang="EN-US">. </span>그것은 콤마<span lang="EN-US">(,)</span>이어야 함</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.attr: Invalid attr definition attr(X)</span>
+      <blockquote>
+        <p class="일반"><span class="일반">잘못된 <span lang="EN-US">attr </span>정의 <span lang="EN-US">attr (X)</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.function: Invalid function definition</span>
+      <blockquote>
+        <p class="일반"><span class="일반">잘못된 함수 정의</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.counter: Invalid counter definition counter(&lt;identifier&gt;[,&lt;list-sty le-type&gt;]?)</span>
+      <blockquote>
+        <p class="일반"><span class="일반">잘못된 카운터 정의 카운터 <span lang="EN-US">(&lt;identifier&gt;[,&lt;list-style-type&gt;]?)</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.counters: Invalid counters definition counters(&lt;identifier&gt;,&lt;str ing&gt;[,&lt;list-style-type&gt;]?)</span>
+      <blockquote>
+        <p class="일반"><span class="일반">잘못된 카운터 정의 카운터<span lang="EN-US">(&lt;identifier&gt;,&lt;string&gt;[,&lt;list-sty le-type&gt;]?)</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.format: Invalid format definition format(&lt;string&gt;[,&lt;string&gt;]*)</span>
+      <blockquote>
+        <p class="일반"><span class="일반">잘못된 형식 정의 형식 <span lang="EN-US">(&lt;string&gt;[,&lt;string&gt;]*)</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.local: Invalid format definition local(&lt;string&gt;|&lt;ident&gt;+)</span>
+      <blockquote>
+        <p class="일반"><span class="일반">잘못된 형식을 정의 로컬<span lang="EN-US">(&lt;string&gt;|&lt;ident&gt;+)</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.unit: %s is an incorrect unit</span>
+      <blockquote>
+        <p><span class="일반"><span class="일반" lang="EN-US">%s</span><span class="일반">은<span lang="EN-US">(</span>는<span lang="EN-US">) </span>잘못된 단위임</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.integer: This number should be an integer.</span>
+      <blockquote>
+        <p class="일반"><span class="일반">이 번호는 정수이어야 함</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.comma: Missing comma separator.</span>
+      <blockquote>
+        <p class="일반"><span class="일반">콤마 구별자를 빠뜨림</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.percent: %s is an incorrect percentage</span>
+      <blockquote>
+        <p><span class="일반"><span class="일반" lang="EN-US">%s</span><span class="일반">은<span lang="EN-US">(</span>는<span lang="EN-US">) </span>잘못된 백분율임</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.string: %s is an incorrect string</span>
+      <blockquote>
+        <p><span class="일반"><span class="일반" lang="EN-US">%s</span><span class="일반">은<span lang="EN-US">(</span>는<span lang="EN-US">) </span>잘못된 문자열임</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.url: %s is an incorrect URL</span>
+      <blockquote>
+        <p><span class="일반"><span class="일반" lang="EN-US">%s</span><span class="일반">은<span lang="EN-US">(</span>는<span lang="EN-US">) </span>잘못된 <span lang="EN-US">URL</span>임</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.rgb: %s is not a valid color 3 or 6 hexadecimals numbers</span>
+      <blockquote>
+        <p><span class="일반"><span class="일반" lang="EN-US">%s</span><span class="일반">은 유효한 <span lang="EN-US">3 </span>또는 <span lang="EN-US">6 16</span>진수 숫자가 아님</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.zero: only 0 can be a %s. You must put a unit after your number</span>
+      <blockquote>
+        <p><span class="일반"><span class="일반" lang="EN-US">0</span><span class="일반">만이 <span lang="EN-US">%s</span>일 수 있음<span lang="EN-US">. </span>숫자 뒤에 반드시 단위를 삽입해야 함</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.noexistence-at-all: Property %s doesn't exist</span>
+      <blockquote>
+        <p class="일반"><span class="일반">속성 <span lang="EN-US">%s</span>은 존재하지 않음</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.unrecognize: Too many values or values are not recognized</span>
+      <blockquote>
+        <p class="일반"><span class="일반">값이 너무 많거나 인식되지 되지 않은 값들</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.pseudo-element: The pseudo-element :%s can't appear here in the context %s</span>
+      <blockquote>
+        <p class="일반"><span class="일반">의사<span lang="EN-US">-</span>요소 <span lang="EN-US">%s</span>은 문맥 <span lang="EN-US">%</span>에서 이곳에 나타날 수 없음</span><span class="일반"><span class="일반"><![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.pseudo-class: The pseudo-class .%s can't appear here in the HTML context %s</span>
+      <blockquote>
+        <p class="일반"><span class="일반">의사<span lang="EN-US">-</span>클래스 <span lang="EN-US">%s</span>는 <span lang="EN-US">HTML </span>문맥 <span lang="EN-US">%s</span>에서 이곳에 나타날 수 없음</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.pseudo: Unknown pseudo-element or pseudo-class %s</span>
+      <blockquote>
+        <p class="일반"><span class="일반">알 수없는 의사 요소 또는 의사 클래스 <span lang="EN-US">%s</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.id: ID selector #%s is invalid ! Only one ID selector can be specified in a simple selector: %s.</span>
+      <blockquote>
+        <p><span class="일반"><span class="일반" lang="EN-US">ID </span><span class="일반">선택자 <span lang="EN-US">#%s</span>은 유효하지 않음<span lang="EN-US">! </span>단 하나의 <span lang="EN-US">ID </span>선택은 단순 선택자 <span lang="EN-US">%s</span>에서 지정될 수 있음</span></span>
+          <span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">error.space: If the attribute selector ~= is used, the word in the value %s must not contain spaces.</span>
+      <blockquote>
+        <p class="일반"><span class="일반">만일 속성 선택자 <span lang="EN-US">~=</span>이 사용되는 경우<span lang="EN-US">, </span>값 <span lang="EN-US">%s</span>에 있는 단어는 공백이 없어야 함</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">parser.old_class: In CSS1, a class name could start with a digit (".55ft"), unless it was a dimension (".55in"). In CSS2, such classes are parsed as unknown dimensions (to allow for future additions of new units) To make ".%s" a valid class, CSS2 requires the first digit to be escaped ".\3%s&ldquo;</span>
+      <blockquote>
+        <p><span class="일반"><span class="일반" lang="EN-US">CSS1</span><span class="일반">에서는 클래스 이름 <span lang="EN-US">("0.55</span>인치<span lang="EN-US">") </span>정의 하지 않는 한 <span lang="EN-US">("0.55 </span>피트<span lang="EN-US">") </span>숫자로 시작 수 있음<span lang="EN-US">. CSS2</span>에서는 그러한 클레스를 위해 알 수 없는 크기 <span lang="EN-US">(</span>새로운 단위의 미래 추가를 허용하도록<span lang="EN-US">)</span>로 해석됨<span lang="EN-US">. ".%s" </span>유효한 클래스를 지정하기 위해서 <span lang="EN-US">CSS2</span>가 탈출하도록 첫 번째 숫자가 필요함<span lang="EN-US">. ".\3%s"</span></span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">parser.old_id: In CSS1, an id name could start with a digit ("#55ft"), unless it was a dimension ("#55in"). In CSS2, such ids are parsed as unknown dimensions (to allow for future additions of new units)</span>
+      <blockquote>
+        <p><span class="일반"><span class="일반" lang="EN-US">CSS1</span><span class="일반">에서는 <span lang="EN-US">ID</span>이름이 <span lang="EN-US">( "#55</span>인치<span lang="EN-US">") </span>정의 하지 않는 한 <span lang="EN-US">("#55</span>피트<span lang="EN-US">") </span>숫자로 시작 수 있음<span lang="EN-US">. CSS2</span>에서는 그러한 <span lang="EN-US">ID</span>를 <span lang="EN-US">(</span>새로운 단위의 미래 추가를 허용하도록<span lang="EN-US">) </span>알 수 없는 정의로 해석됨</span></span></p>
+      </blockquote>
+    </li>
+  </ul>
+</blockquote>
+<ul>
+  <li><span class="일반"><span class="부제목">「보통」 오류 목록</span></span>  </li>
+</ul>
+<blockquote>
+<p>&nbsp;</p>
+    <ul>
+      <li><span class="일반">error.at-rule: Sorry, the at-rule %s is not implemente.
+        </span>
+        <blockquote>
+          <p><span class="일반" lang="EN-US">at-rule</span><span class="일반">이 구현되지 않았음
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.groupname: %s is not a correct groupname. Use a valid identifier
+        </span>
+        <blockquote>
+          <p><span class="일반" lang="EN-US">%s</span><span class="일반">는 유효한 그룹명이 아님<span lang="EN-US">, </span>유효한 식별자를 사용해야 함
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.nogroup: %s has not been set by the toggle-group property
+        </span>
+        <blockquote>
+          <p><span class="일반" lang="EN-US">%s</span><span class="일반">가 토글<span lang="EN-US">-</span>그룹 속성에 의해서 성정되지 않았음
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.anglevalue: Value must be between -360 and 360 and be divisable by 90
+        </span>
+        <blockquote>
+          <p class="일반">값은 –<span lang="EN-US">360</span>과 <span lang="EN-US">360</span>사이여야 하고 <span lang="EN-US">90</span>으로 나눌 수 있어야 함
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.same-value: %s appears twice
+        </span>
+        <blockquote>
+          <p><span class="일반" lang="EN-US">%s</span><span class="일반">가 두 번 나옴
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.generic-family.quote: Generic family names are keywords, and therefore must not be quoted.
+        </span>
+        <blockquote>
+          <p class="일반">제네릭 패밀리 명은 키워드여야 하고 따옴표로 감싸지 않아야 함
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.degree: Position must be described in terms of degrees.
+        </span>
+        <blockquote>
+          <p class="일반">위치값은 각도로 기술되어야 함
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.elevation.range: Specifies the elevation as an angle, between '-90deg' and '90deg'.
+        </span>
+        <blockquote>
+          <p><span class="일반" lang="EN-US">-90</span><span class="일반">도와 <span lang="EN-US">90</span>도 사이의 각도로 표기되어야 함
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.range: The value is out of range. This value must be between '0' and '100'.
+        </span>
+        <blockquote>
+          <p class="일반">값이 <span lang="EN-US">0</span>과 <span lang="EN-US">100 </span>사이에 있어야 함
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.angle: %s is not a valid angle. Value should be between 0 and 360
+        </span>
+        <blockquote>
+          <p><span class="일반" lang="EN-US">%s</span><span class="일반">는 유효한 각이 아님<span lang="EN-US">, 0</span>과 <span lang="EN-US">360 </span>사이에 있어야 함
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.noexistence-media: Property %s doesn't exist for media %s
+        </span>
+        <blockquote>
+          <p><span class="일반" lang="EN-US">%s </span><span class="일반">속성은 <span lang="EN-US">%s </span>미디어에 정의되지 않았음<![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.noexistence: Property %s doesn't exist in %s but exists in %s
+        </span>
+        <blockquote>
+          <p><span class="일반" lang="EN-US">%s </span><span class="일반">속성은 <span lang="EN-US">%s </span>미디어에 정의되지 않았고 <span lang="EN-US">%s</span>에 존재함
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.noatruleyet: Other @rules than @import are not supported by CSS1 %s
+        </span>
+        <blockquote>
+          <p><span class="일반" lang="EN-US">CSS1 %s</span><span class="일반">에서는 다른 <span lang="EN-US">@rule</span>과 <span lang="EN-US">@import</span>를 지원하지 않음
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.notforcss1: Value %s does not exist for CSS1
+        </span>
+        <blockquote>
+          <p><span class="일반" lang="EN-US">CSS1</span><span class="일반">에 <span lang="EN-US">%s</span>가 존재하지 않음
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.unknown: Unknown error
+        </span>
+        <blockquote>
+          <p class="일반">알 수 없는 오류
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.todo : Sorry the feature %s is not implemented yet.
+        </span>
+        <blockquote>
+          <p><span class="일반" lang="EN-US">%s</span><span class="일반">가 아직 구현되지 않았음
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.incompatible: %s and %s are incompatible
+        </span>
+        <blockquote>
+          <p><span class="일반" lang="EN-US">%s</span><span class="일반">와 <span lang="EN-US">%s</span>가 호환되지 않음
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.notformobile: %s can not be used with mobile profile
+        </span>
+        <blockquote>
+          <p><span class="일반" lang="EN-US">%s</span><span class="일반">는 모바일 프로파일에서 사용될 수 없음
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.notforatsc: %s can not be used with ATSC profile
+        </span>
+        <blockquote>
+          <p><span class="일반" lang="EN-US">%s</span><span class="일반">는 <span lang="EN-US">ATSC </span>프로파일에서 사용될 수 없음
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.notfortv: %s can not be used with TV profile
+        </span>
+        <blockquote>
+          <p><span class="일반" lang="EN-US">%s</span><span class="일반">는 <span lang="EN-US">TV </span>프로파일에서 사용될 수 없음
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.notversion: %s can not be used with this version of CSS : %s
+        </span>
+        <blockquote>
+          <p><span class="일반" lang="EN-US">%s</span><span class="일반">는 <span lang="EN-US">CSS: %s </span>버전에서 사용될 수 없음
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.media: unrecognized media %s
+        </span>
+        <blockquote>
+          <p class="일반"><span class="일반">인식할 수 없는 미디어 <span lang="EN-US">%s</span></span>
+            <span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.page: unrecognized pseudo named page %s
+        </span>
+        <blockquote>
+          <p class="일반"><span class="일반">인식할 수 없는 의사 이름 페이지 <span lang="EN-US">%s</span></span>
+            <span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.unrecognized.link: Unrecognized link element or xml-stylesheet PI.
+        </span>
+        <blockquote>
+          <p class="일반"><span class="일반">알 수 없는 링크나 <span lang="EN-US">xml-stylesheet PI</span></span>
+            <span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.onlyATSC: %s this function is only for the atsc-tv medium
+        </span>
+        <blockquote>
+          <p><span class="일반" lang="EN-US">%s </span><span class="일반">기능은 <span lang="EN-US">atsc-tv </span>미디어만을 위한 기능임</span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.nocomb: Combinator %s between selectors is not allowed in this profile or version
+        </span>
+        <blockquote>
+          <p class="일반">이 프로파일과 버전에서는 선택자 사이의 <span lang="EN-US">%s </span>조합은 사용할 수 없음
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </p>
+        </blockquote>
+      </li>
+      <li><span class="일반">error.two-lengths: A shadow offset is specified with two &lt;length&gt; values (A blur radius may optionally be specified after the shadow offset.)
+        </span>
+        <blockquote>
+          <p class="일반"><span class="일반">음영 간격은 두 길이 값으로 정의 되어야 함<span lang="EN-US">(</span>번진 반경은 음영 간격 후에 추가될 수 있음<span lang="EN-US">)</span></span>
+            <span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">parser.class_dim: In CSS1, a class name can start with a digit (".55ft"), unless it is a dimension (".55in").
+        </span>
+        <blockquote>
+          <p><span class="일반" lang="EN-US">CSS1</span><span class="일반">에서 클래스 명은 넓이인 경우<span lang="EN-US">(&ldquo;.55in&rdquo;) </span>숫자로 시작할 수 있음<span lang="EN-US">(&ldquo;.55ft&rdquo;)</span></span>
+            <span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">parser.id_dim: In CSS1, an id name can start with a digit ("#55ft"), unless it is a dimension ("#55in").
+        </span>
+        <blockquote>
+          <p><span class="일반" lang="EN-US">CSS1</span><span class="일반">에서 <span lang="EN-US">id </span>명은 넓이인 경우<span lang="EN-US">(&ldquo;#55in&rdquo;) </span>숫자로 시작할 수 있음<span lang="EN-US">(&ldquo;#55ft&rdquo;)</span></span>
+            <span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">parser.charsetspecial: This profile has a very specific syntax for @charset: @charset followed by exactly one space, followed by the name of the encoding in quotes, followed immediately by a semicolon.
+        </span>
+        <blockquote>
+          <p class="일반">이 프로파일은 아주 특별한 <span lang="EN-US">@charset </span>문법을 사용함<span lang="EN-US">: @charset</span>은 하나의 공란<span lang="EN-US">, </span>따옴표 안의 인코딩<span lang="EN-US">, </span>세미콜론을 순으로 나와야 함
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </p>
+        </blockquote>
+      </li>
+      <li><span class="일반">parser.charsetcss1: @charset rules can not be used in CSS1
+        </span>
+        <blockquote>
+          <p><span class="일반" lang="EN-US">@charset </span><span class="일반">선언은 <span lang="EN-US">CSS1</span>에서 사용할 수 없음
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">parser.attrcss1: Attribute selectors are invalid in CSS1
+        </span>
+        <blockquote>
+          <p class="일반">속성 선택자는 <span lang="EN-US">CSS1</span>에서 유효하지 않음</p>
+        </blockquote>
+      </li>
+  </ul>
+</blockquote>
+<p>
+  
+  <span class="일반">
+
+  <![if !supportEmptyParas]>
+  &nbsp;
+  <![endif]>
+  </span></p>
+<blockquote>
+  <p class="일반"><span class="일반"><span class="일반강조">※ 이 목록에 포함되지 않은 오류는 모두 「보통」으로 분류함<span lang="EN-US">.</span></span></span><span lang="EN-US"></span></p>
+</blockquote>
+<p>
+  
+  <span class="일반">
+
+  <![if !supportEmptyParas]>
+  &nbsp;
+  <![endif]>
+  </span></p>
+<p>
+  
+  <span class="일반">
+
+  <![if !supportEmptyParas]>
+  &nbsp;
+  <![endif]>
+  </span></p>
+<p>
+  
+  <span class="일반">
+
+  <![if !supportEmptyParas]>
+  &nbsp;
+  <![endif]> </span></p>
+<p>
+  <span class="일반"><span class="일반">
+  <![if !supportEmptyParas]>
+  &nbsp;
+  </span>
+  </span>
+  <![endif]>
+</p>
+</body>
+</html>

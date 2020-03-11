@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>New DataSource Transaction</title>
+
+		<component-page required="true">
+			<!-- NewDataSourceTransaction	New DataSource Transaction -->
+			<description>Create DataSource Transaction</description>
+			<group label="Generation File" required="true">
+				<container name="txtPath" label="File Path: " required="true"
+					type="folder" value="" />
+				<textfield name="txtFileName" label="File Name: "
+					required="true" value="" />
+			</group>
+			<group label="Transaction Bean">
+				<textfield name="txtTransactionName" label="Transaction Name: "
+					required="true" value="" />
+				<textfield name="txtDatasourceName" label="DataSource Name: "
+					required="true" value="" />
+			</group>
+			<group label="Transaction Management" required="false">
+				<checkbox name="chkAnnotationTransactionManagement" label="Annotation Transaction Management: "
+					value="false" required="true" />
+				<checkbox name="chkConfigurationalTransactionManagement"
+					label="Configurational Transaction Management: " value="true"
+					required="true" />
+			</group>
+
+			<group label="Transaction Management(TransactionTemplate)"
+				checkbox="chkTransactionTemplate">
+				<checkbox name="chkTransactionTemplate" label="TransactionTemplate: " />
+				<textfield name="txtTransactionTemplateName" label="TransactionTemplate Name: "
+					required="true" />
+			</group>
+		</component-page>
+
+		<component-page required="false"
+			condition="$chkConfigurationalTransactionManagement">
+			<!-- NewConfigurationalTransactionManagement New Configurational Transaction Management  -->
+			<description>Configurational Transaction Management</description>
+			<group label="AOP Config" required="true">
+				<textfield name="txtPointCutName" label="PointCut Name: "
+					required="true" />
+				<textfield name="txtPointCutExpression" label="PointCut Expression: "
+					required="true" />
+			</group>
+			<group label="Advice" required="true">
+				<textfield name="txtAdviceName" label="Advice Name: "
+					required="true" />
+				<group label="Method" required="true">
+					<textfield name="txtMethodName" label="Method Name: "
+						required="true" />
+						
+					<checkbox name="chkReadOnly" label="read-only: " value="false" />
+					
+					<textfield name="txtTimeout" label="timeout: [[CHECK]chkTimeout:true]"
+						required="false" />
+					<textfield name="txtRollbackFor"
+						label="rollback-for: [[CHECK]chkRollbackFor:true]" required="false" />
+					<textfield name="txtNoRollbackFor"
+						label="no-rollback-for: [[CHECK]chkNoRollbackFor:true]" required="false" />
+
+					<combo name="cmbIsolation" label="isolation: " required="false"
+						value="DEFAULT">
+						<elements>
+							<option>DEFAULT</option>
+							<option>READ_UNCOMMITTED</option>
+							<option>READ_COMMITTED</option>
+							<option>REPEATABLE_READ</option>
+							<option>SERIALIZABLE</option>
+						</elements>
+					</combo>
+					<combo name="cmbPropagation" label="propagation: " required="false"
+						value="REQUIRED">
+						<elements>
+							<option>REQUIRED</option>
+							<option>SUPPORTS</option>
+							<option>MANDATORY</option>
+							<option>REQUIRES_NEW</option>
+							<option>NOT_SUPPORTED</option>
+							<option>NEVER</option>
+							<option>NESTED</option>
+						</elements>
+					</combo>
+				</group>
+			</group>
+
+		</component-page>
+		<!--
+			<component-page required="false"
+			condition="$chkConfigurationalTransactionManagement">
+			<description>Configurational Transaction Management </description>
+
+			</component-page>
+		-->
+		<output>
+			<template component="txtFileName" velocity="datasource.vm"
+				extension="xml" container="txtPath" />
+		</output>
+	</wizard>
+</EclipseWork>

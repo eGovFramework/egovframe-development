@@ -1,0 +1,7 @@
+   <tx:jta-transaction-manager/>
+   <jee:jndi-lookup id="dataSource" jndi-name="${jndiName}" resource-ref="${resourceRef}">
+      <jee:environment>
+         java.naming.factory.initial=${initialFactory}
+         java.naming.provider.url=${providerUrl}
+      </jee:environment>
+   </jee:jndi-lookup>

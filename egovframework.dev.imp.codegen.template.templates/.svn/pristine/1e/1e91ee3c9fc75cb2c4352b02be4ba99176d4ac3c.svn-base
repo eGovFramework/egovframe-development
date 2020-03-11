@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>New JPA Transaction</title>
+
+		<component-page required="true">
+			<!-- NewJpaTransaction	New JPA Transaction -->
+			<description>Create JPA Transaction</description>
+
+			<group label="Generation File" required="true">
+				<container name="txtPath" label="File Path: " required="true"
+					type="folder" value="" />
+				<textfield name="txtFileName" label="File Name: "
+					required="true" value="" />
+			</group>
+
+			<group label="Configuration" required="true">
+				<textfield name="txtTransactionName" label="Transaction Name: "
+					required="true" value="" />
+				<textfield name="txtEttMgrFactory" label="Entity Manager Factory: "
+					required="true" value="" />
+				<textfield name="txtPstUnitName" label="Persistence Unit Name: "
+					required="true" value="" />
+				<textfield name="txtPstXMLLoc" label="Persistence XML Location: "
+					required="true" value="classpath:" />				
+				<textfield name="txtDataSourceName" label="DataSource Name: "
+					required="true" value="" />
+			</group>
+		</component-page>
+
+		<output>
+			<template component="txtFileName" velocity="jpa.vm"
+				extension="xml" container="txtPath" />
+		</output>
+	</wizard>
+</EclipseWork>

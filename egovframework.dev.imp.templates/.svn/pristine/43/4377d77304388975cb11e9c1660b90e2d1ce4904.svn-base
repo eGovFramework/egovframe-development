@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>CRUD Program Code Generation</title>
+
+		<model-page type="table" required="true">
+			<!-- SelectSomeTable	CRUD 코드 생성(테이블 선택) -->
+			<description>Select some Table</description>
+		</model-page>
+
+		<component-page>
+			<!-- CRUDResourceInfo	CRUD 코드 생성(리소스 정보 입력)-->
+			<description>Input resource information</description>
+
+			<group label="" required="true">
+				<textfield name="author" label="Author :" required="true"
+					value="" />
+				<textfield name="createDate" label="Create Date :"
+					required="true" value="" />
+			</group>
+
+			<group label="DataAccess" required="true" checkbox="checkDataAccess">
+				<checkbox name="checkDataAccess" label="Create DataAccess: "
+					value="true" />
+				<container name="sqlMapFolder" label="Resource(SQLMap) Folder: "
+					required="true" type="folder" />
+				<container name="daoPackage" label="DAO Package: "
+					required="true" type="package" />
+				<container name="voPackage" label="VO Package: " required="true"
+					type="package" />
+				<!--
+					type name="defaultVoClass" label="VO Super Class: " required="true"
+					/
+				-->
+			</group>
+			<group label="Service" required="true" checkbox="checkService">
+				<checkbox name="checkService" label="Create Service: "
+					value="true" />
+				<container name="servicePackage" label="Service Package: "
+					required="true" type="package" />
+				<container name="implPackage" label="Service Impl Package: "
+					required="true" type="package" />
+			</group>
+			<group label="Web" required="true" checkbox="checkWeb">
+				<checkbox name="checkWeb" label="Create Web: " value="true" />
+				<container name="controllerPackage" label="Controller Package: "
+					required="true" type="package" />
+				<container name="jspFolder" label="JSP Folder: " required="true"
+					type="folder" />
+			</group>
+
+		</component-page>
+
+		<output>
+
+			<!-- DataAccess Resource -->
+			<template component="sqlMap"
+				expression="${model.entity.ccName}/${model.entity.pcName}_SQL"
+				velocity="resource/pkg/EgovSample_Sample2_SQL.vm" extension="xml"
+				container="sqlMapFolder">
+				<condition variable="checkDataAccess" value="true" />
+			</template>
+			<template component="vo" expression="${model.entity.pcName}VO"
+				velocity="java/pkg/service/Sample2VO.vm" extension="java" container="voPackage">
+				<condition variable="checkDataAccess" value="true" />
+			</template>
+			<template component="vo" expression="${model.entity.pcName}DefaultVO"
+				velocity="java/pkg/service/Sample2DefaultVO.vm" extension="java"
+				container="voPackage">
+				<condition variable="checkDataAccess" value="true" />
+			</template>
+			<template component="dao" expression="${model.entity.pcName}DAO"
+				velocity="java/pkg/service/impl/Sample2DAO.vm" extension="java"
+				container="daoPackage">
+				<condition variable="checkDataAccess" value="true" />
+			</template>
+
+			<!-- Service Resource -->
+			<template component="service" expression="${model.entity.pcName}Service"
+				velocity="java/pkg/service/EgovSample2Service.vm" extension="java"
+				container="servicePackage">
+				<condition variable="checkService" value="true" />
+			</template>
+			<template component="impl" expression="${model.entity.pcName}ServiceImpl"
+				velocity="java/pkg/service/impl/EgovSample2ServiceImpl.vm"
+				extension="java" container="implPackage">
+				<condition variable="checkService" value="true" />
+			</template>
+
+			<!-- Web Resource -->
+			<template component="controller" expression="${model.entity.pcName}Controller"
+				velocity="java/pkg/web/EgovSample2Controller.vm" extension="java"
+				container="controllerPackage">
+				<condition variable="checkWeb" value="true" />
+			</template>
+			<template component="jsp"
+				expression="${model.entity.ccName}/${model.entity.pcName}List"
+				velocity="jsp/pkg/egovSample2List.vm" extension="jsp" container="jspFolder">
+				<condition variable="checkWeb" value="true" />
+			</template>
+			<template component="jsp"
+				expression="${model.entity.ccName}/${model.entity.pcName}Register"
+				velocity="jsp/pkg/egovSample2Register.vm" extension="jsp" container="jspFolder">
+				<condition variable="checkWeb" value="true" />
+			</template>
+
+
+
+		</output>
+	</wizard>
+</EclipseWork>

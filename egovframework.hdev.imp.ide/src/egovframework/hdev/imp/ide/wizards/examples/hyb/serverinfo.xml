@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="SERVER_URL">##SERVER_URL##</string>
+</resources>

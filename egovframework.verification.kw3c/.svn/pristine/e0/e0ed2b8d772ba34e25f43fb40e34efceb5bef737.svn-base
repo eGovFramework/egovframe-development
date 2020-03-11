@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>무제 문서</title>
+<style type="text/css">
+.부제목 {
+	font-size: 19px;
+}
+.부부제목 {
+	font-size: 16px;
+}
+.부제목 {
+	font-size: 20px;
+}
+.부제목 {
+	font-family: "맑은 고딕";
+	font-weight: bold;
+}
+.부부제목 {
+	font-family: "맑은 고딕";
+}
+.일반 {
+	font-size: 13px;
+}
+.일반 {
+	font-family: "맑은 고딕";
+}
+.일반진하게 {
+	font-weight: bold;
+}
+.띄워쓰기 {
+	font-size: 1px;
+}
+.wpahr {
+	font-size: 24px;
+	font-family: "맑은 고딕";
+	text-align: center;
+	font-weight: bold;
+	color: #00F;
+}
+.부제목 span {
+	font-size: 20px;
+}
+.일반 .일반 {
+	font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+<p class="wpahr">전자정부서비스 호환성 준수지침</p>
+<blockquote>
+  <p class="띄워쓰기">&nbsp;</p>
+  <p class="부제목"><span lang="EN-US">DTD </span>권고안</p>
+  <p class="띄워쓰기">
+    <![if !supportEmptyParas]>
+    &nbsp;
+    <![endif]>
+  </p>
+  <p> <span class="부부제목" lang="EN-US"><span class="부부제목">1) </span></span><span class="부부제목"><span class="부부제목">템플릿 <span lang="EN-US">(XHTML 1.0)</span><![if !supportEmptyParas]>
+    &nbsp;
+    </span></span><span class="부부제목"></span>
+    <![endif]></p>
+  <blockquote>
+    <p class="일반"><span class="일반">1:  &lt;?xml version="1.0" encoding="utf-8"?&gt;</span></p>
+    <p class="일반"><span class="일반">2:  &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"</span></p>
+    <p class="일반"><span class="일반">3:         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt;</span></p>
+    <p class="일반"><span class="일반">4: &lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"&gt;</span></p>
+    <p class="일반"><span class="일반">5:  &lt;head&gt;</span></p>
+    <p><span class="일반"><span class="일반" lang="EN-US">6: </span> <span class="일반" lang="EN-US">&lt;title&gt;An XHTML 1.0 Strict standard template&lt;/title&gt;</span></span></p>
+    <p><span class="일반"><span class="일반" lang="EN-US">7:</span> <span class="일반" lang="EN-US">&lt;meta http-equiv="content-type" </span></span></p>
+    <p><span class="일반"><span class="일반" lang="EN-US">8:</span> <span class="일반" lang="EN-US">content="text/html;charset=utf-8" /&gt;</span></span></p>
+    <p><span class="일반"><span class="일반" lang="EN-US">9:</span> <span class="일반" lang="EN-US">&lt;meta http-equiv="Content-Style-Type" content="text/css" /&gt;</span></span></p>
+    <p class="일반"><span class="일반">10: &lt;/head&gt;</span></p>
+    <p class="일반"><span class="일반">11: &lt;body&gt;</span></p>
+    <p><span class="일반"><span class="일반" lang="EN-US">12:     &lt;p&gt;</span><span class="일반">… <span lang="EN-US">Your HTML content here </span>…<span lang="EN-US">&lt;/p&gt;</span></span></span></p>
+    <p class="일반"><span class="일반">13: &lt;/body&gt;</span></p>
+    <p><span class="일반"><span class="일반" lang="EN-US">14: &lt;/html&gt;</span><span class="일반"><![if !supportEmptyParas]>
+      &nbsp;
+      <![endif]></span></span></p>
+    <p> <span class="일반"><span class="일반"><span class="일반진하게">※ <span lang="EN-US">HTML </span>문서에서는 <span lang="EN-US">1, 4</span>행 생략
+      <![if !supportEmptyParas]>
+      &nbsp;
+      </span>
+      <![endif]></span></span></p>
+</blockquote>
+  <p><span class="일반"><span class="일반" lang="EN-US"><span class="부부제목">2) <span class="부부제목">DTD </span></span></span><span class="부부제목"><span class="부부제목"><span class="부부제목">목록
+    </span></span></span><span class="부부제목"><span class="일반"><![if !supportEmptyParas]>
+    &nbsp;
+    </span></span><span class="일반"><![endif]></span></span></p>
+  <blockquote>
+    <p> <span class="일반"><span class="일반" lang="EN-US"><span class="일반진하게">(1) HTML 4.01</span></span></span></p>
+    <ul>
+      <li><span class="일반"><span class="일반" lang="EN-US">Strict </span><span class="일반">문서 타입에서는 <span lang="EN-US">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"&gt; </span>선언</span></span></li>
+      <li><span class="일반"><span class="일반" lang="EN-US">Transitional </span><span class="일반">문서 타입에서는 <span lang="EN-US">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt; </span>선언</span></span></li>
+      <li><span class="일반"><span class="일반" lang="EN-US">Frameset </span><span class="일반">문서 타입에서는 <span lang="EN-US">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd"&gt; </span>선언
+        <![if !supportEmptyParas]>
+        &nbsp;
+        <![endif]></span></span></li>
+    </ul>
+    <blockquote>
+      <p class="일반"><span class="일반">※ <span lang="EN-US">HTML 4.01</span>에서는 <span lang="EN-US">2</span>행 생략 가능</span>      </p>
+    </blockquote>
+    <p> <span class="일반"><span class="일반진하게" lang="EN-US">(2) XHTML 1.0</span></span></p>
+    <ul>
+      <li><span class="일반"><span class="일반" lang="EN-US">Strict </span><span class="일반">문서 타입에서는 <span lang="EN-US">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"&gt; </span>선언</span></span></li>
+      <li><span class="일반"><span class="일반" lang="EN-US">Transitional </span><span class="일반">문서 타입에서는 <span lang="EN-US">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtm l1-tran sitional.dtd"&gt; </span>선언</span></span></li>
+      <li><span class="일반"><span class="일반" lang="EN-US">Frameset </span><span class="일반">문서 타입에서는 <span lang="EN-US">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1 -frameset.dtd"&gt; </span>선언
+        <![if !supportEmptyParas]>
+        &nbsp;
+        <![endif]></span></span></li>
+    </ul>
+    <p> <span class="일반진하게"><span class="일반" lang="EN-US">(3) XHTML 1.1</span></span></p>
+    <ul>
+      <li><span class="일반"><span class="일반" lang="EN-US">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"&gt; </span><span class="일반">선언
+        <![if !supportEmptyParas]>
+        &nbsp;
+        <![endif]></span></span></li>
+    </ul>
+    <p> <span class="일반진하게"><span class="일반" lang="EN-US">(4) XHTML Basic 1.0</span></span></p>
+    <ul>
+      <li><span class="일반"><span class="일반" lang="EN-US">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.0//EN&ldquo; &rdquo;http://ww w.w3.org/TR/xhtml-basic/xhtml-basic10.dtd"&gt; </span><span class="일반">선언
+        <![if !supportEmptyParas]>
+        &nbsp;
+        <![endif]></span></span></li>
+    </ul>
+    <p> <span class="일반진하게"><span class="일반" lang="EN-US">(5) XHTML Basic 1.1</span></span></p>
+    <ul>
+      <li><span class="일반"><span class="일반" lang="EN-US">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN" "http://ww w.w3.org/TR/xhtml-basic/xhtml-basic11.dtd"&gt; </span><span class="일반">선언
+        <![if !supportEmptyParas]>
+        &nbsp;
+        <![endif]></span></span></li>
+    </ul>
+    <p> <span class="일반진하게"><span class="일반" lang="EN-US">(6) XHTML 2.0</span></span></p>
+    <ul>
+      <li><span class="일반"><span class="일반" lang="EN-US">&lt;!DOCTYPE html PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt; </span><span class="일반">선언
+        <![if !supportEmptyParas]>
+        &nbsp;
+        <![endif]></span></span></li>
+    </ul>
+    <p> <span class="일반진하게"><span class="일반" lang="EN-US">(7) XHTML 3.2</span></span></p>
+    <ul>
+      <li><span class="일반"><span class="일반" lang="EN-US">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"&gt; </span><span class="일반">선언
+        <![if !supportEmptyParas]>
+        &nbsp;
+        <![endif]></span></span></li>
+    </ul>
+    <p> <span class="일반진하게"><span class="일반" lang="EN-US">(8) MathML 1.01</span></span></p>
+    <ul>
+      <li><span class="일반"><span class="일반" lang="EN-US">&lt;!DOCTYPE math SYSTEM &ldquo;http://www.w3.org/Math/DTD/mathml1/math ml.dtd"&gt; </span><span class="일반">선언
+        <![if !supportEmptyParas]>
+        &nbsp;
+        <![endif]></span></span></li>
+    </ul>
+    <p> <span class="일반진하게"><span class="일반" lang="EN-US">(9) MathML 2.0</span></span></p>
+    <ul>
+      <li><span class="일반"><span class="일반" lang="EN-US">&lt;!DOCTYPE math PUBLIC "-//W3C//DTD MathML 2.0//EN" "http://www.w3. org/TR/MathML2/dtd/mathml2.dtd"&gt; </span><span class="일반">선언
+        <![if !supportEmptyParas]>
+        &nbsp;
+        <![endif]></span></span></li>
+    </ul>
+    <p> <span class="일반진하게"><span class="일반" lang="EN-US">(10) XHTML + MathML + SVG</span></span></p>
+    <ul>
+      <li><span class="일반"><span class="일반" lang="EN-US">&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0 plus SVG 1.1//EN" "http://www.w3.org/2002/04/xhtml-math-svg /xhtml-math-svg. dtd"&gt; </span><span class="일반">선언
+        <![if !supportEmptyParas]>
+        &nbsp;
+        <![endif]></span></span></li>
+    </ul>
+    <p> <span class="일반진하게"><span class="일반" lang="EN-US">(11) SVG 1.0</span></span></p>
+    <ul>
+      <li><span class="일반"><span class="일반" lang="EN-US">&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www .w3org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"&gt; </span><span class="일반">선언
+        <![if !supportEmptyParas]>
+        &nbsp;
+        <![endif]></span></span></li>
+    </ul>
+    <p> <span class="일반진하게"><span class="일반" lang="EN-US">(12) SVG 1.1</span></span></p>
+    <ul>
+      <li><span class="일반"><span class="일반" lang="EN-US">Full </span><span class="일반">문서 타입에서는 <span lang="EN-US">&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"&gt; </span>선언</span></span></li>
+      <li><span class="일반"><span class="일반" lang="EN-US">Basic </span><span class="일반">문서 타입에서는 <span lang="EN-US">&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Basic//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-basic.dt d"&gt;</span></span> <span class="일반">선언</span></span></li>
+      <li><span class="일반"><span class="일반" lang="EN-US">Tiny </span><span class="일반">문서 타입에서는 <span lang="EN-US">&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1 Tiny//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-tiny.dtd"&gt; </span>선언<![if !supportEmptyParas]>
+    &nbsp;</span></span></li></ul></blockquote>
+  <p><span class="부부제목" lang="EN-US">3) </span><span class="부부제목">사용 금지 <span lang="EN-US">DTD </span>목록
+    <![if !supportEmptyParas]>
+    &nbsp;        <span class="일반">
+    <![endif]></span></span></p>
+  <blockquote>
+    <p> <span class="일반"><span class="일반진하게" lang="EN-US">(1) HTML 4.0</span></span></p>
+    <ul>
+      <li><span class="일반">http://www.w3.org/TR/1998/REC-html40-19980424/strict.dtd</span></li>
+      <li><span class="일반">http://www.w3.org/TR/1998/REC-html40-19980424/loose.dtd</span></li>
+      <li><span class="일반"><span class="일반" lang="EN-US">http://www.w3.org/TR/1998/REC-html40-19980424/frameset.dtd </span><span class="일반"><![if !supportEmptyParas]>
+        &nbsp;
+        <![endif]></span></span></li>
+    </ul>
+    <p> <span class="일반진하게"><span class="일반" lang="EN-US">(2) HTML 4.01</span></span></p>
+    <ul>
+      <li><span class="일반">http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd</span></li>
+      <li><span class="일반">http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd</span></li>
+      <li><span class="일반">http://www.w3.org/TR/1999/REC-html401-19991224/frameset.dtd</span></li>
+    </ul>
+    <p> <span class="일반진하게"><span class="일반" lang="EN-US">(3) XHTML 1.0</span></span></p>
+    <ul>
+      <li><span class="일반">http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-strict.dtd</span></li>
+      <li><span class="일반">http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-transitional.dtd</span></li>
+      <li><span class="일반"><span class="일반" lang="EN-US">http://www.w3.org/TR/2000/REC-xhtml1-20000126/DTD/xhtml1-frameset.dtd</span><span class="일반"><![if !supportEmptyParas]>
+        &nbsp;
+        <![endif]></span></span></li>
+    </ul>
+    <p> <span class="일반진하게"><span class="일반" lang="EN-US">(4) XHTML 1.1</span></span></p>
+    <ul>
+      <li><span class="일반">http://www.w3.org/TR/2001/REC-xhtml11-20010531/DTD/xhtml11.dtd</span></li>
+    </ul>
+  </blockquote>
+</blockquote>
+<p>
+  <![if !supportEmptyParas]>
+  &nbsp;
+  <![endif]>
+</p>
+</body>
+</html>

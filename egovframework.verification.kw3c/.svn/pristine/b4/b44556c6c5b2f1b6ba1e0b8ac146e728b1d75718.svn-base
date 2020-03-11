@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>무제 문서</title>
+<style type="text/css">
+.부제목 {
+	font-size: 19px;
+}
+.부부제목 {
+	font-size: 16px;
+}
+.부제목 {
+	font-size: 20px;
+}
+.부제목 {
+	font-family: "맑은 고딕";
+}
+.부부제목 {
+	font-size: 16px;
+}
+.부부제목 {
+	font-family: "맑은 고딕";
+}
+.부부제목 {
+	font-weight: bold;
+}
+.일반 {
+	font-size: 13px;
+}
+.일반 {
+	font-family: "맑은 고딕";
+}
+일반 {
+	font-weight: normal;
+}
+일반 {
+	font-size: 13px;
+}
+.일반 {
+	font-weight: bold;
+}
+.띄어쓰기 {
+	font-size: 1px;
+}
+.일반 {
+	font-size: 13px;
+}
+.일반 {
+	font-weight: normal;
+}
+.부부제목 {
+	font-weight: bold;
+}
+.진하게 {
+	font-weight: bold;
+}
+.wpahr {
+	font-size: 24px;
+	font-family: "맑은 고딕";
+	text-align: center;
+	font-weight: bold;
+	color: #00F;
+}
+.부제목 {
+	font-weight: bold;
+}
+.일반 .일반 .일반 {
+	font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+<p class="wpahr">전자정부서비스 호환성 준수지침</p>
+<blockquote>
+  <p class="띄어쓰기">&nbsp;</p>
+  <p class="부제목"><span class="부제목">모바일 전자정부서비스 호</span>환성 진단표 
+    <![if !supportEmptyParas]>
+    &nbsp;
+    <![endif]>  </p>
+  <ul>
+    <li>
+      <p class="부부제목">모바일 웹 표준준수
+</p></ul>
+  <blockquote>
+    <blockquote>
+  <p class="일반"><span class="일반"><span class="진하게">1. 표준 (X)HTML 문법 준수 여부</span></span></p>
+          <ul>
+            <li class="일반"><span class="일반"><span class="일반">진단방법 : DTD 선언 여부 확인</span></span></li>
+          </ul>
+          <blockquote>
+            <p class="일반"><span class="일반"><span class="일반">진단도구 : 모바일 웹 2.0포럼, MobileOK validator </span></span></p>
+          </blockquote>
+          <ul>
+            <li class="일반"><span class="일반"><span class="일반">진단방법 : 인코딩 방식 선언 여부 확인 </span></span></li>
+          </ul>
+          <blockquote>
+            <p class="일반"><span class="일반"><span class="일반">진단도구 : 모바일 웹 2.0포럼, MobileOK validator </span></span></p>
+          </blockquote>
+          <ul>
+            <li><span class="일반"><span class="일반"><span class="일반">진단방법 : Validator에서 측정한 오류내용 중 모바일 웹 페이지를 정상적 으로 표현하지 못하는 경우를 제외하고는 무시
+              </span>
+            </span>
+              </span>
+              <blockquote>
+                <p class="일반"><span class="일반"><span class="일반">- 오류발생 비율 : 오류 수 / 페이지의 닫힌 태그</span></span></p>
+                <p class="일반"><span class="일반"><span class="일반">※ 오류발생비율에 따라 배점 차등화</span></span></p>
+              </blockquote>
+            </li>
+          </ul>
+          <blockquote>
+            <p class="일반"><span class="일반"><span class="일반">진단 도구 : 모바일 웹 2.0포럼, MobileOK validator </span></span></p>
+          </blockquote>
+          <p class="일반"><span class="일반"><span class="진하게">2. 표준 CSS 문법 준수 여부</span></span></p>
+          <ul>
+            <li class="일반"><span class="일반"><span class="일반">진단방법 : W3C CSS Validator를 이용하여 해당 페이지에 CSS 오류 발생 여부 진단(CSS 2.1 기준)</span></span></li>
+          </ul>
+          <blockquote>
+            <p class="일반"><span class="일반"><span class="일반">진단도구 : W3C CSS Validator </span></span></p>
+          </blockquote>
+          <p class="일반"><span class="일반"><span class="진하게">3. 표준 Script 문법 및 DOM 준수 여부</span></span></p>
+          <ul>
+            <li><span class="일반"><span class="일반"><span class="일반">진단방법 : 브라우저 부가기능을 이용해서 해당 페이지 내 사용된 JavaScript 의 오류 및 경고 발생여부 진단
+              </span></span>
+            </span>
+              <blockquote>
+                <p class="일반"><span class="일반"><span class="일반">- IE : Developer Tools<br>
+                - Firefox : Error Console / Firebug<br>
+                - Safari : Debugging Menu<br>
+                - Opera : JavaScript Console</span></span></p>
+              </blockquote>
+            </li>
+          </ul>
+          <blockquote>
+            <p class="일반"><span class="일반"><span class="일반">진단도구 : 브라우저 부가기능 (일반 웹브라우저의 기능 이용)          </span></span></p>
+</blockquote>
+        </blockquote>
+      </blockquote>
+      <ul>
+        <li class="부부제목">모바일 웹 호환성 평가        
+          <ul>
+            <li><span class="일반">진단방법 : 최소 3종의 브라우저에서 동등한 레이아웃 및 기능 구현 여부 확인</span></li>
+          </ul>
+        </li>
+      </ul>
+      <blockquote>
+        <blockquote>
+          <p class="일반"><span class="일반">진단도구 : Cross Browsing Test</span></p>
+        </blockquote>
+      </blockquote>
+    </ul>
+    </li>
+  </ul>
+</blockquote>
+</body>
+</html>

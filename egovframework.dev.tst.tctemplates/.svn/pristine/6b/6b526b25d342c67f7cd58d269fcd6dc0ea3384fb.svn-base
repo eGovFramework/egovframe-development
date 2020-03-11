@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0_07" class="java.beans.XMLDecoder"> 
+ <array class="egovframework.dev.tst.tcgenerator.CodeBlockInfo" length="1"> 
+  <void index="0"> 
+   <object class="egovframework.dev.tst.tcgenerator.CodeBlockInfo"> 
+    <void property="tcTemplateName"> 
+     <string>Auto Insertion Test(DataSet)</string> 
+    </void> 
+    <void property="description"> 
+     <string>테스트용 데이터를 자동으로 생성하면서 테스트하는 프로그램</string> 
+    </void> 
+    <void property="codeBlockList"> 
+     <array class="java.lang.String" length="5">
+      <void index="0"><string>테스트 클래스 선언부</string></void>
+      <void index="1"><string>테스트용 데이터 소스 생성</string></void>
+      <void index="2"><string>테스트용 데이터 자동 Insertion</string></void>
+      <void index="3"><string>테스트용 데이터 설정(OOO_DataSet.xml)</string></void>
+      <void index="4"><string>소스 전체</string></void>
+     </array> 
+    </void> 
+    <void property="codeBlocks"> 
+     <array class="java.lang.String" length="5"> 
+      <void index="0"> 
+       <string><![CDATA[
+@RunWith(UnitilsJUnit4TestClassRunner.class)
+@Transactional(TransactionMode.ROLLBACK)
+       ]]></string> 
+      </void> 
+      <void index="1"> 
+       <string><![CDATA[
+    /**
+     * unitils.properties 에 설정 된 database 접근 정보를 기반으로 
+     * 테스트 용 DataSource 를 만든 후 자동으로 injection 해 준다.
+     * (unitils.properties 파일의 위치와 이름은 변경할 수 없다.)
+     * 
+     * updateDataBaseSchema.enabled=true 로 설정되어 있으면
+     * dbMaintainer.script.locations 에서 지정한 위치의 sql 문을 실행시켜준다.
+     * 주의) 생성 시점은 test 메소드가 실행되기 전이다.
+     *        따라서, 단순히 TestDataSource 만 선언하는 것이 아니라,
+     *        하나 이상의 test 메소드라도 있어야 결과 확인이 가능하다.
+     * 
+     * @see     unitils.properties
+     * @see     dbMaintainer.script.locations 에서 지정한 위치의 sql 문
+     */
+    @TestDataSource
+    private DataSource dataSource;
+       ]]></string> 
+      </void> 
+      <void index="2"> 
+       <string><![CDATA[
+    /**
+     * 테스트 메소드가 실행이 되면 자동으로 클래승 선언한 DataSet 에서 지정한 데이터가 데이터베이스에 Insert 됨
+     * 
+     * 테스트용 데이터) DataSet 인자로 넘긴 경로의 파일에 선언 
+     * 테스트 결과) 테이블에 생성된 값을 활용하여 select 등의 쿼리문을 실행해 결과를 비교해볼 수 있음
+    */
+    @DataSet("/META-INF/persistence/testdata/AutoInsertionTestDataTest_DataSet.xml")
+    @Test
+    public void testSomeMethod() {
+    }
+       ]]></string> 
+      </void> 
+      <void index="3"> 
+       <string><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataset>
+    <NOTICE NOTICE_ID="101"
+            NOTICE_TITLE="101번 공지"
+            NOTICE_CONTENTS="테스트용으로 자동 입력된 공지사항 101번입니다."
+            NOTICE_REGISTRATION_DATE="2009-03-18"
+            NOTICE_LAST_MODIFIER="OracleDataSetTest.xml"
+            NOTICE_LAST_MODIFIED_DATE="2009-03-17"
+            NOTICE_FILE_CNT="0"
+            NOTICE_RETRIEVED_CNT="0"
+    />
+    <NOTICE NOTICE_ID="102"
+            NOTICE_TITLE="102번 공지"
+            NOTICE_CONTENTS="테스트용으로 자동 입력된 공지사항 102번입니다."
+            NOTICE_REGISTRATION_DATE="2009-03-18"
+            NOTICE_LAST_MODIFIER="OracleDataSetTest.xml"
+            NOTICE_LAST_MODIFIED_DATE="2009-03-17"
+            NOTICE_FILE_CNT="0"
+            NOTICE_RETRIEVED_CNT="0"
+    />
+    <NOTICE NOTICE_ID="103"
+            NOTICE_TITLE="103번 공지"  
+            NOTICE_CONTENTS="테스트용으로 자동 입력된 공지사항 103번입니다."
+            NOTICE_REGISTRATION_DATE="2009-03-18"
+            NOTICE_LAST_MODIFIER="OracleDataSetTest.xml"
+            NOTICE_LAST_MODIFIED_DATE="2009-03-17"
+            NOTICE_FILE_CNT="0"
+            NOTICE_RETRIEVED_CNT="0"
+    />
+</dataset>
+       ]]></string> 
+      </void> 
+      <void index="4"> 
+       <string><![CDATA[
+import javax.sql.DataSource;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.unitils.UnitilsJUnit4TestClassRunner;
+import org.unitils.database.annotations.TestDataSource;
+import org.unitils.database.annotations.Transactional;
+import org.unitils.database.util.TransactionMode;
+import org.unitils.dbunit.annotation.DataSet;
+
+@RunWith(UnitilsJUnit4TestClassRunner.class)
+@Transactional(TransactionMode.ROLLBACK)
+public class AutoInsertionTestDataTest_DataSet {
+
+    /**
+     * unitils.properties 에 설정 된 database 접근 정보를 기반으로 
+     * 테스트 용 DataSource 를 만든 후 자동으로 injection 해 준다.
+     * (unitils.properties 파일의 위치와 이름은 변경할 수 없다.)
+     * 
+     * updateDataBaseSchema.enabled=true 로 설정되어 있으면
+     * dbMaintainer.script.locations 에서 지정한 위치의 sql 문을 실행시켜준다.
+     * 주의) 생성 시점은 test 메소드가 실행되기 전이다.
+     *        따라서, 단순히 TestDataSource 만 선언하는 것이 아니라,
+     *        하나 이상의 test 메소드라도 있어야 결과 확인이 가능하다.
+     * 
+     * @see     unitils.properties
+     * @see      dbMaintainer.script.locations 에서 지정한 위치의 sql 문
+     */
+    @SuppressWarnings("unused")
+    @TestDataSource
+    private DataSource dataSource;
+
+    
+    /**
+     * 테스트 메소드가 실행이 되면 자동으로 클래승 선언한 DataSet 에서 지정한 데이터가 데이터베이스에 Insert 됨
+     * 
+     * 테스트용 데이터) DataSet 인자로 넘긴 경로의 파일에 선언 
+     * 테스트 결과) 테이블에 생성된 값을 활용하여 select 등의 쿼리문을 실행해 결과를 비교해볼 수 있음
+    */
+    @DataSet("/META-INF/persistence/testdata/AutoInsertionTestDataTest_DataSet.xml")
+    @Test
+    public void testSomeMethod() {
+    }
+}
+       ]]></string> 
+      </void> 
+     </array> 
+    </void> 
+    
+   </object> 
+  </void> 
+ </array> 
+</java> 

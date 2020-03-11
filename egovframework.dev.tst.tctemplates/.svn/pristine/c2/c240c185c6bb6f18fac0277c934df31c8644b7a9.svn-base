@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0_07" class="java.beans.XMLDecoder"> 
+ <array class="egovframework.dev.tst.tcgenerator.CodeBlockInfo" length="1"> 
+  <void index="0"> 
+   <object class="egovframework.dev.tst.tcgenerator.CodeBlockInfo"> 
+    <void property="tcTemplateName"> 
+     <string>DataSourceGetTest_springDataSource</string> 
+    </void> 
+    <void property="description"> 
+     <string><![CDATA[Springframework에 설정 한 dataSource를 제대로 get하는지를 테스트하는 프로그램
+     ]]></string> 
+    </void> 
+    <void property="codeBlockList"> 
+     <array class="java.lang.String" length="7">
+      <void index="0"><string>테스트 클래스 선언부</string></void>
+      <void index="1"><string>데이터 소스 설정 파일(datasource-spring.xml)</string></void>
+      <void index="2"><string>데이터소스 선언</string></void>
+      <void index="3"><string>데이터소스 확인</string></void>
+      <void index="4"><string>소스 전체</string></void>
+      <void index="5"><string>설정파일 전체(datasource-spring.xml)</string></void>
+      <void index="6"><string>설정파일 전체(datasource.properties)</string></void>
+     </array> 
+    </void> 
+    <void property="codeBlocks">
+     <array class="java.lang.String" length="7"> 
+      <void index="0"> 
+       <string><![CDATA[
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath*:META-INF/persistence/connection/datasource-spring.xml" })
+]]>
+       </string> 
+      </void> 
+      <void index="1"> 
+       <string><![CDATA[
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${driver}"/>
+        <property name="url" value="${dburl}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+        <property name="defaultAutoCommit" value="false"/>
+        <property name="poolPreparedStatements" value="true"/>
+    </bean>
+]]>
+       </string> 
+      </void> 
+      <void index="2"> 
+       <string><![CDATA[
+    /** 
+     * ContextConfiguration 에서 제시한 configuration 에
+     * dataSource 라는 이름의 bean 이 선언되어 있으면 자동으로 injection 된다.
+     * */
+    @Resource(name = "dataSource")
+    DataSource dataSource;
+]]>
+       </string> 
+      </void> 
+      <void index="3"> 
+       <string><![CDATA[
+   /**
+     * dataSource를 정상적으로 get 했는지를 확인한다.
+    */
+    @Test
+    public void checkDataSource() {
+        assertNotNull("Spring의  dataSource를 정상적으로 get 했는지를 확인한다.", dataSource);
+    }
+]]>
+       </string> 
+      </void> 
+      <void index="4"> 
+       <string><![CDATA[
+import static org.junit.Assert.assertNotNull;
+
+import javax.annotation.Resource;
+import javax.sql.DataSource;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath*:META-INF/persistence/connection/datasource-spring.xml" })
+public class DataSourceGetTest_springDataSource {
+
+    /** 
+     * ContextConfiguration 에서 제시한 configuration 에
+     * dataSource 라는 이름의 bean 이 선언되어 있으면 자동으로 injection 된다.
+     * 
+     * @see META-INF/persistence/datasource.xml, META-INF/persistence/jdbc.properties 
+     * */
+    @Resource(name = "dataSource")
+    DataSource dataSource;
+
+    /**
+     * dataSource를 정상적으로 get 했는지를 확인한다.
+    */
+    @Test
+    public void checkDataSource() {
+        assertNotNull("Spring의  dataSource를 정상적으로 get 했는지를 확인한다.", dataSource);
+    }
+}
+]]>
+       </string> 
+      </void> 
+      <void index="5"> 
+       <string><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+                http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+
+    <context:property-placeholder location="classpath:/META-INF/persistence/connection/datasource.properties"/>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${driver}"/>
+        <property name="url" value="${dburl}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+        <property name="defaultAutoCommit" value="false"/>
+        <property name="poolPreparedStatements" value="true"/>
+    </bean>
+  
+</beans>
+]]>
+       </string> 
+      </void> 
+      <void index="6"> 
+       <string><![CDATA[
+driver=org.hsqldb.jdbcDriver
+dburl=jdbc:hsqldb:sampledb
+username=sa
+password=
+]]>
+       </string> 
+      </void> 
+     </array> 
+    </void> 
+   </object> 
+  </void> 
+ </array> 
+</java> 

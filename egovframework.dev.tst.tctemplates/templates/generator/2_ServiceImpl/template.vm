@@ -1,0 +1,62 @@
+#if($tcPackage_package != "")
+package ${tcPackage_package};
+#end
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.List;
+
+import junit.framework.AssertionFailedError;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+
+public class ${targetServiceImpl.name}Test extends $stringUtils.replace($targetServiceImpl.name,"Impl","Test") {
+	
+    // TODO 필요할 경우, 스프링 ApplicationContext을 선언한다.
+    @Autowired
+    ApplicationContext aplicationContext;
+    
+    // TODO VO를 사용한 경우, 관련 VO들을 선언한다.
+    NoticeVo testNoticeVo;
+    
+    // TODO VO를 사용한 경우, 테스트에 사용할 VO들을 생성한다.
+    @Before
+    public void createTestNoticeVo() {
+    	try {
+    		testNoticeVo = (NoticeVo) aplicationContext.getBean("testNoticeVo");
+    		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", java.util.Locale.getDefault());
+    		testNoticeVo.setRegistrationDate(sdf.parse("2009-03-31"));
+    	}
+    	catch(ParseException e) {
+    		fail(e.getMessage());
+    	}
+    }
+    
+    // TODO 필요할 경우, 관련 자원들을 확인하고 테스트 한다.
+    @Test
+    public void check() {
+    	assertNotNull(noticeService);
+    	assertNotNull(testNoticeVo);
+    }
+
+    /**
+     * TODO ${targetServiceImpl.name}의 메소드를 테스트하기 위한 코드를 작성한다.
+    */
+    public void testMethodA() {
+    	
+    }
+
+    /**
+     * TODO ${targetServiceImpl.name}의 메소드를 테스트하기 위한 코드를 작성한다.
+    */
+    public void testMethodZ() {
+    	
+    }
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0_07" class="java.beans.XMLDecoder"> 
+ <array class="egovframework.dev.tst.tcgenerator.CodeBlockInfo" length="1"> 
+  <void index="0"> 
+   <object class="egovframework.dev.tst.tcgenerator.CodeBlockInfo"> 
+    <void property="tcTemplateName"> 
+     <string>Exception Test</string> 
+    </void> 
+    <void property="description"> 
+     <string>Exception Test에 대한 테스트케이스 코드블럭을 복사합니다.</string> 
+    </void> 
+    <void property="codeBlockList"> 
+     <array class="java.lang.String" length="1"> 
+      <void index="0"> 
+       <string>Exception</string> 
+      </void> 
+     </array> 
+    </void> 
+    <void property="codeBlocks"> 
+     <array class="java.lang.String" length="1"> 
+      <void index="0"> 
+       <string><![CDATA[
+/**
+ * 예상하는 예외가 발생하는지를 확인
+ * 테스트용 데이터 ) 테스트 메소드를 실행하는 중간에 특정 Exception을 발생시킴
+ * 테스트 결과) 발생한 Exception 을 expected 한 Exception 과 같으면 테스트 성공, 다르면 실패
+*/
+@Test (expected = IndexOutOfBoundsException.class)
+public void testException() {
+	throw new IndexOutOfBoundsException();
+}
+       ]]></string> 
+      </void> 
+     </array> 
+    </void> 
+   </object> 
+  </void> 
+ </array> 
+</java> 

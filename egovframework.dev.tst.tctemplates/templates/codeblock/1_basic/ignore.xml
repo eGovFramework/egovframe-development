@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0_07" class="java.beans.XMLDecoder"> 
+ <array class="egovframework.dev.tst.tcgenerator.CodeBlockInfo" length="1"> 
+  <void index="0"> 
+   <object class="egovframework.dev.tst.tcgenerator.CodeBlockInfo"> 
+    <void property="tcTemplateName"> 
+     <string>Ignore Test</string> 
+    </void> 
+    <void property="description"> 
+     <string>Ignore Test에 대한 테스트케이스 코드블럭을 복사합니다.</string> 
+    </void> 
+    <void property="codeBlockList"> 
+     <array class="java.lang.String" length="1"> 
+      <void index="0"> 
+       <string>Ignore</string> 
+      </void> 
+     </array> 
+    </void> 
+    <void property="codeBlocks"> 
+     <array class="java.lang.String" length="1"> 
+      <void index="0"> 
+       <string><![CDATA[
+/**
+ * 테스트를 테스트 수행 시점에 실행되지 않도록 설정하는 기능을 확인
+ * Ignore 는 테스트 클래스 위에도 설정할 수 있으며, 메소드 단위로도 설정할 수 있음
+*/
+@Ignore ("테스트 수행하지 않도록 설정 함 (실제론 상세 원인을 표시)")
+@Test
+public void testIgnore() {
+}
+       ]]></string> 
+      </void> 
+     </array> 
+    </void> 
+   </object> 
+  </void> 
+ </array> 
+</java> 

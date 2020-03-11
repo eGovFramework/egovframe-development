@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+      		category="egovframework.dev.imp.core.wizards"
+      		finalPerspective="egovframework.dev.imp.core.perspectives.egovperspective"
+            class="egovframework.hdev.imp.ide.wizards.EgovAddDeviceAPIHybridProjectWizard"
+            icon="icons/smail_mobileproject.png"
+            id="egovframework.hdev.imp.ide.wizards.adddiviceapi"
+            name="eGovFrame DeviceAPI Template"
+            hasPages="true">
+      </wizard>
+      <wizard
+      		category="egovframework.dev.imp.core.wizards"
+      		finalPerspective="egovframework.dev.imp.core.perspectives.egovperspective"
+            class="egovframework.hdev.imp.ide.wizards.EgovNewDeviceAPIHybridProjectWizard"
+            icon="icons/smail_mobiletemplate.png"
+            id="egovframework.hdev.imp.ide.wizards.newdeviceapi"
+            name="eGovFrame DeviceAPI Project"
+            hasPages="true"
+            project="true">
+      </wizard>
+   </extension>
+   
+   <extension point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension targetID="*">
+         <newWizardShortcut id="egovframework.hdev.imp.ide.wizards.adddiviceapi">
+         </newWizardShortcut>
+         <newWizardShortcut id="egovframework.hdev.imp.ide.wizards.newdeviceapi">
+         </newWizardShortcut>
+      </perspectiveExtension>
+   </extension>
+
+	<extension
+         id="egovframework.hdev.imp.ide.natures.egovnature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run class="egovframework.hdev.imp.ide.natures.EgovDeviceAPINature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.hdev.imp.ide.commands.adddeviceapi"
+            name="Add DeviceAPI Template">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.hdev.imp.ide.commands.newdeviceapi"
+            name="New DeviceAPI Template Project">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="egovframework.hdev.imp.ide.project.AddDeviceAPIHybridProject"
+            commandId="egovframework.hdev.imp.ide.commands.adddeviceapi">
+      </handler>
+      <handler
+            class="egovframework.hdev.imp.ide.project.NewDeviceAPIHybridProject"
+            commandId="egovframework.hdev.imp.ide.commands.newdeviceapi">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:egovframework.dev.imp.core.menu.start?after=additions">
+         <command
+               commandId="egovframework.hdev.imp.ide.commands.newdeviceapi"
+               mnemonic="D">
+         </command>
+         <separator
+               name="egovframework.hdev.imp.separator7"
+               visible="true">
+         </separator>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:egovframework.dev.imp.core.menu.implementation?after=egovframework.mdev.imp.ide.commands.addMobileCommonComponent">
+         <command
+               commandId="egovframework.hdev.imp.ide.commands.adddeviceapi"
+               style="push">
+         </command>
+         <separator
+               name="egovframework.hdev.imp.separator2"
+               visible="true">
+         </separator>
+      </menuContribution>
+   </extension>
+</plugin>

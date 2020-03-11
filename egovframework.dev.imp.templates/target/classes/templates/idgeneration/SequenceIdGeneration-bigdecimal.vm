@@ -1,0 +1,6 @@
+  <bean name="bigDecimalTypeSequenceIds" class="egovframework.rte.fdl.idgnr.impl.EgovSequenceIdGnrService" 
+                         destroy-method="destroy">
+    <property name="dataSource" ref="dataSource"/>
+    <property name="query"  value="${query}"/>
+    <property name="useBigDecimals" value="true"/>
+  </bean>

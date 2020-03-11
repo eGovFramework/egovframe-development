@@ -1,0 +1,165 @@
+##
+#set($voPackage="${voPackage}")
+#set($voClassName="${model.entity.pcName}VO")
+#set($defaultVoClassName="${model.entity.pcName}DefaultVO")
+#set($daoPackage="${daoPackage}")
+#set($daoClassName="${model.entity.pcName}DAO")
+#set($daoName="${model.entity.ccName}DAO")
+#set($daoInstanceName="${model.entity.ccName}DAO")
+#set($mapperPackage="${mapperPackage}")
+#set($mapperClassName="${model.entity.pcName}Mapper")
+#set($mapperName="${model.entity.ccName}Mapper")
+#set($mapperInstanceName="${model.entity.ccName}Mapper")
+#set($servicePackage="${servicePackage}")
+#set($serviceClassName="${model.entity.pcName}Service")
+#set($serviceImplPackage="${implPackage}")
+#set($serviceImplClassName="${model.entity.pcName}ServiceImpl")
+#set($serviceName="${model.entity.ccName}Service")
+##
+##
+#set($insertMethodName="insert${model.entity.pcName}")
+#set($updateMethodName="update${model.entity.pcName}")
+#set($deleteMethodName="delete${model.entity.pcName}")
+#set($selectMethodName="select${model.entity.pcName}")
+#set($selectListMethodName="select${model.entity.pcName}List")
+#set($selectListTotCntMethodName="select${model.entity.pcName}ListTotCnt")
+#set($idGnrService="egov${model.entity.pcName}IdGnrService")
+##
+##
+package ${serviceImplPackage};
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import egovframework.rte.fdl.idgnr.EgovIdGnrService;
+import ${servicePackage}.${serviceClassName};
+#if (${voPackage}=='${voPackage}')
+// Vo 객체에 대한 import 구문
+// import (vo package).${defaultVoClassName};
+// import (vo package).${voClassName};
+#else
+import ${voPackage}.${defaultVoClassName};
+import ${voPackage}.${voClassName};
+#end
+#if (${daoPackage}=='${daoPackage}')
+// Dao 객체에 대한 import 구문
+// import (dao package).${daoClassName};
+#else
+import ${daoPackage}.${daoClassName};
+#end
+#if (${mapperPackage}=='${mapperPackage}')
+// Mapper 객체에 대한 import 구문
+// import (mapper package).${mapperClassName};
+#else
+import ${mapperPackage}.${mapperClassName};
+#end
+/**
+ * @Class Name : ${serviceImplClassName}.java
+ * @Description : ${model.entity.pcName} Business Implement class
+ * @Modification Information
+ *
+ * @author ${author}
+ * @since ${createDate}
+ * @version 1.0
+ * @see
+ *  
+ *  Copyright (C)  All right reserved.
+ */
+
+@Service("${serviceName}")
+public class ${serviceImplClassName} extends EgovAbstractServiceImpl implements
+        ${serviceClassName} {
+        
+    private static final Logger LOGGER = LoggerFactory.getLogger(${serviceImplClassName}.class);
+
+    @Resource(name="${mapperName}")
+    private ${mapperClassName} ${daoInstanceName};
+    
+    //@Resource(name="${daoName}")
+    //private ${daoClassName} ${daoInstanceName};
+    
+    /** ID Generation */
+    //@Resource(name="{$idGnrService}")    
+    //private EgovIdGnrService egovIdGnrService;
+
+	/**
+	 * ${model.entity.name}을 등록한다.
+	 * @param vo - 등록할 정보가 담긴 ${voClassName}
+	 * @return 등록 결과
+	 * @exception Exception
+	 */
+    public String ${insertMethodName}(${voClassName} vo) throws Exception {
+    	LOGGER.debug(vo.toString());
+    	
+    	/** ID Generation Service */
+    	//TODO 해당 테이블 속성에 따라 ID 제너레이션 서비스 사용
+    	//String id = egovIdGnrService.getNextStringId();
+    	//vo.setId(id);
+    	LOGGER.debug(vo.toString());
+    	
+    	${daoInstanceName}.${insertMethodName}(vo);
+    	//TODO 해당 테이블 정보에 맞게 수정    	
+        return null;
+    }
+
+    /**
+	 * ${model.entity.name}을 수정한다.
+	 * @param vo - 수정할 정보가 담긴 ${voClassName}
+	 * @return void형
+	 * @exception Exception
+	 */
+    public void ${updateMethodName}(${voClassName} vo) throws Exception {
+        ${daoInstanceName}.${updateMethodName}(vo);
+    }
+
+    /**
+	 * ${model.entity.name}을 삭제한다.
+	 * @param vo - 삭제할 정보가 담긴 ${voClassName}
+	 * @return void형 
+	 * @exception Exception
+	 */
+    public void ${deleteMethodName}(${voClassName} vo) throws Exception {
+        ${daoInstanceName}.${deleteMethodName}(vo);
+    }
+
+    /**
+	 * ${model.entity.name}을 조회한다.
+	 * @param vo - 조회할 정보가 담긴 ${voClassName}
+	 * @return 조회한 ${model.entity.name}
+	 * @exception Exception
+	 */
+    public ${voClassName} ${selectMethodName}(${voClassName} vo) throws Exception {
+        ${voClassName} resultVO = ${daoInstanceName}.${selectMethodName}(vo);
+        if (resultVO == null)
+            throw processException("info.nodata.msg");
+        return resultVO;
+    }
+
+    /**
+	 * ${model.entity.name} 목록을 조회한다.
+	 * @param searchVO - 조회할 정보가 담긴 VO
+	 * @return ${model.entity.name} 목록
+	 * @exception Exception
+	 */
+    public List<?> ${selectListMethodName}(${defaultVoClassName} searchVO) throws Exception {
+        return ${daoInstanceName}.${selectListMethodName}(searchVO);
+    }
+
+    /**
+	 * ${model.entity.name} 총 갯수를 조회한다.
+	 * @param searchVO - 조회할 정보가 담긴 VO
+	 * @return ${model.entity.name} 총 갯수
+	 * @exception
+	 */
+    public int ${selectListTotCntMethodName}(${defaultVoClassName} searchVO) {
+		return ${daoInstanceName}.${selectListTotCntMethodName}(searchVO);
+	}
+    
+}

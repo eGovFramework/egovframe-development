@@ -1,0 +1,113 @@
+CUSTOMIZE_TABLE_CREATION_PAGE_TITLE = Customize Table Creation
+CUSTOMIZE_TABLE_CREATION_PAGE_DESCRIPTION = DeviceAPI guide that is used by the program to generate a table.
+
+SELECT_DB_LABEL = Select DB : 
+DATASOURCE_GROUP_TEXT = Datasource
+
+MYSQL_DBTYPE = mySql
+ORACLE_DBTYPE = Oracle
+ALTIBASE_DBTYPE = Altibase
+TIBERO_DBTYPE = Tibero
+
+DRIVER_CLASS_NAME_LABEL = Driver Class Name : 
+DBTYPE_LABEL = DB Type : 
+URL_LABEL = URL : 
+USER_NAME_LABEL = User name : 
+PASSWORD_LABEL = PassWord : 
+
+TEST_BUTTON_TEXT = Connection Test
+CREATE_TABLE_BUTTON_TEXT = Create Table
+
+CREATE_TABLE_GROUP_TEXT = Create Table
+CREATE_TABLE_TABLEVIEWER_COLUMN_TABLENAME = Table Name
+CREATE_TABLE_TABLEVIEWER_COLUMN_RESULT = Table Install Result
+CREATE_TABLE_TABLEVIEWER_COLUMN_DESCRIPTION = Description
+
+ERROR_CANNOT_CONNECT_DB = 
+SUCCESS_CONNECT_DB = 
+
+CREATE_TABLE_TABLEVIEWER_COLUMN_RESULT_ALREADY_EXIST = Already Exist
+CREATE_TABLE_TABLEVIEWER_COLUMN_RESULT_SUCCESS = Success
+CREATE_TABLE_TABLEVIEWER_COLUMN_RESULT_FAILED = Failed
+
+PROJECT_CREATION_PROJECT_NAME_LABEL = Project name :
+PROJECT_CREATION_CONTENTS_GROUP_TEXT = Contents
+PROJECT_CREATION_USE_DEFAULT_WORKSPACE_LOCATION_BUTTON_TEXT = Use default &Workspace location
+PROJECT_CREATION_LOCATION_LABEL = Location: 
+PROJECT_CREATION_LOCATION_BROWSE_BUTTON_TEXT = Browse...
+PROJECT_CREATION_LOCATION_BROWSE_DIALOG_TITLE = Select Location
+
+PROJECT_CREATION_ERROR_PROJECT_NAME_EMPTY = Project name is empty
+PROJECT_CREATION_ERROR_PROJECT_NAME_INVALID = Project name is not valid.
+PROJECT_CREATION_ERROR_PROJECT_NAME_TOOLONG = Project Name is too long.
+PROJECT_CREATION_ERROR_PROJECT_NAME_ALREADY_EXIST = Project already exists.
+PROJECT_CREATION_ERROR_WORKSPACE_LOCATION_NOT_VALID = Workspace Location is not valid.
+
+PROJECT_CREATION_PAGE_TITLE = eGovFrame DeviceAPI Hybrid Project
+PROJECT_CREATION_PAGE_DESCRIPTION = Create eGovFrame DeviceAPI Hybrid Project
+
+PROJECT_CREATION_MAVEN_GROUP_TEXT = DeviceAPI Device Application
+PROJECT_CREATION_GROUP_ID_LABEL = Group Id :
+PROJECT_CREATION_ARTIFACT_ID_LABEL = Artifact Id :
+PROJECT_CREATION_VERSION_LABEL = Version :
+
+PROJECT_CREATION_ERROR_GROUP_ID_EMPTY = Enter group ID for the artifact.
+PROJECT_CREATION_ERROR_GROUP_ID_INVALID = Group id is not valid.
+PROJECT_CREATION_ERROR_ARTIFACT_ID_EMPTY = Enter artifact ID.
+PROJECT_CREATION_ERROR_ARTIFACT_ID_INVALID = Artifact id is not valid.
+PROJECT_CREATION_ERROR_VERSION_EMPTY = Enter Version.
+PROJECT_CREATION_ERROR_VERSION_INVALID = Version is not vaild.
+
+WEB_PROJECT_TITLE = eGovFrame DeviceAPI Web Project
+WEB_PROJECT_DESCRIPTION = Web to create a project. DeviceAPI guide program for testing.
+
+WEB_PROJECT_SERVER_TARGET_GROUP_TEXT = Target Runtime
+WEB_PROJECT_NEW_SERVER_TARGET_BUTTON_TEXT = New...
+
+WEB_PROJECT_WEB_MODULE_VERSION_GROUP_LABEL = Dynamic Web Module version
+
+WEB_PROJECT_TABLE_CREATE_GROUP_TEXT = Select Table Creation Type
+WEB_PROJECT_TABLE_CREATE_DEFAULT_BUTTON_TEXT = Does not create (the default installation)
+WEB_PROJECT_TABLE_CREATE_SELECT_BUTTON_TEXT = Generated in the user DB (custom)
+
+WEB_PROJECT_DESCRIPTION_GROUP_NAME = Description
+WEB_PROJECT_DESCRIPTION_GROUP_TEXT1 = Source only, without creating the table is generated.
+WEB_PROJECT_DESCRIPTION_GROUP_TEXT2 = Go to the page the user DB table creation.
+
+WEB_PROJECT_ERROR_EQUAL_WITH_DEVICE_API_PJT = Device API is the same as the project name.
+WEB_PROJECT_ERROR_REQUIRE_JAVA_VERSION = Dynamic Web Module 3.0 requires Java 1.7 or newer.
+
+GENERATE_TEMPLATE_WIZARD_PAGE_TITLE = Generate Template
+GENERATE_TEMPLATE_WIZARD_PAGE_DESCRIPTION = Generates device API and execution environment, a standard sample, template guide program.
+
+FILES_TABLE_VIEWER_CONTROL_CHECKBOX = Generate Guide Program
+FILES_TABLE_VIEWER_GROUP_TEXT = Template List
+FILES_TABLE_VIEWER_SOURCE_NAME_COLUMN = Template Name
+FILES_TABLE_VIEWER_SOURCE_DESCRIPTION_COLUMN = Template Description
+
+CREATE_WEB_PROJECT_CHECKBOX_BUTTON_TEXT = Web Project created
+
+URL_GROUP_TEXT = Web Project \uc124\uc815
+URL_TEXT_CONTROL_CHECKBOX = ip generated
+URL_LABEL_TEXT = Server URL (for test program guide DeviceAPI access the URL)
+
+GENERATE_TEMPLATE_WIZARD_PAGE_ERROR_EMPTY_URL = Please enter the URL.
+GENERATE_TEMPLATE_WIZARD_PAGE_ERROR_INVALID_URL = The URL is not valid.
+
+SELECT_PROJECT_PAGE_TITLE = Select the installed Android Project
+SELECT_PROJECT_PAGE_DESCRIPTION = DeviceAPI template to create android project.
+
+SELECT_PROJECT_PAGE_CONTAINER_NAME_LABEL_TEXT = Enter or select the parent folder
+
+SELECT_PROJECT_PAGE_NOTE = NOTE : \n 
+SELECT_PROJECT_PAGE_NOTE_CONTENTS = Android project DeviceAPI template has already been created to create\n[Archive] existing Android project to Android project DeviceAPI backup\n\nexisting Android project you have been working on, so changes may be deleted or receive Android projectshould be created within\nafter you create a new.
+
+SELECT_PROJECT_PAGE_ERROR_INVALID_PROJECT_NAME = Please check the name of the project.
+
+COFIRM_PROJECT_DELETE = Delete the contents of the existing project.\nAre you sure you want to continue anyway?\nreceive a backup after you cancel the job, press the Cancel button,\nor you create a new Android project after working on the Android project\nfor doeohni delete an existing working again please.
+
+WIZARD_NEW_PROJECT_TITLE = New DeviceAPI Template Project
+WIZARD_ADD_PROJECT_TITLE = Add DeviceAPI Template
+
+SELECT_TEMPLATE_NOTE_WEB_CONTENTS = * Web Project\n - guide to creating programs, server applications created\n - communication with server applications for Modifying App application access URL
+SELECT_TEMPLATE_NOTE_CONTENTS = * Device API execution environment standard code generation\n * Generate Guide Program check\n - standard sample template creation (Create Device API 10 species)\n - Guide Program (Device API 15 jong): Web Project provides

@@ -1,0 +1,8 @@
+<bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+    <property name="cacheManager">
+        <bean class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+            <property name="configLocation" value="${configLocation}"/>
+        </bean>
+    </property>    
+</bean>
+

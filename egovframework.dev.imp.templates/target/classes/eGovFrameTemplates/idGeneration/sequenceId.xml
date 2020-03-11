@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>New Sequence ID Generation</title>
+
+		<component-page required="true">
+			<!-- NewSequenceIdGen	New Sequence ID Generation -->
+			<description>Create Sequence ID Generation</description>
+			<group label="Generation File" required="true">
+				<container name="txtPath" label="File Path: " required="true"
+					type="folder" value="" /> <!-- #webroot -->
+				<textfield name="txtFileName" label="File Name: "
+					required="true" value="" />
+			</group>
+			<group label="Configuration" required="true">
+				<radio name="rdoType" label="Type: " value="Base" required="true">
+					<elements>
+						<option>Base</option>
+						<option>BigDecimal</option>
+					</elements>
+				</radio>				
+				<textfield name="txtIdServiceName" label="ID Service Name: "
+					required="true" value="" />
+				<textfield name="txtDatasourceName" label="DataSource Name: "
+					required="true" value="" />
+				<textfield name="txtQuery" label="Query:" required="true" />
+			</group>
+		</component-page>
+
+		<output>
+			<template component="txtFileName" velocity="sequenceId.vm"
+				extension="xml" container="txtPath">
+			</template>
+		</output>
+	</wizard>
+</EclipseWork>

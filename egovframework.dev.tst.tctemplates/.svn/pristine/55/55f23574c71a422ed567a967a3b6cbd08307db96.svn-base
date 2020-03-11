@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0_07" class="java.beans.XMLDecoder"> 
+ <array class="egovframework.dev.tst.tcgenerator.CodeBlockInfo" length="1"> 
+  <void index="0"> 
+   <object class="egovframework.dev.tst.tcgenerator.CodeBlockInfo"> 
+    <void property="tcTemplateName"> 
+     <string>Timeout Test</string> 
+    </void> 
+    <void property="description"> 
+     <string>Timeout Test에 대한 테스트케이스 코드블럭을 복사합니다.</string> 
+    </void> 
+    <void property="codeBlockList"> 
+     <array class="java.lang.String" length="1"> 
+      <void index="0"> 
+       <string>Timeout</string> 
+      </void> 
+     </array> 
+    </void> 
+    <void property="codeBlocks"> 
+     <array class="java.lang.String" length="1"> 
+      <void index="0"> 
+       <string><![CDATA[
+/**
+ * 메소드를 수행 시간을 제한하는 시간을 선언하여 이 시간 이내로 실행된 경우만 성공
+*/
+@Test (timeout = 1)
+public void testTimeout() {
+}
+       ]]></string> 
+      </void> 
+     </array> 
+    </void> 
+   </object> 
+  </void> 
+ </array> 
+</java> 

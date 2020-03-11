@@ -1,0 +1,7 @@
+txtAppenderName=appender1
+chkLocationInfo=true
+chkSupportsGetGeneratedKeys=false
+txtDriver=hsql.driver
+txtUrl=hsql://localhost/sampledb
+txtUser=sa
+txtPasswd=1

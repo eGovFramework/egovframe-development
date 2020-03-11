@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>New Simple Trigger</title>
+
+		<component-page required="true">
+			<!-- NewSimpleTrigger	New Simple Trigger -->
+			<description>Create Simple Trigger</description>
+			<group label="Generation File" required="true">
+				<container name="txtPath" label="File Path: " required="true"
+					type="folder" value="" />
+				<textfield name="txtFileName" label="File Name: "
+					required="true" value="" />
+			</group>
+			<group label="Configuration" required="true">
+				<textfield name="txtTriggerName" label="Trigger Name: "
+					required="true" value="" />
+				<textfield name="txtJobName" label="Job Name: " required="true"
+					value="" />
+				<textfield name="txtStartDelay" label="Start Delay: "
+					required="true" value="0" />
+				<textfield name="txtRepeatInterval" label="Repeat Interval: "
+					required="true" value="10000" />
+			</group>
+		</component-page>
+
+		<output>
+			<template component="txtFileName" velocity="simpleTrigger.vm"
+				extension="xml" container="txtPath" />
+		</output>
+	</wizard>
+</EclipseWork>

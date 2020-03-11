@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>무제 문서</title>
+<style type="text/css">
+.부제목 {
+	font-size: 18px;
+}
+.부제목 {
+	font-size: 20px;
+}
+.부제목 {
+	font-family: "맑은 고딕";
+	font-size: 20px;
+	font-weight: bold;
+}
+.일반 {
+	font-size: 13px;
+}
+.일반 {
+	font-family: "맑은 고딕";
+}
+.제목 {
+	font-size: 25px;
+	font-family: "맑은 고딕";
+	text-align: center;
+}
+.제목 .제목1 {
+	font-size: 24px;
+	font-weight: bold;
+	color: #00F;
+}
+.일반 .일반 {
+	font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+<p class="제목"><span class="제목1">웹 표준 평가</span></p>
+<blockquote>
+  <p><span class="부제목">프로젝트 실행<span lang="EN-US">(</span>웹표준 검사<span lang="EN-US">)</span><![if !supportEmptyParas]>
+    &nbsp;
+    </span>
+  <![endif]></p>
+  <p><span class="일반"><span class="일반">프로젝트 <span lang="EN-US">&lsquo;</span>검사 설정<span lang="EN-US">&rsquo; </span>창에서 <span lang="EN-US">&lsquo;</span>시작<span lang="EN-US">&rsquo; </span>버튼<span lang="EN-US">(</span>프로젝트 생성<span lang="EN-US">/</span>열기 그림의 <span lang="EN-US">[</span>버튼⑤<span lang="EN-US">])</span>을 누르면 웹표준 평가가 시작되어 <span lang="EN-US"> </span>다음과 같은 프로젝트 실행 창이 나타납니다<span lang="EN-US">. </span>프로젝트 창의 프로그레스바는 프로젝트의 진행 정도를 보여줍니다<span lang="EN-US">. </span>중앙의 그리브 뷰에는 웹페이지주소 또는 파일별로 작업 현황을 보여줍니다<span lang="EN-US">. </span><![if !supportEmptyParas]>
+    &nbsp;
+  <![endif]></span></span></p>
+  <ul>
+    <li><span class="일반"><span class="일반"><span class="일반" lang="EN-US">- </span><span class="일반">표시 <span lang="EN-US">: </span>작업이 진행되지 않았음을 알려줍니다<span lang="EN-US">. </span></span></span></span></li>
+    <li class="일반"><span class="일반"><span class="일반">√ 표시 <span lang="EN-US">: </span>작업이 완료되었음을 알려줍니다<span lang="EN-US">.</span><![if !supportEmptyParas]>
+      &nbsp;
+      <![endif]></span></span></li>
+  </ul>
+  <p>&nbsp;</p>
+  <blockquote>
+    <p>
+      <span class="일반"><span class="일반"><span class="일반">
+      <!--[if gte vml 1]><v:shapetype id="_x0000_t75"		coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"		filled="f" stroked="f">		<v:stroke joinstyle="miter"/>		<v:formulas>		<v:f eqn="if lineDrawn pixelLineWidth 0"/>		<v:f eqn="sum @0 1 0"/>		<v:f eqn="sum 0 0 @1"/>		<v:f eqn="prod @2 1 2"/>		<v:f eqn="prod @3 21600 pixelWidth"/>		<v:f eqn="prod @3 21600 pixelHeight"/>		<v:f eqn="sum @0 0 1"/>		<v:f eqn="prod @6 1 2"/>		<v:f eqn="prod @7 21600 pixelWidth"/>		<v:f eqn="sum @8 21600 0"/>		<v:f eqn="prod @7 21600 pixelHeight"/>		<v:f eqn="sum @10 21600 0"/>		</v:formulas>		<v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>		<o:lock v:ext="edit" aspectratio="t"/>	</v:shapetype><v:shape id="_x223486560" style="v-text-anchor:top;width:232.63pt;height:129.05pt;" type="#_x0000_t75"><v:imagedata o:title="EMB000008684067" src="file:///C:\Users\lee\AppData\Local\Temp\Hnc\BinData\EMB000008684067.bmp"/><w:wrap type="topAndBottom"/></v:shape><![endif]-->
+      
+      <img alt="검사진행창" height="147" src="이미지/20p검사진행창.bmp" v:shapes="_x223486560" width="310"/>
+       </span></span></span></p>
+    <p>&nbsp;</p>
+  </blockquote>
+  <p><span class="일반"><span class="일반"><span class="일반" lang="EN-US">[</span><span class="일반">자세히<span lang="EN-US">] </span>버튼을 누르면 자동점검의 상세한 진행 상황을 보여주는 창이 화면에 열리고 <span lang="EN-US">[</span>자세히<span lang="EN-US">] </span>버튼을 다시 누르면 사라집니다<span lang="EN-US">. </span><![if !supportEmptyParas]>
+    &nbsp;
+    </span></span></span></p>
+  <blockquote>
+    <p>
+      <span class="일반"><span class="일반"><span class="일반">
+      <!--[if gte vml 1]><v:shapetype id="_x0000_t75"		coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"		filled="f" stroked="f">		<v:stroke joinstyle="miter"/>		<v:formulas>		<v:f eqn="if lineDrawn pixelLineWidth 0"/>		<v:f eqn="sum @0 1 0"/>		<v:f eqn="sum 0 0 @1"/>		<v:f eqn="prod @2 1 2"/>		<v:f eqn="prod @3 21600 pixelWidth"/>		<v:f eqn="prod @3 21600 pixelHeight"/>		<v:f eqn="sum @0 0 1"/>		<v:f eqn="prod @6 1 2"/>		<v:f eqn="prod @7 21600 pixelWidth"/>		<v:f eqn="sum @8 21600 0"/>		<v:f eqn="prod @7 21600 pixelHeight"/>		<v:f eqn="sum @10 21600 0"/>		</v:formulas>		<v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>		<o:lock v:ext="edit" aspectratio="t"/>	</v:shapetype><v:shape id="_x165705440" style="v-text-anchor:top;width:248.29pt;height:206.51pt;" type="#_x0000_t75"><v:imagedata o:title="EMB000008684068" src="file:///C:\Users\lee\AppData\Local\Temp\Hnc\BinData\EMB000008684068.bmp"/><w:wrap type="topAndBottom"/></v:shape><![endif]-->
+      
+      <img alt="자세히 버튼을 눌렀을 때 검사진행창" height="251" src="이미지/20p자세히.bmp" v:shapes="_x165705440" width="331"/>
+      <![endif]><![if !supportEmptyParas]>
+      &nbsp;
+      
+      </span></span></span></p>
+    <p>&nbsp;</p>
+  </blockquote>
+  <p class="일반"><span class="일반"><span class="일반">평가가 완료되면 다음과 같은 평가 완료 화면으로 변경되고 <span lang="EN-US">[</span>확인<span lang="EN-US">] </span>버튼이 나타납니다<span lang="EN-US">. [</span>확인<span lang="EN-US">] </span>버튼을 누르면 <a href="5. 웹표준평가-4.html">평가결과 보기</a> 화면으로 이동합니다<span lang="EN-US">. </span><![if !supportEmptyParas]>
+    &nbsp;
+    </span></span></p>
+  <blockquote>
+    <p>
+      <span class="일반"><span class="일반"><span class="일반">
+      <!--[if gte vml 1]><v:shapetype id="_x0000_t75"		coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"		filled="f" stroked="f">		<v:stroke joinstyle="miter"/>		<v:formulas>		<v:f eqn="if lineDrawn pixelLineWidth 0"/>		<v:f eqn="sum @0 1 0"/>		<v:f eqn="sum 0 0 @1"/>		<v:f eqn="prod @2 1 2"/>		<v:f eqn="prod @3 21600 pixelWidth"/>		<v:f eqn="prod @3 21600 pixelHeight"/>		<v:f eqn="sum @0 0 1"/>		<v:f eqn="prod @6 1 2"/>		<v:f eqn="prod @7 21600 pixelWidth"/>		<v:f eqn="sum @8 21600 0"/>		<v:f eqn="prod @7 21600 pixelHeight"/>		<v:f eqn="sum @10 21600 0"/>		</v:formulas>		<v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>		<o:lock v:ext="edit" aspectratio="t"/>	</v:shapetype><v:shape id="_x223486400" style="v-text-anchor:top;width:255.74pt;height:142.25pt;" type="#_x0000_t75"><v:imagedata o:title="EMB00000868406a" src="file:///C:\Users\lee\AppData\Local\Temp\Hnc\BinData\EMB00000868406a.bmp"/><w:wrap type="topAndBottom"/></v:shape><![endif]-->
+
+      <img alt="완료확인창" height="165" src="이미지/21p완료확인창.bmp" v:shapes="_x223486400" width="341"/>
+      </span></span></span></p>
+  </blockquote>
+  <p>
+    <span class="일반"><span class="일반"><span class="일반">
+    <![if !supportEmptyParas]>
+ 
+  </span></span></span></p>
+  <p>
+    <span class="일반"><span class="일반"><span class="일반">
+    <![if !supportEmptyParas]>
+
+    </span>
+    </span>
+  </span></p>
+</blockquote>
+</body>
+</html>

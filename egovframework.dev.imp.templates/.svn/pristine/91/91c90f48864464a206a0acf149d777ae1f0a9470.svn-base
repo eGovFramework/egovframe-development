@@ -1,0 +1,7 @@
+#if ($rdoType == "Jeus")
+		#parse("jeus.vm")
+#elseif ($rdoType == "Weblogic")
+		#parse("weblogic.vm")
+#else
+		NoTypeError!
+#end

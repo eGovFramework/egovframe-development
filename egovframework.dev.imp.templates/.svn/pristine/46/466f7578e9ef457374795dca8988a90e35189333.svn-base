@@ -1,0 +1,6 @@
+rdoType=C3P0
+txtDatasourceName=C3P0_Datasource
+txtDriver=org.postgresql.Driver
+txtUrl=jdbc:postgresql://localhost/testdb
+txtUser=swaldman
+txtPasswd=test-password

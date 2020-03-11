@@ -1,0 +1,5 @@
+  <bean name="primaryTypeSequenceIds" class="egovframework.rte.fdl.idgnr.impl.EgovSequenceIdGnrService" 
+                         destroy-method="destroy">
+    <property name="dataSource" ref="dataSource"/>
+    <property name="query"  value="${query}"/>
+  </bean>

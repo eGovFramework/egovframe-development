@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="egovframework.rte.rdt.contribution1"
+            objectClass="org.eclipse.core.resources.IProject">
+         <menu
+               id="egovframework.rte.rdt.menu1"
+               label="eGovFrame">
+            <groupMarker
+                  name="egovframework.rte.rdt.groupMarker1">
+            </groupMarker>
+         </menu>
+         <action
+               class="egovframework.rte.rdt.plugin.popup.action.RdtPopupAction"
+               enablesFor="1"
+               id="egovframework.rte.rdt.rdtPopupAction"
+               label="RTE Tool"
+               menubarPath="egovframework.rte.rdt.menu1/egovframework.rte.rdt.groupMarker1">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="egovframework.rte.rdt.plugin.editor.RdtEditor"
+            default="false"
+            extensions="config"
+            id="egovframework.rte.rdt.plugin.rdtEditor"
+            name="Distribution Tool">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+    		category="egovframework.dev.imp.confmngt.preferences.emptyconfpreperencepage"
+            class="egovframework.rte.rdt.plugin.preferences.RdtPreferencePage"
+            id="egovframework.rte.rdt.plugin.preferences.RdtPreferencePage"
+            name="RTE Distribution Tool">
+      </page>
+      
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="egovframework.rte.rdt.plugin.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+
+</plugin>

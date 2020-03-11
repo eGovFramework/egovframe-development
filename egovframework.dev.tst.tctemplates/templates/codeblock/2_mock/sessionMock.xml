@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0_07" class="java.beans.XMLDecoder"> 
+ <array class="egovframework.dev.tst.tcgenerator.CodeBlockInfo" length="1"> 
+  <void index="0"> 
+   <object class="egovframework.dev.tst.tcgenerator.CodeBlockInfo"> 
+    <void property="tcTemplateName"> 
+     <string>SessionMock Test</string> 
+    </void> 
+    <void property="description"> 
+     <string>Session Mock Test에 대한 테스트케이스 코드블럭을 복사합니다.</string> 
+    </void> 
+    <void property="codeBlockList"> 
+     <array class="java.lang.String" length="5"> 
+      <void index="0"> 
+       <string>Field</string> 
+      </void> 
+      <void index="1"> 
+       <string>SetUp Method</string> 
+      </void> 
+      <void index="2"> 
+       <string>인증 통과 테스트</string> 
+      </void>  
+      <void index="3"> 
+       <string>인증 실패 테스트</string> 
+      </void>  
+      <void index="4"> 
+       <string>소스 전체</string> 
+      </void>
+     </array> 
+    </void> 
+    <void property="codeBlocks"> 
+     <array class="java.lang.String" length="5"> 
+      <void index="0"> 
+       <string><![CDATA[
+// 서블릿 호출에 필요한 Request 객체에 대한 Mocking 클래스
+private MockHttpServletRequest request;
+
+// 서블릿 호출에 필요한 Response 객체에 대한 Mocking 클래스
+private MockHttpServletResponse response;
+
+/** mock object of the HttpSession */
+private MockHttpSession session;
+
+// 서블릿 호출 테스트를 위한 대상 테스트 클래스
+private Servlet servlet;
+       ]]></string> 
+      </void> 
+      <void index="1"> 
+       <string><![CDATA[
+/**
+ * 각 Test 메소드 시작 전마다 수행되는 메소드<br>
+ * 테스트에 사용될 test fixture를 여기에 준비한다.
+ * 
+ * @throws java.lang.Exception
+ */
+@Before
+public void setUp() throws Exception
+{
+    servlet  = new Servlet();
+    
+    request  = new MockHttpServletRequest();
+    session = new MockHttpSession();
+}
+       ]]></string> 
+      </void> 
+      <void index="2"> 
+       <string><![CDATA[
+/**
+ * test if the given information is a administrator
+ *
+ * @throws Exception
+*/
+@Test
+public void testConfirmAdmin() throws Exception
+{
+    session.setAttribute("userid", "administrator");
+    session.setAttribute("password", "1234");
+    
+    request.setSession(session);
+    servlet.confirmAdmin(request, response);
+
+    assertTrue(servlet.isAdmin());
+}
+       ]]></string> 
+      </void> 
+      <void index="3"> 
+       <string><![CDATA[
+/**
+ * test if the given information is not a administrator
+ *
+ * @throws Exception
+*/
+@Test
+public void testConfirmNotAdmin() throws Exception
+{
+    session.setAttribute("userid", "admin");
+    session.setAttribute("password", "0000");
+    
+    request.setSession(session);
+    servlet.confirmAdmin(request, response);
+
+    assertTrue(!servlet.isAdmin());
+}
+       ]]></string> 
+      </void> 
+      <void index="4"> 
+       <string><![CDATA[
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.mock.web.MockHttpSession;
+
+import egovframework.guideprogram.test.target.mock.Servlet;
+
+public class SessionMockTest
+{
+    /** mock object of the HttpServletRequest */
+    private MockHttpServletRequest request;
+
+    /** mock object of the HttpServletResponse */
+    private MockHttpServletResponse response;
+    
+    /** mock object of the HttpSession */
+    private MockHttpSession session;
+    
+    /** Target Class */
+    private Servlet servlet;
+    
+    /**
+     * 각 Test 메소드 시작 전마다 수행되는 메소드<br>
+     * 테스트에 사용될 test fixture를 여기에 준비한다.
+     * 
+     * @throws java.lang.Exception
+     */
+    @Before
+    public void setUp() throws Exception
+    {
+        servlet  = new Servlet();
+        
+        request  = new MockHttpServletRequest();
+        session = new MockHttpSession();
+    }
+    
+    /**
+     * test if the given information is a administrator
+     *
+     * @throws Exception
+    */
+    @Test
+    public void testConfirmAdmin() throws Exception
+    {
+        session.setAttribute("userid", "administrator");
+        session.setAttribute("password", "1234");
+        
+        request.setSession(session);
+        servlet.confirmAdmin(request, response);
+
+        assertTrue(servlet.isAdmin());
+    }
+
+    /**
+     * test if the given information is not a administrator
+     *
+     * @throws Exception
+    */
+    @Test
+    public void testConfirmNotAdmin() throws Exception
+    {
+        session.setAttribute("userid", "admin");
+        session.setAttribute("password", "0000");
+        
+        request.setSession(session);
+        servlet.confirmAdmin(request, response);
+
+        assertTrue(!servlet.isAdmin());
+    }
+}
+       ]]></string> 
+      </void>
+     </array> 
+    </void> 
+   </object> 
+  </void> 
+ </array> 
+</java> 

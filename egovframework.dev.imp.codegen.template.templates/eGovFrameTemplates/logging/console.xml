@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>New Console Appender</title>
+
+		<component-page required="true">
+			<!-- NewConsoleAppender	New Console Appender -->
+			<description>Create Console Appender</description>
+			<group label="Generation File" required="true">
+				<container name="txtPath" label="File Path: " required="true"
+					type="folder" value="" /> <!-- #webroot -->
+				<textfield name="txtFileName" label="File Name: "
+					required="true" value="" />
+			</group>
+			<group label="Configuration" required="true">
+				<textfield name="txtAppenderName" label="Appender Name: "
+					required="true" value="console" />
+				<textfield name="txtConversionPattern" label="Conversion Pattern: "
+					required="true" value="%d %5p [%c] %m%n" />
+			</group>
+		</component-page>
+
+		<output>
+			<template component="txtFileName" velocity="console.vm"
+				extension="xml" container="txtPath" />
+		</output>
+	</wizard>
+</EclipseWork>

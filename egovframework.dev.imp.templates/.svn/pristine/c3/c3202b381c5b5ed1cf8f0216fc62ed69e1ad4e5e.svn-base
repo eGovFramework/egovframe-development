@@ -1,0 +1,13 @@
+<appender name="${appenderName}" class="org.apache.log4j.DailyRollingFileAppender">
+	<!-- ref.) attr : FileAppender + DatePattern -->
+	<param name="File" value="${file}" />
+	<param name="Append" value="${append}" />
+	<!--
+		SimpleDateFormat 을 따름. ex.) .yyyy-ww : 첫날 기준 매주마다, .yyyy-MM-dd-HH-mm
+		: 매분마다
+	-->
+	<param name="DatePattern" value="${datePattern}" />
+	<layout class="org.apache.log4j.PatternLayout">
+		<param name="ConversionPattern" value="${pattern}" />
+	</layout>
+</appender>

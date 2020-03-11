@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>New Scheduler</title>
+
+		<component-page required="true">
+			<!-- NewScheduler	New Scheduler -->
+			<description>Create Scheduler</description>
+			<group label="Generation File" required="true">
+				<container name="txtPath" label="File Path: " required="true"
+					type="folder" value="" />
+				<textfield name="txtFileName" label="File Name: "
+					required="true" value="" />
+			</group>
+			<group label="Configuration" required="true">
+				<textfield name="txtSchedulerName" label="Scheduler Name: "
+					required="true" value="" />
+				<textfield name="txtTriggerName" label="Trigger Name: "
+					required="true" value="" />
+			</group>
+		</component-page>
+
+		<output>
+			<template component="txtFileName" velocity="scheduler.vm"
+				extension="xml" container="txtPath" />
+		</output>
+	</wizard>
+</EclipseWork>

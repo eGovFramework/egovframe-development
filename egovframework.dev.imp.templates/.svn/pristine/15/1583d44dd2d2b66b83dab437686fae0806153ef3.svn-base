@@ -1,0 +1,44 @@
+Service
+	package
+	className
+
+ServiceImpl
+	serviceName
+	package
+	className
+	
+DAO
+	daoName
+	package
+	className
+
+VO
+	package
+	voName
+
+SQLMap
+	package
+	fileName
+
+ControllerClass
+ListPage
+RegisterPage
+----------------------------------------------
+package
+Entity
+	name
+	uppercaseName
+	lowercaseName	
+	camelcaseName
+	pascalcaseName
+	Attrivute[] attributes
+	Attrivute[] primaryKeys
+
+Attribute
+	name
+	type
+	uppercaseName
+	lowercaseName
+	camelcaseName
+	pascalcaseName
+

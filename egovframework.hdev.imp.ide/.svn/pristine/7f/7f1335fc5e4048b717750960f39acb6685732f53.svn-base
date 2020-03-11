@@ -1,0 +1,160 @@
+
+deviceapiExampleFile = DeviceAPIGuide_Android_V3.6.0.zip
+
+webPomFile = pom.xml
+webexample = DeviceAPIGuideTotal_Web.zip
+
+table1 = SAMPLE
+table2 = CONTACT_INFO
+table3 = GPS
+table4 = ACCELERATOR
+table5 = COMPASS
+table6 = CAMERA
+table7 = VIBRATOR
+table8 = MEDIA
+table9 = FILE_READER_WRITE
+table10 = DEVICE
+table11 = NETWORK
+table12 = MAGICXSIGN
+table13 = WIZSIGN
+table14 = XECURESMART
+table15 = INTERFACE
+table16 = BARCODESCANNER
+table17 = DEVICEFILEMGMT
+table18 = FILEOPENER
+table19 = JAILBREAKDETECTION
+table20 = PUSHNOTIFLCATIONS
+table21 = SOCKETIO
+table22 = SQLITE
+table23 = STREAMINGMEDIA
+table24 = UNZIP
+table25 = WEBRESOURCEUPDATE
+
+
+table1desc = \ud45c\uc900 \uc148\ud50c \uad00\ub9ac
+table2desc = \uc5f0\ub77d\ucc98 \uc815\ubcf4 \uad00\ub9ac
+table3desc = GPS \uc815\ubcf4 \uad00\ub9ac
+table4desc = \uac00\uc18d\ub3c4 \uc815\ubcf4 \uad00\ub9ac
+table5desc = \ubc29\ud5a5 \uc815\ubcf4 \uad00\ub9ac
+table6desc = \uc774\ubbf8\uc9c0 \uc815\ubcf4 \uad00\ub9ac
+table7desc = \uc54c\ub9bc \uc815\ubcf4 \uad00\ub9ac
+table8desc = \ubbf8\ub514\uc5b4 \uc815\ubcf4 \uad00\ub9ac
+table9desc = \ud30c\uc77c \uc815\ubcf4 \uad00\ub9ac
+table10desc = \ub514\ubc14\uc774\uc2a4 \ud30c\uc77c \uc815\ubcf4 \uad00\ub9ac
+table11desc = \ub124\ud2b8\uc6cc\ud06c \uc815\ubcf4 \uad00\ub9ac
+table12desc = MagicXSign \uc778\uc99d\uad00\ub9ac
+table13desc = WizSign \uc778\uc99d\uad00\ub9ac
+table14desc = XecureSmart \uc778\uc99d\uad00\ub9ac
+table15desc = Interface \ub85c\uadf8\uc778 \uc815\ubcf4 \uad00\ub9ac
+table16desc = \ubc14\ucf54\ub4dc \uc815\ubcf4 \uad00\ub9ac
+table17desc = \ub514\ubc14\uc774\uc2a4 \uc815\ubcf4 \uad00\ub9ac
+table18desc = \ud30c\uc77c \uc5f4\uae30 \uc815\ubcf4 \uad00\ub9ac
+table19desc = \ud0c8\uc625 \uc5ec\ubd80 \uc815\ubcf4 \uad00\ub9ac
+table20desc = PUSH \uc54c\ub9bc \uc815\ubcf4 \uad00\ub9ac
+table21desc = \uc18c\ucf13 IO \uc815\ubcf4 \uad00\ub9ac
+table22desc = SQLITE \uc815\ubcf4 \uad00\ub9ac
+table23desc = \uc2a4\ud2b8\ub9ac\ubc0d \ubbf8\ub514\uc5b4 \uc815\ubcf4 \uad00\ub9ac
+table24desc = \uc555\ucd95\ud30c\uc77c \uc815\ubcf4 \uad00\ub9ac
+table25desc = \uc6f9 \ub9ac\uc18c\uc2a4 \uc815\ubcf4 \uad00\ub9ac
+
+
+
+template1name = Sample_Template
+template1desc = \ud45c\uc900 \uc0d8\ud50c \ud15c\ud50c\ub9bf
+template1example = DeviceAPIGuide_SampleTemplate_V3.6.0.zip
+
+template2name = Contacts
+template2desc = Contacts \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template2example = egovframework-hyb-add-contactsapiguide-3.6.0.zip
+
+template3name = GPS
+template3desc = GPS \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template3example = egovframework-hyb-add-gpsapiguide-3.6.0.zip
+
+template4name = Accelerator
+template4desc = Accelerator \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template4example = egovframework-hyb-add-acceleratorapiguide-3.6.0.zip
+
+template5name = Compass
+template5desc = Compass \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template5example = egovframework-hyb-add-compassapiguide-3.6.0.zip
+
+template6name = Camera
+template6desc = Camera \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template6example = egovframework-hyb-add-cameraapiguide-3.6.0.zip
+
+template7name = Vibrator
+template7desc = Vibrator \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template7example = egovframework-hyb-add-vibratorapiguide-3.6.0.zip
+
+template8name = Media
+template8desc = Media \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template8example = egovframework-hyb-add-mediaapiguide-3.6.0.zip
+
+template9name = FileReadWriter
+template9desc = FileReadWriter \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template9example = egovframework-hyb-add-filereadwriteapiguide-3.6.0.zip
+
+template10name = Device
+template10desc = Device \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template10example = egovframework-hyb-add-deviceinfoapiguide-3.6.0.zip
+
+template11name = Network
+template11desc = Network \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template11example = egovframework-hyb-add-networkapiguide-3.6.0.zip
+
+template12name = PKIMagicXSign
+template12desc = PKIMagicXSign \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template12example = egovframework-hyb-add-pkimagicxsignapiguide-3.6.0.zip
+
+template13name = PKIWizSign
+template13desc = PKIWizSign \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template13example = egovframework-hyb-add-pkiwizsignapiguide-3.6.0.zip
+
+template14name = PKIXecureSmart
+template14desc = PKIXecureSmart \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template14example = egovframework-hyb-add-pkixecuresmartapiguide-3.6.0.zip
+
+template15name = Interface
+template15desc = Interface \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template15example = egovframework-hyb-add-interfaceapiguide-3.6.0.zip
+
+template16name = BarcodeScanner
+template16desc = barcodescanner \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template16example = egovframework-hyb-add-barcodescannerapiguide-3.6.0.zip
+
+template17name = DeviceFilemgmt
+template17desc = devicefilemgmt \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template17example = egovframework-hyb-add-devicefilemgmtapiguide-3.6.0.zip
+
+template18name = FileOpener
+template18desc = fileopener \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template18example = egovframework-hyb-add-fileopenerapiguide-3.6.0.zip
+
+template19name = JailBreakDetection
+template19desc = jailbreakdetection \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template19example = egovframework-hyb-add-jailbreakdetectionapiguide-3.6.0.zip
+
+template20name = PushNotiflcations
+template20desc = pushnotiflcations \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template20example = egovframework-hyb-add-pushnotificationsapiguide-3.6.0.zip
+
+template21name = SocketIO
+template21desc = socketio \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template21example = egovframework-hyb-add-socketioapiguide-3.6.0.zip
+
+template22name = Sqlite
+template22desc = sqlite \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template22example = egovframework-hyb-add-sqliteapiguide-3.6.0.zip
+
+template23name = StreamingMedia
+template23desc = streamingmedia \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template23example = egovframework-hyb-add-streamingmediaapiguide-3.6.0.zip
+
+template24name = UnZip
+template24desc = unzip \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template24example = egovframework-hyb-add-unzipapiguide-3.6.0.zip
+
+template25name = WebResourceUpdate
+template25desc = webresourceupdate \ub514\ubc14\uc774\uc2a4API \uac00\uc774\ub4dc \ud504\ub85c\uadf8\ub7a8
+template25example = egovframework-hyb-add-webresourceupdateapiguide-3.6.0.zip

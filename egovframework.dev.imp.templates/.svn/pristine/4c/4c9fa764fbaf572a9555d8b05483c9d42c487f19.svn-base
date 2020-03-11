@@ -1,0 +1,2 @@
+txtAppenderName=console
+txtConversionPattern=%d %5p [%c] %m%n

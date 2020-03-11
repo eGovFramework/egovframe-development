@@ -1,0 +1,428 @@
+
+category1nam=Common
+category1des=Mobile Common Package
+
+category1Component1nam=Mobile Common
+category1Component1pac=egovframework.mbl.com.cmm
+category1Component1de1=egovframework.mbl.com.uat.uia
+category1Component1des=&#45;Setting Files<br/>Including config, property files<br/><br/>&#45;Commonly used package at mobile<br/>Mobile Page Navigation
+category1Component1use=COMTECOPSEQ, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNEMPLYRINFO, COMTNFILE, COMTNFILEDETAIL, COMTHEMAILDSPTCHMANAGE
+category1Component1ver=Wizard.3.8.0
+category1Component1web=true
+category1Component1add=
+
+
+category2nam=User Integrated Authentication
+category2des=Defines a security service that support acquisition of information of users approaching access to the system through certification of system users' ID/PW or online authentication
+
+category2Component1nam=Certifications Login/ General Login
+category2Component1pac=egovframework.mbl.com.uat.uia
+category2Component1de1=egovframework.mbl.com.cmm
+category2Component1des=&#45;Certification Login<br/>Use login user's official certification to validate user <br/><br/>&#45;General Login<br/>Get user's login information&#40;user ID&#47;password&#41; to validate user <br/><br/>&#45;Mobile General Login<br/>Get user's login information&#40;user ID&#47;password&#41; from mobile page to validate user
+category2Component1use=COMTECOPSEQ, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNGNRLMBER, COMTNORGNZTINFO, COMTNEMPLYRINFO, COMTNENTRPRSMBER, COMTNFILE, COMTNFILEDETAIL, COMTHEMAILDSPTCHMANAGE
+category2Component1ver=Wizard.3.8.0
+category2Component1web=
+category2Component1add=
+
+
+category3nam=BBS
+category3des=Defines service that deliver and share information online
+
+category3Component1nam=BBS
+category3Component1pac=egovframework.mbl.com.cop.bbs
+category3Component1de1=egovframework.mbl.com.cmm
+category3Component1de2=egovframework.mbl.com.uat.uia
+category3Component1des=&#45;BBS <br/>Provide function that manage commonly used  information sharing bbs<br/>&#45;BBS Creation Management<br/>Provide setup manager for BBS creation<br/>&#45;Notice Management<br/>Support functions to register, browse, and view notices<br/>&#45;Design Template<br/> Provide Design Template manager according to types of BBS<br/>&#45;Valid BBS<br/>Provide function that supports setup of valid date for BBS' contents<br/>&#45;Anonymous BBS<br/>Provide Anonymous BBS manager<br/>&#45;Data Management<br/>Provide data management through data attachments, and support to browse,view, and view them<br/><br/>&#45;Mobile BBS<br/>Provide function that manage commonly used  information sharing bbs<br/>&#45;Mobile Notice Management<br/>Support functions to register, browse, and view notices<br/>&#45;Mobile Valid BBS<br/>Provide function that supports setup of valid date for BBS' contents<br/>&#45;Mobile Anonymous BBS<br/>Provide Anonymous BBS manager
+category3Component1use=COMTECOPSEQ, COMTNTMPLATINFO, COMTNRESTDE, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNGNRLMBER, COMTNORGNZTINFO, COMTNEMPLYRINFO, COMTNENTRPRSMBER, COMVNUSERMASTER, COMTNBBSMASTER, COMTNBBSUSE, COMTNBBS, COMTNCMMNTY, COMTNFILE, COMTNFILEDETAIL, COMTNCLUB, COMTNBBSMASTEROPTN
+category3Component1ver=Wizard.3.8.0
+category3Component1web=
+category3Component1add=
+
+category3Component2nam=Comment Management
+category3Component2pac=egovframework.mbl.com.cop.cmt
+category3Component2de1=egovframework.mbl.com.cmm
+category3Component2de2=egovframework.mbl.com.uat.uia
+category3Component2des=Provide function that make one&#45;line comment on bbs registered posts<br/><br/>&#45;Mobile Comments Function <br/>Provide function that make one&#45;line comment on bbs registered posts
+category3Component2use=COMTECOPSEQ, COMTNTMPLATINFO, COMTNRESTDE, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNGNRLMBER, COMTNORGNZTINFO, COMTNEMPLYRINFO, COMTNENTRPRSMBER, COMVNUSERMASTER, COMTNBBSMASTER, COMTNBBSUSE, COMTNBBS, COMTNCMMNTY, COMTNCOMMENT, COMTNFILE, COMTNFILEDETAIL, COMTNCLUB, COMTNBBSMASTEROPTN
+category3Component2ver=Wizard.3.8.0
+category3Component2web=
+category3Component2add=true
+
+category3Component3nam=Scrap Function
+category3Component3pac=egovframework.mbl.com.cop.scp
+category3Component3de1=egovframework.mbl.com.cmm
+category3Component3de2=egovframework.mbl.com.uat.uia
+category3Component3des=Provide function that collect specific posts in one place for inquiry<br/><br/>&#45;Mobile Scrap Function<br/>Provide function that collect specific posts in one place for inquiry
+category3Component3use=COMTECOPSEQ, COMTNRESTDE, COMTNSCRAP, COMTNTMPLATINFO, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNGNRLMBER, COMTNORGNZTINFO, COMTNEMPLYRINFO, COMTNENTRPRSMBER, COMVNUSERMASTER, COMTNBBSMASTER, COMTNBBSUSE, COMTNBBS, COMTNCMMNTY, COMTNFILE, COMTNFILEDETAIL, COMTNCLUB, COMTNBBSMASTEROPTN
+category3Component3ver=Wizard.3.8.0
+category3Component3web=
+category3Component3add=true
+
+
+category4nam=Community
+category4des=Provide service that enables community registration and management and verification of user's ratings and data. Support functions to view, register, edit and delete data to help  users with common interest or task group to cooperate and share information
+
+category4Component1nam=Community Management
+category4Component1pac=egovframework.mbl.com.cop.cmy
+category4Component1de1=egovframework.mbl.com.cmm
+category4Component1de2=egovframework.mbl.com.uat.uia
+category4Component1des=&#45;Community Management<br/>Provide management of activities related to establishment and registration of community<br/><br/>&#45;Community BBS For Visitors<br/>Provide management of visitor's BBS information that are one of many community's activities established on browsing websites<br/><br/>&#45;Community Gallery<br/>Provide management of community's gallery that are consisted and used by community users<br/><br/>&#45;Mobile community subscribe&#47;secession<br/>Provide community subscribe&#47;secession function<br/>&#45;Mobile community guestbook<br/>Provide manage information guestbook function which is one of the community's activities established in the portal<br/>&#45;Mobile Community Photo Gallery<br/>Provide registered photo gallery search function that members who are active in community
+category4Component1use=COMTECOPSEQ, COMTNTMPLATINFO, COMTHCONFMHISTORY, COMTNRESTDE, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNGNRLMBER, COMTNORGNZTINFO, COMTNEMPLYRINFO, COMTNENTRPRSMBER, COMVNUSERMASTER, COMTNBBSMASTER, COMTNBBSUSE, COMTNBBS, COMTNCMMNTY, COMTNCMMNTYUSER, COMTNFILE, COMTNFILEDETAIL, COMTNCLUB, COMTNCLUBUSER, COMTNBBSMASTEROPTN
+category4Component1ver=Wizard.3.8.0
+category4Component1web=
+category4Component1add=
+
+
+category5nam=Schedule Management
+category5des=Defines service for a team or a person to view, edit, or add task schedules and activity logs
+
+category5Component1nam=Work Log Management
+category5Component1pac=egovframework.mbl.com.cop.smt.dsm
+category5Component1de1=egovframework.mbl.com.cmm
+category5Component1de2=egovframework.mbl.com.uat.uia
+category5Component1des=Provide function that register and manage the logs such as instructions, report documents, work logs and unusual facts  <br/><br/>&#45;Mobile Work Log Management <br/>Provide function that register and manage the logs such as instructions, report documents, work logs and unusual facts
+category5Component1use=COMTECOPSEQ, COMTNRESTDE, COMTNMTGINFO, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNEMPLYRINFO, COMTNFILE, COMTNFILEDETAIL
+category5Component1ver=Wizard.3.8.0
+category5Component1web=
+category5Component1add=
+
+category5Component2nam=Whole Schedule
+category5Component2pac=egovframework.mbl.com.cop.smt.sam
+category5Component2de1=egovframework.mbl.com.cmm
+category5Component2de2=egovframework.mbl.com.uat.uia
+category5Component2des=Provide function that search and inquire the whole schedule <br/><br/>&#45;Mobile Whole Schedule<br/>Provide function that search and inquire the whole schedule
+category5Component2use=COMTECOPSEQ, COMTNRESTDE, COMTNMTGINFO, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNEMPLYRINFO, COMTNFILE, COMTNFILEDETAIL
+category5Component2ver=Wizard.3.8.0
+category5Component2web=
+category5Component2add=
+
+category5Component3nam=Division Schedule Management
+category5Component3pac=egovframework.mbl.com.cop.smt.sdm
+category5Component3de1=egovframework.mbl.com.cmm
+category5Component3de2=egovframework.mbl.com.uat.uia
+category5Component3des=Provide functions to manage schedule which is registered by division member and to view them daily&#47;weekly<br/><br/>&#45;Mobile Division Schedule Management<br/>Provide functions to manage schedule which is registered by division member and to view them daily&#47;weekly
+category5Component3use=COMTECOPSEQ, COMTNRESTDE, COMTNMTGINFO, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNEMPLYRINFO, COMTNFILE, COMTNFILEDETAIL
+category5Component3ver=Wizard.3.8.0
+category5Component3web=
+category5Component3add=
+
+category5Component4nam=Schedule Management
+category5Component4pac=egovframework.mbl.com.cop.smt.sim
+category5Component4de1=egovframework.mbl.com.cmm
+category5Component4de2=egovframework.mbl.com.uat.uia
+category5Component4des=Provide functions to manage shared schedules that are registered and to view them daily&#47;weekly <br/><br/>&#45;Mobile Schedule Management<br/>Provide functions to manage shared schedules that are registered and to view them daily&#47;weekly
+category5Component4use=COMTECOPSEQ, COMTNRESTDE, COMTNMTGINFO, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNEMPLYRINFO, COMTNFILE, COMTNFILEDETAIL
+category5Component4ver=Wizard.3.8.0
+category5Component4web=
+category5Component4add=
+
+
+category6nam=Address/ Business Card
+category6des=Compartmentize groups to manage, such as personal address and department address/ manage personal business card information
+
+category6Component1nam=Address Management
+category6Component1pac=egovframework.mbl.com.cop.adb
+category6Component1de1=egovframework.mbl.com.cmm
+category6Component1de2=egovframework.mbl.com.uat.uia
+category6Component1des=Provide functions to manage email address by groups such as personal address, department address, etc<br/><br/>&#45;Mobile Address Management<br/>Provide functions to manage email address by groups such as personal address, department address, etc
+category6Component1use=COMTECOPSEQ, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNGNRLMBER, COMTNORGNZTINFO, COMTNEMPLYRINFO, COMTNENTRPRSMBER, COMTNNCRD, COMTNFILE, COMTNFILEDETAIL, COMTNADBKMANAGE, COMTNADBK
+category6Component1ver=Wizard.3.8.0
+category6Component1web=
+category6Component1add=
+
+
+category7nam=Personalization
+category7des=Provide user's interface or information in type of user's choice
+
+category7Component1nam=My Page
+category7Component1pac=egovframework.mbl.com.uss.mpe
+category7Component1de1=egovframework.mbl.com.cmm
+category7Component1de2=egovframework.mbl.com.uat.uia
+category7Component1des=Provide user's interface or information in type of user's choice<br/><br/>&#45;Mobile My Page<br/>Provide user's interface or information in type of user's choice
+category7Component1use=COMTECOPSEQ, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNFILE, COMTNFILEDETAIL, COMTNINDVDLPGECNTNTS, COMTNINDVDLPGEESTBS, COMTNCNTNTSLIST
+category7Component1ver=Wizard.3.8.0
+category7Component1web=
+category7Component1add=
+
+
+category8nam=Terms Management
+category8des=Provide information sharing/member terms agreement according to member registration
+
+category8Component1nam=Terms Management
+category8Component1pac=egovframework.mbl.com.uss.sam.stp
+category8Component1de1=egovframework.mbl.com.cmm
+category8Component1de2=egovframework.mbl.com.uat.uia
+category8Component1des=Provide information sharing&#47;member terms agreement according to member registration<br/><br/>&#45;Mobile terms inquiry<br/>Provide information sharing&#47;member terms agreement according to member registration
+category8Component1use=COMTECOPSEQ, COMTNSTPLATINFO, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNFILE, COMTNFILEDETAIL
+category8Component1ver=Wizard.3.8.0
+category8Component1web=
+category8Component1add=
+
+
+category9nam=Online Help
+category9des=As one of many supporting forms provided by applications, it is a type of service that provides the direction and information to help understand the functions of a sepecific application
+
+category9Component1nam=Help
+category9Component1pac=egovframework.mbl.com.uss.olh.hpc
+category9Component1de1=egovframework.mbl.com.cmm
+category9Component1de2=egovframework.mbl.com.uat.uia
+category9Component1des=Provide necessary information and helps when to use application<br/><br/>&#45;Mobile help inquiry<br/>Provide necessary information and helps when to use application
+category9Component1use=COMTECOPSEQ, COMTNHPCMINFO, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNFILE, COMTNFILEDETAIL
+category9Component1ver=Wizard.3.8.0
+category9Component1web=
+category9Component1add=
+
+category9Component2nam=Word Dictionary
+category9Component2pac=egovframework.mbl.com.uss.olh.wor
+category9Component2de1=egovframework.mbl.com.cmm
+category9Component2de2=egovframework.mbl.com.uat.uia
+category9Component2des=Provide word dictionary management function<br/><br/>&#45;Mobile word dictionary inquiry<br/>Provide word dictionary management function
+category9Component2use=COMTECOPSEQ, COMTNWORDDICARYINFO, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNEMPLYRINFO, COMTNFILE, COMTNFILEDETAIL
+category9Component2ver=Wizard.3.8.0
+category9Component2web=
+category9Component2add=
+
+category9Component3nam=FAQ Management
+category9Component3pac=egovframework.mbl.com.uss.olh.faq
+category9Component3de1=egovframework.mbl.com.cmm
+category9Component3de2=egovframework.mbl.com.uat.uia
+category9Component3des=Provide function that manage answers of FAQ <br/><br/>&#45;Mobile FAQ<br/>Provide function that manage answers of FAQ
+category9Component3use=COMTECOPSEQ, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNFILE, COMTNFILEDETAIL, COMTNFAQINFO
+category9Component3ver=Wizard.3.8.0
+category9Component3web=
+category9Component3add=
+
+category9Component4nam=Q&A Management
+category9Component4pac=egovframework.mbl.com.uss.olh.qna
+category9Component4de1=egovframework.mbl.com.cmm
+category9Component4de2=egovframework.mbl.com.uat.uia
+category9Component4des=Provide Q&#38;A management<br/><br/>&#45;Mobile QNA<br/>Provide question registration and search answer
+category9Component4use=COMTECOPSEQ, COMTNQAINFO, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNEMPLYRINFO, COMTNFILE, COMTNFILEDETAIL
+category9Component4ver=Wizard.3.8.0
+category9Component4web=
+category9Component4add=
+
+category9Component5nam=Administrative Terminology Dictionary Management
+category9Component5pac=egovframework.mbl.com.uss.olh.awm
+category9Component5de1=egovframework.mbl.com.cmm
+category9Component5de2=egovframework.mbl.com.uat.uia
+category9Component5des=Provide administrative terminology dictionary management register&#47;search management function<br/><br/>&#45;Mobile administrative terminology dictionary management<br/>Provide administrative terminology dictionary management register&#47;search management function
+category9Component5use=COMTECOPSEQ, COMTNADMINISTRATIONWORD, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNEMPLYRINFO, COMTNFILE, COMTNFILEDETAIL
+category9Component5ver=Wizard.3.8.0
+category9Component5web=
+category9Component5add=
+
+category9Component6nam=Online Menual
+category9Component6pac=egovframework.mbl.com.uss.olh.omm
+category9Component6de1=egovframework.mbl.com.cmm
+category9Component6de2=egovframework.mbl.com.uat.uia
+category9Component6des=Provide application's online manual register&#47;search function <br/><br/>&#45;Mobile Online Menual<br/>Provide application's online manual search function
+category9Component6use=COMTECOPSEQ, COMTNONLINEMANUAL, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNGNRLMBER, COMTNORGNZTINFO, COMTNEMPLYRINFO, COMTNENTRPRSMBER, COMVNUSERMASTER, COMTNFILE, COMTNFILEDETAIL
+category9Component6ver=Wizard.3.8.0
+category9Component6web=
+category9Component6add=
+
+
+category10nam=Oline Participation
+category10des=Service that support active public participation administration through online survey,poll, and public hearings
+
+category10Component1nam=Consultation Management
+category10Component1pac=egovframework.mbl.com.uss.olp.cns
+category10Component1de1=egovframework.mbl.com.cmm
+category10Component1de2=egovframework.mbl.com.uat.uia
+category10Component1des=Provide function that manage consultation contents and responses<br/><br/>&#45;Mobile Consultation Management<br/>Provide register consultation context and search the consultation answer
+category10Component1use=COMTECOPSEQ, COMTNCNSLTLIST, COMTNQAINFO, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNEMPLYRINFO, COMTNFILE, COMTNFILEDETAIL
+category10Component1ver=Wizard.3.8.0
+category10Component1web=
+category10Component1add=
+
+category10Component2nam=Survey
+category10Component2pac=egovframework.mbl.com.uss.olp.qri
+category10Component2de1=egovframework.mbl.com.cmm
+category10Component2de2=egovframework.mbl.com.uat.uia
+category10Component2des=Of survey question, provide answer function of multiple choice&#47;essay<br/><br/>&#45;Mobile Survey<br/>Of survey question, provide answer enrollment and statistics search function of multiple choice&#47;essay
+category10Component2use=COMTECOPSEQ, COMTNRESTDE, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNEMPLYRINFO, COMTNFILE, COMTNFILEDETAIL, COMTNQUSTNRTMPLAT, COMTNQESTNRINFO, COMTNQUSTNRRESPONDINFO, COMTNQUSTNRQESITM, COMTNQUSTNRRSPNSRESULT, COMTNQUSTNRIEM
+category10Component2ver=Wizard.3.8.0
+category10Component2web=
+category10Component2add=
+
+category10Component3nam=Online Poll Participation
+category10Component3pac=egovframework.mbl.com.uss.olp.opp
+category10Component3de1=egovframework.mbl.com.cmm
+category10Component3de2=egovframework.mbl.com.uat.uia
+category10Component3des=Provide functions to manage the yes&#45;or&#45;no poll on specific topic set by the manager<br/><br/>&#45;Mobile Online POLL<br/>Provide search statistics information and participate in the vote which set by the administrator for the pros and cons on a particular topic
+category10Component3use=COMTECOPSEQ, COMTNRESTDE, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNEMPLYRINFO, COMTNFILE, COMTNFILEDETAIL, COMTNONLINEPOLLMANAGE, COMTNONLINEPOLLIEM, COMTNONLINEPOLLRESULT
+category10Component3ver=Wizard.3.8.0
+category10Component3web=
+category10Component3add=
+
+
+category11nam=Information Provision/ Notification
+category11des=Functions, such as statistic management, reportings, browsing and real time information magement support the process of information provided to users
+
+category11Component1nam=News Management
+category11Component1pac=egovframework.mbl.com.uss.ion.nws
+category11Component1de1=egovframework.mbl.com.cmm
+category11Component1de2=egovframework.mbl.com.uat.uia
+category11Component1des=Provide news information in bbs type to the user <br/><br/>&#45;Mobile News<br/>Provide news information in bbs type to the user
+category11Component1use=COMTECOPSEQ, COMTNRESTDE, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNFILE, COMTNFILEDETAIL, COMTNNEWSINFO
+category11Component1ver=Wizard.3.8.0
+category11Component1web=
+category11Component1add=
+
+category11Component2nam=Recommended Site Management
+category11Component2pac=egovframework.mbl.com.uss.ion.rec
+category11Component2de1=egovframework.mbl.com.cmm
+category11Component2de2=egovframework.mbl.com.uat.uia
+category11Component2des=Provide function that manage personal recommend web site<br/><br/>&#45;Mobile Recommended Site<br/>Provide recommended site  as BBS
+category11Component2use=COMTECOPSEQ, COMTNRESTDE, COMTNRECOMENDSITEINFO, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNFILE, COMTNFILEDETAIL
+category11Component2ver=Wizard.3.8.0
+category11Component2web=
+category11Component2add=
+
+category11Component3nam=Celebration/Events/Campaigns
+category11Component3pac=egovframework.mbl.com.uss.ion.ecc
+category11Component3de1=egovframework.mbl.com.cmm
+category11Component3de2=egovframework.mbl.com.uat.uia
+category11Component3des=Provide funtions that manage celebration&#47;events &#47;campaigns schedule and content<br/><br/>&#45;Mobile Celebration&#47;Events&#47;Campaigns<br/>Provide funtions that manage celebration&#47;event &#47;campaigns schedule and content
+category11Component3use=COMTECOPSEQ, COMTNRESTDE, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNEMPLYRINFO, COMTNFILE, COMTNFILEDETAIL, COMTNEVENTINFO, COMTNEXTRLHRINFO
+category11Component3ver=Wizard.3.8.0
+category11Component3web=
+category11Component3add=
+
+category11Component4nam=Site Map
+category11Component4pac=egovframework.mbl.com.sym.mnu.mcm
+category11Component4de1=egovframework.mbl.com.cmm
+category11Component4de2=egovframework.mbl.com.uat.uia
+category11Component4des=Provide function that depending on user rights making user's menu<br/><br/>&#45;Mobile Site Map<br/>Provide sitemap by menu and mobile standard sitemap
+category11Component4use=COMTCZIP, COMTRDNMADRZIP, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNFILE, COMTNFILEDETAIL
+category11Component4ver=Wizard.3.8.0
+category11Component4web=
+category11Component4add=
+
+
+category12nam=Mobile Menu Management
+category12des=Provide management function that generate menu and show it on the screen
+
+category12Component1nam=Mobile Menu Management
+category12Component1pac=egovframework.mbl.com.mgr
+category12Component1de1=egovframework.mbl.com.cmm
+category12Component1de2=egovframework.mbl.com.uat.uia
+category12Component1des=Provide management function that generate menu and show it on the screen
+category12Component1use=COMTNMOBILEMENUINFO
+category12Component1ver=Wizard.3.8.0
+category12Component1web=
+category12Component1add=
+
+
+category13nam=Cooperation
+category13des=Service that support Internal / external public, colleagues and other stakeholders to communicate and information sharing, there are services like BBS,teleconferencing,text message,messanger,e-mail,schedule sharing, community, sharing room, electronic payment, online survey
+
+category13Component1nam=Real-time Notification Services
+category13Component1pac=egovframework.mbl.com.rns
+category13Component1de1=egovframework.mbl.com.cmm
+category13Component1de2=egovframework.mbl.com.uat.uia
+category13Component1des=Provide function to notify specific events such as news,notices through mobile devices
+category13Component1use=COMTECOPSEQ, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNFILE, COMTNFILEDETAIL, COMTNREALTIMENOTICE
+category13Component1ver=Wizard.3.8.0
+category13Component1web=
+category13Component1add=
+
+category13Component2nam=Mobile Device Identification
+category13Component2pac=egovframework.mbl.com.mdi
+category13Component2de1=egovframework.mbl.com.cmm
+category13Component2de2=egovframework.mbl.com.uat.uia
+category13Component2des=Provide function that check model,OS,browser version and type of connected mobile device
+category13Component2use=COMTECOPSEQ, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNFILE, COMTNFILEDETAIL, COMTNDEVICE
+category13Component2ver=Wizard.3.8.0
+category13Component2web=
+category13Component2add=
+
+category13Component3nam=Sychronize service
+category13Component3pac=egovframework.mbl.com.syn
+category13Component3de1=egovframework.mbl.com.cmm
+category13Component3de2=egovframework.mbl.com.uat.uia
+category13Component3des=Provide function that use local storage and when required, approach to remote storage for sychronize
+category13Component3use=COMTECOPSEQ, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNFILE, COMTNFILEDETAIL, COMTNSYNC
+category13Component3ver=Wizard.3.8.0
+category13Component3web=
+category13Component3add=
+
+category13Component4nam=Offline web service
+category13Component4pac=egovframework.mbl.com.ows
+category13Component4de1=egovframework.mbl.com.cmm
+category13Component4de2=egovframework.mbl.com.uat.uia
+category13Component4des=Provide function that when internet is disconnected web interface can be usable
+category13Component4use=COMTECOPSEQ, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNFILE, COMTNFILEDETAIL, COMTNOFFLINEWEB
+category13Component4ver=Wizard.3.8.0
+category13Component4web=
+category13Component4add=
+
+category13Component5nam=Location information connection
+category13Component5pac=egovframework.mbl.com.geo
+category13Component5de1=egovframework.mbl.com.cmm
+category13Component5de2=egovframework.mbl.com.uat.uia
+category13Component5des=Provide function that user can confirm location of terminal information in browser by interlocking with terminal GPS
+category13Component5use=COMTECOPSEQ, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNFILE, COMTNFILEDETAIL, COMTNGEOLOCATION
+category13Component5ver=Wizard.3.8.0
+category13Component5web=
+category13Component5add=
+
+
+category14nam=Digital Asset Management
+category14des=Define content processing, content authoring and content publishing as a support of managing user as rights on the content of production, processing, distributing various documents and multimedia material (images, audio, video, etc.)
+
+category14Component1nam=Mobile Photo Album
+category14Component1pac=egovframework.mbl.com.mpa
+category14Component1de1=egovframework.mbl.com.cmm
+category14Component1de2=egovframework.mbl.com.uat.uia
+category14Component1des=Component function that provide lists and detailed pictures at the same time to easily view pictures
+category14Component1use=COMTECOPSEQ, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNFILE, COMTNFILEDETAIL, COMTNPHOTOALBUM
+category14Component1ver=Wizard.3.8.0
+category14Component1web=
+category14Component1add=
+
+category14Component2nam=Mobile Chart/Graph
+category14Component2pac=egovframework.mbl.com.mcg
+category14Component2de1=egovframework.mbl.com.cmm
+category14Component2de2=egovframework.mbl.com.uat.uia
+category14Component2des=Provide chart&#47;graph function to configure mobile display
+category14Component2use=COMTECOPSEQ, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNFILE, COMTNFILEDETAIL, COMTNCHARTGRAPH
+category14Component2ver=Wizard.3.8.0
+category14Component2web=
+category14Component2add=
+
+category14Component3nam=Multimedia control
+category14Component3pac=egovframework.mbl.com.mlt
+category14Component3de1=egovframework.mbl.com.cmm
+category14Component3de2=egovframework.mbl.com.uat.uia
+category14Component3des=Provide playing or searching video and music source in web interface which is stored at server
+category14Component3use=COMTECOPSEQ, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNFILE, COMTNFILEDETAIL, COMTNMLTMD
+category14Component3ver=Wizard.3.8.0
+category14Component3web=
+category14Component3add=
+
+
+category15nam=System/Service Connection
+category15des=Define service provided to external system which create function as service and let user to access and call and use
+
+category15Component1nam=OPEN-API Connection Service
+category15Component1pac=egovframework.mbl.com.oas
+category15Component1de1=egovframework.mbl.com.cmm
+category15Component1de2=egovframework.mbl.com.uat.uia
+category15Component1des=Provide function that interprete service result provided based on REST and connect it to web page
+category15Component1use=COMTECOPSEQ, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNFILE, COMTNFILEDETAIL, COMTNOPENAPI
+category15Component1ver=Wizard.3.8.0
+category15Component1web=
+category15Component1add=
+
+category15Component2nam=MMS service connection
+category15Component2pac=egovframework.mbl.com.mms
+category15Component2de1=egovframework.mbl.com.cmm
+category15Component2de2=egovframework.mbl.com.uat.uia
+category15Component2des=Provide function that Provide function that send message to civil petition in mobile web enviornment by MMS function offered by M&#45;Gov
+category15Component2use=COMTECOPSEQ, COMTCCMMNCLCODE, COMTCCMMNCODE, COMTCCMMNDETAILCODE, COMTNAUTHORGROUPINFO, COMTNORGNZTINFO, COMTNFILE, COMTNFILEDETAIL, COMTNMMS, COMTNMMSATTACH
+category15Component2ver=Wizard.3.8.0
+category15Component2web=
+category15Component2add=
+

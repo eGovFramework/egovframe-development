@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            category="egovframework.dev.imp.confmngt.propertypages.emptyconfpropertypage"
+            class="egovframework.mdev.imp.confmngt.properties.MobileProjectConfPropertyPage"
+            id="egovframework.mdev.imp.confmngt.propertypages.egovconfpropertypage"
+            name="Mobile Common Component">
+           <enabledWhen>
+ 		     <adapt type="org.eclipse.core.resources.IProject">
+		          <test property="org.eclipse.core.resources.projectNature" value="egovframework.mdev.imp.ide.natures.egovnature"/>
+		     </adapt>         
+           </enabledWhen>
+      </page>
+   </extension>
+</plugin>

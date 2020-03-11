@@ -1,0 +1,7 @@
+   <bean name="basicService" class="egovframework.rte.fdl.idgnr.impl.EgovTableIdGnrService" 
+                           destroy-method="destroy">
+      <property name="dataSource" ref="dataSource"/>
+      <property name="blockSize"  value="10"/>
+      <property name="table"	  value="${idTable}"/>
+      <property name="tableName"  value="${tableName}"/>
+   </bean>

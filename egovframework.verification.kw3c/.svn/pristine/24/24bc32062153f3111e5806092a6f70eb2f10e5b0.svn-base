@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>무제 문서</title>
+<style type="text/css">
+.부제목 {
+	font-size: 20px;
+}
+.부제목 {
+	font-family: "맑은 고딕";
+	font-size: 20px;
+}
+.일반 {
+	font-size: 13px;
+}
+.일반 {
+	font-family: "맑은 고딕";
+}.제목 {
+	font-size: 24px;
+	font-family: "맑은 고딕";
+	text-align: center;
+	font-weight: bold;
+}
+.제목 span {
+	font-weight: bold;
+}
+.제목 span {
+	color: #00F;
+}
+.제목 span {
+	color: #00F;
+}
+.일반 .일반 {
+	font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+<p class="제목"><span lang="EN-US">KW3C 2.0 화면구성</span></p>
+<blockquote>
+  <p class="부제목"><span lang="EN-US">W3C-HTML </span>페이지</p>
+  <blockquote>
+    <p><span class="일반" lang="EN-US"><span class="일반">W3C</span></span><span class="일반"><span class="일반">의 <span lang="EN-US">HTML </span>웹 표준 평가 페이지 화면입니다. 이 화면에서는 웹 문서 또는 <span lang="EN-US">URL</span>의 <span lang="EN-US">DTD</span>표준 평가가 가능합니다<span lang="EN-US">.</span></span></span></p>
+    <p>
+      <span class="일반">
+      <![if !supportEmptyParas]>
+      &nbsp;
+      <![endif]><!--[if gte vml 1]><v:shapetype id="_x0000_t75"		coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"		filled="f" stroked="f">		<v:stroke joinstyle="miter"/>		<v:formulas>		<v:f eqn="if lineDrawn pixelLineWidth 0"/>		<v:f eqn="sum @0 1 0"/>		<v:f eqn="sum 0 0 @1"/>		<v:f eqn="prod @2 1 2"/>		<v:f eqn="prod @3 21600 pixelWidth"/>		<v:f eqn="prod @3 21600 pixelHeight"/>		<v:f eqn="sum @0 0 1"/>		<v:f eqn="prod @6 1 2"/>		<v:f eqn="prod @7 21600 pixelWidth"/>		<v:f eqn="sum @8 21600 0"/>		<v:f eqn="prod @7 21600 pixelHeight"/>		<v:f eqn="sum @10 21600 0"/>		</v:formulas>		<v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>		<o:lock v:ext="edit" aspectratio="t"/>	</v:shapetype><v:shape id="_x224448760" style="v-text-anchor:top;width:425.20pt;height:328.58pt;" type="#_x0000_t75"><v:imagedata o:title="EMB000008684054" src="file:///C:\Users\lee\AppData\Local\Temp\Hnc\BinData\EMB000008684054.bmp"/><w:wrap type="topAndBottom"/></v:shape><![endif]-->
+      <![if !vml]><![endif]>
+      <img src="이미지/8pW3C-HTML.bmp" width="567" height="413" alt="W3C-HTML페이지"></span></p>
+  </blockquote>
+  <p>
+    <span class="일반">
+    <![if !supportEmptyParas]>
+    &nbsp;
+    <![endif]></span></p>
+  <p><span class="일반" lang="EN-US"><span class="부제목">W3C-CSS 페이지</span></span></p>
+  <blockquote>
+    <p><span class="일반" lang="EN-US"><span class="일반">W3C</span></span><span class="일반"><span class="일반">의CSS 평가 페이지 화면으로 이 페이지를 이용하여 웹 문서 또는 <span lang="EN-US">URL</span>의 <span lang="EN-US">CSS </span>표준 평가가 가능합니다<span lang="EN-US">.</span></span></span></p>
+    <p>
+      <span class="일반">
+      <![if !supportEmptyParas]>
+      &nbsp;
+      <![endif]><!--[if gte vml 1]><v:shapetype id="_x0000_t75"		coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"		filled="f" stroked="f">		<v:stroke joinstyle="miter"/>		<v:formulas>		<v:f eqn="if lineDrawn pixelLineWidth 0"/>		<v:f eqn="sum @0 1 0"/>		<v:f eqn="sum 0 0 @1"/>		<v:f eqn="prod @2 1 2"/>		<v:f eqn="prod @3 21600 pixelWidth"/>		<v:f eqn="prod @3 21600 pixelHeight"/>		<v:f eqn="sum @0 0 1"/>		<v:f eqn="prod @6 1 2"/>		<v:f eqn="prod @7 21600 pixelWidth"/>		<v:f eqn="sum @8 21600 0"/>		<v:f eqn="prod @7 21600 pixelHeight"/>		<v:f eqn="sum @10 21600 0"/>		</v:formulas>		<v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>		<o:lock v:ext="edit" aspectratio="t"/>	</v:shapetype><v:shape id="_x223486160" style="v-text-anchor:top;width:425.20pt;height:328.58pt;" type="#_x0000_t75"><v:imagedata o:title="EMB000008684056" src="file:///C:\Users\lee\AppData\Local\Temp\Hnc\BinData\EMB000008684056.bmp"/><w:wrap type="topAndBottom"/></v:shape><![endif]-->
+      <![if !vml]><![endif]>
+      <img src="이미지/9pW3C-CSS.bmp" width="567" height="413" alt="W3C-CSS페이지"></span></p>
+  </blockquote>
+  <p>
+    <span class="일반">
+    <![if !supportEmptyParas]>
+    &nbsp;
+    <![endif]><![if !supportEmptyParas]>
+    &nbsp;</span></p>
+  <blockquote>&nbsp;  </blockquote>
+</blockquote>
+</body>
+</html>

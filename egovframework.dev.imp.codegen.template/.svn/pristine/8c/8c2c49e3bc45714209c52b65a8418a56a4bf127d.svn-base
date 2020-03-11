@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="templateWizards" name="Template Wizards" schema="schema/templatewizards.exsd"/>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            category="egovframework.dev.imp.ui.views"
+            class="egovframework.dev.imp.codegen.template.views.TemplatesView"
+            icon="icons/tcgenerator.gif"
+            id="egovframework.dev.imp.codegen.views.TemplatesView"
+            name="eGovFrame Templates"
+            restorable="true">
+      </view>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="egovframework.dev.imp.ide.perspectives.egovperspective">
+         <viewShortcut
+               id="egovframework.dev.imp.codegen.views.TemplatesView">
+         </viewShortcut>
+      </perspectiveExtension>
+   </extension>
+
+</plugin>

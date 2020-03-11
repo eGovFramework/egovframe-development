@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+	<appender name="${txtAppenderName}"
+		class="egovframework.rte.fdl.logging.db.EgovJDBCAppender">
+		<!-- caller_filename, caller_class, caller_method, caller_line -->
+		<param name="locationInfo" value="${chkLocationInfo}" />
+		<param name="sql"
+			value="INSERT INTO logging_event (
+									sequence_number, timestamp, rendered_message,
+									logger_name, level_string, ndc,
+									thread_name, reference_flag,
+									caller_filename, caller_class,
+									caller_method, caller_line) 
+								VALUES 
+									('%X{sequence_number}', '%X{timestamp}', '%X{rendered_message}', 
+									'%X{logger_name}', '%X{level_string}', '%X{ndc}', 
+									'%X{thread_name}', '%X{reference_flag}', 
+									'%X{caller_filename}', '%X{caller_class}', 
+									'%X{caller_method}', '%X{caller_line}')" />
+	</appender>
+
+	<logger name="org.springframework" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="${txtAppenderName}" />
+	</logger>
+	
+	<root>
+		<level value="OFF" />
+		<appender-ref ref="${txtAppenderName}" />
+	</root>
+		
+</log4j:configuration>	

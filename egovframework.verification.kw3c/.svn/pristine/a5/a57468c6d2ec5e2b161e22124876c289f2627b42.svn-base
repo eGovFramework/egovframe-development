@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>무제 문서</title>
+<style type="text/css">
+.부제목 {
+	font-size: 16px;
+}
+.부제목 {
+	font-size: 24px;
+}
+.부제목 {
+	font-family: "맑은 고딕";
+	font-size: 20px;
+}
+.일반 {
+	font-size: 13px;
+}
+.일반 {
+	font-family: "맑은 고딕";
+}.제목 {
+	font-size: 25px;
+	font-family: "맑은 고딕";
+	text-align: center;
+}
+.띄어쓰기 {
+	font-size: 1px;
+}
+.제목 .제목1 {
+	font-size: 24px;
+	font-weight: bold;
+	color: #00F;
+}
+.부제목 .일반 {
+	font-size: 14px;
+}
+.일반 {
+	font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+<p class="제목"><span class="제목1">KW3C 2.0 특징</span></p>
+<blockquote>
+  <h1 class="부제목"><span class="일반">새로 제작된 웹표준 진단 프로그램은 프로젝트 관리 기능이 대폭 개선되었습니다<span lang="EN-US">. </span>아울러 이전 버전에서 불가능하였던 <span lang="EN-US">HTML5 </span>평가 기능도 추가되었습니다. <span lang="EN-US"> </span></span></h1>
+  <blockquote>
+<p class="띄어쓰기">&nbsp;</p>
+    <p><span class="일반"><span class="일반">주요 개선 사항은 다음과 같습니다<span lang="EN-US">.</span></span></span></p>
+  </blockquote>
+  <ol>
+    <li>
+      <span class="일반"><span class="일반">
+      <![if !supportEmptyParas]> 프로젝트의 생성<span lang="EN-US">, </span>재편집이 가능합니다<span lang="EN-US">. </span>따라서 평가를 다시 수행하기 위하여 새로 프로젝트를 생성할 필요가 없이 기존의 프로젝트를 수정하여 평가할 수 있습니다<span lang="EN-US">.</span></span></span></li>
+    <li><span class="일반"> 동일한 이름으로 프로젝트를 생성하거나 재편집 또한 평가를 수행하는 경우에 기존의 평가결과는 그대로 보존됩니다<span lang="EN-US">. </span>이때 기존 프로젝트와 평가결과는 번호가 자동으로 붙어 프로젝트 관리가 용이합니다<span lang="EN-US">.</span></span></li>
+    <li><span class="일반"> 프로젝트마다 적용되는 기본 설정을 하고<span lang="EN-US">, </span>프로젝트 생성 시에 이 값이 적용됩니다<span lang="EN-US">. </span>또한 프로젝트 별로 설정 값을 변경할 수 있는 기능을 제공함으로써 프로그램의 사용성을 대폭 강화하였습니다<span lang="EN-US">.</span></span></li>
+    <li><span class="일반"><span lang="EN-US">KW3C2.0</span>은 장애인 접근성을 제공합니다<span lang="EN-US">. </span>모든 기능은 메뉴로 선택이 가능합니다<span lang="EN-US">. </span>또한 각 창에서도 <span lang="EN-US">Tab</span>키<span lang="EN-US">, Space</span>키 및 <span lang="EN-US">Enter</span>키를 이용한 키보드 접근성을 <span lang="EN-US">100% </span>제공합니다<span lang="EN-US">. </span></span></li>
+    <li><span class="일반"> 평가 프로세스를 실기한 확인할 수 있도록 프로그래스 바와 로그 창을 추가하였습니다<span lang="EN-US">. </span>프로그램의 오동작시에 로그 창의 기록을 담당자에게 통보하면 빠르고 편리한 대응을 받을 수 있습니다<span lang="EN-US">.</span></span></li>
+    <li><span class="일반"> 웹 형식의 오프라인 도움말을 제공합니다<span lang="EN-US">. </span>도움말은 이 프로그램을 사용하는데 필요한 사용법과 각종 정보를 제공합니다<span lang="EN-US">.</span></span></li>
+    <li><span class="일반"><span lang="EN-US">W3C</span>의 <span lang="EN-US">DTD </span>평가 페이지와 <span lang="EN-US">CSS </span>평가 페이지를 별도의 화면으로 제공하여 <span lang="EN-US">W3C </span>웹 페이지를 통한 평가를 손쉽게 할 수 있습니다<span lang="EN-US">. </span></span></li>
+  </ol>
+</blockquote>
+</body>
+</html>

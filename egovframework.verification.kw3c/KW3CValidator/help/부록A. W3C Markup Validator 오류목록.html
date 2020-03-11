@@ -1,0 +1,508 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>무제 문서</title>
+<style type="text/css">
+.제목 {
+	font-size: 24px;
+	font-family: "맑은 고딕";
+	text-align: center;
+}
+.부제목 {
+	font-size: 16px;
+}
+.부제목 {
+	font-size: 16px;
+}
+.부제목 {
+	font-size: 16px;
+}
+.일반 {
+	font-size: 13px;
+}
+.일반 {
+	font-family: "맑은 고딕";
+	font-size: 14px;
+}
+부제목 {
+	font-size: 20px;
+}
+.부제목 {
+	font-size: 20px;
+}
+.일반강조 {
+	font-weight: bold;
+}
+.부제목 {
+	font-family: "맑은 고딕";
+}
+.띄어쓰기 {
+	font-size: 1px;
+}
+.제목 span {
+	font-weight: bold;
+}
+.제목 span {
+	color: #00F;
+}
+.일반 .일반강조 .일반 {
+	font-size: 18px;
+}
+.일반 .일반 .일반강조 .일반강조 .일반강조 {
+	font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+<p class="제목"><span lang="EN-US">W3C Markup Validator </span>오류 목록</p>
+<ul>
+  <li class="일반"><span class="부제목">오류 분류 기준</span><span class="일반"> <![if !supportEmptyParas]>
+  &nbsp;
+  <![endif]></span>
+    <ul>
+      <li><span class="일반">심각 <span lang="EN-US">: </span>문서 해석<span lang="EN-US">(parsing)</span>에 대한 정보가 없거나 문서 전체를 해석하는데 심각한 오류가 발생할 수 있는 경우
+        <![if !supportEmptyParas]>
+        &nbsp;
+        <![endif]></span></li>
+      <li><span class="일반">위험 <span lang="EN-US">: </span>문서의 일부 요소와 속성을 해석하는데 오류가 발생할 수 있는 경우
+        <![if !supportEmptyParas]>
+        &nbsp;
+        <![endif]></span>
+      </li>
+    </ul>
+  </li>
+
+  <ul>
+    <li><span class="일반">보통 <span lang="EN-US">: </span>문법적으로는 오류이지만 브라우저의 오류 방지 기능으로 보완될 수 있는 경우</span></li>
+  </ul>
+</ul>
+<ul>
+  <li><span class="부제목"><span class="부제목"><span class="부제목">「심각」 오류 목록</span></span>
+    <![if !supportEmptyParas]>
+    &nbsp;</span></li>
+</ul>
+<blockquote>
+  <ul>
+    <li><span class="일반">28: unterminated comment: found end of entity inside comment </span>
+      <blockquote>
+        <p class="일반"><span class="일반">종결되지 않은 주석 <span lang="EN-US">: </span>주석 내부에서 엔티티의 끝 발견</span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">38: literal is missing closing delimiter</span>
+      <blockquote>
+        <p class="일반"><span class="일반">리터럴의 구분자를 닫지 않음</span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">42: unknown declaration type X</span>
+      <blockquote>
+        <p class="일반"><span class="일반">타입 <span lang="EN-US">X</span>에 대한 알려지지 않은 선언</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">47: end of document in prolog</span>
+      <blockquote>
+        <p class="일반"><span class="일반">프롤로그에서 문장의 끝</span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">120: normalized length of attribute value literal must not exceed LITLEN (X); length was Y</span>
+      <blockquote>
+        <p class="일반"><span class="일반">속성 값 리터럴의 표준 길이가 <span lang="EN-US">LITLEN</span>를 <span lang="EN-US">(X)</span>를 초과할 수 없음<span lang="EN-US">. </span>길이는 <span lang="EN-US">Y.</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]></span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">137: invalid comment declaration: found character X outside comment but inside comment declaration</span>
+      <blockquote>
+        <p class="일반"><span class="일반">부적절한 주석 선언 <span lang="EN-US">: </span>주석 선언 안이지만 주석 바깥에서 문자 <span lang="EN-US">X</span>가 발견됨</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">139: non SGML character number X</span>
+      <blockquote>
+        <p class="일반"><span class="일반">비 <span lang="EN-US">SGML </span>문자수 <span lang="EN-US">X</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">187: no document type declaration; will parse without validation</span>
+      <blockquote>
+        <p class="일반"><span class="일반">문서 타입 선언 없음 <span lang="EN-US">- </span>유효성 검증 없이 파싱함</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">323: DTD did not contain element declaration for document type name</span>
+      <blockquote>
+        <p><span class="일반"><span class="일반" lang="EN-US">DTD</span><span class="일반">에 문서 타입의 이름을 위한 요소 선언이 포함되어 있지 않음</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">344: no document type declaration; implying X</span>
+      <blockquote>
+        <p><span class="일반"><span class="일반" lang="EN-US">DTD </span><span class="일반">없음</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">378: no system id specified</span>
+      <blockquote>
+        <p class="일반"><span class="일반">시스템 <span lang="EN-US">ID </span>미지정</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">387: S separator in comment declaration</span>
+      <blockquote>
+        <p class="일반"><span class="일반">주석 선언의 분리기</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">410: reference to non-SGML character</span>
+      <blockquote>
+        <p class="일반"><span class="일반">비 <span lang="EN-US">SGML </span>문자에 대한 참조</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+</blockquote>
+    </li>
+  </ul>
+  </blockquote>
+<ul>
+  <li><span class="일반"><span class="부제목"><span class="부제목"><span class="부제목">「위험」 오류 목록</span></span></span></span></li>
+</ul>
+<blockquote>
+  <ul>
+    <li><span class="일반">64: document type does not allow element X here</span>
+      <blockquote>
+        <p class="일반"><span class="일반">문서 타입이 현재 위치에서 요소 <span lang="EN-US">X</span>를 허용하지 않음</span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">65: document type does not allow element X here; missing one of Y start-tag</span>
+      <blockquote>
+        <p class="일반"><span class="일반">문서 타입이 현재 위치에서 요소 <span lang="EN-US">X</span>를 허용하지 않음<span lang="EN-US">; Y </span>시작 태그 중 하나를 빠뜨림</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">68: end tag for X omitted, but its declaration does not permit this</span>
+      <blockquote>
+        <p><span class="일반"><span class="일반" lang="EN-US">X</span><span class="일반">를 위한 끝 태그가 누락되었으나<span lang="EN-US">, </span>그것의 선언은 이것을 허용하고 있지 않음</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">70: end tag for X omitted, but OMITTAG NO was specified</span>
+      <blockquote>
+        <p><span class="일반"><span class="일반" lang="EN-US">X</span><span class="일반">를 위한 끝 태그가 누락되었으나<span lang="EN-US">, OMITTAG NO</span>는 지정됨</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">73: end tag for X which is not finished</span>
+      <blockquote>
+        <p class="일반"><span class="일반">종료되지 않은 <span lang="EN-US">X</span>를 위한 끝 태그</span><span class="일반"><span class="일반"><![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">76: element X undefined</span>
+      <blockquote>
+        <p class="일반"><span class="일반">요소 <span lang="EN-US">X </span>미정의</span><span class="일반"><span class="일반"><![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">79: end tag for element X which is not open</span>
+      <blockquote>
+        <p class="일반"><span class="일반">열려 있지 않은 요소 <span lang="EN-US">X</span>를 위한 끝 태그</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">108: there is no attribute X</span>
+      <blockquote>
+        <p class="일반"><span class="일반">속성 <span lang="EN-US">X</span>가 없음</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">112: duplicate specification of attribute X</span>
+      <blockquote>
+        <p class="일반"><span class="일반">속성 <span lang="EN-US">X</span>의 중복된 지정</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">121: syntax of attribute value does not conform to declared value</span>
+      <blockquote>
+        <p class="일반"><span class="일반">속성 값의 구문이 선언된 값과 일치하지 않음</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">122: character X is not allowed in the value of attribute Y</span>
+      <blockquote>
+        <p class="일반"><span class="일반">문자 <span lang="EN-US">X</span>가 속성 <span lang="EN-US">Y</span>의 값으로 허용되지 않음</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">123: value of attribute X must be a single token</span>
+      <blockquote>
+        <p class="일반"><span class="일반">속성 <span lang="EN-US">X</span>의 값이 반드시 하나의 토큰이 되어야 함</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">124: value of attribute Y invalid: X cannot start a number token</span>
+      <blockquote>
+        <p class="일반"><span class="일반">속성 <span lang="EN-US">Y</span>의 값이 부적절<span lang="EN-US">: X</span>는 숫자 토큰을 시작할 수 없음</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">125: value of attribute Y invalid: X cannot start a name</span>
+      <blockquote>
+        <p class="일반"><span class="일반">속성 <span lang="EN-US">Y</span>의 값이 부적절<span lang="EN-US">: X</span>는 이름을 시작할 수 없음</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">127: required attribute X not specified</span>
+      <blockquote>
+        <p class="일반"><span class="일반">필수 속성 <span lang="EN-US">X </span>미지정</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">131: value of attribute Y cannot be X; must be one of Z</span>
+      <blockquote>
+        <p class="일반"><span class="일반">속성 <span lang="EN-US">Y</span>의 값이 <span lang="EN-US">X</span>가 될 수 없음<span lang="EN-US">; </span>반드시 <span lang="EN-US">Z </span>중의 하나이어야 함</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">141: ID X already defined</span>
+      <blockquote>
+        <p><span class="일반"><span class="일반" lang="EN-US">ID X</span><span class="일반">가 이미 정의되어 있음</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">183: reference to non-existent ID X</span>
+      <blockquote>
+        <p class="일반"><span class="일반">존재하지 않는 <span lang="EN-US">ID X</span>를 참조</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">246: unclosed start-tag requires SHORTTAG YES</span>
+      <blockquote>
+        <p class="일반"><span class="일반">종결되지 않은 시작 태그는 <span lang="EN-US">SHORTTAG YES</span>를 요구함</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">247: NET-enabling start-tag requires SHORTTAG YES</span>
+      <blockquote>
+        <p><span class="일반"><span class="일반" lang="EN-US">NET-</span><span class="일반">가능 시작 태그는 <span lang="EN-US">SHORTTAG YES</span>를 요구함</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">248: unclosed end-tag requires SHORTTAG YES</span>
+      <blockquote>
+        <p class="일반"><span class="일반">종결되지 않은 끝 태그는 <span lang="EN-US">SHORTTAG YES</span>를 요구함</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">333: empty start-tag</span>
+      <blockquote>
+        <p class="일반"><span class="일반">빈 시작 태그</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">334: empty end-tag</span>
+      <blockquote>
+        <p class="일반"><span class="일반">빈 끝 태그</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+        </span></span></p>
+      </blockquote>
+    </li>
+    <li><span class="일반">407: NET-enabling start-tag not immediately followed by null end-tag</span>
+      <blockquote>
+        <p><span class="일반"><span class="일반" lang="EN-US">NET-</span><span class="일반">가능 시작 태그는 <span lang="EN-US">null </span>끝 태그가 바로 따라오면 안됨</span></span></p>
+      </blockquote>
+    </li>
+  </ul>
+</blockquote>
+<ul>
+    <li><span class="일반"><span class="부제목">「보통」 오류 목록</span></span></li>
+</ul>
+<blockquote>
+    <ul>
+      <li><span class="일반">25: general entity X not defined and no default entity</span>
+        <blockquote>
+          <p class="일반"><span class="일반">일반 개체 <span lang="EN-US">X</span>가 정의되지 않았고<span lang="EN-US">, </span>기본 개체가 아닐 경우</span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">63: character data is not allowed here</span>
+        <blockquote>
+          <p class="일반"><span class="일반">문자 데이터가 여기서는 허용되지 않음</span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">82: an attribute value must be a literal unless it contains only name characters</span>
+        <blockquote>
+          <p class="일반"><span class="일반">단지 이름 문자가 포함할 경우 외에는 속성값은 리터럴이 되어야 함</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">105: an attribute specification must start with a name or name token</span>
+        <blockquote>
+          <p class="일반"><span class="일반">속성 명세는 이름 또는 이름 토큰을 사용하여 시작하여야 함</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">107: the name and VI delimiter can be omitted from an attribute specification only if SHORTTAG YES is specified</span>
+        <blockquote>
+          <p class="일반"><span class="일반">이름과 <span lang="EN-US">VI </span>구분자<span lang="EN-US">(=)</span>는 <span lang="EN-US">SHORTTAG YES</span>가 정의되었을 때만 속성 명세로부터 생략될 수 있음</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">111: an attribute value literal can occur in an attribute specification list only after a VI delimiter</span>
+        <blockquote>
+          <p class="일반"><span class="일반">속성값 리터럴은 <span lang="EN-US">VI </span>구분기호<span lang="EN-US">(=) </span>뒤에 속성 명세 리스트 내에서만 발생 할 수 있음 </span>    </p>
+        </blockquote>
+      </li>
+      <li><span class="일반">325: reference to entity X for which no system identifier could be generated</span>
+        <blockquote>
+          <p class="일반"><span class="일반">생성되어지는 시스템 식별자가 없는 개체 <span lang="EN-US">X</span>를 참조한 경우</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">338: cannot generate system identifier for general entity X</span>
+        <blockquote>
+          <p class="일반"><span class="일반">일반 개체 <span lang="EN-US">X</span>에 대한 시스템 식별자를 생성할 수 없을 경우</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">394: reference not terminated by REFC delimiter</span>
+        <blockquote>
+          <p><span class="일반"><span class="일반" lang="EN-US">REFC </span><span class="일반">구분자<span lang="EN-US">(&amp;)</span>에 의해서 종료되지 않은 참조</span></span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">403: reference to external entity in attribute value</span>
+        <blockquote>
+          <p class="일반"><span class="일반">속성 값 내에서 외부 개체를 참조한 경우</span><span class="일반"><span class="일반">
+          <![if !supportEmptyParas]>
+          &nbsp;
+          <![endif]>
+          </span></span></p>
+        </blockquote>
+      </li>
+      <li><span class="일반">404: character X is the first character of a delimiter but occurred as data</span>
+        <blockquote>
+          <p class="일반"><span class="일반">문자 <span lang="EN-US">X</span>가 구분자의 첫 번째 문자이나 데이터로써 발생된 경우</span></p>
+        </blockquote>
+      </li>
+    </ul>
+</blockquote>
+<blockquote>
+  <p class="일반"><span class="일반"><span class="일반강조"><span class="일반강조"><span class="일반강조">※ 이 목록에 포함되지 않는 오류는 모두 「보통」으로 분류함</span></span></span></span></p>
+    <p class="일반"><span class="일반강조"><span class="일반">※ <span lang="EN-US">HTML5</span>의 경우에는 <span lang="EN-US">2012. 8</span>월 현재 <span lang="EN-US">W3C</span>의 표준작업이 종료되지 않아 오류목록이 확정되지 않았음<span lang="EN-US">. </span>따라서 모두 「보통」으로 분류함</span><span class="일반"></span></span></p>
+  </blockquote>
+<p>
+  <span class="일반"><span class="일반">
+  <![if !supportEmptyParas]>
+  &nbsp;
+  </span>
+  </span>
+  <![endif]>
+</p>
+</body>
+</html>

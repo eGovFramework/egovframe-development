@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean name="${txtPropertyServiceName}" class="egovframework.rte.fdl.property.impl.EgovPropertyServiceImpl" 
+         destroy-method="destroy">
+#if(${rdoType} == "Internal Properties")         
+        <property name="properties">
+            <map>
+		        <entry key="${txtKey}" value="${txtValue}"/>
+            </map>
+        </property>	
+#end      		
+#if(${rdoType} == "External File")
+        <property name="extFileName">
+            <set>
+                <map>
+                    <entry key="encoding" value="${cboEncoding}"/>
+                    <entry key="filename" value="${txtPropertyFile}"/>
+                </map>
+                <!--
+                <value>${txtPropertyFile}</value>
+                -->
+            </set>
+        </property>	
+#end
+    </bean>    
+    
+</beans>    

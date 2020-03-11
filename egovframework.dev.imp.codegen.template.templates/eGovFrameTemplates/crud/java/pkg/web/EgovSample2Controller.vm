@@ -1,0 +1,201 @@
+##
+#set($voPackage="${voPackage}")
+#set($voClassName="${model.entity.pcName}VO")
+#set($defaultVoClassName="${model.entity.pcName}DefaultVO")
+#set($voInstanceName="${model.entity.ccName}VO")
+#set($servicePackage="${servicePackage}")
+#set($serviceClassName="${model.entity.pcName}Service")
+#set($serviceName="${model.entity.ccName}Service")
+#set($serviceInstanceName="${model.entity.ccName}Service")
+#set($controllerPackage="${controllerPackage}")
+#set($controllerClassName="${model.entity.pcName}Controller")
+##
+##
+#set($listInstanceName="${model.entity.ccName}List")
+#set($insertMethodName="insert${model.entity.pcName}")
+#set($updateMethodName="update${model.entity.pcName}")
+#set($deleteMethodName="delete${model.entity.pcName}")
+#set($selectMethodName="select${model.entity.pcName}")
+#set($selectListMethodName="select${model.entity.pcName}List")
+#set($selectListTotCntMethodName="select${model.entity.pcName}ListTotCnt")
+##
+##
+#set($updateViewMethodName="update${model.entity.pcName}View")
+#set($addMethodName="add${model.entity.pcName}")
+#set($addViewMethodName="add${model.entity.pcName}View")
+##
+#set($listPath="/${model.entity.ccName}/${model.entity.pcName}List.do")
+#set($addViewPath="/${model.entity.ccName}/add${model.entity.pcName}View.do")
+#set($addPath="/${model.entity.ccName}/add${model.entity.pcName}.do")
+#set($selectPath="/${model.entity.ccName}/select${model.entity.pcName}.do")
+#set($updatePath="/${model.entity.ccName}/update${model.entity.pcName}.do")
+#set($updateViewPath="/${model.entity.ccName}/update${model.entity.pcName}View.do")
+#set($deletePath="/${model.entity.ccName}/delete${model.entity.pcName}.do")
+##
+#set($listView="/${model.entity.ccName}/${model.entity.pcName}List")
+#set($registerView="/${model.entity.ccName}/${model.entity.pcName}Register")
+##
+##
+package ${controllerPackage};
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
+
+import egovframework.rte.fdl.property.EgovPropertyService;
+import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+
+#if (${servicePackage}=='${servicePackage}')
+// Servoce 객체에 대한 import 구문
+// import (service package).${serviceClassName};
+#else
+import ${servicePackage}.${serviceClassName};
+#end
+#if (${voPackage}=='${voPackage}')
+// Vo 객체에 대한 import 구문
+// import (vo package).${defaultVoClassName};
+// import (vo package).${voClassName};
+#else
+import ${voPackage}.${defaultVoClassName};
+import ${voPackage}.${voClassName};
+#end
+
+/**
+ * @Class Name : ${controllerClassName}.java
+ * @Description : ${model.entity.pcName} Controller class
+ * @Modification Information
+ *
+ * @author ${author}
+ * @since ${createDate}
+ * @version 1.0
+ * @see
+ *  
+ *  Copyright (C)  All right reserved.
+ */
+
+@Controller
+@SessionAttributes(types=${voClassName}.class)
+public class ${controllerClassName} {
+
+    @Resource(name = "${serviceName}")
+    private ${serviceClassName} ${serviceInstanceName};
+    
+    /** EgovPropertyService */
+    @Resource(name = "propertiesService")
+    protected EgovPropertyService propertiesService;
+	
+    /**
+	 * ${model.entity.name} 목록을 조회한다. (pageing)
+	 * @param searchVO - 조회할 정보가 담긴 ${defaultVoClassName}
+	 * @return "${listView}"
+	 * @exception Exception
+	 */
+    @RequestMapping(value="${listPath}")
+    public String ${selectListMethodName}(@ModelAttribute("searchVO") ${defaultVoClassName} searchVO, 
+    		ModelMap model)
+            throws Exception {
+    	
+    	/** EgovPropertyService.sample */
+    	searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
+    	searchVO.setPageSize(propertiesService.getInt("pageSize"));
+    	
+    	/** pageing */
+    	PaginationInfo paginationInfo = new PaginationInfo();
+		paginationInfo.setCurrentPageNo(searchVO.getPageIndex());
+		paginationInfo.setRecordCountPerPage(searchVO.getPageUnit());
+		paginationInfo.setPageSize(searchVO.getPageSize());
+		
+		searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
+		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
+		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+		
+        List<?> ${listInstanceName} = ${serviceInstanceName}.${selectListMethodName}(searchVO);
+        model.addAttribute("resultList", ${listInstanceName});
+        
+        int totCnt = ${serviceInstanceName}.${selectListTotCntMethodName}(searchVO);
+		paginationInfo.setTotalRecordCount(totCnt);
+        model.addAttribute("paginationInfo", paginationInfo);
+        
+        return "${listView}";
+    } 
+    
+    @RequestMapping("${addViewPath}")
+    public String ${addViewMethodName}(
+            @ModelAttribute("searchVO") ${defaultVoClassName} searchVO, Model model)
+            throws Exception {
+        model.addAttribute("${voInstanceName}", new ${voClassName}());
+        return "${registerView}";
+    }
+    
+    @RequestMapping("${addPath}")
+    public String ${addMethodName}(
+            ${voClassName} ${voInstanceName},
+            @ModelAttribute("searchVO") ${defaultVoClassName} searchVO, SessionStatus status)
+            throws Exception {
+        ${serviceInstanceName}.${insertMethodName}(${voInstanceName});
+        status.setComplete();
+        return "forward:${listPath}";
+    }
+    
+    @RequestMapping("${updateViewPath}")
+    public String ${updateViewMethodName}(
+#if(${model.primaryKeys} == [])
+            @RequestParam("${model.attributes.get(0).ccName}") ${model.attributes.get(0).javaType} ${model.attributes.get(0).ccName} ,
+#else                     
+#foreach($attribute in $model.primaryKeys)
+            @RequestParam("${attribute.ccName}") ${attribute.javaType} ${attribute.ccName} ,
+#end    
+#end
+            @ModelAttribute("searchVO") ${defaultVoClassName} searchVO, Model model)
+            throws Exception {
+        ${voClassName} ${voInstanceName} = new ${voClassName}();
+#if(${model.primaryKeys} == [])
+        ${voInstanceName}.set${model.attributes.get(0).pcName}(${model.attributes.get(0).ccName});        
+#else        
+#foreach($attribute in $model.primaryKeys)        
+        ${voInstanceName}.set${attribute.pcName}(${attribute.ccName});
+#end 
+#end       
+        // 변수명은 CoC 에 따라 ${voInstanceName}
+        model.addAttribute(${selectMethodName}(${voInstanceName}, searchVO));
+        return "${registerView}";
+    }
+
+    @RequestMapping("${selectPath}")
+    public @ModelAttribute("${voInstanceName}")
+    ${voClassName} ${selectMethodName}(
+            ${voClassName} ${voInstanceName},
+            @ModelAttribute("searchVO") ${defaultVoClassName} searchVO) throws Exception {
+        return ${serviceInstanceName}.${selectMethodName}(${voInstanceName});
+    }
+
+    @RequestMapping("${updatePath}")
+    public String ${updateMethodName}(
+            ${voClassName} ${voInstanceName},
+            @ModelAttribute("searchVO") ${defaultVoClassName} searchVO, SessionStatus status)
+            throws Exception {
+        ${serviceInstanceName}.${updateMethodName}(${voInstanceName});
+        status.setComplete();
+        return "forward:${listPath}";
+    }
+    
+    @RequestMapping("${deletePath}")
+    public String ${deleteMethodName}(
+            ${voClassName} ${voInstanceName},
+            @ModelAttribute("searchVO") ${defaultVoClassName} searchVO, SessionStatus status)
+            throws Exception {
+        ${serviceInstanceName}.${deleteMethodName}(${voInstanceName});
+        status.setComplete();
+        return "forward:${listPath}";
+    }
+
+}

@@ -1,0 +1,12 @@
+<appender name="${appenderName}" class="org.apache.log4j.db.EgovDBAppender">
+	<!-- caller_filename, caller_class, caller_method, caller_line -->
+	<param name="locationInfo" value="true" />
+	<!-- Oracle 인 경우 아래를 false 로 설정 또는 아래 옵션 라인 삭제(기본 false) -->
+	<param name="useSupportsGetGeneratedKeys" value="false" />
+	<connectionSource class="org.apache.log4j.db.DriverManagerConnectionSource">
+		<param name="driverClass" value="${driver}" />
+		<param name="url" value="${url}" />
+		<param name="user" value="${username}" />
+		<param name="password" value="${password}" />
+	</connectionSource>
+</appender>

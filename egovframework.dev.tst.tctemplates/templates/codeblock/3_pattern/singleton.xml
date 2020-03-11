@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0_07" class="java.beans.XMLDecoder"> 
+ <array class="egovframework.dev.tst.tcgenerator.CodeBlockInfo" length="1"> 
+  <void index="0"> 
+   <object class="egovframework.dev.tst.tcgenerator.CodeBlockInfo"> 
+    <void property="tcTemplateName"> 
+     <string>Equality Test</string> 
+    </void> 
+    <void property="description"> 
+     <string>Equality Test에 대한 테스트케이스 코드블럭을 복사합니다.</string> 
+    </void> 
+    <void property="codeBlockList"> 
+     <array class="java.lang.String" length="7"> 
+      <void index="0"> 
+       <string>Equal</string> 
+      </void> 
+      <void index="1"> 
+       <string>Same</string> 
+      </void> 
+      <void index="2"> 
+       <string>ReferenceEqual</string> 
+      </void> 
+      <void index="3"> 
+       <string>DoubleEqual</string> 
+      </void> 
+      <void index="4"> 
+       <string>ListEqual</string> 
+      </void> 
+      <void index="5"> 
+       <string>ArrayEqual</string> 
+      </void> 
+      <void index="6"> 
+       <string>ObjectEqual</string> 
+      </void> 
+     </array> 
+    </void> 
+    <void property="codeBlocks"> 
+     <array class="java.lang.String" length="7"> 
+      <void index="0"> 
+       <string><![CDATA[
+@Test
+public void testEqual() {
+	assertEquals("두 객체의 값이 같음", new String("somevalue"), new String("somevalue"));
+}
+       ]]></string> 
+      </void> 
+      <void index="1"> 
+       <string><![CDATA[
+@Test (expected=AssertionError.class)
+public void testSame() {
+	assertSame("두 객체의 주소값이 같음", new String("somevalue"), new String("somevalue"));
+}
+       ]]></string> 
+      </void> 
+      <void index="2"> 
+       <string><![CDATA[
+@Test
+public void testReferenceEqual() {
+	String string1 = new String("somevalue");
+	String string2 = string1;
+	
+	assertEquals("두 객체의 값이 같음", string1, string2); 
+	assertSame("두 객체의 주소값이 같음", string1, string2);
+}
+       ]]></string> 
+      </void> 
+      <void index="3"> 
+       <string><![CDATA[
+@Test
+public void testDoubleEqual() {
+	double value1 = 10 / 3;
+	double value2 = 3.33;
+	
+	assertEquals(value1, value2, 2);
+}
+       ]]></string> 
+      </void> 
+      <void index="4"> 
+       <string><![CDATA[
+@Test
+public void testListEqual() {
+	List<Integer> value1 = Arrays.asList(3, 2, 1);
+	List<Integer> value2 = Arrays.asList(3, 2, 1);
+	
+	assertEquals(value1, value2);
+}
+       ]]></string> 
+      </void> 
+      <void index="5"> 
+       <string><![CDATA[
+@Test
+public void testArrayEqual() {
+	String[] value1 = new String[] {"A", "B", "C"};
+	String[] value2 = new String[] {"A", "B", "C"};
+	
+	assertArrayEquals(value1, value2);
+}
+       ]]></string> 
+      </void> 
+      <void index="6"> 
+       <string><![CDATA[
+@Test
+public void testObjectEqual() {
+	List<AddressVo> addressList01 = Arrays.asList(new AddressVo("home", "homeaddress"),
+                                                  new AddressVo("office", "officeaddress"));
+	List<AddressVo> addressList02 = Arrays.asList(new AddressVo("home", "homeaddress"),
+                                                  new AddressVo("office", "officeaddress"));
+		
+	UserVo user1 = new UserVo(100, "name", "description", addressList01);
+	UserVo user2 = new UserVo(100, "name", "description", addressList02);
+	
+	assertEquals(user1.getId(), user2.getId());
+	assertEquals(user1.getName(), user2.getName());
+	assertEquals(user1.getDescription(), user2.getDescription());
+}
+       ]]></string> 
+      </void> 
+     </array> 
+    </void> 
+    
+   </object> 
+  </void> 
+ </array> 
+</java> 

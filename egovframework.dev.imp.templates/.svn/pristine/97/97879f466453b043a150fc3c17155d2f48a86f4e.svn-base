@@ -1,0 +1,5 @@
+<bean id="${triggerName}" class="org.springframework.scheduling.quartz.CronTriggerBean">
+   	<property name="jobDetail" ref="${jobDetailFactoryBeanName}" />
+   	<!-- 매 10초마다 실행 -->
+   	<property name="cronExpression" value="${cronExpression}" />
+</bean>

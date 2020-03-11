@@ -1,0 +1,7 @@
+#if ($rdoType == "C3P0")
+		#parse("c3p0.vm")
+#elseif ($rdoType == "DBCP")
+		#parse("dbcp.vm")
+#else
+		#parse("jdbc.vm")
+#end

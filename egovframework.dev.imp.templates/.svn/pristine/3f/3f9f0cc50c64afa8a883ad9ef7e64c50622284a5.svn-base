@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+	<appender name="${txtAppenderName}" class="org.apache.log4j.jdbc.JDBCAppender">
+		<param name="Driver" value="${txtDriver}"/>
+		<param name="URL" value="${txtUrl}"/>
+		<param name="User" value="${txtUser}"/>
+		<param name="Password" value="${txtPasswd}"/>
+		<param name="Sql" value="${txtQuery}"/>
+	</appender>
+	
+	<logger name="org.springframework" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="${txtAppenderName}" />
+	</logger>
+	
+	<root>
+		<level value="OFF" />
+		<appender-ref ref="${txtAppenderName}" />
+	</root>
+		
+</log4j:configuration>		

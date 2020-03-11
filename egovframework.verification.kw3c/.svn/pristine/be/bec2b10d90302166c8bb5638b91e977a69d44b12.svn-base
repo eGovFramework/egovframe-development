@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>무제 문서</title>
+<style type="text/css">
+.제목 {
+	font-size: 25px;
+	font-family: "맑은 고딕";
+	text-align: center;
+}
+.부제목 {
+	font-size: 16px;
+}
+.띄우기 {
+	font-size: 1px;
+}
+.부제목 {
+	font-size: 20px;
+}
+.부부제목 {
+	font-size: 16px;
+}
+.부부제목 {
+	font-family: "맑은 고딕";
+}
+.보통 {
+	font-family: "맑은 고딕";
+}
+.보통 {
+	font-size: 13px;
+	font-family: "맑은 고딕";
+}
+.띄어쓰기 {
+	font-size: 1px;
+}
+.제목 .제목1 {
+	font-size: 24px;
+	color: #00F;
+	font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+<p class="제목"><span class="제목1">KW3C 2.0 특징</span></p>
+<blockquote>
+  <h2 class="띄어쓰기"><span class="부제목" style="font-family: '맑은 고딕'"></span></h2>
+  <blockquote>
+    <h3 class="부부제목"><span lang="EN-US">W3C </span>웹표준 문법진단 </h3>
+    <ul>
+      <li class="보통"><span lang="EN-US">W3C</span>의 웹표준 문법검사 기능을 제공하고 검사결과를 점수로 환산하여 제시합니다<span lang="EN-US">. </span>오류에 따른 점수 환산 방법은 <a href="7. 전자정부서비스 웹 표준 진단표.html">7. 전자정부서비스 웹표준 진단표</a>를 참고하십시오</li>
+    </ul>
+    <p class="띄우기">&nbsp;</p>
+    <h3><span class="부부제목" lang="EN-US">W3C </span><span class="부부제목">스타일 시트 문법진단</span> </h3>
+    <ul>
+      <li><span class="보통" lang="EN-US">W3C</span><span class="보통">의 <span lang="EN-US">CSS </span>문법검사 기능을 제공하고 검사결과를 점수로 환산하여 제시합니다<span lang="EN-US">. </span>오류에 따른 점수 환산 방법은 <a href="7. 전자정부서비스 웹 표준 진단표.html">7. 전자정부서비스 웹표준 진단표</a>를 참고하십시오<span lang="EN-US">. </span></span></li>
+    </ul>
+    <p class="띄우기">
+      <![if !supportEmptyParas]>
+      &nbsp;
+      <![endif]>
+    </p>
+    <h3 class="부부제목">원격시스템 및 로컬시스템</h3>
+    <ul>
+      <li class="보통">웹사이트를 통해 제공되는 웹페이지 및 <span lang="EN-US">PC</span>에 저장되어 있는 웹 소스 파일에 대해서 웹표준 문법과 <span lang="EN-US">CSS </span>문법의 오류를 측정할 수 있습니다<span lang="EN-US">. </span></li>
+    </ul>
+    <p class="띄우기">
+      <![if !supportEmptyParas]>
+      &nbsp;
+      <![endif]>
+    </p>
+    <h3 class="부부제목">프로젝트 관리 기능</h3>
+    <ul>
+      <li><span class="보통" lang="EN-US">KW3C2.0</span><span class="보통">은 하나의 웹사이트 또는 파일 묶음을 프로젝트 단위로 관리하여<span lang="EN-US">, </span>언제든지 프로젝트의 작성 및 수행<span lang="EN-US">, </span>재편집<span lang="EN-US">, </span>삭제 그리고 평가결과 보기 등이 가능합니다<span lang="EN-US">. </span></span></li>
+    </ul>
+    <ul>
+      <li><span class="보통">동일한 이름의 프로젝트를 반복적으로 수행하는 경우에는 먼저 평가한 프로젝트 정보와 평가결과가 백업파일로 저장되므로 주기적인 프로젝트의 수행 및 관리가 가능합니다<span lang="EN-US">. </span></span></li>
+    </ul>
+    <p class="띄우기">
+      <![if !supportEmptyParas]>
+      &nbsp;
+      <![endif]>
+    </p>
+    <h3 class="부부제목">평가결과 보기 기능</h3>
+    <ul>
+      <li class="보통">웹표준 문법 및 스타일 시트 문법 평가 결과는 오류 정보와 그 내용을 웹 페이지 소스와 함께 보여주며<span lang="EN-US">, </span>상호 연동이 가능하므로 오류 수정의 평의성을 제공합니다<span lang="EN-US">.</span></li>
+    </ul>
+  </blockquote>
+</blockquote>
+<p>
+  <![if !supportEmptyParas]>
+  &nbsp;
+  <![endif]>
+</p>
+</body>
+</html>

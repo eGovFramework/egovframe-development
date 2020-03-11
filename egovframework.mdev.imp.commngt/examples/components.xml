@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<components>
+	<category name="#category1nam#" description="#category1des#" >
+		<component name="#category1Component1nam#" >
+			<packageName      >#category1Component1pac#</packageName      >
+			<dependencyPackage>#category1Component1de1#</dependencyPackage>
+			<description      >#category1Component1des#</description      >
+			<useTable         >#category1Component1use#</useTable         >
+			<version          >#category1Component1ver#</version          >
+			<webexist         >#category1Component1web#</webexist         >
+			<addedOptions     >#category1Component1add#</addedOptions     >
+		</component>
+	</category>
+	<category name="#category2nam#" description="#category2des#" >
+		<component name="#category2Component1nam#" >
+			<packageName      >#category2Component1pac#</packageName      >
+			<dependencyPackage>#category2Component1de1#</dependencyPackage>
+			<description      >#category2Component1des#</description      >
+			<useTable         >#category2Component1use#</useTable         >
+			<version          >#category2Component1ver#</version          >
+			<webexist         >#category2Component1web#</webexist         >
+			<addedOptions     >#category2Component1add#</addedOptions     >
+		</component>
+	</category>
+	<category name="#category3nam#" description="#category3des#" >
+		<component name="#category3Component1nam#" >
+			<packageName      >#category3Component1pac#</packageName      >
+			<dependencyPackage>#category3Component1de1#</dependencyPackage>
+			<dependencyPackage>#category3Component1de2#</dependencyPackage>
+			<description      >#category3Component1des#</description      >
+			<useTable         >#category3Component1use#</useTable         >
+			<version          >#category3Component1ver#</version          >
+			<webexist         >#category3Component1web#</webexist         >
+			<addedOptions     >#category3Component1add#</addedOptions     >
+		</component>
+		<component name="#category3Component2nam#" >
+			<packageName      >#category3Component2pac#</packageName      >
+			<dependencyPackage>#category3Component2de1#</dependencyPackage>
+			<dependencyPackage>#category3Component2de2#</dependencyPackage>
+			<description      >#category3Component2des#</description      >
+			<useTable         >#category3Component2use#</useTable         >
+			<version          >#category3Component2ver#</version          >
+			<webexist         >#category3Component2web#</webexist         >
+			<addedOptions     >#category3Component2add#</addedOptions     >
+		</component>
+		<component name="#category3Component3nam#" >
+			<packageName      >#category3Component3pac#</packageName      >
+			<dependencyPackage>#category3Component3de1#</dependencyPackage>
+			<dependencyPackage>#category3Component3de2#</dependencyPackage>
+			<description      >#category3Component3des#</description      >
+			<useTable         >#category3Component3use#</useTable         >
+			<version          >#category3Component3ver#</version          >
+			<webexist         >#category3Component3web#</webexist         >
+			<addedOptions     >#category3Component3add#</addedOptions     >
+		</component>
+	</category>
+	<category name="#category4nam#" description="#category4des#" >
+		<component name="#category4Component1nam#" >
+			<packageName      >#category4Component1pac#</packageName      >
+			<dependencyPackage>#category4Component1de1#</dependencyPackage>
+			<dependencyPackage>#category4Component1de2#</dependencyPackage>
+			<description      >#category4Component1des#</description      >
+			<useTable         >#category4Component1use#</useTable         >
+			<version          >#category4Component1ver#</version          >
+			<webexist         >#category4Component1web#</webexist         >
+			<addedOptions     >#category4Component1add#</addedOptions     >
+		</component>
+	</category>
+	<category name="#category5nam#" description="#category5des#" >
+		<component name="#category5Component1nam#" >
+			<packageName      >#category5Component1pac#</packageName      >
+			<dependencyPackage>#category5Component1de1#</dependencyPackage>
+			<dependencyPackage>#category5Component1de2#</dependencyPackage>
+			<description      >#category5Component1des#</description      >
+			<useTable         >#category5Component1use#</useTable         >
+			<version          >#category5Component1ver#</version          >
+			<webexist         >#category5Component1web#</webexist         >
+			<addedOptions     >#category5Component1add#</addedOptions     >
+		</component>
+		<component name="#category5Component2nam#" >
+			<packageName      >#category5Component2pac#</packageName      >
+			<dependencyPackage>#category5Component2de1#</dependencyPackage>
+			<dependencyPackage>#category5Component2de2#</dependencyPackage>
+			<description      >#category5Component2des#</description      >
+			<useTable         >#category5Component2use#</useTable         >
+			<version          >#category5Component2ver#</version          >
+			<webexist         >#category5Component2web#</webexist         >
+			<addedOptions     >#category5Component2add#</addedOptions     >
+		</component>
+		<component name="#category5Component3nam#" >
+			<packageName      >#category5Component3pac#</packageName      >
+			<dependencyPackage>#category5Component3de1#</dependencyPackage>
+			<dependencyPackage>#category5Component3de2#</dependencyPackage>
+			<description      >#category5Component3des#</description      >
+			<useTable         >#category5Component3use#</useTable         >
+			<version          >#category5Component3ver#</version          >
+			<webexist         >#category5Component3web#</webexist         >
+			<addedOptions     >#category5Component3add#</addedOptions     >
+		</component>
+		<component name="#category5Component4nam#" >
+			<packageName      >#category5Component4pac#</packageName      >
+			<dependencyPackage>#category5Component4de1#</dependencyPackage>
+			<dependencyPackage>#category5Component4de2#</dependencyPackage>
+			<description      >#category5Component4des#</description      >
+			<useTable         >#category5Component4use#</useTable         >
+			<version          >#category5Component4ver#</version          >
+			<webexist         >#category5Component4web#</webexist         >
+			<addedOptions     >#category5Component4add#</addedOptions     >
+		</component>
+	</category>
+	<category name="#category6nam#" description="#category6des#" >
+		<component name="#category6Component1nam#" >
+			<packageName      >#category6Component1pac#</packageName      >
+			<dependencyPackage>#category6Component1de1#</dependencyPackage>
+			<dependencyPackage>#category6Component1de2#</dependencyPackage>
+			<description      >#category6Component1des#</description      >
+			<useTable         >#category6Component1use#</useTable         >
+			<version          >#category6Component1ver#</version          >
+			<webexist         >#category6Component1web#</webexist         >
+			<addedOptions     >#category6Component1add#</addedOptions     >
+		</component>
+	</category>
+	<category name="#category7nam#" description="#category7des#" >
+		<component name="#category7Component1nam#" >
+			<packageName      >#category7Component1pac#</packageName      >
+			<dependencyPackage>#category7Component1de1#</dependencyPackage>
+			<dependencyPackage>#category7Component1de2#</dependencyPackage>
+			<description      >#category7Component1des#</description      >
+			<useTable         >#category7Component1use#</useTable         >
+			<version          >#category7Component1ver#</version          >
+			<webexist         >#category7Component1web#</webexist         >
+			<addedOptions     >#category7Component1add#</addedOptions     >
+		</component>
+	</category>
+	<category name="#category8nam#" description="#category8des#" >
+		<component name="#category8Component1nam#" >
+			<packageName      >#category8Component1pac#</packageName      >
+			<dependencyPackage>#category8Component1de1#</dependencyPackage>
+			<dependencyPackage>#category8Component1de2#</dependencyPackage>
+			<description      >#category8Component1des#</description      >
+			<useTable         >#category8Component1use#</useTable         >
+			<version          >#category8Component1ver#</version          >
+			<webexist         >#category8Component1web#</webexist         >
+			<addedOptions     >#category8Component1add#</addedOptions     >
+		</component>
+	</category>
+	<category name="#category9nam#" description="#category9des#" >
+		<component name="#category9Component1nam#" >
+			<packageName      >#category9Component1pac#</packageName      >
+			<dependencyPackage>#category9Component1de1#</dependencyPackage>
+			<dependencyPackage>#category9Component1de2#</dependencyPackage>
+			<description      >#category9Component1des#</description      >
+			<useTable         >#category9Component1use#</useTable         >
+			<version          >#category9Component1ver#</version          >
+			<webexist         >#category9Component1web#</webexist         >
+			<addedOptions     >#category9Component1add#</addedOptions     >
+		</component>
+		<component name="#category9Component2nam#" >
+			<packageName      >#category9Component2pac#</packageName      >
+			<dependencyPackage>#category9Component2de1#</dependencyPackage>
+			<dependencyPackage>#category9Component2de2#</dependencyPackage>
+			<description      >#category9Component2des#</description      >
+			<useTable         >#category9Component2use#</useTable         >
+			<version          >#category9Component2ver#</version          >
+			<webexist         >#category9Component2web#</webexist         >
+			<addedOptions     >#category9Component2add#</addedOptions     >
+		</component>
+		<component name="#category9Component3nam#" >
+			<packageName      >#category9Component3pac#</packageName      >
+			<dependencyPackage>#category9Component3de1#</dependencyPackage>
+			<dependencyPackage>#category9Component3de2#</dependencyPackage>
+			<description      >#category9Component3des#</description      >
+			<useTable         >#category9Component3use#</useTable         >
+			<version          >#category9Component3ver#</version          >
+			<webexist         >#category9Component3web#</webexist         >
+			<addedOptions     >#category9Component3add#</addedOptions     >
+		</component>
+		<component name="#category9Component4nam#" >
+			<packageName      >#category9Component4pac#</packageName      >
+			<dependencyPackage>#category9Component4de1#</dependencyPackage>
+			<dependencyPackage>#category9Component4de2#</dependencyPackage>
+			<description      >#category9Component4des#</description      >
+			<useTable         >#category9Component4use#</useTable         >
+			<version          >#category9Component4ver#</version          >
+			<webexist         >#category9Component4web#</webexist         >
+			<addedOptions     >#category9Component4add#</addedOptions     >
+		</component>
+		<component name="#category9Component5nam#" >
+			<packageName      >#category9Component5pac#</packageName      >
+			<dependencyPackage>#category9Component5de1#</dependencyPackage>
+			<dependencyPackage>#category9Component5de2#</dependencyPackage>
+			<description      >#category9Component5des#</description      >
+			<useTable         >#category9Component5use#</useTable         >
+			<version          >#category9Component5ver#</version          >
+			<webexist         >#category9Component5web#</webexist         >
+			<addedOptions     >#category9Component5add#</addedOptions     >
+		</component>
+		<component name="#category9Component6nam#" >
+			<packageName      >#category9Component6pac#</packageName      >
+			<dependencyPackage>#category9Component6de1#</dependencyPackage>
+			<dependencyPackage>#category9Component6de2#</dependencyPackage>
+			<description      >#category9Component6des#</description      >
+			<useTable         >#category9Component6use#</useTable         >
+			<version          >#category9Component6ver#</version          >
+			<webexist         >#category9Component6web#</webexist         >
+			<addedOptions     >#category9Component6add#</addedOptions     >
+		</component>
+	</category>
+	<category name="#category10nam#" description="#category10des#" >
+		<component name="#category10Component1nam#" >
+			<packageName      >#category10Component1pac#</packageName      >
+			<dependencyPackage>#category10Component1de1#</dependencyPackage>
+			<dependencyPackage>#category10Component1de2#</dependencyPackage>
+			<description      >#category10Component1des#</description      >
+			<useTable         >#category10Component1use#</useTable         >
+			<version          >#category10Component1ver#</version          >
+			<webexist         >#category10Component1web#</webexist         >
+			<addedOptions     >#category10Component1add#</addedOptions     >
+		</component>
+		<component name="#category10Component2nam#" >
+			<packageName      >#category10Component2pac#</packageName      >
+			<dependencyPackage>#category10Component2de1#</dependencyPackage>
+			<dependencyPackage>#category10Component2de2#</dependencyPackage>
+			<description      >#category10Component2des#</description      >
+			<useTable         >#category10Component2use#</useTable         >
+			<version          >#category10Component2ver#</version          >
+			<webexist         >#category10Component2web#</webexist         >
+			<addedOptions     >#category10Component2add#</addedOptions     >
+		</component>
+		<component name="#category10Component3nam#" >
+			<packageName      >#category10Component3pac#</packageName      >
+			<dependencyPackage>#category10Component3de1#</dependencyPackage>
+			<dependencyPackage>#category10Component3de2#</dependencyPackage>
+			<description      >#category10Component3des#</description      >
+			<useTable         >#category10Component3use#</useTable         >
+			<version          >#category10Component3ver#</version          >
+			<webexist         >#category10Component3web#</webexist         >
+			<addedOptions     >#category10Component3add#</addedOptions     >
+		</component>
+	</category>
+	<category name="#category11nam#" description="#category11des#" >
+		<component name="#category11Component1nam#" >
+			<packageName      >#category11Component1pac#</packageName      >
+			<dependencyPackage>#category11Component1de1#</dependencyPackage>
+			<dependencyPackage>#category11Component1de2#</dependencyPackage>
+			<description      >#category11Component1des#</description      >
+			<useTable         >#category11Component1use#</useTable         >
+			<version          >#category11Component1ver#</version          >
+			<webexist         >#category11Component1web#</webexist         >
+			<addedOptions     >#category11Component1add#</addedOptions     >
+		</component>
+		<component name="#category11Component2nam#" >
+			<packageName      >#category11Component2pac#</packageName      >
+			<dependencyPackage>#category11Component2de1#</dependencyPackage>
+			<dependencyPackage>#category11Component2de2#</dependencyPackage>
+			<description      >#category11Component2des#</description      >
+			<useTable         >#category11Component2use#</useTable         >
+			<version          >#category11Component2ver#</version          >
+			<webexist         >#category11Component2web#</webexist         >
+			<addedOptions     >#category11Component2add#</addedOptions     >
+		</component>
+		<component name="#category11Component3nam#" >
+			<packageName      >#category11Component3pac#</packageName      >
+			<dependencyPackage>#category11Component3de1#</dependencyPackage>
+			<dependencyPackage>#category11Component3de2#</dependencyPackage>
+			<description      >#category11Component3des#</description      >
+			<useTable         >#category11Component3use#</useTable         >
+			<version          >#category11Component3ver#</version          >
+			<webexist         >#category11Component3web#</webexist         >
+			<addedOptions     >#category11Component3add#</addedOptions     >
+		</component>
+		<component name="#category11Component4nam#" >
+			<packageName      >#category11Component4pac#</packageName      >
+			<dependencyPackage>#category11Component4de1#</dependencyPackage>
+			<dependencyPackage>#category11Component4de2#</dependencyPackage>
+			<description      >#category11Component4des#</description      >
+			<useTable         >#category11Component4use#</useTable         >
+			<version          >#category11Component4ver#</version          >
+			<webexist         >#category11Component4web#</webexist         >
+			<addedOptions     >#category11Component4add#</addedOptions     >
+		</component>
+	</category>
+	<category name="#category12nam#" description="#category12des#" >
+		<component name="#category12Component1nam#" >
+			<packageName      >#category12Component1pac#</packageName      >
+			<dependencyPackage>#category12Component1de1#</dependencyPackage>
+			<dependencyPackage>#category12Component1de2#</dependencyPackage>
+			<description      >#category12Component1des#</description      >
+			<useTable         >#category12Component1use#</useTable         >
+			<version          >#category12Component1ver#</version          >
+			<webexist         >#category12Component1web#</webexist         >
+			<addedOptions     >#category12Component1add#</addedOptions     >
+		</component>
+	</category>
+	<category name="#category13nam#" description="#category13des#" >
+		<component name="#category13Component1nam#" >
+			<packageName      >#category13Component1pac#</packageName      >
+			<dependencyPackage>#category13Component1de1#</dependencyPackage>
+			<dependencyPackage>#category13Component1de2#</dependencyPackage>
+			<description      >#category13Component1des#</description      >
+			<useTable         >#category13Component1use#</useTable         >
+			<version          >#category13Component1ver#</version          >
+			<webexist         >#category13Component1web#</webexist         >
+			<addedOptions     >#category13Component1add#</addedOptions     >
+		</component>
+		<component name="#category13Component2nam#" >
+			<packageName      >#category13Component2pac#</packageName      >
+			<dependencyPackage>#category13Component2de1#</dependencyPackage>
+			<dependencyPackage>#category13Component2de2#</dependencyPackage>
+			<description      >#category13Component2des#</description      >
+			<useTable         >#category13Component2use#</useTable         >
+			<version          >#category13Component2ver#</version          >
+			<webexist         >#category13Component2web#</webexist         >
+			<addedOptions     >#category13Component2add#</addedOptions     >
+		</component>
+		<component name="#category13Component3nam#" >
+			<packageName      >#category13Component3pac#</packageName      >
+			<dependencyPackage>#category13Component3de1#</dependencyPackage>
+			<dependencyPackage>#category13Component3de2#</dependencyPackage>
+			<description      >#category13Component3des#</description      >
+			<useTable         >#category13Component3use#</useTable         >
+			<version          >#category13Component3ver#</version          >
+			<webexist         >#category13Component3web#</webexist         >
+			<addedOptions     >#category13Component3add#</addedOptions     >
+		</component>
+		<component name="#category13Component4nam#" >
+			<packageName      >#category13Component4pac#</packageName      >
+			<dependencyPackage>#category13Component4de1#</dependencyPackage>
+			<dependencyPackage>#category13Component4de2#</dependencyPackage>
+			<description      >#category13Component4des#</description      >
+			<useTable         >#category13Component4use#</useTable         >
+			<version          >#category13Component4ver#</version          >
+			<webexist         >#category13Component4web#</webexist         >
+			<addedOptions     >#category13Component4add#</addedOptions     >
+		</component>
+		<component name="#category13Component5nam#" >
+			<packageName      >#category13Component5pac#</packageName      >
+			<dependencyPackage>#category13Component5de1#</dependencyPackage>
+			<dependencyPackage>#category13Component5de2#</dependencyPackage>
+			<description      >#category13Component5des#</description      >
+			<useTable         >#category13Component5use#</useTable         >
+			<version          >#category13Component5ver#</version          >
+			<webexist         >#category13Component5web#</webexist         >
+			<addedOptions     >#category13Component5add#</addedOptions     >
+		</component>
+	</category>
+	<category name="#category14nam#" description="#category14des#" >
+		<component name="#category14Component1nam#" >
+			<packageName      >#category14Component1pac#</packageName      >
+			<dependencyPackage>#category14Component1de1#</dependencyPackage>
+			<dependencyPackage>#category14Component1de2#</dependencyPackage>
+			<description      >#category14Component1des#</description      >
+			<useTable         >#category14Component1use#</useTable         >
+			<version          >#category14Component1ver#</version          >
+			<webexist         >#category14Component1web#</webexist         >
+			<addedOptions     >#category14Component1add#</addedOptions     >
+		</component>
+		<component name="#category14Component2nam#" >
+			<packageName      >#category14Component2pac#</packageName      >
+			<dependencyPackage>#category14Component2de1#</dependencyPackage>
+			<dependencyPackage>#category14Component2de2#</dependencyPackage>
+			<description      >#category14Component2des#</description      >
+			<useTable         >#category14Component2use#</useTable         >
+			<version          >#category14Component2ver#</version          >
+			<webexist         >#category14Component2web#</webexist         >
+			<addedOptions     >#category14Component2add#</addedOptions     >
+		</component>
+		<component name="#category14Component3nam#" >
+			<packageName      >#category14Component3pac#</packageName      >
+			<dependencyPackage>#category14Component3de1#</dependencyPackage>
+			<dependencyPackage>#category14Component3de2#</dependencyPackage>
+			<description      >#category14Component3des#</description      >
+			<useTable         >#category14Component3use#</useTable         >
+			<version          >#category14Component3ver#</version          >
+			<webexist         >#category14Component3web#</webexist         >
+			<addedOptions     >#category14Component3add#</addedOptions     >
+		</component>
+	</category>
+	<category name="#category15nam#" description="#category15des#" >
+		<component name="#category15Component1nam#" >
+			<packageName      >#category15Component1pac#</packageName      >
+			<dependencyPackage>#category15Component1de1#</dependencyPackage>
+			<dependencyPackage>#category15Component1de2#</dependencyPackage>
+			<description      >#category15Component1des#</description      >
+			<useTable         >#category15Component1use#</useTable         >
+			<version          >#category15Component1ver#</version          >
+			<webexist         >#category15Component1web#</webexist         >
+			<addedOptions     >#category15Component1add#</addedOptions     >
+		</component>
+		<component name="#category15Component2nam#" >
+			<packageName      >#category15Component2pac#</packageName      >
+			<dependencyPackage>#category15Component2de1#</dependencyPackage>
+			<dependencyPackage>#category15Component2de2#</dependencyPackage>
+			<description      >#category15Component2des#</description      >
+			<useTable         >#category15Component2use#</useTable         >
+			<version          >#category15Component2ver#</version          >
+			<webexist         >#category15Component2web#</webexist         >
+			<addedOptions     >#category15Component2add#</addedOptions     >
+		</component>
+	</category>
+</components>

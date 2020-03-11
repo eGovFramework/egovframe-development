@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>New UUID Generation</title>
+
+		<component-page required="true">
+			<!-- NewUuidWizard	New UUID Generation -->
+			<description>Create UUID Generation
+(Address is MAC Address or IP Address)
+            </description>
+			<group label="Generation File" required="true">
+				<container name="txtPath" label="File Path: " required="true"
+					type="folder" /> <!-- #webroot -->
+				<textfield name="txtFileName" label="File Name: "
+					required="true" />
+			</group>
+			<group label="Configuration" required="true">
+				<textfield name="txtIdServiceName" label="ID Service Name: "
+					required="true" value="" />
+				
+				<group>
+					<radio name="rdoType" label="None or Address? " value="None"
+						required="true" listener="true">
+						<elements>
+							<option>None</option>
+							<option>Address</option>
+						</elements>
+					</radio>
+					<textfield name="txtAddress" label="Address: " required="true"
+						radio="Address" />
+				</group>
+			</group>
+
+		</component-page>
+
+		<output>
+			<template component="txtFileName" velocity="uuId.vm"
+				extension="xml" container="txtPath">
+			</template>
+		</output>
+	</wizard>
+</EclipseWork>

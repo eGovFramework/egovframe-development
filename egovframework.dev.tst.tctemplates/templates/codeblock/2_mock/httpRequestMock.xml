@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0_07" class="java.beans.XMLDecoder"> 
+ <array class="egovframework.dev.tst.tcgenerator.CodeBlockInfo" length="1"> 
+  <void index="0"> 
+   <object class="egovframework.dev.tst.tcgenerator.CodeBlockInfo"> 
+    <void property="tcTemplateName"> 
+     <string>HttpRequest Mock Test</string> 
+    </void> 
+    <void property="description"> 
+     <string>HttpRequest Mock Test에 대한 테스트케이스 코드블럭을 복사합니다.</string> 
+    </void> 
+    <void property="codeBlockList"> 
+     <array class="java.lang.String" length="4"> 
+      <void index="0"> 
+       <string>Field</string> 
+      </void> 
+      <void index="1"> 
+       <string>SetUp Method</string> 
+      </void> 
+      <void index="2"> 
+       <string>Call MyServlet</string> 
+      </void>  
+      <void index="3"> 
+       <string>소스 전체</string> 
+      </void>
+     </array> 
+    </void> 
+    <void property="codeBlocks"> 
+     <array class="java.lang.String" length="4"> 
+      <void index="0"> 
+       <string><![CDATA[
+// 서블릿 호출에 필요한 Request 객체에 대한 Mocking 클래스
+private MockHttpServletRequest request;
+
+// 서블릿 호출에 필요한 Response 객체에 대한 Mocking 클래스
+private MockHttpServletResponse response;
+
+// 서블릿 호출 테스트를 위한 대상 테스트 클래스
+private Servlet servlet;
+       ]]></string> 
+      </void> 
+      <void index="1"> 
+       <string><![CDATA[
+/*
+ * 서블릿 호출을 위한 Mocking 클래스를 생성하는 초기 셋업 메소드
+ */
+@Before
+public void setUp() {
+	servlet  = new Servlet();
+	
+	request  = new MockHttpServletRequest();
+	response = new MockHttpServletResponse();
+}
+       ]]></string> 
+      </void> 
+      <void index="2"> 
+       <string><![CDATA[
+@Test
+public void testCallMyServlet() {
+	try {
+		servlet.service(request, response);
+		Assert.assertEquals(servlet.getClass().getSimpleName(), (String) request.getAttribute("res"));
+	}
+	catch(Exception e) {
+		throw new AssertionFailedException(e.toString());
+	}
+}       ]]></string> 
+      </void> 
+      <void index="3"> 
+       <string><![CDATA[
+import junit.framework.Assert;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.mock.web.MockHttpServletRequest;
+import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.test.context.ContextConfiguration;
+
+import egovframework.guideprogram.test.target.mock.Servlet;
+
+@ContextConfiguration
+public class HttpRequestMockTest {
+
+	/**
+	 * 서블릿 호출에 필요한 Request 객체에 대한 Mocking 클래스
+	 */
+	private MockHttpServletRequest request;
+	
+	/**
+	 * 서블릿 호출에 필요한 Response 객체에 대한 Mocking 클래스
+	 */
+	private MockHttpServletResponse response;
+	
+	/**
+	 * 서블릿 호출 테스트를 위한 대상 테스트 클래스
+	 */
+	private Servlet servlet;
+	
+	/**
+	 * 서블릿 호출을 위한 Mocking 클래스를 생성하는 초기 셋업 메소드
+	 */
+	@Before
+	public void setUp() {
+		servlet  = new Servlet();
+		
+		request  = new MockHttpServletRequest();
+		response = new MockHttpServletResponse();
+	}
+
+
+    /**
+     * 서블릿 호출을 수행해보는 테스트 메소드
+     */
+    @Test
+    public void testCallMyServlet() throws Exception
+    {
+        servlet.service(request, response);
+        Assert.assertEquals(servlet.getClass().getSimpleName(), (String) request.getAttribute("res"));
+    }
+
+}
+       ]]></string> 
+      </void>
+     </array> 
+    </void> 
+   </object> 
+  </void> 
+ </array> 
+</java> 

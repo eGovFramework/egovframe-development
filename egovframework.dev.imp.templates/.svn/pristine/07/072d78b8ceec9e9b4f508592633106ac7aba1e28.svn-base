@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>New JTA Transaction</title>
+
+		<component-page required="true">
+			<!-- NewJtaTransaction	New JTA Transaction -->
+			<description>Create JTA Transaction</description>
+			<group label="Generation File" required="true">
+				<container name="txtPath" label="File Path: " required="true"
+					type="folder" value="" />
+				<textfield name="txtFileName" label="File Name: "
+					required="true" value="" />
+			</group>
+			<group label="Configuration" required="true">
+				<textfield name="txtDatasourceName" label="DataSource Name:" required="true" />
+				<textfield name="txtJndiName" label="JNDI Name: "
+					required="true" value="" />
+				<combo name="cboResourceRef" label="Resource Ref: " required="true"
+					value="true">
+					<elements>
+						<option>true</option>
+						<option>false</option>
+					</elements>
+				</combo>
+				<textfield name="txtInitialFactory" label="Initial Factory: "
+					required="true" value="" />
+				<textfield name="txtProviderUrl" label="Provider URL: "
+					required="true" value="" />
+			</group>
+		</component-page>
+
+		<output>
+			<template component="txtFileName" velocity="jta.vm"
+				extension="xml" container="txtPath" />
+		</output>
+	</wizard>
+</EclipseWork>

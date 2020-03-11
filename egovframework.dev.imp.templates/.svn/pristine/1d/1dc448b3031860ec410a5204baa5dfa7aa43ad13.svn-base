@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>New DataSource</title>
+
+		<component-page required="true">
+			<!-- NewDataSource	New DataSource -->
+			<description>Create Datasource.</description>
+			<group label="Generation File" required="true">
+				<container name="txtPath" label="File Path: " required="true"
+					type="folder" value="" /> <!-- #webroot -->
+				<textfield name="txtFileName" label="File Name: "
+					required="true" value="" />
+			</group>
+			<group>
+				<textfield name="txtDatasourceName" label="DataSource Name:" required="true" />
+				<combo name="rdoType" label="Driver Type: " value="C3P0" required="true">
+					<elements>
+						<option>C3P0</option>
+						<option>DBCP</option>
+						<option>JDBC</option>
+					</elements>
+				</combo>
+				<textfield name="txtDriver" label="Driver: " required="true" />
+				<textfield name="txtUrl" label="URL: " required="true" />
+				<textfield name="txtUser" label="User: " required="true" />
+				<textfield name="txtPasswd" label="Password: " required="false" />
+			</group>
+		</component-page>
+
+		<output>
+			<template component="txtFileName" velocity="c3p0.vm"
+				extension="xml" container="txtPath">
+				<condition variable="rdoType" value="C3P0" />
+			</template>
+
+			<template component="txtFileName" velocity="dbcp.vm"
+				extension="xml" container="txtPath">
+				<condition variable="rdoType" value="DBCP" />
+			</template>
+
+			<template component="txtFileName" velocity="jdbc.vm"
+				extension="xml" container="txtPath">
+				<condition variable="rdoType" value="JDBC" />
+			</template>
+		</output>
+	</wizard>
+</EclipseWork>

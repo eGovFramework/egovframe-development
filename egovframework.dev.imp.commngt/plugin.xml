@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="egovframework.dev.imp.core.wizards"
+            class="egovframework.dev.imp.commngt.wizards.NewEgovCommngtWizard"
+            finalPerspective="egovframework.dev.imp.core.perspectives.egovperspective"
+            icon="icons/commngt.png"
+            id="egovframework.dev.imp.commngt.wizards.newEgovCommngt"
+            name="eGovFrame Common Component">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="egovframework.dev.imp.commngt.commands.newEgovCommngt"
+            name="Add eGovFrame Common Component">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="egovframework.dev.imp.commngt.handlers.NewEgovCommngt"
+            commandId="egovframework.dev.imp.commngt.commands.newEgovCommngt">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="egovframework.dev.imp.core.perspectives.egovperspective">
+         <newWizardShortcut
+               id="egovframework.dev.imp.commngt.wizards.newEgovCommngt">
+         </newWizardShortcut>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <newWizardShortcut
+               id="egovframework.dev.imp.commngt.wizards.newEgovCommngt">
+         </newWizardShortcut>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:egovframework.dev.imp.core.menu.implementation?before=egovframework.mdev.imp.ide.commands.addMobileCommonComponent">
+         <command
+               commandId="egovframework.dev.imp.commngt.commands.newEgovCommngt">
+         </command>
+         <separator
+               name="egovframework.dev.imp.commngt.separator1"
+               visible="true">
+         </separator>
+      </menuContribution>
+   </extension>
+
+</plugin>

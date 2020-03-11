@@ -1,0 +1,12 @@
+<appender name="${appenderName}" class="org.apache.log4j.FileAppender">
+	<!--
+		ref.) attr : Append, Encoding, BufferedIO, BufferSize, File,
+		ImmediateFlush, Threshold
+	-->
+	<param name="File" value="${fileName}" />
+	<!-- test 편의를 위해 매번 새로 file 덮어쓰도록 Append false로 설정 -->
+	<param name="Append" value="${append}" />
+	<layout class="org.apache.log4j.PatternLayout">
+		<param name="ConversionPattern" value="${pattern}" />
+	</layout>
+</appender> 

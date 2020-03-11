@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0_07" class="java.beans.XMLDecoder"> 
+ <array class="egovframework.dev.tst.tcgenerator.CodeBlockInfo" length="1"> 
+  <void index="0"> 
+   <object class="egovframework.dev.tst.tcgenerator.CodeBlockInfo"> 
+    <void property="tcTemplateName"> 
+     <string>DataSourceGetTest_unitilsDataSource</string> 
+    </void> 
+    <void property="description"> 
+     <string><![CDATA[Unitils 에 설정 한 dataSource를 제대로 get하는지를 테스트하는 프로그램
+     ]]></string> 
+    </void> 
+    <void property="codeBlockList"> 
+     <array class="java.lang.String" length="5">
+      <void index="0"><string>테스트 클래스 선언부</string></void>
+      <void index="1"><string>데이터 소스 설정 파일 (unitils.properties)</string></void>
+      <void index="2"><string>데이터소스 선언</string></void>
+      <void index="3"><string>데이터소스 확인</string></void>
+      <void index="4"><string>소스 전체</string></void> 
+     </array> 
+    </void> 
+    <void property="codeBlocks">
+     <array class="java.lang.String" length="5"> 
+      <void index="0"> 
+       <string><![CDATA[
+@RunWith(UnitilsJUnit4TestClassRunner.class)
+]]>
+       </string> 
+      </void> 
+      <void index="1"> 
+       <string><![CDATA[
+# Properties for the PropertiesDataSourceFactory
+database.driverClassName=oracle.jdbc.OracleDriver
+database.url=jdbc:oracle:thin:@ip:port:instance
+database.userName=name
+database.password=password
+]]>
+       </string> 
+      </void> 
+      <void index="2"> 
+       <string><![CDATA[
+    /** 
+     * unitils.properties 에 설정 된 database 접근 정보를 기반으로 
+     * 테스트 용 DataSource 를 만든 후 자동으로 injection 해 준다.
+     * (unitils.properties 파일의 위치와 이름은 변경할 수 없다.)
+     * 
+     * @see     unitils.properties, unitils-local.properties
+     * */
+    @TestDataSource
+    private DataSource dataSource;
+]]>
+       </string> 
+      </void> 
+      <void index="3"> 
+       <string><![CDATA[
+    /**
+     * dataSource를 정상적으로 get 했는지를 확인한다.
+    */
+    @Test
+    public void checkTestDataSource() {
+        assertNotNull("dataSource를 정상적으로 get 했는지를 확인한다.", dataSource);
+    }
+]]>
+       </string> 
+      </void> 
+      <void index="4"> 
+       <string><![CDATA[
+import static org.junit.Assert.assertNotNull;
+
+import javax.sql.DataSource;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.unitils.UnitilsJUnit4TestClassRunner;
+import org.unitils.database.annotations.TestDataSource;
+
+@RunWith(UnitilsJUnit4TestClassRunner.class)
+public class DataSourceGetTest_unitilsDataSource {
+    
+    /** 
+     * unitils.properties 에 설정 된 database 접근 정보를 기반으로 
+     * 테스트 용 DataSource 를 만든 후 자동으로 injection 해 준다.
+     * (unitils.properties 파일의 위치와 이름은 변경할 수 없다.)
+     * 
+     * @see     unitils.properties
+     * */
+    @TestDataSource
+    private DataSource dataSource;
+
+    /**
+     * dataSource를 정상적으로 get 했는지를 확인한다.
+    */
+    @Test
+    public void checkTestDataSource() {
+        assertNotNull("dataSource를 정상적으로 get 했는지를 확인한다.", dataSource);
+    }
+}
+]]>
+       </string> 
+      </void> 
+     </array> 
+    </void> 
+   </object> 
+  </void> 
+ </array> 
+</java> 

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+    <wizard>
+        <title>New Cache</title>
+
+        <component-page required="true">
+        	<!-- NewCache	New Cache -->
+            <description>Set Default Cache.</description>
+			
+			<!-- to chose another xwork.xml file to update  -->
+			<!--<file name="xwork.xml" label="xwork.xml" extensions="xml" />-->
+			<group label="Generation File" required="true" >
+				<container name="txtPath" label="File Path: " required="true" type="folder" value="#webroot" />
+	            <textfield name="txtFileName" label="File Name:" required="true" value="ehcache-default"/>
+            </group>
+            <group label="Disk Store" required="true" >
+            	<textfield name="txtDiskStore" label="Disk Store Path: " required="true" value="user.dir/second"/>
+            </group>
+            <group label="Default Cache" required="true" >	            
+	            <textfield name="txtDftMaxElements" label="Max Elements:" required="true" value="10000"/>
+	            <combo name="txtDftEternal" label="Eternal: " required="true" value="false">
+	            	<elements>
+	            		<option>true</option>
+	            		<option>false</option>
+	            	</elements>
+	            </combo>
+	            <textfield name="txtDftIdelTime" label="Idle Time (sec): " required="true" value="120"/>
+	            <textfield name="txtDftLiveTime" label="Live Time (sec): " required="true" value="120"/>
+	            <combo name="txtDftOverfow" label="Overflow To Disk: " required="true" value="true">
+	            	<elements>
+	            		<option>true</option>
+	            		<option>false</option>
+	            	</elements>
+	            </combo>
+	            <combo name="txtDftDiskPersistence" label="Disk Persistent: " required="true" value="true">
+	            	<elements>
+	            		<option>true</option>
+	            		<option>false</option>
+	            	</elements>
+	            </combo>
+	            <textfield name="txtDftDiskExpiry" label="Disk Expiry (sec): " required="true" value="120"/>
+            </group>
+        </component-page>
+
+		<component-page required="true">
+			<!-- NewCacheCustom	New Cache Custom -->
+			<description>Set Custom Cache.</description>
+			<group label="Custom Cache" required="true" >
+				<textfield name="txtCacheName" label="Cache Name: " required="true" value="" />
+	            <textfield name="txtMaxElements" label="Max Elements:" required="true" value="100"/>
+	            <combo name="txtEternal" label="Eternal: " required="true" value="false">
+	            	<elements>
+	            		<option>true</option>
+	            		<option>false</option>
+	            	</elements>
+	            </combo>	            
+	            <textfield name="txtIdleTime" label="Idle Time (sec): " required="true" value="360"/>
+	            <textfield name="txtLiveTime" label="Live Time (sec): " required="true" value="1000"/>
+	            <combo name="txtOverflowToDisk" label="Overflow To Disk: " required="true" value="false">
+	            	<elements>
+	            		<option>true</option>
+	            		<option>false</option>
+	            	</elements>
+	            </combo>	            
+	            <combo name="txtDiskPersistent" label="Disk Persistent: " required="true" value="false">
+	            	<elements>
+	            		<option>true</option>
+	            		<option>false</option>
+	            	</elements>
+	            </combo>	            
+	            <combo name="cboMemoryPolicy" label="Memory Store Eviction Policy: " required="true" value="LRU">
+	            	<elements>
+	            		<option>LRU</option>
+	            		<option>FIFO</option>
+	            		<option>LFU</option>
+	            	</elements>
+	            </combo>
+	        </group>			
+		</component-page>
+
+        <output>
+            <template component="txtFileName"  velocity="cache.vm" extension="xml" container="txtPath"/>
+        </output>
+    </wizard>
+</EclipseWork>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tcgeneretor>
+	<wizard>
+
+		<!-- Wizard Pages -->
+		<title>Service TestCase Generator</title>
+		<component-page>
+			<description>eGov 표준 프레임워크 Service에 대한 테스트케이스를 생성합니다.
+			</description>
+			<group label="대상  Service" required="true">
+				<type name="targetService" label="*Interface / Class" value=""
+					required="true" />
+				<!--
+					container name="targetFolder" label="Resource 폴더" type="folder"
+					required="true" value="" />
+				-->
+			</group>
+			<group label="생성할 TestCase" required="true">
+				<container name="tcPackage" label="*Package" required="true"
+					type="srcpackage" value="" />
+				<textfield name="dataSourceName" label="DataSource Resource Name"
+					value="" required="false" />
+				<!--
+					file name="configFile" label="Config File" type="folder"
+					extensions="xml" value=""/>
+				-->
+			</group>
+		</component-page>
+
+		<!-- Templates -->
+		<output>
+			<template component="javaout" expression="${targetService.name}Test"
+				velocity="template.vm" extension="java" container="tcPackage" />
+		</output>
+
+	</wizard>
+</tcgeneretor>

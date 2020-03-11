@@ -1,0 +1,12 @@
+   <bean name="${propertyServiceName}" class="egovframework.rte.fdl.property.impl.EgovPropertyServiceImpl" 
+         destroy-method="destroy">
+      <property name="extFileName">
+         <set>
+            <map>
+               <entry key="encoding" value="UTF-8"/>
+               <entry key="filename" value="file:./src/**/refresh-resource.properties"/>
+            </map>
+            <value>classpath*:properties/resource.properties</value>
+         </set>
+      </property>			
+   </bean>

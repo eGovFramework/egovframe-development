@@ -1,0 +1,14 @@
+   <bean name="Ids-TestWithGenerationStrategy" class="egovframework.rte.fdl.idgnr.impl.EgovTableIdGnrService" 
+                           destroy-method="destroy">
+      <property name="dataSource" ref="dataSource"/>
+      <property name="strategy" ref="strategy"/>
+      <property name="blockSize" value="${blockSize}"/>
+      <property name="table"	  value="${idTable}"/>
+      <property name="tableName"  value="${tableName}"/>	
+   </bean>	
+ 
+   <bean name="strategy" class="egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl">
+      <property name="prefix" value="${prefix}"/>
+      <property name="cipers" value="${cipers}"/>
+      <property name="fillChar" value="${fillChar}"/>
+   </bean>

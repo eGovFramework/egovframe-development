@@ -1,0 +1,88 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>무제 문서</title>
+<style type="text/css">
+.제목 {
+	font-size: 24px;
+	font-family: "맑은 고딕";
+	text-align: center;
+	font-weight: bold;
+	color: #00F;
+}
+.부제목 {
+	font-size: 20px;
+	font-family: "맑은 고딕";
+	font-weight: bold;
+}
+.일반 {
+	font-family: "맑은 고딕";
+}
+.일반 {
+	font-size: 13px;
+}
+.띄어쓰기 {
+	font-size: 1px;
+}
+.제목 span {
+	color: #00F;
+}
+.일반 {
+	font-size: 14px;
+}
+.일반강조 {
+	font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+<p class="제목"><span lang="EN-US">KW3C 2.0 </span>설치환경</p>
+<p class="띄어쓰기"> <![if !supportEmptyParas]>
+  &nbsp;
+  <![endif]></p>
+<blockquote>
+  <p class="부제목">기본 요구 사항</p>
+  
+    <li class="일반">하드웨어</li><ul>
+    <li><span class="일반" lang="EN-US">CPU: </span><span class="일반">펜티엄 <span lang="EN-US">IV 2 GHz </span>이상</span></li>
+    <li class="일반">메모리<span lang="EN-US">: 1,024MB </span>이상</li>
+    <li class="일반">하드디스크<span lang="EN-US">: 200MB </span>이상<span lang="EN-US">(</span>평가할 웹사이트가 늘어남에 따라 하드디스크 용량이 늘어나야 함<span lang="EN-US">)</span></li>
+    <li class="일반"><span class="일반">네트워크<span lang="EN-US">: KW3C2.0</span>의 모든 기능을 사용하기 위해서는 <span lang="EN-US">PC</span>가 네트워크에 연결되어야 합니다<span lang="EN-US">. </span></span>
+      <span class="일반">
+    <![if !supportEmptyParas]>
+    &nbsp;
+    <![endif]>    </span></li>
+  </ul>
+  
+    <li class="일반">운영체제</li><ul>
+    <li class="일반">Windows XP Service Pack 3</li>
+    <li class="일반">Windows Server 2003 Service Pack 2</li>
+    <li class="일반">Windows Server 2008 Service Pack 2</li>
+    <li class="일반">Windows Vista Service Pack 2</li>
+    <li class="일반">Windows7
+      <![if !supportEmptyParas]>
+      &nbsp;
+    <![endif]>    </li>
+  </ul>
+  <p class="부제목">추가 설치 프로그램 
+    <![if !supportEmptyParas]>
+    &nbsp;
+  <![endif]>  </p>
+
+  <p style="font-size: 1px"> <span class="일반" lang="EN-US"><span class="일반">KW3C2.0</span></span><span class="일반"><span class="일반">을 안정적으로 실행하기 위해서는 다음의 프로그램이 반드시 설치되어 있어야 합니다<span lang="EN-US">. </span></span><span lang="EN-US"></span></span></p>
+  <ul>
+    <li><span class="일반" lang="EN-US">JAVA : </span><span class="일반">스타일 시트 평가를 위해서는 <span lang="EN-US">JAVA </span>최신 버전이 설치되어야 됩니다<span lang="EN-US">. </span>단<span lang="EN-US">, </span>설치버전은 <span lang="EN-US">32bit </span>버전이어야 합니다<span lang="EN-US">.</span></span> 64비트 버전을 설치한 경우에는 정상적으로 동작하지 않습니다. </li>
+    <li><span class="일반" lang="EN-US">Microsoft .NET Framework 4 : KW3C2.0은 .NET기반으로 개발되었습니다. 따라서 KW3C2.0을 사용할 PC에 .NET 4.0을 설치하지 않으면 KW3C2.0이 실행되지 않습니다. </span><span class="일반"> </span></li>
+  </ul>
+  <p class="일반"><span class="일반강조">※ 이 프로그램은 Internet Explorer 7 이상의 버전에서 사용이 가능합니다. 그 이하의 버전에서는 정상적으로 동작하지 않습니다.
+또한 Windows XP 환경에서는 사용하는 웹브라우저에 따라 필요한 보안 패치를 다운받아 설치해야 합니다. Windows 7에서는 보안패치가 불필요합니다.
+</span></p>
+<ul>
+<li><span class="일반" lang="EN-US"><a href="http://www.microsoft.com/ko-kr/download/details.aspx?id=30060">IE 7용 보안패치(KB2699988) 바로가기</a></li>
+<li><span class="일반" lang="EN-US"><a href="http://www.microsoft.com/ko-kr/download/details.aspx?id=30102">IE 8용 보안패치(KB2699988) 바로가기</a></li>
+</ul>
+</blockquote>
+</body>
+</html>

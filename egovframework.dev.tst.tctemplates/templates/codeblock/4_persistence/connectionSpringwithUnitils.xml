@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0_07" class="java.beans.XMLDecoder"> 
+ <array class="egovframework.dev.tst.tcgenerator.CodeBlockInfo" length="1"> 
+  <void index="0"> 
+   <object class="egovframework.dev.tst.tcgenerator.CodeBlockInfo"> 
+    <void property="tcTemplateName"> 
+     <string>DataSourceGetTest_unitilsDataSource</string> 
+    </void> 
+    <void property="description"> 
+     <string><![CDATA[Unitils/Springframework 에 설정 한 dataSource를 제대로 get하는지를 테스트하는 프로그램
+     ]]></string> 
+    </void> 
+    <void property="codeBlockList"> 
+     <array class="java.lang.String" length="5">
+      <void index="0"><string>테스트 클래스 선언부</string></void>
+      <void index="1"><string>데이터 소스 설정 파일 (datasource-spring-with-unitils.xml)</string></void>
+      <void index="2"><string>데이터 소스 설정 파일 (unitils.properties)</string></void>
+      <void index="3"><string>데이터소스 선언</string></void>
+      <void index="4"><string>데이터소스 확인</string></void>
+      <void index="5"><string>소스 전체</string></void> 
+     </array> 
+    </void> 
+    <void property="codeBlocks">
+     <array class="java.lang.String" length="5"> 
+      <void index="0"> 
+       <string><![CDATA[
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath*:META-INF/persistence/connection/datasource-spring-with-unitils.xml" })
+]]>
+       </string> 
+      </void> 
+      <void index="1"> 
+       <string><![CDATA[
+    <bean id="dataSource" class="org.unitils.database.UnitilsDataSourceFactoryBean" />
+]]>
+       </string> 
+      </void> 
+      <void index="2"> 
+       <string><![CDATA[
+database.driverClassName=oracle.jdbc.OracleDriver
+database.url=jdbc:oracle:thin:@ip:port:instance
+database.userName=name
+database.password=password
+]]>
+       </string> 
+      </void>       
+      <void index="3"> 
+       <string><![CDATA[
+    /**  
+     * ContextConfiguration 에서 제시한 configuration 에
+     * dataSource 라는 이름의 bean 이 선언되어 있으면 자동으로 injection 된다.
+     * 여기서는 unitils 에서 생성한 dataSource 를 spring이 인식하는 구조이다.
+     * 
+     * @see META-INF/persistence/datasource-spring-with-unitils.xml 
+     * */
+    @Resource(name = "dataSource")
+    DataSource dataSource;
+]]>
+       </string> 
+      </void> 
+      <void index="4"> 
+       <string><![CDATA[
+    /**
+     * dataSource를 정상적으로 get 했는지를 확인한다.
+    */
+    @Test
+    public void checkDataSource() {
+        assertNotNull("unitils 에서 생성한 dataSource 를 spring을 통해 정상적으로 get 했는지를 확인한다.", dataSource);
+    }
+]]>
+       </string> 
+      </void> 
+      <void index="5"> 
+       <string><![CDATA[
+import static org.junit.Assert.assertNotNull;
+
+import javax.annotation.Resource;
+import javax.sql.DataSource;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath*:META-INF/persistence/connection/datasource-spring-with-unitils.xml" })
+public class DataSourceGetTest_springWithUnitils {
+
+    /**  
+     * ContextConfiguration 에서 제시한 configuration 에
+     * dataSource 라는 이름의 bean 이 선언되어 있으면 자동으로 injection 된다.
+     * 여기서는 unitils 에서 생성한 dataSource 를 spring이 인식하는 구조이다.
+     * 
+     * @see META-INF/persistence/datasource-spring-with-unitils.xml 
+     * */
+    @Resource(name = "dataSource")
+    DataSource dataSource;
+
+    /**
+     * dataSource를 정상적으로 get 했는지를 확인한다.
+    */
+    @Test
+    public void checkDataSource() {
+        assertNotNull("unitils 에서 생성한 dataSource 를 spring을 통해 정상적으로 get 했는지를 확인한다.", dataSource);
+    }
+}
+]]>
+       </string> 
+      </void> 
+     </array> 
+    </void> 
+   </object> 
+  </void> 
+ </array> 
+</java> 

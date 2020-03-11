@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0_07" class="java.beans.XMLDecoder"> 
+ <array class="egovframework.dev.tst.tcgenerator.CodeBlockInfo" length="1"> 
+  <void index="0"> 
+   <object class="egovframework.dev.tst.tcgenerator.CodeBlockInfo"> 
+    <void property="tcTemplateName"> 
+     <string>JNDI Mock Test</string> 
+    </void> 
+    <void property="description"> 
+     <string>Mocking 으로 JNDI Lookup 수행하는  테스트케이스 코드블럭을 복사합니다.</string> 
+    </void> 
+    <void property="codeBlockList"> 
+     <array class="java.lang.String" length="6"> 
+      <void index="0"> 
+       <string>Field</string> 
+      </void> 
+      <void index="1"> 
+       <string>SetUp Method</string> 
+      </void> 
+      <void index="2"> 
+       <string>Binded 객체에 대한 lookup 여부 Test</string> 
+      </void>  
+      <void index="3"> 
+       <string>lookup 된 객체의 정상 여부 Test</string> 
+      </void>  
+      <void index="4"> 
+       <string>TearDown Method</string> 
+      </void>  
+      <void index="5"> 
+       <string>소스 전체</string> 
+      </void>
+     </array> 
+    </void> 
+    <void property="codeBlocks"> 
+     <array class="java.lang.String" length="6"> 
+      <void index="0"> 
+       <string><![CDATA[
+/** name */
+private static final String name = "java:comp/env/jdbc/myDS";
+       ]]></string> 
+      </void> 
+      <void index="1"> 
+       <string><![CDATA[
+/**
+ * Binding 하고자 하는 객체를 얻어와 주어진 이름으로 바인딩을 하는 테스트 초기 셋업 메소드
+ */
+@BeforeClass 
+public static void setUp()
+{
+	Object objectToBind = new JNDIObject().getObjectToBind();
+	
+	try {
+		SimpleNamingContextBuilder.emptyActivatedContextBuilder().bind(name, objectToBind);
+	}
+	catch(NamingException e) {
+		throw new AssertionFailedError();
+	}
+}
+       ]]></string> 
+      </void> 
+      <void index="2"> 
+       <string><![CDATA[
+/**
+ * Binding 한 객체에 대한 lookup 이 제대로 실행되는지 확인하는 테스트
+ */
+@Test
+public void testBindedObjectIsNull()
+{
+	DataSource dataSource;
+	
+	try {
+		dataSource = (DataSource) new InitialContext().lookup(name);
+		Assert.assertNotNull("Binded object is dataSource.", dataSource);
+	}
+	catch(NamingException e) {
+		throw new AssertionFailedError();
+	}
+}
+       ]]></string> 
+      </void> 
+      <void index="3"> 
+       <string><![CDATA[
+/**
+ * lookup 된 객체가 순수 기능을 수행할 수 있는 정상적인 객체인지 확인하는 테스트
+ */
+@Ignore
+@Test
+public void testBindedObjectIsAvailable()
+{
+	DataSource dataSource;
+	Connection connection;
+	
+	try {
+		dataSource = (DataSource) new InitialContext().lookup(name);
+		connection = dataSource.getConnection();
+		
+		Assert.assertNotNull("Binded object dataSource can return connection.", connection);
+	}
+	catch(Exception e) {
+		throw new AssertionFailedError();
+	}
+}
+       ]]></string> 
+      </void> 
+      <void index="4"> 
+       <string><![CDATA[
+/**
+ * Binding 시킨 객체를 clear 함
+ */
+@AfterClass
+public static void teardown() {
+	try {
+		SimpleNamingContextBuilder.emptyActivatedContextBuilder().clear();
+	}
+	catch(NamingException e) {
+		throw new AssertionFailedError();
+	}
+}
+       ]]></string> 
+      </void> 
+      <void index="5"> 
+       <string><![CDATA[
+import java.sql.Connection;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
+import junit.framework.Assert;
+import junit.framework.AssertionFailedError;
+
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.springframework.mock.jndi.SimpleNamingContextBuilder;
+import org.springframework.test.context.ContextConfiguration;
+
+import egovframework.guideprogram.test.target.mock.JNDIObject;
+
+@ContextConfiguration
+public class JNDIMockTest
+{
+	/** name */
+	private static final String name = "java:comp/env/jdbc/myDS";
+	
+	/**
+	 * Binding 하고자 하는 객체를 얻어와 주어진 이름으로 바인딩을 하는 테스트 초기 셋업 메소드
+	 */
+	@BeforeClass 
+	public static void setUp()
+	{
+		Object objectToBind = new JNDIObject().getObjectToBind();
+		
+		try {
+			SimpleNamingContextBuilder.emptyActivatedContextBuilder().bind(name, objectToBind);
+		}
+		catch(NamingException e) {
+			throw new AssertionFailedError();
+		}
+	}
+
+	/**
+	 * Binding 한 객체에 대한 lookup 이 제대로 실행되는지 확인하는 테스트
+	 */
+	@Test
+	public void testBindedObjectIsNull()
+	{
+		DataSource dataSource;
+		
+		try {
+			dataSource = (DataSource) new InitialContext().lookup(name);
+			Assert.assertNotNull("Binded object is dataSource.", dataSource);
+		}
+		catch(NamingException e) {
+			throw new AssertionFailedError();
+		}
+	}
+
+	/**
+	 * lookup 된 객체가 순수 기능을 수행할 수 있는 정상적인 객체인지 확인하는 테스트
+	 */
+	@Ignore
+	@Test
+	public void testBindedObjectIsAvailable()
+	{
+		DataSource dataSource;
+		Connection connection;
+		
+		try {
+			dataSource = (DataSource) new InitialContext().lookup(name);
+			connection = dataSource.getConnection();
+			
+			Assert.assertNotNull("Binded object dataSource can return connection.", connection);
+		}
+		catch(Exception e) {
+			throw new AssertionFailedError();
+		}
+	}
+
+	/**
+	 * Binding 시킨 객체를 clear 함
+	 */
+	@AfterClass
+	public static void teardown() {
+		try {
+			SimpleNamingContextBuilder.emptyActivatedContextBuilder().clear();
+		}
+		catch(NamingException e) {
+			throw new AssertionFailedError();
+		}
+	}
+}
+       ]]></string> 
+      </void>
+     </array> 
+    </void> 
+   </object> 
+  </void> 
+ </array> 
+</java> 

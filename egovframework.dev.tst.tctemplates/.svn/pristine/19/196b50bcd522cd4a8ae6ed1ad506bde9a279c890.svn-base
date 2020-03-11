@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0_07" class="java.beans.XMLDecoder"> 
+ <array class="egovframework.dev.tst.tcgenerator.CodeBlockInfo" length="1"> 
+  <void index="0"> 
+   <object class="egovframework.dev.tst.tcgenerator.CodeBlockInfo"> 
+    <void property="tcTemplateName"> 
+     <string>Interface and InterfaceImpl Test</string> 
+    </void> 
+    <void property="description"> 
+     <string>Interface와 그 구현 클래스에 대한 테스트케이스 코드블럭을 복사합니다.</string> 
+    </void> 
+    <void property="codeBlockList"> 
+     <array class="java.lang.String" length="2"> 
+      <void index="0"> 
+       <string>Interface</string> 
+      </void> 
+      <void index="1"> 
+       <string>Interface Impl.</string> 
+      </void> 
+     </array> 
+    </void> 
+    <void property="codeBlocks"> 
+     <array class="java.lang.String" length="2"> 
+      <void index="0"> 
+       <string><![CDATA[
+public abstract class InterfaceTest {
+
+	/**
+ 	 * Java Interface 는 직접 테스트할 수 없으므로 abstract 클래스로 선언한 테스트케이스를 작성하고
+ 	 * 이 테스트케이스를 상속받는 클래스를 통해 아래 선언한 메소드에 대한 인터페이스 테스트를 수행할 수 있도록 함
+ 	 * @throws Exception
+	*/
+	public abstract void testMethod() throws Exception;
+	
+}
+       ]]></string> 
+      </void> 
+      <void index="1"> 
+       <string><![CDATA[
+public class InterfaceImplTest extends InterfaceTest {
+
+	/**
+	 * Java Interface 는 직접 테스트할 수 없으므로 해당 Interface 의 TestCase를 상속받아
+	 * Test Method 를 구현하여 Concrete Class와 Interface를 동시에 테스트 함
+	 * @throws Exception
+	 * @see egovframework.guideprogram.test.testcase.basic.InterfaceTest#testMethod()
+	*/
+	@Override
+	@Test
+	public void testMethod() throws Exception {
+	}
+
+}
+       ]]></string> 
+      </void> 
+     </array> 
+    </void> 
+   </object> 
+  </void> 
+ </array> 
+</java> 

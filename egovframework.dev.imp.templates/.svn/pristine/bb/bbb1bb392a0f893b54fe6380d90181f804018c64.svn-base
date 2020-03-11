@@ -1,0 +1,18 @@
+<appender name="${appenderName}"
+	class="egovframework.rte.fdl.logging.db.EgovJDBCAppender">
+	<!-- caller_filename, caller_class, caller_method, caller_line -->
+	<param name="locationInfo" value="true" />
+	<param name="sql"
+		value="INSERT INTO logging_event (
+								sequence_number, timestamp, rendered_message,
+								logger_name, level_string, ndc,
+								thread_name, reference_flag,
+								caller_filename, caller_class,
+								caller_method, caller_line) 
+							VALUES 
+								('%X{sequence_number}', '%X{timestamp}', '%X{rendered_message}', 
+								'%X{logger_name}', '%X{level_string}', '%X{ndc}', 
+								'%X{thread_name}', '%X{reference_flag}', 
+								'%X{caller_filename}', '%X{caller_class}', 
+								'%X{caller_method}', '%X{caller_line}')" />
+</appender>

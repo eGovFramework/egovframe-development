@@ -1,0 +1,44 @@
+##
+#set($voPackage="${voPackage}")
+#set($voClassName="${model.entity.pcName}VO")
+#set($defaultVoClassName="${model.entity.pcName}DefaultVO")
+##
+##
+package $voPackage;
+
+/**
+ * @Class Name : ${voClassName}.java
+ * @Description : ${model.entity.pcName} VO class
+ * @Modification Information
+ *
+ * @author ${author}
+ * @since ${createDate}
+ * @version 1.0
+ * @see
+ *  
+ *  Copyright (C)  All right reserved.
+ */
+public class ${voClassName} extends ${defaultVoClassName}{
+    private static final long serialVersionUID = 1L;
+    
+#set($i=0)	
+#foreach($attribute in $model.attributes)
+    /** ${attribute.name} */
+    private ${attribute.javaType} ${attribute.ccName};
+    
+#set($i=$i+1)
+#end
+##
+#set($i=0)	
+#foreach($attribute in $model.attributes)
+    public ${attribute.javaType} get${attribute.pcName}() {
+        return this.${attribute.ccName};
+    }
+    
+    public void set${attribute.pcName}(${attribute.javaType} ${attribute.ccName}) {
+        this.${attribute.ccName} = ${attribute.ccName};
+    }
+    
+#set($i=$i+1)
+#end  
+}
