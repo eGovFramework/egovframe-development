@@ -37,7 +37,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
  * 
  * 생성 파일 :  
  * 			  components_ko.properties  (실제 파일경로 : egovframework.dev.imp.commngt\common)
- *            components.properties     (실제 파일경로 : egovframework.dev.imp.commngt\common)
+ *            components_en.properties  (실제 파일경로 : egovframework.dev.imp.commngt\common)
  *            components.xml            (실제 파일경로 : egovframework.dev.imp.commngt\example)
  *            MobileComponentsInfo.java (실제 파일경로 : egovframework.dev.imp.commngt\common)
  *
@@ -49,9 +49,9 @@ public class CreateComponentInfo{
 	public static void main(String[] args) throws Exception{
 		try{
 			//컴포넌트 정보 엑셀 파일 경로			
-			String readFilePath = "D:\\eclipse-rcp-photon-R-win32\\workspace.egov\\egovframework.mdev.imp.commngt\\examples\\componentsMobile.xls";
+			String readFilePath = "D:\\eclipse-rcp-2020-06-R-win32-x86_64\\workspace\\egovframework.mdev.imp.commngt\\examples\\componentsMobile.xls";
 			//컴포넌트 정보 properties, java, xml 파일 생성 경로
-			String generateFilePath="D:\\eclipse-rcp-photon-R-win32\\workspace.egov\\egovframework.mdev.imp.commngt\\examples";
+			String generateFilePath="D:\\eclipse-rcp-2020-06-R-win32-x86_64\\workspace\\egovframework.mdev.imp.commngt\\examples";
 			
 			//properties 파일
 			File propertiesKoFile = File.createTempFile("components_ko", ".properties", new File(generateFilePath));

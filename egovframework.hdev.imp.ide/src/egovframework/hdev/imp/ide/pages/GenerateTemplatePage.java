@@ -216,12 +216,9 @@ public class GenerateTemplatePage extends WizardPage {
 		String[] fileNames = new String[] {DeviceAPITemplateInfo.template1name, DeviceAPITemplateInfo.template2name, DeviceAPITemplateInfo.template3name, 
 				DeviceAPITemplateInfo.template4name, DeviceAPITemplateInfo.template5name, DeviceAPITemplateInfo.template6name, DeviceAPITemplateInfo.template7name, 
 				DeviceAPITemplateInfo.template8name, DeviceAPITemplateInfo.template9name, DeviceAPITemplateInfo.template10name, DeviceAPITemplateInfo.template11name, 
-				//DeviceAPITemplateInfo.template12name, DeviceAPITemplateInfo.template13name, DeviceAPITemplateInfo.template14name, //PKI 3종 메뉴 삭제 2019.11.15 
-				DeviceAPITemplateInfo.template15name,
+				DeviceAPITemplateInfo.template12name, DeviceAPITemplateInfo.template13name, DeviceAPITemplateInfo.template14name, DeviceAPITemplateInfo.template15name, 
 				DeviceAPITemplateInfo.template16name, DeviceAPITemplateInfo.template17name, DeviceAPITemplateInfo.template18name, DeviceAPITemplateInfo.template19name,
-				//DeviceAPITemplateInfo.template20name, //PushNotification 메뉴 삭제 2019.11.22 
-				DeviceAPITemplateInfo.template21name, DeviceAPITemplateInfo.template22name, DeviceAPITemplateInfo.template23name,
-				DeviceAPITemplateInfo.template24name, DeviceAPITemplateInfo.template25name
+				DeviceAPITemplateInfo.template20name, DeviceAPITemplateInfo.template21name, DeviceAPITemplateInfo.template22name
 };
 
 		for(int i = 0 ; i < fileNames.length; i++){

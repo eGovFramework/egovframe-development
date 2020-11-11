@@ -153,7 +153,7 @@ public class HandlePomXMLFileUtil {
 						"<dependency>" 
 						+ "\n\t\t\t<groupId>" + "egovframework.rte" + "</groupId>"
 						+ "\n\t\t\t<artifactId>" + "egovframework.rte.bat.core" + "</artifactId>" 
-						+ "\n\t\t\t<version>" + "3.8.0" + "</version>\n\t\t"
+						+ "\n\t\t\t<version>" + "3.10.0" + "</version>\n\t\t"
 						+ "</dependency>"
 						+ "\n ";
 
@@ -166,7 +166,7 @@ public class HandlePomXMLFileUtil {
 						"<dependency>" 
 						+ "\n\t\t\t<groupId>" + "org.springframework.batch" + "</groupId>"
 						+ "\n\t\t\t<artifactId>" + "spring-batch-infrastructure" + "</artifactId>" 
-						+ "\n\t\t\t<version>" + "3.0.6.RELEASE" + "</version>\n\t\t"
+						+ "\n\t\t\t<version>" + "3.0.10.RELEASE" + "</version>\n\t\t"
 						+ "</dependency>"
 						+ "\n ";
 
@@ -179,7 +179,7 @@ public class HandlePomXMLFileUtil {
 						"<dependency>" 
 						+ "\n\t\t\t<groupId>" + "org.springframework.batch" + "</groupId>"
 						+ "\n\t\t\t<artifactId>" + "spring-batch-core" + "</artifactId>" 
-						+ "\n\t\t\t<version>" + "3.0.6.RELEASE" + "</version>\n\t\t"
+						+ "\n\t\t\t<version>" + "3.0.10.RELEASE" + "</version>\n\t\t"
 						+ "</dependency>"
 						+ "\n ";
 
@@ -207,7 +207,7 @@ public class HandlePomXMLFileUtil {
 	@SuppressWarnings("unchecked")
 	public static InputStream createPropertiesFileinZip(IProgressMonitor monitor, String fileName) {
 
-		InputStream inputStream = null;
+		InputStream inputStream = null; 
 		
 		URL insetUrl = EgovBatchNaturePlugin.getDefault().getBundle().getEntry(fileName);
 		

@@ -42,7 +42,7 @@ import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jface.viewers.TreeNode;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.internal.ide.StringMatcher;
+import org.eclipse.ui.internal.misc.StringMatcher;
 import org.eclipse.wst.sse.core.internal.provisional.IStructuredModel;
 import org.eclipse.wst.xml.core.internal.provisional.document.IDOMDocument;
 import org.eclipse.wst.xml.core.internal.provisional.document.IDOMModel;

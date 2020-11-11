@@ -77,8 +77,6 @@ public class EgovNewDeviceAPIHybridProjectWizard extends Wizard implements INewW
 	 */
 	public EgovNewDeviceAPIHybridProjectWizard() {
 		
-		
-		
 		setContext(new DeviceAPIContext());
 		setWindowTitle(DeviceAPIMessages.WIZARD_NEW_PROJECT_TITLE);
 		setDefaultPageImageDescriptor(EgovDeviceAPIIdePlugin.getDefault().getImageDescriptor(EgovDeviceAPIIdePlugin.IMG_CORE_PROJ_WIZ_BANNER));

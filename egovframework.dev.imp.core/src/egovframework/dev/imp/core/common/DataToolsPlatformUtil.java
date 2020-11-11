@@ -92,8 +92,10 @@ public final class DataToolsPlatformUtil {
 		property.put("username", p.getBaseProperties().getProperty(
 		"org.eclipse.datatools.connectivity.db.username"));
 
-		property.put("password", p.getBaseProperties().getProperty(
-		"org.eclipse.datatools.connectivity.db.password"));
+//		property.put("password", p.getBaseProperties().getProperty(
+//		"org.eclipse.datatools.connectivity.db.password"));
+		String password = p.getBaseProperties().getProperty("org.eclipse.datatools.connectivity.db.password");//password Null로 인한 오류 해결
+		property.put("password", password);
 
 		property.put("driverClass", p.getBaseProperties().getProperty(
 		"org.eclipse.datatools.connectivity.db.driverClass"));

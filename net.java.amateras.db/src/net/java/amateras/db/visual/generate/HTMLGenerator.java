@@ -9,10 +9,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-import net.java.amateras.db.util.IOUtils;
-import net.java.amateras.db.visual.model.RootModel;
-import net.java.amateras.db.visual.model.TableModel;
-
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 import org.apache.velocity.runtime.RuntimeConstants;
@@ -22,6 +18,10 @@ import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.DirectoryDialog;
 import org.eclipse.swt.widgets.Display;
+
+import net.java.amateras.db.util.IOUtils;
+import net.java.amateras.db.visual.model.RootModel;
+import net.java.amateras.db.visual.model.TableModel;
 
 public class HTMLGenerator implements IGenerator {
 
@@ -34,7 +34,7 @@ public class HTMLGenerator implements IGenerator {
 		}
 	}
 
-	static {
+	static {		
 		// kills Velocity logging
 		Velocity.addProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM_CLASS,
 		        NullLogChute.class.getName());
@@ -56,7 +56,15 @@ public class HTMLGenerator implements IGenerator {
 	}
 
 	public void execute(IFile erdFile, RootModel root, GraphicalViewer viewer) {
-		try {
+		
+		//add following classloader lines (2020.3.9)
+		final ClassLoader oldContextClassLoader = Thread.currentThread().getContextClassLoader();
+		
+		try {			
+			
+			//add following classloader lines (2020.3.9)
+			Thread.currentThread().setContextClassLoader(HTMLGenerator.class.getClassLoader());
+			
 			DirectoryDialog dialog = new DirectoryDialog(Display.getCurrent().getActiveShell(), SWT.SAVE);
 			String rootDir = dialog.open();
 
@@ -65,14 +73,18 @@ public class HTMLGenerator implements IGenerator {
 			}
 		} catch(Exception ex){
 			ex.printStackTrace();
+		} finally {
+			//add following classloader lines (2020.3.9)
+			Thread.currentThread().setContextClassLoader(oldContextClassLoader);
 		}
+		
 	}
 
 	public void generate(String rootDir, RootModel root) throws Exception {
 		IOUtils.copyStream(HTMLGenerator.class.getResourceAsStream("stylesheet.css"),
 				new FileOutputStream(new File(rootDir, "stylesheet.css")));
-
-		Velocity.init();
+			    
+		Velocity.init();		
 		VelocityContext context = new VelocityContext();
 		context.put("model", root);
 		context.put("util", new VelocityUtils());
@@ -96,6 +108,7 @@ public class HTMLGenerator implements IGenerator {
 			processTemplate("table.html", new File(tableDir,
 					table.getTableName() + ".html"), context);
 		}
+				
 	}
 
 	public String getGeneratorName() {

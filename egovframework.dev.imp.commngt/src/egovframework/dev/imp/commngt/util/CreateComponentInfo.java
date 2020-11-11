@@ -38,7 +38,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
  * 
  * 생성 파일 :  
  * 			  components_ko.properties (실제 파일경로 : egovframework.dev.imp.commngt\common)
- *            components.properties    (실제 파일경로 : egovframework.dev.imp.commngt\common)
+ *            components_en.properties (실제 파일경로 : egovframework.dev.imp.commngt\common)
  *            EgovComponentsInfo.java  (실제 파일경로 : egovframework.dev.imp.commngt\common)
  *            components.xml           (실제 파일경로 : egovframework.dev.imp.commngt\example)
  *
@@ -50,11 +50,11 @@ public class CreateComponentInfo{
 	public static void main(String[] args) throws Exception{
 		try{
 			//컴포넌트 정보 엑셀 파일 경로
-			String readFilePath = "D:\\eclipse-rcp-photon-R-win32\\workspace.egov\\egovframework.dev.imp.commngt\\examples\\components.xls";
+			String readFilePath = "D:\\eclipse-rcp-2020-06-R-win32-x86_64\\workspace\\egovframework.dev.imp.commngt\\examples\\components.xls";
 			//컴포넌트 정보 2가지 properties, java 파일 생성 경로 
-			String generateFilePath="D:\\eclipse-rcp-photon-R-win32\\workspace.egov\\egovframework.dev.imp.commngt\\src\\egovframework\\dev\\imp\\commngt\\common";
+			String generateFilePath="D:\\eclipse-rcp-2020-06-R-win32-x86_64\\workspace\\egovframework.dev.imp.commngt\\src\\egovframework\\dev\\imp\\commngt\\common";
 			//xml 파일 생성 경로
-			String generateXMLFilePath="D:\\eclipse-rcp-photon-R-win32\\workspace.egov\\egovframework.dev.imp.commngt\\examples";
+			String generateXMLFilePath="D:\\eclipse-rcp-2020-06-R-win32-x86_64\\workspace\\egovframework.dev.imp.commngt\\examples";
 			
 			//properties 파일
 			File propertiesKoFile = File.createTempFile("components_ko", ".properties", new File(generateFilePath));

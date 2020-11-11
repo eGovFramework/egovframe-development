@@ -187,7 +187,8 @@ public class NewDeviceAPITemplateGenerateOperation extends NewDeviceAPIHybridPro
 	        		MavenPlugin.getProjectConfigurationManager().updateProjectConfiguration(this.getDeviceapiProject(), pmonitor);
 	        	}	        	
 
-        	}catch(Exception e) {        		
+        	}catch(Exception e) {       
+        		 DeviceAPIIdeLog.logError(e);
         	}
 
 

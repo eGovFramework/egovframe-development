@@ -361,6 +361,7 @@ public abstract class NewDeviceAPIHybridProjectCreationOperation extends NewDevi
 
     	BufferedInputStream is = null;
     	ZipFile zipFile = null;
+    	FileOutputStream fos = null;
         try {
             Path path = new Path(EgovDeviceAPIIdePlugin.getDefault().getInstalledPath());
             String zipFileName = path.append("examples/hyb/").append(context.getDeviceapiExampleFile()).toOSString();
@@ -383,7 +384,7 @@ public abstract class NewDeviceAPIHybridProjectCreationOperation extends NewDevi
 
                 ResourceUtils.ensureFolderExists(getDeviceapiProject(), entry.getName());
 
-                FileOutputStream fos =
+                fos =
                     new FileOutputStream(targetPath.append(entry.getName())
                         .toOSString());
 
@@ -393,6 +394,8 @@ public abstract class NewDeviceAPIHybridProjectCreationOperation extends NewDevi
                 }
                 dest.flush();
                 dest.close();
+                fos.flush();
+                fos.close();
                 
                 is.close();
             }
@@ -414,6 +417,13 @@ public abstract class NewDeviceAPIHybridProjectCreationOperation extends NewDevi
         		} catch (IOException e) {
         			DeviceAPIIdeLog.logError(e);
         		}
+        	}
+        	if(fos != null) {
+        		try {
+        			fos.close();
+	        	} catch (IOException e) {
+					DeviceAPIIdeLog.logError(e);
+				}
         	}
         }
     }

@@ -118,9 +118,9 @@ public class EgovDeviceAPIIdePlugin extends AbstractUIPlugin {
         	//example경로 오류 수정(장성호 2018-06-25)
             //URL url = Platform.resolve(getDefault().getDescriptor().getInstallURL());
             URL url = Platform.asLocalURL(plugin.getBundle().getEntry("/"));
-            DeviceAPIIdeLog.logInfo(url.toString());
+            //DeviceAPIIdeLog.logInfo(url.toString());
             path = (new File(url.getPath())).getAbsolutePath();
-            DeviceAPIIdeLog.logInfo(path.toString());
+            //DeviceAPIIdeLog.logInfo(path.toString());
         } catch (Exception e) {
 
         	DeviceAPIIdeLog.logError(e);

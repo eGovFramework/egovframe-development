@@ -51,7 +51,18 @@ public class DeviceAPITemplateInfo {
     
     /** Web example File */
     public static String webexample;
+
     
+    /* Table 변경시 유의해야 할 것들
+     * egovframework.hdev.imp.ide.wizards.examples.DeviceAPITemplateInfo HDEV_TABLES_COUNT
+     * egovframework.hdev.imp.ide.wizards.examples.DeviceAPITemplateInfo FIELD들 (table*, table*desc, template*name , template*desc, template*example)
+     * egovframework.hdev.imp.ide.wizards.examples.examples.properties 프로퍼티 항목들 (table*, table*desc, template*name , template*desc, template*example)
+     * egovframework.hdev.imp.ide.pages.GenerateTemplatePage getTableInputItems()의 fileNames
+     * */
+
+    /** Tables Count */
+	public static final int HDEV_TABLES_COUNT = 22;
+	
     /** TABLE */
     public static String table1;
     public static String table2;
@@ -74,10 +85,7 @@ public class DeviceAPITemplateInfo {
     public static String table19;
     public static String table20;
     public static String table21;
-    public static String table22;
-    public static String table23;
-    public static String table24;
-    public static String table25; 
+    public static String table22; 
 
     
     /** TABLE DESC */
@@ -103,9 +111,6 @@ public class DeviceAPITemplateInfo {
     public static String table20desc;
     public static String table21desc;
     public static String table22desc;
-    public static String table23desc;
-    public static String table24desc;
-    public static String table25desc;
 
     
     public static String template1name;
@@ -155,7 +160,7 @@ public class DeviceAPITemplateInfo {
     public static String template12name;
     public static String template12desc;
     public static String template12example;
-    
+
     public static String template13name;
     public static String template13desc;
     public static String template13example;
@@ -167,7 +172,7 @@ public class DeviceAPITemplateInfo {
     public static String template15name;
     public static String template15desc;
     public static String template15example;
-
+    
     public static String template16name;
     public static String template16desc;
     public static String template16example;
@@ -195,18 +200,6 @@ public class DeviceAPITemplateInfo {
     public static String template22name;
     public static String template22desc;
     public static String template22example;
-    
-    public static String template23name;
-    public static String template23desc;
-    public static String template23example;
-    
-    public static String template24name;
-    public static String template24desc;
-    public static String template24example;
-    
-    public static String template25name;
-    public static String template25desc;
-    public static String template25example;
 
     /**
      * 리소스 번들로 부터 속성 값 읽어오기
@@ -266,48 +259,39 @@ public class DeviceAPITemplateInfo {
     	} else if("Network".equals(tamplateName)) {
     		
     		templateType = "template11";
-    	} else if("PKIMagicXSign".equals(tamplateName)) {
-    		
-    		templateType = "template12";
-    	} else if("PKIWizSign".equals(tamplateName)) {
-    		
-    		templateType = "template13";
-    	} else if("PKIXecureSmart".equals(tamplateName)) {
-    		
-    		templateType = "template14";
     	} else if("Interface".equals(tamplateName)) {
     		
-    		templateType = "template15";    		
+    		templateType = "template12";    		
     	} else if("BarcodeScanner".equals(tamplateName)) {
     		
-    		templateType = "template16";
+    		templateType = "template13";
     	} else if("DeviceFilemgmt".equals(tamplateName)) {
     		
-    		templateType = "template17";
+    		templateType = "template14";
     	} else if("FileOpener".equals(tamplateName)) {
     		
-    		templateType = "template18";
+    		templateType = "template15";
     	} else if("JailBreakDetection".equals(tamplateName)) {
     		
-    		templateType = "template19";
+    		templateType = "template16";
     	} else if("PushNotiflcations".equals(tamplateName)) {
     		
-    		templateType = "template20";
+    		templateType = "template17";
     	} else if("SocketIO".equals(tamplateName)) {
     		
-    		templateType = "template21";
+    		templateType = "template18";
     	} else if("Sqlite".equals(tamplateName)) {
     		
-    		templateType = "template22";
+    		templateType = "template19";
     	} else if("StreamingMedia".equals(tamplateName)) {
     		
-    		templateType = "template23";
+    		templateType = "template20";
     	} else if("UnZip".equals(tamplateName)) {
     		
-    		templateType = "template24";
+    		templateType = "template21";
     	} else if("WebResourceUpdate".equals(tamplateName)) {
     		
-    		templateType = "template25";
+    		templateType = "template22";
     	} 
     	
     	Class<DeviceAPITemplateInfo> c = DeviceAPITemplateInfo.class;
@@ -324,7 +308,7 @@ public class DeviceAPITemplateInfo {
     	Class<DeviceAPITemplateInfo> c = DeviceAPITemplateInfo.class;
     	List<String> tableList = new ArrayList<String>();
     	
-    	for(int i=1; i<26; i++) {
+    	for(int i=1; i< HDEV_TABLES_COUNT+1 ; i++) {
     		
     		tableList.add(c.getField("table" + i).get(c).toString());
     	}
@@ -342,7 +326,7 @@ public class DeviceAPITemplateInfo {
     	Class<DeviceAPITemplateInfo> c = DeviceAPITemplateInfo.class;
     	HashMap<String, String> map = new HashMap<String, String>();
     	
-    	for(int i=1; i<26; i++) {
+    	for(int i=1; i< HDEV_TABLES_COUNT+1 ; i++) {
     		
     		String tableName = c.getField("table" + i).get(c).toString();
     		String tableDesc = c.getField("table" + i + "desc").get(c).toString();

@@ -38,7 +38,7 @@ import org.eclipse.ui.forms.IManagedForm;
 import org.eclipse.ui.forms.SectionPart;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.internal.ide.StringMatcher;
+import org.eclipse.ui.internal.misc.StringMatcher;
 
 /**
  * Config 화면의  Mpa File 목록 화면 부분

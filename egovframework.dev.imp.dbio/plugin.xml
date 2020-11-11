@@ -8,23 +8,8 @@
             base-type="org.eclipse.core.runtime.xml"
             default-charset="UTF-8"
             file-extensions="xml"
-            id="egovframework.dev.imp.dbio.mapper"
-            name="DBIO mapper File"
-            priority="normal">
-         <describer
-               class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
-            <parameter
-                  name="element"
-                  value="sqlMap">
-            </parameter>
-         </describer>
-      </content-type>
-      <content-type
-            base-type="org.eclipse.core.runtime.xml"
-            default-charset="UTF-8"
-            file-extensions="xml"
-            id="egovframework.dev.imp.dbio.mapperConfig"
-            name="DBIO mapperConfig File"
+            id="egovframework.dev.imp.dbio.sqlMapConfig"
+            name="DBIO sqlMapConfig File"
             priority="normal">
          <describer
                class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
@@ -34,7 +19,6 @@
             </parameter>
          </describer>
       </content-type>
-      <!-- myBatis -->
       <content-type
             base-type="org.eclipse.core.runtime.xml"
             default-charset="UTF-8"
@@ -50,18 +34,34 @@
             </parameter>
          </describer>
       </content-type>
+      <!-- myBatis -->
       <content-type
             base-type="org.eclipse.core.runtime.xml"
             default-charset="UTF-8"
             file-extensions="xml"
-            id="egovframework.dev.imp.dbio.sqlMapConfig"
-            name="DBIO sqlMapConfig File"
+            id="egovframework.dev.imp.dbio.mapperConfig"
+            name="DBIO mapperConfig File"
             priority="normal">
          <describer
                class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
             <parameter
                   name="element"
-                  value="sqlMapConfig">
+                  value="configuration">
+            </parameter>
+         </describer>
+      </content-type>
+      <content-type
+            base-type="org.eclipse.core.runtime.xml"
+            default-charset="UTF-8"
+            file-extensions="xml"
+            id="egovframework.dev.imp.dbio.mapper"
+            name="DBIO mapper File"
+            priority="normal">
+         <describer
+               class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
+            <parameter
+                  name="element"
+                  value="mapper">
             </parameter>
          </describer>
       </content-type>
@@ -69,6 +69,17 @@
    <extension
          point="org.eclipse.ui.editors">
       <!-- iBatis -->
+      <editor
+            class="egovframework.dev.imp.dbio.editor.SqlMapConfigEditor"
+            contributorClass="egovframework.dev.imp.dbio.editor.XMLFormEditorContributor"
+            default="true"
+            icon="icons/editors/sqlmapconfig_file.gif"
+            id="egovframework.dev.imp.dbio.editor.sqlMapConfigEditor"
+            name="sqlMapConfig Editor">
+         <contentTypeBinding
+               contentTypeId="egovframework.dev.imp.dbio.sqlMapConfig">
+         </contentTypeBinding>
+      </editor>
       <editor
             class="egovframework.dev.imp.dbio.editor.SqlMapEditor"
             contributorClass="egovframework.dev.imp.dbio.editor.XMLFormEditorContributor"
@@ -78,6 +89,18 @@
             name="sqlMap Editor">
          <contentTypeBinding
                contentTypeId="egovframework.dev.imp.dbio.sqlMap">
+         </contentTypeBinding>
+      </editor>
+      <!-- myBatis -->
+      <editor
+            class="egovframework.dev.imp.dbio.editor.MapperConfigurationEditor"
+            contributorClass="egovframework.dev.imp.dbio.editor.XMLFormEditorContributor"
+            default="true"
+            icon="icons/editors/mapperconfiguration_file.gif"
+            id="egovframework.dev.imp.dbio.editor.mapperConfigurationEditor"
+            name="mapperConfiguration Editor">
+         <contentTypeBinding
+               contentTypeId="egovframework.dev.imp.dbio.mapperConfig">
          </contentTypeBinding>
       </editor>
       <editor
@@ -91,39 +114,11 @@
                contentTypeId="egovframework.dev.imp.dbio.mapper">
          </contentTypeBinding>
       </editor>
-      <editor
-            class="egovframework.dev.imp.dbio.editor.MapperConfigurationEditor"
-            contributorClass="egovframework.dev.imp.dbio.editor.XMLFormEditorContributor"
-            default="true"
-            icon="icons/editors/mapperconfiguration_file.gif"
-            id="egovframework.dev.imp.dbio.editor.mapperConfigurationEditor"
-            name="mapperConfiguration Editor">
-         <contentTypeBinding
-               contentTypeId="egovframework.dev.imp.dbio.mapperConfig">
-         </contentTypeBinding>
-      </editor>
-      <editor
-            class="egovframework.dev.imp.dbio.editor.SqlMapConfigEditor"
-            contributorClass="egovframework.dev.imp.dbio.editor.XMLFormEditorContributor"
-            default="true"
-            icon="icons/editors/sqlmapconfig_file.gif"
-            id="egovframework.dev.imp.dbio.editor.sqlMapConfigEditor"
-            name="sqlMapConfig Editor">
-         <contentTypeBinding
-               contentTypeId="egovframework.dev.imp.dbio.sqlMapConfig">
-         </contentTypeBinding>
-      </editor>
-      <!-- myBatis -->      
    </extension>
    <extension
          point="org.eclipse.wst.xml.core.catalogContributions">
       <catalogContribution>
-         <public
-               id="mybatis-3-mapper.dtd"
-               publicId="-//mybatis.org//DTD Mapper 3.0//EN"
-               uri="dtd/mybatis-3-mapper.dtd"
-               webURL="http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-         </public>
+		<!-- iBatis -->
          <public
                id="mybatis-3-config.dtd"
                publicId="-//mybatis.org//DTD Config 3.0//EN"
@@ -131,16 +126,23 @@
                webURL="http://mybatis.org/dtd/mybatis-3-config.dtd">
          </public>
          <public
-               id="ibatis-2-mapper.dtd"
-               publicId="-//ibatis.apache.org//DTD SQL Map 2.0//EN"
-               uri="dtd/sql-map-2.dtd"
-               webURL="http://ibatis.apache.org/dtd/sql-map-2.dtd">
+               id="mybatis-3-mapper.dtd"
+               publicId="-//mybatis.org//DTD Mapper 3.0//EN"
+               uri="dtd/mybatis-3-mapper.dtd"
+               webURL="http://mybatis.org/dtd/mybatis-3-mapper.dtd">
          </public>
+		<!-- myBatis -->
          <public
                id="ibatis-2-config.dtd"
                publicId="-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
                uri="dtd/sql-map-config-2.dtd"
                webURL="http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+         </public>
+         <public
+               id="ibatis-2-mapper.dtd"
+               publicId="-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+               uri="dtd/sql-map-2.dtd"
+               webURL="http://ibatis.apache.org/dtd/sql-map-2.dtd">
          </public>
       </catalogContribution>
    </extension>
@@ -149,26 +151,19 @@
       <!-- iBatis -->
       <wizard
             category="egovframework.dev.imp.core.wizards"
-            class="egovframework.dev.imp.dbio.wizard.NewSqlMapWizard"
-            icon="icons/wizards/sqlmapfile.gif"
-            id="egovframework.dev.imp.dbio.wizard.newSqlMap"
-            name="sqlMap">
-      </wizard>
-      <wizard
-            category="egovframework.dev.imp.core.wizards"
             class="egovframework.dev.imp.dbio.wizard.NewSqlMapConfigWizard"
             icon="icons/wizards/sqlmapconfigfile.gif"
             id="egovframework.dev.imp.dbio.wizard.newSqlMapConfig"
             name="sqlMapConfig">
       </wizard>
-      <!-- myBatis -->
       <wizard
             category="egovframework.dev.imp.core.wizards"
-            class="egovframework.dev.imp.dbio.wizard.NewMapperWizard"
-            icon="icons/wizards/mapperfile.gif"
-            id="egovframework.dev.imp.dbio.wizard.newMapper"
-            name="mapper">
+            class="egovframework.dev.imp.dbio.wizard.NewSqlMapWizard"
+            icon="icons/wizards/sqlmapfile.gif"
+            id="egovframework.dev.imp.dbio.wizard.newSqlMap"
+            name="sqlMap">
       </wizard>
+      <!-- myBatis -->
       <wizard
             category="egovframework.dev.imp.core.wizards"
             class="egovframework.dev.imp.dbio.wizard.NewMapperConfigurationWizard"
@@ -176,6 +171,13 @@
             id="egovframework.dev.imp.dbio.wizard.newMapperConfiguration"
             name="mapperConfiguration">
       </wizard>      
+      <wizard
+            category="egovframework.dev.imp.core.wizards"
+            class="egovframework.dev.imp.dbio.wizard.NewMapperWizard"
+            icon="icons/wizards/mapperfile.gif"
+            id="egovframework.dev.imp.dbio.wizard.newMapper"
+            name="mapper">
+      </wizard>
    </extension>
    <extension
          point="org.eclipse.ui.views">
@@ -213,7 +215,8 @@
          </newWizardShortcut>
          <newWizardShortcut
                id="egovframework.dev.imp.dbio.wizard.newMapper">
-         </newWizardShortcut>         
+         </newWizardShortcut>      
+            
          <view
                id="egovframework.dev.imp.dbio.view.dbioSearch"
                minimized="false"
@@ -247,7 +250,8 @@
          </newWizardShortcut>
          <newWizardShortcut
                id="egovframework.dev.imp.dbio.wizard.newMapper">
-         </newWizardShortcut>      
+         </newWizardShortcut>   
+            
          <view
                id="egovframework.dev.imp.dbio.view.dbioSearch"
                minimized="false"
@@ -278,7 +282,8 @@
          </command>
          <command
                commandId="egovframework.dev.imp.dbio.commands.newMapper">
-         </command>         
+         </command>
+         
          <command
                commandId="egovframework.dev.imp.dbio.commands.openDbioSearch">
          </command>
@@ -311,7 +316,8 @@
             categoryId="egovframework.dev.imp.ide.commands.category"
             id="egovframework.dev.imp.dbio.commands.newMapper"
             name="New Mapper">
-      </command>      
+      </command>  
+          
       <command
             categoryId="egovframework.dev.imp.ide.commands.category"
             id="egovframework.dev.imp.dbio.commands.openDbioSearch"
@@ -338,6 +344,7 @@
             class="egovframework.dev.imp.dbio.handlers.NewMapper"
             commandId="egovframework.dev.imp.dbio.commands.newMapper">
       </handler>      
+      
       <handler
             class="egovframework.dev.imp.dbio.handlers.ShowDbioSearchView"
             commandId="egovframework.dev.imp.dbio.commands.openDbioSearch">

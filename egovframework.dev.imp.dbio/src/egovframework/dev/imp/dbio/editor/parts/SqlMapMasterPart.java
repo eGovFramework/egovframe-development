@@ -52,12 +52,11 @@ import org.eclipse.ui.forms.SectionPart;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.Section;
-import org.eclipse.ui.internal.ide.StringMatcher;
+import org.eclipse.ui.internal.misc.StringMatcher;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import egovframework.dev.imp.dbio.common.DbioLog;
 import egovframework.dev.imp.dbio.common.DbioMessages;
 import egovframework.dev.imp.dbio.components.fields.FieldEvent;
 import egovframework.dev.imp.dbio.components.fields.IFieldListener;

@@ -72,12 +72,14 @@ public class DatabaseUtil {
 		HashMap<String, String> hashMap = new HashMap<String, String>();
 
 		URL insetUrl = EgovDeviceAPIIdePlugin.getDefault().getBundle().getEntry(fileName);
+		URL url = FileLocator.toFileURL(insetUrl);
+		URL resolvedUrl = FileLocator.resolve(url);
+		
+		ZipFile zipFile = null;
 		try {
-			URL url = FileLocator.toFileURL(insetUrl);
-			URL resolvedUrl = FileLocator.resolve(url);
 
 			File inputZipFile = new File(resolvedUrl.getFile());
-			ZipFile zipFile = new ZipFile(inputZipFile);
+			zipFile = new ZipFile(inputZipFile);
 
 			Enumeration<? extends ZipEntry> enumeration = zipFile.getEntries();
 
@@ -119,6 +121,13 @@ public class DatabaseUtil {
 					 inputStream.close();
 				 } catch (IOException e) {
 					 
+					 DeviceAPIIdeLog.logError(e);
+				 }
+			 }
+			 if(zipFile != null) {
+				 try {
+					 zipFile.close();
+				 }catch(IOException e) {
 					 DeviceAPIIdeLog.logError(e);
 				 }
 			 }
