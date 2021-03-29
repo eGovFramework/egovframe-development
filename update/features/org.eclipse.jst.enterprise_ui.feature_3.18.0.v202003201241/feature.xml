@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.jst.enterprise_ui.feature"
+      label="%featureName"
+      version="3.18.0.v202003201241"
+      provider-name="%providerName"
+      plugin="org.eclipse.jst.jee.ui">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.jst.enterprise_userdoc.feature"/>
+      <import feature="org.eclipse.jst.enterprise_core.feature"/>
+      <import plugin="org.eclipse.jst.ws"/>
+      <import plugin="org.eclipse.jst.j2ee.ui"/>
+      <import plugin="org.eclipse.jst.j2ee.jca.ui"/>
+      <import plugin="org.eclipse.jst.j2ee.navigator.ui"/>
+      <import plugin="org.eclipse.jst.j2ee.webservice.ui"/>
+      <import plugin="org.eclipse.jst.servlet.ui"/>
+      <import plugin="org.eclipse.jst.ws.ui"/>
+      <import plugin="org.eclipse.jst.ws.uddiregistry"/>
+      <import plugin="org.eclipse.jst.ws.creation.ui"/>
+      <import plugin="org.eclipse.jst.ws.consumption.ui"/>
+      <import plugin="org.eclipse.jst.ws.consumption"/>
+      <import plugin="org.eclipse.jst.j2ee.infopop"/>
+      <import plugin="org.eclipse.jst.jsp.ui.infopop"/>
+      <import plugin="org.eclipse.jst.servlet.ui.infopop"/>
+      <import plugin="org.eclipse.jst.ws.axis.infopop"/>
+      <import plugin="org.eclipse.jst.ws.consumption.infopop"/>
+      <import plugin="org.eclipse.jst.ws.infopop"/>
+      <import plugin="org.eclipse.jst.ws.creation.ejb.ui"/>
+      <import plugin="org.eclipse.jst.ejb.ui"/>
+      <import plugin="org.eclipse.jst.j2ee.ejb.annotations.ui"/>
+      <import plugin="org.eclipse.jst.j2ee.ejb.annotation.model"/>
+      <import plugin="org.eclipse.jst.j2ee.ejb.annotations.emitter"/>
+      <import plugin="org.eclipse.jst.j2ee.ejb.annotations.xdoclet"/>
+      <import plugin="org.eclipse.jst.j2ee.xdoclet.runtime"/>
+      <import plugin="org.eclipse.jst.jee.ui"/>
+      <import plugin="org.eclipse.jst.ejb.ui.infopop"/>
+      <import plugin="org.eclipse.jst.ws.jaxrs.core"/>
+      <import plugin="org.eclipse.jst.ws.jaxrs.ui"/>
+      <import plugin="org.eclipse.jst.ws.axis.consumption.core"/>
+      <import plugin="org.eclipse.jst.ws.axis.consumption.ui"/>
+      <import plugin="org.eclipse.jst.ws.axis.creation.ui"/>
+   </requires>
+
+</feature>

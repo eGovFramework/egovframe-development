@@ -1,0 +1,9 @@
+<bean id="${schedulerName}" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+	<property name="triggers">
+		<list>
+		    #foreach($trigger in $triggers)		
+			<ref bean="${trigger}" />
+			#end
+		</list>
+	</property>
+</bean>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ *************************************************************************
+ * Copyright (c) 2009, 2014 Sybase, Inc. and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * Contributors:
+ * 	Sybase, Inc. - initial API and implementation
+ *  Actuate Corporation - fix for Bug 245758; version updates
+ *  
+ ***************************************************************************
+ -->
+<feature
+      id="org.eclipse.datatools.connectivity.doc.user"
+      label="%featureName"
+      version="1.14.102.201911250848"
+      provider-name="%providerName"
+      plugin="org.eclipse.datatools.connectivity.doc.user"
+      image="eclipse_update_120.jpg">
+
+   <description>
+      %featureDesc
+   </description>
+
+   <copyright>
+      %featureCopyright
+   </copyright>
+
+   <license url="%featureLicenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.eclipse.datatools.connectivity.doc.user.contexts"
+         download-size="21"
+         install-size="37"
+         version="1.7.101.201811012051"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.datatools.connectivity.doc.user"
+         download-size="85"
+         install-size="234"
+         version="1.14.102.201911250848"
+         unpack="false"/>
+
+</feature>

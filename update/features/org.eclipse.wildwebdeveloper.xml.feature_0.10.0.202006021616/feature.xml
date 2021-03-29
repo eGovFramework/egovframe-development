@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.wildwebdeveloper.xml.feature"
+      label="%name"
+      version="0.10.0.202006021616"
+      provider-name="Eclipse Wild Web Developer project">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.eclipse.wildwebdeveloper.xml"
+         download-size="6885"
+         install-size="7797"
+         version="0.8.0.202006021616"
+         unpack="false"/>
+
+</feature>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <!-- This Program was expired.-->
+   <!--
+   <extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="menu:egovframework.dev.imp.core.menu.implementation??after=additions">
+			<command
+				commandId="egovframework.dev.kw3c"
+				mnemonic="K">
+			</command>
+			<separator
+               name="egovframework.dev.kw3c.separator1"
+               visible="true">
+         </separator>
+		</menuContribution>
+	</extension>
+   
+	<extension point="org.eclipse.ui.commands">
+		<command
+			categoryId="egovframework.dev.imp.ide.commands.category"
+			id="egovframework.dev.kw3c"
+			name="Web Standard Verification (KW3C)">
+		</command>
+	</extension>
+	
+	<extension point="org.eclipse.ui.handlers">
+		<handler
+			class="egovframework.dev.kw3c.handlers.Kw3cExecuteHandler"      	
+			commandId="egovframework.dev.kw3c">
+		</handler>
+	</extension>
+	-->
+</plugin>

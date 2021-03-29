@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0_07" class="java.beans.XMLDecoder"> 
+ <array class="egovframework.dev.tst.tcgenerator.CodeBlockInfo" length="1"> 
+  <void index="0"> 
+   <object class="egovframework.dev.tst.tcgenerator.CodeBlockInfo"> 
+    <void property="tcTemplateName"> 
+     <string>Boundary Test</string> 
+    </void> 
+    <void property="description"> 
+     <string>Boundary Test에 대한 테스트케이스 코드블럭을 복사합니다.</string> 
+    </void> 
+    <void property="codeBlockList"> 
+     <array class="java.lang.String" length="13"> 
+      <void index="0"> 
+       <string>Fields</string> 
+      </void> 
+      <void index="1"> 
+       <string>Add User null Object</string> 
+      </void> 
+      <void index="2"> 
+       <string>Add User null String</string> 
+      </void> 
+      <void index="3"> 
+       <string>Null Object</string> 
+      </void> 
+      <void index="4"> 
+       <string>Object Boundary</string> 
+      </void> 
+      <void index="5"> 
+       <string>Zero Numeric Value</string> 
+      </void> 
+      <void index="6"> 
+       <string>Min Numeric Value</string> 
+      </void> 
+      <void index="7"> 
+       <string>Max Numeric Value</string> 
+      </void> 
+      <void index="8"> 
+       <string>Null String</string> 
+      </void> 
+      <void index="9"> 
+       <string>Empty String</string> 
+      </void>
+      <void index="10"> 
+       <string>Max String Length</string> 
+      </void>        
+      <void index="11"> 
+       <string>Min String Length</string> 
+      </void>        
+      <void index="12"> 
+       <string>소스 전체</string> 
+      </void>        
+     </array> 
+    </void> 
+    <void property="codeBlocks"> 
+     <array class="java.lang.String" length="13"> 
+      <void index="0"> 
+       <string><![CDATA[
+/** userMgr */
+UserMgr userMgr = null;
+
+/** userVo */
+UserVo userVo = null;
+       ]]></string> 
+      </void> 
+      <void index="1"> 
+       <string><![CDATA[
+/**
+ * testAddUser_nullObject
+*/
+@Test (expected=NullPointerException.class)
+public void testAddUser_nullObject() {
+	userMgr.addUser(userVo);
+}
+       ]]></string> 
+      </void>
+      <void index="2"> 
+       <string><![CDATA[
+/**
+ * testAddUser_nullString
+*/
+@Test (expected=NullPointerException.class)
+public void testAddUser_nullString() {
+	userVo = new UserVo();
+	userMgr.addUser(userVo);
+}
+       ]]></string> 
+      </void> 
+      <void index="3"> 
+       <string><![CDATA[
+/**
+ * NullObject 에 대한 바운더리를 테스트한다.
+*/
+@Test
+public void testNullObject() {
+}
+       ]]></string> 
+      </void> 
+      <void index="4"> 
+       <string><![CDATA[
+/**
+ * ObjectBoundary 에 대한 바운더리를 테스트한다.
+*/
+@Test
+public void testObjectBoundary() {
+}
+       ]]></string> 
+      </void> 
+      <void index="5"> 
+       <string><![CDATA[
+/**
+ * ZeroNumericValue 에 대한 바운더리를 테스트한다.
+*/
+@Test
+public void testZeroNumericValue() {
+}
+       ]]></string> 
+      </void> 
+      <void index="6"> 
+       <string><![CDATA[
+/**
+ * MinNumericValue 에 대한 바운더리를 테스트한다.
+*/
+@Test
+public void testMinNumericValue() {
+}
+       ]]></string> 
+      </void> 
+      <void index="7"> 
+       <string><![CDATA[
+/**
+ * MaxNumericvalue 에 대한 바운더리를 테스트한다.
+*/
+@Test
+public void testMaxNumericvalue() {
+}
+       ]]></string> 
+      </void> 
+      <void index="8"> 
+       <string><![CDATA[
+/**
+ * NullString 에 대한 바운더리를 테스트한다.
+*/
+@Test
+public void testNullString() {
+}
+       ]]></string> 
+      </void> 
+      <void index="9"> 
+       <string><![CDATA[
+/**
+ * EmptyString 에 대한 바운더리를 테스트한다.
+*/
+@Test
+public void testEmptyString() {
+}
+       ]]></string> 
+      </void> 
+      <void index="10"> 
+       <string><![CDATA[
+/**
+ * MaxStringLength 에 대한 바운더리를 테스트한다.
+*/
+@Test
+public void testMaxStringLength() {
+}
+       ]]></string> 
+      </void> 
+      <void index="11"> 
+       <string><![CDATA[
+/**
+ * MinStringLength 에 대한 바운더리를 테스트한다.
+*/
+@Test
+public void testMinStringLength() {
+}
+       ]]></string> 
+      </void> 
+      <void index="12"> 
+       <string><![CDATA[
+import org.junit.Test;
+
+import egovframework.guideprogram.test.target.basic.UserMgr;
+import egovframework.guideprogram.test.target.basic.UserVo;
+
+public class BoundaryTest {
+
+	/** userMgr */
+	UserMgr userMgr = null;
+	
+	/** userVo */
+	UserVo userVo = null;
+	
+	/**
+	 * testAddUser_nullObject
+	*/
+	@Test (expected=NullPointerException.class)
+	public void testAddUser_nullObject() {
+		userMgr.addUser(userVo);
+	}
+	
+	/**
+	 * testAddUser_nullString
+	*/
+	@Test (expected=NullPointerException.class)
+	public void testAddUser_nullString() {
+		userVo = new UserVo();
+		userMgr.addUser(userVo);
+	}
+	
+	/**
+	 * NullObject 에 대한 바운더리를 테스트한다.
+	*/
+	@Test
+	public void testNullObject() {
+	}
+	
+	/**
+	 * ObjectBoundary 에 대한 바운더리를 테스트한다.
+	*/
+	@Test
+	public void testObjectBoundary() {
+	}
+	
+	/**
+	 * ZeroNumericValue 에 대한 바운더리를 테스트한다.
+	*/
+	@Test
+	public void testZeroNumericValue() {
+	}
+	
+	/**
+	 * MinNumericValue 에 대한 바운더리를 테스트한다.
+	*/
+	@Test
+	public void testMinNumericValue() {
+	}
+	
+	/**
+	 * MaxNumericvalue 에 대한 바운더리를 테스트한다.
+	*/
+	@Test
+	public void testMaxNumericvalue() {
+	}
+	
+	/**
+	 * NullString 에 대한 바운더리를 테스트한다.
+	*/
+	@Test
+	public void testNullString() {
+	}
+	
+	/**
+	 * EmptyString 에 대한 바운더리를 테스트한다.
+	*/
+	@Test
+	public void testEmptyString() {
+	}
+	
+	/**
+	 * MaxStringLength 에 대한 바운더리를 테스트한다.
+	*/
+	@Test
+	public void testMaxStringLength() {
+	}
+	
+	/**
+	 * MinStringLength 에 대한 바운더리를 테스트한다.
+	*/
+	@Test
+	public void testMinStringLength() {
+	}
+}
+       ]]></string> 
+      </void> 
+     </array> 
+    </void> 
+    
+   </object> 
+  </void> 
+ </array> 
+</java> 

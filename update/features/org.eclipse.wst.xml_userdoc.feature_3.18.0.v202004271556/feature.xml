@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (c) 2005, 2018 IBM Corporation and others.
+    This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License 2.0
+    which accompanies this distribution, and is available at
+    https://www.eclipse.org/legal/epl-2.0/
+
+    SPDX-License-Identifier: EPL-2.0
+
+    Contributors:
+        IBM Corporation - initial API and implementation
+ -->
+<feature
+      id="org.eclipse.wst.xml_userdoc.feature"
+      label="%featureName"
+      version="3.18.0.v202004271556"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.eclipse.wst.dtdeditor.doc.user"
+         download-size="42"
+         install-size="77"
+         version="1.1.0.v201903222120"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.wst.sse.doc.user"
+         download-size="124"
+         install-size="234"
+         version="1.2.0.v201903222120"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.wst.xmleditor.doc.user"
+         download-size="132"
+         install-size="290"
+         version="1.1.0.v201903222120"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.wst.xsdeditor.doc.user"
+         download-size="123"
+         install-size="274"
+         version="1.0.800.v201903222120"
+         unpack="false"/>
+
+</feature>

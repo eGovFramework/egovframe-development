@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="egovframework.dev.imp.core.wizards"
+            class="egovframework.dev.imp.ide.wizards.EgovNewCoreProjectWizard"
+            finalPerspective="egovframework.dev.imp.core.perspectives.egovperspective"
+            hasPages="true"
+            icon="icons/newjprj_c.png"
+            id="egovframework.dev.imp.ide.wizards.egovcoreprojectwizard"
+            name="eGovFrame Core Project"
+            project="true">
+      </wizard>
+      <wizard
+            category="egovframework.dev.imp.core.wizards"
+            class="egovframework.dev.imp.ide.wizards.EgovNewWebProjectWizard"
+            finalPerspective="egovframework.dev.imp.core.perspectives.egovperspective"
+            hasPages="true"
+            icon="icons/newjprj_w.png"
+            id="egovframework.dev.imp.ide.wizards.egovwebprojectwizard"
+            name="eGovFrame Web Project"
+            project="true">
+      </wizard>
+      <wizard
+            category="egovframework.dev.imp.core.wizards"
+            class="egovframework.dev.imp.ide.wizards.EgovNewTemplateProjectWizard"
+            finalPerspective="egovframework.dev.imp.core.perspectives.egovperspective"
+            hasPages="true"
+            icon="icons/newtemp_w.png"
+            id="egovframework.dev.imp.ide.wizards.egovtemplateprojectwizard"
+            name="eGovFrame Template Project"
+            project="true">
+      </wizard>
+   </extension>
+   
+   <extension point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension targetID="egovframework.dev.imp.core.perspectives.egovperspective">
+         <newWizardShortcut id="egovframework.dev.imp.ide.wizards.egovcoreprojectwizard"></newWizardShortcut>
+         <newWizardShortcut id="egovframework.dev.imp.ide.wizards.egovtemplateprojectwizard"></newWizardShortcut>
+         <newWizardShortcut id="egovframework.dev.imp.ide.wizards.egovwebprojectwizard"></newWizardShortcut>
+      </perspectiveExtension>
+   </extension>
+   
+   <extension
+         id="egovframework.dev.imp.ide.natures.egovnature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="egovframework.dev.imp.ide.natures.EgovNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/egov_ovr.gif"
+            id="egovframework.dev.imp.ide.images.egovnatureimage"
+            natureId="egovframework.dev.imp.ide.natures.egovnature">
+      </image>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.dev.imp.ide.commands.newErdD"
+            name="New ER Diagram">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.dev.imp.ide.commands.newClassD"
+            name="New Class Diagram">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.dev.imp.ide.commands.newSequenceD"
+            name="New Sequence Diagram">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.dev.imp.ide.commands.newUsecaseD"
+            name="New Usecase Diagram">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.dev.imp.ide.commands.newCoreProject"
+            name="New Core Project">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.dev.imp.ide.commands.newWebProject"
+            name="New Web Project">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.dev.imp.ide.commands.custIDe"
+            name="Customize Development Tool">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.dev.imp.ide.commands.svn"
+            name="Show SVN Repositories View">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.dev.imp.ide.commands.nexus"
+            name="Nexus">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.dev.imp.ide.commands.newTemplateProject"
+            name="New Template Project">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="egovframework.dev.imp.ide.handlers.design.NewErdDiagramHandler"
+            commandId="egovframework.dev.imp.ide.commands.newErdD">
+      </handler>
+      <handler
+            class="egovframework.dev.imp.ide.handlers.design.NewClassDiagramHandler"
+            commandId="egovframework.dev.imp.ide.commands.newClassD">
+      </handler>
+      <handler
+            class="egovframework.dev.imp.ide.handlers.analysis.NewUsecaseDiagramHandler"
+            commandId="egovframework.dev.imp.ide.commands.newUsecaseD">
+      </handler>
+      <handler
+            class="egovframework.dev.imp.ide.handlers.design.NewSequenceDiagramHandler"
+            commandId="egovframework.dev.imp.ide.commands.newSequenceD">
+      </handler>
+      <handler
+            class="egovframework.dev.imp.ide.handlers.project.NewCoreProject"
+            commandId="egovframework.dev.imp.ide.commands.newCoreProject">
+      </handler>
+      <handler
+            class="egovframework.dev.imp.ide.handlers.project.NewWebProject"
+            commandId="egovframework.dev.imp.ide.commands.newWebProject">
+      </handler>
+      <handler
+            class="egovframework.dev.imp.ide.handlers.project.NewTemplateProject"
+            commandId="egovframework.dev.imp.ide.commands.newTemplateProject">
+      </handler>
+      <handler
+            class="egovframework.dev.imp.ide.handlers.configuration.NexusHandler"
+            commandId="egovframework.dev.imp.ide.commands.nexus">
+      </handler>
+      <handler
+            class="egovframework.dev.imp.ide.handlers.configuration.ShowSVNRepositoriesViewHandler"
+            commandId="egovframework.dev.imp.ide.commands.svn">
+      </handler>
+      <handler
+            class="egovframework.dev.imp.ide.handlers.configuration.CustIdeHandler"
+            commandId="egovframework.dev.imp.ide.commands.custIDe">
+      </handler>
+   </extension>
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution locationURI="menu:egovframework.dev.imp.core.menu.start?before=egovframework.mdev.imp.ide.commands.newMobileWebProject">
+         
+         <command
+               commandId="egovframework.dev.imp.ide.commands.newCoreProject"
+               mnemonic="C">
+         </command>
+         <command
+               commandId="egovframework.dev.imp.ide.commands.newWebProject"
+               mnemonic="T">
+         </command>
+         <command
+               commandId="egovframework.dev.imp.ide.commands.newTemplateProject"
+               mnemonic="W">
+         </command>
+         <separator
+               name="egovframework.dev.imp.seperator1"
+               visible="true">
+         </separator>
+         
+      </menuContribution>
+      <menuContribution
+            locationURI="menu:egovframework.dev.imp.core.menu.analysis?after=additions">
+         <command
+               commandId="egovframework.dev.imp.ide.commands.newUsecaseD"
+               mnemonic="U">
+         </command>
+         <separator
+               name="egovframework.dev.imp.ide.core.separator1"
+               visible="true">
+         </separator>
+      </menuContribution>
+      <menuContribution
+            locationURI="menu:egovframework.dev.imp.core.menu.design?after=additions">
+         <command
+               commandId="egovframework.dev.imp.ide.commands.newErdD"
+               mnemonic="E">
+         </command>
+         <command
+               commandId="egovframework.dev.imp.ide.commands.newClassD"
+               mnemonic="C">
+         </command>
+         <command
+               commandId="egovframework.dev.imp.ide.commands.newSequenceD"
+               mnemonic="S">
+         </command>
+         <separator
+               name="egovframework.dev.imp.core.separator2"
+               visible="true">
+         </separator>
+      </menuContribution>
+      <menuContribution
+            locationURI="menu:egovframework.dev.imp.ide.menu.configuration?after=additions">
+         <command
+               commandId="egovframework.dev.imp.ide.commands.custIDe"
+               mnemonic="D">
+         </command>
+         <menu
+               id="egovframework.dev.imp.ide.menu.serverInfo"
+               label="Server Connection Management"
+               mnemonic="S">
+            <command
+                  commandId="egovframework.dev.imp.ide.commands.svn"
+                  mnemonic="S">
+            </command>
+            <command
+                  commandId="egovframework.dev.imp.ide.commands.nexus"
+                  mnemonic="N">
+            </command>
+            <separator
+               name="egovframework.dev.imp.core.separator4"
+               visible="true">
+         </separator>
+         </menu>
+         <separator
+               name="egovframework.dev.imp.core.separator3"
+               visible="true">
+         </separator>
+      </menuContribution>
+   </extension>
+
+</plugin>

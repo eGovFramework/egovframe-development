@@ -1,0 +1,69 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.eclipse.epp.package.jee;singleton:=true
+Require-Bundle: org.eclipse.platform,org.eclipse.equinox.app
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/epp/or
+ g.eclipse.epp.packages.git;path="packages/org.eclipse.epp.package.jee
+ ";commitId=f37d87ca89eb1597db02e3617ae7cc7dd111f08a
+Bundle-Vendor: %Bundle-Vendor
+Bundle-Name: %Bundle-Name
+Bundle-Version: 4.16.0.20200615-1200
+Bundle-Localization: plugin
+Build-Jdk-Spec: 11
+Created-By: Maven Archiver 3.5.0
+Eclipse-BundleShape: dir
+
+Name: about.properties
+SHA-256-Digest: ZKJ75W80ObBKLCxWefDzQFh5yzXM113Szu7DBfDsRPs=
+
+Name: plugin_customization.ini
+SHA-256-Digest: gATmhqYrQNwcavJvUwjFaFFBHCxXKX2A0tEowbQmI/g=
+
+Name: about.html
+SHA-256-Digest: fOZwKO8Et7MJtFh0XZdYUTVdH79ttmK7A3UjoyBRrg4=
+
+Name: plugin.xml
+SHA-256-Digest: eBlnNHrJgJMK2HxoefccU/2ALXvqGwdw9W4ak3kUIEs=
+
+Name: javaee-ide_x48.png
+SHA-256-Digest: Idrb8sbzpriQP5HedJp7z36k3OviO7Nz/qaox3JzvTk=
+
+Name: wtp_logo_2010.png
+SHA-256-Digest: vs1kT1suFfOYvJDHf7DcYx0kne9M4xoFoEEkOP1PrYM=
+
+Name: helpData.xml
+SHA-256-Digest: KhrsA0KEFupnGg4+iUF7QZohnxID5wZyu/TMdV3M78g=
+
+Name: aboutgears_115x.png
+SHA-256-Digest: BwTET8Dz4Ps4CeFdODWtNrhC4hleqGvZvGKG0+nrIQ8=
+
+Name: META-INF/maven/org.eclipse.epp/org.eclipse.epp.package.jee/pom.x
+ ml
+SHA-256-Digest: pe+Ul35mKp8ZQHOYFEJkBZRYSKJafuH76j+zYNEz9ks=
+
+Name: about.mappings
+SHA-256-Digest: c9CKlXe+4rXYmESyUKJBJRnhopvTRf7QQcFzuENqJw4=
+
+Name: javaee-ide_x16.png
+SHA-256-Digest: WmB7TkyQVStO5nWtuqddF8R8ehqPHOszV17PEIfmT9o=
+
+Name: javaee-ide_x32.png
+SHA-256-Digest: GM8V+NJP7XHNxUS/jmzwiBbwZ3Ae5Gu3f1quns02m3I=
+
+Name: about.ini
+SHA-256-Digest: eC6buObM9oSiCyroTRTyprFx1gyduQyQl4dL1yobcqQ=
+
+Name: plugin.properties
+SHA-256-Digest: vbteBshJRoyP2U1yTCokVpTU+PY8B9+0HxPb1emqL6A=
+
+Name: META-INF/maven/org.eclipse.epp/org.eclipse.epp.package.jee/pom.p
+ roperties
+SHA-256-Digest: XvWAUXUXVC+DXKErvfpjW9CqLg2rpCtruexBaFII4Bc=
+
+Name: OSGI-INF/l10n/bundle.properties
+SHA-256-Digest: XoyPyQqBvdcQj3++lKM6Y5PLh85ia92U2QRWsFHKwAI=
+
+Name: wtp_logo_96.png
+SHA-256-Digest: FvDLd3bBHpQj6+QAA3fKYWqahFzNc4dGbuYeXyo6fds=
+

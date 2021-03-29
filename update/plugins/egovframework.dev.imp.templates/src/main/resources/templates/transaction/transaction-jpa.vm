@@ -1,0 +1,17 @@
+<bean id="${transactionManager}" class="org.springframework.orm.jpa.JpaTransactionManager">
+   <property name="entityManagerFactory" ref="${entityManagerFactory}"/>
+</bean>
+ 
+<bean id="${entityManagerFactory}" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+   <property name="persistenceUnitName" value="${persistenceUnitName}"/>
+   <property name="persistenceXmlLocation" value="${persistenceXmlLocation}"/>
+   <property name="dataSource" ref="${dataSource}"/>
+</bean>	
+ 
+<bean id="${dataSource}" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+   <property name="driverClassName" value="${driver}"/>
+   <property name="url" value="${url}"/>
+   <property name="username" value="${user}"/>
+   <property name="password" value="${password}"/>
+   <property name="defaultAutoCommit" value="${defaultAutoCommit}"/>
+</bean>

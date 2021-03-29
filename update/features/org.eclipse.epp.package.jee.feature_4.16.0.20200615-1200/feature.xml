@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.epp.package.jee.feature"
+      label="%featureName"
+      version="4.16.0.20200615-1200"
+      provider-name="%providerName"
+      plugin="org.eclipse.epp.package.jee">
+
+   <description url="http://eclipse.org/epp">
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <includes
+         id="org.eclipse.platform"
+         version="4.16.0.v20200604-0951"
+         search-location="both"/>
+
+   <!--
+        All requirements to features and the content of the product are defined 
+        in the product configuration epp.product since Eclipse Neon. For further
+        details see the following bug:
+
+        Bug 332989 - Allow parts of a package to upgraded or removed
+        https://bugs.eclipse.org/bugs/show_bug.cgi?id=332989
+
+        Please note that there are some additional dependencies to certain
+        plugins defined within this feature; these dependencies haven't been
+        changed.
+     -->
+
+   <plugin
+         id="org.eclipse.epp.package.jee"
+         download-size="120"
+         install-size="132"
+         version="4.16.0.20200615-1200"/>
+
+   <!-- https://bugs.eclipse.org/bugs/show_bug.cgi?id=537117 decided to keep the intro and capabilities -->
+   <plugin
+         id="org.eclipse.wtp.epp.package.jee.intro"
+         download-size="1116"
+         install-size="1369"
+         version="1.3.0.v201902122017"/>
+
+   <plugin
+         id="org.eclipse.wtp.javascript.capabilities"
+         download-size="11"
+         install-size="14"
+         version="1.0.200.v201901071922"/>   
+
+   <plugin
+         id="org.eclipse.wtp.jee.capabilities"
+         download-size="10"
+         install-size="17"
+         version="1.0.100.v201903222024"/>   
+
+   <plugin
+         id="org.eclipse.wtp.web.capabilities"
+         download-size="11"
+         install-size="15"
+         version="1.0.200.v201901071922"/>   
+
+   <plugin
+         id="org.eclipse.wtp.xml.capabilities"
+         download-size="11"
+         install-size="16"
+         version="1.0.200.v201901071922"/>   
+
+   <plugin
+         id="org.eclipse.wtp.epp.package.capabilities"
+         download-size="16"
+         install-size="40"
+         version="1.3.0.v201902122017"/>
+
+<!-- need to confirm if these plugins in repository, or if I need to cut/copy paste their contents in our capabilities plugin.
+See also https://bugs.eclipse.org/bugs/show_bug.cgi?id=299344
+ 
+   <plugin
+         id="org.eclipse.datatools.capabilities"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>   
+
+   <plugin
+         id="org.eclipse.mylyn.ide.capabilities"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>   
+-->
+
+</feature>

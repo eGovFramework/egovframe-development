@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="jp.gr.java_conf.ussiy.app.propedit.nl"
+      label="PropertiesEditor_Asian_NLS"
+      version="6.0.0"
+      provider-name="Sou Miyazaki"
+      plugin="jp.gr.java_conf.ussiy.app.propedit">
+
+   <description url="http://propedit.sourceforge.jp/index_en.html">
+      Asian NLS
+   </description>
+
+   <copyright>
+      PropertiesEditor - Editor of properties file.\nCopyright (C)
+2004-  Sou Miyazaki
+   </copyright>
+
+   <license url="http://eclipse.org/legal/epl-v10.html">
+      PropertiesEditor - Editor of properties file.
+Copyright (C) 2004-  Sou Miyazaki
+This program is free software; you can redistribute it and/or
+modify it under the terms of the Eclipse Public License.
+   </license>
+
+   <url>
+      <update label="PropertiesEditor Update Site" url="http://propedit.sourceforge.jp/eclipse/updates/"/>
+   </url>
+
+   <requires>
+      <import plugin="jp.gr.java_conf.ussiy.app.propedit" version="6.0.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="jp.gr.java_conf.ussiy.app.propedit.nl"
+         download-size="0"
+         install-size="0"
+         version="6.0.0"
+         fragment="true"
+         unpack="false"/>
+
+</feature>

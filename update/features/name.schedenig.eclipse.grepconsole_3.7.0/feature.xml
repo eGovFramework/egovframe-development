@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="name.schedenig.eclipse.grepconsole"
+      label="Grep Console"
+      version="3.7.0"
+      provider-name="Marian Schedenig"
+      plugin="name.schedenig.eclipse.grepconsole">
+
+   <description url="%descriptionUrl">
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseUrl">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://eclipse.schedenig.name"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.debug.ui"/>
+      <import plugin="org.eclipse.ui.console"/>
+      <import plugin="org.eclipse.jface.text"/>
+      <import plugin="org.eclipse.help"/>
+   </requires>
+
+   <plugin
+         id="name.schedenig.eclipse.grepconsole"
+         download-size="936"
+         install-size="1458"
+         version="3.7.0"
+         unpack="false"/>
+
+</feature>

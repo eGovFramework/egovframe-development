@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.team.svn"
+      label="%featureName"
+      version="4.0.5.I20170425-1700"
+      provider-name="%providerName"
+      plugin="org.eclipse.team.svn">
+   <install-handler/>
+
+   <description>
+      The Eclipse Team Provider for the Subversion version control system. For instructions about installing SVN connectors visit http://www.eclipse.org/subversive/downloads.php
+   </description>
+
+   <license url="license.html">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://download.eclipse.org/technology/subversive/4.0/update-site/"/>
+      <discovery label="%discoverySiteName" url="http://download.eclipse.org/technology/subversive/4.0/update-site/"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.ui.intro"/>
+      <import plugin="org.eclipse.ui.intro.universal"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.team.core"/>
+      <import plugin="org.eclipse.core.filesystem"/>
+      <import plugin="org.eclipse.core.net" version="1.2.0" match="compatible"/>
+      <import plugin="org.eclipse.equinox.security" version="1.0.0" match="compatible"/>
+      <import plugin="com.ibm.icu"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.ui.views"/>
+      <import plugin="org.eclipse.jface.text"/>
+      <import plugin="org.eclipse.ui.workbench.texteditor"/>
+      <import plugin="org.eclipse.ui.editors"/>
+      <import plugin="org.eclipse.team.ui"/>
+      <import plugin="org.eclipse.compare"/>
+      <import plugin="org.eclipse.osgi"/>
+      <import plugin="org.eclipse.help"/>
+      <import plugin="org.eclipse.ui.console"/>
+      <import plugin="org.eclipse.ui.navigator"/>
+      <import plugin="org.eclipse.ui.forms"/>
+      <import plugin="org.eclipse.ui.browser"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.team.svn"
+         download-size="4"
+         install-size="4"
+         version="4.0.5.I20170425-1700"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.team.svn.core"
+         download-size="900"
+         install-size="900"
+         version="4.0.5.I20170425-1700"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.team.svn.ui"
+         download-size="1600"
+         install-size="1600"
+         version="4.0.5.I20170425-1700"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.team.svn.ui.startup"
+         download-size="1600"
+         install-size="1600"
+         version="4.0.0.I20160226-1700"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.team.svn.help"
+         download-size="1900"
+         install-size="1900"
+         version="4.0.3.I20161129-1700"
+         unpack="false"/>
+
+</feature>

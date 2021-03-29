@@ -1,0 +1,36 @@
+Signature-Version: 1.0
+SHA-256-Digest-Manifest-Main-Attributes: YxC1tWPQlGFr/0AQMzrImnfEyPvKS
+ w4VEvnzRlBs6Eo=
+SHA-256-Digest-Manifest: KPRqgS6VlzMDB8HLY8t3lrHTFmKaPWzwJH8ifUDNO04=
+Created-By: 1.8.0_51 (Oracle Corporation)
+
+Name: about_files/README
+SHA-256-Digest: kl5ZduPi5Au8YeG6B9u/zXcrBXp7gyxxX4OFyv/7zMY=
+
+Name: about.html
+SHA-256-Digest: jmXYnSJYhthV6JuD5goStqasogaS5oP4FA5wXeigLKM=
+
+Name: about_files/NOTICE
+SHA-256-Digest: KmNXp2+48AWnxIk0v4j7FZde0GCpk6KNKn4r3rpyVyg=
+
+Name: plugin.properties
+SHA-256-Digest: BUU74Js5tW10RFerjgwzIXv4qhIskcvVVICE6LTmtFM=
+
+Name: about_files/release-notes.html
+SHA-256-Digest: uymMsVbp33FEvKHbTQr4KsfWP1xT92N6d1dIED4vZaE=
+
+Name: lib/log4j.properties
+SHA-256-Digest: 5OIA6R9pgC31GzAuhzKDXdLU+GFMbv3WqQikm+A/c8c=
+
+Name: lib/axis.jar
+SHA-256-Digest: iVzH0d0p/sFYZluJo+9ieZDhZqaaZTzDUV3FTsbVcRg=
+
+Name: about_files/LICENSE
+SHA-256-Digest: 5wd3cdrM5DQSejpeek8URkjr8nYws+B892ViM5LoDjE=
+
+Name: lib/axis-ant.jar
+SHA-256-Digest: qloPnNA8DTQL2Nd5fZcbfu20W4dHZSIpZJUkGXKPZSg=
+
+Name: META-INF/eclipse.inf
+SHA-256-Digest: Yl8qeiSnmCRvts6aaJyRWUTGsNY2TjVrXotgew3Ia0o=
+

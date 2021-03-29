@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/egovframework.bdev.imp.ide.feature_3.9.0.202003041657.jar" id="egovframework.bdev.imp.ide.feature" version="3.9.0.202003041657">
+      <category name="eGovFrame"/>
+   </feature>
+   <feature url="features/egovframework.dev.imp.amateras.erd.feature_3.9.0.202003041657.jar" id="egovframework.dev.imp.amateras.erd.feature" version="3.9.0.202003041657">
+      <category name="eGovFrame"/>
+   </feature>
+   <feature url="features/egovframework.dev.imp.amateras.uml.feature_3.9.0.202003041657.jar" id="egovframework.dev.imp.amateras.uml.feature" version="3.9.0.202003041657">
+      <category name="eGovFrame"/>
+   </feature>
+   <feature url="features/egovframework.dev.imp.codegen.feature_3.9.0.202003041657.jar" id="egovframework.dev.imp.codegen.feature" version="3.9.0.202003041657">
+      <category name="eGovFrame"/>
+   </feature>
+   <feature url="features/egovframework.dev.imp.codegen.templates_3.9.0.202003041657.jar" id="egovframework.dev.imp.codegen.templates" version="3.9.0.202003041657">
+      <category name="eGovFrame"/>
+   </feature>
+   <feature url="features/egovframework.dev.imp.core.feature_3.9.0.202003041657.jar" id="egovframework.dev.imp.core.feature" version="3.9.0.202003041657">
+      <category name="eGovFrame"/>
+   </feature>
+   <feature url="features/egovframework.dev.imp.dbio.feature_3.9.0.202003041657.jar" id="egovframework.dev.imp.dbio.feature" version="3.9.0.202003041657">
+      <category name="eGovFrame"/>
+   </feature>
+   <feature url="features/egovframework.dev.imp.ide.feature_3.9.0.202003041657.jar" id="egovframework.dev.imp.ide.feature" version="3.9.0.202003041657">
+      <category name="eGovFrame"/>
+   </feature>
+   <feature url="features/egovframework.dev.tst.tctemplates_3.9.0.202003041657.jar" id="egovframework.dev.tst.tctemplates" version="3.9.0.202003041657">
+      <category name="eGovFrame"/>
+   </feature>
+   <feature url="features/egovframework.hdev.imp.ide.feature_3.9.0.202003041657.jar" id="egovframework.hdev.imp.ide.feature" version="3.9.0.202003041657">
+      <category name="eGovFrame"/>
+   </feature>
+   <feature url="features/egovframework.mdev.imp.ide.feature_3.9.0.202003041657.jar" id="egovframework.mdev.imp.ide.feature" version="3.9.0.202003041657">
+      <category name="eGovFrame"/>
+   </feature>
+   <feature url="features/egovframework.rte.rdt.feature_3.9.0.202003041657.jar" id="egovframework.rte.rdt.feature" version="3.9.0.202003041657">
+      <category name="eGovFrame"/>
+   </feature>
+   <feature url="features/egovframework.verification.kw3c.feature_3.9.0.202003041657.jar" id="egovframework.verification.kw3c.feature" version="3.9.0.202003041657">
+      <category name="eGovFrame"/>
+   </feature>
+   <category-def name="eGovFrame" label="eGovFrame Plug-ins"/>
+</site>

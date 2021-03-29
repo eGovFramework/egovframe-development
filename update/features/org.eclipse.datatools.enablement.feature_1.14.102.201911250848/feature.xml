@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.datatools.enablement.feature"
+      label="%featureName"
+      version="1.14.102.201911250848"
+      provider-name="%providerName"
+      plugin="org.eclipse.datatools.enablement.finfo"
+      image="eclipse_update_120.jpg">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %featureCopyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.datatools.modelbase.feature" version="1.13.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.datatools.connectivity.feature" version="1.13.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.datatools.enablement.finfo"
+         download-size="17"
+         install-size="20"
+         version="1.7.101.201811012051"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.datatools.sqltools.db.derby.ui"
+         download-size="13"
+         install-size="17"
+         version="1.2.101.201811012051"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.datatools.sqltools.db.generic.ui"
+         download-size="15"
+         install-size="20"
+         version="1.2.101.201811012051"
+         unpack="false"/>
+
+</feature>

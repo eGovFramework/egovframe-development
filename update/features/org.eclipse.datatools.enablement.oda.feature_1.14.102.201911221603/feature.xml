@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.datatools.enablement.oda.feature"
+      label="%featureName"
+      version="1.14.102.201911221603"
+      provider-name="%providerName"
+      plugin="org.eclipse.datatools.enablement.oda.xml"
+      image="eclipse_update_120.jpg">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %featureCopyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.datatools.connectivity.oda.feature" version="1.13.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.datatools.enablement.oda.ws"
+         download-size="68"
+         install-size="140"
+         version="1.4.101.201811012051"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.datatools.enablement.oda.xml"
+         download-size="126"
+         install-size="238"
+         version="1.4.102.201901091730"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.datatools.connectivity.oda.flatfile"
+         download-size="72"
+         install-size="144"
+         version="3.3.101.201811012051"
+         unpack="false"/>
+
+</feature>

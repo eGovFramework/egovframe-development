@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?><!--
+    Copyright (c) 2011 IBM Corporation and others.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+   
+    Contributors:
+        IBM Corporation - initial API and implementation
+ -->
+
+<plugin>
+	<extension
+         point="org.eclipse.ui.newWizards">
+         
+         
+		<wizard
+        category="egovframework.dev.imp.core.wizards"
+        class="egovframework.mdev.imp.ide.wizards.EgovMobileNewWebProjectWizard"
+        finalPerspective="egovframework.dev.imp.core.perspectives.egovperspective"
+        hasPages="true"
+        icon="icons/smail_mobileweb.png"
+        id="egovframework.mdev.imp.ide.wizards.egovmobliewebprojectwizard"
+        name="eGovFrame Mobile Project"
+        project="true">
+      	</wizard>
+      	
+      	<wizard
+             category="egovframework.dev.imp.core.wizards"
+             class="egovframework.mdev.imp.ide.wizards.EgovMobileNewTemplateProjectWizard"
+             finalPerspective="egovframework.dev.imp.core.perspectives.egovperspective"
+             hasPages="true"
+             icon="icons/smail_mobiletemplate.png"
+             id="egovframework.mdev.imp.ide.wizards.egovmobiletemplateprojectwizard"
+             name="eGovFrame Mobile Template Project"
+             project="true">
+      </wizard>
+         
+	</extension>
+	
+	<extension point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension targetID="*">
+         <newWizardShortcut id="egovframework.mdev.imp.ide.wizards.egovmobliewebprojectwizard">
+         </newWizardShortcut>
+         <newWizardShortcut id="egovframework.mdev.imp.ide.wizards.egovmobiletemplateprojectwizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
+   </extension>
+	
+   <extension
+         id="egovframework.mdev.imp.ide.natures.egovnature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="egovframework.mdev.imp.ide.natures.EgovMobileNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="egovframework.mdev.imp.ide.image1"
+            id="egovframework.mdev.imp.ide.image1"
+            natureId="egovframework.mdev.imp.ide.image1">
+      </image>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            name="New Mobile Project"
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.mdev.imp.ide.commands.newMobileWebProject">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.mdev.imp.ide.commands.newMobileTemplateProject"
+            name="New Mobile Template Project">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.mdev.imp.ide.commands.addMobileCommonComponent"
+            name="Add Mobile Common Component">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.mdev.imp.ide.commands.addMobilePlugin"
+            name="Add Plug-In">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.mdev.imp.ide.commands.MobileOkVerification"
+            name="Mobile Web Verification (MobileOK)">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.mdev.imp.ide.commands.W3CVerificationByUri"
+            name="W3CByUri">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.mdev.imp.ide.commands.mobileProjectSetting"
+            name="eGov Project Settings">
+      </command>
+      <command
+            id="egovframework.mdev.imp.ide.commands.W3CVerificationByUpload"
+            name="W3CByUpload">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.mdev.imp.ide.commands.W3CVerificationByInput"
+            name="W3CByInput">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.mdev.imp.ide.commands.MobileOkVerificationByPage"
+            name="MobileOkByPage">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.mdev.imp.ide.commands.MobileOkVerificationBySite"
+            name="MobileOkBySite">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.mdev.imp.ide.commands.MobileOkVerificationByFile"
+            name="MobileOkByFile">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.mdev.imp.ide.commands.MobileOkVerificationByFtp"
+            name="MobileOkByFtp">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="egovframework.mdev.imp.ide.handlers.project.NewMobileWebProject"
+            commandId="egovframework.mdev.imp.ide.commands.newMobileWebProject">
+      </handler>
+      <handler
+      		class="egovframework.mdev.imp.ide.handlers.project.NewMoblieTemplateProject"
+            commandId="egovframework.mdev.imp.ide.commands.newMobileTemplateProject">
+      </handler>
+      <handler
+            class="egovframework.mdev.imp.ide.handlers.implementation.AddMobileCommngt"
+            commandId="egovframework.mdev.imp.ide.commands.addMobileCommonComponent">
+      </handler>
+      <handler
+            class="egovframework.mdev.imp.ide.handlers.configuration.MobileCustIdeHandler"      	
+            commandId="egovframework.mdev.imp.ide.commands.addMobilePlugin">
+      </handler>
+      <handler
+            class="egovframework.mdev.imp.ide.handlers.verification.OpenW3cByUri"
+            commandId="egovframework.mdev.imp.ide.commands.W3CVerificationByUri">
+      </handler>
+      <handler
+            class="egovframework.mdev.imp.ide.handlers.verification.OpenW3cByUpload"
+            commandId="egovframework.mdev.imp.ide.commands.W3CVerificationByUpload">
+      </handler>
+      <handler
+            class="egovframework.mdev.imp.ide.handlers.verification.OpenW3cByInput"
+            commandId="egovframework.mdev.imp.ide.commands.W3CVerificationByInput">
+      </handler>
+      <handler
+            class="egovframework.mdev.imp.ide.handlers.verification.OpenMobileOkByPage"
+            commandId="egovframework.mdev.imp.ide.commands.MobileOkVerificationByPage">
+      </handler>
+      <handler
+            class="egovframework.mdev.imp.ide.handlers.verification.OpenMobileOkBySite"
+            commandId="egovframework.mdev.imp.ide.commands.MobileOkVerificationBySite">
+      </handler>
+      <handler
+            class="egovframework.mdev.imp.ide.handlers.verification.OpenMobileOkByFile"
+            commandId="egovframework.mdev.imp.ide.commands.MobileOkVerificationByFile">
+      </handler>
+      <handler
+            class="egovframework.mdev.imp.ide.handlers.verification.OpenMobileOkByFtp"
+            commandId="egovframework.mdev.imp.ide.commands.MobileOkVerificationByFtp">
+      </handler>
+      
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:egovframework.dev.imp.core.menu.start?after=additions">
+         <command
+               commandId="egovframework.mdev.imp.ide.commands.newMobileWebProject"
+               mnemonic="C">
+         </command>
+         <command
+               commandId="egovframework.mdev.imp.ide.commands.newMobileTemplateProject"
+               mnemonic="C">
+         </command>
+          <separator
+               name="egovframework.mdev.imp.separator2"
+               visible="true">
+         </separator>
+      </menuContribution>
+      <menuContribution locationURI="menu:egovframework.dev.imp.core.menu.implementation?after=additions">
+         <command
+               commandId="egovframework.mdev.imp.ide.commands.addMobileCommonComponent"
+               style="push">
+         </command>
+         <separator
+               name="egovframework.mdev.imp.separator1"
+               visible="true">
+         </separator>
+         
+      </menuContribution>
+      <!-- This Site was Expired.-->
+      <!--
+      <menuContribution locationURI="menu:egovframework.dev.imp.core.menu.implementation?after=egovframework.dev.kw3c">
+         
+         <menu label="Mobile Web Verification (MobileOK)">
+            <command
+                  commandId="egovframework.mdev.imp.ide.commands.MobileOkVerificationByPage"
+                  label="by Page URL"
+                  style="push">
+            </command>
+            <command
+                  commandId="egovframework.mdev.imp.ide.commands.MobileOkVerificationBySite"
+                  label="by Site URL"
+                  style="push">
+            </command>
+            <command
+                  commandId="egovframework.mdev.imp.ide.commands.MobileOkVerificationByFile"
+                  label="by File Upload"
+                  style="push">
+            </command>
+            <command
+                  commandId="egovframework.mdev.imp.ide.commands.MobileOkVerificationByFtp"
+                  label="by FTP"
+                  style="push">
+            </command>
+         </menu>
+         <menu label="Mobile Web Verification (W3C)">
+            <command
+                  commandId="egovframework.mdev.imp.ide.commands.W3CVerificationByUri"
+                  label="by Page URL"
+                  style="push">
+            </command>
+            <command
+                  commandId="egovframework.mdev.imp.ide.commands.W3CVerificationByUpload"
+                  label="by File Upload"
+                  style="push">
+            </command>
+            <command
+                  commandId="egovframework.mdev.imp.ide.commands.W3CVerificationByInput"
+                  label="by Direct Input"
+                  style="push">
+            </command>
+         </menu>
+         <separator name="egovframework.mdev.imp.separator2" visible="true">
+         </separator>
+      </menuContribution>
+      -->
+      
+      <menuContribution
+            locationURI="menu:egovframework.dev.imp.ide.menu.configuration?after=egovframework.dev.imp.core.separator3">
+         <command
+               commandId="egovframework.mdev.imp.ide.commands.addMobilePlugin"
+               mnemonic="D">
+         </command>
+         <separator
+               name="egovframework.mdev.imp.separator4"
+               visible="true">
+         </separator>
+      </menuContribution>
+   </extension>
+
+</plugin>

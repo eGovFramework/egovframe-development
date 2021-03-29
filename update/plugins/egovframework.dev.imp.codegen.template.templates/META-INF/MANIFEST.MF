@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: eGovFramework CodeGen Templates
+Bundle-SymbolicName: egovframework.dev.imp.codegen.template.templates;singleton:=true
+Bundle-Version: 3.10.0.qualifier
+Bundle-Activator: egovframework.dev.imp.codegen.template.templates.EgovCodeGenTemplatesPlugin
+Bundle-Vendor: MOIS
+Require-Bundle: org.eclipse.ui;bundle-version="3.109.100",
+ org.eclipse.core.runtime;bundle-version="3.14.0",
+ egovframework.dev.imp.codegen.template;bundle-version="3.10.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: egovframework.dev.imp.codegen.template.templates

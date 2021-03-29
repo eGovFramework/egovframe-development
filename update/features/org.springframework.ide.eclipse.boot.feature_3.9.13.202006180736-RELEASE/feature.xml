@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*******************************************************************************
+ * Copyright (c) 2005, 2016 Spring IDE Developers
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Spring IDE Developers - initial API and implementation
+ *******************************************************************************/
+ -->
+<feature
+      id="org.springframework.ide.eclipse.boot.feature"
+      label="%featureName"
+      version="3.9.13.202006180736-RELEASE"
+      provider-name="%providerName"
+      plugin="org.springframework.ide.eclipse">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseUrl">
+      %license
+   </license>
+
+   <includes
+         id="org.springframework.ide.eclipse.boot.dash.feature"
+         version="3.9.13.202006180736-RELEASE"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.boot"
+         download-size="250"
+         install-size="535"
+         version="3.9.13.202006180736-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.boot.templates"
+         download-size="18"
+         install-size="41"
+         version="3.9.13.202006180736-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.boot.validation"
+         download-size="49"
+         install-size="95"
+         version="3.9.13.202006180736-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.boot.launch"
+         download-size="206"
+         install-size="474"
+         version="3.9.13.202006180736-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.boot.launch.livebean"
+         download-size="13"
+         install-size="24"
+         version="3.9.13.202006180736-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.boot.refactoring"
+         download-size="32"
+         install-size="67"
+         version="3.9.13.202006180736-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.boot.properties.editor"
+         download-size="329"
+         install-size="670"
+         version="3.9.13.202006180736-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.boot.properties.editor.yaml"
+         download-size="61"
+         install-size="167"
+         version="3.9.13.202006180736-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.boot.wizard"
+         download-size="439"
+         install-size="1027"
+         version="3.9.13.202006180736-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.boot.restart"
+         download-size="18"
+         install-size="30"
+         version="3.9.13.202006180736-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.editor.support"
+         download-size="272"
+         install-size="594"
+         version="3.9.13.202006180736-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.imports"
+         download-size="21"
+         install-size="45"
+         version="3.9.13.202006180736-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.buildship20"
+         download-size="16"
+         install-size="34"
+         version="3.9.13.202006180736-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.buildship30"
+         download-size="24"
+         install-size="50"
+         version="3.9.13.202006180736-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.maven.pom"
+         download-size="50"
+         install-size="102"
+         version="3.9.13.202006180736-RELEASE"
+         unpack="false"/>
+
+</feature>

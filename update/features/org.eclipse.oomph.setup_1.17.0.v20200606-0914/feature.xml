@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2014-2017 Eike Stepper (Loehne, Germany) and others.
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v2.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v20.html
+
+  Contributors:
+    Eike Stepper - initial API and implementation
+-->
+<feature
+      id="org.eclipse.oomph.setup"
+      label="%featureName"
+      version="1.17.0.v20200606-0914"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://download.eclipse.org/oomph/updates"/>
+      <discovery label="%updateSiteName" url="http://download.eclipse.org/oomph/updates"/>
+   </url>
+
+   <includes
+         id="org.eclipse.oomph.setup.core"
+         version="1.17.0.v20200606-0914"/>
+
+   <includes
+         id="org.eclipse.oomph.p2"
+         version="1.16.0.v20200405-0717"/>
+
+   <plugin
+         id="org.eclipse.oomph.setup.editor"
+         download-size="476"
+         install-size="1036"
+         version="1.17.0.v20200529-0748"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.oomph.setup.ui"
+         download-size="736"
+         install-size="1562"
+         version="1.17.0.v20200531-1047"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.oomph.setup.doc"
+         download-size="2553"
+         install-size="21128"
+         version="1.11.0.v20200204-0711"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.oomph.setup.ui.questionnaire"
+         download-size="332"
+         install-size="397"
+         version="1.11.0.v20200407-0508"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.oomph.jreinfo.ui"
+         download-size="51"
+         install-size="85"
+         version="1.11.0.v20191006-0741"
+         unpack="false"/>
+
+</feature>

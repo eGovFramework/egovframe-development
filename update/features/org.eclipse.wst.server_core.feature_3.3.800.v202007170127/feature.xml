@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (c) 2005, 2019 IBM Corporation and others.
+    This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License 2.0
+    which accompanies this distribution, and is available at
+    https://www.eclipse.org/legal/epl-2.0/
+
+    SPDX-License-Identifier: EPL-2.0
+
+    Contributors:
+        IBM Corporation - initial API and implementation
+ -->
+
+<feature
+      id="org.eclipse.wst.server_core.feature"
+      label="%featureName"
+      version="3.3.800.v202007170127"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.eclipse.wst.server.core"
+         download-size="387"
+         install-size="820"
+         version="1.10.100.v202007170127"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.wst.internet.monitor.core"
+         download-size="72"
+         install-size="138"
+         version="1.0.700.v202007170127"
+         unpack="false"/>
+
+</feature>

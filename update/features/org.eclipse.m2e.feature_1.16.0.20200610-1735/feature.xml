@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.m2e.feature"
+      label="%featureName"
+      version="1.16.0.20200610-1735"
+      provider-name="%providerName"
+      plugin="org.eclipse.m2e.core">
+   <install-handler/>
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <includes
+         id="org.eclipse.m2e.sse.ui.feature"
+         version="1.16.0.20200514-2159"
+         optional="true"/>
+
+   <plugin
+         id="org.eclipse.m2e.archetype.common"
+         download-size="1966"
+         install-size="2215"
+         version="1.16.0.20200610-1735"/>
+
+   <plugin
+         id="org.eclipse.m2e.maven.indexer"
+         download-size="1105"
+         install-size="1309"
+         version="1.16.0.20200610-1735"/>
+
+   <plugin
+         id="org.eclipse.m2e.model.edit"
+         download-size="399"
+         install-size="1382"
+         version="1.16.0.20200514-1409"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.m2e.core"
+         download-size="591"
+         install-size="1417"
+         version="1.16.0.20200605-0817"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.m2e.launching"
+         download-size="96"
+         install-size="206"
+         version="1.16.0.20200318-1040"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.m2e.workspace.cli"
+         download-size="15"
+         install-size="22"
+         version="0.3.1"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.m2e.jdt"
+         download-size="139"
+         install-size="321"
+         version="1.16.0.20200610-1500"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.m2e.editor"
+         download-size="353"
+         install-size="747"
+         version="1.16.0.20200526-1057"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.m2e.maven.runtime"
+         download-size="7391"
+         install-size="8275"
+         version="1.16.0.20200610-1735"/>
+
+   <plugin
+         id="org.eclipse.m2e.maven.runtime.slf4j.simple"
+         download-size="19"
+         install-size="25"
+         version="1.16.0.20200610-1735"/>
+
+   <plugin
+         id="org.eclipse.m2e.refactoring"
+         download-size="72"
+         install-size="151"
+         version="1.16.0.20200318-0852"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.m2e.lifecyclemapping.defaults"
+         download-size="10"
+         install-size="18"
+         version="1.16.0.20200318-0852"/>
+
+   <plugin
+         id="org.eclipse.m2e.discovery"
+         download-size="72"
+         install-size="156"
+         version="1.16.0.20200318-1040"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.m2e.core.ui"
+         download-size="634"
+         install-size="1410"
+         version="1.16.0.20200514-1409"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.m2e.scm"
+         download-size="58"
+         install-size="121"
+         version="1.16.0.20200318-1040"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.m2e.jdt.ui"
+         download-size="26"
+         install-size="57"
+         version="1.16.0.20200318-1040"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.m2e.profiles.core"
+         download-size="20"
+         install-size="37"
+         version="1.16.0.20200318-1040"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.m2e.profiles.ui"
+         download-size="42"
+         install-size="90"
+         version="1.16.0.20200318-1040"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.m2e.importer"
+         download-size="17"
+         install-size="29"
+         version="1.16.0.20200318-0852"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.m2e.sourcelookup"
+         download-size="19"
+         install-size="32"
+         version="1.16.0.20200318-0852"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.m2e.sourcelookup.ui"
+         download-size="25"
+         install-size="46"
+         version="1.16.0.20200318-0852"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.m2e.binaryproject"
+         download-size="20"
+         install-size="38"
+         version="1.16.0.20200318-1040"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.m2e.binaryproject.ui"
+         download-size="16"
+         install-size="25"
+         version="1.16.0.20200318-0852"
+         unpack="false"/>
+
+<license url="%licenseURL">
+      %license
+   </license></feature>

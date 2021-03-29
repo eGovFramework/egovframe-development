@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.datatools.sqldevtools.parsers.feature"
+      label="%featureName"
+      version="1.14.102.201911250848"
+      provider-name="%providerName"
+      plugin="org.eclipse.datatools.sqltools.parsers.sql"
+      image="eclipse_update_120.jpg">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %featureCopyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.datatools.modelbase.feature" version="1.13.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.datatools.sqltools.parsers.sql.lexer"
+         download-size="140"
+         install-size="369"
+         version="1.2.101.201811012051"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.datatools.sqltools.parsers.sql.query"
+         download-size="309"
+         install-size="749"
+         version="1.4.101.201811012051"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.datatools.sqltools.parsers.sql.xml.query"
+         download-size="274"
+         install-size="620"
+         version="1.2.101.201811012051"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.datatools.sqltools.parsers.sql"
+         download-size="53"
+         install-size="97"
+         version="1.2.101.201811012051"
+         unpack="false"/>
+
+</feature>

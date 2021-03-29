@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>New JDBC Appender</title>
+
+		<component-page required="true">
+			<!-- NewJdbcAppender	New JDBC Appender -->
+			<description>Create JDBC Appender</description>
+			<group label="Generation File" required="true">
+				<container name="txtPath" label="File Path: " required="true"
+					type="folder" value="" /> <!-- #webroot -->
+				<textfield name="txtFileName" label="File Name: "
+					required="true" value="" />
+			</group>
+			<group label="Configuration" required="true">
+				<textfield name="txtAppenderName" label="Appender Name: "
+					required="true" value="" />
+				<textfield name="txtDriver" label="Driver: " required="true"
+					value="" />
+				<textfield name="txtUrl" label="URL: " required="true"
+					value="" />
+				<textfield name="txtUser" label="User: " required="true"
+					value="" />
+				<textfield name="txtPasswd" label="Password: " required="true"
+					value="" />
+				<textfield name="txtQuery" label="Query: " required="true"
+					value="insert into STMR_LOG (msg) values('%d %p [%c] - &lt;%m&gt;%n')" />
+			</group>
+		</component-page>
+
+		<output>
+			<template component="txtFileName" velocity="jdbc.vm"
+				extension="xml" container="txtPath" />
+		</output>
+	</wizard>
+</EclipseWork>

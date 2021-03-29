@@ -1,0 +1,704 @@
+********************************************************************************
+*                        Subversive connectors Change Log                      *
+*                                                                              *
+* Subversive - a brand new Eclipse Client for Subversion (SVN)                 *
+* See details at http://www.eclipse.org/subversive and http://www.polarion.com *
+********************************************************************************
+
+This connectors works only with Subversive version which is distributed from Eclipse.org site.
+
+Version 6.0.4.I20161211-1700 [11 December 2016]
+
+Features:
+ * Latest SVN install following update does not allow sharing of a new project (bug 508970)
+   (SVN Kit 1.8.14 has an issue in SVN 1.8 API support #2)
+ 
+--------------------------------------------------------------------------------
+
+Version 6.0.3.I20161124-1700 [24 November 2016]
+
+Features:
+ * Got hit by SVNKIT-655 in SVNKit Connector (Update SVNKit to 1.8.14) (bug 507912)
+ * SVN Kit 1.8.14 has an issue in SVN 1.8 API support (bug 508127)
+ 
+--------------------------------------------------------------------------------
+
+Version 6.0.1.I20160627-1700 [27 June 2016]
+
+Features:
+ * Handle peg revision in mergeTwo, diffTwo and diffStatusTwo (bug 492399)
+ * Update JavaHL 1.8 win64 binaries to 1.8.15 (bug 491337)
+ * Update JavaHL 1.8 win32 binaries to 1.8.15 (bug 491336)
+ * Update JavaHL 1.9 win32 binaries to 1.9.3 (bug 491338)
+ * Update JavaHL 1.9 win64 binaries to 1.9.3 (bug 491339)
+ 
+--------------------------------------------------------------------------------
+
+Version 6.0.0.I20160226-1700 [26 February 2016]
+
+Features:
+ * Add SVN 1.9-based connector (bug 485023)
+ * Add SVN 1.9 Win32 support (bug 485024)
+ * Add SVN 1.9 Win64 support (bug 485025)
+ * SVN Kit 1.8.12: support for Subversion 1.9 new FSFS repository format. (bug 487147)
+ * Refactor SVN 1.8 connectors in order to support SVN 1.9 API calls (bug 488451)
+ * Refactor SVN 1.9 connectors in order to support SVN 1.9 API calls (bug 488452)
+ * Enable SVN 1.9 features in SVN 1.9 based connector (bug 488472)
+ * Refactor and remove deprecated merge API calls (bug 488677)
+ * Discard SVN 1.7-based connectors support (bug 488688)
+ 
+--------------------------------------------------------------------------------
+
+Version 5.0.2.I20151228-1700 [28 December 2015]
+
+Fixes:
+ * SVN Kit 1.8 based connector gives a wrong path in diffStatus() (bug 484928)
+	+ special thanks to contributor Florent Angebault
+ 
+--------------------------------------------------------------------------------
+
+Version 5.0.1.I20151028-1700 [28 October 2015]
+
+Features:
+ * Update JavaHL win64 binaries to 1.8.14 (bug 480040)
+ * Update JavaHL win32 binaries to 1.8.14 (bug 480039)
+ * Update to SVN Kit 1.8.11 (bug 480038)
+
+Fixes:
+ * NPE in SVNKit.diffTwo() when output options are specified (bug 476175)
+ * NPE in JavaHL.diff() when output options are specified (bug 476174)
+ * Diff output options aren't used when passing calls to SVN Kit (bug 476173)
+ * Diff output options aren't used when passing calls to JavaHL (bug 476172)
+ 
+--------------------------------------------------------------------------------
+
+Version 5.0.0.I20150529-1700 [29 May 2015]
+
+Features:
+ * Update to SVN Kit 1.7.14 (bug 465801)
+ * Update JavaHL win32 binaries to 1.8.13 (bug 465830)
+ * Update JavaHL win64 binaries to 1.8.13 (bug 465831)
+ * Update to SVN Kit 1.8.10 (bug 468759)
+ 
+--------------------------------------------------------------------------------
+
+Version 5.0.0.I20150317-1700 [17 March 2015]
+
+Features:
+ * Update plug-ins API compatibility version (bug 462338)
+ * Update JavaHL 1.7 connector according to API changes (bug 462331)
+ * Update SVN Kit 1.7 connector according to API changes (bug 462328)
+ * Update JavaHL 1.8 connector according to API changes (bug 462332)
+ * Update SVN Kit 1.8 connector according to API changes (bug 462330)
+ * Update to SVN Kit 1.8.8 (bug 461204)
+ 
+--------------------------------------------------------------------------------
+
+Version 4.1.3.I20150214-1700 [14 February 2015]
+
+Fixes:
+ * "Commit missing files" option does not work for JavaHL in Package Explorer (bug 459492)
+ * SVN Kit 1.8.7 does not commit missing files (bug 458376)
+ * Possible NPEs in connectors while processing SVNEntryReference/SVNEntryRevisionReference (bug 458195)
+ 
+--------------------------------------------------------------------------------
+
+Version 4.1.2.I20141224-1700 [24 December 2014]
+
+Features:
+ * Update JavaHL win64 binaries to 1.8.10 (bug 453541)
+ * Update JavaHL win32 binaries to 1.8.10 (bug 453540)
+ * Update to SVN Kit 1.8.7 (bug 456130)
+ 
+--------------------------------------------------------------------------------
+
+Version 4.1.0.I20140907-1700 [07 September 2014]
+
+Features:
+ * Update all SVN operations console output (bug 443135)
+ * Update JavaHL win64 binaries to 1.8.9 (bug 441035)
+ * Update JavaHL win32 binaries to 1.8.9 (bug 441034)
+ * Update to SVN Kit 1.8.6 (bug 441033)
+ 
+--------------------------------------------------------------------------------
+
+Version 4.0.2.I20140528-1700 [28 May 2014]
+
+Features:
+ * Update SVN 1.8 connectors with SVN Kit 1.8.5 (bug 434042)
+ * Update SVN 1.7 connectors with SVN Kit 1.7.13 (bug 434041)
+ * Update JavaHL win32 binaries to 1.8.8 (bug 430498)
+ * Update JavaHL win64 binaries to 1.8.8 (bug 430499)
+ * Enable SVN 1.8.x API support in SVN Kit-based SVN 1.8 connector (bug 430503)
+
+Fixes:
+ * No timeout on stalled connections (bug 415366)
+ 
+--------------------------------------------------------------------------------
+
+Version 4.0.1.I20140122-1700 [22 January 2014]
+
+Features:
+ * Use SVN Kit 1.8.3 version in SVN 1.8 connector (bug 426398)
+ * Update JavaHL Win64 binaries to 1.8.5 version (bug 426404)
+ * Update JavaHL Win32 binaries to 1.8.5 version (bug 426405)
+ 
+--------------------------------------------------------------------------------
+
+Version 4.0.0.I20131101-1700 [01 November 2013]
+
+Features:
+ * Update SVN Kit 1.8 connector to SVN Kit 1.8.0 release version (bug 422887)
+ * Add repository management code to the SVN 1.8-compatible connectors (bug 422395)
+ * Add repository management code to the SVN 1.7-compatible connectors (bug 422394)
+ * Add repository management code to the SVN 1.6-compatible connectors (bug 422393)
+ * Refactor SVN 1.8 connectors in order to support SVN 1.8 API calls (bug 420904)
+ * Update JavaHL Win64 binaries to 1.8.4 version (bug 420912)
+ * Update JavaHL Win32 binaries to 1.8.4 version (bug 420911)
+ * Refactor SVN 1.6 connectors in order to support SVN 1.8 API calls (bug 420906)
+ * Refactor SVN 1.7 connectors in order to support SVN 1.8 API calls (bug 420905)
+ 
+--------------------------------------------------------------------------------
+
+Version 3.0.3.I20130920-1700 [20 September 2013]
+
+Features:
+ * Add SVN 1.8 connector based on SVN Kit 1.8.x (bug 416796)
+ * Update SVN 1.7.x SVN Kit connector to 1.7.11 version (bug 416794)
+ * Add JavaHL 1.8.0 Win64 support (bug 416784)
+ * Add JavaHL 1.8.0 Win32 support (bug 416783)
+ * Create a connector compatible with the SVN 1.8 working copy format (bug 416782)
+
+Fixes:
+ * When commit is across different working copies there is a chance to lose some post commit errors if more than one occurs (bug 417767)
+ 
+--------------------------------------------------------------------------------
+
+Version 3.0.2.I20130808-1700 [08 August 2013]
+
+Features:
+ * Include SVN Kit 1.7.10 version (bug 414897)
+
+Fixes:
+ * Include SVN1.7 connectors sources into the build (bug 412924)
+ * Connectors build fails on Linux (bug 412920)
+ 
+--------------------------------------------------------------------------------
+
+Version 3.0.1.I20130507-1700 [07 May 2013]
+
+Features:
+ * Update JavaHL binaries to 1.7.9 (bug 406738)
+ * Update SVN Kit to the 1.7.9 version (bug 406737)
+ 
+--------------------------------------------------------------------------------
+
+Version 3.0.1.I20130331-1700 [31 March 2013]
+
+Features:
+ * Incoming deletions not shown any more in the Synchronize View (bug 404264)
+ 
+--------------------------------------------------------------------------------
+
+Version 3.0.1.I20130301-1700 [01 March 2013]
+
+Features:
+ * Provide support for post-commit hook's messages (bug 400575)
+ 
+--------------------------------------------------------------------------------
+
+Version 3.0.0.I20130122-1700 [22 January 2013]
+
+Features:
+ * Update JavaHL binaries to 1.7.8 (bug 398671)
+ * Use SVN Kit 1.7.8 (bug 398669)
+ 
+--------------------------------------------------------------------------------
+
+Version 3.0.0.I20121228-1700 [28 December 2012]
+
+Features:
+ * SVN Connectors failed to install in Eclipse 64 bit for RCP and RAP Developers. [Win64 support] (bug 376317)
+ * Create Win64 binaries fragment for the JavaHL connector (bug 397131)
+
+Fixes:
+ * NPE in connectors during merge [ID-K52J4] (bug 394711)
+
+--------------------------------------------------------------------------------
+
+Version 3.0.0.I20121109-1700 [09 November 2012]
+
+Features:
+ * Update JavaHL binaries to 1.7.7 (bug 393486)
+ * Use SVN Kit 1.7.6 (bug 393484)
+
+Fixes:
+ * ArrayIndexOutOfBoundsException in SVNKitConnector.mergeStatus [ID-BO5ZC] (bug 393852)
+
+--------------------------------------------------------------------------------
+
+Version 3.0.0.I20121013-1700 [13 October 2012]
+
+Features:
+ * Update JavaHL 1.7.5 to 1.7.6 (bug 388908)
+
+Fixes:
+ * Subversive with SVN Kit Connector unusable under Linux + Mac OS X: always fails with "Unable to locate a login configuration" (bug 323418)
+
+--------------------------------------------------------------------------------
+
+Version 3.0.0.I20120818-1700 [18 August 2012]
+
+Features:
+ * Use SVN Kit 1.7.5.v1 (bug 387222)
+
+--------------------------------------------------------------------------------
+
+Version 3.0.0.I20120803-1700 [03 August 2012]
+
+Features:
+ * Update SVN Kit 1.7.4.1 to 1.7.5 [checksum errors on update on file externals] (bug 384267)
+ * Update SVN Kit 1.3.7 to 1.3.8 (bug 385034)
+ * Update JavaHL 1.7.4 to 1.7.5 (bug 385038)
+
+--------------------------------------------------------------------------------
+
+Version 3.0.0.I20120601-1700 [01 June 2012]
+
+Features:
+ * Graduation release
+
+--------------------------------------------------------------------------------
+
+Version 2.3.0.I20120520-1700 [20 May 2012]
+
+Features:
+ * Update the SVN 1.7 SVN Kit-based client to the 1.7.4.1 version (bug 380075)
+
+Fixes:
+ * Failure on Annotate with JavaHL 1.7.4 connector [ID-T62TU] (bug 377653)
+ * Failure on Annotate with SVNKit 1.7.4 connector [ID-YHSC0] (bug 377654)
+ * Eclipse crashed whenever svnkit 1.7 accesses gnome keyring (bug 378015)
+ * Character encoding problems in History view [SVN Kit 1.7 connector] (bug 379348)
+ * JavaHL 1.7 Connectors have Encoding Problems: German Umlauts (bug 378316)
+
+--------------------------------------------------------------------------------
+
+Version 2.3.0.I20120413-1700 [13 April 2012]
+
+Features:
+ * Update SVN 1.6 compatible SVNKit-based connector (SVN Kit 1.3.7) (bug 374581)
+ * Update JavaHL 1.7 connector to the 1.7.4 version (bug 375168)
+ * Create the SVNKit-based SVN 1.7 compatible connector (bug 374582)
+ * Include SVN Kit 1.7.4 release version (bug 376797)
+
+--------------------------------------------------------------------------------
+
+Version 2.3.0.I20120316-1700 [16 March 2012]
+
+Features:
+ * Include JavaHL 1.7 connector into the early access/Juno simulatenous release builds (bug 372781)
+ * Remove SVN 1.5 compatible clients (bug 372779)
+
+--------------------------------------------------------------------------------
+
+Version 2.2.2.I20120210-1700 [10 February 2012]
+
+Fixes:
+ * NPE in EditTreeConflictsPanel [ID-W9I0E] (bug 364895)
+
+--------------------------------------------------------------------------------
+
+Version 2.2.2.I20111119-1700 [19 November 2011]
+
+Features:
+ * ISVNConnector calls interception API (bug 356023)
+ * Add SVN 1.7 API support (bug 361257)
+ * Update SVN Kit to the 1.3.6.1 version (bug 363000)
+
+Fixes:
+ * Subversive Revert Operation Painfully Slow (bug 324346)
+
+--------------------------------------------------------------------------------
+
+Version 2.2.2.I20110819-1700 [19 August 2011]
+
+Fixes:
+ * JavaHL is independent of Windows, please properly document this (bug 307397)
+
+--------------------------------------------------------------------------------
+
+Version 2.2.2.I20110715-1700 [15 July 2011]
+
+Fixes:
+ * Evaluation of subversion.native.library system property to load libsvnjavahl-1.dll is missing (bug 351499)
+   + special thanks to Bjorn Michael
+ * svn perspective launches svnserve which never close (bug 305658)
+
+--------------------------------------------------------------------------------
+
+Version 2.2.2.I20110602-1700 [2 June 2011]
+
+Fixes:
+ * Indigo requires license update (bug 346698) [corrections]
+ * Bug fix: update version number to the actual 1.6.15 (bug 347568)
+
+--------------------------------------------------------------------------------
+
+Version 2.2.2.I20110523-1700 [23 May 2011]
+
+Fixes:
+ * Indigo requires license update (bug 346698)
+ * JavaHL 1.6.x implementation does not understand 'WORKING' revision kind (bug 344364)
+ * Update native client version to 1.6.15 (Windows binaries) (bug 344363)
+ * History View shows wrong dates for some checkins (bug 321514)
+
+--------------------------------------------------------------------------------
+
+Version 2.2.2.I20110419-1700 [19 April 2011]
+
+Fixes:
+ * Malformed network data during synchronization (bug 337151) [allow usage of the older SVN Kit version without the issue]
+ * Deadlock in SVNKitConnector when ProgressMonitor implementation queries display thread. (bug 317713)
+   + special thanks to Micha Riser
+ * Correct connectors compatibility ID [ID-D1U3Y] (bug 340527)
+
+--------------------------------------------------------------------------------
+
+Version 2.2.2.I20110318-1700 [18 March 2011]
+
+Fixes:
+ * NullPointerException on each repository access with SVN Kit 1.3.5 (bug 339122)
+ * No error dialog appears if commit fails (bug 338641)
+
+--------------------------------------------------------------------------------
+
+Version 2.2.2.I20110124-1700 [24 January 2011]
+
+Features:
+ * Use the latest SVN Kit version (1.3.5) (bug 334452)
+ * There is no access to the SVN 1.6-related method signatures (bug 333211)
+ * Allow repository creation with the SVN Kit 1.3.4-based connector (bug 333202)
+
+Fixes:
+ * Avoid deprecated method calls in the native connectors (bug 333210)
+
+--------------------------------------------------------------------------------
+
+Version 2.2.2.I20101203-1700 [03 December 2010]
+
+Fixes:
+ * Eclipse-LazyStart option is deprecated in Eclipse 3.3 and later versions (bug 331003)
+ * Lots of warnings in the build.properties files (bug 330843)
+ * Incorrect SVN connectors compatibility version (bug 328564)
+ * Incorrect version of JavaHL 1.6.x connector plugin (bug 328561)
+
+--------------------------------------------------------------------------------
+
+Version 2.2.2.I20101001-1700 [01 October 2010]
+
+Fixes:
+ * Remove SVN 1.4-related connectors from the discovery feature list (bug 326831)
+ * Update javahl binaries to 1.6.12 version (bug 326829)
+
+--------------------------------------------------------------------------------
+
+Version 2.2.2.I20100917-1700 [17 September 2010]
+
+Fixes:
+ * Unreasonable error message when communication with server fails [ID-JS430] (bug 322316)
+
+--------------------------------------------------------------------------------
+
+Version 2.2.2.I20100617-1700 [17 June 2010]
+
+Fixes:
+ * [Show History] Error: Retrieval of mergeinfo unsupported (bug 257669) 
+
+ * Update SVN Kit to SVN 1.6.11 version (bug 317160) 
+
+--------------------------------------------------------------------------------
+
+Version 2.2.2.I20100512-1900 [12 May 2010]
+
+Fixes:
+ * Make consistent licenses (bug 310430) 
+
+ * NumberFormatException For input string: "" (bug 298228)
+ 
+ * Update SVN Kit and JavaHL to SVN 1.6.6 version (bug 297051) 
+
+ * Error during reporting an invalid error (bug 293588) 
+
+--------------------------------------------------------------------------------
+
+Version 2.2.1.I20091009-1900 [09 October 2009]
+
+Fixes:
+ * Change connectors string in SVN Connectors list (bug 290677)
+ 
+ * svn externals not working for path/subpath entries (bug 272526) 
+
+--------------------------------------------------------------------------------
+
+Version 2.2.1.I20090925-2100 [25 September 2009]
+
+Features:
+ * Java HL 1.6.5 binaries are included
+
+--------------------------------------------------------------------------------
+
+Version 2.2.1.I20090708-1500 [08 July 2009]
+
+Features: 
+ * SVN Kit 1.2.3 is included
+ 
+ * Java HL 1.6.3 is included
+ 
+ * Restore SVN 1.4 connectors
+ 
+ * SVN Kit 1.3.0 is included
+
+Fixes:
+ * [Show History] Error: Retrieval of mergeinfo unsupported (bug 257669)
+ 
+--------------------------------------------------------------------------------
+
+Version 2.2.0.I20090505-1500 [05 May 2009]
+
+Features: 
+ * SVN Kit 1.3.0 beta is included
+
+ * Support for files in svn:externals (bug 269155)
+ 
+ * Detection of tree conflicts (bug 269156)
+ 
+ * Java HL 1.6.0 binaries are included    
+ 
+Fixes:
+ * SVN operation canceling problem (bug 269529)
+
+--------------------------------------------------------------------------------
+
+Version 2.1.0.I20090213-1500 [13 February 2009]
+
+Features:
+ * Add ability to create SVN repository (bug 263951)
+
+--------------------------------------------------------------------------------
+
+Version 2.0.8.I20090202-1500 [02 February 2009]
+
+Features:
+ * SVN Kit 1.2.2 is included
+
+--------------------------------------------------------------------------------
+
+Version 2.0.7.I20081222-1900 [22 December 2008]
+
+Fixes:
+ * Character encoding problem in Revision Properties View (bug 255055)
+ * ClassCastException SVNKit 1.5 getValidReference (bug 252103)
+
+--------------------------------------------------------------------------------
+
+Version 2.0.6.I20081205-1900 [12 December 2008]
+
+Features:
+ * Java HL 1.5.4 binaries are included
+ * SVN Kit 1.2.1 is included
+
+--------------------------------------------------------------------------------
+
+Version 2.0.5.I20081024-1200 [24 October 2008]
+
+Features:
+ * Java HL 1.5.3 binaries are included
+
+--------------------------------------------------------------------------------
+
+Version 2.0.4.I20081001-1900 [10 October 2008]
+
+Features:
+ * New SVN Kit 1.2.0 connector library
+
+Fixes:
+ * diffStatus returns improperly encoded URLs for SVN 1.5-compatible connectors
+
+--------------------------------------------------------------------------------
+
+Version 2.0.3.I20080814-1500 [14 August 2008]
+
+Features:
+ * Add date selection options to History View (bug 211408)
+   + special thanks to Gabor Liptak
+
+Fixes:
+ * Synchronize doesn't show incomming changes (bug 243401)
+   + special thanks to Tony Poppleton, Channing Walton, Radoslaw Jozwik
+
+ * Cannot create a new branch (bug 243181)
+   + special thanks to Jonathan Marston
+
+--------------------------------------------------------------------------------
+
+Version 2.0.2.I20080801-1500 [1 August 2008]
+
+Features:
+ * Ensure that merge action serves merge-tracking functionality (bug 239818)
+ * Allows to select multiple revisions in merge dialog (bug 239820)
+ * Support merge --reintegrate mode (bug 241500)
+ * Use latest SVN 1.5 binaries [REOPENED] (bug 218472)
+ * Include information about merged revisions into annotation (bug 240156)
+ * Show merged revisions in History View (bug 239819)
+
+Fixes:
+ * All protocols: Subversive uses incorrect credentials with SVN Kit 1.1.7-based connector (bug 221094)
+   + special thanks to Christopher Smith, Fabio N. Kepler, Antony Jones, Heath Borders, Martin Oberhuber, Jeroen, Nathan Vick, Cinly Ooi
+
+ * Merge problem "File not found: revision..." when opening 3-way comparator (bug 240291)
+   + special thanks to Alexey Kamenchuk
+   
+ * "Overwrite and Update" doing merge (bug 237218)
+   + special thanks to Tony Poppleton
+
+ * Commiting not up to date directory results in uninformative console message only (bug 239105)
+   + special thanks to Max Gilead
+
+ * NPE in SVN 1.5 compatible connectors when user has no access to repository revision (bug 237408)
+   + special thanks to Darren Hodges
+   
+ * Use latest SVN 1.5 binaries [REOPENED] (bug 218472)
+
+--------------------------------------------------------------------------------
+
+Version 2.0.1.I20080612-1500 [12 June 2008] [build ids are changed corresponding to guidelines]
+
+Features:
+ * Support latest SVN 1.5 API changes (bug 216473)
+
+Fixes:
+ * JavaHLConnector creates a huge amount of short living threads (bug 235764)
+   + special thanks to contributor Micha Riser
+
+--------------------------------------------------------------------------------
+
+Version 0.7.0.v20080517 [17 May 2008]
+
+Features:
+ * Support latest SVN 1.5 API changes [REOPENED] (bug 216473)
+ * Minimize transactions count where it is possible regarding to SVN 1.5 API changes (bug 231548)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.0.v20080423 [23 April 2008]
+
+Features:
+ * Enhance copy and move behaviour (bug 227491)
+   + special thanks to Eric Jain
+
+Fixes:
+ * Properties status is not reported while merge. (bug 227102)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.0.v20080404 [04 April 2008]
+
+Features:
+ * Use latest SVN Kit library version (for both: SVN 1.4 and 1.5 compatible) (bug 224347)
+ * Use latest JavaHL binaries [1.5.0 beta 1] (bug 224330)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.0.v20080321 [21 March 2008]
+
+Fixes:
+ * Merge changes does not show conflict when file has been renamed (bug 222541)
+   + special thanks to Remi Nodet
+
+ * svn merge view graphical synchronize overwrites changes in local version (bug 221239)
+   + special thanks to Andrew Bachmann, Daniel Hirscher
+
+ * Advanced merge: Comparison uses empty "Remote File" (bug 220737)
+   + special thanks to Hubert Bildstein
+
+--------------------------------------------------------------------------------
+
+Version 2.0.0.v20080307 [07 March 2008]
+
+Features:
+ * Update JavaHL 1.5.0 connector binaries to alpha2 version (bug 221506)
+
+--------------------------------------------------------------------------------
+
+Version 2.0.0.v20080214 [14 February 2008]
+
+Features:
+ * Two URLs merge mode also should use Merge View (bug 217856)
+ * Use latest SVN 1.5 binaries (bug 218472)
+
+--------------------------------------------------------------------------------
+
+Version 2.0.0.v20080129 [29 January 2008]
+
+Features:
+ * Support latest SVN 1.5 API changes (bug 216473)
+
+Fixes:
+ * Commit errors seems to not be shown in console (bug 215188)
+   + special thanks to Kristoffer Peterhansel
+   
+ * It is impossible to install connectors sources on Linux (bug 216699)
+   + special thanks to Ilya Klyuchnikov
+
+--------------------------------------------------------------------------------
+
+Version 2.0.0.v20080116 [16 January 2008]
+
+Fixes:
+ * Comparing remote files in SVN Repositories view doesn't work (bug 207923)
+   + special thanks to Matthias Erche
+
+ * Compare: client library returns null value (bug 211260)
+   + special thanks to Samyem
+   
+ * Native libraries could not be loaded when SVN Kit connectors installed (bug 215639)
+
+--------------------------------------------------------------------------------
+
+Version 2.0.0.v20071221 [21 December 2007]
+
+Fixes:
+ * Create Unified Diff action handles direction incorrectly (bug 211272)
+   + special thanks to Artem Tikhomirov
+   
+ * SVN 1.5 support changes (bug 213289)
+
+--------------------------------------------------------------------------------
+
+Version 2.0.0.v20071214 [14 December 2007]
+
+Fixes:
+ * Check compatibility with the Eclipse Ganymede version (Bug: 212732)
+
+--------------------------------------------------------------------------------
+
+Version 2.0.0.v20071210 [10 December 2007]
+
+Fixes:
+ * Rework old-style plug-in manifests (bug 212125)
+   + special thanks to Thomas Hallgren
+
+--------------------------------------------------------------------------------
+
+Version 2.0.0.v20071123 [23 November 2007]
+
+Fixes:
+ * merge UI does not show any changes
+   + special thanks to Chris West
+
+ * Merge UI very slow and fails for projects which names on FS differs in compare to repository (bug 210643)
+ * Merge UI uses incorrectly encoded URL's (bug 210399)
+ * SVN client library connector interfaces reworked according to Eclipse guidelines (naming conventions etc.)
+ * incorrect log messages in Change Set mode of merge UI
+ * merge UI does not work in "reverse" mode

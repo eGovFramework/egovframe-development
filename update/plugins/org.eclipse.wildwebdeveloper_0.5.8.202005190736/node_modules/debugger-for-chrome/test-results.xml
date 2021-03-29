@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="1.5710000000000002" tests="10" failures="10">
+  <testsuite name="Root Suite" timestamp="2019-06-14T23:17:40" tests="0" failures="0" time="0">
+  </testsuite>
+  <testsuite name="React Framework Tests" timestamp="2019-06-14T23:17:40" tests="0" file="/Users/roblou/code/vscode-chrome-debug/out/test/int/framework/framework.react.test.js" failures="0" time="0">
+  </testsuite>
+  <testsuite name="Common Framework Tests" timestamp="2019-06-14T23:17:40" tests="6" file="/Users/roblou/code/vscode-chrome-debug/out/test/int/framework/framework.react.test.js" failures="6" time="1.0470000000000002">
+    <testcase name="React Framework Tests Common Framework Tests React - Should hit breakpoint on page reload" time="0.186" classname="React - Should hit breakpoint on page reload">
+      <failure message="Attribute &apos;runtimeExecutable&apos; does not exist (&apos;{path}&apos;)." type="Error"><![CDATA[Error: Attribute 'runtimeExecutable' does not exist ('{path}').
+    at doSend (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:29:35)
+    at ExtendedDebugClient.dispatch (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:91:17)
+    at ExtendedDebugClient.handleData (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:57:30)
+    at Socket.readable.on (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:19:18)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at Pipe.onread (net.js:601:20)]]></failure>
+    </testcase>
+    <testcase name="React Framework Tests Common Framework Tests React - Should correctly pause execution on a pause request" time="0.182" classname="React - Should correctly pause execution on a pause request">
+      <failure message="Attribute &apos;runtimeExecutable&apos; does not exist (&apos;{path}&apos;)." type="Error"><![CDATA[Error: Attribute 'runtimeExecutable' does not exist ('{path}').
+    at doSend (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:29:35)
+    at ExtendedDebugClient.dispatch (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:91:17)
+    at ExtendedDebugClient.handleData (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:57:30)
+    at Socket.readable.on (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:19:18)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at Pipe.onread (net.js:601:20)]]></failure>
+    </testcase>
+    <testcase name="React Framework Tests Common Framework Tests React - Should stop on breakpoint on initial page load" time="0.164" classname="React - Should stop on breakpoint on initial page load">
+      <failure message="Attribute &apos;runtimeExecutable&apos; does not exist (&apos;{path}&apos;)." type="Error"><![CDATA[Error: Attribute 'runtimeExecutable' does not exist ('{path}').
+    at doSend (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:29:35)
+    at ExtendedDebugClient.dispatch (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:91:17)
+    at ExtendedDebugClient.handleData (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:57:30)
+    at Socket.readable.on (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:19:18)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at Pipe.onread (net.js:601:20)]]></failure>
+    </testcase>
+    <testcase name="React Framework Tests Common Framework Tests React - Should step over correctly" time="0.145" classname="React - Should step over correctly">
+      <failure message="Attribute &apos;runtimeExecutable&apos; does not exist (&apos;{path}&apos;)." type="Error"><![CDATA[Error: Attribute 'runtimeExecutable' does not exist ('{path}').
+    at doSend (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:29:35)
+    at ExtendedDebugClient.dispatch (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:91:17)
+    at ExtendedDebugClient.handleData (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:57:30)
+    at Socket.readable.on (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:19:18)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at Pipe.onread (net.js:601:20)]]></failure>
+    </testcase>
+    <testcase name="React Framework Tests Common Framework Tests React - Should step out correctly" time="0.166" classname="React - Should step out correctly">
+      <failure message="Attribute &apos;runtimeExecutable&apos; does not exist (&apos;{path}&apos;)." type="Error"><![CDATA[Error: Attribute 'runtimeExecutable' does not exist ('{path}').
+    at doSend (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:29:35)
+    at ExtendedDebugClient.dispatch (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:91:17)
+    at ExtendedDebugClient.handleData (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:57:30)
+    at Socket.readable.on (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:19:18)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at Pipe.onread (net.js:601:20)]]></failure>
+    </testcase>
+    <testcase name="React Framework Tests Common Framework Tests React - Should step in correctly" time="0.204" classname="React - Should step in correctly">
+      <failure message="Attribute &apos;runtimeExecutable&apos; does not exist (&apos;{path}&apos;)." type="Error"><![CDATA[Error: Attribute 'runtimeExecutable' does not exist ('{path}').
+    at doSend (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:29:35)
+    at ExtendedDebugClient.dispatch (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:91:17)
+    at ExtendedDebugClient.handleData (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:57:30)
+    at Socket.readable.on (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:19:18)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at Pipe.onread (net.js:601:20)]]></failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="React specific tests" timestamp="2019-06-14T23:17:41" tests="2" file="/Users/roblou/code/vscode-chrome-debug/out/test/int/framework/framework.react.test.js" failures="2" time="0.37">
+    <testcase name="React Framework Tests React specific tests Should hit breakpoint in .jsx file" time="0.203" classname="Should hit breakpoint in .jsx file">
+      <failure message="Attribute &apos;runtimeExecutable&apos; does not exist (&apos;{path}&apos;)." type="Error"><![CDATA[Error: Attribute 'runtimeExecutable' does not exist ('{path}').
+    at doSend (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:29:35)
+    at ExtendedDebugClient.dispatch (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:91:17)
+    at ExtendedDebugClient.handleData (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:57:30)
+    at Socket.readable.on (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:19:18)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at Pipe.onread (net.js:601:20)]]></failure>
+    </testcase>
+    <testcase name="React Framework Tests React specific tests Should hit conditional breakpoint in .jsx file" time="0.167" classname="Should hit conditional breakpoint in .jsx file">
+      <failure message="Attribute &apos;runtimeExecutable&apos; does not exist (&apos;{path}&apos;)." type="Error"><![CDATA[Error: Attribute 'runtimeExecutable' does not exist ('{path}').
+    at doSend (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:29:35)
+    at ExtendedDebugClient.dispatch (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:91:17)
+    at ExtendedDebugClient.handleData (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:57:30)
+    at Socket.readable.on (node_modules/vscode-debugadapter-testsupport/lib/protocolClient.js:19:18)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at Pipe.onread (net.js:601:20)]]></failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="Test framework tests" timestamp="2019-06-14T23:17:42" tests="2" file="/Users/roblou/code/vscode-chrome-debug/out/test/int/framework/framework.support.test.js" failures="2" time="0.154">
+    <testcase name="Test framework tests Should correctly find breakpoint labels in test source files" time="0.097" classname="Should correctly find breakpoint labels in test source files">
+      <failure message="expected { Object (path, line) } to deeply equal { Object (path, line) }" type="AssertionError"><![CDATA[AssertionError: expected { Object (path, line) } to deeply equal { Object (path, line) }
+    at Object.<anonymous> (out/test/int/framework/framework.support.test.js:17:38)
+    at Generator.next (<anonymous>)
+    at fulfilled (out/test/int/framework/framework.support.test.js:4:58)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:189:7)]]></failure>
+    </testcase>
+    <testcase name="Test framework tests Should correctly find block comment breakpoint labels in test source files" time="0.057" classname="Should correctly find block comment breakpoint labels in test source files">
+      <failure message="expected { Object (path, line) } to deeply equal { Object (path, line) }" type="AssertionError"><![CDATA[AssertionError: expected { Object (path, line) } to deeply equal { Object (path, line) }
+    at Object.<anonymous> (out/test/int/framework/framework.support.test.js:22:38)
+    at Generator.next (<anonymous>)
+    at fulfilled (out/test/int/framework/framework.support.test.js:4:58)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:189:7)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,10 @@
+   <bean name="${propertyServiceName}" class="egovframework.rte.fdl.property.impl.EgovPropertyServiceImpl" 
+         destroy-method="destroy">
+      <property name="properties">
+         <map>
+		   #foreach($property in $properties)         
+           <entry key="${property.key}" value="${property.value}"/>
+           #end 
+         </map>
+      </property>			
+   </bean>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.pde"
+      label="%featureName"
+      version="3.14.400.v20200604-0540"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.jdt" version="3.15.0" match="compatible"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.pde"
+         download-size="67"
+         install-size="227"
+         version="3.13.1100.v20200604-0540"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.pde.build"
+         download-size="478"
+         install-size="564"
+         version="3.10.800.v20200410-1419"/>
+
+   <plugin
+         id="org.eclipse.pde.core"
+         download-size="1325"
+         install-size="2835"
+         version="3.13.400.v20200415-0531"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.pde.junit.runtime"
+         download-size="25"
+         install-size="45"
+         version="3.5.800.v20200310-0710"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.pde.runtime"
+         download-size="222"
+         install-size="382"
+         version="3.6.800.v20200203-0916"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.pde.ui"
+         download-size="4549"
+         install-size="9555"
+         version="3.11.400.v20200514-1728"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.pde.doc.user"
+         download-size="7857"
+         install-size="15204"
+         version="3.14.800.v20200603-2147"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.pde.ui.templates"
+         download-size="565"
+         install-size="1019"
+         version="3.6.1000.v20200513-1026"
+         unpack="false"/>
+
+   <plugin
+         id="org.objectweb.asm"
+         download-size="130"
+         install-size="260"
+         version="8.0.1.v20200420-1007"
+         unpack="false"/>
+
+   <plugin
+         id="org.objectweb.asm.tree"
+         download-size="64"
+         install-size="125"
+         version="8.0.1.v20200420-1007"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.pde.api.tools"
+         download-size="924"
+         install-size="2003"
+         version="1.1.1300.v20200514-1749"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.pde.api.tools.annotations"
+         download-size="11"
+         install-size="14"
+         version="1.1.400.v20190929-1236"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.pde.api.tools.ui"
+         download-size="505"
+         install-size="1037"
+         version="1.1.1200.v20200426-1136"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.pde.ds.core"
+         download-size="57"
+         install-size="117"
+         version="1.1.800.v20200106-1341"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.pde.ds.ui"
+         download-size="203"
+         install-size="403"
+         version="1.1.900.v20200514-1728"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.pde.launching"
+         download-size="124"
+         install-size="273"
+         version="3.8.200.v20200512-0948"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.pde.ua.core"
+         download-size="111"
+         install-size="228"
+         version="1.1.500.v20200113-1730"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.pde.ua.ui"
+         download-size="449"
+         install-size="947"
+         version="1.1.800.v20200116-1522"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.ui.trace"
+         download-size="58"
+         install-size="112"
+         version="1.1.800.v20200106-1301"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.pde.ds.annotations"
+         download-size="141"
+         install-size="336"
+         version="1.1.800.v20200514-1728"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.pde.genericeditor.extension"
+         download-size="86"
+         install-size="170"
+         version="1.0.700.v20200123-1806"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.pde.ds.lib"
+         download-size="32"
+         install-size="45"
+         version="1.1.400.v20191119-0943"/>
+
+   <plugin
+         id="org.eclipse.pde.ds1_2.lib"
+         download-size="28"
+         install-size="41"
+         version="1.0.400.v20191119-0943"/>
+
+   <plugin
+         id="org.eclipse.tools.layout.spy"
+         download-size="42"
+         install-size="79"
+         version="1.0.500.v20200116-1522"
+         unpack="false"/>
+
+</feature>

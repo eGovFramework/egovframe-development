@@ -1,0 +1,18 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Built-By: genie.mylyn
+Created-By: Apache Maven 3.6.3
+Build-Jdk: 1.8.0_202
+
+Name: epl-v10.html
+SHA-256-Digest: mpbQ2vmKpvtKpTDTmcdCxmEhsL2uSh9/+iLSE14d9/0=
+
+Name: feature.xml
+SHA-256-Digest: oyzzKE70z3hFy3OG2X2Xe7Cdlb4VcW9v+h28hFxHlCI=
+
+Name: feature.properties
+SHA-256-Digest: TE1wrGTBgup7Q01noezCoStB90EzgOddFTct4ZWUY74=
+
+Name: license.html
+SHA-256-Digest: X315zLynvdLZ4DaYSopgxruQUUEadA3FOPNviC+YO24=
+

@@ -1,0 +1,111 @@
+/*******************************************************************************
+ * Copyright (c) 2010, 2014 IBM Corporation and others.
+ *
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *     IBM Corporation - initial API and implementation
+ *     Lars Vogel <Lars.Vogel@gmail.com> - Bug 420836
+ *     Mickael Istria <mistria@redhat.com> - 325937
+ *     Patrik Suzzi <psuzzi@gmail.com> - Bug 501250
+ *******************************************************************************/
+
+@import url("platform:/plugin/org.eclipse.ui.themes/css/e4_basestyle.css");
+
+ColorDefinition#org-eclipse-ui-workbench-ACTIVE_UNSELECTED_TABS_COLOR_START {
+	color: #EEEEEE;
+}
+
+ColorDefinition#org-eclipse-ui-workbench-ACTIVE_UNSELECTED_TABS_COLOR_END {
+	color: #EEEEEE;
+}
+/* Higher contrast keylines for selected stack */
+ColorDefinition#org-eclipse-ui-workbench-ACTIVE_TAB_OUTER_KEYLINE_COLOR {
+	color: #A0A0A0;
+}
+ColorDefinition#org-eclipse-ui-workbench-ACTIVE_TAB_INNER_KEYLINE_COLOR {
+	color: #A0A0A0;
+}
+ColorDefinition#org-eclipse-ui-workbench-ACTIVE_TAB_OUTLINE_COLOR {
+	color: #A0A0A0;
+}
+
+
+ColorDefinition#org-eclipse-ui-workbench-INACTIVE_UNSELECTED_TABS_COLOR_START {
+	color: #DCDCDC;
+}
+
+ColorDefinition#org-eclipse-ui-workbench-INACTIVE_UNSELECTED_TABS_COLOR_END {
+	color: #DCDCDC;
+}
+
+ColorDefinition#org-eclipse-ui-workbench-INACTIVE_TAB_OUTER_KEYLINE_COLOR {
+	color: #B4B4B4;
+}
+
+ColorDefinition#org-eclipse-ui-workbench-INACTIVE_TAB_INNER_KEYLINE_COLOR {
+	color: #B4B4B4;
+}
+
+ColorDefinition#org-eclipse-ui-workbench-INACTIVE_TAB_BG_START{
+	color: #E2E2E2;
+}
+
+ColorDefinition#org-eclipse-ui-workbench-INACTIVE_TAB_BG_END {
+	color: #E2E2E2;
+}
+
+ColorDefinition#org-eclipse-ui-workbench-INACTIVE_NOFOCUS_TAB_BG_START {
+	color: #E2E2E2;
+}
+
+ColorDefinition#org-eclipse-ui-workbench-INACTIVE_NOFOCUS_TAB_BG_END {
+	color: #E2E2E2;
+}
+
+ColorDefinition#org-eclipse-ui-workbench-INACTIVE_TAB_OUTLINE_COLOR {
+	color: #B4B4B4;
+}
+
+
+.MTrimmedWindow {
+	background-color: #E2E2E2;
+}
+
+.MTrimBar {
+	background-color: #E2E2E2;
+}
+
+.MTrimBar#org-eclipse-ui-main-toolbar  {
+	background-color: COLOR-WIDGET-BACKGROUND #E2E2E2 100%;
+}
+
+.MToolControl.TrimStack {
+	frame-image:  url(./gtkTSFrame.png);
+	handle-image:  url(./gtkHandle.png);
+	frame-image-rotated:  url(./gtkTSFrame-rotated.png);
+	handle-image-rotated:  url(./gtkHandle-rotated.png);
+}
+
+.MPartStack {
+	swt-simple: false;
+	swt-mru-visible: false;
+}
+
+CTabFolder.MArea {
+	background-color: #E2E2E2;
+	swt-selected-tab-fill: #E2E2E2;
+	swt-unselected-tabs-color: #E2E2E2;
+	swt-outer-keyline-color: #E2E2E2;
+	swt-inner-keyline-color: #E2E2E2;
+	swt-tab-outline: #E2E2E2;
+}
+
+CTabFolder Canvas {
+	background-color: #F8F8F8;
+}

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.emf"
+      label="%featureName"
+      version="2.24.0.v20200917-1439"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright url="http://www.eclipse.org/legal/epl-v20.html">
+      Copyright (c) 2002-2018 IBM Corporation and others.
+All rights reserved.   This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v2.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v20.html
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="%EMFUpdateSiteName" url="http://download.eclipse.org/modeling/emf/emf/builds/"/>
+      <discovery label="%EMFUpdateSiteName" url="http://download.eclipse.org/modeling/emf/emf/builds/"/>
+   </url>
+
+   <includes
+         id="org.eclipse.emf.common"
+         version="2.21.0.v20200917-1439"/>
+
+   <includes
+         id="org.eclipse.emf.common.ui"
+         version="2.17.0.v20190507-0402"/>
+
+   <includes
+         id="org.eclipse.emf.ecore"
+         version="2.23.0.v20200630-0516"/>
+
+   <includes
+         id="org.eclipse.emf.edit"
+         version="2.16.0.v20190920-0401"/>
+
+   <includes
+         id="org.eclipse.emf.edit.ui"
+         version="2.20.0.v20200917-1406"/>
+
+   <includes
+         id="org.eclipse.emf.ecore.edit"
+         version="2.14.0.v20190822-1451"/>
+
+   <includes
+         id="org.eclipse.emf.ecore.editor"
+         version="2.17.0.v20190528-0725"/>
+
+   <includes
+         id="org.eclipse.emf.codegen"
+         version="2.21.0.v20200708-0547"/>
+
+   <includes
+         id="org.eclipse.emf.codegen.ui"
+         version="2.22.0.v20200424-0451"/>
+
+   <includes
+         id="org.eclipse.emf.codegen.ecore"
+         version="2.24.0.v20200917-1423"/>
+
+   <includes
+         id="org.eclipse.emf.codegen.ecore.ui"
+         version="2.24.0.v20200917-1423"/>
+
+   <includes
+         id="org.eclipse.emf.converter"
+         version="2.15.0.v20200324-0723"/>
+
+   <includes
+         id="org.eclipse.emf.databinding"
+         version="1.7.0.v20190323-1059"/>
+
+   <includes
+         id="org.eclipse.emf.databinding.edit"
+         version="1.7.0.v20190323-1059"/>
+
+   <includes
+         id="org.eclipse.emf.mapping"
+         version="2.13.0.v20190323-1059"/>
+
+   <includes
+         id="org.eclipse.emf.mapping.ecore"
+         version="2.12.0.v20190323-1059"/>
+
+   <includes
+         id="org.eclipse.emf.mapping.ui"
+         version="2.13.0.v20190323-1059"/>
+
+   <includes
+         id="org.eclipse.emf.mapping.ecore.editor"
+         version="2.14.0.v20190528-0725"/>
+
+   <plugin
+         id="org.eclipse.emf"
+         download-size="12"
+         install-size="16"
+         version="2.8.0.v20180706-1146"
+         unpack="false"/>
+
+</feature>

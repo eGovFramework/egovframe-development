@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+    <wizard>
+        <title>New Ehcache Configuration</title>
+
+        <component-page required="true">
+        	<!-- NewEhcacheConfig	New Ehcache Configuration -->
+            <description>Select config file.</description>
+			
+			<group label="Generation File" required="true" >			
+		    	<container name="txtPath" label="File Path : " required="true" type="folder" value="#webroot" />
+            	<textfield name="txtFileName" label="File Name :" required="true" value="context-cache"/>
+            </group>
+            <group label="" required="true" >
+            	<file name="txtConfigLocation" label="Config Location : " required="true" type="folder" extensions="xml" value="#txtConfigLocation" />
+           	</group>
+        </component-page>
+
+        <output>
+            <template component="txtFileName" velocity="ehcacheConfigForSpring.vm" extension="xml" container="txtPath"/>
+        </output>
+    </wizard>
+</EclipseWork>

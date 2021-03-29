@@ -1,0 +1,15 @@
+requires.0.name = org.cloudfoundry.ide.eclipse.server.feature.group
+requires.0.namespace = org.eclipse.equinox.p2.iu
+requires.0.min = 0
+requires.0.max = 0
+
+requires.1.name = org.cloudfoundry.ide.eclipse.server.source.feature.group
+requires.1.namespace = org.eclipse.equinox.p2.iu
+requires.1.min = 0
+requires.1.max = 0
+
+
+requires.2.name = org.cloudfoundry.ide.eclipse.server.sdk.feature.group
+requires.2.namespace = org.eclipse.equinox.p2.iu
+requires.2.min = 0
+requires.2.max = 0

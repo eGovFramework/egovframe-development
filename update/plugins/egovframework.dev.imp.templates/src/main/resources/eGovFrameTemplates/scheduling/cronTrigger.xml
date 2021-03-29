@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>New Cron Trigger</title>
+
+		<component-page required="true">
+			<!-- NewCronTrigger	New Cron Trigger -->
+			<description>Create Cron Trigger</description>
+			<group label="Generation File" required="true">
+				<container name="txtPath" label="File Path: " required="true"
+					type="folder" value="" />
+				<textfield name="txtFileName" label="File Name: "
+					required="true" value="" />
+			</group>
+			<group label="Configuration" required="true">
+				<textfield name="txtTriggerName" label="Trigger Name: "
+					required="true" value="" />
+				<textfield name="txtJobName" label="Job Name: " required="true"
+					value="" />
+				<!-- 매 10초마다 실행 -->
+				<textfield name="txtExpression" label="Expression: "
+					required="true" value="*/10 * * * * ?" />
+			</group>
+		</component-page>
+
+		<output>
+			<template component="txtFileName" velocity="cronTrigger.vm"
+				extension="xml" container="txtPath" />
+		</output>
+	</wizard>
+</EclipseWork>

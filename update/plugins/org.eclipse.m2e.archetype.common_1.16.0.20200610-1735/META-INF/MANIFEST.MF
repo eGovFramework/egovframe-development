@@ -1,0 +1,132 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.eclipse.m2e.archetype.common;singleton:=false
+Built-By: default
+Require-Bundle: org.eclipse.m2e.maven.runtime;bundle-version="[1.16.0,
+ 1.17.0)"
+Bnd-LastModified: 1591810581711
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Embed-Dependency: archetype-common,archetype-catalog,archetype-descrip
+ tor,archetype-registry,maven-invoker,commons-collections,commons-io,c
+ ommons-lang,dom4j;version=2.1.3,jchardet,jdom,oro,plexus-velocity,vel
+ ocity
+Bundle-DocURL: www.eclipse.org
+Bundle-Vendor: %Bundle-Vendor
+Require-Capability: osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))"
+Tool: Bnd-4.2.0.201903051501
+Embedded-Artifacts: archetype-common-2.4.jar;g="org.apache.maven.arche
+ type";a="archetype-common";v="2.4",archetype-catalog-2.4.jar;g="org.a
+ pache.maven.archetype";a="archetype-catalog";v="2.4",archetype-descri
+ ptor-2.4.jar;g="org.apache.maven.archetype";a="archetype-descriptor";
+ v="2.4",archetype-registry-2.4.jar;g="org.apache.maven.archetype";a="
+ archetype-registry";v="2.4",maven-invoker-2.1.1.jar;g="org.apache.mav
+ en.shared";a="maven-invoker";v="2.1.1",commons-collections-3.2.2.jar;
+ g="commons-collections";a="commons-collections";v="3.2.2",commons-io-
+ 2.2.jar;g="commons-io";a="commons-io";v="2.2",commons-lang-2.1.jar;g=
+ "commons-lang";a="commons-lang";v="2.1",dom4j-2.1.3.jar;g="org.dom4j"
+ ;a="dom4j";v="2.1.3",jchardet-1.0.jar;g="net.sourceforge.jchardet";a=
+ "jchardet";v="1.0",jdom-1.0.jar;g="jdom";a="jdom";v="1.0",oro-2.0.8.j
+ ar;g="oro";a="oro";v="2.0.8",plexus-velocity-1.1.8.jar;g="org.codehau
+ s.plexus";a="plexus-velocity";v="1.1.8",velocity-1.5.jar;g="org.apach
+ e.velocity";a="velocity";v="1.5"
+Export-Package: org.apache.maven.archetype;provider=m2e;mandatory:=pro
+ vider;x-internal:=true,org.apache.maven.archetype.catalog;provider=m2
+ e;mandatory:=provider;x-internal:=true,org.apache.maven.archetype.cat
+ alog.io.xpp3;provider=m2e;mandatory:=provider;x-internal:=true,org.ap
+ ache.maven.archetype.common;provider=m2e;mandatory:=provider;x-intern
+ al:=true,org.apache.maven.archetype.common.util;provider=m2e;mandator
+ y:=provider;x-internal:=true,org.apache.maven.archetype.creator;provi
+ der=m2e;mandatory:=provider;x-internal:=true,org.apache.maven.archety
+ pe.downloader;provider=m2e;mandatory:=provider;x-internal:=true,org.a
+ pache.maven.archetype.exception;provider=m2e;mandatory:=provider;x-in
+ ternal:=true,org.apache.maven.archetype.generator;provider=m2e;mandat
+ ory:=provider;x-internal:=true,org.apache.maven.archetype.metadata;pr
+ ovider=m2e;mandatory:=provider;x-internal:=true,org.apache.maven.arch
+ etype.metadata.io.xpp3;provider=m2e;mandatory:=provider;x-internal:=t
+ rue,org.apache.maven.archetype.model;provider=m2e;mandatory:=provider
+ ;x-internal:=true,org.apache.maven.archetype.model.io.xpp3;provider=m
+ 2e;mandatory:=provider;x-internal:=true,org.apache.maven.archetype.ol
+ d;provider=m2e;mandatory:=provider;x-internal:=true,org.apache.maven.
+ archetype.old.descriptor;provider=m2e;mandatory:=provider;x-internal:
+ =true,org.apache.maven.archetype.registry;provider=m2e;mandatory:=pro
+ vider;x-internal:=true,org.apache.maven.archetype.registry.io.xpp3;pr
+ ovider=m2e;mandatory:=provider;x-internal:=true,org.apache.maven.arch
+ etype.repositorycrawler;provider=m2e;mandatory:=provider;x-internal:=
+ true,org.apache.maven.archetype.source;provider=m2e;mandatory:=provid
+ er;x-internal:=true,org.codehaus.plexus.velocity;provider=m2e;mandato
+ ry:=provider;x-internal:=true,META-INF.plexus;x-internal:=true
+Bundle-Name: %Bundle-Name
+Bundle-Version: 1.16.0.20200610-1735
+Bundle-ClassPath: archetype-common-2.4.jar,archetype-catalog-2.4.jar,a
+ rchetype-descriptor-2.4.jar,archetype-registry-2.4.jar,maven-invoker-
+ 2.1.1.jar,commons-collections-3.2.2.jar,commons-io-2.2.jar,commons-la
+ ng-2.1.jar,dom4j-2.1.3.jar,jchardet-1.0.jar,jdom-1.0.jar,oro-2.0.8.ja
+ r,plexus-velocity-1.1.8.jar,velocity-1.5.jar
+Embed-Transitive: true
+Build-Jdk: 1.8.0_202
+Created-By: Apache Maven Bundle Plugin
+Eclipse-BundleShape: dir
+
+Name: archetype-registry-2.4.jar
+SHA-256-Digest: wMa/CyAZOwHswURLS2hJ+StoDlgtZn58nbjXit8ut7Y=
+
+Name: about.html
+SHA-256-Digest: DxLx0DTl4ABpKBHRrXGr0ORKBalPMev/EsgIotrdbBk=
+
+Name: velocity-1.5.jar
+SHA-256-Digest: 4GQD+c1pAz5SO+xDGVoqG2EG4oxdfQU7VprncenkmmI=
+
+Name: archetype-descriptor-2.4.jar
+SHA-256-Digest: PITAWIPDoc6blZILN65azk/GVqeoP8JyXFf5luMMrLw=
+
+Name: about_files/LICENSE-2.0.txt
+SHA-256-Digest: z8d0m5b2O9McPEK1xHG/dWgUBT6EfBDz6wA0F7xSPTA=
+
+Name: jchardet-1.0.jar
+SHA-256-Digest: rcUfzofGlnYkrrymonLZVtIzwOvqEe592116azVqkKA=
+
+Name: plexus-velocity-1.1.8.jar
+SHA-256-Digest: NrPqPQzvA/Nr0sTg80cpw96A/TdQWb3Mv1KxCkLG7Cw=
+
+Name: oro-2.0.8.jar
+SHA-256-Digest: 4AzNrV3360P97kQjLvZGAr9jgHwtEzp76Dugn9Sa8m4=
+
+Name: about_files/MPL-1.1.txt
+SHA-256-Digest: U2kqLtbGosbsmzLdC4IN+ukeCh/N9iXKntC9+HBfzE8=
+
+Name: about_files/LICENSE-1.1.txt
+SHA-256-Digest: FBcHXy6BVFZgGFQw7H9nhH07zql7BghmxDbWPr9L4NQ=
+
+Name: about_files/dom4j-LICENSE.txt
+SHA-256-Digest: TyOjxKnEI0jLNbwJJJJYhccKdwj7gYk2KHFICUB1XBQ=
+
+Name: about_files/jdom-LICENSE.txt
+SHA-256-Digest: 0GIlO9PHt1PTfZtjKJBLA40cO4C5Zgwhr/uqhcgX1GI=
+
+Name: commons-collections-3.2.2.jar
+SHA-256-Digest: 7urpF5FxRKaKdB1MDf9mqlxcX9hVk/8he87T/Iyng7g=
+
+Name: dom4j-2.1.3.jar
+SHA-256-Digest: VJ8wB8YpD2qQHlfR0zG07Q5r9zhPeL8QMW/87sqDTeY=
+
+Name: archetype-catalog-2.4.jar
+SHA-256-Digest: Ai5O8njFda7KH0NkzqbxFGqQmFinC6zEhHOm46GC3g4=
+
+Name: commons-lang-2.1.jar
+SHA-256-Digest: Le1zQ9yOV97NXmMCM3E5vgIP3YhaKTWSXo1XWXXkgLk=
+
+Name: jdom-1.0.jar
+SHA-256-Digest: OyO8OXmuwUqVKhKq/EgwENxXV5d18v/KzvUlapDu2gI=
+
+Name: archetype-common-2.4.jar
+SHA-256-Digest: cN7zd81WuNk+uEz1GyvfKmZbmv2RrPLyZ6INrVx2HI8=
+
+Name: OSGI-INF/l10n/bundle.properties
+SHA-256-Digest: 7jHFX9m6flDwqn1hdCBYicVQv7UqcMbNb4er5yQT+hw=
+
+Name: maven-invoker-2.1.1.jar
+SHA-256-Digest: kCQPBpVj14WzxUYpSey+cN5FGnw83HlpzZkTEDyVne8=
+
+Name: commons-io-2.2.jar
+SHA-256-Digest: Z19gvRGoLUgXNlkf5AVMZkcfpUY9RWFmUv1xWFeSuoc=
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>New Rolling File Appender</title>
+
+		<component-page required="true">
+			<!-- NewRollingFileAppender	New Rolling File Appender -->
+			<description>Create Rolling File Appender</description>
+			<group label="Generation File" required="true">
+				<container name="txtPath" label="File Path: " required="true"
+					type="folder" value="" /> <!-- #webroot -->
+				<textfield name="txtFileName" label="File Name: "
+					required="true" value="" />
+			</group>
+			<group label="Configuration" required="true">
+				<textfield name="txtAppenderName" label="Appender Name: "
+					required="true" value="" />
+				<textfield name="txtLogFileNamePattern" label="Log File Name Pattern: "
+					required="true" value="./logs/rolling/rollingSample.%i.log" />
+				<textfield name="txtMaxIndex" label="Max Index: "
+					required="true" value="3" />
+				<textfield name="txtMaxFileSize" label="Max File Size: "
+					required="true" value="1000" />
+				<textfield name="txtConversionPattern" label="ConversionPattern: "
+					required="true" value="%d %5p [%c] %m%n" />
+			</group>
+		</component-page>
+
+		<output>
+			<template component="txtFileName" velocity="rollingFile.vm"
+				extension="xml" container="txtPath" />
+		</output>
+	</wizard>
+</EclipseWork>

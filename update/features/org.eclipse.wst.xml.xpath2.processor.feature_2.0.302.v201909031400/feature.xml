@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (c) 2009, 2018 IBM Corporation and others.
+    This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License 2.0
+    which accompanies this distribution, and is available at
+    https://www.eclipse.org/legal/epl-2.0/
+
+    SPDX-License-Identifier: EPL-2.0
+
+    Contributors:
+        IBM Corporation - initial API and implementation
+ -->
+
+<feature
+      id="org.eclipse.wst.xml.xpath2.processor.feature"
+      label="%featureName"
+      version="2.0.302.v201909031400"
+      provider-name="%providerName"
+      plugin="org.eclipse.wst.xml.xpath2">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+          <import plugin="java_cup.runtime" version="0.0.0" match="greaterOrEqual"/>
+          <import plugin="org.apache.xerces" version="0.0.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.wst.xml.xpath2.processor"
+         download-size="635"
+         install-size="1412"
+         version="2.1.101.v201903222120"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.wst.xml.xpath2.wtptypes"
+         download-size="21"
+         install-size="40"
+         version="2.0.0.v201901071922"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.wst.xml.xpath2"
+         download-size="16"
+         install-size="20"
+         version="1.1.0.v201901071922"/>
+
+   <plugin
+         id="org.eclipse.wst.xml.xpath2.processor.doc.user"
+         download-size="54"
+         install-size="117"
+         version="2.1.0.v201901071922"/>
+
+</feature>

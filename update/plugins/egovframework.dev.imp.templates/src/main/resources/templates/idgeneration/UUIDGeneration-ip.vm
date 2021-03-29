@@ -1,0 +1,5 @@
+<bean name="UUIdGenerationServiceWithIP" class="egovframework.rte.fdl.idgnr.impl.EgovUUIdGnrService">
+    <property name="address">
+        <value>${ipAddress}</value>
+    </property>		
+</bean>

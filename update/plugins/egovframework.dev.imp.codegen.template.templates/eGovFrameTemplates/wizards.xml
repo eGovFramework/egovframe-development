@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+	<category name="CRUD">
+		<wizards>
+			<wizard-def description="CRUD Program" template="crud/wizard.xml"/>
+		</wizards>
+	</category>	
+	<category name="Cache">
+		<wizards>
+			<wizard-def description="New Cache" template="cache/cache.xml"/>
+			<wizard-def description="New Ehcache Configuration" template="cache/ehcacheConfigForSpring.xml"/>
+		</wizards>
+	</category>
+	<category name="Datasource">
+		<wizards>
+			<wizard-def description="New Datasource" template="datasource/datasource.xml"/>
+			<wizard-def description="New JNDI DataSource" template="datasource/jndiDatasource.xml"/>
+		</wizards>
+	</category>
+	<category name="Transaction">
+		<wizards>
+			<wizard-def description="New Datasource Transaction" template="transaction/datasource.xml"/>
+			<wizard-def description="New JPA Transaction" template="transaction/jpa.xml"/>
+			<wizard-def description="New JTA Transaction" template="transaction/jta.xml"/>
+		</wizards>
+	</category>	
+	<category name="ID Generation">
+		<wizards>
+			<wizard-def description="New Sequence ID Generation" template="idGeneration/sequenceId.xml"/>
+			<wizard-def description="New Table ID Generation" template="idGeneration/tableId.xml"/>
+			<wizard-def description="New UUID Generation" template="idGeneration/uuId.xml"/>
+		</wizards>
+	</category>
+	<category name="Property">
+		<wizards>
+			<wizard-def description="New Property" template="property/property.xml"/>
+		</wizards>
+	</category>
+	<category name="Scheduling">
+		<wizards>
+			<wizard-def description="New Detail Bean Job" template="scheduling/beanJob.xml"/>
+			<wizard-def description="New Method Invoking Job" template="scheduling/methodJob.xml"/>
+			<wizard-def description="New Simple Trigger" template="scheduling/simpleTrigger.xml"/>
+			<wizard-def description="New Cron Trigger" template="scheduling/cronTrigger.xml"/>
+			<wizard-def description="New Scheduler" template="scheduling/scheduler.xml"/>
+		</wizards>
+	</category>
+	<category name="Logging">
+		<wizards>
+			<wizard-def description="New Console Appender" template="logging/console.xml"/>
+			<wizard-def description="New File Appender" template="logging/file.xml"/>
+			<wizard-def description="New Rolling File Appender" template="logging/rollingFile.xml"/>
+			<wizard-def description="New Daily Rolling File Appender" template="logging/dailyRollingFile.xml"/>
+			<wizard-def description="New JDBC Appender" template="logging/jdbc.xml"/>
+			<wizard-def description="New eGovDB Appender" template="logging/egovDb.xml"/>
+			<wizard-def description="New eGovJDBC Appender" template="logging/egovJdbc.xml"/>
+		</wizards>
+	</category>
+</templates>

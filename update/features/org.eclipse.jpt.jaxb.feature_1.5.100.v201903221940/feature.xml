@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (c) 2010, 2019 IBM Corporation and others.
+    This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License 2.0
+    which accompanies this distribution, and is available at
+    https://www.eclipse.org/legal/epl-2.0/
+
+    SPDX-License-Identifier: EPL-2.0
+
+    Contributors:
+        IBM Corporation - initial API and implementation
+ -->
+
+<feature
+      id="org.eclipse.jpt.jaxb.feature"
+      label="%featureName"
+      version="1.5.100.v201903221940"
+      provider-name="%providerName"
+      plugin="org.eclipse.jpt.jaxb.branding">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.jpt.common.feature" version="1.2.0"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.jpt.jaxb.core"
+         download-size="739"
+         install-size="1767"
+         version="1.4.101.v201902121834"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.jpt.jaxb.core.schemagen"
+         download-size="19"
+         install-size="29"
+         version="1.1.201.v201902121834"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.jpt.jaxb.ui"
+         download-size="297"
+         install-size="648"
+         version="1.5.101.v201902121834"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.jpt.jaxb.branding"
+         download-size="16"
+         install-size="21"
+         version="1.4.1.v201902121834"
+         unpack="false"/>
+
+</feature>

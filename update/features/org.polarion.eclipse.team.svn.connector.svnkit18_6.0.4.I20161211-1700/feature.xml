@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.polarion.eclipse.team.svn.connector.svnkit18"
+      label="%featureName"
+      version="6.0.4.I20161211-1700"
+      provider-name="%providerName"
+      colocation-affinity="org.eclipse.team.svn">
+   <install-handler/>
+
+   <description>
+      SVN Kit http://www.svnkit.com connector for the Eclipse Subversive. Compatible with SVN 1.8.x.
+   </description>
+
+   <license url="license.html">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://community.polarion.com/projects/subversive/download/eclipse/6.0/update-site/"/>
+      <discovery label="%discoverySiteName" url="http://community.polarion.com/projects/subversive/download/eclipse/6.0/update-site/"/>
+   </url>
+
+   <requires>
+      <import feature="org.eclipse.team.svn" version="4.0.0.I20160427-1700" match="compatible"/>
+      <import feature="org.polarion.eclipse.team.svn.connector"/>
+   </requires>
+
+   <plugin
+         id="org.polarion.eclipse.team.svn.connector.svnkit18"
+         download-size="5310"
+         install-size="5310"
+         version="6.0.4.I20161211-1700"
+         unpack="false"/>
+
+</feature>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.datatools.intro"
+      label="%featureName"
+      version="1.14.102.201911250848"
+      provider-name="%providerName"
+      plugin="org.eclipse.datatools.intro"
+      image="eclipse32.png">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.eclipse.datatools.intro"
+         download-size="37"
+         install-size="43"
+         version="1.14.102.201911250848"
+         unpack="false"/>
+
+</feature>

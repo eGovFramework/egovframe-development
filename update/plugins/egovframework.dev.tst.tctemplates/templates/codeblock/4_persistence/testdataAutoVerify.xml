@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0_07" class="java.beans.XMLDecoder"> 
+ <array class="egovframework.dev.tst.tcgenerator.CodeBlockInfo" length="1"> 
+  <void index="0"> 
+   <object class="egovframework.dev.tst.tcgenerator.CodeBlockInfo"> 
+    <void property="tcTemplateName"> 
+     <string>Auto Verify Test(ExpectedDataSet)</string> 
+    </void> 
+    <void property="description"> 
+     <string>테스트 수행 후 예상되는 결과를 자동으로 비교해주는 테스트 프로그램</string> 
+    </void> 
+    <void property="codeBlockList"> 
+     <array class="java.lang.String" length="7">
+      <void index="0"><string>테스트 클래스 선언부</string></void>
+      <void index="1"><string>테스트용 데이터 소스 생성</string></void>
+      <void index="2"><string>테스트를 위한 타겟 클래스(DAO, VO) 생성</string></void>
+      <void index="3"><string>테스트용 데이터 자동 Insert 및 자동 Verify</string></void>
+      <void index="4"><string>테스트용 입력 데이터 설정(OOO_DataSet.xml)</string></void>
+      <void index="5"><string>테스트용 결과 데이터 설정(OOO_ExpectedDataSet.xml)</string></void>
+      <void index="6"><string>소스 전체</string></void>
+     </array> 
+    </void> 
+    <void property="codeBlocks"> 
+     <array class="java.lang.String" length="7"> 
+      <void index="0"> 
+       <string><![CDATA[
+@RunWith(UnitilsJUnit4TestClassRunner.class)
+@Transactional(TransactionMode.ROLLBACK)
+@SpringApplicationContext({"/META-INF/persistence/connection/datasource-spring-with-unitils.xml",
+                                  "/META-INF/spring/context-common.xml", 
+                                  "/META-INF/spring/context-sqlmap.xml"})
+       ]]></string> 
+      </void> 
+      <void index="1"> 
+       <string><![CDATA[
+    /**
+     * unitils.properties 에 설정 된 database 접근 정보를 기반으로 
+     * 테스트 용 DataSource 를 만든 후 자동으로 injection 해 준다.
+     * (unitils.properties 파일의 위치와 이름은 변경할 수 없다.)
+     * 
+     * updateDataBaseSchema.enabled=true 로 설정되어 있으면
+     * dbMaintainer.script.locations 에서 지정한 위치의 sql 문을 실행시켜준다.
+     * 주의) 생성 시점은 test 메소드가 실행되기 전이다.
+     *        따라서, 단순히 TestDataSource 만 선언하는 것이 아니라,
+     *        하나 이상의 test 메소드라도 있어야 결과 확인이 가능하다.
+     * 
+     * @see     unitils.properties
+     * @see     dbMaintainer.script.locations 에서 지정한 위치의 sql 문
+     */
+    @TestDataSource
+    private DataSource dataSource;
+       ]]></string> 
+      </void> 
+      <void index="2"> 
+       <string><![CDATA[
+    /** 테스트를 위해 만든 타겟 클래스로서 공지사항 비즈니스 구현을 위한 Dao */
+    @SpringBean("noticeDao")
+    private NoticeDao noticeDao;
+    
+    /** 테스트를 위해 만든 타겟 클래스로서 공지사항 비즈니스 구현을 위한 Value Object */
+    private NoticeVo noticeVo;
+    
+    /**
+     * 공지사항 등록을 위한 Value Object 를 만들어내는 메소드로서 테스트 수행 직전에 수행
+    */
+    @Before
+    public void makeNoticeVo() {
+        noticeVo = new NoticeVo();
+        noticeVo.setId(201);
+        noticeVo.setTitle("201번 공지");
+        noticeVo.setContents("테스트용으로 자동 입력된 공지사항 201번입니다.");
+        noticeVo.setLastModifier("OracleDataSetTest.class");
+
+        long currentTime = new java.util.Date().getTime();
+        noticeVo.setRegistrationDate(new java.sql.Date(currentTime));
+    }
+       ]]></string> 
+      </void> 
+      <void index="3"> 
+       <string><![CDATA[
+    /**
+     * Insert 업무를 수행하는 메소드를 테스트
+     * 테스트용 데이터) DataSet 에 선언된 데이터가 자동으로 Insert 되고, 직접 만든 Value Object 를 프로그램을 통해 Insert
+     * 테스트 결과) Expected DataSet 에 선언된 데이터와 자동으로 비교해주며 동일할 경우 테스트 성공
+    */
+    @Test
+    @DataSet("/META-INF/persistence/testdata/AutoInsertionTestDataTest_DataSet.xml")
+    @ExpectedDataSet("/META-INF/persistence/testdata/AutoVerifyTestResultsTest_ExpectedDataSet.xml")
+    public void testInsert() {
+        noticeDao.insert(noticeVo);
+    }
+       ]]></string> 
+      </void>       
+      <void index="4"> 
+       <string><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataset>
+    <NOTICE NOTICE_ID="101"
+            NOTICE_TITLE="101번 공지"
+            NOTICE_CONTENTS="테스트용으로 자동 입력된 공지사항 101번입니다."
+            NOTICE_REGISTRATION_DATE="2009-03-18"
+            NOTICE_LAST_MODIFIER="OracleDataSetTest.xml"
+            NOTICE_LAST_MODIFIED_DATE="2009-03-17"
+            NOTICE_FILE_CNT="0"
+            NOTICE_RETRIEVED_CNT="0"
+    />
+    <NOTICE NOTICE_ID="102"
+            NOTICE_TITLE="102번 공지"
+            NOTICE_CONTENTS="테스트용으로 자동 입력된 공지사항 102번입니다."
+            NOTICE_REGISTRATION_DATE="2009-03-18"
+            NOTICE_LAST_MODIFIER="OracleDataSetTest.xml"
+            NOTICE_LAST_MODIFIED_DATE="2009-03-17"
+            NOTICE_FILE_CNT="0"
+            NOTICE_RETRIEVED_CNT="0"
+    />
+    <NOTICE NOTICE_ID="103"
+            NOTICE_TITLE="103번 공지"  
+            NOTICE_CONTENTS="테스트용으로 자동 입력된 공지사항 103번입니다."
+            NOTICE_REGISTRATION_DATE="2009-03-18"
+            NOTICE_LAST_MODIFIER="OracleDataSetTest.xml"
+            NOTICE_LAST_MODIFIED_DATE="2009-03-17"
+            NOTICE_FILE_CNT="0"
+            NOTICE_RETRIEVED_CNT="0"
+    />
+</dataset>
+       ]]></string> 
+      </void> 
+      <void index="5"> 
+       <string><![CDATA[
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dataset>
+    <NOTICE NOTICE_ID="201" 
+            NOTICE_TITLE="201번 공지"  
+            NOTICE_CONTENTS="테스트용으로 자동 입력된 공지사항 201번입니다."
+            NOTICE_LAST_MODIFIER="OracleDataSetTest.class"
+    />
+</dataset>
+       ]]></string> 
+      </void> 
+      <void index="6"> 
+       <string><![CDATA[
+import javax.sql.DataSource;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.unitils.UnitilsJUnit4TestClassRunner;
+import org.unitils.database.annotations.TestDataSource;
+import org.unitils.database.annotations.Transactional;
+import org.unitils.database.util.TransactionMode;
+import org.unitils.dbunit.annotation.DataSet;
+import org.unitils.dbunit.annotation.ExpectedDataSet;
+import org.unitils.spring.annotation.SpringApplicationContext;
+import org.unitils.spring.annotation.SpringBean;
+
+import egovframework.guideprogram.test.target.application.notice.NoticeDao;
+import egovframework.guideprogram.test.target.application.notice.NoticeVo;
+
+@RunWith(UnitilsJUnit4TestClassRunner.class)
+@Transactional(TransactionMode.ROLLBACK)
+@SpringApplicationContext({"/META-INF/persistence/connection/datasource-spring-with-unitils.xml",
+                                  "/META-INF/spring/context-common.xml", 
+                                  "/META-INF/spring/context-sqlmap.xml"})
+public class AutoVerifyTestResultsTest_ExpectedDataSet {
+
+    /**
+     * unitils.properties 에 설정 된 database 접근 정보를 기반으로 
+     * 테스트 용 DataSource 를 만든 후 자동으로 injection 해 준다.
+     * (unitils.properties 파일의 위치와 이름은 변경할 수 없다.)
+     * 
+     * updateDataBaseSchema.enabled=true 로 설정되어 있으면
+     * dbMaintainer.script.locations 에서 지정한 위치의 sql 문을 실행시켜준다.
+     * 주의) 생성 시점은 test 메소드가 실행되기 전이다.
+     *        따라서, 단순히 TestDataSource 만 선언하는 것이 아니라,
+     *        하나 이상의 test 메소드라도 있어야 결과 확인이 가능하다.
+     * 
+     * @see     unitils.properties
+     * @see      dbMaintainer.script.locations 에서 지정한 위치의 sql 문
+     */
+    @SuppressWarnings("unused")
+    @TestDataSource
+    private DataSource dataSource;
+    
+    /** 테스트를 위해 만든 타겟 클래스로서 공지사항 비즈니스 구현을 위한 Dao */
+    @SpringBean("noticeDao")
+    private NoticeDao noticeDao;
+    
+    /** 테스트를 위해 만든 타겟 클래스로서 공지사항 비즈니스 구현을 위한 Value Object */
+    private NoticeVo noticeVo;
+    
+    /**
+     * 공지사항 등록을 위한 Value Object 를 만들어내는 메소드로서 테스트 수행 직전에 수행
+    */
+    @Before
+    public void makeNoticeVo() {
+        noticeVo = new NoticeVo();
+        noticeVo.setId(201);
+        noticeVo.setTitle("201번 공지");
+        noticeVo.setContents("테스트용으로 자동 입력된 공지사항 201번입니다.");
+        noticeVo.setLastModifier("OracleDataSetTest.class");
+
+        long currentTime = new java.util.Date().getTime();
+        noticeVo.setRegistrationDate(new java.sql.Date(currentTime));
+    }
+    
+    /**
+     * Insert 업무를 수행하는 메소드를 테스트
+     * 테스트용 데이터) DataSet 에 선언된 데이터가 자동으로 Insert 되고, 직접 만든 Value Object 를 프로그램을 통해 Insert
+     * 테스트 결과) Expected DataSet 에 선언된 데이터와 자동으로 비교해주며 동일할 경우 테스트 성공
+    */
+    @Test
+    @DataSet("/META-INF/persistence/testdata/AutoInsertionTestDataTest_DataSet.xml")
+    @ExpectedDataSet("/META-INF/persistence/testdata/AutoVerifyTestResultsTest_ExpectedDataSet.xml")
+    public void testInsert() {
+        noticeDao.insert(noticeVo);
+    }
+}
+       ]]></string> 
+      </void> 
+     </array> 
+    </void> 
+    
+   </object> 
+  </void> 
+ </array> 
+</java> 

@@ -1,0 +1,24 @@
+Signature-Version: 1.0
+SHA-256-Digest-Manifest-Main-Attributes: zDkIwzp8uQw3z63DYRg4jZJKgv+HF
+ na0vsNFHlwLov4=
+SHA-256-Digest-Manifest: Twyk1g/ebRyaasLDSoR50+mATpPO1h+CguL9FbrGhck=
+Created-By: 1.8.0_51 (Oracle Corporation)
+
+Name: about.html
+SHA-256-Digest: SqjRh7keKO0VjD56/E7K9YtZJ2Vhwcu6V9WbAZyjhCU=
+
+Name: lib/jaxrpc.jar
+SHA-256-Digest: L+Y9DGn4Ihequvps5Gm6C0+RIn1AFgLudZdWvHCBjos=
+
+Name: about_files/NOTICE
+SHA-256-Digest: KmNXp2+48AWnxIk0v4j7FZde0GCpk6KNKn4r3rpyVyg=
+
+Name: plugin.properties
+SHA-256-Digest: 7Vz0pyFiFvQs0Je2V30NEEDFOHSFChLhSLb0I9ZhnKw=
+
+Name: about_files/LICENSE
+SHA-256-Digest: 5wd3cdrM5DQSejpeek8URkjr8nYws+B892ViM5LoDjE=
+
+Name: META-INF/eclipse.inf
+SHA-256-Digest: Yl8qeiSnmCRvts6aaJyRWUTGsNY2TjVrXotgew3Ia0o=
+

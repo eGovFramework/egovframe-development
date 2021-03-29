@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>New Detail Bean Job</title>
+
+		<component-page required="true">
+			<!-- NewDetailBeanJob	New Detail Bean Job -->
+			<description>Create Detail Bean Job</description>
+			<group label="Generation File" required="true">
+				<container name="txtPath" label="File Path: " required="true"
+					type="folder" value="" />
+				<textfield name="txtFileName" label="File Name: "
+					required="true" value="" />
+			</group>
+			<group label="Configuration" required="true">
+				<textfield name="txtJobName" label="Job Name: " required="true"
+					value="" />
+				<type name="txtServiceClass" label="Job Class : "
+					required="true" />
+				<group label="Property" required="true" checkbox="chkProperty">
+					<checkbox name="chkProperty" label="property: "
+					value="true" required="true" />
+					<textfield name="txtPropertyName" label="name: "
+					required="true" />
+					<textfield name="txtPropertyValue" label="value: "
+					required="true" />
+				</group>
+			</group>
+		</component-page>
+
+		<output>
+			<template component="txtFileName" velocity="beanJob.vm"
+				extension="xml" container="txtPath" />
+		</output>
+	</wizard>
+</EclipseWork>

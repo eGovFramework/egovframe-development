@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.datatools.connectivity.oda.designer.core.feature"
+      label="%featureName"
+      version="1.14.102.201911250848"
+      provider-name="%providerName"
+      plugin="org.eclipse.datatools.connectivity.oda.design.ui"
+      image="eclipse_update_120.jpg">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %featureCopyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.emf" version="2.4.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.datatools.connectivity.oda.feature" version="1.13.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.datatools.doc.user" version="1.13.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.datatools.modelbase.feature" version="1.13.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.datatools.connectivity.oda.design.ui"
+         download-size="232"
+         install-size="528"
+         version="3.4.101.201811012051"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.datatools.connectivity.ui.dse"
+         download-size="81"
+         install-size="178"
+         version="1.3.101.201811012051"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.datatools.connectivity.ui"
+         download-size="563"
+         install-size="1200"
+         version="1.4.101.201811012051"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.datatools.connectivity.sqm.core"
+         download-size="344"
+         install-size="808"
+         version="1.4.101.201811012051"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.datatools.help"
+         download-size="17"
+         install-size="31"
+         version="1.7.101.201811012051"
+         unpack="false"/>
+
+</feature>

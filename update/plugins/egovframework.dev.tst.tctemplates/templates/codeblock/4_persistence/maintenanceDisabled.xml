@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0_07" class="java.beans.XMLDecoder"> 
+ <array class="egovframework.dev.tst.tcgenerator.CodeBlockInfo" length="1"> 
+  <void index="0"> 
+   <object class="egovframework.dev.tst.tcgenerator.CodeBlockInfo"> 
+    <void property="tcTemplateName"> 
+     <string>UpdateDatabaseSchemaTest_disabled</string> 
+    </void> 
+    <void property="description"> 
+     <string><![CDATA[설정한 DDL 스크립트를 자동으로 실행하지만 transactional 하지 않는 경우를 테스트
+     ]]></string> 
+    </void> 
+    <void property="codeBlockList"> 
+     <array class="java.lang.String" length="5">
+      <void index="0"><string>테스트 클래스 선언부</string></void>
+      <void index="1"><string>DDL 스크립트 설정 파일(unitils.properties)</string></void>
+      <void index="2"><string>DDL 스크립트  파일</string></void>
+      <void index="3"><string>DDL 스크립트 실행</string></void>
+      <void index="4"><string>소스 전체</string></void> 
+     </array> 
+    </void> 
+    <void property="codeBlocks">
+     <array class="java.lang.String" length="5"> 
+      <void index="0"> 
+       <string><![CDATA[
+@RunWith(UnitilsJUnit4TestClassRunner.class)
+@Transactional(TransactionMode.DISABLED)
+]]>
+       </string> 
+      </void> 
+      <void index="1"> 
+       <string><![CDATA[
+# Properties for the PropertiesDataSourceFactory
+database.driverClassName=com.mysql.jdbc.Driver
+database.url=jdbc:mysql://localhost:3306/egovtest
+database.userName=egovtest
+database.password=egovtest
+
+# Default behavior concerning execution of tests in a transaction. Supported values are 'disabled', 'commit' and 'rollback'.
+# If set to disabled, test are not executed in a transaction by default. If set to commit, each test is run in a transaction,
+# which is committed. If set to rollback, each test is run in a transaction, which is rolled back.
+DatabaseModule.Transactional.value.default=disabled
+
+# This property specifies the underlying DBMS implementation. Supported values are 'oracle', 'db2', 'mysql', 'hsqldb' and 'postgresql'.
+# The value of this property defines which vendor specific implementations of DbSupport and ConstraintsDisabler are chosen.
+database.dialect=mysql
+
+# A comma-separated list of all used database schemas. The first schema name is the default one, if no schema name is
+# specified in for example a dbunit data set, this default one is used.
+# A schema name is case sensitive if it's surrounded by database identifier quotes (eg " for oracle)
+database.schemaNames=egovtest
+
+# Type of transaction manager that should be created:
+# simple: a simple transaction manager that wraps the datasource to control transactions
+# spring: a transaction manager that delegates actions to the transaction manager that is configured in the current spring context
+# auto: this will first try to load the spring transaction manager. if spring is not available, it will load the simple transaction manager
+transactionManager.type=auto
+
+# If set to true, the DBMaintainer will be used to update the unit test database schema. This is done once for each
+# test run, when creating the DataSource that provides access to the unit test database.
+updateDataBaseSchema.enabled=true
+
+# Comma separated list of directories and files in which the database update scripts are located. Directories in this
+# list are recursively searched for files.
+dbMaintainer.script.locations=./src/test/resource/META-INF/persistence/maintenance/mysql/script
+]]>
+       </string> 
+      </void> 
+      <void index="2"> 
+       <string><![CDATA[
+CREATE TABLE NOTICE (
+        NOTICE_ID                   INT NOT NULL,
+        NOTICE_TITLE                VARCHAR(500) NOT NULL,
+        NOTICE_CONTENTS             VARCHAR(4000) NOT NULL,
+        NOTICE_REGISTRATION_DATE    DATE NOT NULL,
+        NOTICE_LAST_MODIFIER        VARCHAR(100) NOT NULL,
+        NOTICE_LAST_MODIFIED_DATE   DATE,
+        NOTICE_FILE_CNT             INT,
+        NOTICE_RETRIEVED_CNT        INT
+    );
+    
+ALTER TABLE NOTICE ADD CONSTRAINT primary_key PRIMARY KEY (NOTICE_ID);
+]]>
+       </string> 
+      </void> 
+      <void index="3"> 
+       <string><![CDATA[
+    /**
+     * unitils.properties 에 설정 된 database 접근 정보를 기반으로 
+     * 테스트 용 DataSource 를 만든 후 자동으로 injection 해 준다.
+     * (unitils.properties 파일의 위치와 이름은 변경할 수 없다.)
+     * 
+     * updateDataBaseSchema.enabled=true 로 설정되어 있으면
+     * dbMaintainer.script.locations 에서 지정한 위치의 sql 문을 실행시켜준다.
+     * 주의) 생성 시점은 test 메소드가 실행되기 전이다.
+     *       따라서, 단순히 TestDataSource 만 선언하는 것이 아니라,
+     *       하나 이상의 test 메소드라도 있어야 결과 확인이 가능하다.
+     * 
+     * @see     unitils.properties
+     * @see     dbMaintainer.script.locations 에서 지정한 위치의 sql 문
+     */
+    @TestDataSource
+    private DataSource dataSource;
+    
+    @Test
+    public void testSomeMethod() {
+    }
+]]>
+       </string> 
+      </void> 
+      <void index="4"> 
+       <string><![CDATA[
+import javax.sql.DataSource;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.unitils.UnitilsJUnit4TestClassRunner;
+import org.unitils.database.annotations.TestDataSource;
+import org.unitils.database.annotations.Transactional;
+import org.unitils.database.util.TransactionMode;
+
+@RunWith(UnitilsJUnit4TestClassRunner.class)
+@Transactional(TransactionMode.DISABLED)
+public class UpdateDatabaseSchemaTest_disabled {
+
+    /**
+     * unitils.properties 에 설정 된 database 접근 정보를 기반으로 
+     * 테스트 용 DataSource 를 만든 후 자동으로 injection 해 준다.
+     * (unitils.properties 파일의 위치와 이름은 변경할 수 없다.)
+     * 
+     * updateDataBaseSchema.enabled=true 로 설정되어 있으면
+     * dbMaintainer.script.locations 에서 지정한 위치의 sql 문을 실행시켜준다.
+     * 주의) 생성 시점은 test 메소드가 실행되기 전이다.
+     *        따라서, 단순히 TestDataSource 만 선언하는 것이 아니라,
+     *        하나 이상의 test 메소드라도 있어야 결과 확인이 가능하다.
+     * 
+     * @see     unitils.properties
+     * @see      dbMaintainer.script.locations 에서 지정한 위치의 sql 문
+     */
+    @TestDataSource
+    private DataSource dataSource;
+
+    @Test
+    public void testSomeMethod() {
+    }
+}
+]]>
+       </string> 
+      </void> 
+     </array> 
+    </void> 
+   </object> 
+  </void> 
+ </array> 
+</java> 

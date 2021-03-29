@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (c) 2005, 2020 IBM Corporation and others.
+    This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License 2.0
+    which accompanies this distribution, and is available at
+    https://www.eclipse.org/legal/epl-2.0/
+
+    SPDX-License-Identifier: EPL-2.0
+
+    Contributors:
+        IBM Corporation - initial API and implementation
+ -->
+<feature
+      id="org.eclipse.wst.web_js_support.feature"
+      label="%featureName"
+      version="3.20.0.v202011230424"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.eclipse.wst.jsdt.web.core"
+         download-size="158"
+         install-size="321"
+         version="1.1.100.v202005120035"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.wst.jsdt.web.ui"
+         download-size="228"
+         install-size="479"
+         version="1.2.200.v202011230415"
+         unpack="false"/>
+
+</feature>

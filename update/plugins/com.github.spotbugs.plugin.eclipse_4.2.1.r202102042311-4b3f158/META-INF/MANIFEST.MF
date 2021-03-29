@@ -1,0 +1,278 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: com.github.spotbugs.plugin.eclipse; singleton:=true
+Bundle-Version: 4.2.1.r202102042311-4b3f158
+Bundle-ClassPath: spotbugs-plugin.jar,lib/json-20201115.jar,lib/bcel-6.5
+ .0.jar,lib/log4j-slf4j18-impl-2.14.0.jar,lib/dom4j-2.1.3.jar,lib/asm-tr
+ ee-9.0.jar,lib/commons-text-1.9.jar,lib/junit-4.13.1.jar,lib/spotbugs-a
+ nnotations.jar,lib/slf4j-api-1.8.0-beta4.jar,lib/spotbugs.jar,lib/asm-c
+ ommons-9.0.jar,lib/asm-9.0.jar,lib/jcip-annotations-1.0.jar,lib/asm-uti
+ l-9.0.jar,lib/log4j-api-2.14.0.jar,lib/commons-lang3-3.11.jar,lib/jsr30
+ 5-3.0.2.jar,lib/asm-analysis-9.0.jar,lib/jaxen-1.2.0.jar,lib/log4j-core
+ -2.14.0.jar
+Bundle-ManifestVersion: 2
+Bundle-Name: SpotBugs
+Bundle-Activator: de.tobject.findbugs.FindbugsPlugin
+Bundle-Vendor: SpotBugs Project
+Require-Bundle: org.eclipse.ui.workbench.texteditor,org.eclipse.ui,org.e
+ clipse.ant.core,org.eclipse.core.runtime;bundle-version="3.12.0",org.ec
+ lipse.core.resources,org.eclipse.ui.ide,org.eclipse.ui.editors,org.ecli
+ pse.jdt.core,org.eclipse.jdt.ui,org.eclipse.jface.text,org.eclipse.jdt.
+ launching,org.eclipse.jdt,org.eclipse.team.core,org.eclipse.compare,org
+ .eclipse.team.ui,org.eclipse.ui.navigator,org.eclipse.ui.navigator.reso
+ urces,org.eclipse.pde.core;resolution:=optional,org.eclipse.pde.build;r
+ esolution:=optional,org.eclipse.core.expressions,org.eclipse.ui.views.p
+ roperties.tabbed,org.eclipse.ui.console,org.eclipse.core.filesystem,spo
+ tbugs;resolution:=optional;visibility:=reexport,spotbugs-annotations;re
+ solution:=optional;visibility:=reexport
+Bundle-ActivationPolicy: lazy
+Eclipse-BuddyPolicy: registered
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: de.tobject.findbugs,de.tobject.findbugs.actions,de.tobje
+ ct.findbugs.adapters,de.tobject.findbugs.builder,de.tobject.findbugs.cl
+ assify,de.tobject.findbugs.decorators,de.tobject.findbugs.io,de.tobject
+ .findbugs.marker,de.tobject.findbugs.nature,de.tobject.findbugs.prefere
+ nces,de.tobject.findbugs.properties,de.tobject.findbugs.reporter,de.tob
+ ject.findbugs.util,de.tobject.findbugs.view,de.tobject.findbugs.view.ex
+ plorer,de.tobject.findbugs.view.properties,de.tobject.findbugs.wizards,
+ edu.umd.cs.findbugs,edu.umd.cs.findbugs.annotations,edu.umd.cs.findbugs
+ .asm,edu.umd.cs.findbugs.ba,edu.umd.cs.findbugs.ba.bcp,edu.umd.cs.findb
+ ugs.ba.ca,edu.umd.cs.findbugs.ba.ch,edu.umd.cs.findbugs.ba.constant,edu
+ .umd.cs.findbugs.ba.deref,edu.umd.cs.findbugs.ba.generic,edu.umd.cs.fin
+ dbugs.ba.heap,edu.umd.cs.findbugs.ba.interproc,edu.umd.cs.findbugs.ba.j
+ sr305,edu.umd.cs.findbugs.ba.npe,edu.umd.cs.findbugs.ba.obl,edu.umd.cs.
+ findbugs.ba.type,edu.umd.cs.findbugs.ba.vna,edu.umd.cs.findbugs.bcel,ed
+ u.umd.cs.findbugs.bcel.generic,edu.umd.cs.findbugs.bugReporter,edu.umd.
+ cs.findbugs.bytecode,edu.umd.cs.findbugs.charsets,edu.umd.cs.findbugs.c
+ lassfile,edu.umd.cs.findbugs.classfile.analysis,edu.umd.cs.findbugs.cla
+ ssfile.engine,edu.umd.cs.findbugs.classfile.engine.asm,edu.umd.cs.findb
+ ugs.classfile.engine.bcel,edu.umd.cs.findbugs.classfile.impl,edu.umd.cs
+ .findbugs.config,edu.umd.cs.findbugs.detect,edu.umd.cs.findbugs.filter,
+ edu.umd.cs.findbugs.graph,edu.umd.cs.findbugs.internalAnnotations,edu.u
+ md.cs.findbugs.io,edu.umd.cs.findbugs.jaif,edu.umd.cs.findbugs.log,edu.
+ umd.cs.findbugs.model,edu.umd.cs.findbugs.plan,edu.umd.cs.findbugs.plug
+ in.eclipse.quickfix,edu.umd.cs.findbugs.plugin.eclipse.quickfix.excepti
+ on,edu.umd.cs.findbugs.plugin.eclipse.quickfix.util,edu.umd.cs.findbugs
+ .plugin.eclipse.util,edu.umd.cs.findbugs.plugins,edu.umd.cs.findbugs.pr
+ ops,edu.umd.cs.findbugs.sourceViewer,edu.umd.cs.findbugs.util,edu.umd.c
+ s.findbugs.visitclass,edu.umd.cs.findbugs.workflow,edu.umd.cs.findbugs.
+ xml,javax.annotation,javax.annotation.concurrent,javax.annotation.meta,
+ org.apache.bcel,org.apache.bcel.classfile,org.apache.bcel.generic,org.a
+ pache.bcel.util,org.apache.bcel.verifier,org.apache.bcel.verifier.exc,o
+ rg.apache.bcel.verifier.statics,org.apache.bcel.verifier.structurals,or
+ g.dom4j,org.objectweb.asm,org.objectweb.asm.commons,org.objectweb.asm.s
+ ignature,org.objectweb.asm.tree,org.objectweb.asm.tree.analysis,org.obj
+ ectweb.asm.util
+
+Name: about.properties
+SHA-256-Digest: 7aSVWtD3+UwL1ruBWGerc536loSQsqa5wKiqT3y4Ll8=
+
+Name: plugin.xml
+SHA-256-Digest: xiDe1+9ynZU47GjkGZ6UZKESkoxqK3lk0QkHMfo5NDY=
+
+Name: lib/junit-4.13.1.jar
+SHA-256-Digest: wwcZ25dNZFJ5P+GRs2OKV3cAVIW64UWSQERTD/pfYSI=
+
+Name: icons/export_bugs.png
+SHA-256-Digest: +KqVHb1/ZCqHxh5aPEKxYS4/Xc61IDpyHKEeEwZ83lk=
+
+Name: lib/jaxen-1.2.0.jar
+SHA-256-Digest: cP7vndda0GTe8Fo86Jda66UV7n0b4UbRIZnIgopkF0w=
+
+Name: doc/installing_findbugsplugin.txt
+SHA-256-Digest: qxDIZh05CQENlfbd0EBvVEmoCVtfdZsaKtlZgC2tMNw=
+
+Name: icons/delete_edit.png
+SHA-256-Digest: Gwu8dDr3pOBiNR38D/qlfAbqd3O9zBiuJnFnCkL27G4=
+
+Name: doc/building_spotbugs_plugin.txt
+SHA-256-Digest: dq5DjLrt1eYzXDIXI4DcMW5xHzb5rOqroRZrhDJ8jVI=
+
+Name: icons/buggy-tiny.png
+SHA-256-Digest: njstuGMHuXBKnCtZ04h1yFXmLrDbUkC89pl0A1ZQwAI=
+
+Name: about.ini
+SHA-256-Digest: 6FyCLJ1tmIK6n0uwlsVX9lOb0eXUxyAB0wipwZdfnT0=
+
+Name: icons/package.png
+SHA-256-Digest: dpwkx1LozQP7h29L350MNagE0Jd6xAnk7DTPUNYsh0A=
+
+Name: icons/bug.gif
+SHA-256-Digest: FOfLyFdlsZgEPwblHjBnsT7BL1pZ9hK2cza8TDLUN24=
+
+Name: icons/file_obj.png
+SHA-256-Digest: iC7OpO+RG97KXPMRPkkeQ1XE8AWaOhvZoK842dCUv8Q=
+
+Name: icons/refresh.png
+SHA-256-Digest: NV3bh4A9dUJmmvrXyR/FOWFh0KArXyEpd/nKqJDB6PE=
+
+Name: lib/commons-lang3-3.11.jar
+SHA-256-Digest: TuOAJZwGjR2+noSrUhhvKs1l3gZ+wJvv9zH8oWl/2xY=
+
+Name: spotbugs-plugin.jar
+SHA-256-Digest: vPI2xUecPx/oM397hykdjqgHbnFUaF9k1IEpIK6wzIQ=
+
+Name: OSGI-INF/l10n/bundle_ja.properties
+SHA-256-Digest: SIvKNQe3Z0u1jH9dif4SMB02z8U/ZOQ+hlkFPXsTHfk=
+
+Name: lib/dom4j-2.1.3.jar
+SHA-256-Digest: VJ8wB8YpD2qQHlfR0zG07Q5r9zhPeL8QMW/87sqDTeY=
+
+Name: icons/import_wiz.png
+SHA-256-Digest: CL14lenTONquZbbvUmJyMwXQcIkxV7atCgOUu1cEmWY=
+
+Name: icons/warning.png
+SHA-256-Digest: c9tObyHnj3UhsijfSiGWYT4FTLtM1ternFho39WZboQ=
+
+Name: icons/bugview.gif
+SHA-256-Digest: n8mNCZseQv343ivodtu8qcj4cLWKOmtouUR33srHpsE=
+
+Name: icons/next_nav_into.png
+SHA-256-Digest: WryenymRgMlHNuGijoqYWJfRw/+HFiyK6P0n1h8ksCA=
+
+Name: icons/saveas_edit.png
+SHA-256-Digest: FsWs5sehbNwbHtkO87gsWd4qRpSmSsH6fJvHsILH88U=
+
+Name: lib/asm-9.0.jar
+SHA-256-Digest: Dfl1dJFK7pL9NJ0MtOAPM0XUWywjngu1DwqQ6tR4iOA=
+
+Name: lib/asm-util-9.0.jar
+SHA-256-Digest: Kvbn0B4IYudRk/PAGgamibCiRZR+KfOOtoNjM5FRm7Y=
+
+Name: OSGI-INF/l10n/bundle_fr.properties
+SHA-256-Digest: 0qLas+H1hvOR23NRieH0TZaTgA7/cxqvebUL+T19bEE=
+
+Name: FindBugs.png
+SHA-256-Digest: Z8gM+zt3s/vvFjON0qNZo7KsgIOqyyxhV2VYgdLW/WM=
+
+Name: icons/buggy-tiny-yellow.png
+SHA-256-Digest: DMZ+5EciCWtuKzDCE4WFK0ZdHYv+G/p5IBFpzWz0DOI=
+
+Name: icons/annotationsView.png
+SHA-256-Digest: eT7mOVH/x7ODQc8ROnh2G63g6ivKT2M1We4Nu9SXdF8=
+
+Name: icons/confidence-ignore.png
+SHA-256-Digest: dJQYaZH/ngC5pCF9hsnOpQ6AD8BL6zXUPNrJwZSOk+Q=
+
+Name: lib/asm-commons-9.0.jar
+SHA-256-Digest: G5CQrLfme9TtLyz7ACBjMW15zsrOI3vQfMT38bMCCS8=
+
+Name: icons/runFindbugs.png
+SHA-256-Digest: X2Ud9V8SXWukPsTTt0ufQQAs+ZNS8be36gUJHITr5T8=
+
+Name: lib/spotbugs.jar
+SHA-256-Digest: zsMlGl6LOFD5SV/fcGlDKIm8d0//iuEODLakZFA9YwM=
+
+Name: icons/confidence-low.png
+SHA-256-Digest: CLkIJVx3qqUSDcA91H0RRmJq6/aGZCJTsF+94KcJCBw=
+
+Name: icons/collapseall.png
+SHA-256-Digest: pAOGtZ4GKfmt6e+1VlskYEftxSRKqU77KrTwyex4/60=
+
+Name: icons/detailsView.png
+SHA-256-Digest: /asQiAnua32IfoOzJPyLMtQ6CAWc1wg+IXlfUlqBRtc=
+
+Name: OSGI-INF/l10n/bundle.properties
+SHA-256-Digest: 4esKNVEs5TmPQ9vt5pl1Q2dzjq10+tWxiqAOrrvSKjA=
+
+Name: lib/bcel-6.5.0.jar
+SHA-256-Digest: ves4HQ0ZmZ4iHmoPjYv0T1sZwuV+q/aLcNwJhlKu+vU=
+
+Name: lib/commons-text-1.9.jar
+SHA-256-Digest: CBLyhKxd0NYXRh2aKrasaBETfyUSLf/9R4ikhx5zLQA=
+
+Name: smallBuggy.png
+SHA-256-Digest: OpLejwILUUyTIJ0OkQSy2sF25ZQTE5J+5zdmay9FrZo=
+
+Name: icons/buggy-tiny-gray.png
+SHA-256-Digest: 9bdgYdUhAZjXFlcY+tYmXyiM8/P1PDkFTY7YYGZAgDg=
+
+Name: icons/buggy-tiny-green.png
+SHA-256-Digest: gaRwMdUgxHsohmwOeaCqJsdnymsk45UPdBbA9jgqkm8=
+
+Name: icons/up_nav.png
+SHA-256-Digest: A33VwNy4KRQr7yR1bmScM7L51GVR8/gXe5QbQSONLnE=
+
+Name: lib/asm-analysis-9.0.jar
+SHA-256-Digest: LUbebfhWpNqsmqU0RZq3KH64BYTpEJhQQF5bMC3JwqY=
+
+Name: lib/asm-tree-9.0.jar
+SHA-256-Digest: 4sJfMy65WGGIOoVo5FqsXnfRQND+lhro65pHTsh24A0=
+
+Name: icons/buggy-tiny.xcf
+SHA-256-Digest: sO6K54ifWu1fchKCuml1xYcvpwIzCfDEbzsh7g6fl60=
+
+Name: icons/export_wiz.png
+SHA-256-Digest: ghfHSD2U+YiggClWbJjDizU+NgJTbGInrVKaTGqN3TM=
+
+Name: .options
+SHA-256-Digest: hb8W5W7R8gXkCy3YDksJVLshT9sHGf0Mem1oR3A4OPQ=
+
+Name: plugin/README
+SHA-256-Digest: F/4bm+hu+Cagc6NQWc0v2xIgKQNHqNyMvxKAlJc9nCI=
+
+Name: icons/filter_ps.png
+SHA-256-Digest: O2b4uC0BspHiT/kIpKN+ZaxHx3JWGtNHhXt3oqYB0M4=
+
+Name: icons/prop_ps.png
+SHA-256-Digest: vj6900YEUuMWHV2TumAc7ZAkC1YV8UkgLl1yayefYQY=
+
+Name: RELEASENOTES
+SHA-256-Digest: TQKUcsyr6DJeuzm9ayGd/cYHRpEboXgaxzLoerM3bMw=
+
+Name: lib/log4j-core-2.14.0.jar
+SHA-256-Digest: 8E7pwKxBdHHZEntYgLlsMUcknyBnSo27iOmUnYVTgqg=
+
+Name: lib/slf4j-api-1.8.0-beta4.jar
+SHA-256-Digest: YCtxIynIS0qDxARk9P39D+QjjFPvOXE5qGcGRznb9OA=
+
+Name: lib/jcip-annotations-1.0.jar
+SHA-256-Digest: vlgFOSBgxxR0v2yaZ6CZRxJ00wuD7vhL/E4IiaTx3MA=
+
+Name: lib/log4j-slf4j18-impl-2.14.0.jar
+SHA-256-Digest: 59AiCFfUJuLAowJHKkVH9FdDSFYQ9fIhMu3AT9XVJ+c=
+
+Name: lib/jsr305-3.0.2.jar
+SHA-256-Digest: dmrSoHg/JoeWLIrXTO7MOKKLn3Ki0IXuQ4t4E+ko0Mc=
+
+Name: lib/log4j-api-2.14.0.jar
+SHA-256-Digest: l5Gshao82tYz5RIZJ2b4SZXt302xiMxC+s7FKg2uFeg=
+
+Name: about.html
+SHA-256-Digest: WQPVwFMQd00bvwGZ9vtCOUKZ/jLTz5R150XSYTx5Rps=
+
+Name: lib/json-20201115.jar
+SHA-256-Digest: vSMipN30biYSEE8JGqFNRAY5PvOkbycPacKrtc4dFHw=
+
+Name: icons/buggy-tiny-yellow2.png
+SHA-256-Digest: bc5ug/VloafxcFl8URzIbSR3ePe/87GkmrXyUfkFUFs=
+
+Name: icons/confidence-normal.png
+SHA-256-Digest: aylE/4UYCvE1k0wlTzlRqYWlu1QqsBkpEJw5xv0QXXo=
+
+Name: icons/edtsrclkup_co.png
+SHA-256-Digest: +sGt8Z78xmjNobD2Rm5ZHVh04TMr/0QWST0+gfSVZUE=
+
+Name: icons/buggy-tiny-blue.png
+SHA-256-Digest: Wf4tDSam493lMyrSDJoAplj1wWa2EPr+f6y4I7Xrw3o=
+
+Name: spotbugs.png
+SHA-256-Digest: 849dqRXF++rzG0RTE+2iRplwueii+b4McqbVDODMoi0=
+
+Name: icons/treeView.png
+SHA-256-Digest: fuBnzgj96BC6CJTHaCcz3L2MAxAJDRD/BMu6+Q14yus=
+
+Name: icons/confidence-high.png
+SHA-256-Digest: njuvk3sJ4UeFolDwWTF4g5+7ltZX44e1/gsTj5Z8JIo=
+
+Name: icons/expandall.png
+SHA-256-Digest: BOAP0UOd7Vv+MMlL04cx2RedbudBQkh73rdYXzoXivE=
+
+Name: icons/buggy-tiny-orange.png
+SHA-256-Digest: z3XOs0IKN3/eOvYoEfXe6ScOuuf//4UIU2k6bJP/BYU=
+
+Name: icons/tasks_tsk.png
+SHA-256-Digest: w3LzhjEPt4bSLf68+X6XDHEzr/pQqImDfOBOXUEot3k=
+
+Name: lib/spotbugs-annotations.jar
+SHA-256-Digest: 5MRpbwW5uNyWMfmT59vRnBdY6xhgeG4+6861kcoPPV0=
+

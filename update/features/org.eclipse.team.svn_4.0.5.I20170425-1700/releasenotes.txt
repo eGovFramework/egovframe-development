@@ -1,0 +1,42 @@
+********************************************************************************
+*                          Subversive Release Notes                            *
+*                                                                              *
+* Subversive - a brand new Eclipse Client for Subversion (SVN)                 *
+* See details at http://www.eclipse.org/subversive                             *
+********************************************************************************
+
+Version 4.0.4.I20170216-1700 release date: 16 February 2017
+
+1. What's New
+
+   The version 4.0.4 is a service release.
+   
+   Changes comparatively to the previous release version are listed below. The full list of 
+   changes you can find in Change Log.
+		
+	Features:
+	 * Remember last choice for the "ignore ancestry option" in compare dialogs (bug 512313)
+	
+	Fixes:
+	 * Reusing compare editor does not refresh changes (bug 495202)
+	 * New files and folders aren't displayed in compare with URL/Revision/Branch/Tag when 1.8 compatible connector is used (bug 492534)
+	
+	
+2. Information
+
+2.1. System Requirements
+
+   Subversive requires JDK 1.6 or higher and supports following versions of Eclipse:
+    * 4.4
+    * 4.5
+    * 4.6
+   
+   Subversive supports 
+    Migration for Subversion below version 1.8 to version 1.8 and higher,
+    Subversion version 1.8 with SVN Kit 1.8.14 and JavaHL 1.8.15,
+    Subversion version 1.9 with JavaHL 1.9.3
+
+2.2 Known issues
+
+	* 
+	

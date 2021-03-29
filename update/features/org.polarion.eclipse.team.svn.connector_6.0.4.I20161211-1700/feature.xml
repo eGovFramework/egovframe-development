@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.polarion.eclipse.team.svn.connector"
+      label="%featureName"
+      version="6.0.4.I20161211-1700"
+      provider-name="%providerName"
+      plugin="org.polarion.eclipse.team.svn.connector">
+   <install-handler/>
+
+   <description>
+      Set of SVN connectors for the Eclipse Subversive.
+   </description>
+
+   <license url="license.html">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://community.polarion.com/projects/subversive/download/eclipse/6.0/update-site/"/>
+      <discovery label="%discoverySiteName" url="http://community.polarion.com/projects/subversive/download/eclipse/6.0/update-site/"/>
+   </url>
+
+   <requires>
+      <import feature="org.eclipse.team.svn" version="4.0.0.I20160226-1700" match="compatible"/>
+   </requires>
+
+   <plugin
+         id="org.polarion.eclipse.team.svn.connector"
+         download-size="5"
+         install-size="5"
+         version="6.0.4.I20161211-1700"
+         unpack="false"/>
+
+</feature>

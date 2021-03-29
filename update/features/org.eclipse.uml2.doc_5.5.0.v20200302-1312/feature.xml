@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.uml2.doc"
+      label="%feature.label"
+      version="5.5.0.v20200302-1312"
+      provider-name="%feature.provider-name"
+      image="eclipse_update_120.jpg">
+
+   <description>
+      %description
+   </description>
+
+   <copyright url="http://www.eclipse.org/legal/epl-v20.html">
+      Copyright (c) 2004, 2018 IBM Corporation, CEA, and others.
+All rights reserved.   This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v2.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v20.html
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="%update.label" url="http://www.eclipse.org/modeling/updates/"/>
+      <discovery label="%update.label" url="http://www.eclipse.org/modeling/updates/"/>
+   </url>
+
+   <plugin
+         id="org.eclipse.uml2.doc"
+         download-size="13"
+         install-size="19"
+         version="5.5.0.v20200302-1312"
+         unpack="false"/>
+
+</feature>

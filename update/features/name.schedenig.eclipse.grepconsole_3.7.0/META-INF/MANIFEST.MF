@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.7.0_75
+Built-By: msched
+Created-By: Apache Maven 3.0.5
+Archiver-Version: Plexus Archiver
+
+Name: license.html
+SHA-256-Digest: te6bSHZT3G01lQiusywMztkkmHQPzhE/BVJv401T9CI=
+
+Name: META-INF/maven/name.schedenig.eclipse.features/name.schedenig.ec
+ lipse.grepconsole/pom.xml
+SHA-256-Digest: 5DDHW+pSx//cPPi7sZQZ1p+hcZzB35Y+Cv9xigJwq5Q=
+
+Name: feature.xml
+SHA-256-Digest: PF3EdahsvbARtata7uMkKUWT8YdMze9UulkaPfV3qWo=
+
+Name: META-INF/maven/name.schedenig.eclipse.features/name.schedenig.ec
+ lipse.grepconsole/pom.properties
+SHA-256-Digest: tWuOVbpm2AD93ZvoRHZ6b34F2Ke+SP3Iale+zdV8cZk=
+
+Name: epl-v10.html
+SHA-256-Digest: T9ZK7tNA1ipkqNpLNx7+D20NdF9NLb76y6hsZG02vHI=
+
+Name: feature.properties
+SHA-256-Digest: vJYKlc4u0j58kpyNGeLjN9VnMot6b5YZHcIzQONK7/8=
+

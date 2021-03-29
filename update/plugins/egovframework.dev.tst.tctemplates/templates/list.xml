@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+	<category name="Basic UnitTest CodeBlock">
+		<wizards>
+			<wizard-def description="Equality Test" template="codeblock/1_basic/equality.xml" />
+			<wizard-def description="Advanced Equility Test" template="codeblock/1_basic/advancedEquility.xml" />
+			<wizard-def description="Boundary Test" template="codeblock/1_basic/boundary.xml" />
+			<wizard-def description="Constructor Test" template="codeblock/1_basic/constructor.xml" />
+			<wizard-def description="Exception Test" template="codeblock/1_basic/exception.xml" />
+			<wizard-def description="Ignore Test" template="codeblock/1_basic/ignore.xml" />
+			<wizard-def description="Interface and InterfaceImpl Test" template="codeblock/1_basic/interfaceAndImpl.xml" />
+			<wizard-def description="Parameterized Test" template="codeblock/1_basic/parameterized.xml" />
+			<wizard-def description="Setup Test" template="codeblock/1_basic/setup.xml" />
+			<wizard-def description="Timeout Test" template="codeblock/1_basic/timeout.xml" />
+		</wizards>
+	</category>
+	<category name="Mock UnitTest CodeBlock">
+		<wizards>
+			<wizard-def description="FileUpload Mock Test" template="codeblock/2_mock/fileUploadMock.xml" />
+			<wizard-def description="HttpRequest Mock Test" template="codeblock/2_mock/httpRequestMock.xml" />
+			<wizard-def description="JNDI Mock Test" template="codeblock/2_mock/jndiMock.xml" />
+			<wizard-def description="Session Mock Test" template="codeblock/2_mock/sessionMock.xml" />
+		</wizards>
+	</category>
+	<category name="Persistence UnitTest CodeBlock">
+		<category name="Connection">
+			<wizards>
+				<wizard-def description="DataSourceGetTest(Spring DataSource)" template="codeblock/4_persistence/connectionSpring.xml" />
+				<wizard-def description="DataSourceGetTest(Unitils DataSource)" template="codeblock/4_persistence/connectionUnitils.xml" />
+				<wizard-def description="DataSourceGetTest(Spring Datasource with Unitils)" template="codeblock/4_persistence/connectionSpringwithUnitils.xml" />
+			</wizards>
+		</category>
+		<category name="Maintenance">
+			<wizards>
+				<wizard-def description="UpdateDatabaseSchemaTest(commit)" template="codeblock/4_persistence/maintenanceCommit.xml" />
+				<wizard-def description="UpdateDatabaseSchemaTest(disabled)" template="codeblock/4_persistence/maintenanceDisabled.xml" />
+				<wizard-def description="UpdateDatabaseSchemaTest(rollback)" template="codeblock/4_persistence/maintenanceRollback.xml" />
+			</wizards>
+		</category>
+		<category name="Testdata">
+			<wizards>
+				<wizard-def description="Auto Insertion Test(DataSet)" template="codeblock/4_persistence/testdataAutoInsertion.xml" />
+				<wizard-def description="Auto Verify Test(ExpectedDataSet)" template="codeblock/4_persistence/testdataAutoVerify.xml" />
+				<wizard-def description="DAO Operation Test(Notice DAO)" template="codeblock/4_persistence/testdataDaoOperation.xml" />
+			</wizards>
+		</category>
+	</category>
+	<category name="Spring MVC TestCase Generator">
+		<wizards>
+			<wizard-def description="Service" template="generator/1_Service/wizard.xml" />
+			<wizard-def description="ServiceImpl" template="generator/2_ServiceImpl/wizard.xml" />
+			<wizard-def description="DAO" template="generator/3_DAO/wizard.xml" />
+		</wizards>
+	</category>	
+</templates>

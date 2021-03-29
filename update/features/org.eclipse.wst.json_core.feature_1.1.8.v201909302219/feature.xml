@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (c) 2015, 2018 IBM Corporation and others.
+    This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License 2.0
+    which accompanies this distribution, and is available at
+    https://www.eclipse.org/legal/epl-2.0/
+
+    SPDX-License-Identifier: EPL-2.0
+
+    Contributors:
+        IBM Corporation - initial API and implementation
+ -->
+
+<feature
+      id="org.eclipse.wst.json_core.feature"
+      label="%featureName"
+      version="1.1.8.v201909302219"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.eclipse.json"
+         download-size="54"
+         install-size="104"
+         version="1.1.100.v201901071922"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.wst.json.schemaprocessor"
+         download-size="13"
+         install-size="17"
+         version="1.0.200.v201901071922"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.wst.json.core"
+         download-size="278"
+         install-size="603"
+         version="1.1.0.v201901152013"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.wst.json.bower.core"
+         download-size="11"
+         install-size="15"
+         version="1.0.0.v201901071922"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.wst.json.eslint.core"
+         download-size="11"
+         install-size="14"
+         version="1.0.0.v201901071922"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.wst.json.jshint.core"
+         download-size="11"
+         install-size="14"
+         version="1.0.1.v201908281850"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.wst.json.npm.core"
+         download-size="11"
+         install-size="14"
+         version="1.0.0.v201901071922"
+         unpack="false"/>
+
+</feature>

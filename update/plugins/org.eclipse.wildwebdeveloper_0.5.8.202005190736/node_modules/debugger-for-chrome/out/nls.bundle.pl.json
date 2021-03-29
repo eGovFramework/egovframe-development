@@ -1,0 +1,1 @@
+{"src/chromeDebugAdapter":["Can't find Chrome - install it or set the \"runtimeExecutable\" field in the launch config."],"src/errors":["Attribute '{0}' does not exist ('{1}')."],"src/extension":["Launch Chrome against localhost","Select a tab"]}

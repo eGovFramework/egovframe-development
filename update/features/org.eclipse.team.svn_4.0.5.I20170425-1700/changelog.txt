@@ -1,0 +1,3805 @@
+********************************************************************************
+*                            Subversive Change Log                             *
+*                                                                              *
+* Subversive - a brand new Eclipse Client for Subversion (SVN)                 *
+* See details at http://www.eclipse.org/subversive                             *
+********************************************************************************
+
+Now the Subversive project was moved to Eclipse.org and new version numbers was introduced. 
+Change Log's for older versions still present in this file.
+
+Version 4.0.4.I20170216-1700 [16 February 2017]
+
+Features:
+ * Remember last choice for the "ignore ancestry option" in compare dialogs (bug 512313)
+
+Fixes:
+ * Reusing compare editor does not refresh changes (bug 495202)
+ * New files and folders aren't displayed in compare with URL/Revision/Branch/Tag when 1.8 compatible connector is used (bug 492534)
+ 
+--------------------------------------------------------------------------------
+
+Version 4.0.3.I20161129-1700 [29 November 2016]
+
+Fixes:
+ * Exclude from compare view files with identical content in case they're reported (bug 508237)
+ * Two-way and three-way compare should display "deletion+addition" pairs properly when they're reported instead of "replacement" (bug 508236)
+   + special thanks for the contribution to Florent Angebault
+ * Proper SVNDiffStatus order when deletion and addition are reported for the same nodes (bug 508235)
+ * "Ignore ancestry" option for compare with branch/tag/URL (bug 508231)
+   + special thanks to Florent Angebault
+ * Update from History view and Synchronize view don't change states in another view (bug 505370)
+ * Issue in SVNLightweightDecorator when decorating model elements (resource==null) (bug 502505)
+ * [scalability] Resource listener listens to changes on ignored files (bug 505360)
+   + special thanks for the contribution to Andrey Loskutov
+ * Performance improvements for ResourceStatesChangedEvent (bug 506811)
+   + special thanks for the contribution to Andrey Loskutov
+ * [scalability] SVN update takes hours if "Synchronize" view is opened (bug 504058)
+   + special thanks for the contribution to Andrey Loskutov
+ * Performance improvements for AbstractSVNSubscriber (bug 506777)
+   + special thanks for the contribution to Andrey Loskutov
+ * Performance improvements for SVNUtility (bug 506763)
+   + special thanks for the contribution to Andrey Loskutov
+ * Performance improvements for RemoteStatusCache (bug 506762)
+   + special thanks for the contribution to Andrey Loskutov
+ * Performance improvements for UpdateSubscriber (bug 506760)
+   + special thanks for the contribution to Andrey Loskutov
+ * Performance improvements for FileUtility (bug 506757)
+   + special thanks for the contribution to Andrey Loskutov
+ * Compilation issue with older platform versions (bug 506756)
+   + special thanks for the contribution to Andrey Loskutov
+ * Error in fix for the bug 282000 causes performance issues (bug 506785)
+ * Installation instructions in 'help' are out of date (bug 503327)
+ * Separate requirements page is unnecessary in 'help' (bug 503329)
+ * Remove org.eclipse.team.svn.resource.ignore.rules.jdt bundle (bug 505611)
+ * Correct "management instructions" help page (bug 505119)
+ * Grammar correction on the "Mylyn" help page (bug 505115)
+ * Update Subversive modules overview (bug 505089)
+ * Grammar corrections on the "Supported protocols" page (bug 505006)
+ * Grammar corrections on the "Features" page (bug 504927)
+ * Update Subversive architecture overview (bug 503542)
+ * Linux notes are partially out of date and in need of grammar corrections (bug 503330)
+ * FAQ section in plug-in 'help' requires actualization (bug 503325)
+ * Subversive tries to connect to repository for Compare With -> Base from Working Copy (bug 501030)
+ * Deleting multiple files is very slow on large projects (bug 501032)
+ 
+--------------------------------------------------------------------------------
+
+Version 4.0.2.I20160902-1700 [02 September 2016]
+
+Fixes:
+ * Documentation is confusing for Merge (bug 487256)
+ * SVN 1.9 requires "local" modifier for status() call in order to work the same way as orevious API versions (bug 500739)
+ * Comparing files from the commit dialog always yields a "no differences" result (bug 497160)
+ * Comparing files from the commit dialog always yields a "no differences" result for unversioned files (bug 500719)
+ * SVN server connection failure with Eclipse Neon (bug 499529)
+ * An error within the SVN+SSH credentials storing code (bug 499333)
+ * ID-UL6V1 History View. Compare current with <rev-number> throws StringIndexOutOfBoundsException (bug 498349)
+ * Background colors for repository nodes in dark theme by default are wrong (bug 499325)
+ * update subversive Icons to fit also dark themes (bug 473419)
+ 
+--------------------------------------------------------------------------------
+
+Version 4.0.1.I20160719-1700 [19 July 2016]
+
+Fixes:
+ * Accessing SVN Info page leads to error message (bug 497364)
+   + special thanks for the contribution to Gan Ming
+ * Excessive synchronization in SVNUtility class (bug 498026)
+ * SVNMergeHelper does not restore a proper ISVNConnector's state [ID-LHNBB] (bug 497687)
+ * Performance overhead in SVNLightweightDecorator (bug 497139)
+ * SVNLightweightDecorator.isMappedToSVN could fail to recognize if project is connected to SVN (bug 497138)
+ * "ResourceException: Resource 'xyz' is not open" error in decorator (bug 497061)
+   + special thanks for the contribution to Andrey Loskutov
+ * Possible NPE in compare (bug 495959)
+   + special thanks for the contribution to Florent Angebault
+ 
+--------------------------------------------------------------------------------
+
+Version 4.0.0.I20160604-1700 [04 June 2016]
+
+Fixes:
+ * Resource label is not refreshed in compare panel (bug 493253)
+   + special thanks to Florent Angebault
+ * Reusing compare editor does not refresh changes (bug 495202)
+   + special thanks to Florent Angebault
+ * Not enough debug info when the project is disconnected (bug 495460)
+ * Compare with latest from repository: no changes found when comparing a modified file (bug 495155)
+   + special thanks to Herbert Linseisen
+ * Exception: Resource 'xxx' does not exist [ID-NN7GD] (bug 494976)
+ 
+--------------------------------------------------------------------------------
+
+Version 4.0.0.I20160427-1700 [27 April 2016]
+
+Fixes:
+ * Incoming addition and deletion statuses are reversed in compare with URL/Revision/Branch/Tag when 1.8 compatible connector is used (bug 492536)
+ * Wrong change direction in compare with URL/Revision/Branch/Tag with 1.8 compatible connectors (bug 492535)
+ * New files and folders aren't displayed in compare with URL/Revision/Branch/Tag when 1.8 compatible connector is used (bug 492534)
+ * Handle peg revision in mergeTwo, diffTwo and diffStatusTwo (bug 492399)
+ * LocateResourceURLInHistoryOperation should use the same code as the one that is used by connectors (bug 492402)
+ * Remove deprecated code related to peg revisions handling (bug 492400)
+ 
+--------------------------------------------------------------------------------
+
+Version 4.0.0.I20160408-1700 [08 April 2016]
+
+Fixes:
+ * ID-SD9I4 Unable To commit - SVN: '0x0040011a: Call Menu Action' operation finished with error: Argument cannot be null (bug 491153)
+ * Deleted files aren't shown in Synchronize view (bug 491078)
+ 
+--------------------------------------------------------------------------------
+
+Version 4.0.0.I20160314-1700 [14 March 2016]
+
+Features:
+ * Set SVN Kit 1.8 as default(initial) connector (bug 489643)
+ * Refactor IOptionProvider so that adding another option does not bring an interface change next time (bug 489644)
+ * Add a setting, that allows to commit derived resources (bug 480041)
+ * Need an extension point to provide comment templates programmatically (bug 419093)
+
+Fixes:
+ * SVNRemoteStorage: resource change listener jobs cause OOM (bug 489143)
+   + special thanks to Andrey Loskutov
+ * Ignored files shown as outgoing additions (bug 392750)
+ * Extensive SVN update checks for generated code (bug 489649)
+   + special thanks to Andrey Loskutov
+ * Refactor copy/pasted queue code in SVNRemoteStorage (bug 489664)
+ 
+--------------------------------------------------------------------------------
+
+Version 4.0.0.I20160226-1700 [26 February 2016]
+
+Features:
+ * SVN Kit 1.8.12: support for Subversion 1.9 new FSFS repository format. (bug 487147)
+ * Parse certificate message passed as parameter by SVN 1.8 and earlier clients in order to provide support for SVN 1.9 API (bug 487220)
+ * "Trust SSL server certificate" dialog should distinguish error codes provided by SVN 1.9 API (bug 488453)
+ * Introduce SVN 1.9 API support (bug 485022)
+ * Enable SVN 1.9 features in SVN 1.9 based connector (bug 488472)
+ * Ensure there is no compatibility issues between plug-in versions with different SVN API supported (bug 488653)
+ * Refactor and remove deprecated merge API calls (bug 488677)
+
+Fixes:
+ * Move 'Create Patch' action in pop-up menu next to 'Apply Patch' (bug 486907)
+ * No content for remote variant of deleted file in Synchronize View (bug 488683)
+ 
+--------------------------------------------------------------------------------
+
+Version 3.0.4.I20160131-1700 [31 January 2016]
+
+Features:
+ * Make 'Project Structure' preferences page more compact (bug 486862)
+ * SVN Plugin does not provide option to set default checkout directory (bug 486009)
+
+Fixes:
+ * Typo in "Getting Started" documentation (bug 485185)
+ * Information in "Trust server certificate" dialog is hard to read (bug 485344)
+ * "Compare with" dialogs exit with "A path under version control is needed for this operation" error message (bug 485622)
+ * An exception occurs while moving a resource into a package whose SVN text status is set to "Deleted" (bug 486496)
+ * "Inappropriate resource state" exception while adding replaced but not yet added folder to source control (bug 486835)
+ 
+--------------------------------------------------------------------------------
+
+Version 3.0.3.I20151228-1700 [28 December 2015]
+
+Fixes:
+ * Compare with another branch shows files with no difference [SVN 1.7 or older] (bug 326694)
+ * Weird behavior of the "Compare with branch" feature (bug 484929)
+	+ special thanks to Florent Angebault
+ * Deadlock is possible within RelocatedProjectHelper (bug 483402)
+ * Prompt that asks what to do after project relocation shown in a loop forever (bug 482565)
+ * IConnectedProjectInformation is an unneeded interface (bug 483232)
+ * Remove unused code in the InaccessibleLocationDataHelper class (bug 483231)
+ * FindRelatedProjectsOperation should not activate project initialization (bug 483230)
+ * Remove outdated project-to-location management code (bug 483229)
+ * NPE in CreatePatchWizard [ID-AW5HY] (bug 481725)
+ * Unhandled event loop exception org.eclipse.team.svn.ui.panel.local.EditTreeConflictsHelper.getSrcUrl (bug 480521)
+ 
+--------------------------------------------------------------------------------
+
+Version 3.0.2.I20151028-1700 [28 October 2015]
+
+Features:
+ * Provide interface to use SVN 1.8 diff output options (bug 476177)
+
+Fixes:
+ * NPE in CompareWithLatestRevisionAction [ID-D9JJ1] (bug 480129)
+ * Attempted to beginRule: P/xxxx, does not match outer scope rule in SVNRemoteStorage [ID-HTT9T] (bug 325407)
+ * NPE in SVNRepositoryLocation.asRepositoryContainer [ID-W6HFD] (bug 477111)
+ * Grammatical error (bug 476637)
+ * Unversioned deleted files may reappear in patch dialog if called from Synchronize View (bug 476171)
+ 
+--------------------------------------------------------------------------------
+
+Version 3.0.1.I20150722-1700 [22 July 2015]
+
+Fixes:
+ * StringIndexOutOfBoundsException in bugtraq in History View (bug 471473)
+ * Reduce I/O amount produced by FileReplaceListener (bug 473193)
+ * Limit SVN status cache refresh depth when possible (bug 473161)
+ * Excessive SVN status reloads for updates, revert, commits etc. (bug 473029)
+ * Improve status cache performance (bug 473028)
+ * Status refresh for files does unnecessary work that significantly reduces performance on large projects (bug 473026)
+ * cant't save file or build waiting for user operation (bug 472752)
+ * Possible resource leak in UI (bug 471963)
+ * If the folder is unversioned, Subversive tries to load it more than once (bug 471205)
+ * Symbolic links and external resources interfere with each other in UI (bug 471204)
+ * There should be a way to add to SVN the intermediate folders produced by svn:externals (bug 471188)
+ * Obstructed externals (bug 465574)
+ * Diff viewer preference page has wrong button sizes in Mars (bug 471161)
+ * Subversive Label Decorations Preferences dialog broken (bug 470990)
+ * Enable team context menu actions on working set (bug 470552)
+ 
+--------------------------------------------------------------------------------
+
+Version 3.0.0.I20150529-1700 [29 May 2015]
+
+Features:
+ * "set keywords" grayed out for folders (no recursion allowed) (bug 467303)
+ 
+Fixes:
+ * Improve RefreshResourcesOperation performance (bug 465920)
+ * NullPointerException on SVN history view (JFace plugin) (bug 466983)
+ * ArrayIndexOutOfBoundsException in UpdateSubscriber [ID-OJ8UD] (bug 467720)
+ * NumberFormatException while performing "Synchronize with repository" [ID-FE6ZC] (bug 465812)
+ * File content comparison editor shouldn't be opened for conflicted folders [ID-HJ1S2] (bug 468639)
+ 
+--------------------------------------------------------------------------------
+
+Version 3.0.0.I20150317-1700 [17 March 2015]
+
+Features:
+ * Refactor SVN API support [use strict types for constant enumerations, improve error codes etc.] (bug 462326)
+ * Update plug-ins API compatibility version (bug 462338)
+ * Update integrations according to API changes (bug 462327)
+ 
+Fixes:
+ * Useless SVNProperty conversion in AddToSVNWithPropertiesOperation (bug 461199)
+ * Problems using blank spaces for a folder. (bug 459010)
+ 
+--------------------------------------------------------------------------------
+
+Version 2.0.4.I20150123-1700 [23 January 2015]
+
+Features:
+ * Add typical SVN errors description and possible solutions to help pages (bug 457516)
+ 
+Fixes:
+ * Can't install Subversive SVN Integration for the M2E Project v2.0.3 (bug 457869)
+ * NPE at CopyRemoteResourcesToWcOperation [ID-QI8GK] (bug 457835)
+ * JRE 1.6 incompatibility [ID-HK8DF] (bug 456334)
+ * Automatic properties do not get applied to new files (bug 456640)
+ 
+--------------------------------------------------------------------------------
+
+Version 2.0.3.I20141224-1700 [24 December 2014]
+
+Features:
+ * Improve status caching with SVN 1.7/1.8 connectors (bug 449932)
+ * Double click on folders in Compare Editor should expand/collapse them (bug 449598)
+ * There is no way to specify a multi-line property in automatic properties configuration (bug 445999)
+ * Unable to install Subversive via Eclipse Marketplace [add "Get Connectors" button into preferences] (bug 442249)
+ * Move Subversive m2e integration plugin to eclipse.org (bug 455407)
+ 
+Fixes:
+ * There is a secure storage's password prompt when editing repo props even if the "save password" option is not set (bug 453465)
+ * [KeyBindings] SVN Sync and Commit keybindings no longer work (bug 309074)
+ * Subversive / Maven shortcuts conflict (bug 439499)
+ * [KeyBindings] SVN Sync and Commit keybindings no longer work (bug 309074)
+ * Symlinks treated incorrectly (bug 213197)
+ * Mistake in SVNEntryStatus documentation (bug 452715)
+ * Team->Add to SVN action's enablement is wrong for externally linked resources (bug 452714)
+ * Team->Show History action's enablement is wrong for unversioned resources (bug 452710)
+ * No content for conflicting additions in 3-way compare editor (bug 449601)
+ * Compare editor shouldn't try fetching content of folders as it does for files (bug 449597)
+ * Compare with: Importing new file problem (bug 423308)
+ * FileReplaceListener does not work in Luna (bug 449550)
+ * AddToSVNOperation.removeFromParentIgnore() breaks the "add to SVN" functionality [ID-OBDOR] (bug 446184)
+ * NPE if WorkspaceRoot is passed into FileUtility.getResourcePath() [ID-S7NIJ] (bug 445453)
+ * Automatic properties are processed wrongly when ; or = characters are used as value parts (bug 446000)
+ * In automatic properties configuration dialog only first = should separate name and value (bug 445997)
+ * In automatic properties configuration dialog ; character in a value part should not have a special meaning (bug 445998)
+ * The automatic properties editor validation does not validate the name and the value properly (bug 446001)
+ * Cleanup Subversive-M2E integration's code (bug 456134)
+ * Cancel button is disabled on "Validate Repository Location" progress dialog (bug 455204)
+ * Preserve compatibility with the previous keybindings scheme [Default] (bug 456139)
+ 
+--------------------------------------------------------------------------------
+
+Version 2.0.1.I20140907-1700 [07 September 2014]
+
+Features:
+ * Refactor Log should be written into console (bug 211245)
+ * Update all SVN operations console output (bug 443135)
+ * Add API to convert SVN command options into command-line counterparts (bug 443132)
+ 
+Fixes:
+ * There is an exception when unversioned resources selected for synchronizing [ID-OX0F5] (bug 426049)
+ * opening a closed project with svnkit 1.3.8 working copy with JavaHL 1.7 connector freezes Eclipse (bug 440297)
+ * bugtraq:url does not work with URL starting with / (bug 441393)
+ * Create patch with workspace root produces wrong result (bug 437106)
+ * Wrong enablement in Create Patch wizard for nested projects (bug 441039)
+ * FileNotFoundException while trying to save an imported from repository and not existing locally file in "Compare with revision" editor [ID-WQB6L] (bug 438953)
+ * When Project Explorer contains semanticfs then the error "SVN: '0x0040011a: Call Menu Action' operation finished with error: The resource is inaccessible" occurs on commit (bug 437623)
+ 
+--------------------------------------------------------------------------------
+
+Version 2.0.0.I20140609-1700 [09 June 2014]
+
+Features:
+ * Document SVN API calls (bug 417770)
+ 
+Fixes:
+ * Refreshing a folder shared with SVN should force Subversive to refresh its state, even if the .svn folder is outside that folder (bug 435601)
+ * Update SVN Cache locks the work space (bug 436727)
+ 
+--------------------------------------------------------------------------------
+
+Version 2.0.0.I20140519-1700 [19 May 2014]
+
+Fixes:
+ * If performing changes via external program, Subversive does not show actual status (bug 430056)
+ * Delete file from SVN not work always (bug 434944)
+ * Java Refactoring + SVN: Selecting "Cancel" in resource locking dialog leads to empty error dialog (bug 433208)
+ 
+--------------------------------------------------------------------------------
+
+Version 2.0.0.I20140501-1700 [01 May 2014]
+
+Features:
+ * Add support for Eclipse-SourceReferences header (bug 315011)
+   + special thanks to Michael Schaufelberger
+
+Fixes:
+ * Subversive crashes ID-PPJQ5 (bug 432930)
+ * ArrayOutOfBoundsException in IgnoreMethodPanel [ID-MFS28] (bug 433287)
+ * ResourceException in SaveProjectMetaOperation [ID-IE0RW] (bug 432177)
+ * Subversive produces unnecessary SVN error log entries for eclipse projects. (bug 431237)
+ * A virtual folder in project will cause "The resource is inaccessible" (bug 430349)
+ 
+--------------------------------------------------------------------------------
+
+Version 2.0.0.I20140309-1700 [09 March 2014]
+
+Features:
+ * Allow freeform in SVN:IGNORE (bug 427577)
+
+Fixes:
+ * Improve bug reporting code in SVNUtility.getWCRoot [ID-PH38V] (bug 428141)
+ * NullPointerException in "Merge properties" (bug 428253)
+ * NPE in EditTreeConflictsPanel [ID-LZRIO] (bug 425263)
+ * Ignored files shown as outgoing additions (bug 392750)
+ * There're unnecessary accesses to the file system while loading information on versioned resources (bug 427184)
+ * There is an exception in Synchronize View when handling an obstructed resource of unexpected kind (dir instead of file) (bug 427183)
+ * GetPropertiesOperation fails for deleted resource with SVN Kit 1.8.3 connector (bug 427093)
+ * SVN 1.7 working copy format detection fails with SVN 1.8.3 connector (bug 427092)
+ * Cannot commit package deletion (greyed out) (bug 426706)
+ 
+--------------------------------------------------------------------------------
+
+Version 2.0.0.I20131101-1700 [01 November 2013]
+
+Features:
+ * Update SVN operations framework in order to support SVN 1.8 API (bug 423701)
+ * Provide access to SVN repository management API (bug 417769)
+ * Introduce SVN 1.8 API support (bug 417768)
+ * "Treat replacement as edit" should be true by default and should be represented in preferences (bug 419850)
+
+Fixes:
+ * Button position should comply Linux "convention": positive button on the right-most (bug 422826)
+ * NPE in PropertyCompareInput [ID-KULS6] (bug 422623)
+ * Connectors discovery fails with exceptions on MacOS X (bug 418768)
+ * Synchronize view mistakingly treats workspace root as versioned resource [ID-NYQUI] (bug 417835)
+ * FileNotFoundException in FileUtility.copyFile [ID-JJCVG] (bug 421251)
+ * Deleting and replacing a resource is a SVN delete/add instead of a modify (bug 276018)
+	+ special thanks to Forest Johnson
+ * Undo Delete result in replaced content (bug 419368)
+ * NPE when using "Create Patch" in history view (bug 419563)
+ * Subversive doesn't allow to use IPv6 addresses as host names (bug 418301)
+ 
+--------------------------------------------------------------------------------
+
+Version 1.1.1.I20130816-1700 [16 August 2013]
+
+Fixes:
+ * JavaHL Win64 connector isn't shown by the discovery feature (bug 411957)
+ * JavaHL Win32 connector is shown on Win64 platform by the discovery feature (bug 411958)
+ * SVNUtility.getSVNInfo() isn't compatible with SVN 1.7 [ID-KOSUR] (bug 412253)
+ * Copying should be cancelled without getting an error report when destination resource exists on disk but not in sync with workspace [ID-IDGZI] (bug 411480)
+ * OperationCanceledException isn't handled properly (bug 412609)
+ * "Create Patch" wizards show the UTF-8 encoding twice current platform uses UTF-8 by default (bug 414386)
+ * "Create patch" wizard should include each resource into the patch file just once when nested projects are used (bug 414388)
+ * Base revision's content is empty for a file deleted under the SVN 1.7.x client (bug 414400)
+ * "unversioned" string in the ResourceVariant class is not internationalized (bug 414401)
+ * Deleted file's revision is shown incorrectly with SVN 1.7.x client (bug 414406)
+ * Include SVN Kit 1.7.10 version (bug 414897)
+ 
+--------------------------------------------------------------------------------
+
+Version 1.1.0.I20130527-1700 [27 May 2013]
+
+Fixes:
+ * ClassCastException in time of tag operation (bug 409021)
+ * Repository location: "normalize URL" function does not handle file:/// protocol correctly (bug 409234)
+ * Update switches subfolder back to trunk from branch (bug 406580)
+ * "Apply incoming changes" on "deleted/deleted" generates an error (bug 407631)
+ * When there's a tree conflict, "Edit conflicts" is also enabled and does nothing (bug 407633)
+ 
+--------------------------------------------------------------------------------
+
+Version 1.0.1.I20130507-1700 [07 May 2013]
+
+Features:
+ * Add "Header" keyword support for svn:keywords property (bug 404239)
+ 
+Fixes:
+ * Auto lock error with maven hierarchy [ID-X5CXN] (bug 374591)
+ * Compare with base: edits not detected (bug 297717)
+ * Subversive keeps to show incoming changes for files and directories after all incoming changes have been updated (bug 403043)
+ * Sometime annotate fails for files in branches (bug 406726)
+ * "Create Patch" creates patch in UTF-8 (without BOM) irrespective of the file encoding (Windows-1252) (bug 404713)
+ * NPE in SVNRemoteStorage.asRepositoryResource [ID-BYM4U] (bug 404979)
+ * NPE in BuiltInAnnotate [ID-IQ1WJ] (bug 404252)
+ * Enablements of Compare and Replace Actions do not respect ResouceMappings (bug 403200)
+ * Disconnect operation fails when project was unmapped from repository provider prior to disconnect operation [ID-LOU8E] (bug 403385)
+ * NPE in LoggedOperation.setConsoleStream [ID-TM2AH] (bug 403644)
+ * Move ActiveChangeSetManager accessor into the SVN Core plug-in (bug 403980)
+ * Move startup extension into a separate plug-in (bug 403975)
+ * Subversive shows empty post-commit warning window after every commit (bug 402491)
+ 
+--------------------------------------------------------------------------------
+
+Version 1.0.1.I20130301-1700 [01 March 2013]
+
+Features:
+ * Improvement: add extension point for declaring custom properties (bug 306806)
+ * Set Property dialog should filter/set properties based on resource type (file or folder) (bug 401612)
+ * Display post-commit error messages to the user (bug 354843)
+ * Provide support for post-commit hook's messages (bug 400575)
+ * Improve Team Annotate with useful default revision values (bug 296239)
+ 
+Fixes:
+ * After modifying properties in "Compare properties" editor, Synchronize View isn't refreshed (bug 401619)
+ * NPE when synchronizing workspace (bug 401898)
+ * Connector install dialog does not open when SVN project exists (bug 401596)
+ * Use the PredefinedProperty class in order to define custom properties (bug 401047)
+ * Move revision properties descriptions into the PredefinedPropertySet class (bug 401041)
+ * Move validation regexp into the PredefinedProperty class (bug 401036)
+ * Use standard internationalization code for a property descriptions (bug 401034)
+ * Add post-commit hook's messages support for 'Mark as Merged' and 'Override and Commit' actions (bug 400583)
+ * Improve annotation UI's performance and usability (bug 400558)
+ 
+--------------------------------------------------------------------------------
+
+Version 1.0.0.I20130122-1700 [22 January 2013]
+
+Features:
+ * Update JavaHL binaries to 1.7.8 (bug 398671)
+ * Use SVN Kit 1.7.8 (bug 398669)
+ 
+Fixes:
+ * Spelling error in the method name SVNTeamUIPlugin.getModelC(h)angeSetManager (bug 398654)
+ * Negative revision number exception when all the lines are skipped by SVN annotate [ID-I71M1] (bug 398565)
+ * several texts are not externalized in preference (bug 398261)
+ 
+--------------------------------------------------------------------------------
+
+Version 1.0.0.I20121228-1700 [28 December 2012]
+
+Features:
+ * Allow to use "Core Configuration Options" extension point (bug 389933)
+ * SVN Connectors failed to install in Eclipse 64 bit for RCP and RAP Developers [Win64 support]. (bug 376317)
+ * Enable error logging for SVN lightweight decorator (bug 395971)
+ * "Clear selection" in the commit dialog unchecks all the items, not only the selected ones (bug 370254)
+ * Human/Numeric ordering option for branches e tags (bug 390467)
+ 
+Fixes:
+ * Being prompted too aggressively to install SVN connectors (bug 319292)
+ * Charset failure when Applying Patch to a resource (bug 363289)
+ * Got wrong contents for remote file in Subversive (bug 375633)
+ * Text selection extremely slow in C++ editor (bug 350306)
+ * JavaHL connector fails to commit svn:ignore property (bug 395063)
+ * Some tree conflicts caused by merge won't be shown and won't allow user to commit merged changes (bug 395295)
+ * Checkout of a java project from Subversion needs to mangled project name (bug 394761)
+ 
+--------------------------------------------------------------------------------
+
+Version 1.0.0.I20121109-1700 [09 November 2012]
+
+Features:
+ * Update JavaHL binaries to 1.7.7 (bug 393486)
+ * Use SVN Kit 1.7.6 (bug 393484)
+ 
+Fixes:
+ * Format code on a source directory with some hundreds of files: takes ages [slowed down by SVN change sets] (bug 392979)
+ * Default change set is not refreshed in the Synchronize View after it is changed (bug 393483)
+ * Mylyn active change set shouldn't be removed automatically when all its changes were moved to another change set (bug 393481)
+ * If Mylyn task is active but empty it does not reappear automatically after IDE restart in SVN change-sets (bug 393480)
+ * Updating an operating system locked file corrupts the project repository (bug 392955)
+ * ampersand in project name (bug 392049)
+ * "Upgrade working copy" action is always disabled for SVN Kit 1.7.5 (bug 393431)
+ * After latest update, icons in synchronize view sometimes not shown (bug 392884)
+ 
+--------------------------------------------------------------------------------
+
+Version 1.0.0.I20121013-1700 [13 October 2012]
+
+Fixes:
+ * Synchronize window showing add icon decoration instead of delete icon for outgoing change Eclipse 4.2 (bug 388445)
+ * "Edit conflicts" does nothing with a merge conflict caused by properties (bug 390168)
+ * Property change statuses are shown incorrectly when incoming/outgoing deletion is involved (bug 390171)
+ * "Workbench has not been created yet" exception after "out of PermGen space" crash (bug 390177)
+ * "Expand All" is in wrong toolbar group in the "Models" Synchronize View mode (bug 390181)
+ * When working with SVN 1.7-compatible connectors deleted folders are handled improperly (bug 390851)
+ * Moved folder's status is shown wrongly when models support is enabled (bug 390858)
+ * On a repository that is accessed using the file protocol SVN Kit leads to an excessive password prompt (bug 390865)
+ * Resource '...' does not exist exception in AbstractSVNSubscriber [ID-GZMNK] (bug 388899)
+ * Shortcut for "Show Properties" overrides the sign "|" in Slovenian keyboard scheme [CTRL+ALT+W -> CTRL+ALT+T] (bug 390005)
+ * Error when trying to modify a file with the property "svn:needs-lock" in the JSP editor (bug 377013)
+ * Show a user friendly error message if the merge/update/switch caused an unresolved conflict over the .project file [ID-UOAA9] (bug 365867)
+ * Wrong error message text spelling [when resources refresh fails] (bug 391575)
+
+--------------------------------------------------------------------------------
+
+Version 1.0.0.I20120818-1700 [18 August 2012]
+
+Fixes:
+ * Inaccurate preference names and documentation regarding "freeze svn:externals" feature (bug 387324)
+
+--------------------------------------------------------------------------------
+
+Version 1.0.0.I20120803-1700 [03 August 2012]
+
+Fixes:
+ * Edit conflict can not find -right.r file with the SVN 1.7-compatible connectors (bug 383183)
+ * "Check Out As" shouldn't delete an empty project folder, since folder creation later may be impossible due to security restrictions (bug 321810)
+ * [Subversive] - svn:externals syntax check too strict (bug 316114)
+ * Branch/Tag/Copy dialogs should notify about possible ways of "/" character usage (bug 382311)
+ * Refresh on location/root nodes in SVN Repositories View shows multiple credential dialogs (bug 385690)
+ * Unchecked "Save password" repository location option shouldn't prevent user name from being saved (bug 385890)
+ * Using svn+ssh:// repositories with private key authentication causes subversive to popup ssh login dialog two times for every repository operation. (bug 239871)
+ * NPE in FreezeExternalsOperation [ID-IP4PU] (bug 385818)
+ * NPEs in Override and Commit in models mode [ID-BOO7P] (bug 372098)
+ * ClassCastException in time of branch/tag operation [ID-M43MD] (bug 385530)
+
+--------------------------------------------------------------------------------
+
+Version 1.0.0.I20120601-1700 [01 June 2012]
+
+Features:
+ * Graduation release
+
+--------------------------------------------------------------------------------
+
+Version 0.7.9.I20120520-1700 [20 May 2012]
+
+Fixes:
+ * Incorrect console color preferences handling (bug 376929)
+ * NPE in SVNUtility when repository is unavailable [ID-S1M7B] (bug 377166)
+ * Correct supported Eclipse Platform version restriction according to the used API (bug 377864)
+ * "Resource '/.../.svn' does not exist" exception while checking for SVN meta-information [ID-BHMBD] (bug 378922)
+ * NPE while sharing project using the SVN 1.7 connector [ID-FMF5P] (bug 379628)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.9.I20120417-1700 [17 April 2012]
+
+Features:
+ * Create the SVNKit-based SVN 1.7 compatible connector (bug 374582)
+ * Update JavaHL 1.7 connector to the 1.7.4 version
+
+Fixes:
+ * NPE in ScanLocksOperation.createLockFile [ID-OKCDI] (bug 375150)
+ * "Document is closed" exception while writing to the console [ID-UODT8] (bug 374884)
+ * Missing Text fields in Commit dialog (bug 375038)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.9.I20120316-1700 [16 March 2012]
+
+Features:
+ * Add SVN 1.7 support (bug 365627)
+ * Include JavaHL 1.7 connector into the early access/Juno simulatenous release builds (bug 372781)
+
+Fixes:
+ * NPE in EditTreeConflictsPanel due to wrong enablement (bug 373821)
+ * Class SVNConsole shouldn't extend MessageConsole (bug 373049)
+ * SVNConsole class shouldn't be initialized at plug-in startup (bug 370374)
+ * [KeyBindings] SVN Sync and Commit keybindings no longer work (bug 309074)
+ * Commit UI extension fails to set a commit message prior to opening the dialog (bug 372027)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.9.I20120210-1700 [10 February 2012]
+
+Features:
+ * Rename "Commit Templates" preferences node to the "Comments and Input History" (bug 367026)
+ * Smartcard Login on Windows (MSCAPI Support) (bug 351510)
+   + special thanks for the contribution to Markus Oberlassnig (ilogs information logistics GmbH) 
+
+Fixes:
+ * org.eclipse.team.svn.ui.compare.ResourceCompareInput.ResourceElement fails to return an InputStream from getContents when compare is invoked against a folder (bug 363845)
+ * If there were no SVN-related activities on the workspace startup, Subversive can't see that imported projects are linked to SVN (bug 336689)
+ * Provide "Edit properties conflicts" to edit conflicts on properties (and mark as merged) (bug 364407)
+ * "Edit Conflicts" action should cover both: property and content conflict cases (bug 370072)
+ * "Mark As Merged" seemingly has no effect on projects with property conflicts (bug 370071)
+ * Exception produced on Show Revision Graph for a source folder (bug 369217)
+ * Move refactoring cause NPE (bug 368325)
+ * Shift and Enter in the commit message window -annoyingly- always causes a commit (bug 366954)
+ * Add "path history depth" setting (bug 367027)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.9.I20111123-1700 [23 November 2011]
+
+Fixes:
+ * There are Eclipse 3.7-specific API usage due to misleading documentation (bug 364572)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.9.I20111119-1700 [19 November 2011]
+
+Features:
+ * Add SVN 1.7 API support (bug 361257)
+ * Replace with Revision fails to notice trivial changes on locked files (bug 353875)
+   + special thanks to Neels Hofmeyr
+ * New decoration mode for branches and tags [fullpath] (bug 359650)
+ * UI commit extensions improvement (bug 356025)
+   + special thanks to Jc Temp
+ * Create patch to Workspace could default location to current project (bug 356042)
+ * IRepositoryLocation state listener (bug 356024)
+   + special thanks to Jc Temp, Eike Stepper
+ * ISVNConnector calls interception API (bug 356023)
+   + special thanks to Jc Temp, Eike Stepper, Adrian
+
+Fixes:
+ * Subversive doesn't refresh synchronize view after commit (bug 329555)
+ * JavaHL: Commit across multiple project atomically does not work (bug 362182)
+ * Collapse All and Expand All buttons are separated in Team Sync view (bug 230868)
+ * "Subversive JDT ignore recommendations" plug-in deadlocks on Eclipse startup (bug 359199)
+ * Problem with RevisionComposite_Reverse (bug 363635)
+   + special thanks to Satoru Yoshida
+ * Problem with MarkAsMergedAction.tooltip (bug 363634)
+   + special thanks to Satoru Yoshida
+ * SVN Compare does not allow new files to be copied (bug 362652)
+ * NPE while obtaining IProxyData data for the specified host [ID-ELYHN] (bug 362983)
+ * If there were no SVN-related activities on the workspace startup, Subversive can't see that imported projects are linked to SVN (bug 336689)
+   + special thanks to Brice Laurencin, Kris De Volder
+ * ClassCastException in ShowHistoryViewOperation [ID-L8NW8] (bug 362570)
+ * Team-private members are marked at wrong time while importing the already shared project (bug 361831)
+   + special thanks to Kris De Volder
+ * There are no notification about the repository node absence while synchronizing workspace (bug 361829)
+ * ReplaceWithRemoteOperation ignores cancellation event (bug 359652)
+ * When updating depth "Recursively" should be the default option (bug 359651)
+ * SVN: '0x00400113: Show Conflict Editor' operation finished with error: null (bug 358998)
+ * FileNotFoundException in ReplaceWithLatestRevisionAction [ID-PASE4] (bug 323684)
+ * Unable to compare files from different branches (bug 356870)
+ * False warning about tag modification (bug 358068)
+ * Create branch from revision not work on project (bug 357562)
+ * NPE in SwitchOperation [ID-LK5LW] (bug 351434)
+ * NPE in ResourceCompareInput [ID-H92AC] (bug 356872)
+ * NPE in MarkAsMergedOperation [ID-WZ3PP] (bug 357104)
+ * Problem during Replace with Latest from repository (temporary path is too long) (bug 297721)
+ * Changes model initialization shouldn't cause an I/O exception [ID-AI4E7] (bug 355901)
+ * Class Preferences, methods savePluginPreferences() and getProxyDataForHost() are deprecated (bug 355996)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.9.I20110819-1700 [19 August 2011]
+
+Features:
+ * Add "record-only" option to the merge dialog (bug 354996)
+
+Fixes:
+ * GetRemoteFolderChildrenOperation implementation depends on the JDK specific (bug 352947)
+ * Do not mess svn:externals order (bug 350143)
+   + special thanks to Julien HENRY
+ * Duplicate folder name for svn:externals if same destination (bug 353009)
+   + special thanks to Julien HENRY
+ * Performance problem with Create Patch (bug 333785)
+ * Refactor SVN locks support code (bug 354058)
+ * Data processing error is mistakenly recognized as a bug in the CreatePatchOperation code [ID-W32HV] (bug 354062)
+ * When i "create patch". The patch file don't encode in utf-8. (bug 284081)
+ * Missing Resources dialog does not resize correctly (bug 304486)
+ * JavaHL is independent of Windows, please properly document this (bug 307397)
+ * Exceptions when eclipse start (bug 302569)
+ * Validation of the issue number using bugtraq:logregex is broken (bug 300402)
+ * SetRevisionAuthorNameOperation shouldn't be performed if original (commit, copy etc.) operation failed [ID-WP0UC] (bug 354812)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.9.I20110715-1700 [15 July 2011]
+
+Features:
+ * Make SVN: 'Save Authorization Info' operation optional (bug 349111)
+ * Update Subversive help regarding persistent SVN+SSH connection option (bug 349139)
+ 
+Fixes:
+ * Negative revision numbers are not allowed [ID-VBVYH] (bug 296094)
+ * 'Replace with revision' fails when using javahl16 connector (bug 351370)
+ * SVN repositories view blocks UI thread (bug 295110)
+ * Useless reordering in the SVN Repositories View (bug 351649)
+ * Team Hook does not work while moving versioned files or folders into unmanaged project (bug 254846)
+ * NPE in CompareEditorInput.setDirty in Eclipse 3.7 [ID-MAMS9] (bug 348787)
+ * SVNKitconnector may access uninitialized CoreExtensionsManager (bug 351357)
+ * IllegalArgumentException in AbstractActionOperation [ID-CUA4N] (bug 350077)
+ * extremely poor refreshLocalResourceImpl performance (bug 259287)
+ * FileReplaceListener performs time consuming actions at inappropriate time (bug 321542)
+ * svn perspective launches svnserve which never close (bug 305658)
+ * Correct french translation for PerformancePreferencePage_enableCache (bug 349138)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.9.I20110602-1700 [2 June 2011]
+
+Fixes:
+ * Correct help section regarding latest changes in Merge Dialog behaviour (bug 347143)
+ * Bug fix: update version number to the actual 1.6.15 (bug 347568)
+ * Indigo requires license update (bug 346698)
+ * Sometimes SVN Kit does not throw an exception when repository is inaccessible [ID-VIT54] (bug 347737)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.9.I20110523-1700 [23 May 2011]
+
+Features:
+ * Provide a flexible way to traverse resources tree in operation execution context (bug 345170)
+
+Fixes:
+ * Deadlock when starting Eclipse with Synch View open [ID-V0QM2] (bug 313866)
+ * Indigo requires license update (bug 346698)
+ * Make revision selection dialog more intuitive (automatically include lesser revision changes into the selected range) (bug 319962)
+ * No way to specify correctly a name for the resources traversal operation (bug 345855)
+ * Rename Class/Interface causes code garbage with Subversive and keyword substitution (bug 315279)
+ * MarkAsMergedOperation ignores cancellation event (bug 345169)
+ * SVNMoveDeleteHook does not report any errors happened while moving resources (bug 344361)
+ * Unused NLS message (bug 343439)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.9.I20110419-1700 [19 April 2011]
+
+Features:
+ * Provide several modes for a branch/tag creation based on the working copy (bug 343073)
+ * Undo and Redo doesn't work in Commit Dialog (bug 298556)
+
+Fixes:
+ * Malformed network data during synchronization (bug 337151) [allow usage of the older SVN Kit version without the issue]
+ * Branch/Tag action from the "Team" menu blocks UI thread (bug 342743)
+ * "Keep resource history" option name in the "Team->Copy To" dialog causes misunderstanding (bug 341723)
+ * Set Keywords action is enabled for new resources (bug 311665)
+ * NPE in SVNHistoryPage resource state listener [ID-Q5KRR] (bug 341896)
+ * Undo Delete does not restore the latest file state but the version before (bug 340318)
+ * Missing NLS string in plugins.properties (bug 341364)
+ * UIMonitorUtility is not equipped to handle applications with more than one shell (bug 341271)
+ * IndexOutOfBoundsException during cache update (bug 315544)
+ * Correct connectors compatibility ID [ID-D1U3Y] (bug 340527)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.9.I20110318-1700 [18 March 2011]
+
+Features:
+ * Add the svn:mergeinfo property into the SVN Property editor list (bug 339832)
+ * Improve bug report facilities (bug 337250)
+
+Fixes:
+ * Correct Mylyn integration feature dependencies (bug 340376)
+ * IllegalStateException in discovery feature when network problem or cancellation occurs [ID-FEJWD] (bug 334408)
+ * Extract operation fails with exception [ID-BOAKP] (bug 339469)
+ * "Unrecognized node kind" error while comparing resources [ID-RTYVU] (bug 338876)
+ * Unhandled EOF exception in Revision Graph [EID-NVOHU] (bug 338485)
+ * No error dialog appears if commit fails (bug 338641)
+ * "Find/Check out as": destination folder browser should open location of actual workspace [ID-P1ILO] (bug 334252)
+ * ResourceContentStorage does not implement equals() (bug 305866)
+ * Update Subversive help regarding installation and updating workflow (bug 338289)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.9.I20110207-1700 [07 February 2011]
+
+Features:
+ * Allow to branch/tag files and folders in single transaction in the SVN Repositories view (bug 335922)
+ * Provide API to open the History view on a specific revision range (bug 335421)
+
+Fixes:
+ * Remove Subversive menu in Help (bug 229495)
+ * The "svnconnector" extension point is broken (bug 336207)
+ * SWTException in SVNTeamModificationValidator when lock is required (bug 336064)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.9.I20110124-1700 [24 January 2011]
+
+Features:
+ * Use the latest SVN Kit version (1.3.5) (bug 334452)
+ * There is no access to the SVN 1.6-related method signatures (bug 333211)
+ * Allow repository creation with the latest SVN Kit-based connector (bug 333202)
+
+Fixes:
+ * Extract operation fails under certain conditions (bug 335079)
+ * Remove duplicated code parts (bug 333061)
+ * Pressing Cancel during compare results in invalid GUI message (no differences) (bug 328820)
+ * Calls to the deprecated function in the SelectPatchFilePage (bug 332775)
+ * There is a compilation issue in the core plug-in under Eclipse 3.7 (bug 332528)
+ * Connectors from polarion update site not detected (bug 328104)
+ * No serialVersionUID for the serializable class ActionIDList (bug 332235)
+ * Finish to create new SVN repository and share project in single operation fails (bug 330780)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.9.I20101203-1700 [03 December 2010]
+
+Fixes:
+ * IWorkspaceRoot.findFilesForLocation() is deprecated (bug 331373)
+ * IWorkspaceRoot.findContainersForLocation() is deprecated (bug 331188)
+ * [ID-ZT6S5] "Negative revision numbers are not allowed" error while performing "Mark As Merged" operation (bug 330737)
+ * Eclipse-LazyStart option is deprecated in Eclipse 3.3 and later versions (bug 331003)
+ * Lots of warnings in the build.properties files (bug 330843)
+ * Use Shell from the FileModificationValidationContext if possible (bug 330638)
+ * Eclipse 3.5 discovery feature connector source code produces compilation errors (bug 330637)
+ * SVNTeamModificationValidator does not take into account LockProposeUtility.proposeLock(..) returned status (bug 330290)
+ * Error in menu item title: "Comapre With" (bug 330228)
+ * Ability to reject incoming changes (make Mark as Merged active) (bug 297821)
+ * Finish button on "Select Resource" dialog not enabled until a different revision is selected (bug 329756)
+ * Correct simple share mode option name (bug 329726)
+ * Wrong French translation for a SVN error (bug 329201)
+ * Some NLS messages should be removed (bug 329187)
+ * SWTException when Subversive UI plugin starts in a worker thread (bug 326684)
+ * No tooltip for clock icon on merge dialog (bug 326074)
+ * NPE starting target workspace (bug 328149)
+ * Properties conflict on project makes Subversive totally unusable. (bug 283999)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.9.I20101001-1700 [01 October 2010]
+
+Fixes:
+ * Update javahl binaries to 1.6.12 version (bug 326829)
+ * Subversive does not start correctly under Eclipse 3.5.x with discovery feature enabled (bug 326834)
+ * Remove SVN 1.4-related connectors from the discovery feature list (bug 326831)
+ * Discovery feature do not starts under Eclipse 3.6 (bug 326564)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.9.I20100917-1700 [17 September 2010]
+
+Features:
+ * Add documentation about Revision Graph options dialog (bug 317802)
+ * [Revision Graph] Allow to hide merge connections by pressing on merge icon (bug 319383)
+ * Make lighter comment color for selected node in Revision Graph (bug 317699)
+ * Allow to call revision graph for multi-selection (bug 318719)
+ * Add help about Properties View contribution in Revision Graph (bug 319109)
+ * Show nodes info in Properties View in Revision Graph (bug 319104)
+ * Show example of date in preferences (bug 299908)
+ * Save revision graph setting in options dialog (bug 317839)
+ * [Revision Graph] Allow to search revision nodes on graph (bug 319968)
+ * [Revision Graph] Allow to specify revisions range (bug 319249)
+ * Support set-depth option (bug 295217)
+
+Fixes:
+ * The conflict editor ignores custom file encoding on the right hand side, uses encoding from container instead (bug 325122)
+ * Resolving Tree Conflicts - Apply Local Changes doesn't work on 2.2.2 (bug 320843)
+ * Subversive should not set forcibly svn:mime-type to text/plain (bug 322772)
+ * NPE in SVNRemoteStorage [ID-AFBM0] (bug 324394)
+ * Default key binding in editors prevents AT from working properly (bug 316097)
+ * Commit Comments history depth doesn't have any effect, when i change it to lower value (bug 302571)
+ * [Revision Graph] Add ... to Show Revision Graph action (bug 319138)
+ * Handle missing resources in Commit dialog (bug 312874)
+ * [Revision Graph] Increase vertical offset between neighbor nodes (bug 319133)
+ * Create patch file filter not working (bug 302937)
+ * [Revision Graph] Increase graph margin (bug 319129)
+ * Error when calling SVN Info for moved resource (bug 315545)
+ * [Revision Graph] Show graph for called resource (bug 319243)
+ * Error in annotation if there are specified revisions (bug 317612)
+ * Connector discovery says it's retrieving list from eclipse.org, but connects to community.polarion.com (bug 320955)
+ * Show History failure - No such revision (bug 312464)
+ * [Revision Graph] Improve comment presentation (bug 319228)
+ * [Revision Graph] Improve tooltip presentation (bug 319148)
+ * Allow to truncate paths in Revision Graph (bug 319029)
+ * Handle if errors happen during revision info fetching at Revision Graph (bug 317801)
+ * NPE in create patch (bug 300720)
+ * Cache directory is empty for revision graph (bug 317266)
+ * All updates in a merge marked as conflicts (bug 312585)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.9.I20100617-1700 [17 June 2010]
+
+Features:
+ * Add merge information to revision graph (bug 313134)
+
+Fixes:
+ * [Show History] Error: Retrieval of mergeinfo unsupported (bug 257669) 
+
+--------------------------------------------------------------------------------
+
+Version 0.7.9.I20100528-1600 [28 May 2010]
+
+Fixes:
+ * Lock user account with Subversive (bug 314490) 
+	
+ * Realm credentials are not used in auth prompt (bug 314639) 
+		
+ * Unable to customize preferences when Subversive is embedded in an eclipse product (bug 311019) 
+	
+--------------------------------------------------------------------------------
+
+Version 0.7.9.I20100512-1900 [12 May 2010]
+
+Features:
+ * Allow to manage revision graph caches (bug 311015)
+
+ * Allow to expand/collapse revision nodes (bug 310979)
+
+ * Provide view with graph of changes: branches, tags etc. (bug 211253)
+
+ * Correctly support externals in actions (bug 290386)
+ 
+Fixes:
+ * Invalid action contribution by revision graph (bug 312624)
+  
+ * Add help for revision graph (bug 312562)
+ 
+ * SVN Deadlock while trying to open Password Dialog (bug 301417)
+
+ * SSH settings are not correctly switched in repository locations dialog (bug 310088)
+
+ * Ssh port not being saved between eclipse restarts (bug 249074)
+
+ * Make consistent licenses (bug 310430)
+
+ * org.eclipse.team.svn.ui.lock package isn't exported (bug 310422)
+ 
+ * Allow to specify operation id from multiple message bundles (bug 309290)
+
+ * Error during decoration in Helios M6 (bug 307203)
+
+ * Subversive Connector Discovery fails on Helios (bug 295156) 
+
+ * Any key binding for rename in SVN Repositories view, should be "F2" (bug 299592) 
+
+ * SVN Workspace Synchronization: Synchronize function does not display proper Icon Decoration for an "Incoming Deletion" (bug 282338) 
+
+ * FileUtility#getPathNodes is inefficient for large change sets (bug 266492) 
+
+ * One slash in URL during Share Project (bug 303085) 
+
+ * Problems when project contains folder called "tags" (bug 303032) 
+
+ * Label for SVN URL changes after restart (bug 298862) 
+ 
+ * Reintegrate says "No changes found" (bug 297720)
+
+ * Change bugs title (bug 298574)
+
+ * Filter JVM Properties when creating Mylyn task (bug 298575)
+
+ * Compare with branch doesn't work with externals (bug 298573)
+
+ * Undo after directory move causes irrecoverable data loss (bug 297779)
+
+ * NPE in getNationalizedString if Localization is not installed (bug 300592)
+
+ * Can not get Subversive working in I20100122-0800 (bug 300591)
+  
+ * Subversive Connector Discovery fails on Helios M3 (bug 295156) 
+
+ * Subversive is halting the UI (note that jconsole doesn't detect a deadlock, but still it becomes halted) (bug 296707)
+   
+ * NPE in IStateFilter$AbstractStateFilter.accept() (bug 296402) 
+
+ * StackOverflowError when getting authentication info (bug 296689)
+   
+ * File is disappeared from Sync view if update finished with error (bug 295984)
+
+ * Correctly show files copied with different register case on Windows (bug 295983)
+
+ * Subversive fails to initialize due to corrupted .svnRepositories file (bug 295954)
+
+ * dead lock on Linux on startup due to password prompt (bug 295951)
+
+ * Eclipse UI stalls for more than 5 minutes in the main thread executing SVNRemoteStorage code (bug 296230)
+    
+ * Subversive tries to connect to repository for Compare With -> Base from Working Copy (bug 245326)
+
+ * Use Equinox secure storage (bug 295079)
+
+ * Changing svn:ignore on project root directory without updating incoming changes before causes strange behavior (bug 256868)
+
+ * Support lightweight decorations for Synchronize View (bug 245873)
+     
+ * Start from copy uses trunk instead of branch copy revision (bug 294022)
+ 
+ * Problems with locks (bug 294207)
+ 
+ * shortcut stops working after first time (bug 293003)  
+ 
+ * Commit externals problem (bug 290385)
+ 
+ * svn:externals definition for a sub-sub-directory breaks after running svn update (bug 270022)
+ 
+ * Error during reporting an invalid error (bug 293588)
+ 
+ * Make user friendly name for subscriber (bug 293562)
+ 
+ * New NLS unused message with latest update (bug 293464)
+ 
+ * An empty console window defaults to SVN console (SVN Console should be a console that also display under the opened consoles list) (bug 290797)
+ 
+ * Adding file to svn ignore from "Add To SVN Version Control" dialog problem (bug 254902)
+ 
+ * An internal error occurred during: "Overwriting 1 resource.". (bug 292577)
+ 
+ * Extend SVN Info properties (bug 293016)
+ 
+ * NPE when calling Edit Conflicts action (bug 293172)
+ 
+ * Make more precise statuses in Commit dialog (bug 293017)
+ 
+ * Properties decoration problem (bug 293015)
+      
+--------------------------------------------------------------------------------
+
+Version 0.7.8.I20091023-1300 [23 October 2009]
+
+Features:
+ * Add ability to make relative urls in Set External Definition dialog (bug 292674)
+ 
+ * Add ability to specify comments for revision links (bug 292280)
+ 
+ * Add 'Add Revision Link' action to Team menu (bug 292424)
+
+ * Provide annotated revision links to save the original revision if switching between trunk and branch (bug 261983)
+
+ * Add dialog for creating external resource (bug 288139)
+ 
+ * In SVN lock view add actions to resources tree (bug 287577)
+ 
+Fixes:
+ * deadlock in org.eclipse.team.svn.core.SVNTeamPlugin - Eclipse fails to start (bug 291603)
+
+ * Problems with Set External Definition dialog (bug 292781)
+
+ * Commit says dir is not part of commit, but it is (bug 292477)
+
+ * [Subversive] - Bug report ID-L9VHB (bug 254477)
+
+ * There are no new files in outgoing change sets (bug 292927)
+
+ * Selection of a single revision to merge results in no changes (bug 287872) 
+
+ * Send Notifications' operation finished with error - repeated dialog (bug 282000) 
+
+ * "Accept" action in the Merge View does not work (bug 289680)
+
+ * "Edit tree conflicts" action is enablement does not corresponds to what it does (bug 289710) 
+
+ * NPE in SVN Kit 1.3.0 (bug 289812) 
+
+ * "Show History" action from the "Synchronize View" is ineffective (bug 289313) 
+
+ * Merge View incorrectly shows conflicting statuses (bug 289691) 
+
+ * ClassCastException in Override and Update in Merge view (bug 290691) 
+
+ * Trim spaces in repository location (bug 290678) 
+
+ * Add key bindings for Merge action (bug 290718) 
+
+ * Problems with URL field in Merge dialog (bug 290717) 
+
+ * Merge and Synchronize interfered with each other (bug 289689) 
+
+ * Context menu actions in the Merge View does not correctly work (bug 290508) 
+
+ * Change connectors string in SVN Connectors list (bug 290677) 
+
+ * Recommended small change in SVNRemoteStorage.isFileExists() to massively improve performance (bug 291089) 
+
+ * "Local" and "Remote" sub-menus of "Synchronize view" do not appear in my RCP app (bug 290574) 
+
+ * Bad trailing character after french translation "En attente" (bug 274961) 
+
+ * Share Project Wizard dialog typo (bug 264685) 
+
+ * error message when resource location does not match repository location (bug 277787) 
+
+ * Ascendant/Descendant Text Decorations Incorrect (bug 248033) 
+
+ * Synchronize action is hanged (bug 291566) 
+
+ * NPE in SVNRemoteStorage (bug 291580) 
+
+ * NLS unused message (bug 291583) 
+
+ * [Subversive] - "Team -> Switch..." should prefill the input URL with selected resource URL (bug 271297) 
+
+ * Merged files are absent from SVN change Sets (TeamSynchronisation) (bug 282677) 
+
+ * svn externals not working for path/subpath entries (bug 272526) 
+ 
+ * [Subversive] - Bug report ID-AUVIL (bug 286552)   
+ 
+ * Preview of merge reintegrate fails (bug 287301)
+ 
+ * Support spaces in local path in svn:externals (bug 288107) 
+ 
+--------------------------------------------------------------------------------
+
+Version 0.7.8.I20090904-1300 [04 September 2009]
+
+Features:
+ * Add Capabilities feature
+ 
+ * Support reading Subclipse-generated project set files (bug 276947) 
+
+ * Support reading svn-pde-plugin compatible map files (bug 276949)
+  
+ * Connector discovery UI (ala Mylyn) (bug 280889) 
+
+ * List all locked files in a project (bug 279602) 
+    
+Fixes:
+ * Possible bugs in Subversive Fetch Factory (bug 273230) 
+
+ * Deleting and replacing a resource is a SVN delete/add instead of a modify (bug 276018) 
+
+ * Show annotations does not work in files opened by the XML Editor (bug 267347) 
+
+ * "Compare with Each Other" grayed out (bug 275287) 
+
+ * [Subversive] - Unused NLS Strings for SVN UI (bug 275155) 
+
+ * No assist from "Ignored resources" list. (bug 274793) 
+
+ * RFE: provide Subscriber (bug 272594) 
+
+ * SVNRemoteResourceRevision always returns content of latest revision (bug 271931) 
+   Thanks to Steffen Pingel
+
+ * Attempting to commit files in a folder that has not been added to SVN, locks up Eclipse (bug 251098) 
+
+ * Override and Update deletes all unversioned files disregarding the svn:ignore-list (bug 264500) 
+
+ * A tilde (~) in the repository URL can not be handled (bug 269665)          
+
+ * Concurrent thread access to SVNTeamProvider instance leads to HiddenException (bug 249943) 
+ 
+ * Usability improvement for repository table in "Checkout from SVN" wizard (bug 263435) 
+
+ * Remember the "Keep Locks" Setting in the Commit Dialog (bug 271742) 
+
+ * [Subversive] - Tip for improvement ID-Q11B5 (Default behaviour of double click in the commit dialog) (bug 257808) 
+
+ * Incorrect previously entered comment in commit dialog (bug 278606) 
+
+ * Handle external definitions in svn commands (bug 255009) 
+
+ * Add ability to specify revision for operations (bug 279083) 
+
+ * Compare with branch/tag doesn't work as expected (bug 279797) 
+
+ * SVN PDE Build uses wrong default path value (bug 279590) 
+
+ * Adding a dated revision link fails (bug 279828) 
+
+ * Selected revisions at bottom of list don't populate Revisions text field in the Merge dialog (bug 279612) 
+
+ * Check Out As Wizard not usable with keyboard. (bug 279355) 
+
+ * cross-project refactoring (bug 281253) 
+
+ * Show History + Export doesn't work (bug 283917) 
+
+ * SelectProjectNamePage (bug 282583) 
+
+ * Error message is incorrect: Window->Preferences->Team->SVN->SVN Client does not exist (bug 281413)
+
+ * Don't override all revisions in Override and Commit (bug 285138)
+
+ * NPE after calling Override and Update (bug 283018)
+
+ * [Subversive] - Incorrect character encoding used for display in Compare view (bug 276138)  
+ 
+--------------------------------------------------------------------------------
+
+Version 0.7.8.I20090506-1500 [06 May 2009]
+
+Features:
+ * Support for files in svn:externals (bug 269155) 
+ 
+ * Detection of tree conflicts (bug 269156) 
+ 
+ * Configuration alternative of a diff viewer for MS-WORD documents (bug 260236)
+
+Fixes:
+ * Compare view on right side is empty (bug 272265)         
+
+ * Call commit dialog for svn:externals (for directory) causes error (bug 272025)       
+ 
+ * svn:externals definition for a sub-sub-directory breaks after running svn update (bug 270022)  
+
+ * All svn:log property values should be normalized to LF endings only (bug 271616) 
+         
+ * Create branch doesn't work in Package Explorer (bug 271656)
+
+ * Synchronize permanently fails with org.eclipse.team.core.TeamException: Resource ?...? does not exist. (bug 267624)
+
+ * Sorting by user, date or comment does not work for SVN Changeset model in Synchronize view (bug 264331)
+
+ * SVN Change sets model: Incoming changes are duplicated to a "Unassiged" node (bug 261185)
+ 
+ * NPE when activating Mylyn task (bug 266826)
+ 
+ * Mylyn Context actions are missing from Team Synchronize view if logical models are enabled (bug 264344)
+ 
+ * Synchronization empties outgoing changes if SVN Changesets model is selected (bug 264772)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.7.I20090224-1900 [24 February 2009]
+
+Features:
+ * Add a pre-commit check for files with errors and warnings (bug 263442) 
+
+ * Add ability to output resources comparison in unified diff format (bug 263657) 
+
+ * Add ability to create SVN repository (bug 263951)   
+
+Fixes:
+ * Compare with Branches/Tags action problem (bug 263790)    
+
+ * Extract bug (bug 264192)
+
+ * o.e.team.svn.core has hard dependency to com.ibm.icu bundle (bug 261413)
+ 
+ * Bugtraq properties problem (bug 261857) 
+ 
+ * Problems with relocating project (bug 259626) 
+ 
+ * Share Projects menu item disabled when multiple projects selected (bug 263003) 
+ 
+ * Resources list isn't updated in "Override and Update..." (bug 254900)
+ 
+ * Add key shortcuts to controls (bug 254726)
+ 
+ * Revisions Range dialog isn't correctly resized (bug 261328) 
+ 
+--------------------------------------------------------------------------------
+
+Version 0.7.6.I20081229-1900 [29 December 2008]
+
+Fixes:
+ * Error when trying to create new tag or branch using repository view (bug 259655)
+ 
+--------------------------------------------------------------------------------
+
+Version 0.7.6.I20081222-1900 [22 December 2008]
+
+Features:
+ * Implement ModelProvider for change sets using IChangeGroupingRequestor (bug 245869)
+
+ * Implement SVN specific ModelSynchronizeParticipant (bug 245872) 
+ 
+ * Implement SVN specific SubscriberMergeContext (bug 245870)
+ 
+ * Add synchronize pane to commit panel (bug 245874)
+ 
+ * Sort changes by status in extract log (bug 255545)
+ 
+ * Message Bundles (bug 253520)
+ 
+ * Localization - ICU4J (bug 254198)
+
+Fixes:
+ * When extracting only remote changes the conflicted resources are not written to log. (bug 253672)
+
+ * Extra projects in synchronize view (bug 253887)
+ 
+ * Problem with creating a branch/tag (bug 255487)
+ 
+ * Subversive deleting unselected and non svn managed files/folders when doing "Override and Update" (bug 251094)
+ 
+ * Check out from SVN repository fails when any workspace project uses the RSE file system (bug 230331)
+ 
+ * java.util.EmptyStackException in SVNUtility (fetching log entries) (bug 249285)
+ 
+ * ClassCastException SVNKit 1.5 getValidReference (bug 252103)
+ 
+ * missing "locked message" for a file already locked (bug 247614)
+ 
+ * Bug report ID-G6B5P (bug 256949)
+ 
+ * Unable to merge: exception when selecting "Revision" radio in merge dialog. (bug 255975)
+ 
+ * Creating a patch with a file that does not end with a newline places the "no newline" marker incorrectly (bug 254545)
+ 
+ * Tags include trunk subdir (bug 246268)    
+ 
+--------------------------------------------------------------------------------
+
+Version 0.7.5.I20081029-1900 [29 October 2008]
+
+Features:
+ * Browse button in Share dialog (bug 211233)
+
+ * Allow to select resources only under repository location in Share project's simple mode (bug 249623)
+ 
+ * There is no way to type in the repository path when doing a Checkout from SVN (bug 231984)
+ 
+ * Add 'Drag and Drop' listeners to the Subversive views (bug 211236)
+   + thanks to Nick Entin for patches
+
+Fixes:
+ * Closing project with file in editor and reopening project generates NPE (bug 246147)
+
+ * URL decoration with bugtraq properties does not work properly (bug 252563)
+ 
+--------------------------------------------------------------------------------
+
+Version 0.7.4.I20091001-1900 [01 October 2008]
+
+Features:
+ * Export History log (bug 211415)
+   + thanks to Igor Burilo for the patch
+ 
+ * There is no way to type in the repository path when doing a Checkout from SVN (bug 231984)
+ 
+ * Allow "override and commit" for non-conflicting resources (bug 241422)
+
+Fixes:
+ * Authentication problems (bug 243914)
+ 
+ * Extract from HistoryView fails if the folder has modification and modified children with greater names. (bug 245504)
+   + thanks to Igor Burilo for the patch
+
+ * Null Pointer Exception in Revision Properties View (bug 248355)
+ 
+ * Improve extract log (bug 245509)
+
+ * Serious usability regression: Replace With merges with revision instead of replacing with revision (bug 240473)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.3.I20080814-1500 [14 August 2008]
+
+Features:
+ * Add date selection options to History View (bug 211408)
+   + special thanks to Gabor Liptak
+   
+ * Allow different behavior for Checkout action (bug 211237)
+   + special thanks to Felipe Carasso, Jacob Robertson
+
+ * Extract Changes action should not create deletions.log file if no deletions occurs (bug 243395)
+
+Fixes:
+ * butraq:logregex property display disgresses from specification (bug 243678)
+   + special thanks to contributor Jens Scheidtmann
+   
+ * Use standard create patch dialog in Synchronize View (bug 243713)
+   + special thanks to Noah Roberts
+   
+ * getRepository failed: exception AssertionFailedException: null argument (bug 240133)
+   + special thanks to Chomat Stephane
+
+ * SVN hangs in SVNRepositoryResource.getRoot() method (bug 242130)
+   + special thanks to Neale Upstone
+
+ * UI pops up dozens of error dialogs making eclipse unusable (bug 220292)
+   + special thanks to David Green
+
+ * Cannot create a new branch (bug 243181)
+   + special thanks to Jonathan Marston
+
+ * Synchronize View's Local and Remote submenus are disappeared in Eclipse 3.4 after first call (bug 243045)
+   + special thanks to Noah Roberts, Owen Rees
+   
+ * NPE in Share Project wizard when a project is already exists in the repository (bug 243446)
+   + special thanks to Stephan Heffner
+   
+ * Synchronize doesn't show incomming changes (bug 243401)
+   + special thanks to Tony Poppleton, Channing Walton, Radoslaw Jozwik
+
+--------------------------------------------------------------------------------
+
+Version 0.7.2.I20080801-1500 [1 August 2008]
+
+Features:
+ * When a project is relocated outside Eclipse, and the new URL matches an already-existing repository location, Subversive should automatically update its metadata (bug 231427)
+   + special thanks to Max Bowsher
+
+ * Improve "Import Project Set" behaviour (bug 230826)
+   + special thanks to Michael Murphree
+
+ * Provide "Headless" update site (bug 211420)
+   + special thanks to Panagiotis Korros, Thomas Hallgren
+
+ * decorate working sets in Package Explorer (bug 242249)
+   + special thanks to Igor Fedorenko
+
+ * Popping up of History View can't be disabled when Compare With action is performed. (bug 242192)
+   + special thanks to Radoslaw Jozwik
+
+ * Include information about merged revisions into annotation (bug 240156)
+ * Show merged revisions in History View (bug 239819)
+ * Support sparse actions (checkout, import, export) [REOPENED] (bug 231552)
+ * Allow multiple selection for repository operations (export, add revision link). (bug 241249)
+ * Ensure that merge action serves merge-tracking functionality (bug 239818)
+ * Allows to select multiple revisions in merge dialog (bug 239820)
+ * Support merge --reintegrate mode (bug 241500)
+ * Use latest SVN 1.5 binaries [REOPENED] (bug 218472)
+ * Improve "Extract Changes" operation (bug 242557)
+
+Fixes:
+ * ArrayIndexOutOfBoundsException in Create Patch action (bug 242670)
+   + special thanks to Ulli Hafner
+
+ * Stack overflow while disconnecting a project (bug 241814)
+   + special thanks to Vadim Dmitriev
+
+ * NPE in MergePanel.getSelection (bug 242753)
+   + special thanks to Igor Fedorenko
+
+ * New resources are not decorated as outgoing changes (bug 242248)
+   + special thanks to Igor Fedorenko
+
+ * NPE in MessageDialog (bug 242085)
+   + special thanks to Eugene Babikhin
+
+ * 'Select' button in 'Replace With' window should have a better name (bug 240462)
+   + special thanks to Max Gilead
+
+ * Replace With -> URL should have better name (bug 240461)
+   + special thanks to Max Gilead
+
+ * NPE when creating a new project from a repos (bug 242142)
+   + special thanks to Marshall Pierce
+
+ * NPE while calculating project name before checkout (bug 241777)
+   + special thanks to Wang Lihui
+
+ * All protocols: Subversive uses incorrect credentials with SVN Kit 1.1.7-based connector (bug 221094)
+   + special thanks to Christopher Smith, Fabio N. Kepler, Antony Jones, Heath Borders, Martin Oberhuber, Jeroen, Nathan Vick, Cinly Ooi
+
+ * Replace confirmation before main dialog window doesn't make sense (bug 240471)
+   + special thanks to Max Gilead
+   
+ * Merge problem "File not found: revision..." when opening 3-way comparator (bug 240291)
+   + special thanks to Alexey Kamenchuk
+   
+ * "Overwrite and Update" doing merge (bug 237218)
+   + special thanks to Tony Poppleton
+   
+ * Branch from working copy failed with SVN 1.5-compatible connectors (bug 240258)
+   + special thanks to Larry Edelstein
+
+ * Check out deleted files on my system without asking about it (bug 238916)
+   + special thanks to Vesa Jaaskelainen 
+
+ * Commiting not up to date directory results in uninformative console message only (bug 239105)
+   + special thanks to Max Gilead
+
+ * Migrate Projects and Settings throws NullPointerException, perhaps on Closed Projects (bug 238863)
+   + special thanks to Brett Randall, Steffen Pingel
+
+ * view settings wording: contiguous should be incremental (bug 238834)
+   + special thanks to Andrew Bachmann
+
+ * Properties Configuration preference uses the wrong scrollbars (bug 238389)
+   + special thanks to Kristoffer Peterhansel
+
+ * Auto-properties not importing from my Subversion config file (bug 238390)
+   + special thanks to Kristoffer Peterhansel
+
+ * Deadlock when moving multiple sources from one project to another. (bug 233956)
+   + special thanks to Ulli Hafner
+
+ * SVN replaces files with second last revision after commit (bug 237204)
+   + special thanks to Fabricio Silva
+
+ * Relocate outside plugin control, then "Share with another repository location" fails (bug 231426)
+   + special thanks to Max Bowsher
+
+ * NPE in SVN 1.5 compatible connectors when user has no access to repository revision (bug 237408)
+   + special thanks to Darren Hodges
+   
+ * The 'New Working Set' dialog should come up with the default text in the 'Name' textbox already selected (bug 234397)
+   + special thanks to Dan Berindei
+   
+ * NPE in acquireSVNProxy after plug-in is upgraded from the old version (bug 237422)
+   + special thanks to Edward Willink
+   
+ * Share Project should run in background (bug 237304)
+   + special thanks to Lars Vogel
+   
+ * Synchronize View's "Edit Conflicts" action should not touch folders (bug 237264)
+   + special thanks to Markus Dangl
+   
+ * NPE in ClearUpdateStatuses operation (bug 235317)
+   + special thanks to Ulli Hafner
+   
+ * SVNRemoteStorage.asLocalResource() should never return null (bug 216629)
+   + special thanks to Gene Huang
+
+ * Update help according to plug-in changes (bug 225568)
+ * NPE while refreshing repository browser (bug 240795)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.1.I20080612-1500 [12 June 2008] [build ids are changed corresponding to guidelines]
+
+Features:
+ * Support latest SVN 1.5 API changes (bug 216473)
+
+Fixes:
+ * JavaHLConnector creates a huge amount of short living threads (bug 235764)
+   + special thanks to contributor Micha Riser
+   
+ * Using a proxy server doesn't work (bug 233962)
+   + special thanks to Enrico Ehrich, Francois Masurel
+   
+ * The last added line is ignored in the new file while creating a patch. (bug 236399)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.0.v20080609 [09 June 2008]
+
+Features:
+ * additional date formats for label decorations (bug 217561)
+   + special thanks to Jae Gangemi
+   + special thanks to contributor Thomas Champagne
+   
+ * Revision properties viewer (bug 232728)
+
+Fixes:
+ * Avoid potential deadlock while prompting credentials (bug 236259)
+ * Support Mylyn 3.0 API changes (bug 236100)
+ * NPE in Properties View when "Add" action is called (bug 233407)
+ * Repositories View ignores case sensitivity option (bug 233424)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.0.v20080521 [21 May 2008]
+
+Fixes:
+ * NoClassDefFoundError: org/eclipse/ui/internal/util/SWTResourceUtil (bug 232972)
+   + special thanks to Jorg von Frantzius
+
+--------------------------------------------------------------------------------
+
+Version 0.7.0.v20080517 [17 May 2008]
+
+Features:
+ * Allow to set/modify revision properties (bug 231554)
+   + special thanks to Neale Upstone
+
+ * Support latest SVN 1.5 API changes [REOPENED] (bug 216473)
+ * Support relative paths and peg-revisions for svn:externals property (bug 231546)
+ * Support sparse checkouts (bug 231552)
+ * Minimize transactions count where it is possible regarding to SVN 1.5 API changes (bug 231548)
+
+Fixes:
+ * NPE in "Replace with Tag" operation (bug 226025)
+   + special thanks to Mark Addleman, Georg Lippold, Chris Myers
+
+ * Problem with tagging from branches (bug 229761)
+   + special thanks to Damir Murat
+
+ * Precise Team menu enablements must be disabled by default (bug 230461)
+   + special thanks to Rafael Chaves, Pavel Zuev, Assaf Almaz
+
+ * Automatic project share makes more than one repository location for the same repository (bug 232649)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.0.v20080425 [25 April 2008]
+
+Fixes:
+ * Feedback on Documentation Page (bug 228692)
+   + special thanks to Nathan Gervais
+
+ * Attempt to synchronize closed projects produces error (bug 228789)
+   + special thanks to Leo Dos Santos
+
+ * Mylyn integration won't install due to Mylyn version update to 3.0.0 (bug 228507)
+   + special thanks to Martin Oberhuber
+
+--------------------------------------------------------------------------------
+
+Version 0.7.0.v20080423 [23 April 2008]
+
+Features:
+ * Merge property editor (bug 211411)
+   + special thanks to Francois Fernandes
+
+ * Enhance copy and move behaviour (bug 227491)
+   + special thanks to Eric Jain
+
+ * Create M2Eclipse integration plug-in [generalized extension point] (bug 224074)
+   + special thanks to contributor Eugene Kuleshov
+
+ * Use Quick-Diff annotate for repository files also (bug 228369)
+
+Fixes:
+ * Show Annotations using Quickdiff - Show Author doesn't work (bug 220027)
+   + special thanks to Steve
+
+ * "Negative revision number" when comparing renamed resources (bug 225972)
+   + special thanks to Jukefox
+
+ * Team Synchronization very slow (bug 222632)
+   + special thanks to Marc Guenther, Nikolaus Heger
+
+ * Unable to resolve conflicts (bug 228015)
+   + special thanks to Jesse Eichar
+
+ * Not asking to save resource before synchronize (bug 224651)
+   + special thanks to Aldo Bongio
+
+ * Subversive commit key shortcut stops working after first time (bug 225930)
+   + special thanks to Mark Powell
+
+ * The commit dialog doesn't show the modified files at the top anymore (bug 227136)
+   + special thanks to Paolo
+
+ * Cleanup plug-in initialization (bug 225884)
+   + special thanks to contributor Eugene Kuleshov
+
+ * Negative Revision number exception in InfoOperation when SVN Kit is selected (bug 226896)
+   + special thanks to Marijn, Jarkko Lietolahti, Aslam, Steffen Pingel
+
+ * Incoming change sets are not shown for external resources (bug 227118)
+ * Properties status is not reported while merge. (bug 227102)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.0.v20080404 [04 April 2008]
+
+Features:
+ * Use Eclipse IDE proxy settings (bug 225289)
+   + special thanks to Anders Sveen
+
+ * Create M2Eclipse integration plug-in (bug 224074)
+   + special thanks to Eugene Kuleshov
+
+ * Export/Import of repository locations settings (bug 211248)
+ * Rework repository and authentication setting storing. (bug 224616)
+ * Affected path drop-down improvements. (bug 223630)
+ * Update help according to plug-in changes (bug 225568)
+ * Enable Extract for single selection in HistoryView. (bug 223632)
+
+Fixes:
+ * Minimize repository root access (bug 211391)
+   + special thanks to Pavel Zuev
+
+ * ClassCastException on Override and Update from Synchronize View (bug 224842)
+   + special thanks to Daniel Hirscher, Genady Beryozkin, Edoardo Comar, Leo Dos Santos
+
+ * Freeze externals uses wrong revision when external reference points to tag or branch without modifications (bug 224597)
+   + special thanks to Marco Perrando
+
+ * Patch files created under subversive not compatible with patch program [REOPENED] (bug 222669)
+   + special thanks to Mike
+
+ * Password Management Pref Page improvements (bug 223510)
+ * "Delete" action enablement in Select Resources composite is wrong. (bug 223628)
+ * Enable filter actions for all filtered (History View) (bug 223627)
+ * Some operations can't be sent to background. (bug 223631)
+ * Information about file locker (bug 211254)
+ * Improve Progress Reporting in Composite Operations (bug 223343)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.0.v20080321 [21 March 2008]
+
+Features:
+ * Changed Path filter for history view (bug 222943)
+ * Provide filter management for ILogNode table (bug 222413)
+ * Add drop-down menu to revert dialog. (bug 219983)
+
+Fixes:
+ * Merge changes does not show conflict when file has been renamed (bug 222541)
+   + special thanks to Remi Nodet
+
+ * Package org.eclipse.team.svn.ui.history.model is not exported (bug 223129)
+   + special thanks to Michael Valenta
+
+ * Team Synchronization very slow (bug 222632)
+   + special thanks to Marc Guenther
+
+ * Patch files created under subversive not compatible with patch program (bug 222669)
+   + special thanks to Mike
+
+ * svn merge view graphical synchronize overwrites changes in local version (bug 221239)
+   + special thanks to Andrew Bachmann, Daniel Hirscher
+
+ * Advanced merge: Comparison uses empty "Remote File" (bug 220737)
+   + special thanks to Hubert Bildstein
+
+ * ClassCastException in ShowConflictEditor operation (bug 211390)
+ * Remove Property Editor references. (bug 222388)
+ * Extract improvements (bug 222944)
+ * Synch View Set Property Action bug (bug 223101)
+ * Improve Progress Reporting in Composite Operations (bug 223343)
+ * Update action in Synchronize View performs update to HEAD instead of revision of synchronization (bug 223322)
+ * URL validation is incorrect (bug 223222)
+ * Merge URLs selection dialog should disable revision selection if entered URL is invalid (bug 223221)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.0.v20080311 [11 March 2008]
+
+Fixes:
+ * Fixed incorrect update URL's
+
+--------------------------------------------------------------------------------
+
+Version 0.7.0.v20080307 [07 March 2008]
+
+Features:
+ * Add "Extract Changes..." actions to Synchronize View. (bug 219985)
+ * Add Extract changes action description to Subversive User Guide (bug 221293)
+ * Add "Extract Changes..." action to log messages presentation in History View (bug 220540)
+ * Reuse compare editor when comparing same resource revisions or compare called for revisions from the History View (bug 219628)
+ * Improve History View (new actions in Affected Paths) (bug 218480)
+ * Update JavaHL 1.5.0 connector binaries to alpha2 version (bug 221506)
+
+Fixes:
+ * Compare window opens behind Revert dialog (bug 219775)
+   + special thanks to Steve Streeting
+
+ * Importing folder from SVN using New Project Wizard - strange behaviour (bug 212746)
+   + special thanks to Michael Spector, Gadi Goldbarg
+
+ * Check compatibility with Mylyn 2.3.0 task creation API (bug 221498)
+ * The '~' sign is not accepted while defining svn:ignore property (bug 221472)
+ * Revise and simplify History View code (bug 219793)
+ * In Synchronize View operation starts before dialogs (bug 221133)
+ * Properties View has old data, while reading new props. (bug 219572)
+ * Update base table sorter (bug 219583)
+ * Fix images disposing (bug 219455)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.0.v20080218 [18 February 2008]
+
+Fixes:
+ * Change sets on an unavailable Subversive repository disappear (bug 219212)
+   + special thanks to Pim Broekhof
+   
+ * Buttons works incorrectly in history view
+ * Deleted files stay present in synchronize view after commit
+ * NPE when deleting resource inside commit dialog
+ * Invalid date ranges for revision folding in history view 
+
+--------------------------------------------------------------------------------
+
+Version 0.7.0.v20080214 [14 February 2008]
+
+Features:
+ * Implement compare and replace actions for branches and tags. (Bug 217553)
+   + special thanks to Andrea Polci
+   
+ * Enhance automatic project share (bug 211399)
+   + special thanks to Max Rydahl Andersen
+   
+ * Two URLs merge mode also should use Merge View (bug 217856)
+ * Add revision folding ability to History view (bug 211410)
+ * Use latest SVN 1.5 binaries (bug 218472)
+ * Open external editor if no built-in editors exists for this file type (bug 218485)
+ * Improve History View (new actions in Affected Paths) (bug 218480)
+ * Add local history to History View (bug 218468)
+
+Fixes:
+ * Team Synchronization reset "remove from view" after each file change (bug 207026)
+   + special thanks to Pawel Piskunowicz
+   
+ * Reported progress is incorrect almost always (it is doubled) (bug 216883)
+   + special thanks to Ilya Klyuchnikov
+   
+ * Conflicts are not shown in Incoming Mode with ChangeSets (bug 189094)
+   + special thanks to Marko Schulz
+   
+ * Some jsp files which have utf-8 encoded characters don't displayed correctly in compare window (bug 211568)
+   + special thanks to YounJung Park
+   
+ * Add warnings for operations, which modify tags. (bug 217844)
+   + special thanks to Edoardo Comar
+   
+ * Replace errors in creating tags and branches with warnings. (bug 217845)
+   + special thanks to Chris Velevitch
+   
+ * java.lang.StackOverflowError when trying to share a new project to SVN (bug 217529)
+   + special thanks to Leo Dos Santos
+   
+ * Replace With > Revision... should mark replaced files dirty (bug 218600)
+   + special thanks to Daniel Hirscher
+   
+ * Problematic configuration in build 20080129 (bug 218647)
+   + special thanks to Alon Peled
+    
+ * Keep ignored resources for "Replace With..." actions (bug 211241)
+ * UI blinks when commit window is called from Package explorer (bug 218136)
+ * Change sets commit fails (NPE) (bug 217291)
+ * Merge two repository browsers for dialogs into one. (bug 217289)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.0.v20080129 [29 January 2008]
+
+Features:
+ * Add "Create patch file" action to the synchronize view drop-down. (bug 216141)
+   + special thanks to Felix Berger
+
+ * Show conflicting resources in Commit dialog (bug 211404)
+   + special thanks to Gabor Liptak
+
+ * Allows to override committer name for different protocols (bug 211417)
+   + special thanks to Mark
+
+ * Allow to select resources for Create Patch action (bug 211413)
+   + special thanks to Kaneider Daniel, Konstantine Kirenko
+
+ * Add Ignore action to Commit dialog (bug 211407)
+ * Add "Resolve conflicts" and "Mark as merged" actions to Commit dialog (bug 215963)
+ * Add 'Lock" and "Unlock" actions to Commit dialog (bug 215968)
+ * Add "Create patch file" action to Commit dialog (bug 215962)
+ * Add "Replace With" action to Commit dialog (bug 215966)
+ * Add "Compare With" action to a Commit dialog (bug 215964)
+ * "Add to svn:ignore" action in "Add to version control" dialog drop down (bug 216004)
+ * Add "Lock" and "Unlock" actions to synchronize view drop-down menu. (bug 216142)
+ * Add "Show Properties" action to a synchronize view drop down. (bug 216144)
+ * Add "Set properties" and "Set keywords" actions to synchronize view drop-down menu. (bug 216143)
+ * Improve drop-down menu in SynchronizeView (bug 216140)
+ * Improve History View Affected Path Composite drop-down menu. (bug 216264)
+ * Support latest SVN 1.5 API changes (bug 216473)
+
+Fixes:
+ * Commit errors seems to not be shown in console (bug 215188)
+   + special thanks to Kristoffer Peterhansel
+   
+ * It is impossible to install connectors sources on Linux (bug 216699)
+   + special thanks to Ilya Klyuchnikov
+
+ * "Report revision change" option does not work (bug 216090)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.0.v20080116 [16 January 2008]
+
+Features:
+ * Improve SVN properties support (bug 211403)
+   + special thanks to Olavo Lira
+
+ * Improve validation in SVN Properties dialog (bug 211402)
+ * Allow to work with non-conflicting resources for "Override and ..." operations (bug 211239)
+ * Implement full tsvn properties support (bug 214894)
+
+Fixes:
+ * Subversive feature not installable from Ganymede Staging Update Site (bug 213975)
+   + special thanks to Markus Knauer
+   
+ * Project migration from polarion to eclipse didn't work (bug 213727)
+   + special thanks to George Lindholm
+
+ * error when trying to commit with enabled bugtraq properties (bug 214609)
+   + special thanks to Steve Ulrich
+
+ * Comparing remote files in SVN Repositories view doesn't work (bug 207923)
+   + special thanks to Matthias Erche
+
+ * Compare: client library returns null value (bug 211260)
+   + special thanks to Samyem
+   
+ * Initial project share to a new repository URL is shared to path "null" under certain circumstances (bug 214839)
+   + special thanks to Daniel M. Zimmerman
+
+--------------------------------------------------------------------------------
+
+Version 0.7.0.v20071221 [21 December 2007]
+
+Fixes:
+ * Subversive 1.1.7 Bugreport broken (bug 204970)
+   + special thanks to Werner Keil
+   
+ * Create Unified Diff action handles direction incorrectly (bug 211272)
+   + special thanks to Artem Tikhomirov
+   
+ * Imporve "Problem Dialog" (bug 211398)
+   + special thanks to Joern Zaefferer
+ 
+ * Show the difference between the modified version and the current SVN revision (bug 211250)
+ * SVN 1.5 support changes (bug 213289)
+ 
+--------------------------------------------------------------------------------
+
+Version 0.7.0.v20071214 [14 December 2007]
+
+Fixes:
+ * Subversive Preferences dialog is substantially too wide (Bug: 212033)
+   + special thanks to Jonathan Amir
+   
+ * Label Decorations preview widget in preferences window is too small (Bug: 212029)
+   + special thanks to Jonathan Amir
+   
+ * bugtraq properties not read for new files (Bug: 211422)
+   + special thanks to Ben Turner
+
+ * Check compatibility with the Eclipse Ganymede version (Bug: 212732)
+ * tsvn:logminsize is not handled (Bug: 212996)
+ 
+--------------------------------------------------------------------------------
+
+Version 0.7.0.v20071210 [10 December 2007]
+
+Features:
+ * Spell checking support in Commit dialog and Add/edit commit template is absent (bug 210797) 
+
+Fixes:
+ * Rework old-style plug-in manifests (bug 212125)
+   + special thanks to Thomas Hallgren
+   
+ * NPE in SVNRemoteStorage (bug 211392)
+   + special thanks to Mike Price
+   
+ * ClassCastException in LocalShowAnnotationOperation (bug 211275)
+   + special thanks to Frank Bille
+   
+ * Handling % in svn+ssh URLs (bug 211418)
+   + special thanks to Scott Riggins, Jack Newton
+   
+ * CPU hogging (bug 207953)
+   + special thanks to Jorg von Frantzius
+   
+ * GUI hangs (bug 204038)
+   + special thanks to Jappe
+   
+ * classes are packaged in jar files and not in the normal folders structure
+   + special thanks to Alon Peled
+
+ * Incorrect peg revision used for incoming update on svn:externals resources in Synchronize View (bug 211439) 
+ * Make an Hyperlink in the comment clickable (eg. in the history view) (bug 211244)
+ * NPE in Show History (bug 211276)
+ * ArrayIndexOutOfBoundsException in MigrateToEclipse operation (bug 211277)
+ * Attempted to beginRule: P/..., does not match outer scope rule... (bug 211269)
+
+--------------------------------------------------------------------------------
+
+Version 0.7.0.v20071123 [23 November 2007]
+
+Features:
+ * Add "ignore externals" option to "Find/Checkout As" wizard
+
+Fixes:
+ * Port changes in the connection window do not affect the connection (bug 208256) 
+   + special thanks to Yaron Mazor
+ 
+ * merge UI does not show any changes
+   + special thanks to Chris West
+
+ * Share Project(s) does not recognize SVN-meta if location with same repository root exists (bug 210683)
+ * Merge UI very slow and fails for projects which names on FS differs in compare to repository (bug 210643)
+ * Error while representing the remote content of the folder with incorrect externals property. (bug 210387)
+ * Rename does not work in SVN Repositories view
+ * ClassCastException is logged when annotating resources from the Synchronize View
+ * Merge UI uses incorrectly encoded URL's (bug 210399)
+ * Compare after refactoring problems (bug 210272)
+ * Fixing issues with "Migrate To Eclipse" action
+ * Add "Migrate to Eclipse" action description into help
+ * build.properties for UI localization plug-in was corrected
+ * SVN client library connector interfaces reworked according to Eclipse guidelines (naming conventions etc.)
+ * switched and svn:externals resources support enhancement
+ * issue in reconstruction URL and PEG pairs from history
+ * incorrect labels in compare UI panels
+ * not encoded URL in AffectedPathsComposite.java
+ * branch operation works incorrectly for multiple project layout when called for working copies
+ * history messages fetched for outgoing changes in context of Incoming Change Set's
+ * file:// and file:/// protocol URL's also should be encoded
+ * support of svn:externals which is not a direct children for the resource on which svn:externals is specified
+ * LocateResourceURLInHistory now works for deleted resources also
+ * incorrect log messages in Change Set mode of merge UI
+ * Mylyn integration refers to incorrect class name
+ * New resources inside new folder does not appear in the Synchronize View
+ * merge UI does not work in "reverse" mode
+ * Enhance compare editor titles readability
+
+--------------------------------------------------------------------------------
+
+Version 1.1.8 [23 October 2007]
+
+Features:
+ * Allow project disconnection from the "Discard Location" dialog (SBV-6187)
+   + special thanks to Scott Harper
+
+ * Make the history of the entered comments configurable. 5 comments are way too less. (SBV-5832)
+   + special thanks to Paolo Vedovato
+ 
+ * Allow checking out projects as folder into nonversioned folders. (SBV-6286)
+ * Allow new resources to be committed into the branch created from the working copy (SBV-6268)
+ * Rework merge UI in order to use standard API's instead of proprietary extensions (SBV-6034)
+ * Add option which enables/disables svn:externals browsing in the SVN Repository Exploring perspective (SBV-5665)
+ * Add decoration on SVN Repositories perspective for resources linked with svn:externals (SBV-5666)
+
+Fixes:
+ * Password prompt is shown time-to-time when svn:externals present even if "save" option specified (SBV-6307)
+   + special thanks to Lira Olavo, CARASSO Felipe
+
+ * Incompatibility between svn:1.4.3 and svn:1.4.4 working copies (SBV-5630)
+   + special thanks to Fischer
+
+ * SaveProjectMeta operation copied lot of needless files (SBV-6245)
+   + special thanks to Michal Staruch
+ 
+ * Share Projects operation fails with new repository location (SBV-6094)
+   + special thanks to Alexander Wahl (synchronity GmbH)
+
+ * NPE in Share Projects operation (SBV-6180)
+   + special thanks to Michel, Marko Korhonen
+
+ * NPE in RepositoryContentProvider when repository is not accessible (SBV-6045)
+   + special thanks to Dennis Vredeveld
+
+ * Problems with class import when using Subversive API (plug-in is incorrectly packaged) (SBV-6033, bug 204421)
+   + special thanks to Matthias Erche (forum member), Alon Peled, Nikolaos Tsanakas, Yaron Mazor
+
+ * NPE in HistoryView when it is being initialized (SBV-6063)
+   + special thanks to Jens Gabe, Mark Homan
+
+ * Messages are shown in Change Set's mode only if Change Set's enabled before synchronize with repository is started (SBV-6032)
+   + special thanks to Vladimir Lapacek (forum member) 
+
+ * Disallow error reporting when status cache load is cancelled (SBV-5877)
+   + special thanks to Belousov Eugeny
+
+ * "Negative revision number" for quick-diif annotate over empty file (SBV-6314)
+ * Deleted projects detection time-to-time fails (SBV-6311)
+ * Add validation in the plug-in preferences (SBV-6183)
+ * ClassCastException when importing project from SVN (SBV-4513)
+ * Disallow error reporting for SaveProjectMetaOperation (SBV-6113)
+ * ClassCastException if working copy is damaged (SBV-5906)
+ * Exception when hotkey is used without selection (SBV-5944)
+ * svn:externals browse in SVN Repositories view fails if whitespace is present between revision number and revision key (SBV-5943)
+ * Provide user with the correct notification if the selected client library cannot be loaded (SBV-6061)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.7 [23 August 2007]
+
+Features:
+ * Browse svn:externals in SVN Repositories Explorer [apply patch] (SBV-5641)
+   + special thanks to contributor Rob Clark
+
+Fixes:
+ * Compare on renamed files fails (bug 188306)
+   + special thanks to Marko Schulz
+
+ * {Date} tag in label decoration is always showing date in european standard (SBV-5593)
+   + special thanks to George Michelson
+
+ * Credentials prompt is always shown with the Native JavaHL client (SBV-5625)
+ * Apply SVN Kit client library fixes (SBV-5626)
+ * Problems in the Subversive help plug-in (SBV-5244)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.6 [15 August 2007]
+
+Features:
+ * Move localization into the separate feature (SBV-5562)
+ * Subversive help plug-in improvements (SBV-5244)
+
+Fixes:
+ * [package explorer] Should Collapse MT Parent Packages in Hierarchy Presentation (bug 189976)
+   + special thanks to Adam Cabler, Michael Valenta
+
+ * Subversion 1.1.5 breaks my PKI usage (SBV-5560)
+   + special thanks to Chris West
+
+ * Incorrect peg revision specified for "Add Revision Link" action (SBV-5522)
+   + special thanks to Chris West
+
+ * The "Tip for improvement form" needs work (SBV-3663)
+   + special thanks to Ken Geis
+
+ * Projects inside Projects not showing incoming changes (SBV-5547)
+   + special thanks to crashedworld (forum member)
+
+ * Incorrect replacement of file:// to file:/// (SBV-5532)
+   + special thanks to Marcel Albert
+
+ * Access violation in libsvnjavahl-1.dll (Revert binary to version 1.4.3) (SBV-5449)
+   + special thanks to Carolin Koehler
+
+ * Repository locations are lost when Eclipse IDE is crashed with "PermGen space: OutOfMemory" error (SBV-5460)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.5 [31 July 2007]
+
+Fixes:
+ * Resources cannot be added to source control with SVN Kit client (SBV-5376)
+   + special thanks to Erik Dick, Mark Smithson, Denis Souza, akg-i, 
+   
+ * NPE when synchronizing empty working sets with repository (SBV-5353)
+   + special thanks to Carlo Teubner, Robert Einsle, Lubomir Marinov
+ 
+ * Synchronous server access freezes eclipse (SBV-5428)
+   + special thanks to Hans-Christoph Wirth
+
+ * Create Subversive help plug-in [resolving help plug-in issues] (SBV-5244)
+ * "No changes found" message when comparing two files with different names on repository (SBV-5426)
+ * Add to working set does not work when "Find Projects" is selected in the Checkout wizard (SBV-5424)
+ * Invalid radio button selection on the first page of Share Projects wizard (SBV-5420)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.4 [27 July 2007]
+
+Features:
+ * Apply french translation patch sent by Prophessi - SD-mdA (SBV-5291)
+   + special thanks to contributors Prophessi - SD-mdA and Stephane DUCAS, Victoria Anghel, Imed Mami, Sandy Lescaudron
+
+ * Option to switch off deleted projects detection (SBV-5197)
+   + special thanks to Muchu (forum member)
+
+ * Adding projects to synchronized working set's (SBV-5198)
+   + special thanks to chrisahn (forum member)
+
+ * Sort repository locations in the Repositories tree (SBV-5199)
+   + special thanks to chrisahn (forum member)
+
+ * Create Subversive help plug-in (SBV-5244)
+
+Fixes:
+ * NPE in AbstractSVNTeamAction under Eclipse 3.3 if selection is empty (SBV-5232)
+   + special thanks to Stanislaw Osinski, Mikael Uvebrandt
+
+ * Command conflict messages under Eclipse 3.3 (SBV-5208)
+   + special thanks to Will Horn
+
+ * NPE in Show History operation with Native JavaHL client (SBV-5179)
+   + special thanks to Alexey
+
+ * NPE in Quick-diff based annotation under Eclipse 3.3 (SBV-5183)
+ * NPE in WorkingSetDecorator under Eclipse 3.3 (SBV-5258)
+ * NPE when Show History/Show Annotation called from Synchronize View for deleted file (SBV-5311)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.3 [13 July 2007]
+
+Features:
+ * Add SVN menu and toolbar button (SBV-2501)
+   + special thanks to contributor Rene Link
+   + special thanks to Marcel Schulte, Daniel Winterstein, Bjorn Schorre
+
+ * Add global shortcut keys for SVN actions (SBV-3494)
+   + special thanks to contributor Rene Link
+   + special thanks to Thomas Bayen, Stig Kleppe-Jorgensen
+
+ * Support Mylar to Mylyn project name change (SBV-4971)
+   + special thanks to Jim Lombardo, Omry Yadan, Nikola Milutinovic, Kevin Baughman, Antonel Pazargic
+
+ * Check compatibility with Eclipse 3.3.RC3 IDE (SBV-4973)
+ * Use latest Subversion binaries (SBV-5045)
+ * Use SVN Kit 1.1.2 binaries (SBV-5035)
+ * Use open-source JavaMail version (1.4) (SBV-4986)
+ * Add option to switch off console pattern matcher (SBV-4761)
+
+Fixes:
+ * Usage of disposed font in the History View (SBV-5048) 
+   + special thanks to Jorg von Frantzius
+   
+ * Workaround for the deadlock bug in the Eclipse IDE console (194456) 
+   + special thanks to Rafael Chaves
+   
+ * Remove the annoying dialog of resource history (Eclipse.org, Bug #188311)
+   + special thanks to Marko Schulz
+
+ * NPE in SaveProjectMeta operation (SBV-4871)
+   + special thanks to Karl Godel
+
+ * Zend Technologies patch: fixes deadlock problem in SVNTeamPlugin activation (SBV-4589)
+   + special thanks to Zend Technologies
+ 
+ * NPE in SVN Properties when view is disconnected in background thread (SBV-4869)
+ * Negative revision number in Show Annotation operation (SBV-4179)
+ * BadLocationException in "Add hyperlink to console" operation (SBV-4421)
+ * NPE in "Get File Content" operation on files without extensions (SBV-5094)
+ * Cache incorrectly filled after case-sensitive rename on Windows-based platforms (SBV-5100)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.2 [28 April 2007]
+
+Features:
+ * Create Subversive SDK (SBV-4329)
+   + special thanks to Yaron Mazor
+
+ * Make resources clickable in the SVN Console (SBV-2709)
+   + special thanks to Vladimir Lapacek (forum member)
+
+Fixes:
+ * Speedup Pattern's usage (SBV-4396)
+   + special thanks to contributor Gabor Liptak
+
+ * peg revisions for compare operation (SBV-4397)
+   + special thanks to contributor Pavel Zuev
+
+ * ClassCastException in Show History View operation (SBV-4007)
+   + special thanks to Epichler, Volker Berlin, Alessandro Damiani, Bruce Alspaugh, Alan MacKenzie
+ 
+ * NPE in Show History View operation (SBV-4088, SBV-4047)
+   + special thanks to Bjorn Voss, Tom Allantonie, Paolo Vedovato, Omry Yadan, J.Ramsdale, Tom Hensel
+ 
+ * Widget is disposed exception in History View (SBV-4079, SBV-4374, SBV-4082)
+   + special thanks to Uwe Peuker
+
+ * NPE in Subversive integration for Mylar (SBV-4380)
+   + special thanks to Thomas Spiessens (forum member) 
+
+ * SVN History implementation does not respect Local History (SBV-4204)
+ * ClientException error code should be copied to ClientWrapperException (SBV-4362)
+ * "Team->Copy To" action does not allow copying into non-versioned folders if "Keep History" is not selected (SBV-4402)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.1 [6 April 2007]
+
+Features:
+ * Integration with Eclipse 3.2 History View (PLC-1111)
+   + special thanks to eu
+
+ * Revert or delete any file on the commit screen (SBV-2621)
+   + special thanks to Gabor Liptak
+
+ * Eclipse 3.2 IFileHistoryProvider interface should be implemented (SBV-3886)
+   + special thanks to Armin Bruckhoff
+ 
+ * Enhance Mylar integration (SBV-3865)
+   + special thanks to Eugene Kuleshov
+
+ * Copy/paste from SVN history (SBV-2655)
+   + special thanks to Felipe Carasso
+
+ * Remove unversioned files while reverting (SBV-3230)
+   + special thanks to Reinhard Brandstaedter
+
+ * Refine project dependencies (move JDT dependency to extension point)(SBV-2687)
+   + special thanks to Lothar Werzinger, benza (forum member)
+
+ * Allow users to define --ignore-ancestry option (SBV-3721)
+   + special thanks to mburns (forum member)
+
+ * Place to specify the SSH port (SBV-2665)
+   + special thanks to Mike De Haan
+
+ * Proxy tab is missing when non-default client selected (SBV-3720)
+   + special thanks to Benjamin Zeiss
+ 
+ * Disable immediate switch while branch/tag from WC if selected resources contains added but not committed resources (SBV-3854)
+
+Fixes:
+ * Share existing projects under Linux rewrites local changes (SBV-3722)
+   + special thanks to Vincent Munier
+
+ * "Operation is cancelled" dialog. This is a GUI blooper. No dialog like this should come up. (SBV-3714)
+   + special thanks to Adam Kiezun, Omry Yadan
+
+ * Mark As Merged failure (SBV-3898)
+   + special thanks to A. Fachat, Lars Vogel, Kannky, A. Schmidt
+
+ * Subversive 1.1.0 with SVN Kit 1.1.1 not working properly with PKI (SBV-3813)
+   + special thanks to Chris West
+
+ * "Update To" silently reverts all changes (SBV-2418)
+   + special thanks to Hochsteger Andreas (OI&T V)
+
+ * Incorrect team menu enablement (SBV-3732)
+   + special thanks to Fredy
+ 
+ * Widget is disposed exception (SBV-3910)
+ * Projects names are displayed incorrectly while Checkout As with Find project option (SBV-3872)
+ * Set property is not applied recursively to added but not comitted resources (SBV-3916)
+ * Deletion of svn:externals property processed incorrectly (SBV-3936)
+ * Branch/tag misbehaviour (SBV-3961)
+ * Setting svn:ignore property is not reflected properly (SBV-3977)
+ * NPE in History View if project is deleted outside Eclipse IDE (SBV-3987)
+ * NPE while connecting to project with damaged SVN-metainformation (SBV-3990)
+ * Reduce temporary files usage when opening files from repository (SBV-3994)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.0 Release [6 March 2007]
+
+Features:
+ * Externals freezes in TAG (SBV-3698)
+   + special thanks to Olavo Lira, Felipe Carasso
+
+ * Internationalization. Prepare all string resources to be internationalized (PLC-276)
+
+Fixes:
+ * Wrong internationalization (SBV-3604)
+   + special thanks to Diego Pires Plentz, Martin Gilday, Ken Geis
+
+ * Subversive seems to be creating extra displays which are unsupported on SWTon GTK (SBV-3691)
+   + special thanks to Michael R. Head
+
+ * Duplicated objectContribution IDs (SBV-3658)
+   + special thanks to oliviert (forum member)
+
+ * Conflict editor failed to open (SBV-3711)
+ * "Path is not a working copy directory" error with Native JavaHL client (SBV-3557)
+ * NPE while 'Check out as' with option 'Find projects in the subdirectories of the selected resources' (SBV-3626)
+ * NPE in CheckoutAs Wizard while choosing "Checkout as folder" option and perform finish (SBV-3726)
+ * NPE while repair project's svn meta in "Repair Project" dialog (SBV-3724)
+ * NPE in HistoryView (SBV-3671)
+ * Check out project as folder into existing project misbehaviour (SBV-3625)
+ * Checkout as folder rewrites svn:externals property (SBV-3683)
+ * Branch/Tag from working copy operation creates branch/tag from repository resources (SBV-3692)
+ * Share tracker project action have visual defects + exception in the end (SBV-3499)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.0.RC6 [23 February 2007]
+
+Features:
+ * Text decoration improvments (SBV-3457)
+   + special thanks to contributor Dann Martens
+   
+ * Japanese Localization: apply provided patch (SBV-3598)
+   + special thanks to contributors Takashi Okamoto, Yae Suzuki
+   
+ * Export/Import Subversive preferences: apply provided patch (SBV-3599)
+   + special thanks to contributor Rene Link
+
+ * Import and Export automatic properties (SBV-3485)
+   + special thanks to Gregory Gerard
+
+ * Add ability to enter target resource name in "Copy To" action (SBV-3417)
+   + special thanks to Stefan Zeiger
+
+ * Include SVN Kit 1.1.1 (SBV-3490)
+ * Include latest Subversion binaries (1.4.3) (SBV-3492)
+ * API: Checkout into existing projects like in CVS (PLC-1156)
+
+Fixes:
+ * NPE in Interactive Merge UI (SBV-3537)
+   + special thanks to contributor Rene Link
+
+ * Checkout into the folder which is a symbolic link failed (SBV-3540)
+   + special thanks to Krystian Nowak
+ 
+ * Problems with SVN ignore (SBV-2842)
+   + special thanks to Piet Ritzen
+
+ * API: Fetching file content in synchronize view is not cancellable (SBV-2867)
+   + special thanks to Adam Kiezun
+
+ * Allow semicolon-separated properties in "Auto-props" settings (SBV-3506)
+   + special thanks to Gregory Gerard
+
+ * NPE if synchronize with repository completely failed (SBV-3476)
+   + special thanks to Rostronic
+
+ * "URL is not related to the repository" for externally relocated projects in RC5 (SBV-3459)
+   + special thanks to Leigh Warren
+
+ * Subversive does not see command-line svn switch (SBV-3481)
+   + special thanks to irobertson (forum member) 
+ 
+ * SSH Port Problem (SBV-3434)
+   + special thanks to Nils Grabbert (forum member)
+
+ * RestoreProjectMetaOperation shouldn't report file system security exceptions (SBV-3483)
+   + special thanks to Valerio Scuderi
+
+ * Not all temporary files are deleted (SBV-3477)
+   + special thanks to Lukjel
+
+ * Refactor fails when refactoring one of top packages (SBV-3498)
+   + special thanks to zartc (forum member), cmenzel (forum member), Diego Pires Plentz, Ken Dobson, Richard Musiol
+ 
+ * "Cannot non-recursively commit a directory deletion" error with native client (SBV-3497)
+   + special thanks to Paul
+
+ * "Unrecognized node kind" exception while synchronizing with repository (SBV-3161)
+   + special thanks to Roberto Gonzalez, Ben Christensen, John Francis, Renato Bonomini, Thomas Jachmann
+  
+ * Share multiple projects wizard misbehaviour (SBV-3525)
+ * Repository location URL cannot be changed to non-valid even if no project attached (SBV-3538)
+ * Fetch Content Operation Failure (SBV-3482)
+ * NPE if resources is inaccessible due to some reason (f.e. deleted in background thread) (SBV-3450)
+ * Restore Default Preferences operation cannot be canceled (SBV-3570)
+ * Deleted resources overlay image is not shown if the resource that is scheduled for deletion is external resource (SBV-3583)
+ * All the preferences should be saved in the UI plugin store (SBV-3571)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.0.RC5 [2 February 2007]
+
+Features:
+ * API: Multiple project share required (SBV-2531)
+   + special thanks to Peter M. Murray, Alouf, jtonic, mgcinoz (forum members)
+
+ * API: Multiple projects merge (SBV-1955)
+   + special thanks to Peter M. Murray, Alouf, jtonic, mgcinoz (forum members)
+
+ * API: Multiple projects switch (SBV-3398)
+   + special thanks to Peter M. Murray, Alouf, jtonic, mgcinoz (forum members)
+
+ * Add Open With submenu to HistoryView pop-up menu (SBV-3439)
+
+Fixes:
+ * Allow branching/tagging from Package Explorer even if resources are modified (SBV-3284)
+   + special thanks to Sibylle Peter
+
+ * Widget is disposed in update operation (SBV-3360)
+   + special thanks to Crumley, Christopher Bradford
+
+ * Create Patch: at least one revision must be local for a pegged diff (SBV-3406)
+   + special thanks to Adam Kiezun, WhiteFang (forum member)
+   
+ * svn:externals commit behavior (SBV-3433)
+   + special thanks to Lorenzo (forum member)
+
+ * NPE in Share Project operation (SBV-3271)
+ * Apply Recursively Multiple Properties (SBV-3420)
+ * Export Operation Failure (SBV-3419)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.0.RC4 [20 January 2007]
+
+Features:
+ * API: Improve IMailSettingsProvider extension point (SBV-3234)
+   + special thanks to Bjorn Schorre
+
+ * Show created report when sending fails (SBV-2615)
+   + special thanks to Ruediger Gubler, Andreas Mayer, Peter Riishoj Brinkler
+
+ * Add UI for specifying auto-props (like in svn config file) (SBV-3237)
+ * API: Check package layout and refactor if required (SBV-3235)
+
+Fixes:
+ * OutOfMemoryError throwed for very large projects (SBV-3221)
+   + special thanks to Samyem Tuladhar, Leigh Warren
+
+ * NPE in RemoteStatusOperation (SBV-3275)
+   + special thanks to Paul Kendall
+
+ * Infinite loop while caching SVN meta-information (SBV-3258)
+   + special thanks to Felipe Carasso, Daniel Hoh, szeiger (forum member), apetrov (forum member), WhiteFang (forum member), Alouf (forum member), jtonic (forum member), asaremba (forum member)
+
+ * Exception in org.eclipse.team.svn.core.SVNTeamPlugin.start() (SBV-3168)
+   + special thanks to Fabio Zadrozny
+
+ * 404 Not found from time to time (SBV-3175)
+   + special thanks to Robert Einsle
+
+ * NPE while caching SVN meta-information (SBV-3206)
+   + special thanks to Jon
+
+ * ActivityCancelledException sometime processed by mail reporter (SBV-3197)
+   + special thanks to Martin Brehm, Dean, rzeznic, Kurt Zettel
+
+ * NullPointerException in RepositoryPropertiesComposite (SBV-3269)
+ * Merge does not work for resources checked out with svn:externals property (SBV-3236)
+ * Exceptions when file replaced with folder without file deletion committing (SBV-3340)
+ * Team->Set Property action works incorrectly (SBV-3338)
+ * Annotation does not work for incoming additions (SBV-3327)
+ * Team menu does not work properly (SBV-3315)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.0.RC3 [12 January 2007]
+
+Features:
+ * Browse button in the simple mode of the Branch/Tag dialogs (SBV-3149)
+   + special thanks to Alouf (forum member)
+
+ * Allow quick switch between revisions during compare operation (SBV-1930)
+   + special thanks to Chris Melikian, Francois Fernandes
+
+ * Support svn:externals property (PLC-445)
+   + special thanks to Bjorn Schorre, Thomas Jachmann, Reinhard Brandstadter, Andreas Boeckler
+
+ * Add ability to navigate up to parent level in repository browser (SBV-3042)
+
+Fixes:
+ * Excessive work in history view (SBV-3145)
+   + special thanks to contributor Rene Link
+
+ * Incorrect old SVN clients filtering (SBV-3144)
+   + special thanks to carfield (forum member)
+
+ * NPE while synchronizing with repository (SBV-3088)
+   + special thanks to Roland Oldenburg
+
+ * Fix bugtraq integration bug (when bug id is empty) (SBV-3051)
+   + special thanks to contributor Takashi Okamoto
+
+ * Errors are suppressed in time of commit operation with SVN Kit selected (SBV-2767)
+   + special thanks to Tom Hensel
+ 
+ * NPE when svn:externals working copy is damaged (SBV-3173)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.0.RC2 [22 December 2006]
+
+Features:
+ * "Stop revision can not be less than start revision" validation in Merge dialog has no sense (SBV-3030)
+   + special thanks to Judith Burgstein
+
+ * Allow switch to be performed not only for projects but for folders and files too (SBV-2825)
+   + special thanks to L.Simon
+
+ * Show versioned resources at the top of the list when doing a commit (SBV-2982)
+   + special thanks to Chris Dail
+
+ * Integrate Eclipse 3.2 table sorting with our current solution (SBV-2281)
+   + special thanks to Andreas Mayer
+
+ * Support of BugTraq properties (SBV-1619)
+   + special thanks to Christopher Pierce (forum member)
+
+ * Make Mylar integration compatible with Mylar 1.0.0 version (SBV-2907)
+   + special thanks to Eugene Kuleshov
+
+ * Show missing resources status separatelly in the Commit Dialog and warn before update if missing resources was found (SBV-2768)
+ * Show all available information about repository resource in Repository Tree using tooltips (SBV-3022)
+ * Add selected resources count label at the right bottom corner of the commit dialog (SBV-3024)
+
+Fixes:
+ * Change "Subversive" submenu item position in the Eclipse IDE Help menu (SBV-2437)
+   + special thanks to Cristinel Angheluta, Daniel Spiewak
+
+ * Location is copied after editing its properties (SBV-2940)
+ * Testing and bug fix for the 1.1.0.RC1 Synchronize View (SBV-2937)
+ * NPE in HistoryView on restricted folders (SBV-3009)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.0.RC1 [08 December 2006]
+
+Features:
+ * Paste selected resource names to the commit message in Commit Dialog (SBV-2438)
+   + special thanks to StefanC (forum user)
+
+ * Add ability to show the immediate parent, direct child of (...) and full path up to root for the tag and branch in the project label (SBV-2805)
+   + special thanks to Dann Martens (contributor), Alouf (forum member)
+
+ * Allows to select revision manually in "Add Revision Link" dialog (SBV-2785)
+   + special thanks to J S Green (forum member)
+
+ * Support unified method of multiple and single branch/tag operations (SBV-2074)
+   + special thanks to Thomas Spiessens (forum member), Felipe CARASSO
+
+ * Include the latest native Subversion binaries and the latest JavaSVN (SVNKit) (SBV-2766)
+ * Make Mylar integration compatible with the latest Mylar version (SBV-2907)
+ * Introduce crash recovery API for the SVN Team Core module (SBV-2856)
+
+Fixes:
+ * New files are added and committed even when they are unchecked (SBV-2803)
+   + special thanks to jmiller (forum member)
+
+ * Slow down while synchronyzing with repository (SBV-2787)
+   + special thanks to Panagiotis Korros (forum member), Adam Kiezun, afasano (forum member)
+
+ * FW: SVN History - Compare shows svn rev tag wrong version (SBV-2900)
+   + special thanks to David Koontz, Marco Perrando
+
+ * NPE in SVNFolderListener (SBV-2875)
+   + special thanks to Laurent Gaches
+
+ * NPE in Checkout As wizard in case of background project disconnection (SBV-2846)
+   + special thanks to Marcello Ceschia (Univerty of Leipzig)
+
+ * Excessive repository callbacks after Eclipse restart (SBV-2658)
+   + special thanks to Thomas Feldmann
+
+ * Get Repository Folder Children operation failure (SBV-2534)
+ * Error when stopping version 1.1.0.M8 (SBV-2714)
+ * Remove leading slashes in the Resource Selection composite (SBV-2831)
+ * SVN Location change unconditionally causes relocate of existing shared projects (PLC-1066)
+ * Content presence detection works incorrectly for single/multiple project layout in Share wizard (SBV-2827)
+ * NPE in Info operation when project is closed/disconnected from source control in background thread (SBV-2889)
+ * NPE while caching resources (SBV-2886)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.0.M9 [17 November 2006]
+
+Features:
+ * Remember size of dialog for comparison of revisions and allow to maximize it (SBV-2725)
+   + special thanks to Andreas Mayer
+
+ * Enable synchronizing and comparing with previous revisions for the copied files (SBV-2485)
+   + special thanks to Tomas Normark, Nimda Cinatas (forum users)
+
+ * Contribute SVN Project Reference Analizer for Project Set pligin (SBV-2053)
+
+Fixes:
+ * NPE in Compare operation (SBV-2558)
+   + special thanks to Mark Cooke, Samuel Monsarrat, Pavel, Samant Maharaj, Mark Stralka, Dan Harmer, Patrick, Ignasi Marimon-Clos, Harlan Iverson, Samyem, Stefano Bagnara, Leonid Vasilenko, Barry Kaplan, J. Henne, Dirk, Lee Mercury, Tushar Pokle, B.O.Smievoll, Ben R Vesco, Lars S.-Helldorf
+
+ * Projects are sometimes disconnected after eclipse restart (SBV-2576)
+   + special thanks to Gordon, Uwe Peuker, Stefan Wurzinger, tom hensel <th@macina.com>
+
+ * Initialize Project operation failure (SBV-2628)
+   + special thanks to Michael Goddard
+
+ * Native JavaHL does not support null as username or password (SBV-2555)
+   + special thanks to Uwe Peuker
+
+ * NPE in Get Resource List operation Failure Report (SBV-2569, SBV-2570)
+   + special thanks to Lee Mercury, Alex Nistico, A. Antivero, Andy Czerwonka, Euler, Robert Sanders
+
+ * Share sub-project fails (SBV-2604)
+   + special thanks to Joe Toth
+
+ * Checking out using New Project Wizard works incorrect (SBV-2536)
+   + special thanks to Arakasi, mortensi (forum users) 
+
+ * svn:ignore does not work in Subversive 1.1.0.M8 (SBV-2550)
+   + special thanks to alexandrupopescu, afasano (forum members), Jon Stevens, Andreas Boeckler 
+
+ * NPE in Share Project operation (SBV-2546)
+ * Compare with revision: IllegalArgumentException: negative revision numbers are not allowed (SBV-2549)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.0.M8 [27 October 2006]
+
+Features:
+ * Support of Subversion 1.4 working copy format (SBV-2450)
+   + special thanks to Ian Rowlands, Stefan Chyssler, Stefan Wurzinger, Tom Hensel
+
+ * Add file protocol support (SBV-2527)
+   + special thanks to Thorsten Vitt
+
+ * Improve repository location layout (fonts, coloring, exceeding nodes) (SBV-2519)
+   + special thanks to Pavel Zuev
+
+ * Allow copying without history for "Copy To" action (SBV-2525)
+   + special thanks to Reinhard Brandstadter
+
+ * Allow to link History and Property Views with Synchronize Compare editor (SBV-2509)
+   + special thanks to Hubert Grininger
+
+Fixes:
+ * Checking out using New Project Wizard works incorrect (SBV-2536)
+   + special thanks to Arakasi (forum user), Mortensi (forum user) 
+
+ * Define peg revision for actions from Team menu (SBV-2502)
+   + special thanks to Marcel Schulte
+
+ * Test JavaHL Client usage, fix problems if found (SBV-2406)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.0.M7 [20 October 2006]
+
+Features:
+ * Automatic recognition of repository structure (TRUNK, BRANCHES, TAGS) instead of current static layout (SBV-2389)
+   + special thanks to Diego Ernesto Malpica Chauvet, Felipe Carasso
+
+ * Respect project repository layout in "Create Branch", "Create Tag" operations (SBV-2388)
+   + special thanks to Diego Ernesto Malpica Chauvet, Felipe Carasso
+
+ * Compare file on double-click in commit and revert dialogs (SBV-2408)
+   + special thanks to Dario Lopez-Kasten
+
+ * Show text and property statuses separatelly in the resource selection dialog (PLC-640)
+
+Fixes:
+ * NPE in commit if repository is inaccessible (SBV-2476)
+   + special thanks to Roman Bruggisser, Dario Lopez-Kasten
+
+ * Add validation to comment view of "Problem Report" and "Tip for Improvement" dialogs (SBV-2498)
+   + special thanks to Hubert Grininger
+
+ * Incorrect behaviour of "Single Project" layout when sharing project (project shared into branches instead of trunk) (SBV-2445)
+   + special thanks to Kristoffer Peterhansel
+
+ * Enable checkout of svn:externals (SBV-2497)
+   + special thanks to Hubert Grininger, Reinhard Brandstadter
+
+ * ClassCastException in experimental merge (SBV-2475)
+   + special thanks to Stas, Alexandre, Andrew Bate, Doug Clinton, Lee Mercury
+
+ * NPE in Resources Changed operation (SBV-2503)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.0.M6 [13 October 2006]
+
+Features:
+ * Define an option to provide case-sensitive as well as case-insensitive sort (SBV-2363)
+   + special thanks to candyman (forum user)
+
+ * "expand all" button in synchronize view (SBV-2392)
+   + special thanks to Pavel
+
+ * Place a splitter into Commit Dialog (SBV-2431)
+   + special thanks to vlp (forum user)
+
+ * Reconnect projects which metainformation is dropped (PLC-10750)
+ * Add Subversive menu items to the working sets team menu (SBV-2414)
+
+Fixes:
+ * Compare two files from repository shows inverted labels (SBV-2466)
+   + special thanks to Ken Geis
+
+ * Temporary files should be deleted (SBV-2442)
+   + special thanks to Pavel Zuev
+
+ * Optimize memory usage and speed up operation performance (PLC-1451)
+   + special thanks to Clint Dovholuk, Daniel Spiewak, Bart Elberg, Richard Vanhook, Samuel Charron, Marvin Toll
+
+ * NullPointerException in Override and Update for restricted folders (SBV-2447)
+ * SWT error in Annotate View when annotated file is empty (SBV-2448)
+ * 'Select All' and 'Deselect All' button work incorrect at resource selection panels (SBV-2446)
+ * NullPointerException in resource selection panel (SBV-2429)
+ * NullPointerException in "Share Project" wizard when "Single Project" layout selected (SBV-2428)
+ * "Access denied" in Override And Update operation (SBV-2424)
+ * Project names are obtained for two times while checkout (SBV-2426)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.0.M5 [29 September 2006]
+
+Features:
+ * Integration with Mylar (PLC-1099)
+   + special thanks to jae (forum member)
+    
+ * Add ability to choose desired revision by hands (not from the list) (SBV-2362)
+   + special thanks to candyman (forum member)
+   
+ * Add ability to create an unified diff on any two revisions (SBV-2364)
+   + special thanks to candyman (forum member)
+ 
+ * Provide integration interfaces for Buckminster project (SBV-2412)
+ * Label decorations are not propagated to working sets (PLC-438)
+ * Check out to Working Set (PLC-901)
+ * Allow non-precise menu enablement in case of large projects (SBV-2417)
+
+Fixes:
+ * Compare from Repository View doesn't work on renamed files (SBV-2416)
+   + special thanks to Laszlo Varadi
+ 
+ * "Recources Changed" task frequently blinks in the right bottom IDE corner (SBV-2401)
+   + special thanks to Jorg von Frantzius, Dovholuk, Clint
+ 
+ * Spelling error in the menu item "Help > Subversive > Send Tip for Improvement" (SBV-2403)
+   + special thanks to Yesudeep J Mangalapilly
+ 
+ * JavaSVN reports statuses not only for requested resource but for it parents also [Remove debug exception] (SBV-2233)
+   + special thanks to Francois Struman
+ 
+ * Unknown node kind exception in time of update operation (SBV-2365)
+   + special thanks to Michael Mauthner
+
+ * NullPointerException in time of add to SVN operation (SBV-2368)
+   + special thanks to Matias Rodriguez
+   
+ * Poping up project context menu is very slow (PLC-485)
+ * Memory leak in commit dialog (SBV-2397)
+ * Find/Checkout as | Find disabled when called over .polarion folder in polarion project. (SBV-2355)
+ * NullPointerException in interactive merge implementation (SBV-2386)
+ * NullPointerException in time of share project with "multiple" layout selected (SBV-2400)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.0.M4 [15 September 2006]
+
+Features:
+ * Add 'Branch from Revision' and 'Tag from Revision' actions to the History View (SBV-2352)
+
+Fixes:
+ * Problem with specifying user name directly in URL for svn+ssh protocol (SBV-2383)
+   + special thanks to Bronzegraf, reavertm (forum members)
+   
+ * Run Compare Operation in background (SBV-2366)
+   + special thanks to candyman (forum member)
+   
+ * Poping up project context menu is very slow (PLC-485)
+ * Enhance JavaSVN diffStatus() function behavior (SBV-2382)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.0.M3 [8 September 2006]
+
+Features:
+ * Add an ability to edit share project commit message (SBV-2347)
+   + special thanks to bugmenot (forum user)
+
+ * Open system editors for repository files (SBV-2351)
+   + special thanks to Chris Melikian
+
+ * Support of the monolitic layout in share operation (SBV-2308)
+   + special thanks to Ken Geis
+
+ * Support of Quick Diff feature (PLC-1147)
+   + special thanks to Benjamin Pasero
+
+ * Add 'Link With Editor' button to the History View toolbar (SBV-2325)
+   + special thanks to Adam Brod
+
+ * Implement built-in annotation [like CVS "based on Quick Diff"] (SBV-2338)
+ * Provide ability to send bug report or tip for feature directly from Subversive UI (SBV-2346)
+ * Create 'Password Management' preferences page (SBV-2341)
+ * Create Property View and implement 'Link with Editor' feature for it (SBV-2329)
+ * AnnotationView improvement [merge lines with the same revision into on bundle] (PLC-286)
+
+Fixes:
+ * Deadlock with Subversive Plugin (SBV-2349)
+   + special thanks to rauar (forum user), Michael Valenta
+
+ * NullPointerException when project is deleted in time of internal cache refresh (SBV-2350)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.0.M2 [1 September 2006]
+
+Features:
+ * Add an ability to choose if double-click opens or compares files in the History View (SBV-2326)
+ * Add 'Compare Current with Revision' menu item to the History View pop-up menu (SBV-2327)
+ * Interrelate items in drop-down menu and toolbar in the History View (SBV-2330)
+
+Fixes:
+ * Apply patch: change wrong "General" tab name to correct "Advanced" in repository settings validation (SBV-2313)
+   + special thanks to contributor Ken Geis
+ 
+ * NullPointerException in AbstractDecoratorWrapper (SBV-2312)
+ * Modified resources are not decorated with specified font and colors if they are locked (SBV-2314)
+ * The folder cannot be created in the location root if trunk/branches/tags are disabled (SBV-2315)
+ * 'Save password' checkbox is always checked after browsing repository (SBV-2317)
+ * FileNotFoundException while Get Contents action is performed for needs-lock file (SBV-2322)
+
+--------------------------------------------------------------------------------
+
+Version 1.1.0.M1 [23 August 2006]
+
+Features:
+ * Avoid subversive activation when there is no project shared with subversive (SBV-2288)
+   + special thanks to contributor Panagiotis Korros
+ 
+ * Commit sets like in CVS (PLC-1097)
+   + special thanks to contributor Alessandro Nistico
+ 
+ * Multiple resources properties edit (SBV-2011)
+   + special thanks to Erik (forum user)
+ 
+ * Customize resource text colors (PLC-1352)
+   + special thanks to Daniel Spiewak
+ 
+ * Add links to "Colors and Fonts" and "Label Decorations" pages on SVN Label Decorations page (SBV-2291)
+ * Improve SVN Console (SBV-2206)
+
+Fixes:
+ * diffStatus() function reports incorrect URL for moved resources (SBV-2248)
+   + special thanks to Adam Brod, Leonardo Barros, BalkanBoy (forum user), vsizikov (forum user)
+
+ * Plugin doesn't like semicolons in resource names (SBV-2294)
+   + special thanks to Ryan Levering
+
+ * 'Compare with revision' doesn't work for copied/moved resources (SBV-2287)
+   + special thanks to BalkanBoy, vsizikov (forum users)
+ 
+ * NullPointerException in CheckoutAs wizard (SBV-2283)
+ * 'Needs lock' files cannot be modified right after they are locked by callback (SBV-2289)
+ * Short URL decorator is not correctly displayed in preview (SBV-2290)
+ * Ignored resources are decorated as new (SBV-2293)
+
+--------------------------------------------------------------------------------
+
+Version 1.0.2 [19 August 2006]
+
+Features:
+ * Decorate files which are read-only and need lock (SBV-2226)
+   + special thanks to simas, ftorres (forum users), Chris West
+ 
+ * Import from SVN Wizard (PLC-296)
+ * Improve SVN Console (SBV-2206)
+ * Show authentication realm in callback dialog (instead of location URL) (SBV-2236)
+ * Add an ability to represent short url of a project in the package explorer (SBV-2235)
+ * Automatic project share (SBV-2156)
+ * Add 'Checkout subdirectories' option to the checkout wizard (SBV-2216)
+
+Fixes:
+ * Open Repository File operation: NullPointerException in AffectedPathsComposite (SBV-2085)
+   + special thanks to Fabio Frumento
+ 
+ * Bug in 1.0.1: Subversive reset editors font settings (SBV-2215)
+   + special thanks to Theo Wilms
+ 
+ * Check Out operation: Cannot create a directory (SBV-2200)
+   + special thanks to D. Strauss, Marcus Bitzl, Barry Davies, Marcos Cesar de Oliveira
+ 
+ * Update operation: Access denied (SBV-2164)
+   + special thanks to biniobill, Runar Bjarnason
+ 
+ * Auto properties support (SBV-2075)
+   + special thanks to Georg (forum member)
+ 
+ * Crippling SVN+SSH Bug (SBV-2203)
+   + special thanks to Daniel Spiewak
+ 
+ * Get Resource List operation: Unrecognized node kind (SBV-2037)
+   + special thanks to Sandro Orlando, Christian, Jaime Ramos
+ 
+ * Show Conflict Editor: ClassCastException while editing conflicts on a *.png files (SBV-2196)
+   + special thanks to Brett Atoms
+ 
+ * Check Out operation: Prefix string too short (SBV-2174)
+   + special thanks to Dave Cameron
+
+ * Improve composite operation performance (SBV-2242)
+ * Project is automatically disconnected while upgrading FastTrack. (SBV-2173)
+ * project share wizard - finish button should be dissabled in FastTrack (SBV-2222)
+ * Merge preview panel becomes gray and empty after resizing (under Eclipse 3.0) (SBV-2237)
+ * Get Resource List: NullPointerException in some complex cases (SBV-2232)
+ * Improve progress monitoring for the operations in the History View and Property Editor (SBV-2218)
+ * checkout projects with its tracker checkouts duplicate projects + project called ".polarion" (SBV-2194)
+ * Malformed SVN console output during Rename Resource (SBV-2209)
+ * Show original SVN "conflict" message when commit fails (SBV-2207)
+ * Check Out operation fails when user checked out projects with the same name but in different case (SBV-2042)
+ * Update does nothing if the project has been switched to the earlier revision (SBV-2034)
+ * IMailSettingProvider has been changed (SBV-2193)
+ * NPE in time of Override And Update operation (SBV-2176)
+
+--------------------------------------------------------------------------------
+
+Version 1.0.1 [28 July 2006]
+
+Features:
+ * SVN Console (SBV-1591)
+   + special thanks to lithium (forum user), dcorbin (forum user), aochsner(forum user), patrek(forum user), markphip(forum user) 
+   
+ * Commit/synchronize dialog after share operation (PLC-1421)
+   + special thanks to Daniel Spiewak
+ 
+ * Copy change buttons should work in case of compare operations (SBV-1951)
+   + special thanks to Panagiotis Korros
+ 
+ * Add an ability to choose the method of project name selection while checkout (SBV-2147)
+   + special thanks to Paul (forum user) 
+   
+ * Change File/Class headers with Eclipse standard (SBV-2154)
+ * Moving JavaSVN to extension point (SBV-2135)
+
+Fixes:
+ * Workspace start Problem with IBM RSA 6.0.1.1 and Subversive (SBV-2139)
+   + special thanks to Andreas Graesser
+
+ * Quick fix for JavaSVN merge() problem (SBV-2158)
+   + special thanks to contributor Tobias Bosch
+ 
+ * WTP support: Checkout using new project wizard deletes .settings directory (SBV-2067)
+   + special thanks to angelcervera (forum user) 
+ 
+ * SVN+SSH: "Unknown authentication method" in JavaSVN SBV-2005
+   + special thanks to CVD (forum user), Anton Fletcher
+
+ * 'Resource does not exist' exception after updating incoming deletion (SBV-2171)
+ * [Subversive] Report ID-Y6AUL - Import Team Project Set Operation Failure Report (SBV-2137)
+ * Invalid thread access (SBV-2127)
+
+--------------------------------------------------------------------------------
+
+Version 1.0.0 Release [14 July 2006]
+
+Features:
+ * Enhance Add/Edit properties (SBV-2065)
+   + special thanks to wusch (forum user)
+   
+ * Support of different merge modes (SBV-2069)
+   + special thanks to yagee (forum user)
+
+ * Add an ability to apply lock to the resourses recursively (SBV-2097)
+ * Support conflicitng files editing (SBV-2079)
+ * Implement standard JavaHL merge (SBV-2098)
+
+Fixes:
+ * Incorrect URL when only one file is merged (SBV-2101)
+   + special thanks to Danny Mandel
+   
+ * NPE while synchronizing projects (SBV-2091)
+   + special thanks to Kevin Ross, biniobill
+   
+ * Share Project operation: Negative revision number (SBV-2061)
+   + special thanks to Chad Woolley
+   
+ * Bug in synchronize view after merge (SBV-1949)
+   + special thanks to Clint Dovholuk
+   
+ * Can't relocate a project (SBV-2076)
+   + special thanks to smonsarr (forum user)
+   
+ * Compare operation fails in complex case (SBV-2118)
+   + special thanks to J.J. Kiers
+   
+ * WTP support: Checkout using new project wizard deletes .settings directory (SBV-2067)
+   + special thanks angelcervera (forum user) 
+
+ * Strange strings in decorators preference page (SBV-2064)
+   + special thanks Panagiotis Korros
+   
+ * reduces memory consumption by 15% (SBV-2103)
+   + special thanks to contributor Panagiotis Korros for provided patch
+   
+ * .svn folder is deleted by subversive (SBV-2102)
+   + special thanks to contributor Panagiotis Korros for provided patch
+
+ * NullPointerException in Annotate View (SBV-1818)
+   + special thanks to Sébastien Sahuc
+ 
+ * Enable Finish button on Share project (SBV-2056)
+ * Revision '-1' is set to added resources in property editor title (SBV-2095)
+ * NullPointerException in Get Remote Properties operation (SBV-2060)
+ * Repository Browser decoration is not refreshed after 'Break lock' action (SBV-2072)
+ * Checkout using 'New Project Wizard' should not suggest to overwrite existing project (SBV-2071)
+ * Selecting repository location label works incorrect (SBV-2070)
+ * Incomplete presentation of project URL's in 'Find / Checkout Projects As' wizard (SBV-2078)
+ * 'Start development with' option for branch/tag actions doesn't work sometimes (SBV-2073)
+ * Override and update doesn't work for new resources (SBV-2096)
+ * NullPointerException in Add to SVN operation (SBV-1921)
+ * Cannot change credentials for svn+ssh protocol (SBV-2115)
+
+JavaSVN features (in cooperation with TMate team):
+ * Add "force" option to SVNClientEx::merge() function (SBV-2049)
+
+--------------------------------------------------------------------------------
+
+Version 1.0.0 RC4 [30 June 2006]
+
+Features:
+ * Enhance properties support (SBV-1784)
+   + special thanks to Erik (forum user)
+ 
+ * Add menu item 'Add Revision Link' to the History View (SBV-2032)
+ * Add getSelectedLogMessages() method to SelectRevisionPanel class (SBV-2038)
+ * Add error and warning decoration to the resources in commit dialog (SBV-2059)
+ * Add an ability to choose if the new resources should be selected in commit dialog or not (SBV-2058)
+
+Fixes:
+ * Problem adding property names with more than 1 ':' character. (SBV-2014)
+   + special thanks to Alexis O'Connor
+   
+ * Set focus to password field when callback dialog is shown (SBV-2012)
+   + special thanks to Chris West
+   
+ * ResourceException: A resource exists with a different case (SBV-2040)
+   + special thanks to Maarten Meijer
+
+ * Some entry fields information is not correctly passed to the operations (SBV-2013)
+ * Create folder operation fails for the folders which are repository roots (SBV-2021)
+ * 'Widget disposed error' after dialog is closed by 'Esc' and 'Ctrl+Enter' is pressed (SBV-2022)
+ * Affected paths tree does not contain statuses information for some folders (SBV-2023)
+ * Cannot create branch in the root of repository (SBV-2024)
+ * 'Show history' action should be disabled in synchronize view for the deleted from repository resources (SBV-2025)
+ * NullPointerException in decorators (SBV-2009)
+ * Peg revision specified incorrectly for revision links (SBV-2026)
+ * Incorrect highlight of current revision in case of repository resource history (SBV-2027)
+ * Override and Update does not work for ignored resources (SBV-2028)
+ * Refresh does not work on Repository View if same resource shown twice (SBV-2029)
+ * Incorrect pop-up menu in case of file opened from repository. (SBV-2030)
+ * Too big indention between controls on UI forms under Eclipse 3.0 (SBV-2031)
+ * Current revision is not highlighted in histiory view after 'Update To' operation is performed (SBV-2035)
+ * Relocate for the projects works incorrect if repository changes (SBV-2033)
+ * Respect "conflicted" mark on working copy resource (SBV-1806)
+
+JavaSVN fixes (in cooperation with TMate team):
+ * java.lang.IllegalArgumentException: Negative time (SBV-1952)
+   + special thanks to ngyen, yongyut
+   
+ * Get Resource List operation: ArrayIndexOutOfBoundsException (SBV-1934)
+   + special thanks to Danny Mandel
+   
+ * Atomic commit fails for the projects checkouted from different repository locations (SBV-2007)
+
+--------------------------------------------------------------------------------
+
+Version 1.0.0 RC3 [16 June 2006]
+
+Features:
+ * Improve usage of Subversive together with external SVN clients (SBV-2006)
+   + special thanks to pkorros (forum user)
+   
+ * Copy resource URL to clipboard (SBV-1931)
+   + special thanks to Chris Melikian
+   
+ * Add an ability to submit all forms by pressing Ctrl+Enter (as it is in commit dialog) (SBV-1980)
+ * HistoryView - properties(). Support view of revision properties. (PLC-283)
+ * In History View operations should be executed in background (SBV-1953)
+ * Move property view to editor area (PLC-613)
+
+Fixes:
+ * Timing out when URL is encoded (contains %20 entries etc.) (SBV-1978)
+   + special thanks to Turadg Aleahmad
+   
+ * Compare repository resources failure (SBV-1970)
+   + special thanks to Danny Mandel
+
+ * NPE in Show Messages operation (SBV-1938)
+   + special thanks to Larry Edelstein
+
+ * ClassCastException in Subversive code (SBV-1932)
+   + special thanks to Larry Colson
+
+ * NPE in Compare Resource with Revision operation (SBV-1936)
+   + special thanks to Gregory Gerard
+   
+ * Trunk, branches and tags default values are not stored if they are disabled while creating new location
+   + special thanks to contributor Sergey Vasilchenko for provided patch
+
+ * Export does not work if destination folder entered manually (not selected from picker) (SBV-1993)
+ * Validate all UI forms layout and optimize their content if it's necessary (SBV-1981)
+ * AssertionFailedException while closing Repository Browser (SBV-1964)
+ * NPE while disposing AnnotateView (SBV-1990)
+ * "Hide unrelated" option works incorrectly in case of moved/copied resources (SBV-1998)
+ * Create Tags/Branches/Trunk does not work in some cases (SBV-1992)
+ * NullPointerException in merge dialog (SBV-1973)
+ * Override And Commit: NullPointerException (SBV-1977)
+ * Separate SSL callback from the general one (SBV-1958)
+ * Repository locations is not refreshed some time (SBV-1946)
+ * Subversive doesn't allow underscore in repository host name. Add ability to support. (SBV-1943)
+ * Delete operation: Errors occurred while refreshing resources with the local file system (SBV-1940)
+ * ArrayOutOfBoundsException in HistoryView (SBV-1929)
+
+--------------------------------------------------------------------------------
+
+Version 1.0.0 RC2 [2 June 2006]
+
+Features:
+ * Add Break Lock operation to Repository View (SBV-1895)
+ * Notification of Resource Selection Change  in ICommentDialogPanel (SBV-1882)
+ * Remember & prefill comment message when "Cancel" is pressed in previous commit try (SBV-1803)
+ * Incoming deletion for project should disconnect project from source control without meta-inforamtion deletion (PLC-1184)
+
+Fixes:
+ * Some time default editor is not opened if the editor registered to specific file type is not opened (SBV-1925)
+   + special thanks to Robert r. Sanders
+   
+ * ConcurrentModificationException while changing repository location properties (SBV-1884)
+   + special thanks to Tjedrzejczak
+   
+ * Missing import "org.eclipse.help" in feature.xml (SBV-1914)
+   + special thanks to Christian Buggle
+   
+ * Override And Update: Errors occurred while refreshing resources with the local file system (SBV-1903)
+   + special thanks to Matias
+   
+ * Can't find file when synchronising (SBV-1910)
+   + special thanks to Chris Melikian
+   
+ * Deadlock while opening project (SBV-1701)
+   + special thanks to Jeremy Hare
+   
+ * Compare Resource with Revision fails for replaced files (SBV-1885)
+   + special thanks to Joerg von Frantzius
+   
+ * BadLocationException in SVN Annotate View (SBV-1780)
+   + special thanks to Alex Ostrovsky
+   
+ * [Subversive] Report ID-TDB4K - Prepared Tag Operation Failure Report (SBV-1827, SBV-1893)
+   + special thanks to jmilora
+   
+ * Incorrect URL validation on repository properties editing form (SBV-1772)
+   + special thanks to Hans van der Meer
+  
+ * Discard Repository Location operation does nothing if there is at least one location in the set that could not be discarded (SBV-1892) 
+ * Validate forms UI on Linux systems (SBV-1900)
+ * Incoming project deletions does not handled by Override and Update action (SBV-1916)
+ * NPE in time of merge operation (SBV-1902)
+ * "Replace with" actions fails if non-versioned files exists in the directory to be replaced (SBV-1807)
+ * Disable 'Compare with previous revision' item in the pop-up menu for some of affected paths (SBV-1881)
+ * Mark As Merged Operation fails if project tree is not in sync with file system (SBV-1820)
+ * "Compare with previous revision" fails for the affected paths in History View because of malformed url (SBV-1880)
+ * ".project" and ".classpath" file addition cannot be updated (SBV-1879)
+ * Project created using Check out/New Project Wizard should respect project settings (SBV-1889)
+
+JavaSVN features (in cooperation with TMate team):
+ * SVNClientEx::mergeStatus() enhancement (SBV-1888)
+
+JavaSVN fixes (in cooperation with TMate team):
+ * Certificate bug in subversive (SBV-1810)
+   + special thanks to Chris West
+   
+ * Allow caching of SSL certificates (SBV-1887)
+ * SVNClient::info2() acquires authentication four times (SBV-1886)
+ * SVNClientEx::merge() fails when it called second time (SBV-1825)
+ * SVNClientEx::merge() trims resource name and fails (SBV-1894)
+
+--------------------------------------------------------------------------------
+
+Version 1.0.0 RC1 [19 May 2006]
+
+Features:
+ * Project label decorator improvements (PLC-1089)
+   + special thanks to Arvoreen (forum member)
+   
+ * Support of the tsvn:logtemplate property (PLC-1219)
+   + special thanks to axiom10 (forum member)
+   
+ * Comment Templates like in CVS (PLC-1422)
+   + special thanks to Clint Dovholuk
+   
+ * Support ASP.NET hack (PLC-1365)
+   + special thanks to Clint Dovholuk
+   
+ * It is not possible to branch/tag multiple projects at once (PLC-783)
+   + special thanks to Berserksangr (forum member)
+
+Fixes:
+ * Invalid location of .project and .classpath files after check out (SBV-1822)
+   + special thanks to Angelo (forum user)
+   
+ * Incorrect error message in in time of Checkout if target folder is locked by external process (SBV-1756)
+   + special thanks to Turadg Aleahmad
+
+ * Allow Override and Update for new files (SBV-1589)   
+   + special thanks to Dotjerky (forum user)
+   
+ * NPE in Commit Operation (SBV-1615, SBV-1815)
+   + special thanks to Paul Kendall, Christian
+   
+ * Errors occurred while refreshing resources with the local file system (SBV-1561, SBV-1588)
+   + special thanks to Tjedrzejczak, Dumitru Frunza
+   
+ * Incorrect URL validation on repository properties editing form (SBV-1772)
+   + special thanks to Hans van der Meer
+   
+ * Show Repositories View Operation Failure Report (SBV-1763)
+   + special thanks to Simon Liu, Axel Bock
+   
+ * Problem with Compare (SBV-1710)
+   + special thanks to David Harrigan
+   
+ * Wrong dialog text for browsing url for merging (SBV-1767)
+   + special thanks to Danny Mandel
+   
+ * NoClassDefFoundError [PluginIDVisitor] (SBV-1672)
+   + special thanks to Steve Zadoorian
+   
+ * Report shouldn't be sent for the network communication problems (SBV-1781)
+ * Incoming deletion for project should delete project from workspace (PLC-1184)
+ * URL Validation failed on GNU JVM (SBV-1657)
+ * Check Out As action failed (SBV-1808)
+ * Validate UI forms (SBV-1785)
+ * No actions in the context menu for a resource in "strange" state (PLC-800)
+ * NPE in CreatePatchAction (SBV-1757)
+
+JavaSVN fixes (in cooperation with TMate team):
+ * Exception in case if WC is svn:externals in parent WC (SBV-1692)
+   + special thanks to Sascha Frick
+   
+ * Unknown node kind '3' in merge operation (SBV-1654, SBV-1653, PLC-1380, PLC-1187)
+   + special thanks to Edward Seymour, Danny Mandel
+   
+ * Commit failed with "502 Bad Gateway" error (PLC-1439)
+   + special thanks to Bpasero and Oliverh (forum members)
+   
+ * Unable to register repository with only server name in URL (SBV-1790)
+   + special thanks to Hugi (forum member)
+
+--------------------------------------------------------------------------------
+
+Version 1.0.0 M12 [5 May 2006]
+
+Features:
+ * Add "Stop On Copy" option to History View (PLC-704)
+ * Hide unrelated paths option for History View (PLC-703)
+ * Let user decide to override existing folders while checkout or not (SBV-1686)
+ * Arrange checkout menu items (PLC-1204)
+ * Add UI part of the proxy callback support (PLC-955)
+
+Fixes:
+ * Error encountered: null argument provided to table view (SBV-1582)
+   + special thanks to Yogesh B Kanitkar
+   
+ * [Subversive] Share Project operation FAILURE REPORT (PLC-1402)
+   + special thanks to Peter Rose
+ 
+ * Report ID-CAYHC - Show Properties Operation Failure Report (SBV-1658)
+   + special thanks to Ken Geis
+ 
+ * Unaccessible API's on GNU JRE (SBV-1673)
+   + special thanks to Martin Zuber
+ 
+ * Report ID-HGXUD - Prevented recursive attempt to activate part (PLC-1368)
+   + special thanks to Tom Staubitz
+ 
+ * Compare with BASE requires connections to server (SBV-1567)
+   + special thanks to Erik Dick
+   
+ * Strange merge behavior (PLC-1369)
+   + special thanks to Danny (forum user)
+   
+ * Typo in a dialog (SBV-1695)
+ * Invalid merge()/mergeStatus() behaviour (SBV-1526)
+ * Report ID-MXE52 - ContentViewer must have a content provider [HistoryView]  (PLC-1382)
+ * Report ID-PD8W6 - ContentViewer must have a content provider [AnnotateView] (SBV-1674)
+ * Report ID-B7MW0 - Add Repository Location Operation Failure Report (SBV-1685)
+ * Address already in use: connect (SBV-1574)
+ * Cannot compare resources (PLC-WLG10K)
+ * Hierarchy of added resources not completely visible in the Structure Compare (PLC-791)
+ * Many warning dialogs and log records while comparing two revisions (PLC-790)
+ * "Compare with revision" operation fails for branched(tagged) resource (PLC-592)
+ * Compare two revision is extremely slow (PLC-588)
+ * 'Compare with revision' operation fails after moving the resource (PLC-578)
+ * Refactor fails when changing package name (SBV-1655)
+ 
+JavaSVN fixes (in cooperation with TMate team):
+ * Unrecognized node kind '0' in time of merge action (PLC-1500)
+   + special thanks to Edward Seymour
+   
+ * Checkout failed because of Status-Line '0' (SBV-1592)
+   + special thanks to fjalvingh (forum user)
+   
+ * Malformed network data; Cannot open session, you need to establish a connection first. (SBV-1599, SBV-1597, SBV-1558, SBV-1663)
+   + special thanks to Chad Woolley, Jörg Henne
+
+ * diffStatus fails when two files is compared (SBV-1553)
+
+--------------------------------------------------------------------------------
+
+Version 1.0.0 M11 [21 April 2006]
+
+Features:
+ * Respect hierarchical structure in Checkout Projects (PLC-1397)
+   + special thanks to Memelet (forum member) 
+
+ * Obtain project name from .project file (if so) during checkout from repository (PLC-1413)
+
+Fixes:
+ * Attempted to beginRule: R/, does not match outer scope rule: P/ (SBV-1550, SBV-1587, SBV-1622, SBV-1627)
+   + special thanks to Mathis Hofer; MBertier; Konstantin Haas; Sebastian Hardt; Mitsu Hadeishi; Barry Kaplan
+
+ * Add Repository Location Operation Failure (widget is disposed) (SBV-1532)
+   + special thanks to John N Underwood
+ 
+ * The commit dialog looks confusing (SBV-1606, FastTrack-PLC-1528)
+   + special thanks to Christian Nelson
+
+ * NullPointerException if DefaultDialog::open() fails (SBV-1628)
+ * Check Out Operation Failure Report ID-E3SG4 (PLC-1420)
+ * NullPointerException if SVNClient::info() operations fails due to some reason (SBV-1580)
+ * Repository View "Move To..." action does not work (SBV-1557)
+ 
+JavaSVN fixes (in cooperation with TMate team):
+ * Broken workspace in case of case-sensitive rename (SBV-1528, SBV-1522)
+   + special thanks to Kiel Hodges
+
+ * Check Out Operation Failure Report (IndexOutOfBoundsException) (PLC-1470)
+   + special thanks to Kevin Ross
+
+ * NPE in SVNFileUtil (SBV-1602)
+ * mergeStatus() operation ingnores IProgressMonitor.isActivityCancelled() (PLC-1463)
+ * Resource names is encoded for mergeStatus() (PLC-1462)
+
+--------------------------------------------------------------------------------
+
+Version 1.0.0 M10 [7 April 2006]
+
+Features:
+ * Support of shortcuts
+   + special thanks to Georges-Etienne Legendre;Christian Nelson
+   
+ * Include changes to commit dialog like in CVS
+   + special thanks to Daniel Spiewak, aochsner (forum user)  
+   
+ * Implement 'Copy' and 'Move' operations for the repository exploring perspective
+ * Implement extension point that alows configure email report properties
+ * Support for synchronize action contributions
+ * Create patch implementation
+
+Fixes:
+ * Could not instantiate provider org.tigris.subversion...
+   + special thanks to Maxim Gordienko; Barry Kaplan; Johannes Matheis; Ralph Navarro;Turadg Aleahmad
+ 
+ * Massive CPU usage - Eclipse slowdown
+   + special thanks to Clint Dovholuk
+    
+ * Excessive "Build Workspace" and slowdown
+   + special thanks to Clint.Dovholuk; Mike (forum user)
+    
+ * NullPointerException in time of Share Project operation
+   + special thanks to Hans van der Meer
+   
+ * NullPointerException when operation is cancelled
+   + special thanks to Tjedrzejczak
+   
+ * NullPointerException in LocalInfoPage
+   + special thanks to Andreas Andreou
+
+ * Incorrect icon for modified resources in preview
+ * Cleanup menu is enabled for non-versioned resources
+ * NPE in time of project set import
+ * Default focus in the New Repository Location Wizard should be to the field Root URL
+ * NullPointerException in FileUtility.getOperableParents
+ * NullPointerException in FileUtility.getResourcesRecursive
+ * NullPointerException in AbstractSVNSyncInfo
+ * NPE in Commit dialog
+ * Checkout projects action reports 75% progress although it finished already
+ * Error report sending is suggested for when SVNException is thrown
+ * Support Eclipse 3.2 linked resources
+ * Resource out of sync with file system error
+
+JavaSVN features (in cooperation with TMate team):
+ * Enhance diff() functionality
+
+JavaSVN fixes (in cooperation with TMate team):
+ * Export operation fails with large files
+ * Import operation fails on read-only path
+ * Incoming addition cannot be merged
+ * Resource names is encoded for mergeStatus()
+
+--------------------------------------------------------------------------------
+
+Version 1.0.0 M9 [24 March 2006]
+
+Features:
+ * Add support for multiple folder creation in one transaction
+ * Add file in SVN Repository view
+ * Use CVS-like decoration icon for modified resources
+   + special thanks to Eugene Kuleshov; Daniel Spiewak
+ 
+ * Commit and Update buttons in Synchronize view toolbar
+   + special thanks to Georges-Etienne Legendre
+ 
+ * Set 'Don't send' button as a default for the error dialog
+ * User input history should be implemented for name and email field in send error dialog
+ 
+Fixes:
+ * Resource '...' is not open" problem when project is closed under Eclipse 3.2Mx
+ * Daniel Spiewak; Travis Hume
+ 
+ * Switch error: outgoing changes in wc -> no switch possible
+   + special thanks to ayampols our forum user 
+ 
+ * Incorrect page is shown in 'share project' wizard while sharing imported project (Eclipse 3.2Mx freezes)
+   + special thanks to memelet (forum user); Georges-Etienne Legendre
+ 
+ * Time-to-time error report window automatically closed with report sending
+ * 'There is an error occurs..' caption in repository browser
+ * Cleanup operation also for folders
+   + special thanks to Daniel Serodio our forum user 
+ 
+ * Invalid path separator used for UNIX-like systems
+   + special thanks to anathaniel our forum user; D. Strauss; Leonard Soetedjo
+ 
+ * ClassCastException in the SVNRemoteStorage class in time of RepositoryProvider check
+ * Merge, switch dialogs select revision for the wrong resource (should agree with input url)
+ * Error report preview fails under Eclipse 3.2Mx
+ * NPE in History View in some hard cases
+ * NPE during a refresh of a project
+   + special thanks to Frits Jalvingh
+ 
+ * Hiding History View parts works incorrect
+
+--------------------------------------------------------------------------------
+
+Version 1.0.0 M8 [17 March 2006]
+
+Features: 
+ * Improve merge dialog
+ * Mark top revision in History View in Repository Mode
+   + special thanks to Daniel Spiewak 
+
+ * Rework History View - comment viewer should be shown in the bottom of the log 
+   messages table
+   + special thanks to Eugene Kuleshov
+
+ * Optimize "Edit repository properties" panel
+ * Add Subversive version id to the error report
+ * Add sequence number for the mail error report
+
+Fixes: 
+ * Sort by date in resource history view works incorrect
+ * Concurrent modification exception
+   + special thanks to Cedric Pineau 
+
+ * java.lang.NumberFormatException in repository browser
+ * Composite operation should recognize not executed depended operation.
+ * Checkout as using new project wizard works incorrect
+ * Get Resource List operation FAILURE REPORT
+   + special thanks to Jon our bug reporter. 
+
+ * Pre-close/Pre-delete Clear operation FAILURE REPORT
+   + special thanks to Cedric Pineau 
+
+ * NPE during Share project operation
+   + special thanks to Kevin O'Neill; Cedric Pineau; Barry Kaplan; David Saff 
+
+ * Make error report preview form platform independent
+   + special thanks to Cedric Pineau 
+
+ * Null pointer exception then Synchronize View is closed
+   + special thanks to Leonard Soetedjo 
+
+ * Changes of the New Project Wizard during checkout are lost
+   + special thanks to Armen our forum member
+
+ * Share project fails when project layout structure partially exists on the 
+   repository
+ * Repository view navigator makes unneccessary requests to the server
+ * Null pointer exception in select revision panel when no network available
+ * NPE in LogMessagesComposite
+ * Override and commit & markAsMerged operations work incorrect in case replaced
+   resources
+ * Checkout projects action can't be completed if common error occurs
+ * Repository scanning can't be cancelled
+ * Checkout overrides projects without warning
+ * Simply notify user when an error occurs during send report . Do not ask it 
+   to send this error
+ * Rework SVN views description according Eclipse IDE standart
+ * Invalid working behaviour for replaced resources
+ * Null pointer exception in History view then no network connection available
+ * Repository browsing panel works incorrect in case no network connection 
+   available
+ * All compare with ... operation asks to send report when no network available
+ * Null pointer exception in affected paths composite
+ * ClassCastException in Repository Browsing Panel
+ * Subversive propose to send email report when repository folder already exists
+ * NPE during send a report
+   + special thanks to Danny Mandel 
+
+ * Affected paths view shows incorrect information
+ * NPE in Repository Properties
+   + special thanks to Danny Mandel 
+
+--------------------------------------------------------------------------------
+
+Version 1.0.0 M7 [10 March 2006]
+
+Features:
+ * Change Preferences->Team UI like in Eclipse/CVS 3.1 [usability]
+ * Improve error reporting dialog [usability]
+ 
+Fixes:
+ * Team menu should be ordered like in CVS
+   + special thanks to Daniel Spiewak for reporting this issue
+ * Widget disposed error
+   + special thanks to Daniel Spiewak for reporting this issue   
+ * Create new repository location operation from 'select wizard dialog' fails
+ * Add ability to show properties on the repository roots (TRUNK, TAGS, 
+   BRANCES and ROOT)
+ * Changing history view layout works incorrect
+ 
+JavaSVN fixes:
+ * Incorrect cancelation of SVN Checkout
+ * Checkout freezes when cancel button is pressed
+
+-------------------------------------------------------------------------------- 
+
+Version 1.0.0 M6 [7 March 2006]
+
+Features:
+ * Add option to mail report (Do not ask me to send report in 
+   future) [usability]
+ 
+Fixes:
+ * Show annotation operation failure
+ * Simply notify user when an error occurs during send report. Do not ask it 
+   to send this error
+ * Authentification problem for "send error report"
+ * Null pointer exception in check out as operation
+ * Add ability to subscribe on project state changed events
+ * Synchronize is called for the project which is not shared yet
+
+-------------------------------------------------------------------------------- 
+
+Version 1.0.0 M5 [4 March 2006]
+
+Features:
+ * Api for PropertyManager [extension points]
+ * Add �Refresh� button to SVN Repository Browser toolbar [usability]
+ * Support Eclipse 3.2 [functionality]
+ * Add ability to open and compare with previous revision for the affected 
+   paths in History View [usability]
+ * Provide ability to send e-mail reports for non-SVN errors [functionality]
+ 
+Fixes:
+ * Refresh on SVN Repository Browser work incorrectly
+ * Action "Edit Properties" throws java.lang.IllegalArgumentException
+ * NPE on the Repositories View when *.psf is imported
+ * Override and Commit operation fails
+ * Error window is shown twice for the same error
+ * Empty select revision dialog is shown
+ * Paging shows correct number of revisions only at first time
+ * Compare reports "operation failed", but in the end the comparison is 
+   displayed
+ * Quick filter doesn't work in the selection picker
+ * Validate and amplify messages on the plugin UI forms
+ 
+JavaSVN fixes (in cooperation with TMate team):
+ * SVNClientEx::diffStatus() should provide all possible information
+ * SVNClient::properties() operations do not report an errors
+ * SVNClientEx::merge() function do not merge files without conflicts
+ 
+-------------------------------------------------------------------------------- 
+
+Version 1.0.0 M4 [24 February 2006]
+
+Features:
+ * Allow all connection modes supported by JavaSVN + its UI [functionality]
+ * How to get IStorage instance in order to convert 
+   IResource->IRemoteResource [extension points]
+ * Add ability to subscribe on project state changed events [extension points]
+ 
+Fixes:
+ * Unable to get unresolved resources from UpdateOperation
+ * Show resource history view fails
+ * Checkout operation works incorrect with equal project names
+ * Annotation view works incorrect in package explorer
+ * Show annotation works incorrect from history view
+
+--------------------------------------------------------------------------------
+
+Version 1.0.0 M3 [17 February 2006]
+
+Features:
+ * Mark As Merged operation should supports properties [functionality]
+ * Interactive merge [functionality]
+ * Support of following connection modes: HTTP, HTTPS, SVN, 
+   SVN+SSH (password) [functionality]
+ 
+Fixes:
+ * Share project wizard does not work
+
+--------------------------------------------------------------------------------
+
+Version 1.0.0 M2 [10 February 2006]
+
+Features:
+ * Show resource locks on repository view [functionality]
+ * Show resource locks in the package explorer [functionality]
+ * Add ability to copy() versioned folders between projects [functionality]
+ * Design the default repository perspective layout [usability]
+
+Fixes:
+ * Operation 'move' on directory works incorrect in case different repository 
+   locations
+ * Illegal 'Directory is out of sync with file system' error
+ * ResourceChangeListener handles initial workspace delta badly
+ * Override and commit operation fails
+ * Properties / SVN Info fails
+ * Paging support for the revision history
+ 
+JavaSVN fixes (in cooperation with TMate team):
+ * NullPointerException in time of diffStatus() operation
+ * SVNclientEx::list() methods does not works with the SVN1.1.x repositories
+
+--------------------------------------------------------------------------------
+
+Version 1.0.0 M1 [3 February 2006]
+
+Features:
+ * Lock/UnLock folder emulation [functionality]
+ * Pass selected resource to ITeamHistoryFactory in the log message 
+   panel [extension points]
+ * Repository browser improvements [usability]
+ * ISVNClientInterfaceEx extension (resource deletion 
+   improvements) [functionality]
+ * Enhance SVNClientEx::move() operation behavior (Refactor 
+   improvements) [functionality]
+ * Decorate deleted folders [usability]
+ * Add multi-line viewer for Property view [usability]
+ * Double Atomic Commit [extension points]
+ * Add ability to replace commit dialog [extension points]
+
+Fixes:
+ * Select revision wizard allows multi-selection, but only one revision 
+   is processed
+ * Commit operation fails after deleting file directly from file system
+ * JUnit tests integration to build process
+ * Properties information is missing in the SVN Repositories perspective
+ * Null pointer exception when Synchronize View is closed
+ * NPE in AbstractConflictDetectionOperation.getUnprocessed()
+ 
+JavaSVN fixes (in cooperation with TMate team):
+ * Enhanced SVNClientEx::move() operation works incorrect
+ * NullPointerException at commit time
+ * Invalid lock comment returned
+ * Add to SVN operation failed with NullPointerException
+ * Add to version control operation failed
+ * Checkout Operation failed with NullPointerException
+
+--------------------------------------------------------------------------------
+
+Version 0.9.7 [27 January 2006]
+
+Features:
+ * Show hierarchical resource history [usability]
+ * Add Import/Export ability to Repository View [usability]
+
+Fixes:
+ * Background operations cancellation
+ * Wrong behavior of the synchronize action when SVN is not accessible
+ * Validate UI forms
+
+--------------------------------------------------------------------------------
+
+Version 0.9.6 [20 January 2006]
+
+Features:
+ * Validate user input on the UI forms [usability]
+ * Add repository to IRevisionProvider [extension points]
+ * Add "Keep Locks" option to commit dialog [usability]
+ * Paging support for the revision history [usability]
+ 
+Fixes:
+ * Validate Forms UI
+ * Java Compare Structure should be improved
+ * Ugly error message after cancelled update
+ * Cryptic and not entirely visible message if commit fails
+ * Commit compare editor shows that remote file does not exist for all 
+   changed files
+ * Cancel on the Resource History quick filter invokes an operation
+ * Background operations cancellation
+ * Close project operation fails
+ * Copied from URL doesn't render real URL
+ * Non default date/time pattern used
+ * Synchronization progress monitor shows more than 100% done
+ 
+JavaSVN Fixes (in cooperation with TMate team):
+ * NullPointerException in time of checkout() operation
+ * NullPointerException in status() operation with "remote" option set to true
+ 
+--------------------------------------------------------------------------------
+
+Version 0.9.5 [13 January 2006]
+
+Features:
+ * Progress of update is not available in the sync. tree 
+   continuously [functionality]
+ * Replacing properties without warning in Property View [functionality]
+ 
+Fixes:
+ * Null pointer exception on 'splitRepositoryLocations' operation
+ 
+JavaSVN Fixes (in cooperation with TMate team):
+ * No statuses about incoming updates if repository root is checked out
+ * JavaSVN doesn't report any error while SVN Server does
+ * Files in the root of the repository are not commited
+ * JavaSVN does not support non-english resource names
+ * Spelling error
+ * Most of the operations (commit, update, cleanup etc) finish with 
+   obscure error
+
+--------------------------------------------------------------------------------
+
+Version 0.9.4 [4 January 2006]
+
+Features:
+ * Enhance History View functionality ("Update To Revision..." and 
+   "Copy From URL/Rev") [functionality]
+ * New repository location browser [usability]
+ * "Reset Changes" button for "edit repository location" dialog [usability]
+ 
+Fixes:
+ * Project switches to branch, despite creating branch finishes with error
+ * Properties View should works in standard way (using IActionOperation 
+   framework)
+ * Revision number '-1' in synchronize view
+ * Commit operation fails
+ * A package and its file are reflected as damaged after deletion
+ * Synchronize view shows incorrect information after commit deletion
+ * "No changes" result on the parent of ignored resource, while it has conflict 
+   with the repository file
+ * Second commit for the same file fails
+ * Fixed ArrayIndexOutOfBoundsException
+ * No changes found after rename operation
+ * Choosing 'Show Annotation' action for the second time on the same file shows 
+   empty Annotate View
+ * Double-click on the file in repositories view and history view doesn't 
+   switch to this file editor
+ * Adding resource to svn:ignore by wildcard extension works incorrect
+ * No warning dialog is shown while checking out development root (TRUNK, 
+   BRANCHES, TAGS) if it already exists in workspace
+ * File shown incorrect revision number
+

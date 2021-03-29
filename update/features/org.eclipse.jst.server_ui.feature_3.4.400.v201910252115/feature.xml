@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (c) 2005, 2019 IBM Corporation and others.
+    This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License 2.0
+    which accompanies this distribution, and is available at
+    https://www.eclipse.org/legal/epl-2.0/
+
+    SPDX-License-Identifier: EPL-2.0
+
+    Contributors:
+        IBM Corporation - initial API and implementation
+ -->
+
+<feature
+      id="org.eclipse.jst.server_ui.feature"
+      label="%featureName"
+      version="3.4.400.v201910252115"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.jst.server_userdoc.feature"/>
+      <import feature="org.eclipse.jst.server_core.feature"/>
+   </requires>
+
+   <plugin
+         id="org.eclipse.jst.server.ui"
+         download-size="45"
+         install-size="75"
+         version="1.1.400.v201910252115"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.jst.server.generic.ui"
+         download-size="82"
+         install-size="164"
+         version="1.0.700.v201910252115"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.jst.server.ui.infopop"
+         download-size="12"
+         install-size="22"
+         version="1.0.500.v201901310132"
+         unpack="false"/>
+
+</feature>

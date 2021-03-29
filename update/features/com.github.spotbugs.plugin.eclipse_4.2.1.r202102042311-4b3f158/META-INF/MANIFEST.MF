@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: 11.0.10 (Azul Systems, Inc.)
+
+Name: p2.inf
+SHA-256-Digest: whjlL85E89gApHFPq7BAOs1imVRbg4nc65XalzbCGQg=
+
+Name: feature.xml
+SHA-256-Digest: 3RCyoyPU4FT0qix/M7CynAnOW+FriQ5LAHIS8VWv7OU=
+

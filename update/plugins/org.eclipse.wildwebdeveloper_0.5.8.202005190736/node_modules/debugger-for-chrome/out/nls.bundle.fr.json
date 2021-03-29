@@ -1,0 +1,1 @@
+{"src/chromeDebugAdapter":["Impossible de trouver de Chrome - installez-le ou définissez le champ de \"runtimeExecutable\" dans la configuration de lancement."],"src/errors":["L'attribut '{0}' n'existe pas ('{1}')."],"src/extension":["Lancer Chrome sur localhost","Sélectionner un onglet"]}

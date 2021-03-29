@@ -1,0 +1,10 @@
+com.github.spotbugs.plugin.eclipse/debug=false
+com.github.spotbugs.plugin.eclipse/debug/builder=false
+com.github.spotbugs.plugin.eclipse/debug/marker=false
+com.github.spotbugs.plugin.eclipse/debug/nature=false
+com.github.spotbugs.plugin.eclipse/debug/properties=false
+com.github.spotbugs.plugin.eclipse/debug/reporter=false
+com.github.spotbugs.plugin.eclipse/debug/util=false
+com.github.spotbugs.plugin.eclipse/debug/visitor=false
+com.github.spotbugs.plugin.eclipse/debug/profiler=false
+com.github.spotbugs.plugin.eclipse/debug/content=false

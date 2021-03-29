@@ -1,0 +1,39 @@
+********************************************************************************
+*                        Subversive connectors Change Log                      *
+*                                                                              *
+* Subversive - a brand new Eclipse Client for Subversion (SVN)                 *
+* See details at http://www.eclipse.org/subversive and http://www.polarion.com *
+********************************************************************************
+
+This connectors works only with Subversive version which is distributed from Eclipse.org site.
+ 
+Version 6.0.4.I20161211-1700 release date: 11 December 2016
+
+1. What's New
+
+   The version is 6.0.4 service release. There are no API changes, so it is compatible with the Subversive 4.0.x.
+   
+   Changes in compare with previous version are listed below. The full list of 
+   changes you can find in Change Log.	 
+
+	Fixes:
+	 * Latest SVN install following update does not allow sharing of a new project (bug 508970)
+	   (SVN Kit 1.8.14 has an issue in SVN 1.8 API support #2)
+
+2. Information
+
+2.1. System Requirements
+
+   Subversive requires JDK 1.6 or higher and supports following versions of Eclipse:
+    * 4.4
+    * 4.5
+    * 4.6
+       
+   Subversive supports 
+    Migration for Subversion below version 1.6 to version 1.8 and higher,
+    Subversion version 1.8 with SVN Kit 1.8.14 and JavaHL 1.8.15,
+    Subversion version 1.9 with JavaHL 1.9.3
+
+2.2 Known issues
+
+	* The latest SVN connectors are very slow on huge working copies [using SVN Kit 1.8 connector]

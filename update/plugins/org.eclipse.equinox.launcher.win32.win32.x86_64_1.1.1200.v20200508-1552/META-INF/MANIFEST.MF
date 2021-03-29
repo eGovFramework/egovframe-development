@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.eclipse.equinox.launcher.win32.win32.x86_64;s
+ ingleton:=true
+Bundle-ManifestVersion: 2
+Eclipse-PlatformFilter: (& (osgi.ws=win32) (osgi.os=win32) (osgi.arch=
+ x86_64))
+Eclipse-SourceReferences: scm:git:git://git.eclipse.org/gitroot/equino
+ x/rt.equinox.framework.git;path="bundles/org.eclipse.equinox.launcher
+ .win32.win32.x86_64";tag="I20200509-0450";commitId=679507e296f963b64d
+ c80c541480e73677ca6561
+Bundle-Vendor: %providerName
+Fragment-Host: org.eclipse.equinox.launcher;bundle-version="[1.0.0,1.6
+ .0)"
+Bundle-Name: %pluginName
+Bundle-Version: 1.1.1200.v20200508-1552
+Bundle-Localization: launcher.win32.win32.x86_64
+Build-Jdk-Spec: 11
+Created-By: Maven Archiver 3.5.0
+Eclipse-BundleShape: dir
+
+Name: about.html
+SHA-256-Digest: 7mbS+ztMDS7S5/aYvJ7U49bPd/pcr0CtAylhJdsaxfA=
+
+Name: launcher.win32.win32.x86_64.properties
+SHA-256-Digest: woVtUghzXrga4udyDnv4p6ab63Oz4XKI/JO89scpr48=
+
+Name: eclipse_11000.dll
+SHA-256-Digest: 9AJx617LJQKX085Bu0Cb8l5YX1d5xnTM8AFq/iLCz3Y=
+

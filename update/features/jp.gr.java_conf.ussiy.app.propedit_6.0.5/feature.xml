@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="jp.gr.java_conf.ussiy.app.propedit"
+      label="%featureName"
+      version="6.0.5"
+      provider-name="%providerName"
+      plugin="jp.gr.java_conf.ussiy.app.propedit"
+      image="icons/pe_32.gif">
+
+   <description url="%descriptionUrl">
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="http://eclipse.org/legal/epl-v10.html">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://propedit.sourceforge.jp/eclipse/updates/"/>
+      <discovery label="%discoverySiteName" url="http://propedit.sourceforge.jp/eclipse/updates/"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="org.eclipse.jface.text"/>
+      <import plugin="org.eclipse.ui" version="3.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.editors"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.core.runtime" version="3.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.views"/>
+      <import plugin="org.eclipse.ui.workbench.texteditor"/>
+      <import plugin="org.eclipse.jdt.ui" version="3.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.filesystem" version="1.0.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="jp.gr.java_conf.ussiy.app.propedit"
+         download-size="0"
+         install-size="0"
+         version="6.0.5"
+         unpack="false"/>
+
+</feature>

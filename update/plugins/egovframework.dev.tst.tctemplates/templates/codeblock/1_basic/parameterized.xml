@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.5.0_07" class="java.beans.XMLDecoder"> 
+ <array class="egovframework.dev.tst.tcgenerator.CodeBlockInfo" length="1"> 
+  <void index="0"> 
+   <object class="egovframework.dev.tst.tcgenerator.CodeBlockInfo"> 
+    <void property="tcTemplateName"> 
+     <string>Parameterized Test</string> 
+    </void> 
+    <void property="description"> 
+     <string>Parameterized Test에 대한 테스트케이스 코드블럭을 복사합니다.</string> 
+    </void> 
+    <void property="codeBlockList"> 
+     <array class="java.lang.String" length="6"> 
+      <void index="0"> 
+       <string>Fields</string> 
+      </void> 
+      <void index="1"> 
+       <string>Parameterized Test</string> 
+      </void> 
+      <void index="2"> 
+       <string>Parameters Collections</string> 
+      </void> 
+      <void index="3"> 
+       <string>Valid Password With Params</string> 
+      </void> 
+      <void index="4"> 
+       <string>PasswordValidator (Target Class)</string> 
+      </void> 
+      <void index="5"> 
+       <string>소스 전체</string> 
+      </void>
+     </array> 
+    </void> 
+    <void property="codeBlocks"> 
+     <array class="java.lang.String" length="6"> 
+      <void index="0"> 
+       <string><![CDATA[
+/** 테스트 데이터를 담을 변수 */
+private String password;
+
+/** 테스트 결과를 담을 변수 */
+private boolean isValid;
+
+/** 테스트 대상 클래스인 validator */
+private static PasswordValidator validator;
+       ]]></string> 
+      </void> 
+      <void index="1"> 
+       <string><![CDATA[
+/**
+ * 테스트 대상 클래스 생성
+*/
+@BeforeClass
+public static void setUp() {
+	validator = new PasswordValidator();
+}
+       ]]></string> 
+      </void> 
+      <void index="2"> 
+       <string><![CDATA[
+/**
+ * password 가 유효한지 판단하는 메소드를 테스트할 때 
+ * 여러개의 password 를 인자로 넘기면서 한번에 테스트하기 위해 만들어내는 생성자
+ * 
+ * @param password
+ * @param isValid
+ */
+public ParameterizedTest(String password, boolean isValid) {
+	this.password = password;
+	this.isValid = isValid;
+}
+       ]]></string> 
+      </void> 
+      <void index="3"> 
+       <string><![CDATA[
+/**
+ * 유효성을 체크하고자하는 테스트용 데이터
+ * @return 테스트용 데이터 Collection
+*/
+@Parameters
+public static Collection passwords() {
+	return Arrays.asList(new Object[][] { { "1234qwer", true }, {"12345678", false}, {"1q2w3e4r", true} });
+}
+       ]]></string> 
+      </void> 
+      <void index="4"> 
+       <string><![CDATA[
+class PasswordValidator {
+	
+	/**
+	 * 인자로 입력받은 패스워드가 유효한지를 체크하는 메소드
+	 * @param password
+	 * @return 유효성 여부
+	*/
+	public boolean isValid(String password) {
+		boolean result = false;
+		int letterCnt = 0;
+		int digitCnt = 0;
+
+		for (int i = 0; i < password.length(); i++) {
+			char c = password.charAt(i);
+			if (Character.isLetter(c)) letterCnt++;
+			else if (Character.isDigit(c)) digitCnt++;
+		}
+
+		// 8자리 이상이고(입력 때 체크되지만) 문자와 숫자가 적어도 한 개씩은 있어야 한다.
+		if (password.length() >= 8 && letterCnt > 0 && digitCnt > 0)
+			result = true;
+
+		return result;
+	}
+}
+       ]]></string> 
+      </void> 
+      <void index="5"> 
+       <string><![CDATA[
+import static org.junit.Assert.assertEquals;
+
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
+
+@RunWith(Parameterized.class)
+public class ParameterizedTest {
+
+	/** 테스트 데이터를 담을 변수 */
+	private String password;
+	
+	/** 테스트 결과를 담을 변수 */
+	private boolean isValid;
+	
+	/** 테스트 대상 클래스인 validator */
+	private static PasswordValidator validator;
+	
+	/**
+	 * 테스트 대상 클래스 생성
+	*/
+	@BeforeClass
+	public static void setUp() {
+		validator = new PasswordValidator();
+	}
+	
+	/**
+	 * password 가 유효한지 판단하는 메소드를 테스트할 때 
+	 * 여러개의 password 를 인자로 넘기면서 한번에 테스트하기 위해 만들어내는 생성자
+	 * 
+	 * @param password
+	 * @param isValid
+	 */
+	public ParameterizedTest(String password, boolean isValid) {
+		this.password = password;
+		this.isValid = isValid;
+	}
+	
+	/**
+	 * 유효성을 체크하고자하는 테스트용 데이터
+	 * @return 테스트용 데이터 Collection
+	*/
+	@Parameters
+	public static Collection passwords() {
+		return Arrays.asList(new Object[][] { { "1234qwer", true }, {"12345678", false}, {"1q2w3e4r", true} });
+	}
+	
+	/**
+	 * 입력받은 패스워드가 유효한지를 판단하는 메소드
+	*/
+	@Test
+	public void isValidPasswordWithParams() {
+		assertEquals(validator.isValid(this.password), this.isValid);
+	}
+}
+
+class PasswordValidator {
+	
+	/**
+	 * 인자로 입력받은 패스워드가 유효한지를 체크하는 메소드
+	 * @param password
+	 * @return 유효성 여부
+	*/
+	public boolean isValid(String password) {
+		boolean result = false;
+		int letterCnt = 0;
+		int digitCnt = 0;
+
+		for (int i = 0; i < password.length(); i++) {
+			char c = password.charAt(i);
+			if (Character.isLetter(c)) letterCnt++;
+			else if (Character.isDigit(c)) digitCnt++;
+		}
+
+		// 8자리 이상이고(입력 때 체크되지만) 문자와 숫자가 적어도 한 개씩은 있어야 한다.
+		if (password.length() >= 8 && letterCnt > 0 && digitCnt > 0)
+			result = true;
+
+		return result;
+	}
+}
+       ]]></string> 
+      </void>
+     </array> 
+    </void> 
+   </object> 
+  </void> 
+ </array> 
+</java> 

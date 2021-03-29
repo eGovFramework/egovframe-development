@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="egovframework.dev.imp.core.wizards"
+            class="egovframework.mdev.imp.commngt.wizards.AddMobileCommngtWizard"
+            finalPerspective="egovframework.dev.imp.core.perspectives.egovperspective"
+            icon="icons/m_commngt.png"
+            id="egovframework.mdev.imp.commngt.wizards.AddMobileCommngtWizard"
+            name="eGovFrame Mobile Common Component">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="egovframework.dev.imp.core.perspectives.egovperspective">
+         <newWizardShortcut
+               id="egovframework.mdev.imp.commngt.wizards.AddMobileCommngtWizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <newWizardShortcut
+               id="egovframework.mdev.imp.commngt.wizards.AddMobileCommngtWizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
+   </extension>
+
+</plugin>

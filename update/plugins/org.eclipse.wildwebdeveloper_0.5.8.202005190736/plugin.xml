@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension-point id="org.eclipse.wildwebdeveloper.json.schema" name="Bind JSON Schema to filename pattern" schema="schema/json.schema.exsd"/>
+
+   <!-- Wild Web Developer/Core -->
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eclipse.core.runtime.text"
+            id="org.eclipse.wildwebdeveloper.parent"
+            name="Wild Web Developer supported web dev file"
+            priority="normal"/>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editorContentTypeBinding
+            contentTypeId="org.eclipse.wildwebdeveloper.parent"
+            editorId="org.eclipse.ui.genericeditor.GenericEditor">
+      </editorContentTypeBinding>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.genericeditor.presentationReconcilers">
+      <presentationReconciler
+            class="org.eclipse.tm4e.ui.text.TMPresentationReconciler"
+            contentType="org.eclipse.wildwebdeveloper.parent">
+      </presentationReconciler>
+   </extension>
+
+   <!-- JSON Language -->
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eclipse.wildwebdeveloper.parent"
+            file-extensions="json, jsonc, eslintrc"
+            id="org.eclipse.wildwebdeveloper.json"
+            name="JSON"
+            priority="normal">
+      </content-type>
+      <content-type
+            base-type="org.eclipse.wildwebdeveloper.json"
+            file-names="package.json"
+            file-patterns="package"
+            id="org.eclipse.wildwebdeveloper.json.npmpackage"
+            name="NPM package.json"
+            priority="normal">
+      </content-type>
+   </extension>
+   
+   <extension
+         point="org.eclipse.lsp4e.languageServer">
+      <server
+            class="org.eclipse.wildwebdeveloper.json.JSonLanguageServer"
+            id="org.eclipse.wildwebdeveloper.json"
+            label="JSon Language Server (VSCode)"
+            serverInterface="org.eclipse.wildwebdeveloper.json.JSonLanguageServerInterface"
+            singleton="true">
+      </server>
+      <contentTypeMapping
+            contentType="org.eclipse.wildwebdeveloper.json"
+            id="org.eclipse.wildwebdeveloper.json">
+      </contentTypeMapping>
+   </extension>
+   
+   <extension
+         point="org.eclipse.tm4e.registry.grammars">
+      <grammar
+            path="grammars/json/JSON.tmLanguage"
+            scopeName="source.json">
+      </grammar>
+      <scopeNameContentTypeBinding
+            contentTypeId="org.eclipse.wildwebdeveloper.json"
+            scopeName="source.json">
+      </scopeNameContentTypeBinding>
+   </extension>
+
+   <extension
+         point="org.eclipse.tm4e.languageconfiguration.languageConfigurations">
+      <languageConfiguration
+            contentTypeId="org.eclipse.wildwebdeveloper.json"
+            path="language-configurations/json/language-configuration.json">
+      </languageConfiguration>
+   </extension>
+
+   <extension
+         point="org.eclipse.tm4e.ui.snippets">
+      <snippet
+            name="JSON Sample"
+            path="snippets/json/sample.json"
+            scopeName="source.json">
+      </snippet>
+   </extension>
+         
+   <!-- CSS Language -->
+      
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eclipse.wildwebdeveloper.parent"
+            file-extensions="less"
+            id="org.eclipse.wildwebdeveloper.less"
+            name="LESS"
+            priority="normal">
+      </content-type>
+      <content-type
+            base-type="org.eclipse.wildwebdeveloper.parent"
+            file-extensions="scss,sass"
+            id="org.eclipse.wildwebdeveloper.scss"
+            name="SCSS/SASS"
+            priority="normal">
+      </content-type>
+      <content-type
+            base-type="org.eclipse.wildwebdeveloper.parent"
+            file-extensions="css"
+            id="org.eclipse.wildwebdeveloper.css"
+            name="CSS"
+            priority="normal">
+      </content-type>
+   </extension>
+
+   <extension
+         point="org.eclipse.lsp4e.languageServer">
+      <server
+            class="org.eclipse.wildwebdeveloper.css.CSSLanguageServer"
+            id="org.eclipse.wildwebdeveloper.css"
+            label="CSS/LESS/SCSS Language Server (VSCode)"
+            singleton="true">
+      </server>
+      <contentTypeMapping
+            contentType="org.eclipse.wildwebdeveloper.css"
+            id="org.eclipse.wildwebdeveloper.css">
+      </contentTypeMapping>
+      <contentTypeMapping
+            contentType="org.eclipse.wildwebdeveloper.scss"
+            id="org.eclipse.wildwebdeveloper.css">
+      </contentTypeMapping>
+      <contentTypeMapping
+            contentType="org.eclipse.wildwebdeveloper.less"
+            id="org.eclipse.wildwebdeveloper.css">
+      </contentTypeMapping>
+   </extension>
+   
+   <extension
+         point="org.eclipse.tm4e.registry.grammars">
+      <grammar
+            path="grammars/css/css.tmLanguage.json"
+            scopeName="source.css">
+      </grammar>
+      <scopeNameContentTypeBinding
+            contentTypeId="org.eclipse.wildwebdeveloper.css"
+            scopeName="source.css">
+      </scopeNameContentTypeBinding>
+      <grammar
+            path="grammars/less/less.tmLanguage.json"
+            scopeName="source.css.less">
+      </grammar>
+      <scopeNameContentTypeBinding
+            contentTypeId="org.eclipse.wildwebdeveloper.less"
+            scopeName="source.css.less">
+      </scopeNameContentTypeBinding>
+      <grammar
+            path="grammars/scss/scss.json"
+            scopeName="source.css.scss">
+      </grammar>
+      <scopeNameContentTypeBinding
+            contentTypeId="org.eclipse.wildwebdeveloper.scss"
+            scopeName="source.css.scss">
+      </scopeNameContentTypeBinding>
+   </extension>
+
+   <extension
+         point="org.eclipse.tm4e.languageconfiguration.languageConfigurations">
+      <languageConfiguration
+            contentTypeId="org.eclipse.wildwebdeveloper.css"
+            path="language-configurations/css/language-configuration.json">
+      </languageConfiguration>
+      <languageConfiguration
+            contentTypeId="org.eclipse.wildwebdeveloper.less"
+            path="language-configurations/less/language-configuration.json">
+      </languageConfiguration>
+      <languageConfiguration
+            contentTypeId="org.eclipse.wildwebdeveloper.scss"
+            path="language-configurations/scss/language-configuration.json">
+      </languageConfiguration>
+   </extension>
+
+   <extension
+         point="org.eclipse.tm4e.ui.snippets">
+      <snippet
+            name="CSS Sample"
+            path="snippets/css/sample.css"
+            scopeName="source.css">
+      </snippet>
+   </extension>
+
+  <extension point="org.eclipse.ui.genericeditor.icons">
+    <icon contentType="org.eclipse.wildwebdeveloper.css" icon="icons/cssEditorIcon.png"/>
+  </extension>
+
+   <!-- HTML Language -->   
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eclipse.wildwebdeveloper.parent"
+            file-extensions="html,htm"
+            id="org.eclipse.wildwebdeveloper.html"
+            name="HTML"
+            priority="normal">
+      </content-type>
+   </extension>
+   
+   <extension
+         point="org.eclipse.lsp4e.languageServer">
+      <server
+            class="org.eclipse.wildwebdeveloper.html.HTMLLanguageServer"
+            id="org.eclipse.wildwebdeveloper.html"
+            label="HTML Language Server (VSCode)"
+            singleton="true">
+      </server>
+      <contentTypeMapping
+            contentType="org.eclipse.wildwebdeveloper.html"
+            id="org.eclipse.wildwebdeveloper.html">
+      </contentTypeMapping>
+   </extension>
+
+   <extension
+         point="org.eclipse.tm4e.registry.grammars">
+      <grammar
+            path="grammars/html/html.json"
+            scopeName="text.html.basic">
+      </grammar>
+      <scopeNameContentTypeBinding
+            contentTypeId="org.eclipse.wildwebdeveloper.html"
+            scopeName="text.html.basic">
+      </scopeNameContentTypeBinding>
+   </extension>
+
+   <extension
+         point="org.eclipse.tm4e.languageconfiguration.languageConfigurations">
+      <languageConfiguration
+            contentTypeId="org.eclipse.wildwebdeveloper.html"
+            path="language-configurations/html/language-configuration.json">
+      </languageConfiguration>
+   </extension>
+
+   <extension
+         point="org.eclipse.tm4e.ui.snippets">
+      <snippet
+            name="HTML Sample"
+            path="snippets/html/sample.html"
+            scopeName="text.html.basic">
+      </snippet>
+   </extension>
+
+   <extension point="org.eclipse.ui.genericeditor.icons">
+     <icon contentType="org.eclipse.wildwebdeveloper.html" icon="icons/htmlEditorIcon.png"/>
+   </extension>
+
+   <!-- JavaScript/TypeScript Language -->   
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eclipse.wildwebdeveloper.parent"
+            file-extensions="js"
+            id="org.eclipse.wildwebdeveloper.js"
+            name="JavaScript"
+            priority="normal">
+      </content-type>
+      <content-type
+            base-type="org.eclipse.wildwebdeveloper.parent"
+            file-extensions="ts"
+            id="org.eclipse.wildwebdeveloper.ts"
+            name="TypeScript"
+            priority="normal">
+      </content-type>
+      <content-type
+            base-type="org.eclipse.wildwebdeveloper.parent"
+            file-extensions="jsx"
+            id="org.eclipse.wildwebdeveloper.jsx"
+            name="JSX"
+            priority="normal">
+      </content-type>
+      <content-type
+            base-type="org.eclipse.wildwebdeveloper.parent"
+            file-extensions="tsx"
+            id="org.eclipse.wildwebdeveloper.tsx"
+            name="TSX"
+            priority="normal">
+      </content-type>
+   </extension>
+   
+   <extension
+         point="org.eclipse.lsp4e.languageServer">
+      <server
+            class="org.eclipse.wildwebdeveloper.jsts.JSTSLanguageServer"
+            id="org.eclipse.wildwebdeveloper.jsts"
+            label="JavaScript-TypeScript Language Server">
+      </server>
+      <contentTypeMapping
+            contentType="org.eclipse.wildwebdeveloper.js"
+            id="org.eclipse.wildwebdeveloper.jsts">
+      </contentTypeMapping>
+      <contentTypeMapping
+            contentType="org.eclipse.wildwebdeveloper.ts"
+            id="org.eclipse.wildwebdeveloper.jsts">
+      </contentTypeMapping>
+      <contentTypeMapping
+            contentType="org.eclipse.wildwebdeveloper.jsx"
+            id="org.eclipse.wildwebdeveloper.jsts">
+      </contentTypeMapping>
+            <contentTypeMapping
+            contentType="org.eclipse.wildwebdeveloper.tsx"
+            id="org.eclipse.wildwebdeveloper.jsts">
+      </contentTypeMapping>
+   </extension>
+   
+   <extension
+         point="org.eclipse.tm4e.registry.grammars">
+      <grammar
+            path="grammars/javascript/JavaScript.tmLanguage.json"
+            scopeName="source.js"/>
+      <scopeNameContentTypeBinding
+            contentTypeId="org.eclipse.wildwebdeveloper.js"
+            scopeName="source.js"/>
+      <grammar
+            path="grammars/javascript/JavaScriptReact.tmLanguage.json"
+            scopeName="source.js.jsx"/>
+      <scopeNameContentTypeBinding
+            contentTypeId="org.eclipse.wildwebdeveloper.jsx"
+            scopeName="source.js.jsx"/>
+      <grammar
+            path="grammars/typescript/TypeScript.tmLanguage.json"
+            scopeName="source.ts"/>
+      <scopeNameContentTypeBinding
+            contentTypeId="org.eclipse.wildwebdeveloper.ts"
+            scopeName="source.ts"/>
+      <grammar
+            path="grammars/typescript/TypeScriptReact.tmLanguage.json"
+            scopeName="source.tsx"/>
+      <scopeNameContentTypeBinding
+            contentTypeId="org.eclipse.wildwebdeveloper.tsx"
+            scopeName="source.tsx">
+      </scopeNameContentTypeBinding>
+   </extension>
+
+   <extension
+         point="org.eclipse.tm4e.languageconfiguration.languageConfigurations">
+      <languageConfiguration
+            contentTypeId="org.eclipse.wildwebdeveloper.js"
+            path="language-configurations/javascript/javascript-language-configuration.json">
+      </languageConfiguration>
+      <languageConfiguration
+            contentTypeId="org.eclipse.wildwebdeveloper.ts"
+            path="language-configurations/typescript/language-configuration.json">
+      </languageConfiguration>
+      <!-- TODO replace with more specific language configuration if we include some -->
+      <languageConfiguration
+            contentTypeId="org.eclipse.wildwebdeveloper.jsx"
+            path="language-configurations/javascript/javascript-language-configuration.json">
+      </languageConfiguration>
+      <languageConfiguration
+            contentTypeId="org.eclipse.wildwebdeveloper.tsx"
+            path="language-configurations/typescript/language-configuration.json">
+      </languageConfiguration>
+   </extension>
+   
+   
+   <extension
+         point="org.eclipse.tm4e.ui.snippets">
+      <snippet
+            name="JavaScript Sample"
+            path="snippets/javascript/sample.js"
+            scopeName="source.js">
+      </snippet>
+   </extension>
+
+   <extension
+         point="org.eclipse.tm4e.ui.snippets">
+      <snippet
+            name="TypeScript Sample"
+            path="snippets/typescript/sample.ts"
+            scopeName="source.ts">
+      </snippet>
+   </extension>
+
+   <extension point="org.eclipse.ui.genericeditor.icons">
+     <icon contentType="org.eclipse.wildwebdeveloper.js" icon="icons/jsEditorIcon.png"/>
+     <icon contentType="org.eclipse.wildwebdeveloper.ts" icon="icons/tsEditorIcon.png"/>
+   </extension>
+
+   <!-- Angular -->
+   <extension point="org.eclipse.lsp4e.languageServer">
+     <server id="org.eclipse.wildwebdeveloper.angular" class="org.eclipse.wildwebdeveloper.angular.AngularLanguageServer" label="Angular Language Server"/>
+     <contentTypeMapping contentType="org.eclipse.wildwebdeveloper.ts" id="org.eclipse.wildwebdeveloper.angular"/>
+     <contentTypeMapping contentType="org.eclipse.wildwebdeveloper.html" id="org.eclipse.wildwebdeveloper.angular"/>
+   </extension>
+
+   <!-- YAML Language -->   
+   <extension
+         point="org.eclipse.lsp4e.languageServer">
+      <server
+            class="org.eclipse.wildwebdeveloper.yaml.YAMLLanguageServer"
+            id="org.eclipse.wildwebdeveloper.yaml"
+            label="YAML Language Server (VSCode)"
+            singleton="true">
+      </server>
+      <contentTypeMapping
+            contentType="org.eclipse.wildwebdeveloper.yaml"
+            id="org.eclipse.wildwebdeveloper.yaml">
+      </contentTypeMapping>
+   </extension>
+
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            base-type="org.eclipse.wildwebdeveloper.parent"
+            file-extensions="yaml,yml"
+            id="org.eclipse.wildwebdeveloper.yaml"
+            name="YAML"
+            priority="normal">
+      </content-type>
+   </extension>
+      
+   <extension
+         point="org.eclipse.tm4e.registry.grammars">
+      <grammar
+            path="grammars/yaml/YAML.tmLanguage"
+            scopeName="source.yaml">
+      </grammar>
+      <scopeNameContentTypeBinding
+            contentTypeId="org.eclipse.wildwebdeveloper.yaml"
+            scopeName="source.yaml">
+      </scopeNameContentTypeBinding>
+   </extension>
+   
+   <extension
+         point="org.eclipse.tm4e.languageconfiguration.languageConfigurations">
+      <languageConfiguration
+            contentTypeId="org.eclipse.wildwebdeveloper.yaml"
+            path="language-configurations/yaml/language-configuration.json">
+      </languageConfiguration>
+   </extension>
+
+   <extension point="org.eclipse.ui.genericeditor.icons">
+     <icon contentType="org.eclipse.wildwebdeveloper.yaml" icon="icons/yamlEditorIcon.png"/>
+   </extension>
+
+   <extension
+         point="org.eclipse.tm4e.ui.snippets">
+      <snippet
+            name="TypeScript Sample"
+            path="snippets/yaml/sample.yaml"
+            scopeName="source.yaml">
+      </snippet>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.eclipse.wildwebdeveloper.yaml.YAMLPreferencePage"
+            id="org.eclipse.wildwebdeveloper.yaml.YAMLPreferencePage"
+            name="YAML">
+      </page>
+      <page
+			category="org.eclipse.wildwebdeveloper.yaml.YAMLPreferencePage"
+            class="org.eclipse.wildwebdeveloper.yaml.YAMLSchemaPreferencePage"
+            id="org.eclipse.wildwebdeveloper.yaml.YAMLSchemaPreferencePage"
+            name="YAML Schemas">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+         <initializer
+            class="org.eclipse.wildwebdeveloper.yaml.YAMLPreferenceInitializer">
+		</initializer>
+   </extension>
+
+   <extension
+      point="org.eclipse.ui.ide.editorAssociationOverride">
+         <editorAssociationOverride
+            id="org.eclipse.wildwebdeveloper.JSEditorAssociationOverride"
+            class="org.eclipse.wildwebdeveloper.JSEditorAssociationOverride">
+         </editorAssociationOverride>
+   </extension>
+
+   <extension
+         point="org.eclipse.debug.core.launchConfigurationTypes">
+      <launchConfigurationType
+            delegate="org.eclipse.wildwebdeveloper.debug.node.NodeRunDAPDebugDelegate"
+            id="org.eclipse.wildwebdeveloper.launchConfiguration.nodeDebug"
+            modes="run,debug"
+            name="Node.js application"
+            public="true"
+            sourceLocatorId="org.eclipse.lsp4e.debug.sourceLocator"
+            sourcePathComputerId="org.eclipse.lsp4e.debug.sourcePathComputer">
+      </launchConfigurationType>
+      <launchConfigurationType
+            delegate="org.eclipse.wildwebdeveloper.debug.node.NodeAttachDebugDelegate"
+            id="org.eclipse.wildwebdeveloper.launchConfiguration.nodeDebugAttach"
+            modes="debug"
+            name="Running Node.js application"
+            public="true"
+            sourceLocatorId="org.eclipse.lsp4e.debug.sourceLocator"
+            sourcePathComputerId="org.eclipse.lsp4e.debug.sourcePathComputer">
+      </launchConfigurationType>
+      <launchConfigurationType
+            delegate="org.eclipse.wildwebdeveloper.debug.firefox.FirefoxAttachDebugDelegate"
+            id="org.eclipse.wildwebdeveloper.launchConfiguration.firefoxDebug"
+            modes="debug"
+            name="Running Firefox Debugger"
+            public="true"
+            sourceLocatorId="org.eclipse.lsp4e.debug.sourceLocator"
+            sourcePathComputerId="org.eclipse.lsp4e.debug.sourcePathComputer">
+      </launchConfigurationType>
+      <launchConfigurationType
+            delegate="org.eclipse.wildwebdeveloper.debug.firefox.FirefoxRunDABDebugDelegate"
+            id="org.eclipse.wildwebdeveloper.runFirefoxDebug"
+            modes="debug"
+            name="Launch Firefox Debugger"
+            public="true"
+            sourceLocatorId="org.eclipse.lsp4e.debug.sourceLocator"
+            sourcePathComputerId="org.eclipse.lsp4e.debug.sourcePathComputer">
+      </launchConfigurationType>
+      <launchConfigurationType
+            delegate="org.eclipse.wildwebdeveloper.debug.chrome.ChromeRunDAPDebugDelegate"
+            id="org.eclipse.wildwebdeveloper.launchConfiguration.chromeRunDebug"
+            modes="debug"
+            name="Chrome Debug"
+            public="true"
+            sourceLocatorId="org.eclipse.lsp4e.debug.sourceLocator"
+            sourcePathComputerId="org.eclipse.lsp4e.debug.sourcePathComputer">
+      </launchConfigurationType>
+      <launchConfigurationType
+            delegate="org.eclipse.wildwebdeveloper.debug.chrome.ChromeAttachDebugDelegate"
+            id="org.eclipse.wildwebdeveloper.launchConfiguration.chromeAttachDebug"
+            modes="debug"
+            name="Running Chrome Debug Instance"
+            public="true"
+            sourceLocatorId="org.eclipse.lsp4e.debug.sourceLocator"
+            sourcePathComputerId="org.eclipse.lsp4e.debug.sourcePathComputer">
+      </launchConfigurationType>
+      <launchConfigurationType
+            delegate="org.eclipse.wildwebdeveloper.debug.npm.NpmLaunchDelegate"
+            id="org.eclipse.wildwebdeveloper.launchConfiguration.NPMLaunch"
+            modes="run"
+            name="Launch NPM"
+            public="true"
+            sourceLocatorId="org.eclipse.lsp4e.debug.sourceLocator"
+            sourcePathComputerId="org.eclipse.lsp4e.debug.sourcePathComputer">
+      </launchConfigurationType>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchShortcuts">
+      <shortcut
+            class="org.eclipse.wildwebdeveloper.debug.node.NodeRunDebugLaunchShortcut"
+            icon="icons/node_16.png"
+            id="org.eclipse.wildwebdeveloper.nodeRunShortcut"
+            label="Node program"
+            modes="run,debug">
+         <configurationType
+               id="org.eclipse.wildwebdeveloper.launchConfiguration.nodeDebug">
+         </configurationType>
+         <contextualLaunch>
+            <enablement>
+               <with variable="selection">
+                  <count value="1"/>
+                  <iterate>
+                     <adapt type="org.eclipse.core.resources.IResource">
+                        <test
+                              forcePluginActivation="true"
+                              property="org.eclipse.wildwebdeveloper.isNodeResource">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </with>
+            </enablement>
+         </contextualLaunch>
+      </shortcut>
+      <shortcut
+            class="org.eclipse.wildwebdeveloper.debug.firefox.FirefoxRunDebugLaunchShortcut"
+            icon="icons/firefoxIconSmall.png"
+            id="org.eclipse.wildwebdeveloper.firefoxRunShortcut"
+            label="Firefox"
+            modes="debug">
+         <configurationType
+               id="org.eclipse.wildwebdeveloper.runFirefoxDebug">
+         </configurationType>
+         <contextualLaunch>
+            <enablement>
+               <with
+                     variable="selection">
+                  <count
+                        value="1">
+                  </count>
+                  <iterate>
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                        <test
+                              forcePluginActivation="true"
+                              property="org.eclipse.wildwebdeveloper.isHTMLLaunchable">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </with></enablement>
+         </contextualLaunch>
+      </shortcut>
+      <shortcut
+            class="org.eclipse.wildwebdeveloper.debug.chrome.ChromeRunDebugLaunchShortcut"
+            icon="icons/ChromeIcon.png"
+            id="org.eclipse.wildwebdeveloper.chromeRunShortcut"
+            label="Chrome Debug "
+            modes="debug">
+         <configurationType
+               id="org.eclipse.wildwebdeveloper.launchConfiguration.chromeRunDebug"></configurationType>
+         <contextualLaunch>
+            <enablement>
+               <with
+                     variable="selection">
+                  <count
+                        value="1">
+                  </count>
+                  <iterate>
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                        <test
+                              forcePluginActivation="true"
+                              property="org.eclipse.wildwebdeveloper.isHTMLLaunchable">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </with>
+            </enablement>
+         </contextualLaunch>
+      </shortcut>
+      <shortcut
+            class="org.eclipse.wildwebdeveloper.debug.npm.NpmLaunchShortcut"
+            icon="icons/npmiconSmall.png"
+            id="org.eclipse.wildwebdeveloper.npmLaunchShortcut"
+            label="NPM..."
+            modes="run">
+         <configurationType
+               id="org.eclipse.wildwebdeveloper.launchConfiguration.NPMLaunch">
+         </configurationType>
+         <contextualLaunch>
+            <enablement>
+               <with
+                     variable="selection">
+                  <count
+                        value="1">
+                  </count>
+                  <iterate>
+                     <adapt
+                           type="org.eclipse.core.resources.IResource">
+                        <test
+                              forcePluginActivation="true"
+                              property="org.eclipse.wildwebdeveloper.isPackageJSON">
+                        </test>
+                     </adapt>
+                  </iterate>
+               </with>
+            </enablement>
+         </contextualLaunch>
+      </shortcut>
+   </extension>
+    <extension
+         point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="org.eclipse.core.resources.IResource"
+            class="org.eclipse.wildwebdeveloper.debug.HTMLLaunchableAdapterFactory">
+         <adapter
+               type="org.eclipse.debug.ui.actions.ILaunchable">
+         </adapter>
+      </factory>
+      <factory
+            adaptableType="org.eclipse.core.resources.IResource"
+            class="org.eclipse.wildwebdeveloper.debug.npm.PackageJSONAdapterFactory">
+         <adapter
+               type="org.eclipse.debug.ui.actions.ILaunchable">
+         </adapter>
+      </factory>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.eclipse.wildwebdeveloper.IsNodeProjectPropertyTester"
+            id="org.eclipse.wildwebdeveloper.propertyTester.isNodeResource"
+            namespace="org.eclipse.wildwebdeveloper"
+            properties="isNodeResource"
+            type="java.lang.Object">
+      </propertyTester>
+      <propertyTester
+            class="org.eclipse.wildwebdeveloper.debug.IsLaunchableHTMLTester"
+            id="org.eclipse.wildwebdeveloper.propertyTester.isHTMLLaunchable"
+            namespace="org.eclipse.wildwebdeveloper"
+            properties="isHTMLLaunchable"
+            type="java.lang.Object">
+      </propertyTester>
+      <propertyTester
+            class="org.eclipse.wildwebdeveloper.debug.npm.IsPackageJSONTester"
+            id="org.eclipse.wildwebdeveloper.propertyTester.isPackageJSON"
+            namespace="org.eclipse.wildwebdeveloper"
+            properties="isPackageJSON"
+            type="java.lang.Object">
+      </propertyTester>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTypeImages">
+      <launchConfigurationTypeImage
+            configTypeID="org.eclipse.wildwebdeveloper.launchConfiguration.nodeDebug"
+            icon="icons/node_16.png"
+            id="org.eclipse.wildwebdeveloper.nodeImage">
+      </launchConfigurationTypeImage>
+      <launchConfigurationTypeImage
+            configTypeID="org.eclipse.wildwebdeveloper.launchConfiguration.nodeDebugAttach"
+            icon="icons/node_16.png"
+            id="org.eclipse.wildwebdeveloper.nodeImage">
+      </launchConfigurationTypeImage>
+      <launchConfigurationTypeImage
+            configTypeID="org.eclipse.wildwebdeveloper.runFirefoxDebug"
+            icon="icons/firefoxIconSmall.png"
+            id="org.eclipse.wildwebdeveloper.firefoxImage">
+      </launchConfigurationTypeImage>
+      <launchConfigurationTypeImage
+            configTypeID="org.eclipse.wildwebdeveloper.launchConfiguration.firefoxDebug"
+            icon="icons/firefoxIconSmall.png"
+            id="org.eclipse.wildwebdeveloper.firefoxImage">
+      </launchConfigurationTypeImage>
+      <launchConfigurationTypeImage
+            configTypeID="org.eclipse.wildwebdeveloper.launchConfiguration.chromeRunDebug"
+            icon="icons/ChromeIcon.png"
+            id="org.eclipse.wildwebdeveloper.chromeImage">
+      </launchConfigurationTypeImage>
+      <launchConfigurationTypeImage
+            configTypeID="org.eclipse.wildwebdeveloper.launchConfiguration.chromeAttachDebug"
+            icon="icons/ChromeIcon.png"
+            id="org.eclipse.wildwebdeveloper.chromeImage">
+      </launchConfigurationTypeImage>
+      <launchConfigurationTypeImage
+            configTypeID="org.eclipse.wildwebdeveloper.launchConfiguration.NPMLaunch"
+            icon="icons/npmiconSmall.png"
+            id="org.eclipse.wildwebdeveloper.npmImage">
+      </launchConfigurationTypeImage>
+   </extension>
+   <extension
+         point="org.eclipse.debug.ui.launchConfigurationTabGroups">
+      <launchConfigurationTabGroup
+            class="org.eclipse.wildwebdeveloper.debug.node.NodeRunDebugTabGroup"
+            id="org.eclipse.wildwebdeveloper.nodeTabGroup"
+            type="org.eclipse.wildwebdeveloper.launchConfiguration.nodeDebug">
+      </launchConfigurationTabGroup>
+      <launchConfigurationTabGroup
+            class="org.eclipse.wildwebdeveloper.debug.node.NodeAttachDebugTabGroup"
+            id="org.eclipse.wildwebdeveloper.nodeAttachTabGroup"
+            type="org.eclipse.wildwebdeveloper.launchConfiguration.nodeDebugAttach">
+      </launchConfigurationTabGroup>
+      <launchConfigurationTabGroup
+            class="org.eclipse.wildwebdeveloper.debug.firefox.FirefoxRunDebugTabGroup"
+            id="org.eclipse.wildwebdeveloper.nodeTabGroup"
+            type="org.eclipse.wildwebdeveloper.runFirefoxDebug">
+      </launchConfigurationTabGroup>
+      <launchConfigurationTabGroup
+            class="org.eclipse.wildwebdeveloper.debug.firefox.FirefoxAttachDebugTabGroup"
+            id="org.eclipse.wildwebdeveloper.launchConfigurationTabGroup1"
+            type="org.eclipse.wildwebdeveloper.launchConfiguration.firefoxDebug">
+      </launchConfigurationTabGroup>
+      <launchConfigurationTabGroup
+            class="org.eclipse.wildwebdeveloper.debug.chrome.ChromeRunDebugTabGroup"
+            id="org.eclipse.wildwebdeveloper.ChromeRunDebugTabGroup"
+            type="org.eclipse.wildwebdeveloper.launchConfiguration.chromeRunDebug">
+      </launchConfigurationTabGroup>
+      <launchConfigurationTabGroup
+            class="org.eclipse.wildwebdeveloper.debug.chrome.ChromeAttachDebugTabGroup"
+            id="org.eclipse.wildwebdeveloper.ChromeAttachDebugTabGroup"
+            type="org.eclipse.wildwebdeveloper.launchConfiguration.chromeAttachDebug">
+      </launchConfigurationTabGroup>
+      <launchConfigurationTabGroup
+            class="org.eclipse.wildwebdeveloper.debug.npm.NpmLaunchTabGroup"
+            id="org.eclipse.wildwebdeveloper.NPMLaunchTabGroub"
+            type="org.eclipse.wildwebdeveloper.launchConfiguration.NPMLaunch">
+      </launchConfigurationTabGroup>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="*">
+         <actionSet
+               id="org.eclipse.debug.ui.launchActionSet">
+         </actionSet>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.compare.contentViewers">
+      <contentTypeBinding
+            contentTypeId="org.eclipse.wildwebdeveloper.parent"
+            contentViewerId="org.eclipse.ui.genericeditor.compareViewer">
+      </contentTypeBinding>
+   </extension>
+   <extension
+         point="org.eclipse.compare.contentMergeViewers">
+      <contentTypeBinding
+            contentMergeViewerId="org.eclipse.ui.genericeditor.compareViewer"
+            contentTypeId="org.eclipse.wildwebdeveloper.parent">
+      </contentTypeBinding>
+   </extension>
+
+</plugin>

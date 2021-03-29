@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.datatools.sqldevtools.ddl.feature"
+      label="%featureName"
+      version="1.14.102.201911250848"
+      provider-name="%providerName"
+      image="eclipse_update_120.jpg">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %featureCopyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+      <import feature="org.eclipse.datatools.sqldevtools.ddlgen.feature"/>
+      <import feature="org.eclipse.datatools.modelbase.feature" version="1.13.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.datatools.connectivity.feature" version="1.13.0" match="greaterOrEqual"/>
+   </requires>
+
+</feature>

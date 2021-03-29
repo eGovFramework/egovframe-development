@@ -22,19 +22,19 @@
 	</properties>
 
 	<repositories>
-		<repository>
-			<id>mvn2</id>
-			<url>http://repo1.maven.org/maven2/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
+        <repository>
+            <id>mvn2s</id>
+            <url>https://repo1.maven.org/maven2/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
 			<id>egovframe</id>
-			<url>http://www.egovframe.go.kr/maven/</url>
+			<url>http://maven.egovframe.go.kr/maven/</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
@@ -42,7 +42,27 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-	</repositories>
+        <repository>
+            <id>egovframe_old1</id>
+            <url>http://maven.egovframe.kr:8080/maven/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+                <repository>
+            <id>egovframe_old2</id>
+            <url>http://www.egovframe.go.kr/maven/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
 	<dependencies>
 		<dependency>

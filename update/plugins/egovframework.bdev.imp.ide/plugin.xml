@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<extension
+         point="org.eclipse.ui.newWizards">
+      	
+      	<wizard
+             category="egovframework.dev.imp.core.wizards"
+             class="egovframework.bdev.imp.ide.com.wizards.EgovNewBatchTemplateProjectWizard"
+             finalPerspective="egovframework.dev.imp.core.perspectives.egovperspective"
+             hasPages="true"
+             icon="icons/sm_BatchTemplate.png"
+             id="egovframework.bdev.imp.ide.wizards.egovbatchtemplateprojectwizard"
+             name="eGovFrame Batch Template Project"
+             project="true">
+      </wizard>
+         
+	</extension>
+	
+	 <extension
+         id="egovframework.bdev.imp.ide.natures.egovnature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="egovframework.bdev.imp.ide.com.natures.EgovBatchNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/egov_ovr.gif"
+            id="egovframework.mdev.imp.ide.image1"
+            natureId="egovframework.bdev.imp.ide.natures.egovnature">
+      </image>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.commands">
+
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.bdev.imp.ide.commands.newBatchTemplateProject"
+            name="New Batch Template Project">
+      </command>
+      
+      <command
+            name="New Batch Job Launcher"
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.bdev.imp.ide.commands.newBatchJobLauncher">
+      </command>
+      <command
+            name="New Batch Job"
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.bdev.imp.ide.commands.newBatchJob">
+      </command>
+      <command
+            name="Batch Job Test"
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.bdev.imp.ide.commands.batchjobtest">
+      </command> 
+      
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+ 
+      <handler
+      		class="egovframework.bdev.imp.ide.com.handlers.project.NewBatchTemplateProject"
+            commandId="egovframework.bdev.imp.ide.commands.newBatchTemplateProject">
+      </handler>
+      <handler
+            class="egovframework.bdev.imp.ide.com.handlers.project.NewBatchJobLauncher"
+            commandId="egovframework.bdev.imp.ide.commands.newBatchJobLauncher">
+      </handler>
+      <handler
+            class="egovframework.bdev.imp.ide.com.handlers.project.NewBatchJob"
+            commandId="egovframework.bdev.imp.ide.commands.newBatchJob">
+      </handler> 
+      <handler
+            class="egovframework.bdev.imp.ide.com.handlers.project.EgovBatchJobTest"
+            commandId="egovframework.bdev.imp.ide.commands.batchjobtest">
+      </handler> 
+
+ 
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.menus">       
+	  <menuContribution
+            locationURI="menu:egovframework.dev.imp.core.menu.start?after=additions">
+         <command
+               commandId="egovframework.bdev.imp.ide.commands.newBatchTemplateProject"
+               mnemonic="B">
+         </command>
+         <separator
+               name="egovframework.bdev.imp.separator1"
+               visible="true">
+         </separator>
+      </menuContribution>
+
+ 	  <menuContribution
+            locationURI="menu:egovframework.dev.imp.core.menu.implementation?after=additions">
+         <command
+               commandId="egovframework.bdev.imp.ide.commands.newBatchJob">
+         </command>
+         <command
+               commandId="egovframework.bdev.imp.ide.commands.newBatchJobLauncher">
+         </command>
+         <separator
+               name="egovframework.bdev.imp.separator2"
+               visible="true">
+         </separator> 
+      </menuContribution>
+         
+        <menuContribution
+            locationURI="menu:egovframework.dev.imp.core.menu.test?after=additions">
+         <command
+               commandId="egovframework.bdev.imp.ide.commands.batchjobtest">
+         </command>
+         <separator
+               name="egovframework.bdev.imp.ide.separator3"
+               visible="true">
+         </separator>
+      </menuContribution>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension targetID="egovframework.dev.imp.core.perspectives.egovperspective">
+      	<newWizardShortcut id="egovframework.bdev.imp.ide.wizards.egovbatchtemplateprojectwizard">
+         </newWizardShortcut>
+      </perspectiveExtension>
+   </extension>
+
+</plugin>

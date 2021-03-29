@@ -22,19 +22,19 @@
 	</properties>
 
 	<repositories>
-		<repository>
-			<id>mvn2s</id>
-			<url>https://repo1.maven.org/maven2/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
+        <repository>
+            <id>mvn2s</id>
+            <url>https://repo1.maven.org/maven2/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
 			<id>egovframe</id>
-			<url>http://maven.egovframe.kr:8080/maven/</url>			
+			<url>http://maven.egovframe.go.kr/maven/</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
@@ -43,7 +43,17 @@
 			</snapshots>
 		</repository>
         <repository>
-            <id>egovframe2</id>
+            <id>egovframe_old1</id>
+            <url>http://maven.egovframe.kr:8080/maven/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+                <repository>
+            <id>egovframe_old2</id>
             <url>http://www.egovframe.go.kr/maven/</url>
             <releases>
                 <enabled>true</enabled>
@@ -52,7 +62,7 @@
                 <enabled>false</enabled>
             </snapshots>
         </repository>
-	</repositories>
+    </repositories>
 
 	<dependencies>
 		<!-- 표준프레임워크 실행환경 -->
@@ -176,6 +186,14 @@
                         <target>1.8</target>
                         <encoding>UTF-8</encoding>
                     </configuration>
+                </plugin>
+                <plugin>
+                	<groupId>org.apache.maven.plugins</groupId>
+                	<artifactId>maven-war-plugin</artifactId>
+                	<version>2.4</version>
+                	<configuration>
+                		<failOnMissingWebXml>false</failOnMissingWebXml>
+                	</configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>

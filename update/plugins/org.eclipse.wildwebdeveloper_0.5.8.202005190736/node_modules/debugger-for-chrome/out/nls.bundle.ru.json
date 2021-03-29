@@ -1,0 +1,1 @@
+{"src/chromeDebugAdapter":["Не удается найти Chrome. Установите его или задайте значение поля \"runtimeExecutable\" в конфигурации запуска."],"src/errors":["Атрибут \"{0}\" не существует (\"{1}\")."],"src/extension":["Запустить Chrome для localhost","Выберите вкладку"]}

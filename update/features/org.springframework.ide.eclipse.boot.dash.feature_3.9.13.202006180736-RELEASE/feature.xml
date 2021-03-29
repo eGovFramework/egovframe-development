@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*******************************************************************************
+ * Copyright (c) 2005, 2019 Spring IDE Developers
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Spring IDE Developers - initial API and implementation
+ *******************************************************************************/
+ -->
+<feature
+      id="org.springframework.ide.eclipse.boot.dash.feature"
+      label="%featureName"
+      version="3.9.13.202006180736-RELEASE"
+      provider-name="%providerName"
+      plugin="org.springframework.ide.eclipse">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseUrl">
+      %license
+   </license>
+
+   <plugin
+         id="org.springframework.ide.eclipse.boot.dash"
+         download-size="893"
+         install-size="1869"
+         version="3.9.13.202006180736-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.boot.dash.cf"
+         download-size="644"
+         install-size="1420"
+         version="3.9.13.202006180736-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.boot.refactoring"
+         download-size="32"
+         install-size="67"
+         version="3.9.13.202006180736-RELEASE"
+         unpack="false"/>
+         
+   <plugin
+         id="org.springframework.ide.eclipse.editor.support"
+         download-size="272"
+         install-size="594"
+         version="3.9.13.202006180736-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springframework.ide.eclipse.beans.ui.live"
+         download-size="49"
+         install-size="88"
+         version="3.9.13.202006180736-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springsource.ide.eclipse.commons.cloudfoundry.client.v2"
+         download-size="15742"
+         install-size="17747"
+         version="3.9.13.202006180736-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="io.projectreactor.reactor-core"
+         download-size="1563"
+         install-size="3571"
+         version="3.3.1.202003091750-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.reactivestreams.reactive-streams"
+         download-size="15"
+         install-size="28"
+         version="1.0.3"
+         unpack="false"/>
+
+   <plugin
+         id="org.springsource.ide.eclipse.commons.jdk_tools"
+         download-size="6"
+         install-size="9"
+         version="3.9.13.202006180733-RELEASE"
+         unpack="false"/>
+
+</feature>

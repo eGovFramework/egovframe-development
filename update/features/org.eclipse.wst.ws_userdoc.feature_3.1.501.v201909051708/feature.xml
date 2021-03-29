@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.wst.ws_userdoc.feature"
+      label="%featureName"
+      version="3.1.501.v201909051708"
+      provider-name="%providerName">
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.eclipse.wst.wsdl.ui.doc.user"
+         download-size="88"
+         install-size="161"
+         version="1.0.850.v201903222115"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.wst.wsi.ui.doc.user"
+         download-size="51"
+         install-size="70"
+         version="1.0.750.v201903222115"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.wst.command.env.doc.user"
+         download-size="38"
+         install-size="86"
+         version="1.5.400.v201903222115"
+         unpack="false"/>
+
+</feature>

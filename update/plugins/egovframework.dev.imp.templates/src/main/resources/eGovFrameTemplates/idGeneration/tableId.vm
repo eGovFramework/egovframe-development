@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+   <bean name="${txtIdServiceName}" class="egovframework.rte.fdl.idgnr.impl.EgovTableIdGnrService" 
+                           destroy-method="destroy">
+      <property name="dataSource" ref="${txtDatasourceName}"/>
+      <property name="table"	  value="${txtTableId}"/>
+      <property name="tableName"  value="${txtTableName}"/>	
+      <property name="blockSize" value="${txtBlockSize}"/>
+#if(${chkStrategy}) 
+      <property name="strategy" ref="${txtStrategyName}"/>
+#end      
+   </bean>	
+
+#if(${chkStrategy}) 
+   <bean name="${txtStrategyName}" class="egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl">
+      <property name="prefix" value="${txtPrefix}"/>
+      <property name="cipers" value="${txtCipers}"/>
+      <property name="fillChar" value="${txtFillChar}"/>
+   </bean>
+
+#end      
+</beans>   
