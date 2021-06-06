@@ -1,2 +1,0 @@
-<bean name="UUIdGenerationServiceWithoutAddress" class="egovframework.rte.fdl.idgnr.impl.EgovUUIdGnrService">
-</bean>
