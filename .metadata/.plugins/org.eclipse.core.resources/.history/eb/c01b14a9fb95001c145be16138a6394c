@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>New File Appender</title>
+
+		<component-page required="true">
+			<!-- NewFileAppender	New File Appender -->
+			<description>Create File Appender</description>
+			<group label="Generation File" required="true">
+				<container name="txtPath" label="File Path: " required="true"
+					type="folder" value="" /> <!-- #webroot -->
+				<textfield name="txtFileName" label="File Name: "
+					required="true" value="" />
+			</group>
+			<group label="Configuration" required="true">
+				<textfield name="txtAppenderName" label="Appedner Name: "
+					required="true" value="" />
+				<textfield name="txtLogFileName" label="Log File Name: "
+					required="true" value="./logs/file/sample.log" />
+				<combo name="cboAppend" label="Append: " required="true"
+					value="true">
+					<elements>
+						<option>true</option>
+						<option>false</option>
+					</elements>
+				</combo>
+				<textfield name="txtConversionPattern" label="Conversion Pattern: "
+					required="true" value="%d %5p [%c] %m%n" />
+			</group>
+		</component-page>
+
+		<output>
+			<template component="txtFileName" velocity="file.vm"
+				extension="xml" container="txtPath" />
+		</output>
+	</wizard>
+</EclipseWork>

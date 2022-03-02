@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>New Method Invoking Job</title>
+
+		<component-page required="true">
+			<!-- NewMethodInvokingJob	New Method Invoking Job -->
+			<description>Create Method Invoking Job</description>
+			<group label="Generation File" required="true">
+				<container name="txtPath" label="File Path: " required="true"
+					type="folder" value="" />
+				<textfield name="txtFileName" label="File Name: "
+					required="true" value="" />
+			</group>
+			<group label="Job Configuration" required="true">
+				<textfield name="txtJobName" label="Job Name: " required="true"
+					value="" />
+				<combo name="cboConcurrent" label="Concurrent: " required="true"
+					value="false">
+					<elements>
+						<option>true</option>
+						<option>false</option>
+					</elements>
+				</combo>
+			</group>
+			<group label="Service Configuration" required="true">
+				<textfield name="txtServiceName" label="Service Name: "
+					required="true" value="" />
+				<type name="txtServiceClass" label="Service Class: " required="true" />
+				<textfield name="txtServiceMethod" label="Service Method: "
+					required="true" value="" />
+				<group label="Property" required="true" checkbox="chkProperty">
+					<checkbox name="chkProperty" label="property: " value="true"
+						required="true" />
+					<textfield name="txtPropertyName" label="name: " required="true" />
+					<textfield name="txtPropertyValue" label="value: " required="true" />
+				</group>
+			
+			</group>
+		</component-page>
+
+		<output>
+			<template component="txtFileName" velocity="methodJob.vm"
+				extension="xml" container="txtPath" />
+		</output>
+	</wizard>
+</EclipseWork>

@@ -1,0 +1,6 @@
+txtAppenderName=appender1
+txtDriver=hsql.driver
+txtUrl=hsql://localhost
+txtUser=sa
+txtPasswd=1
+txtQuery=insert into STMR_LOG (msg) values('%d %p [%c] - &lt;%m&gt;%n')

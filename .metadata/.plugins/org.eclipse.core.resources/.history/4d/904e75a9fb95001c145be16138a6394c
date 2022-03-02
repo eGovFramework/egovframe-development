@@ -1,0 +1,12 @@
+<appender name="${appenderName}" class="org.apache.log4j.jdbc.JDBCAppender">
+	<!-- JDBC Driver를 정의하기 위한 parameter -->
+	<param name="Driver" value="${driver}"/>
+	<!-- DB URL을 정의하기 위한 parameter -->
+	<param name="URL" value="${url}"/>
+	<!-- DB User를 정의하기 위한 parameter -->
+	<param name="User" value="${user}"/>
+	<!-- DB Password를 정의하기 위한 parameter -->
+	<param name="Password" value="${password}"/>
+	<!-- 로그를 남길때 수행할 쿼리를 정의하기 위한 parameter -->
+	<param name="Sql" value="${sql}"/>
+</appender>

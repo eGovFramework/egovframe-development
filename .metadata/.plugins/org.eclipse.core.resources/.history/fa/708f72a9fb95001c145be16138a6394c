@@ -1,0 +1,6 @@
+<appender name="${appenderName}" class="org.apache.log4j.ConsoleAppender">
+	<!-- ref.) attr : Encoding, ImmediateFlush, Target, Threshold -->
+	<layout class="org.apache.log4j.PatternLayout">
+		<param name="ConversionPattern" value="${pattern}" />
+	</layout>
+</appender>

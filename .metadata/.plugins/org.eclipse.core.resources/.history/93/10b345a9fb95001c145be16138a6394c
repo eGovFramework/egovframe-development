@@ -1,0 +1,5 @@
+txtDatasourceName=ds1
+txtJndiName=jndi1
+cboResourceRef=true
+txtInitialFactory=factory
+txtProviderUrl=http://localhost/

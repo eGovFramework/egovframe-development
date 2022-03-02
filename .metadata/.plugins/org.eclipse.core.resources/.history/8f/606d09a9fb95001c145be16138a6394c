@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>New JNDI DataSource</title>
+
+		<component-page required="true">
+			<!-- NewJndiDataSource	New JNDI DataSource -->
+			<description>Create JNDI DataSource</description>
+			<group label="Generation File" required="true">
+				<container name="txtPath" label="File Path: " required="true"
+					type="folder" value="" /> <!-- #webroot -->
+				<textfield name="txtFileName" label="File Name: "
+					required="true" value="" />
+			</group>
+			<group>
+				<radio name="rdoType" label="WAS: " value="Jeus" required="true" listener="true">
+					<elements>
+						<option>Jeus</option>
+						<option>Weblogic</option>
+					</elements>
+				</radio>
+				<textfield name="txtDatasourceName" label="DataSource Name:" required="true" />
+				<textfield name="txtJndiName" label="JNDI Name: " required="true" />
+				
+				<textfield name="txtFactoryInitial" label="Factory Initial: " required="true" radio="Jeus"/>
+				<textfield name="txtProviderUrl" label="Provider Url: " required="true"  radio="Jeus"/>
+				<textfield name="txtPropertiesLocation" label="Properties Location: " required="true"  radio="Weblogic" value="classpath:"/>
+								
+			</group>
+			
+		</component-page>
+
+   	    <output>
+			<template component="txtFileName" velocity="jeus.vm"
+				extension="xml" container="txtPath">
+				<condition variable="rdoType" value="Jeus" />
+			</template>
+
+			<template component="txtFileName" velocity="weblogic.vm"
+				extension="xml" container="txtPath">
+				<condition variable="rdoType" value="Weblogic" />
+			</template>
+		</output>
+	</wizard>
+</EclipseWork>

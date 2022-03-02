@@ -330,10 +330,8 @@ public abstract class MobileProjectCreationOperation implements
     /**
      * 스프링 네이처 추가
      */
-    private void createSpringNature(IProgressMonitor monitor)
-            throws CoreException {
-        MoblieIdeUtils.addNatureToProject(getProject(),
-            "org.springframework.ide.eclipse.core.springnature", monitor);
+    private void createSpringNature(IProgressMonitor monitor) throws CoreException {
+        //MoblieIdeUtils.addNatureToProject(getProject(), "org.springframework.ide.eclipse.core.springnature", monitor);
     }
 
     /**

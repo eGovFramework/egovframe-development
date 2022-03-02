@@ -640,7 +640,9 @@ public class ComResourceUtils{
 			Node rootNode = XmlUtil.getRootNode(new File(container.getProject().getFile("pom.xml").getLocation().toOSString()));
 			NodeList oriNodes = XmlUtil.getNodeList(rootNode, "/project/dependencies/dependency");
 	    	
-			File file = new File("pom.xml");
+			//pom.xml 생성 오류로 인하여 임시폴더에 pom.xml 파일 생성함. (2021-04-26)
+			File tempDir = new File(System.getProperty("java.io.tmpdir"));
+			File file = new File(tempDir + File.separator + "pom.xml");
 			OutputStream os = new FileOutputStream(file);
 			byte[] buf = new byte[1024];
 			int len=0;

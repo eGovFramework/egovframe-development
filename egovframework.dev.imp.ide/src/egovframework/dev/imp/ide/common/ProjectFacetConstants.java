@@ -34,7 +34,7 @@ public class ProjectFacetConstants {
     /** 기본 자바 버젼 */
     public static final String DEFAULT_JAVA_VERSION = "1.8";  //Project Facet - Java : 1.3 , 1.4 , 1.5 , 1.6 , 1.7 , 1.8 , 9 , 10
     /** 기본 서블릿 버젼 */
-    public static final String DEFAULT_SERVLET_VERSION = "2.5"; 
+    public static final String DEFAULT_SERVLET_VERSION = "3.1"; 
     /** 자바 패싯 아이디 */
     public static final String JAVA_FACET_ID = "jst.java"; 
     /** 웹 패싯 아이디 */

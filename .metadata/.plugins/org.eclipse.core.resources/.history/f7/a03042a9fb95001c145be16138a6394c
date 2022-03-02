@@ -1,0 +1,5 @@
+txtJobName=job1
+txtServiceClass=javax.swing.text.DefaultHighlighter$SafeDamager
+txtPropertyName=property1
+txtPropertyValue=12000
+chkProperty=true

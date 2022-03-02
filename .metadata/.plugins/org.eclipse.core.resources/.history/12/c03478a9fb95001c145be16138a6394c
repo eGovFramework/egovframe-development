@@ -1,0 +1,10 @@
+<bean id="${serviceName}" class="${serviceClass}">
+	<property name="name" value="FactoryBean"/>
+</bean>
+ 
+<bean id="${jobDetailFactoryBeanName}"
+	class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+	<property name="targetObject" ref="${serviceName}" />
+	<property name="targetMethod" value="${methodName}" />
+	<property name="concurrent" value="false" />
+</bean>

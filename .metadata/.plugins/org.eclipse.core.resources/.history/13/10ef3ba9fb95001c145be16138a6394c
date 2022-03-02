@@ -1,0 +1,3 @@
+txtIdServiceName=idservice
+txtDatasourceName=ds1
+txtQuery=select seq from tbl_seq

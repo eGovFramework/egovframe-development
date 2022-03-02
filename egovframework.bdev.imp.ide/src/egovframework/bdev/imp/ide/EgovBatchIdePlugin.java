@@ -206,7 +206,6 @@ public class EgovBatchIdePlugin extends AbstractUIPlugin {
     public String getInstalledPath() {
         String path = ""; 
         try {
-        	
         	//기존 플러그인 설치 경로 확인 오류
             //URL url = Platform.resolve(getDefault().getDescriptor().getInstallURL());        	
         	  

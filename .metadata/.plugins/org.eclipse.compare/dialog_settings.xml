@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ResizableDialogBounds">
+		<item key="x" value="2480"/>
+		<item key="y" value="120"/>
+		<item key="width" value="800"/>
+		<item key="height" value="600"/>
+	</section>
+</section>

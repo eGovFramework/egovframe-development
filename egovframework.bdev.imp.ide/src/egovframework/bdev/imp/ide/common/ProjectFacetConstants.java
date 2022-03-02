@@ -34,7 +34,7 @@ public class ProjectFacetConstants {
     /** 기본 자바 버젼 */
     public static final String DEFAULT_JAVA_VERSION = "1.8";  //Project Facet - Java : 1.3 , 1.4 , 1.5 , 1.6 , 1.7 , 1.8 , 9 , 10
     /** 기본 서블릿 버젼 */
-    public static final String DEFAULT_SERVLET_VERSION = "2.5"; 
+    public static final String DEFAULT_SERVLET_VERSION = "3.1"; 
     /** 자바 패싯 아이디 */
     public static final String JAVA_FACET_ID = "jst.java"; 
     /** 웹 패싯 아이디 */
@@ -44,7 +44,7 @@ public class ProjectFacetConstants {
     public static final String MAVEN2_CLASSPATH_CONTAINER_ID = "org.maven.ide.eclipse.MAVEN2_CLASSPATH_CONTAINER";
     public static final String MAVEN3_CLASSPATH_CONTAINER_ID = "org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER";
     /** 메이블 네이처 아이디 */
-    public static final String MAVEN2_NATURE_ID = "org.maven.ide.eclipse.maven2Nature"; 
+    public static final String MAVEN2_NATURE_ID = "org.maven.ide.eclipse.maven2Nature";
     public static final String MAVEN3_NATURE_ID = "org.eclipse.m2e.core.maven2Nature";
     
     /** 메이븐 feature id */

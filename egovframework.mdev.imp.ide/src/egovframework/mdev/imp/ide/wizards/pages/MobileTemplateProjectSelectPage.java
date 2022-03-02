@@ -95,6 +95,7 @@ public class MobileTemplateProjectSelectPage extends WizardPage{
 		radioAllInOne = new Button(parent, SWT.RADIO);
 		radioAllInOne.setText(MoblieIdeMessages.wizardsPagesTemplateMProjectCreationPage11);
 		radioAllInOne.setLayoutData(simple);
+		radioAllInOne.setSelection(true);
 		
 		createSeparator(parent);
 		
@@ -109,9 +110,9 @@ public class MobileTemplateProjectSelectPage extends WizardPage{
 		/**
 		 * Default setting : all-in-one template
 		 */
-		//context.setDefaultExampleFile(MobileExampleInfo.templateAllInOneExample);
+		context.setDefaultExampleFile(MobileExampleInfo.templateAllInOneExample);
 		//context.setPomFileName(MobileExampleInfo.allInOnePomFile);
-		//context.setTemplateProjectTitle(MoblieIdeMessages.MobileTemplateProjectSelectPage4); //$NON-NLS-1$
+		context.setTemplateProjectTitle(MoblieIdeMessages.MobileTemplateProjectSelectPage4); //$NON-NLS-1$
 		
 	}
 	

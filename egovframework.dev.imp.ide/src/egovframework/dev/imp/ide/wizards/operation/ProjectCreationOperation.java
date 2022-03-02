@@ -294,7 +294,7 @@ public abstract class ProjectCreationOperation implements IRunnableWithProgress,
 	 * 스프링 네이처 추가
 	 */
 	private void createSpringNature(IProgressMonitor monitor) throws CoreException {
-		IdeUtils.addNatureToProject(getProject(), "org.springframework.ide.eclipse.core.springnature", monitor);
+		//IdeUtils.addNatureToProject(getProject(), "org.springframework.ide.eclipse.core.springnature", monitor);
 	}
 
 	/**

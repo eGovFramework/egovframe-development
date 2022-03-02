@@ -1,0 +1,6 @@
+<bean name="UUIdGenerationService" class="egovframework.rte.fdl.idgnr.impl.EgovUUIdGnrService">
+    <property name="address">
+        <value>${macAddress}</value>
+    </property>				
+</bean>
+

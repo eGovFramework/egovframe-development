@@ -1,41 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <libraryInfos>
-<libraryInfo home="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09\jre" version="1.8.0_252">
-<bootpath>
-<entry path="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09\jre\lib\resources.jar"/>
-<entry path="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09\jre\lib\rt.jar"/>
-<entry path="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09\jre\lib\sunrsasign.jar"/>
-<entry path="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09\jre\lib\jsse.jar"/>
-<entry path="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09\jre\lib\jce.jar"/>
-<entry path="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09\jre\lib\charsets.jar"/>
-<entry path="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09\jre\lib\jfr.jar"/>
-<entry path="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09\jre\classes"/>
-</bootpath>
-<extensionDirs>
-<entry path="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09\jre\lib\ext"/>
-<entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
-</extensionDirs>
-<endorsedDirs>
-<entry path="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09\jre\lib\endorsed"/>
-</endorsedDirs>
-</libraryInfo>
-<libraryInfo home="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09" version="1.8.0_252">
-<bootpath>
-<entry path="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09\jre\lib\resources.jar"/>
-<entry path="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09\jre\lib\rt.jar"/>
-<entry path="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09\jre\lib\sunrsasign.jar"/>
-<entry path="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09\jre\lib\jsse.jar"/>
-<entry path="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09\jre\lib\jce.jar"/>
-<entry path="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09\jre\lib\charsets.jar"/>
-<entry path="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09\jre\lib\jfr.jar"/>
-<entry path="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09\jre\classes"/>
-</bootpath>
-<extensionDirs>
-<entry path="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09\jre\lib\ext"/>
-<entry path="C:\WINDOWS\Sun\Java\lib\ext"/>
-</extensionDirs>
-<endorsedDirs>
-<entry path="D:\eclipse-rcp-2020-06-R-win32-x86_64\bin\jdk8u252-b09\jre\lib\endorsed"/>
-</endorsedDirs>
-</libraryInfo>
+    <libraryInfo home="D:\Devs\Java\jdk-11.0.5" version="11.0.5"/>
 </libraryInfos>

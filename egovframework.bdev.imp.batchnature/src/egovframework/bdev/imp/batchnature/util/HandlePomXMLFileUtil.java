@@ -153,7 +153,7 @@ public class HandlePomXMLFileUtil {
 						"<dependency>" 
 						+ "\n\t\t\t<groupId>" + "egovframework.rte" + "</groupId>"
 						+ "\n\t\t\t<artifactId>" + "egovframework.rte.bat.core" + "</artifactId>" 
-						+ "\n\t\t\t<version>" + "3.10.0" + "</version>\n\t\t"
+						+ "\n\t\t\t<version>" + "4.0.0" + "</version>\n\t\t"
 						+ "</dependency>"
 						+ "\n ";
 

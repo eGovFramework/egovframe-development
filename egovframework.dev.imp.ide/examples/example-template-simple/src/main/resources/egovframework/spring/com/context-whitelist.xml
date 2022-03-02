@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+               http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+               http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
+
+	<!-- /EgovPageLink.do 화이트 리스트 처리 (대상목록) -->
+	<util:list id="egovPageLinkWhitelist" value-type="java.lang.String">
+		<value>main/inc/EgovIncHeader</value>
+		<value>main/inc/EgovIncTopnav</value>
+		<value>main/inc/EgovIncLeftmenu</value>
+		<value>main/inc/EgovIncFooter</value>
+		<value>main/sample_menu/Intro</value>
+		<value>main/sample_menu/EgovDownloadDetail</value>
+		<value>main/sample_menu/EgovDownloadModify</value>
+		<value>main/sample_menu/EgovQADetail</value>
+		<value>main/sample_menu/EgovServiceInfo</value>
+		<value>main/sample_menu/EgovAboutSite</value>
+		<value>main/sample_menu/EgovHistory</value>
+		<value>main/sample_menu/EgovOrganization</value>
+		<value>main/sample_menu/EgovLocation</value>
+		<value>main/sample_menu/EgovProductInfo</value>
+		<value>main/sample_menu/EgovProductInfo</value>
+		<value>main/sample_menu/EgovServiceInfo</value>
+		<value>main/sample_menu/EgovDownload</value>
+		<value>main/sample_menu/EgovQA</value>
+		<value>main/sample_menu/EgovService</value>
+	</util:list>
+
+</beans>

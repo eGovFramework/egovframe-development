@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>New Property</title>
+
+		<component-page required="true">
+			<!-- NewProperty	New Property -->
+			<description>Create Property</description>
+			<group label="Generation File" required="true">
+				<container name="txtPath" label="File Path: " required="true"
+					type="folder" value="" />
+				<textfield name="txtFileName" label="File Name: "
+					required="true" value="" />
+			</group>
+			<group label="Configuration" required="true">
+				<radio name="rdoType" label="Internal or External" value="Internal Properties" required="true"
+					listener="true">
+					<elements>
+						<option>Internal Properties</option>
+						<option>External File</option>
+					</elements>
+				</radio>
+
+				<textfield name="txtPropertyServiceName" label="Property Service Name: "
+					required="true" value="" />
+
+				<textfield name="txtKey" label="Key: " required="true"
+					radio="Internal Properties" />
+				<textfield name="txtValue" label="Value: " required="true"
+					radio="Internal Properties" />
+				
+				<combo name="cboEncoding" label="Encoding: " required=""
+					value="UTF-8" radio="External File">
+					<elements>
+						<option>ISO-8859-1</option>
+						<option>MS949</option>
+						<option>US-ASCII</option>
+						<option>UTF-16</option>
+						<option>UTF-16BE</option>
+						<option>UTF-16LE</option>
+						<option>UTF-8</option>
+					</elements>
+				</combo>					
+				<textfield name="txtPropertyFile" label="Property File: " value="classpath*:" required="true"
+					radio="External File" />
+			</group>
+		</component-page>
+
+		<output>
+			<template component="txtFileName" velocity="property.vm"
+				extension="xml" container="txtPath">
+			</template>
+		</output>
+	</wizard>
+</EclipseWork>

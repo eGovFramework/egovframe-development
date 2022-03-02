@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>New eGovJDBC Appender</title>
+
+		<component-page required="true">
+			<!-- NeweGovJdbcAppender	New eGovJDBC Appender -->
+			<description>Create eGovJDBC Appender</description>
+			<group label="Generation File" required="true">
+				<container name="txtPath" label="File Path: " required="true"
+					type="folder" value="" /> <!-- #webroot -->
+				<textfield name="txtFileName" label="File Name: "
+					required="true" value="" />
+			</group>
+			<group label="Configuration" required="true">
+				<textfield name="txtAppenderName" label="Appender Name: "
+					required="true" value="" />
+				<checkbox name="chkLocationInfo" label="Location Info: "
+					value="true" required="true" />					
+			</group>
+		</component-page>
+
+		<output>
+			<template component="txtFileName" velocity="egovJdbc.vm"
+				extension="xml" container="txtPath" />
+		</output>
+	</wizard>
+</EclipseWork>

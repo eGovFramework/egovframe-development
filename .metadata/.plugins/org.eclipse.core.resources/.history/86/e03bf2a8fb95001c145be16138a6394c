@@ -1,0 +1,20 @@
+<ehcache>
+    <diskStore path="${txtDiskStore}"/>
+    <defaultCache maxElementsInMemory="${txtDftMaxElements}" 
+                  eternal="${txtDftEternal}" 
+                  timeToIdleSeconds="${txtDftIdelTime}" 
+                  timeToLiveSeconds="${txtDftLiveTime}" 
+                  overflowToDisk="${txtDftOverfow}" 
+                  diskPersistent="${txtDftDiskPersistence}"  
+                  diskExpiryThreadIntervalSeconds="${txtDftDiskExpiry}"/>
+ 
+    <cache name="${txtCacheName}"
+           maxElementsInMemory="${txtMaxElements}"
+           eternal="${txtEternal}"
+           timeToIdleSeconds="${txtIdleTime}"
+           timeToLiveSeconds="${txtLiveTime}"
+           overflowToDisk="${txtOverflowToDisk}"
+           diskPersistent="${txtDiskPersistent}"  
+           memoryStoreEvictionPolicy="${cboMemoryPolicy}">
+    </cache>    
+</ehcache>

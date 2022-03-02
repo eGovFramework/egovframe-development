@@ -37,7 +37,7 @@ public class ProjectFacetConstants {
     /** 기본 Android 버젼 */
     public static final String ANDROID_JAVA_VERSION = "6.0"; 
     /** 기본 서블릿 버젼 */
-    public static final String DEFAULT_SERVLET_VERSION = "2.5"; 
+    public static final String DEFAULT_SERVLET_VERSION = "3.1"; 
     /** 자바 패싯 아이디 */
     public static final String JAVA_FACET_ID = "jst.java"; 
     /** 웹 패싯 아이디 */

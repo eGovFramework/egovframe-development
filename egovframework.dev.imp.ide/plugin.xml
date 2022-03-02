@@ -5,16 +5,6 @@
          point="org.eclipse.ui.newWizards">
       <wizard
             category="egovframework.dev.imp.core.wizards"
-            class="egovframework.dev.imp.ide.wizards.EgovNewCoreProjectWizard"
-            finalPerspective="egovframework.dev.imp.core.perspectives.egovperspective"
-            hasPages="true"
-            icon="icons/newjprj_c.png"
-            id="egovframework.dev.imp.ide.wizards.egovcoreprojectwizard"
-            name="eGovFrame Core Project"
-            project="true">
-      </wizard>
-      <wizard
-            category="egovframework.dev.imp.core.wizards"
             class="egovframework.dev.imp.ide.wizards.EgovNewWebProjectWizard"
             finalPerspective="egovframework.dev.imp.core.perspectives.egovperspective"
             hasPages="true"
@@ -37,7 +27,6 @@
    
    <extension point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension targetID="egovframework.dev.imp.core.perspectives.egovperspective">
-         <newWizardShortcut id="egovframework.dev.imp.ide.wizards.egovcoreprojectwizard"></newWizardShortcut>
          <newWizardShortcut id="egovframework.dev.imp.ide.wizards.egovtemplateprojectwizard"></newWizardShortcut>
          <newWizardShortcut id="egovframework.dev.imp.ide.wizards.egovwebprojectwizard"></newWizardShortcut>
       </perspectiveExtension>
@@ -84,11 +73,6 @@
       </command>
       <command
             categoryId="egovframework.dev.imp.ide.commands.category"
-            id="egovframework.dev.imp.ide.commands.newCoreProject"
-            name="New Core Project">
-      </command>
-      <command
-            categoryId="egovframework.dev.imp.ide.commands.category"
             id="egovframework.dev.imp.ide.commands.newWebProject"
             name="New Web Project">
       </command>
@@ -132,10 +116,6 @@
             commandId="egovframework.dev.imp.ide.commands.newSequenceD">
       </handler>
       <handler
-            class="egovframework.dev.imp.ide.handlers.project.NewCoreProject"
-            commandId="egovframework.dev.imp.ide.commands.newCoreProject">
-      </handler>
-      <handler
             class="egovframework.dev.imp.ide.handlers.project.NewWebProject"
             commandId="egovframework.dev.imp.ide.commands.newWebProject">
       </handler>
@@ -159,10 +139,6 @@
    <extension point="org.eclipse.ui.menus">
       <menuContribution locationURI="menu:egovframework.dev.imp.core.menu.start?before=egovframework.mdev.imp.ide.commands.newMobileWebProject">
          
-         <command
-               commandId="egovframework.dev.imp.ide.commands.newCoreProject"
-               mnemonic="C">
-         </command>
          <command
                commandId="egovframework.dev.imp.ide.commands.newWebProject"
                mnemonic="T">

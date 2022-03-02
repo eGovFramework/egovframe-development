@@ -153,7 +153,7 @@ public class GenerateJobTestFileUtil {
 			"import org.springframework.beans.factory.annotation.Qualifier;\n" +
 			"import org.springframework.test.context.ContextConfiguration;\n" +
 			"import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;\n" +
-			"import egovframework.rte.bat.core.launch.support.EgovBatchRunner;\n" +
+			"import org.egovframe.rte.bat.core.launch.support.EgovBatchRunner;\n" +
 			"@RunWith(SpringJUnit4ClassRunner.class)\n\n";
 		
 		String annotation = "/** \n * Test File Information \n"+

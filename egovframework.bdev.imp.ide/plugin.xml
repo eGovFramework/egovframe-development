@@ -3,7 +3,6 @@
 <plugin>
 	<extension
          point="org.eclipse.ui.newWizards">
-      	
       	<wizard
              category="egovframework.dev.imp.core.wizards"
              class="egovframework.bdev.imp.ide.com.wizards.EgovNewBatchTemplateProjectWizard"
@@ -37,11 +36,10 @@
 
    <extension
          point="org.eclipse.ui.commands">
-
       <command
             categoryId="egovframework.dev.imp.ide.commands.category"
             id="egovframework.bdev.imp.ide.commands.newBatchTemplateProject"
-            name="New Batch Template Project">
+            name="New Boot Batch Template Project">
       </command>
       
       <command
@@ -63,7 +61,6 @@
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
- 
       <handler
       		class="egovframework.bdev.imp.ide.com.handlers.project.NewBatchTemplateProject"
             commandId="egovframework.bdev.imp.ide.commands.newBatchTemplateProject">
@@ -124,11 +121,10 @@
       </menuContribution>
    </extension>
    
-   <extension
-         point="org.eclipse.ui.perspectiveExtensions">
+   
+   <extension point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension targetID="egovframework.dev.imp.core.perspectives.egovperspective">
-      	<newWizardShortcut id="egovframework.bdev.imp.ide.wizards.egovbatchtemplateprojectwizard">
-         </newWizardShortcut>
+         <newWizardShortcut id="egovframework.bdev.imp.ide.wizards.egovbatchtemplateprojectwizard"></newWizardShortcut>
       </perspectiveExtension>
    </extension>
 

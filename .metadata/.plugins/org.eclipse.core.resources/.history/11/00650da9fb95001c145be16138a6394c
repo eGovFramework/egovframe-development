@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>New Table ID Generation</title>
+
+		<component-page required="true">
+			<!-- NewTableIdGen	New Table ID Generation -->
+			<description>Create Table ID Generation</description>
+			<group label="Generation File" required="true">
+				<container name="txtPath" label="File Path: " required="true"
+					type="folder" value="" /> <!-- #webroot -->
+				<textfield name="txtFileName" label="File Name: "
+					required="true" value="" />
+			</group>
+			<group label="Configuration"  required="true">
+				<textfield name="txtIdServiceName" label="ID Service Name: "
+					required="true" value="" />			
+				<textfield name="txtDatasourceName" label="DataSource Name: "
+					required="true" value="" />
+				<textfield name="txtTableId" label="Table: " required="true" />
+				<textfield name="txtTableName" label="Table Name: "
+					required="true" />
+				<textfield name="txtBlockSize" label="Block Size: "
+					required="true" />
+
+			</group>
+			<group label="Strategy" checkbox="chkStrategy"  required="true">
+				<checkbox name="chkStrategy" label="Use Strategy: " value="false"
+					required="true" />
+				<textfield name="txtStrategyName" label="Strategy Name: " required="true" />					
+				<textfield name="txtPrefix" label="Prefix: " required="true" />
+				<textfield name="txtCipers" label="Cipers: " required="true" />
+				<textfield name="txtFillChar" label="Fill Char: "
+					required="true" />
+			</group>
+		</component-page>
+
+		<output>
+			<template component="txtFileName" velocity="tableId.vm"
+				extension="xml" container="txtPath">
+			</template>
+		</output>
+
+	</wizard>
+</EclipseWork>

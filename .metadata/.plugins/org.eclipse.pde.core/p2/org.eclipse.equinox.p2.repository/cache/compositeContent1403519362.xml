@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<?compositeMetadataRepository version="1.0.0"?> 
+<repository name="&quot;Jetty WTP Adaptor&quot;"
+    type="org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository" version="1.0.0"> 
+  <properties size="1"> 
+    <property name="p2.timestamp" value="1311717888"/> 
+  </properties> 
+  <children size="10"> 
+    <child location="1.0.0.201108021218"/>
+    <child location="1.0.0.201107261728"/>
+    <child location="1.0.0.201107261636"/>
+    <child location="1.0.0.201107211531"/>
+    <child location="1.0.0.201107011148"/>
+    <child location="1.0.0.201106170956"/>
+    <child location="1.0.0.201011170957"/>
+    <child location="1.0.0.201012081212"/>
+    <child location="1.0.0.201012221052"/>
+    <child location="1.0.0.201203011137"/>
+  </children> 
+</repository> 

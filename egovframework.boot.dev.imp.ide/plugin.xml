@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="egovframework.dev.imp.core.wizards"
+            class="egovframework.boot.dev.imp.ide.wizards.EgovNewBootWebProjectWizard"
+            finalPerspective="egovframework.dev.imp.core.perspectives.egovperspective"
+            hasPages="true"
+            icon="icons/newjprj_c.png"
+            id="egovframework.boot.dev.imp.ide.wizards.egovbootwebprojectwizard"
+            name="eGovFrame Boot Web Project"
+            project="true">
+      </wizard>
+      <wizard
+            category="egovframework.dev.imp.core.wizards"
+            class="egovframework.boot.dev.imp.ide.wizards.EgovNewBootTemplateProjectWizard"
+            finalPerspective="egovframework.dev.imp.core.perspectives.egovperspective"
+            hasPages="true"
+            icon="icons/newtemp_w.png"
+            id="egovframework.boot.dev.imp.ide.wizards.egovboottemplateprojectwizard"
+            name="eGovFrame Boot Template Project"
+            project="true">
+      </wizard>
+       <wizard
+            category="egovframework.dev.imp.core.wizards"
+            class="egovframework.boot.dev.imp.ide.wizards.EgovNewMsaTemplateProjectWizard"
+            finalPerspective="egovframework.dev.imp.core.perspectives.egovperspective"
+            hasPages="true"
+            icon="icons/newtemp_w.png"
+            id="egovframework.boot.dev.imp.ide.wizards.egovmsatemplateprojectwizard"
+            name="eGovFrame MSA Boot Template Project"
+            project="true">
+      </wizard>
+   </extension>
+   
+   <extension point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension targetID="egovframework.dev.imp.core.perspectives.egovperspective">
+         <newWizardShortcut id="egovframework.boot.dev.imp.ide.wizards.egovbootwebprojectwizard"></newWizardShortcut>
+         <newWizardShortcut id="egovframework.boot.dev.imp.ide.wizards.egovboottemplateprojectwizard"></newWizardShortcut>
+         <newWizardShortcut id="egovframework.boot.dev.imp.ide.wizards.egovmsatemplateprojectwizard"></newWizardShortcut>
+      </perspectiveExtension>
+   </extension>
+   
+   <extension
+         id="egovframework.boot.dev.imp.ide.natures.egovnature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="egovframework.boot.dev.imp.ide.natures.EgovBootNature">
+         </run>
+      </runtime>
+   </extension>
+   <extension
+         point="org.eclipse.ui.ide.projectNatureImages">
+      <image
+            icon="icons/egov_ovr.gif"
+            id="egovframework.boot.dev.imp.ide.images.egovnatureimage"
+            natureId="egovframework.boot.dev.imp.ide.natures.egovnature">
+      </image>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.boot.dev.imp.ide.commands.newBootWebProject"
+            name="New Boot Web Project">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.boot.dev.imp.ide.commands.newBootTemplateProject"
+            name="New Boot Template Project">
+      </command>
+      <command
+            categoryId="egovframework.dev.imp.ide.commands.category"
+            id="egovframework.boot.dev.imp.ide.commands.newMsaTemplateProject"
+            name="New MSA Boot Template Project">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+       <handler
+            class="egovframework.boot.dev.imp.ide.handlers.project.NewBootWebProject"
+            commandId="egovframework.boot.dev.imp.ide.commands.newBootWebProject">
+      </handler>
+      <handler
+            class="egovframework.boot.dev.imp.ide.handlers.project.NewBootTemplateProject"
+            commandId="egovframework.boot.dev.imp.ide.commands.newBootTemplateProject">
+      </handler>
+      <handler
+            class="egovframework.boot.dev.imp.ide.handlers.project.NewMsaTemplateProject"
+            commandId="egovframework.boot.dev.imp.ide.commands.newMsaTemplateProject">
+      </handler>
+   </extension>
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution locationURI="menu:egovframework.dev.imp.core.menu.start?after=additions">
+         <command
+               commandId="egovframework.boot.dev.imp.ide.commands.newBootWebProject"
+               mnemonic="W">
+         </command>
+         <command
+               commandId="egovframework.boot.dev.imp.ide.commands.newBootTemplateProject"
+               mnemonic="V">
+         </command>
+          <command
+               commandId="egovframework.boot.dev.imp.ide.commands.newMsaTemplateProject"
+               mnemonic="M">
+         </command>
+         <separator
+               name="egovframework.dev.imp.seperator2"
+               visible="true">
+         </separator>
+      </menuContribution>
+   </extension>
+
+</plugin>

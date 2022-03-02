@@ -1,0 +1,11 @@
+<bean id="${transactionManager}" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+   <property name="dataSource" ref="${dataSource}"/>
+</bean>
+ 
+<bean id="${dataSource}" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+   <property name="driverClassName" value="${driver}"/>
+   <property name="url" value="${url}"/>
+   <property name="username" value="${user}"/>
+   <property name="password" value="${password}"/>
+   <property name="defaultAutoCommit" value="${defaultAutoCommit}"/>
+</bean>

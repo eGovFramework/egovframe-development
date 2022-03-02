@@ -15,10 +15,9 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
-
     <properties>
-        <spring.maven.artifact.version>4.3.25.RELEASE</spring.maven.artifact.version>
-        <egovframework.rte.version>3.10.0</egovframework.rte.version>
+        <spring.maven.artifact.version>5.3.6</spring.maven.artifact.version>
+        <org.egovframe.rte.version>4.0.0</org.egovframe.rte.version>
     </properties>
 
     <repositories>
@@ -34,7 +33,7 @@
         </repository>
         <repository>
 			<id>egovframe</id>
-			<url>http://maven.egovframe.go.kr/maven/</url>
+			<url>https://maven.egovframe.go.kr/maven/</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
@@ -42,53 +41,33 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-        <repository>
-            <id>egovframe_old1</id>
-            <url>http://maven.egovframe.kr:8080/maven/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-                <repository>
-            <id>egovframe_old2</id>
-            <url>http://www.egovframe.go.kr/maven/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
     </repositories>
-
+    
     <dependencies>
         <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.fdl.xml</artifactId>
-            <version>${egovframework.rte.version}</version>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.fdl.xml</artifactId>
+            <version>${org.egovframe.rte.version}</version>
         </dependency>
         <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.psl.dataaccess</artifactId>
-            <version>${egovframework.rte.version}</version>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.psl.dataaccess</artifactId>
+            <version>${org.egovframe.rte.version}</version>
         </dependency>
         <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.fdl.idgnr</artifactId>
-            <version>${egovframework.rte.version}</version>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.fdl.idgnr</artifactId>
+            <version>${org.egovframe.rte.version}</version>
         </dependency>
         <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.fdl.property</artifactId>
-            <version>${egovframework.rte.version}</version>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.fdl.property</artifactId>
+            <version>${org.egovframe.rte.version}</version>
         </dependency>
         <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.ptl.mvc</artifactId>
-            <version>${egovframework.rte.version}</version>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.ptl.mvc</artifactId>
+            <version>${org.egovframe.rte.version}</version>
         </dependency>
 		
         <!-- fileupload -->
@@ -112,28 +91,21 @@
             <version>2.1.14</version>
         </dependency>
          
-       <!-- spring 4.1.2 에서 더 이상 지원하지 않고 com.fasterxml.jackson.core 2.5.1 로 통합되어 지원 됨. 
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-asl</artifactId>
-            <version>1.9.13</version>
-        </dependency>
- 		-->	
 		<dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>2.5.1</version>
+            <version>2.9.10</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>2.5.1</version>
+            <version>2.9.10</version>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.9.10.5</version>
-        </dependency>  
+        </dependency>
         
 		<dependency>
             <groupId>net.sf.json-lib</groupId>
@@ -156,11 +128,11 @@
         <!-- 모바일 신규공통컴포넌트 끝 -->
 
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <scope>provided</scope>
-            <version>2.5</version>
-        </dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+			<scope>test</scope>
+		</dependency>
 
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -168,7 +140,7 @@
             <version>1.2</version>
         </dependency>
 
-        <dependency>
+		<dependency>
 		    <groupId>org.apache.commons</groupId>
 		    <artifactId>commons-dbcp2</artifactId>
 		    <version>2.4.0</version>
@@ -211,26 +183,14 @@
 			<version>5.1.31</version>
 		</dependency>
 
-        <!-- 3rd party 라이브러리로 별도의 설치 필요 -->
-        <!-- GPKI인증서 로그인처리 라이브러리 -->
-        <!-- 공무원이 신청해서 다운로드 받아서 사용(해당 모듈 사용시 주석해제) -->
-        <!--
-        <dependency>
-            <groupId>kr.go.gpki</groupId>
-            <artifactId>libgpkiapi_jni</artifactId>
-            <version>1.4.0.0</version>
-            <scope>system</scope>
-            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/libgpkiapi_jni-1.4.0.0.jar</systemPath>
-        </dependency>
-         -->
         <!-- oracle 10g driver -->
         <!--
         <dependency>
             <groupId>ojdbc</groupId>
             <artifactId>ojdbc</artifactId>
-            <version>14</version>
+            <version>6-11</version>
             <scope>system</scope>
-            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc-14.jar</systemPath>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc6-11.2.0.3.jar</systemPath>
         </dependency>
         -->
         <!-- altibase driver -->
@@ -238,9 +198,9 @@
         <dependency>
             <groupId>altibase</groupId>
             <artifactId>altibase-jdbc-driver</artifactId>
-            <version>5.1.3.18</version>
+            <version>7.1.0</version>
             <scope>system</scope>
-            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/altibase-jdbc-driver-5.1.3.18.jar</systemPath>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/Altibase.jar</systemPath>
         </dependency>
         -->
 
@@ -249,9 +209,9 @@
         <dependency>
             <groupId>com.tmax.tibero</groupId>
             <artifactId>tibero-jdbc</artifactId>
-            <version>3.0</version>
+            <version>5.0</version>
             <scope>system</scope>
-            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/tibero-jdbc-3.0.jar</systemPath>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/tibero5-jdbc.jar</systemPath>
         </dependency>
         -->
 
@@ -260,9 +220,9 @@
         <dependency>
             <groupId>cubrid</groupId>
             <artifactId>cubrid-jdbc</artifactId>
-            <version>8.4</version>
+            <version>10.2</version>
             <scope>system</scope>
-            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/cubrid-jdbc-8.4.jar</systemPath>
+            <systemPath>${basedir}/src/main/webapp/WEB-INF/lib/JDBC-10.2-latest-cubrid.jar</systemPath>
         </dependency>
         -->
         
@@ -272,11 +232,11 @@
 		    <artifactId>gcm-server</artifactId>
 		    <version>1.0.0</version>
 		</dependency>
-        <dependency>
+        <!-- <dependency>
 		    <groupId>com.googlecode.json-simple</groupId>
 		    <artifactId>json-simple</artifactId>
 		    <version>1.1.1</version>
-		</dependency>
+		</dependency> -->
 
         <!-- Apple APNS Push -->
         <dependency>
@@ -321,6 +281,24 @@
 			<version>27.0.1-jre</version>
 		</dependency>
 		<!-- FCM(Firebase Cloud Messaging) 구성 끝  -->
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version> 
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+
+		<!-- <dependency>
+			<groupId>com.fasterxml</groupId>
+			<artifactId>classmate</artifactId>
+			<version>1.3.3</version>
+        </dependency> -->
 
     </dependencies>
 
@@ -380,8 +358,8 @@
 				<!-- PMD manven plugin -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-pmd-plugin</artifactId>
-                    <version>3.12.0</version>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>3.12.0</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -411,8 +389,8 @@
 			<!-- JavaDoc -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.1.1</version>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.1.1</version>
 			</plugin>
 		</plugins>
 	</build>
@@ -422,7 +400,7 @@
 			<plugin>
 			    <groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>3.1.2</version>
 				<reportSets>
 					<reportSet>
 						<id>sunlink</id>

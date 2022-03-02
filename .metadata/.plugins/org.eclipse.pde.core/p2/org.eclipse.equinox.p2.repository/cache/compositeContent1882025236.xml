@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<?compositeMetadataRepository version='1.0.0'?>
+<repository name='Oracle Enterprise Pack for Eclipse' type='org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository' version='1.0.0'>
+    <children>
+        <child location='../12.2.1.8/oxygen/repository'/>
+    </children>
+</repository>

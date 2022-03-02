@@ -23,12 +23,14 @@ public class EgovCorePlugin extends AbstractUIPlugin {
 	
 	public static final String ID_ACTION_SET = IDE_PLUGIN_ID + ".actionSet";
 	
-	/** 기본 프로젝트 마법사 플러그인 */
-    public static final String ID_CORE_PROJECT_WIZARD = IDE_PLUGIN_ID + ".wizards.egovcoreprojectwizard"; 
+	/** 부트 웹 프로젝트 마법사 플러그인 */
+    public static final String ID_BOOTWEB_PROJECT_WIZARD = IDE_PLUGIN_ID + ".wizards.egovbootwebprojectwizard"; 
     /** 웹 프로젝트 마법사 플러그인 */
     public static final String ID_WEB_PROJECT_WIZARD = IDE_PLUGIN_ID + ".wizards.egovwebprojectwizard"; 
     /** 템플릿 프로젝트 마법사 플러그인 */
     public static final String ID_TEMPLATE_PROJECT_WIZARD = IDE_PLUGIN_ID + ".wizards.egovtemplateprojectwizard";
+    /** 부트 템플릿 프로젝트 마법사 플러그인 */
+    public static final String ID_BOOT_TEMPLATE_PROJECT_WIZARD = IDE_PLUGIN_ID + ".wizards.egovboottemplateprojectwizard";
     /** 모바일 웹 프로젝트 마법사 플러그인 */
     public static final String ID_WEB_MOBILE_PROJECT_WIZARD = MOBLIE_IDE_PLUGIN_ID + ".wizards.egovmobliewebprojectwizard";
     /** 모바일 템플릿 프로젝트 마법사 플러그인 */

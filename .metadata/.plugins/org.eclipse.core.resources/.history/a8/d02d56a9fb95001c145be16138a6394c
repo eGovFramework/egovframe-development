@@ -1,0 +1,91 @@
+##
+#set($voPackage="${package}.service")
+#set($voClassName="${entity.pcName}VO")
+#set($daoPackage="${package}.service.impl")
+#set($daoClassName="${entity.pcName}DAO")
+#set($daoName="${entity.ccName}DAO")
+#set($servicePackage="${package}.service")
+#set($serviceClassName="Egov${entity.pcName}Service")
+##
+##
+#set($insertMethodName="insert${entity.pcName}")
+#set($updateMethodName="update${entity.pcName}")
+#set($deleteMethodName="delete${entity.pcName}")
+#set($selectMethodName="select${entity.pcName}")
+#set($selectListMethodName="select${entity.pcName}List")
+#set($selectListTotCntMethodName="select${entity.pcName}ListTotCnt")
+##
+##
+package $servicePackage;
+
+import java.util.List;
+
+import egovframework.rte.cmmn.SampleDefaultVO;
+
+/**
+ * @Class Name : ${serviceClassName}.java
+ * @Description : ${entity.pcName} Business class
+ * @Modification Information
+ * @
+ * @  수정일         수정자                   수정내용
+ * @ -------    --------    ---------------------------
+ * @ ${createDate}    ${author}          최초 생성
+ *
+ *  @author 실행환경 개발팀 ${author}
+ *  @since ${createDate}
+ *  @version 1.0
+ *  @see
+ *  
+ *  Copyright (C) 2009 by MOSPA  All right reserved.
+ */
+public interface $serviceClassName {
+	
+	/**
+	 * ${entity.name}을 등록한다.
+	 * @param vo - 등록할 정보가 담긴 $voClassName
+	 * @return 등록 결과
+	 * @exception Exception
+	 */
+    String $insertMethodName($voClassName vo) throws Exception;
+    
+    /**
+	 * ${entity.name}을 수정한다.
+	 * @param vo - 수정할 정보가 담긴 $voClassName
+	 * @return void형
+	 * @exception Exception
+	 */
+    void $updateMethodName($voClassName vo) throws Exception;
+    
+    /**
+	 * ${entity.name}을 삭제한다.
+	 * @param vo - 삭제할 정보가 담긴 $voClassName
+	 * @return void형 
+	 * @exception Exception
+	 */
+    void $deleteMethodName($voClassName vo) throws Exception;
+    
+    /**
+	 * ${entity.name}을 조회한다.
+	 * @param vo - 조회할 정보가 담긴 $voClassName
+	 * @return 조회한 ${entity.name}
+	 * @exception Exception
+	 */
+    Sample2VO $selectMethodName($voClassName vo) throws Exception;
+    
+    /**
+	 * ${entity.name} 목록을 조회한다.
+	 * @param searchVO - 조회할 정보가 담긴 VO
+	 * @return ${entity.name} 목록
+	 * @exception Exception
+	 */
+    List $selectListMethodName(SampleDefaultVO searchVO) throws Exception;
+    
+    /**
+	 * ${entity.name} 총 갯수를 조회한다.
+	 * @param searchVO - 조회할 정보가 담긴 VO
+	 * @return ${entity.name} 총 갯수
+	 * @exception
+	 */
+    int $selectListTotCntMethodName(SampleDefaultVO searchVO);
+    
+}

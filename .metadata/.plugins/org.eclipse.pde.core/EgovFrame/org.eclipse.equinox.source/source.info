@@ -1,0 +1,15 @@
+#encoding=UTF-8
+#version=1
+io.projectreactor.reactor-core.source,3.3.1.202003091750-RELEASE,file:/C:/eGovFrameDev-4.0.0-64bit/eclipse/plugins/io.projectreactor.reactor-core.source_3.3.1.202003091750-RELEASE.jar,-1,false
+org.reactivestreams.reactive-streams.source,1.0.3,file:/C:/eGovFrameDev-4.0.0-64bit/eclipse/plugins/org.reactivestreams.reactive-streams.source_1.0.3.jar,-1,false
+org.springframework.ide.eclipse.beans.ui.live.source,4.12.0.202109130908,file:/C:/eGovFrameDev-4.0.0-64bit/eclipse/plugins/org.springframework.ide.eclipse.beans.ui.live.source_4.12.0.202109130908.jar,-1,false
+org.springframework.ide.eclipse.boot.dash.cf.source,4.12.0.202109130908,file:/C:/eGovFrameDev-4.0.0-64bit/eclipse/plugins/org.springframework.ide.eclipse.boot.dash.cf.source_4.12.0.202109130908.jar,-1,false
+org.springframework.ide.eclipse.boot.dash.docker.source,4.12.0.202109130908,file:/C:/eGovFrameDev-4.0.0-64bit/eclipse/plugins/org.springframework.ide.eclipse.boot.dash.docker.source_4.12.0.202109130908.jar,-1,false
+org.springframework.ide.eclipse.boot.dash.source,4.12.0.202109130908,file:/C:/eGovFrameDev-4.0.0-64bit/eclipse/plugins/org.springframework.ide.eclipse.boot.dash.source_4.12.0.202109130908.jar,-1,false
+org.springframework.ide.eclipse.boot.refactoring.source,4.12.0.202109130908,file:/C:/eGovFrameDev-4.0.0-64bit/eclipse/plugins/org.springframework.ide.eclipse.boot.refactoring.source_4.12.0.202109130908.jar,-1,false
+org.springframework.ide.eclipse.docker.client.source,4.12.0.202109130908,file:/C:/eGovFrameDev-4.0.0-64bit/eclipse/plugins/org.springframework.ide.eclipse.docker.client.source_4.12.0.202109130908.jar,-1,false
+org.springframework.ide.eclipse.editor.support.source,4.12.0.202109130547,file:/C:/eGovFrameDev-4.0.0-64bit/eclipse/plugins/org.springframework.ide.eclipse.editor.support.source_4.12.0.202109130547.jar,-1,false
+org.springframework.ide.eclipse.xml.namespaces.source,4.12.0.202109130908,file:/C:/eGovFrameDev-4.0.0-64bit/eclipse/plugins/org.springframework.ide.eclipse.xml.namespaces.source_4.12.0.202109130908.jar,-1,false
+org.springframework.tooling.boot.ls.source,1.28.0.202109130547,file:/C:/eGovFrameDev-4.0.0-64bit/eclipse/plugins/org.springframework.tooling.boot.ls.source_1.28.0.202109130547.jar,-1,false
+org.springsource.ide.eclipse.commons.cloudfoundry.client.v2.source,4.12.0.202109130908,file:/C:/eGovFrameDev-4.0.0-64bit/eclipse/plugins/org.springsource.ide.eclipse.commons.cloudfoundry.client.v2.source_4.12.0.202109130908.jar,-1,false
+org.springsource.ide.eclipse.commons.jdk_tools.source,4.12.0.202109130547,file:/C:/eGovFrameDev-4.0.0-64bit/eclipse/plugins/org.springsource.ide.eclipse.commons.jdk_tools.source_4.12.0.202109130547.jar,-1,false

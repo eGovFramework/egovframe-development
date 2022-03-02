@@ -15,11 +15,9 @@
         </license>
     </licenses>
     <properties>
-        <spring.maven.artifact.version>4.3.25.RELEASE</spring.maven.artifact.version>
-        <springsecurity.maven.artifact.version>4.2.13.RELEASE</springsecurity.maven.artifact.version>
-        <egovframework.rte.version>3.10.0</egovframework.rte.version>
+        <spring.maven.artifact.version>5.3.6</spring.maven.artifact.version>
+        <org.egovframe.rte.version>4.0.0</org.egovframe.rte.version>
     </properties>
-    
     <repositories>
         <repository>
             <id>mvn2s</id>
@@ -33,7 +31,7 @@
         </repository>
         <repository>
 			<id>egovframe</id>
-			<url>http://maven.egovframe.go.kr/maven/</url>
+			<url>https://maven.egovframe.go.kr/maven/</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
@@ -41,118 +39,98 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-        <repository>
-            <id>egovframe_old1</id>
-            <url>http://maven.egovframe.kr:8080/maven/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-                <repository>
-            <id>egovframe_old2</id>
-            <url>http://www.egovframe.go.kr/maven/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
     </repositories>
 
     <dependencies>
     	<!-- eGovFramework 실행환경 -->
     	<!-- Foundation Layer -->
     	<dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.fdl.cmmn</artifactId>
-            <version>${egovframework.rte.version}</version>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.fdl.cmmn</artifactId>
+            <version>${org.egovframe.rte.version}</version>
         </dependency>
         <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.fdl.crypto</artifactId>
-            <version>${egovframework.rte.version}</version>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.fdl.crypto</artifactId>
+            <version>${org.egovframe.rte.version}</version>
         </dependency>
         <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.fdl.excel</artifactId>
-            <version>${egovframework.rte.version}</version>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.fdl.excel</artifactId>
+            <version>${org.egovframe.rte.version}</version>
         </dependency>        
         <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.fdl.filehandling</artifactId>
-            <version>${egovframework.rte.version}</version>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.fdl.filehandling</artifactId>
+            <version>${org.egovframe.rte.version}</version>
         </dependency>
         <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.fdl.idgnr</artifactId>
-            <version>${egovframework.rte.version}</version>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.fdl.idgnr</artifactId>
+            <version>${org.egovframe.rte.version}</version>
         </dependency>
         <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.fdl.logging</artifactId>
-            <version>${egovframework.rte.version}</version>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.fdl.logging</artifactId>
+            <version>${org.egovframe.rte.version}</version>
         </dependency>
         <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.fdl.property</artifactId>  
-            <version>${egovframework.rte.version}</version>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.fdl.property</artifactId>  
+            <version>${org.egovframe.rte.version}</version>
         </dependency>
         <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.fdl.security</artifactId>
-            <version>${egovframework.rte.version}</version>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.fdl.security</artifactId>
+            <version>${org.egovframe.rte.version}</version>
         </dependency>
         <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.fdl.string</artifactId>
-            <version>${egovframework.rte.version}</version>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.fdl.string</artifactId>
+            <version>${org.egovframe.rte.version}</version>
         </dependency>
         <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.fdl.xml</artifactId>
-            <version>${egovframework.rte.version}</version>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.fdl.xml</artifactId>
+            <version>${org.egovframe.rte.version}</version>
         </dependency>
         
         <!-- Persistence -->
         <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.psl.dataaccess</artifactId>
-            <version>${egovframework.rte.version}</version>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.psl.dataaccess</artifactId>
+            <version>${org.egovframe.rte.version}</version>
         </dependency>
         <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.psl.data.jpa</artifactId>
-            <version>${egovframework.rte.version}</version>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.psl.data.jpa</artifactId>
+            <version>${org.egovframe.rte.version}</version>
         </dependency>
         
         <!-- Presentation -->
         <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.ptl.mvc</artifactId>
-            <version>${egovframework.rte.version}</version>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.ptl.mvc</artifactId>
+            <version>${org.egovframe.rte.version}</version>
         </dependency>
         
         <!-- Integration -->
         <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.itl.integration</artifactId>
-            <version>${egovframework.rte.version}</version>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.itl.integration</artifactId>
+            <version>${org.egovframe.rte.version}</version>
         </dependency>
         <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.itl.webservice</artifactId>
-            <version>${egovframework.rte.version}</version>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.itl.webservice</artifactId>
+            <version>${org.egovframe.rte.version}</version>
         </dependency>
         
         <!-- Batch -->        
         <dependency>
-            <groupId>egovframework.rte</groupId>
-            <artifactId>egovframework.rte.bat.core</artifactId>
-            <version>${egovframework.rte.version}</version>
+            <groupId>org.egovframe.rte</groupId>
+            <artifactId>org.egovframe.rte.bat.core</artifactId>
+            <version>${org.egovframe.rte.version}</version>
         </dependency>
 
 
@@ -469,7 +447,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
+            <version>3.1</version>
             <scope>provided</scope>
         </dependency>
 

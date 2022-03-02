@@ -1,0 +1,8 @@
+txtServiceName=service1
+txtServiceClass=org.apache.commons.dbcp.AbandonedConfig
+chkProperty=true
+txtPropertyName=property1
+txtPropertyValue=7200
+txtJobName=job1
+txtServiceMethod=start
+cboConcurrent=false
