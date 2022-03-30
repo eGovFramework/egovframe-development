@@ -1,11 +1,11 @@
-package egovframework.rte.sample.dao;
+package org.egovframe.rte.sample.dao;
 
-import egovframework.rte.sample.model.Category;
-import egovframework.rte.sample.Page;
-import egovframework.rte.sample.vo.SearchVO;
+import org.egovframe.rte.sample.model.Category;
+import org.egovframe.rte.sample.Page;
+import org.egovframe.rte.sample.vo.SearchVO;
 
 import org.springframework.stereotype.Repository;
-import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
+import org.egovframe.rte.psl.dataaccess.EgovAbstractDAO;
 
 /**
  * @version 1.0

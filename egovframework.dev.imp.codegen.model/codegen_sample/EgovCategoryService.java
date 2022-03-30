@@ -1,4 +1,4 @@
-package egovframework.rte.sample.service;
+package org.egovframe.rte.sample.service;
 
 /**
  * @version 1.0

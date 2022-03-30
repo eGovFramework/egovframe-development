@@ -3,7 +3,7 @@
 <log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
 
 	<appender name="${txtAppenderName}"
-		class="egovframework.rte.fdl.logging.db.EgovJDBCAppender">
+		class="org.egovframe.rte.fdl.logging.db.EgovJDBCAppender">
 		<!-- caller_filename, caller_class, caller_method, caller_line -->
 		<param name="locationInfo" value="${chkLocationInfo}" />
 		<param name="sql"

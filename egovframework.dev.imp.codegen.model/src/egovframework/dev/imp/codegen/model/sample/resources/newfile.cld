@@ -4,7 +4,7 @@
   <targetConnections/>
   <children>
     <net.java.amateras.uml.classdiagram.model.ClassModel>
-      <name>egovframework.rte.cvpl.common.EgovCvplCmmn</name>
+      <name>org.egovframe.rte.cvpl.common.EgovCvplCmmn</name>
       <stereoType></stereoType>
       <isAbstract>false</isAbstract>
       <constraint>
@@ -20,7 +20,7 @@
           <toMultiplicity></toMultiplicity>
           <source class="net.java.amateras.uml.classdiagram.model.ClassModel" reference="../../.."/>
           <target class="net.java.amateras.uml.classdiagram.model.ClassModel">
-            <name>egovframework.rte.cvpl.web.EgovCvplCnsltController</name>
+            <name>org.egovframe.rte.cvpl.web.EgovCvplCnsltController</name>
             <stereoType></stereoType>
             <isAbstract>false</isAbstract>
             <constraint>
@@ -1084,7 +1084,7 @@
       </listeners>
     </net.java.amateras.uml.classdiagram.model.ClassModel>
     <net.java.amateras.uml.classdiagram.model.InterfaceModel>
-      <name>egovframework.rte.cvpl.service.EgovCvplCmmnCdService</name>
+      <name>org.egovframe.rte.cvpl.service.EgovCvplCmmnCdService</name>
       <stereoType></stereoType>
       <constraint>
         <x>40</x>
@@ -1096,7 +1096,7 @@
       <targetConnections>
         <net.java.amateras.uml.classdiagram.model.RealizationModel>
           <source class="net.java.amateras.uml.classdiagram.model.ClassModel">
-            <name>egovframework.rte.cvpl.service.impl.EgovCvplCmmnCdServiceImpl</name>
+            <name>org.egovframe.rte.cvpl.service.impl.EgovCvplCmmnCdServiceImpl</name>
             <stereoType></stereoType>
             <isAbstract>false</isAbstract>
             <constraint>
@@ -1220,7 +1220,7 @@
     </net.java.amateras.uml.classdiagram.model.InterfaceModel>
     <net.java.amateras.uml.classdiagram.model.ClassModel reference="../net.java.amateras.uml.classdiagram.model.InterfaceModel/targetConnections/net.java.amateras.uml.classdiagram.model.RealizationModel/source"/>
     <net.java.amateras.uml.classdiagram.model.ClassModel>
-      <name>egovframework.rte.cvpl.service.impl.CvplCmmnCdDAO</name>
+      <name>org.egovframe.rte.cvpl.service.impl.CvplCmmnCdDAO</name>
       <stereoType></stereoType>
       <isAbstract>false</isAbstract>
       <constraint>
@@ -1271,7 +1271,7 @@
     </net.java.amateras.uml.classdiagram.model.ClassModel>
     <net.java.amateras.uml.classdiagram.model.ClassModel reference="../net.java.amateras.uml.classdiagram.model.ClassModel/sourceConnections/net.java.amateras.uml.classdiagram.model.AggregationModel/target"/>
     <net.java.amateras.uml.classdiagram.model.ClassModel>
-      <name>egovframework.rte.cvpl.service.CvplCmmnCdVO</name>
+      <name>org.egovframe.rte.cvpl.service.CvplCmmnCdVO</name>
       <stereoType></stereoType>
       <isAbstract>false</isAbstract>
       <constraint>
@@ -1715,7 +1715,7 @@
       </listeners>
     </net.java.amateras.uml.classdiagram.model.ClassModel>
     <net.java.amateras.uml.classdiagram.model.ClassModel>
-      <name>egovframework.rte.cvpl.service.CvplSearchVO</name>
+      <name>org.egovframe.rte.cvpl.service.CvplSearchVO</name>
       <stereoType></stereoType>
       <isAbstract>false</isAbstract>
       <constraint>
@@ -1728,7 +1728,7 @@
       <targetConnections>
         <net.java.amateras.uml.classdiagram.model.GeneralizationModel>
           <source class="net.java.amateras.uml.classdiagram.model.ClassModel">
-            <name>egovframework.rte.cvpl.service.CvplCnsltVO</name>
+            <name>org.egovframe.rte.cvpl.service.CvplCnsltVO</name>
             <stereoType></stereoType>
             <isAbstract>false</isAbstract>
             <constraint>
@@ -4490,7 +4490,7 @@
     </net.java.amateras.uml.classdiagram.model.ClassModel>
     <net.java.amateras.uml.classdiagram.model.ClassModel reference="../net.java.amateras.uml.classdiagram.model.ClassModel[6]/targetConnections/net.java.amateras.uml.classdiagram.model.GeneralizationModel/source"/>
     <net.java.amateras.uml.classdiagram.model.ClassModel>
-      <name>egovframework.rte.cvpl.util.EgovWebServiceClientRegisterCvpl</name>
+      <name>org.egovframe.rte.cvpl.util.EgovWebServiceClientRegisterCvpl</name>
       <stereoType></stereoType>
       <isAbstract>false</isAbstract>
       <constraint>
@@ -4635,7 +4635,7 @@
       </listeners>
     </net.java.amateras.uml.classdiagram.model.ClassModel>
     <net.java.amateras.uml.classdiagram.model.ClassModel>
-      <name>egovframework.rte.cvpl.util.EgovWebServiceClientRegisterCvpl</name>
+      <name>org.egovframe.rte.cvpl.util.EgovWebServiceClientRegisterCvpl</name>
       <stereoType></stereoType>
       <isAbstract>false</isAbstract>
       <constraint>
@@ -4780,7 +4780,7 @@
       </listeners>
     </net.java.amateras.uml.classdiagram.model.ClassModel>
     <net.java.amateras.uml.classdiagram.model.InterfaceModel>
-      <name>egovframework.rte.cvpl.service.EgovCvplCnsltService</name>
+      <name>org.egovframe.rte.cvpl.service.EgovCvplCnsltService</name>
       <stereoType></stereoType>
       <constraint>
         <x>834</x>

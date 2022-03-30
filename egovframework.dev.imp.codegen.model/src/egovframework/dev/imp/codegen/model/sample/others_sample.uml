@@ -24,7 +24,7 @@
     <packagedElement xmi:type="uml:Dependency" xmi:id="_CNmu4IJyEd6fes5bT44DRg" name="" supplier="_YgskIIM7Ed6de6tuo406dA" client="_Xq6LoIM7Ed6de6tuo406dA"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_H735QIJyEd6fes5bT44DRg" name="" supplier="_YgskIIM7Ed6de6tuo406dA" client="_ZOmL8IM7Ed6de6tuo406dA"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_M4rKcIJyEd6fes5bT44DRg" name="" supplier="_-ktjQIM6Ed6de6tuo406dA" client="_IiCIAIM7Ed6de6tuo406dA"/>
-    <packagedElement xmi:type="uml:Package" xmi:id="_ybUIgIM6Ed6de6tuo406dA" name="egovframework.rte.sample.model">
+    <packagedElement xmi:type="uml:Package" xmi:id="_ybUIgIM6Ed6de6tuo406dA" name="org.egovframe.rte.sample.model">
       <packagedElement xmi:type="uml:Class" xmi:id="_-ktjQIM6Ed6de6tuo406dA" name="Product">
         <ownedAttribute xmi:id="_-ktjQYM6Ed6de6tuo406dA" name="asYn" visibility="private" type="_fpBGEIGYEd6evfCR0jCQEQ"/>
         <ownedAttribute xmi:id="_-ktjQoM6Ed6de6tuo406dA" name="category" visibility="private" type="_-ktjS4M6Ed6de6tuo406dA" association="_LNP5gIJpEd6fes5bT44DRg"/>
@@ -50,7 +50,7 @@
         <ownedAttribute xmi:id="_-ktjVYM6Ed6de6tuo406dA" name="product" visibility="private" type="_-ktjQIM6Ed6de6tuo406dA" association="_LNP5gIJpEd6fes5bT44DRg"/>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Package" xmi:id="_EdG6AIM7Ed6de6tuo406dA" name="egovframework.rte.sample.service">
+    <packagedElement xmi:type="uml:Package" xmi:id="_EdG6AIM7Ed6de6tuo406dA" name="org.egovframe.rte.sample.service">
       <packagedElement xmi:type="uml:Interface" xmi:id="_IiCIAIM7Ed6de6tuo406dA" name="EgovCategoryService" clientDependency="_yYS4gIJwEd6fes5bT44DRg _M4rKcIJyEd6fes5bT44DRg">
         <ownedOperation xmi:id="_IiCIAYM7Ed6de6tuo406dA" name="deleteCategory" visibility="public">
           <ownedParameter xmi:id="_IiCIAoM7Ed6de6tuo406dA" name="category"/>
@@ -71,7 +71,7 @@
         </ownedOperation>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Package" xmi:id="_LXhucIM7Ed6de6tuo406dA" name="egovframework.rte.sample.service.Impl">
+    <packagedElement xmi:type="uml:Package" xmi:id="_LXhucIM7Ed6de6tuo406dA" name="org.egovframe.rte.sample.service.Impl">
       <packagedElement xmi:type="uml:Class" xmi:id="_XMDscIM7Ed6de6tuo406dA" name="EgovCategoryServiceImpl" clientDependency="_XMDscoM7Ed6de6tuo406dA">
         <ownedAttribute xmi:id="_XMDscYM7Ed6de6tuo406dA" name="categoryDao" association="_oRJ_gIJnEd6fes5bT44DRg"/>
         <interfaceRealization xmi:id="_XMDscoM7Ed6de6tuo406dA" name="" client="_XMDscIM7Ed6de6tuo406dA"/>
@@ -94,7 +94,7 @@
         </ownedOperation>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Package" xmi:id="_NCqakIM7Ed6de6tuo406dA" name="egovframework.rte.sample.controller">
+    <packagedElement xmi:type="uml:Package" xmi:id="_NCqakIM7Ed6de6tuo406dA" name="org.egovframe.rte.sample.controller">
       <packagedElement xmi:type="uml:Class" xmi:id="_Xq6LoIM7Ed6de6tuo406dA" name="EgovCategoryController" clientDependency="_yJ8ZwIM8Ed6de6tuo406dA _CNmu4IJyEd6fes5bT44DRg">
         <ownedOperation xmi:id="_Xq6LoYM7Ed6de6tuo406dA" name="deleteCategory">
           <ownedParameter xmi:id="_Xq6LooM7Ed6de6tuo406dA" name="category"/>
@@ -115,7 +115,7 @@
         </ownedOperation>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Package" xmi:id="_Sa4ccIM7Ed6de6tuo406dA" name="egovframework.rte.sample.vo">
+    <packagedElement xmi:type="uml:Package" xmi:id="_Sa4ccIM7Ed6de6tuo406dA" name="org.egovframe.rte.sample.vo">
       <packagedElement xmi:type="uml:Class" xmi:id="_YgskIIM7Ed6de6tuo406dA" name="SearchVO">
         <ownedAttribute xmi:id="_YgskIYM7Ed6de6tuo406dA" name="pageIndex" visibility="private" type="_Ny_fsIGYEd6evfCR0jCQEQ"/>
         <ownedAttribute xmi:id="_YgskIoM7Ed6de6tuo406dA" name="searchCondition" visibility="private" type="_fpBGEIGYEd6evfCR0jCQEQ"/>
@@ -123,7 +123,7 @@
         <ownedAttribute xmi:id="_YgskJIM7Ed6de6tuo406dA" name="searchUseYn" visibility="private" type="_fpBGEIGYEd6evfCR0jCQEQ"/>
       </packagedElement>
     </packagedElement>
-    <packagedElement xmi:type="uml:Package" xmi:id="_TOviUIM7Ed6de6tuo406dA" name="egovframework.rte.sample.dao">
+    <packagedElement xmi:type="uml:Package" xmi:id="_TOviUIM7Ed6de6tuo406dA" name="org.egovframe.rte.sample.dao">
       <packagedElement xmi:type="uml:Class" xmi:id="_ZOmL8IM7Ed6de6tuo406dA" name="CategoryDAO" clientDependency="_H735QIJyEd6fes5bT44DRg">
         <ownedOperation xmi:id="_ZOmL8YM7Ed6de6tuo406dA" name="deleteCategory" visibility="public">
           <ownedParameter xmi:id="_ZOmL8oM7Ed6de6tuo406dA" name="category"/>

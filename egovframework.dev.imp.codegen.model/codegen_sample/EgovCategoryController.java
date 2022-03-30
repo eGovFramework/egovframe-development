@@ -1,11 +1,11 @@
-package egovframework.rte.sample.controller;
+package org.egovframe.rte.sample.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 
-import egovframework.rte.sample.service.EgovCategoryService;
-import egovframework.rte.sample.vo.SearchVO;
-import egovframework.rte.sample.model.Category;
+import org.egovframe.rte.sample.service.EgovCategoryService;
+import org.egovframe.rte.sample.vo.SearchVO;
+import org.egovframe.rte.sample.model.Category;
 
 /**
  * @version 1.0

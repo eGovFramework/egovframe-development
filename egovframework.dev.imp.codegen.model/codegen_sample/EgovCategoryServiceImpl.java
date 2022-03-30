@@ -1,10 +1,10 @@
-package egovframework.rte.sample.service.impl;
+package org.egovframe.rte.sample.service.impl;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-import egovframework.rte.fdl.cmmn.AbstractServiceImpl;
+import org.egovframe.rte.fdl.cmmn.AbstractServiceImpl;
 
-import egovframework.rte.sample.service.EgovCategoryService;
+import org.egovframe.rte.sample.service.EgovCategoryService;
 
 /**
  * @version 1.0

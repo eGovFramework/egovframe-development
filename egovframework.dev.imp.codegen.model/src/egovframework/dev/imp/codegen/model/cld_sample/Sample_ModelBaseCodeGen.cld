@@ -4,7 +4,7 @@
   <targetConnections/>
   <children>
     <net.java.amateras.uml.classdiagram.model.ClassModel>
-      <name>egovframework.rte.sample.controller.EgovCategoryController</name>
+      <name>org.egovframe.rte.sample.controller.EgovCategoryController</name>
       <stereoType>Controller</stereoType>
       <isAbstract>false</isAbstract>
       <constraint>
@@ -18,7 +18,7 @@
           <stereoType></stereoType>
           <source class="net.java.amateras.uml.classdiagram.model.ClassModel" reference="../../.."/>
           <target class="net.java.amateras.uml.classdiagram.model.ClassModel">
-            <name>egovframework.rte.sample.vo.SearchVO</name>
+            <name>org.egovframe.rte.sample.vo.SearchVO</name>
             <stereoType>Vo</stereoType>
             <isAbstract>false</isAbstract>
             <constraint>
@@ -32,7 +32,7 @@
               <net.java.amateras.uml.classdiagram.model.DependencyModel>
                 <stereoType></stereoType>
                 <source class="net.java.amateras.uml.classdiagram.model.ClassModel">
-                  <name>egovframework.rte.sample.dao.CategoryDAO</name>
+                  <name>org.egovframe.rte.sample.dao.CategoryDAO</name>
                   <stereoType>Dao</stereoType>
                   <isAbstract>false</isAbstract>
                   <constraint>
@@ -48,7 +48,7 @@
                     <net.java.amateras.uml.classdiagram.model.DependencyModel>
                       <stereoType></stereoType>
                       <source class="net.java.amateras.uml.classdiagram.model.ClassModel">
-                        <name>egovframework.rte.sample.service.impl.EgovCategoryServiceImpl</name>
+                        <name>org.egovframe.rte.sample.service.impl.EgovCategoryServiceImpl</name>
                         <stereoType>ServiceImpl</stereoType>
                         <isAbstract>false</isAbstract>
                         <constraint>
@@ -61,7 +61,7 @@
                           <net.java.amateras.uml.classdiagram.model.RealizationModel>
                             <source class="net.java.amateras.uml.classdiagram.model.ClassModel" reference="../../.."/>
                             <target class="net.java.amateras.uml.classdiagram.model.InterfaceModel">
-                              <name>egovframework.rte.sample.service.EgovCategoryService</name>
+                              <name>org.egovframe.rte.sample.service.EgovCategoryService</name>
                               <stereoType>Service</stereoType>
                               <constraint>
                                 <x>277</x>
@@ -74,7 +74,7 @@
                                   <stereoType></stereoType>
                                   <source class="net.java.amateras.uml.classdiagram.model.InterfaceModel" reference="../../.."/>
                                   <target class="net.java.amateras.uml.classdiagram.model.ClassModel">
-                                    <name>egovframework.rte.sample.model.Product</name>
+                                    <name>org.egovframe.rte.sample.model.Product</name>
                                     <stereoType>Model</stereoType>
                                     <isAbstract>false</isAbstract>
                                     <constraint>
@@ -90,7 +90,7 @@
                                         <toMultiplicity>0..*</toMultiplicity>
                                         <source class="net.java.amateras.uml.classdiagram.model.ClassModel" reference="../../.."/>
                                         <target class="net.java.amateras.uml.classdiagram.model.ClassModel">
-                                          <name>egovframework.rte.sample.model.Category</name>
+                                          <name>org.egovframe.rte.sample.model.Category</name>
                                           <stereoType>Model</stereoType>
                                           <isAbstract>false</isAbstract>
                                           <constraint>
@@ -370,7 +370,7 @@
                                       <net.java.amateras.uml.classdiagram.model.AttributeModel>
                                         <visibility class="net.java.amateras.uml.classdiagram.model.Visibility-2" reference="../../../sourceConnections/net.java.amateras.uml.classdiagram.model.AssociationModel/target/children/net.java.amateras.uml.classdiagram.model.AttributeModel/visibility"/>
                                         <name>category</name>
-                                        <type>egovframework.rte.sample.model.Category</type>
+                                        <type>org.egovframe.rte.sample.model.Category</type>
                                         <isStatic>false</isStatic>
                                         <backgroundColor reference="../../../sourceConnections/net.java.amateras.uml.classdiagram.model.AssociationModel/target/children/net.java.amateras.uml.classdiagram.model.AttributeModel/backgroundColor"/>
                                         <foregroundColor reference="../../../sourceConnections/net.java.amateras.uml.classdiagram.model.AssociationModel/target/children/net.java.amateras.uml.classdiagram.model.AttributeModel/foregroundColor"/>
@@ -595,7 +595,7 @@
                                   <params>
                                     <net.java.amateras.uml.classdiagram.model.Argument>
                                       <name>category</name>
-                                      <type>egovframework.rte.sample.model.Category</type>
+                                      <type>org.egovframe.rte.sample.model.Category</type>
                                     </net.java.amateras.uml.classdiagram.model.Argument>
                                   </params>
                                   <isAbstract>false</isAbstract>
@@ -621,7 +621,7 @@
                                   <params>
                                     <net.java.amateras.uml.classdiagram.model.Argument>
                                       <name>category</name>
-                                      <type>egovframework.rte.sample.model.Category</type>
+                                      <type>org.egovframe.rte.sample.model.Category</type>
                                     </net.java.amateras.uml.classdiagram.model.Argument>
                                   </params>
                                   <isAbstract>false</isAbstract>
@@ -643,7 +643,7 @@
                                 <net.java.amateras.uml.classdiagram.model.OperationModel>
                                   <visibility class="net.java.amateras.uml.classdiagram.model.Visibility-1" reference="../../net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
                                   <name>selectCategory</name>
-                                  <type>egovframework.rte.sample.model.Category</type>
+                                  <type>org.egovframe.rte.sample.model.Category</type>
                                   <params>
                                     <net.java.amateras.uml.classdiagram.model.Argument>
                                       <name>str</name>
@@ -673,7 +673,7 @@
                                   <params>
                                     <net.java.amateras.uml.classdiagram.model.Argument>
                                       <name>searchVo</name>
-                                      <type>egovframework.rte.sample.vo.SearchVO</type>
+                                      <type>org.egovframe.rte.sample.vo.SearchVO</type>
                                     </net.java.amateras.uml.classdiagram.model.Argument>
                                   </params>
                                   <isAbstract>false</isAbstract>
@@ -699,7 +699,7 @@
                                   <params>
                                     <net.java.amateras.uml.classdiagram.model.Argument>
                                       <name>category</name>
-                                      <type>egovframework.rte.sample.model.Category</type>
+                                      <type>org.egovframe.rte.sample.model.Category</type>
                                     </net.java.amateras.uml.classdiagram.model.Argument>
                                   </params>
                                   <isAbstract>false</isAbstract>
@@ -757,7 +757,7 @@
                             <params>
                               <net.java.amateras.uml.classdiagram.model.Argument>
                                 <name>category</name>
-                                <type>egovframework.rte.sample.model.Category</type>
+                                <type>org.egovframe.rte.sample.model.Category</type>
                               </net.java.amateras.uml.classdiagram.model.Argument>
                             </params>
                             <isAbstract>false</isAbstract>
@@ -783,7 +783,7 @@
                             <params>
                               <net.java.amateras.uml.classdiagram.model.Argument>
                                 <name>category</name>
-                                <type>egovframework.rte.sample.model.Category</type>
+                                <type>org.egovframe.rte.sample.model.Category</type>
                               </net.java.amateras.uml.classdiagram.model.Argument>
                             </params>
                             <isAbstract>false</isAbstract>
@@ -805,7 +805,7 @@
                           <net.java.amateras.uml.classdiagram.model.OperationModel>
                             <visibility class="net.java.amateras.uml.classdiagram.model.Visibility-1" reference="../../../sourceConnections/net.java.amateras.uml.classdiagram.model.RealizationModel/target/children/net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
                             <name>selectCategory</name>
-                            <type>egovframework.rte.sample.model.Category</type>
+                            <type>org.egovframe.rte.sample.model.Category</type>
                             <params>
                               <net.java.amateras.uml.classdiagram.model.Argument>
                                 <name>str</name>
@@ -835,7 +835,7 @@
                             <params>
                               <net.java.amateras.uml.classdiagram.model.Argument>
                                 <name>searchVO</name>
-                                <type>egovframework.rte.sample.vo.SearchVO</type>
+                                <type>org.egovframe.rte.sample.vo.SearchVO</type>
                               </net.java.amateras.uml.classdiagram.model.Argument>
                             </params>
                             <isAbstract>false</isAbstract>
@@ -861,7 +861,7 @@
                             <params>
                               <net.java.amateras.uml.classdiagram.model.Argument>
                                 <name>category</name>
-                                <type>egovframework.rte.sample.model.Category</type>
+                                <type>org.egovframe.rte.sample.model.Category</type>
                               </net.java.amateras.uml.classdiagram.model.Argument>
                             </params>
                             <isAbstract>false</isAbstract>
@@ -960,7 +960,7 @@
                       <params>
                         <net.java.amateras.uml.classdiagram.model.Argument>
                           <name>category</name>
-                          <type>egovframework.rte.sample.model.Category</type>
+                          <type>org.egovframe.rte.sample.model.Category</type>
                         </net.java.amateras.uml.classdiagram.model.Argument>
                       </params>
                       <isAbstract>false</isAbstract>
@@ -986,7 +986,7 @@
                       <params>
                         <net.java.amateras.uml.classdiagram.model.Argument>
                           <name>category</name>
-                          <type>egovframework.rte.sample.model.Category</type>
+                          <type>org.egovframe.rte.sample.model.Category</type>
                         </net.java.amateras.uml.classdiagram.model.Argument>
                       </params>
                       <isAbstract>false</isAbstract>
@@ -1008,7 +1008,7 @@
                     <net.java.amateras.uml.classdiagram.model.OperationModel>
                       <visibility class="net.java.amateras.uml.classdiagram.model.Visibility-1" reference="../../../targetConnections/net.java.amateras.uml.classdiagram.model.DependencyModel/source/sourceConnections/net.java.amateras.uml.classdiagram.model.RealizationModel/target/children/net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
                       <name>selectCategory</name>
-                      <type>egovframework.rte.sample.model.Category</type>
+                      <type>org.egovframe.rte.sample.model.Category</type>
                       <params>
                         <net.java.amateras.uml.classdiagram.model.Argument>
                           <name>str</name>
@@ -1034,11 +1034,11 @@
                     <net.java.amateras.uml.classdiagram.model.OperationModel>
                       <visibility class="net.java.amateras.uml.classdiagram.model.Visibility-1" reference="../../../targetConnections/net.java.amateras.uml.classdiagram.model.DependencyModel/source/sourceConnections/net.java.amateras.uml.classdiagram.model.RealizationModel/target/children/net.java.amateras.uml.classdiagram.model.OperationModel/visibility"/>
                       <name>selectCategoryList</name>
-                      <type>egovframework.rte.sample.Page</type>
+                      <type>org.egovframe.rte.sample.Page</type>
                       <params>
                         <net.java.amateras.uml.classdiagram.model.Argument>
                           <name>searchVO</name>
-                          <type>egovframework.rte.sample.vo.SearchVO</type>
+                          <type>org.egovframe.rte.sample.vo.SearchVO</type>
                         </net.java.amateras.uml.classdiagram.model.Argument>
                       </params>
                       <isAbstract>false</isAbstract>
@@ -1064,7 +1064,7 @@
                       <params>
                         <net.java.amateras.uml.classdiagram.model.Argument>
                           <name>category</name>
-                          <type>egovframework.rte.sample.model.Category</type>
+                          <type>org.egovframe.rte.sample.model.Category</type>
                         </net.java.amateras.uml.classdiagram.model.Argument>
                       </params>
                       <isAbstract>false</isAbstract>
@@ -1273,7 +1273,7 @@
           <params>
             <net.java.amateras.uml.classdiagram.model.Argument>
               <name>category</name>
-              <type>egovframework.rte.sample.model.Category</type>
+              <type>org.egovframe.rte.sample.model.Category</type>
             </net.java.amateras.uml.classdiagram.model.Argument>
           </params>
           <isAbstract>false</isAbstract>
@@ -1299,7 +1299,7 @@
           <params>
             <net.java.amateras.uml.classdiagram.model.Argument>
               <name>category</name>
-              <type>egovframework.rte.sample.model.Category</type>
+              <type>org.egovframe.rte.sample.model.Category</type>
             </net.java.amateras.uml.classdiagram.model.Argument>
           </params>
           <isAbstract>false</isAbstract>
@@ -1325,7 +1325,7 @@
           <params>
             <net.java.amateras.uml.classdiagram.model.Argument>
               <name>searchVO</name>
-              <type>egovframework.rte.sample.vo.SearchVO</type>
+              <type>org.egovframe.rte.sample.vo.SearchVO</type>
             </net.java.amateras.uml.classdiagram.model.Argument>
           </params>
           <isAbstract>false</isAbstract>
@@ -1351,7 +1351,7 @@
           <params>
             <net.java.amateras.uml.classdiagram.model.Argument>
               <name>category</name>
-              <type>egovframework.rte.sample.model.Category</type>
+              <type>org.egovframe.rte.sample.model.Category</type>
             </net.java.amateras.uml.classdiagram.model.Argument>
           </params>
           <isAbstract>false</isAbstract>
@@ -1377,7 +1377,7 @@
           <params>
             <net.java.amateras.uml.classdiagram.model.Argument>
               <name>category</name>
-              <type>egovframework.rte.sample.model.Category</type>
+              <type>org.egovframe.rte.sample.model.Category</type>
             </net.java.amateras.uml.classdiagram.model.Argument>
           </params>
           <isAbstract>false</isAbstract>

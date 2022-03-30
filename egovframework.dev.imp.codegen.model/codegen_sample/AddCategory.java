@@ -1,4 +1,4 @@
-package egovframework.rte.sample;
+package org.egovframe.rte.sample;
 
 public interface AddCategory {
 
