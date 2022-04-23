@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<templates>
-	<category name="Sample1">
-		<wizards>
-			<wizard-def description="VO Class Generate" template="sample1/wizard.xml"/>
-		</wizards>
-	</category>	
-</templates>	

@@ -1,8 +1,0 @@
-pom=pom.xml
-pom.web=pom-web.xml
-pom.all-in-one=pom-all-in-one.xml
-example.core.default=example-core.zip
-example.core.optional=
-example.web.default=example-web.zip
-example.web.optional=example-core.zip
-example.allinone=egovframework-all-in-one-mobile.zip
