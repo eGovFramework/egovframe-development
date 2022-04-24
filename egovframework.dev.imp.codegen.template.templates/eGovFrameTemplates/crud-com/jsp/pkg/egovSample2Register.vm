@@ -85,7 +85,7 @@ function fn_egov_save() {
 </head>
 <body>
 
-<form:form commandName="${voInstanceName}" name="detailForm" id="detailForm" >
+<form:form commandName="${voInstanceName}" name="detailForm" id="detailForm" modelAttribute="${voInstanceName}">
 <div id="content_pop">
 	<!-- 타이틀 -->
 	<div id="title">

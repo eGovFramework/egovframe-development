@@ -30,7 +30,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
+import egovframework.com.cmm.service.impl.EgovCom2AbstractDAO;
 import ${voPackage}.${voClassName};
 import ${voPackage}.${defaultVoClassName};
 
@@ -47,8 +47,8 @@ import ${voPackage}.${defaultVoClassName};
  *  Copyright (C)  All right reserved.
  */
 
-@Repository("${daoName}")
-public class ${daoClassName} extends EgovAbstractDAO {
+@Repository
+public class ${daoClassName} extends EgovCom2AbstractDAO {
 
 	/**
 	 * ${model.entity.name}을 등록한다.
