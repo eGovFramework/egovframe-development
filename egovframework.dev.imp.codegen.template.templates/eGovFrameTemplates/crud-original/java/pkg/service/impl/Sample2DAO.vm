@@ -30,7 +30,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import egovframework.rte.psl.dataaccess.EgovAbstractDAO;
+import org.egovframe.rte.psl.dataaccess.EgovAbstractDAO;
 import ${voPackage}.${voClassName};
 import ${voPackage}.${defaultVoClassName};
 

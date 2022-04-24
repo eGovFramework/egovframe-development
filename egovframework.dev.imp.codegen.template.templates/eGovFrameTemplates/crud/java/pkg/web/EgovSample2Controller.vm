@@ -51,8 +51,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import egovframework.rte.fdl.property.EgovPropertyService;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.fdl.property.EgovPropertyService;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 #if (${servicePackage}=='${servicePackage}')
 // Servoce 객체에 대한 import 구문
