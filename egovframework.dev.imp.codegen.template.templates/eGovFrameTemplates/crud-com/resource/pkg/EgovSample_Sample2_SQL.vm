@@ -1,0 +1,305 @@
+##
+#set($voPackage="${voPackage}")
+#set($voClassName="${model.entity.pcName}VO")
+#set($defaultVoClassName="${model.entity.pcName}DefaultVO")
+#set($searchVOAlias="${model.entity.ccName}SerarchVO")
+#set($daoPackage="${daoPackage}")
+#set($daoClassName="${model.entity.pcName}DAO")
+#set($daoName="${model.entity.ccName}DAO")
+#set($daoInstanceName="${model.entity.ccName}DAO")
+##
+##
+#set($vender="$model.vender")
+#set($namespace="$model.entity.pcName")
+#set($resultMapId="${model.entity.ccName}")
+#set($resultMapClass="${voPackage}.${voClassName}")
+##
+##
+#set($insertQueryId="${daoInstanceName}.insert${model.entity.pcName}_S")
+#set($updateQueryId="${daoInstanceName}.update${model.entity.pcName}_S")
+#set($deleteQueryId="${daoInstanceName}.delete${model.entity.pcName}_S")
+#set($selectQueryId="${daoInstanceName}.select${model.entity.pcName}_S")
+#set($selectListQueryId="${daoInstanceName}.select${model.entity.pcName}List_D")
+#set($selectListTotCntQueryId="${daoInstanceName}.select${model.entity.pcName}ListTotCnt_S")
+##
+##
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="$namespace">
+	
+## --------------------------------------------------------------------------------------------------------
+	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="${searchVOAlias}" type="${voPackage}.${defaultVoClassName}"/>
+	
+## --------------------------------------------------------------------------------------------------------
+	<resultMap id="$resultMapId" class="$resultMapClass">
+#set($i=0)	
+#foreach($attribute in $model.attributes)
+#set($i=$i+1)	
+		<result property="${attribute.ccName}" column="${attribute.name}" columnIndex="$i"/>
+#end		
+	</resultMap>
+	
+## ##################################################################################################
+	<insert id="${insertQueryId}">
+		<![CDATA[
+			INSERT INTO ${model.entity.name} 
+#set($i=0)	
+#foreach($attribute in $model.attributes)
+#if($i == 0)
+				( ${attribute.name}
+#elseif($i < ($model.attributes.size() - 1))
+				  , ${attribute.name}
+#else
+				  , ${attribute.name} )
+#end
+#set($i=$i+1)
+#end
+##
+#set($i=0)	
+#foreach($attribute in $model.attributes)
+#if($i == 0)
+			VALUES ( #${attribute.ccName}#
+#elseif($i < ($model.attributes.size() - 1))
+				  , #${attribute.ccName}#
+#else
+				  , #${attribute.ccName}# )
+#end
+#set($i=$i+1)
+#end
+		]]>
+	</insert>
+	
+## ##################################################################################################	
+	<update id="${updateQueryId}">
+		<![CDATA[
+			UPDATE ${model.entity.name}
+#set($i=0)	
+#foreach($attribute in $model.attributes)
+#if($i == 0)
+			SET ${attribute.name}=#${attribute.ccName}#
+#else
+				, ${attribute.name}=#${attribute.ccName}#
+#end
+#set($i=$i+1)
+#end	
+##		
+#if(!${model.primaryKeys} == [])
+                WHERE ${model.attributes.get(0).name}=#${model.attributes.get(0).ccName}#
+#else
+	#set($i=0)	
+	#foreach($attribute in $model.primaryKeys)
+	#if($i == 0)
+				WHERE ${attribute.name}=#${attribute.ccName}#
+	#else
+					AND ${attribute.name}=#${attribute.ccName}#
+	#end
+	#set($i=$i+1)
+	#end
+#end
+		]]>
+	</update>
+	
+## ##################################################################################################
+	<delete id="${deleteQueryId}">
+		<![CDATA[
+			DELETE FROM ${model.entity.name} 
+#if(!${model.primaryKeys} == [])
+                WHERE ${model.attributes.get(0).name}=#${model.attributes.get(0).ccName}#
+#else 
+	#set($i=0)	
+	#foreach($attribute in $model.primaryKeys)
+	#if($i == 0)
+				WHERE ${attribute.name}=#${attribute.ccName}#
+	#else
+					AND ${attribute.name}=#${attribute.ccName}#
+	#end
+	#set($i=$i+1)
+	#end
+#end
+		]]>
+	</delete>
+	
+## ##################################################################################################	
+	<select id="${selectQueryId}" resultMap="$resultMapId">
+		<![CDATA[
+			SELECT
+#set($i=0)	
+#foreach($attribute in $model.attributes)
+#if($i == 0)
+				${attribute.name}
+#else
+				, ${attribute.name}
+#end
+#set($i=$i+1)
+#end				
+			FROM ${model.entity.name}
+#if(!${model.primaryKeys} == [])
+                WHERE ${model.attributes.get(0).name}=#${model.attributes.get(0).ccName}#
+#else 
+	#set($i=0)	
+	#foreach($attribute in $model.primaryKeys)
+	#if($i == 0)
+				WHERE ${attribute.name}=#${attribute.ccName}#
+	#else
+					AND ${attribute.name}=#${attribute.ccName}#
+	#end
+	#set($i=$i+1)
+	#end
+#end
+		]]>
+	</select>
+	
+## ##################################################################################################	
+	<select id="${selectListQueryId}" parameterClass="${searchVOAlias}" resultClass="egovMap">
+#if($vender == "HSQLDB")
+			SELECT
+	#set($i=0)	
+	#foreach($attribute in $model.attributes)
+	#if($i == 0)
+					${attribute.name}
+	#else
+					, ${attribute.name}
+	#end
+	#set($i=$i+1)
+	#end	
+			FROM ${model.entity.name}
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				${model.attributes.get(0).name} = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+				ORDER BY 
+#if(!${model.primaryKeys} == [])
+                ${model.attributes.get(0).name} DESC
+#else 				
+	#set($i=0)				
+	#foreach($attribute in $model.primaryKeys)
+	#if($i == 0)
+				${attribute.name} DESC
+	#else
+				, ${attribute.name} DESC
+	#end
+	#set($i=$i+1)
+	#end
+#end
+			LIMIT #recordCountPerPage# OFFSET #firstIndex#
+#elseif($vender == "Oracle")
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+				SELECT
+	#set($i=0)	
+	#foreach($attribute in $model.attributes)
+	#if($i == 0)
+					${attribute.name}
+	#else
+					, ${attribute.name}
+	#end
+	#set($i=$i+1)
+	#end
+				FROM ${model.entity.name}
+				WHERE 1=1
+				<isEqual prepend="AND" property="searchCondition" compareValue="0">
+					${model.attributes.get(0).name} = #searchKeyword#
+				</isEqual>
+				<isEqual prepend="AND" property="searchCondition" compareValue="1">
+					${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
+				</isEqual>
+					ORDER BY 
+#if(!${model.primaryKeys} == [])
+                ${model.attributes.get(0).name} DESC
+#else					
+	#set($i=0)				
+	#foreach($attribute in $model.primaryKeys)
+	#if($i == 0)
+				${attribute.name} DESC
+	#else
+				, ${attribute.name} DESC
+	#end
+	#set($i=$i+1)
+	#end
+#end
+
+		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
+#elseif($vender == "MySql")
+			SELECT
+	#set($i=0)	
+	#foreach($attribute in $model.attributes)
+	#if($i == 0)
+					${attribute.name}
+	#else
+					, ${attribute.name}
+	#end
+	#set($i=$i+1)
+	#end
+			FROM ${model.entity.name}
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				${model.attributes.get(0).name} = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				${model.attributes.get(1).name} LIKE CONCAT('%',#searchKeyword#,'%')
+			</isEqual>
+				ORDER BY 
+#if(!${model.primaryKeys} == [])
+                ${model.attributes.get(0).name} DESC
+#else				
+	#set($i=0)				
+	#foreach($attribute in $model.primaryKeys)
+	#if($i == 0)
+				${attribute.name} DESC
+	#else
+				, ${attribute.name} DESC
+	#end
+	#set($i=$i+1)
+	#end
+#end
+			limit #firstIndex#, #recordCountPerPage#	
+#else
+
+#end			
+	</select>	
+## ##################################################################################################	
+	<select id="${selectListTotCntQueryId}" parameterClass="${searchVOAlias}" resultClass="int">
+#if($vender == "HSQLDB")
+			SELECT COUNT(*) totcnt
+			FROM ${model.entity.name}
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				${model.attributes.get(0).name} = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+#elseif($vender == "Oracle")
+			SELECT COUNT(*) totcnt
+			FROM ${model.entity.name}
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				${model.attributes.get(0).name} = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
+			</isEqual>
+#elseif($vender == "MySql")
+			SELECT COUNT(*) totcnt
+			FROM ${model.entity.name}
+			WHERE 1=1
+			<isEqual prepend="AND" property="searchCondition" compareValue="0">
+				${model.attributes.get(0).name} = #searchKeyword#
+			</isEqual>
+			<isEqual prepend="AND" property="searchCondition" compareValue="1">
+				${model.attributes.get(1).name} LIKE CONCAT('%',#searchKeyword#,'%')
+			</isEqual>
+#else
+
+#end			
+	</select>
+
+</sqlMap>

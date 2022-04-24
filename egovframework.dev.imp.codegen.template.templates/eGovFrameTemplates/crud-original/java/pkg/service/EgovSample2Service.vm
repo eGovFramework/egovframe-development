@@ -1,0 +1,94 @@
+##
+#set($voPackage="${voPackage}")
+#set($voClassName="${model.entity.pcName}VO")
+#set($defaultVoClassName="${model.entity.pcName}DefaultVO")
+#set($daoPackage="${daoPackage}")
+#set($daoClassName="${model.entity.pcName}DAO")
+#set($daoName="${model.entity.ccName}DAO")
+#set($servicePackage="${servicePackage}")
+#set($serviceClassName="${model.entity.pcName}Service")
+##
+##
+#set($insertMethodName="insert${model.entity.pcName}")
+#set($updateMethodName="update${model.entity.pcName}")
+#set($deleteMethodName="delete${model.entity.pcName}")
+#set($selectMethodName="select${model.entity.pcName}")
+#set($selectListMethodName="select${model.entity.pcName}List")
+#set($selectListTotCntMethodName="select${model.entity.pcName}ListTotCnt")
+##
+##
+package $servicePackage;
+
+import java.util.List;
+#if (${voPackage}=='${voPackage}')
+// Vo 객체에 대한 import 구문
+// import (vo package).${defaultVoClassName};
+// import (vo package).${voClassName};
+#else
+import ${voPackage}.${defaultVoClassName};
+import ${voPackage}.${voClassName};
+#end
+
+/**
+ * @Class Name : ${serviceClassName}.java
+ * @Description : ${model.entity.pcName} Business class
+ * @Modification Information
+ *
+ * @author ${author}
+ * @since ${createDate}
+ * @version 1.0
+ * @see
+ *  
+ *  Copyright (C)  All right reserved.
+ */
+public interface $serviceClassName {
+	
+	/**
+	 * ${model.entity.name}을 등록한다.
+	 * @param vo - 등록할 정보가 담긴 $voClassName
+	 * @return 등록 결과
+	 * @exception Exception
+	 */
+    String $insertMethodName($voClassName vo) throws Exception;
+    
+    /**
+	 * ${model.entity.name}을 수정한다.
+	 * @param vo - 수정할 정보가 담긴 $voClassName
+	 * @return void형
+	 * @exception Exception
+	 */
+    void $updateMethodName($voClassName vo) throws Exception;
+    
+    /**
+	 * ${model.entity.name}을 삭제한다.
+	 * @param vo - 삭제할 정보가 담긴 $voClassName
+	 * @return void형 
+	 * @exception Exception
+	 */
+    void $deleteMethodName($voClassName vo) throws Exception;
+    
+    /**
+	 * ${model.entity.name}을 조회한다.
+	 * @param vo - 조회할 정보가 담긴 $voClassName
+	 * @return 조회한 ${model.entity.name}
+	 * @exception Exception
+	 */
+    $voClassName $selectMethodName($voClassName vo) throws Exception;
+    
+    /**
+	 * ${model.entity.name} 목록을 조회한다.
+	 * @param searchVO - 조회할 정보가 담긴 VO
+	 * @return ${model.entity.name} 목록
+	 * @exception Exception
+	 */
+    List $selectListMethodName(${defaultVoClassName} searchVO) throws Exception;
+    
+    /**
+	 * ${model.entity.name} 총 갯수를 조회한다.
+	 * @param searchVO - 조회할 정보가 담긴 VO
+	 * @return ${model.entity.name} 총 갯수
+	 * @exception
+	 */
+    int $selectListTotCntMethodName(${defaultVoClassName} searchVO);
+    
+}

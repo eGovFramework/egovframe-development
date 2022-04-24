@@ -1,0 +1,172 @@
+##
+#set($D='$')
+#set($voPackage="${servicePackage}")
+#set($voClassName="${model.entity.pcName}VO")
+#set($voInstanceName="${model.entity.ccName}VO")
+##
+##
+#set($listPath="/${model.entity.ccName}/${model.entity.pcName}List.do")
+#set($addViewPath="/${model.entity.ccName}/add${model.entity.pcName}View.do")
+#set($addPath="/${model.entity.ccName}/add${model.entity.pcName}.do")
+#set($selectPath="/${model.entity.ccName}/select${model.entity.pcName}.do")
+#set($updatePath="/${model.entity.ccName}/update${model.entity.pcName}.do")
+#set($updateViewPath="/${model.entity.ccName}/update${model.entity.pcName}View.do")
+#set($deletePath="/${model.entity.ccName}/delete${model.entity.pcName}.do")
+##
+#set($registerPageName="${model.entity.pcName}Register.jsp")
+##
+#set($selectFunctionName="fncSelect${model.entity.pcName}")
+#set($addViewFunctionName="fncAdd${model.entity.pcName}View")
+##
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="validator" uri="http://www.springmodules.org/tags/commons-validator" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%
+ /**
+  * @Class Name : ${registerPageName}
+  * @Description : ${model.entity.pcName} Register 화면
+  * @Modification Information
+  * 
+  * @author ${author}
+  * @since ${createDate}
+  * @version 1.0
+  * @see
+  *  
+  * Copyright (C) All right reserved.
+  */
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+#if(${model.primaryKeys} == [])	
+<c:set var="registerFlag" value="${D}{empty ${voInstanceName}.${model.attributes.get(0).ccName} ? '등록' : '수정'}"/>			
+#else
+<c:set var="registerFlag" value="${D}{empty ${voInstanceName}.${model.primaryKeys.get(0).ccName} ? '등록' : '수정'}"/>
+#end
+
+<title> <c:out value="${D}{registerFlag}"/> </title>
+<link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/sample.css'/>"/>
+
+<!--For Commons Validator Client Side-->
+<!-- script type="text/javascript" src="<c:url value='/cmmn/validator.do'/>"></script -->
+<!-- validator:javascript formName="${voInstanceName}" staticJavascript="false" xhtml="true" cdata="false"/ -->
+
+<script type="text/javaScript" language="javascript" defer="defer">
+<!--
+/* 글 목록 화면 function */
+function fn_egov_selectList() {
+   	document.getElementById("detailForm").action = "<c:url value='${listPath}'/>";
+   	document.getElementById("detailForm").submit();		
+}
+
+/* 글 삭제 function */
+function fn_egov_delete() {
+   	document.getElementById("detailForm").action = "<c:url value='${deletePath}'/>";
+   	document.getElementById("detailForm").submit();		
+}
+
+/* 글 등록 function */
+function fn_egov_save() {	
+	frm = document.getElementById("detailForm");
+
+	/* TODO Validation기능 보완 */
+	
+  	frm.action = "<c:url value="${D}{registerFlag == '등록' ? '${addPath}' : '${updatePath}'}"/>";
+    frm.submit();
+
+}
+
+// -->
+</script>
+</head>
+<body>
+
+<form:form commandName="${voInstanceName}" name="detailForm" id="detailForm" >
+<div id="content_pop">
+	<!-- 타이틀 -->
+	<div id="title">
+		<ul>
+			<li><img src="<c:url value='/images//title_dot.gif'/>" alt="" /><c:out value="${D}{registerFlag}"/></li>
+		</ul>
+	</div>
+	<!-- // 타이틀 -->
+	<div id="table">
+	<table width="100%" border="1" cellpadding="0" cellspacing="0" >
+		<colgroup>
+			<col width="150"/>
+			<col width=""/>
+		</colgroup>
+			
+		<c:if test="${D}{registerFlag == '수정'}">
+#if(${model.primaryKeys} == [])	
+#foreach($attribute in $model.primaryKeys)
+		<tr>
+			<th>${attribute.name} *</th>
+			<td>
+				<form:input path="${attribute.ccName}" cssClass="essentiality" readonly="true" />
+			</td>			
+		</tr>					
+#end	   		
+#else		
+	   <tr>
+			<th>${model.attributes.get(0).name} *</th>
+			<td>
+				<form:input path="${model.attributes.get(0).ccName}" cssClass="essentiality" readonly="true" />
+			</td>			
+		</tr>	
+#end
+		</c:if>
+		<c:if test="${D}{registerFlag == '등록'}">
+#if(${model.primaryKeys} == [])	
+#foreach($attribute in $model.primaryKeys)
+		<tr>
+			<th>${attribute.name} *</th>
+			<td>
+				<form:input path="${attribute.ccName}" cssClass="txt" readonly="false" />
+			</td>			
+		</tr>					
+#end		   	
+#else		
+	   <tr>
+			<th>${model.attributes.get(0).name} *</th>
+			<td>
+				<form:input path="${model.attributes.get(0).ccName}" cssClass="txt" readonly="false" />
+			</td>			
+		</tr>	
+#end	
+		</c:if>		
+#foreach($attribute in $model.attributes)
+#if($attribute.primaryKey == false)
+		<tr>
+			<th>${attribute.name}</th>
+			<td>
+				<form:input path="${attribute.ccName}" cssClass="txt"/>
+				&nbsp;<form:errors path="${attribute.ccName}" />
+			</td>
+		</tr>	
+#end
+#end
+	</table>
+  </div>
+	<div id="sysbtn">
+		<ul>
+			<li><span class="btn_blue_l"><a href="javascript:fn_egov_selectList();">List</a><img src="<c:url value='/images//btn_bg_r.gif'/>" alt="" /></span></li>
+			<li><span class="btn_blue_l"><a href="javascript:fn_egov_save();"><c:out value='${D}{registerFlag}'/></a><img src="<c:url value='/images//btn_bg_r.gif'/>" alt="" /></span></li>
+			<c:if test="${D}{registerFlag == '수정'}">
+			<li><span class="btn_blue_l"><a href="javascript:fn_egov_delete();">삭제</a><img src="<c:url value='/images//btn_bg_r.gif'/>" alt="" /></span></li>
+			</c:if>
+			<li><span class="btn_blue_l"><a href="javascript:document.detailForm.reset();">Reset</a><img src="<c:url value='/images//btn_bg_r.gif'/>" alt="" /></span></li></ul>
+	</div>
+</div>
+<!-- 검색조건 유지 -->
+<input type="hidden" name="searchCondition" value="<c:out value='${D}{searchVO.searchCondition}'/>"/>
+<input type="hidden" name="searchKeyword" value="<c:out value='${D}{searchVO.searchKeyword}'/>"/>
+<input type="hidden" name="pageIndex" value="<c:out value='${D}{searchVO.pageIndex}'/>"/>
+</form:form>
+</body>
+</html>
+
