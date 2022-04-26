@@ -11,7 +11,7 @@
 ##
 #set($vender="$model.vender")
 #set($namespace="$model.entity.pcName")
-#set($resultMapId="${model.entity.ccName}.resultMap")
+#set($resultMapId="${daoInstanceName}.resultMap")
 #set($resultMapClass="${voPackage}.${voClassName}")
 ##
 ##
@@ -78,230 +78,305 @@ VALUES ( #${attribute.ccName}#
 
 ## ##################################################################################################
 	<update id="${updateQueryId}">
-		<![CDATA[
-			UPDATE ${model.entity.name}
+<![CDATA[
+/* ${updateQueryId} */
+/* ${model.author} ${model.entity.name} 수정 */
+UPDATE
+	${model.entity.name}
+SET
 #set($i=0)
 #foreach($attribute in $model.attributes)
 #if($i == 0)
-			SET ${attribute.name}=#${attribute.ccName}#
+	${attribute.name} = #${attribute.ccName}#,
+#elseif($i == $model.attributes.size() - 1)
+	${attribute.name} = #${attribute.ccName}#
 #else
-				, ${attribute.name}=#${attribute.ccName}#
+	${attribute.name} = #${attribute.ccName}#,
 #end
 #set($i=$i+1)
 #end
 ##
 #if(!${model.primaryKeys} == [])
-                WHERE ${model.attributes.get(0).name}=#${model.attributes.get(0).ccName}#
+WHERE
+	${model.attributes.get(0).name} = #${model.attributes.get(0).ccName}#
 #else
-	#set($i=0)
-	#foreach($attribute in $model.primaryKeys)
-	#if($i == 0)
-				WHERE ${attribute.name}=#${attribute.ccName}#
-	#else
-					AND ${attribute.name}=#${attribute.ccName}#
-	#end
-	#set($i=$i+1)
-	#end
+#set($i=0)
+#foreach($attribute in $model.primaryKeys)
+#if($i == 0)
+WHERE
+	${attribute.name} = #${attribute.ccName}#
+#else
+	AND ${attribute.name} = #${attribute.ccName}#
 #end
-		]]>
+#set($i=$i+1)
+#end
+#end
+]]>
 	</update>
 
 ## ##################################################################################################
 	<delete id="${deleteQueryId}">
-		<![CDATA[
-			DELETE FROM ${model.entity.name}
+<![CDATA[
+/* ${deleteQueryId} */
+/* ${model.author} ${model.entity.name} 삭제 */
+DELETE
+FROM
+	${model.entity.name}
 #if(!${model.primaryKeys} == [])
-                WHERE ${model.attributes.get(0).name}=#${model.attributes.get(0).ccName}#
+WHERE
+	${model.attributes.get(0).name} = #${model.attributes.get(0).ccName}#
 #else
-	#set($i=0)
-	#foreach($attribute in $model.primaryKeys)
-	#if($i == 0)
-				WHERE ${attribute.name}=#${attribute.ccName}#
-	#else
-					AND ${attribute.name}=#${attribute.ccName}#
-	#end
-	#set($i=$i+1)
-	#end
+#set($i=0)
+#foreach($attribute in $model.primaryKeys)
+#if($i == 0)
+WHERE
+	${attribute.name} = #${attribute.ccName}#
+#else
+	AND ${attribute.name} = #${attribute.ccName}#
 #end
-		]]>
+#set($i=$i+1)
+#end
+#end
+]]>
 	</delete>
 
 ## ##################################################################################################
 	<select id="${selectQueryId}" resultMap="$resultMapId">
-		<![CDATA[
-			SELECT
+<![CDATA[
+/* ${selectQueryId} */
+/* ${model.author} ${model.entity.name} 조회(단건) */
+SELECT
 #set($i=0)
 #foreach($attribute in $model.attributes)
 #if($i == 0)
-				${attribute.name}
+	${attribute.name},
+#elseif($i == $model.attributes.size() - 1)
+	${attribute.name}
 #else
-				, ${attribute.name}
+	${attribute.name},
 #end
 #set($i=$i+1)
 #end
-			FROM ${model.entity.name}
+FROM
+	${model.entity.name}
 #if(!${model.primaryKeys} == [])
-                WHERE ${model.attributes.get(0).name}=#${model.attributes.get(0).ccName}#
+WHERE
+	${model.attributes.get(0).name} = #${model.attributes.get(0).ccName}#
 #else
-	#set($i=0)
-	#foreach($attribute in $model.primaryKeys)
-	#if($i == 0)
-				WHERE ${attribute.name}=#${attribute.ccName}#
-	#else
-					AND ${attribute.name}=#${attribute.ccName}#
-	#end
-	#set($i=$i+1)
-	#end
+#set($i=0)
+#foreach($attribute in $model.primaryKeys)
+#if($i == 0)
+WHERE
+	${attribute.name} = #${attribute.ccName}#
+#else
+	AND ${attribute.name} = #${attribute.ccName}#
 #end
-		]]>
+#set($i=$i+1)
+#end
+#end
+]]>
 	</select>
 
 ## ##################################################################################################
 	<select id="${selectListQueryId}" parameterClass="${parameterClass}" resultClass="org.egovframe.rte.psl.dataaccess.util.EgovMap">
+<![CDATA[
+/* ${selectListQueryId} */
+/* ${model.author} ${model.entity.name} 조회(멀티건) */
 #if($vender == "HSQLDB")
-			SELECT
-	#set($i=0)
-	#foreach($attribute in $model.attributes)
-	#if($i == 0)
-					${attribute.name}
-	#else
-					, ${attribute.name}
-	#end
-	#set($i=$i+1)
-	#end
-			FROM ${model.entity.name}
-			WHERE 1=1
-			<isEqual prepend="AND" property="searchCondition" compareValue="0">
-				${model.attributes.get(0).name} = #searchKeyword#
-			</isEqual>
-			<isEqual prepend="AND" property="searchCondition" compareValue="1">
-				${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
-			</isEqual>
-				ORDER BY
-#if(!${model.primaryKeys} == [])
-                ${model.attributes.get(0).name} DESC
+SELECT
+#set($i=0)
+#foreach($attribute in $model.attributes)
+#if($i == 0)
+	${attribute.name},
+#elseif($i == $model.attributes.size() - 1)
+	${attribute.name}
 #else
-	#set($i=0)
-	#foreach($attribute in $model.primaryKeys)
-	#if($i == 0)
-				${attribute.name} DESC
-	#else
-				, ${attribute.name} DESC
-	#end
-	#set($i=$i+1)
-	#end
+	${attribute.name},
 #end
-			LIMIT #recordCountPerPage# OFFSET #firstIndex#
+#set($i=$i+1)
+#end
+FROM
+	${model.entity.name}
+WHERE
+	1 = 1
+]]>
+		<isEqual property="searchCondition" compareValue="0">
+	AND ${model.attributes.get(0).name} = #searchKeyword#
+		</isEqual>
+		<isEqual property="searchCondition" compareValue="1">
+	AND ${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
+		</isEqual>
+ORDER BY
+#if(!${model.primaryKeys} == [])
+	${model.attributes.get(0).name} DESC
+#else
+#set($i=0)
+#foreach($attribute in $model.primaryKeys)
+#if($i == 0)
+	${attribute.name} DESC
+#else
+	, ${attribute.name} DESC
+#end
+#set($i=$i+1)
+#end
+#end
+LIMIT #recordCountPerPage# OFFSET #firstIndex#
 #elseif($vender == "Oracle")
 SELECT * FROM (
 	SELECT A.*, ROWNUM RNUM FROM (
-				SELECT
-	#set($i=0)
-	#foreach($attribute in $model.attributes)
-	#if($i == 0)
-					${attribute.name}
-	#else
-					, ${attribute.name}
-	#end
-	#set($i=$i+1)
-	#end
-				FROM ${model.entity.name}
-				WHERE 1=1
-				<isEqual prepend="AND" property="searchCondition" compareValue="0">
-					${model.attributes.get(0).name} = #searchKeyword#
-				</isEqual>
-				<isEqual prepend="AND" property="searchCondition" compareValue="1">
-					${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
-				</isEqual>
-					ORDER BY
-#if(!${model.primaryKeys} == [])
-                ${model.attributes.get(0).name} DESC
+SELECT
+#set($i=0)
+#foreach($attribute in $model.attributes)
+#if($i == 0)
+	${attribute.name},
+#elseif($i == $model.attributes.size() - 1)
+	${attribute.name}
 #else
-	#set($i=0)
-	#foreach($attribute in $model.primaryKeys)
-	#if($i == 0)
-				${attribute.name} DESC
-	#else
-				, ${attribute.name} DESC
-	#end
-	#set($i=$i+1)
-	#end
+	${attribute.name},
 #end
-
-		<![CDATA[
+#set($i=$i+1)
+#end
+FROM
+	${model.entity.name}
+WHERE
+	1 = 1
+]]>
+		<isEqual property="searchCondition" compareValue="0">
+<![CDATA[
+	AND ${model.attributes.get(0).name} = #searchKeyword#
+]]>
+		</isEqual>
+		<isEqual property="searchCondition" compareValue="1">
+<![CDATA[
+	AND ${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
+]]>
+		</isEqual>
+<![CDATA[
+ORDER BY
+#if(!${model.primaryKeys} == [])
+	${model.attributes.get(0).name} DESC
+#else
+#set($i=0)
+#foreach($attribute in $model.primaryKeys)
+#if($i == 0)
+	${attribute.name} DESC
+#else
+	, ${attribute.name} DESC
+#end
+#set($i=$i+1)
+#end
+#end
 	) A WHERE ROWNUM <= #lastIndex#
 )WHERE RNUM > #firstIndex#
 ]]>
 #elseif($vender == "MySql")
-			SELECT
-	#set($i=0)
-	#foreach($attribute in $model.attributes)
-	#if($i == 0)
-					${attribute.name}
-	#else
-					, ${attribute.name}
-	#end
-	#set($i=$i+1)
-	#end
-			FROM ${model.entity.name}
-			WHERE 1=1
-			<isEqual prepend="AND" property="searchCondition" compareValue="0">
-				${model.attributes.get(0).name} = #searchKeyword#
-			</isEqual>
-			<isEqual prepend="AND" property="searchCondition" compareValue="1">
-				${model.attributes.get(1).name} LIKE CONCAT('%',#searchKeyword#,'%')
-			</isEqual>
-				ORDER BY
-#if(!${model.primaryKeys} == [])
-                ${model.attributes.get(0).name} DESC
+SELECT
+#set($i=0)
+#foreach($attribute in $model.attributes)
+#if($i == 0)
+	${attribute.name},
+#elseif($i == $model.attributes.size() - 1)
+	${attribute.name}
 #else
-	#set($i=0)
-	#foreach($attribute in $model.primaryKeys)
-	#if($i == 0)
-				${attribute.name} DESC
-	#else
-				, ${attribute.name} DESC
-	#end
-	#set($i=$i+1)
-	#end
+	${attribute.name},
 #end
-			limit #firstIndex#, #recordCountPerPage#
+#set($i=$i+1)
+#end
+FROM
+	${model.entity.name}
+WHERE
+	1 = 1
+]]>
+		<isEqual property="searchCondition" compareValue="0">
+<![CDATA[
+	AND ${model.attributes.get(0).name} = #searchKeyword#
+]]>
+		</isEqual>
+		<isEqual property="searchCondition" compareValue="1">
+<![CDATA[
+	AND ${model.attributes.get(1).name} LIKE CONCAT('%', #searchKeyword#, '%')
+]]>
+		</isEqual>
+<![CDATA[
+ORDER BY
+#if(!${model.primaryKeys} == [])
+	${model.attributes.get(0).name} DESC
+#else
+#set($i=0)
+#foreach($attribute in $model.primaryKeys)
+#if($i == 0)
+	${attribute.name} DESC
+#else
+	, ${attribute.name} DESC
+#end
+#set($i=$i+1)
+#end
+#end
+LIMIT #firstIndex#, #recordCountPerPage#
+]]>
 #else
 
 #end
 	</select>
+
 ## ##################################################################################################
 	<select id="${selectListTotCntQueryId}" parameterClass="${parameterClass}" resultClass="int">
+<![CDATA[
+/* ${selectListTotCntQueryId} */
+/* ${model.author} ${model.entity.name} 조회(멀티건) 카운트 */
 #if($vender == "HSQLDB")
-			SELECT COUNT(*) totcnt
-			FROM ${model.entity.name}
-			WHERE 1=1
-			<isEqual prepend="AND" property="searchCondition" compareValue="0">
-				${model.attributes.get(0).name} = #searchKeyword#
-			</isEqual>
-			<isEqual prepend="AND" property="searchCondition" compareValue="1">
-				${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
-			</isEqual>
+SELECT
+	COUNT(*) AS TOTCNT
+FROM
+	${model.entity.name}
+WHERE
+	1 = 1
+]]>
+		<isEqual property="searchCondition" compareValue="0">
+<![CDATA[
+	AND ${model.attributes.get(0).name} = #searchKeyword#
+]]>
+		</isEqual>
+		<isEqual property="searchCondition" compareValue="1">
+<![CDATA[
+	AND ${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
+]]>
+		</isEqual>
 #elseif($vender == "Oracle")
-			SELECT COUNT(*) totcnt
-			FROM ${model.entity.name}
-			WHERE 1=1
-			<isEqual prepend="AND" property="searchCondition" compareValue="0">
-				${model.attributes.get(0).name} = #searchKeyword#
-			</isEqual>
-			<isEqual prepend="AND" property="searchCondition" compareValue="1">
-				${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
-			</isEqual>
+SELECT
+	COUNT(*) AS TOTCNT
+FROM
+	${model.entity.name}
+WHERE 1 = 1
+]]>
+		<isEqual property="searchCondition" compareValue="0">
+<![CDATA[
+	AND ${model.attributes.get(0).name} = #searchKeyword#
+]]>
+		</isEqual>
+		<isEqual property="searchCondition" compareValue="1">
+<![CDATA[
+	AND ${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
+]]>
+		</isEqual>
 #elseif($vender == "MySql")
-			SELECT COUNT(*) totcnt
-			FROM ${model.entity.name}
-			WHERE 1=1
-			<isEqual prepend="AND" property="searchCondition" compareValue="0">
-				${model.attributes.get(0).name} = #searchKeyword#
-			</isEqual>
-			<isEqual prepend="AND" property="searchCondition" compareValue="1">
-				${model.attributes.get(1).name} LIKE CONCAT('%',#searchKeyword#,'%')
-			</isEqual>
+SELECT
+	COUNT(*) AS TOTCNT
+FROM
+	${model.entity.name}
+WHERE
+	1 = 1
+]]>
+		<isEqual property="searchCondition" compareValue="0">
+<![CDATA[
+	AND ${model.attributes.get(0).name} = #searchKeyword#
+]]>
+		</isEqual>
+		<isEqual property="searchCondition" compareValue="1">
+<![CDATA[
+	AND ${model.attributes.get(1).name} LIKE CONCAT('%', #searchKeyword#, '%')
+]]>
+		</isEqual>
 #else
 
 #end
