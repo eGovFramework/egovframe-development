@@ -27,7 +27,7 @@
 ##
 ##
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="$namespace">
 
@@ -49,30 +49,34 @@
 <![CDATA[
 /* ${insertQueryId} */
 /* ${model.author} ${model.entity.name} 등록 */
-INSERT INTO ${model.entity.name}
+INSERT INTO
+	${model.entity.name}
+(
 #set($i=0)
 #foreach($attribute in $model.attributes)
 #if($i == 0)
-	( ${attribute.name}
-#elseif($i < ($model.attributes.size() - 1))
-	  , ${attribute.name}
+	${attribute.name},
+#elseif($i == $model.attributes.size() - 1)
+	${attribute.name}
 #else
-	  , ${attribute.name} )
+	${attribute.name},
 #end
 #set($i=$i+1)
 #end
+) VALUES (
 ##
 #set($i=0)
 #foreach($attribute in $model.attributes)
 #if($i == 0)
-VALUES ( #${attribute.ccName}#
-#elseif($i < ($model.attributes.size() - 1))
-	  , #${attribute.ccName}#
+	#${attribute.ccName}#,
+#elseif($i == $model.attributes.size() - 1)
+	#${attribute.ccName}#
 #else
-	  , #${attribute.ccName}# )
+	#${attribute.ccName}#,
 #end
 #set($i=$i+1)
 #end
+)
 ]]>
 	</insert>
 
@@ -337,6 +341,7 @@ WHERE
 	AND ${model.attributes.get(0).name} = #searchKeyword#
 ]]>
 		</isEqual>
+
 		<isEqual property="searchCondition" compareValue="1">
 <![CDATA[
 	AND ${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
@@ -354,6 +359,7 @@ WHERE 1 = 1
 	AND ${model.attributes.get(0).name} = #searchKeyword#
 ]]>
 		</isEqual>
+
 		<isEqual property="searchCondition" compareValue="1">
 <![CDATA[
 	AND ${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
@@ -372,6 +378,7 @@ WHERE
 	AND ${model.attributes.get(0).name} = #searchKeyword#
 ]]>
 		</isEqual>
+
 		<isEqual property="searchCondition" compareValue="1">
 <![CDATA[
 	AND ${model.attributes.get(1).name} LIKE CONCAT('%', #searchKeyword#, '%')
