@@ -182,10 +182,8 @@ WHERE
 	</select>
 
 ## ##################################################################################################
-	<select id="${selectListQueryId}" parameterClass="${parameterClass}" resultClass="org.egovframe.rte.psl.dataaccess.util.EgovMap">
+	<sql id="${selectListQueryId}.sql">
 <![CDATA[
-/* ${selectListQueryId} */
-/* ${model.author} ${model.entity.name} 조회(멀티건) */
 #if($vender == "HSQLDB")
 SELECT
 #set($i=0)
@@ -205,29 +203,18 @@ WHERE
 	1 = 1
 ]]>
 		<isEqual property="searchCondition" compareValue="0">
+<![CDATA[
 	AND ${model.attributes.get(0).name} = #searchKeyword#
+]]>
 		</isEqual>
+
 		<isEqual property="searchCondition" compareValue="1">
+<![CDATA[
 	AND ${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
+]]>
 		</isEqual>
-ORDER BY
-#if(!${model.primaryKeys} == [])
-	${model.attributes.get(0).name} DESC
-#else
-#set($i=0)
-#foreach($attribute in $model.primaryKeys)
-#if($i == 0)
-	${attribute.name} DESC
-#else
-	, ${attribute.name} DESC
-#end
-#set($i=$i+1)
-#end
-#end
-LIMIT #recordCountPerPage# OFFSET #firstIndex#
+
 #elseif($vender == "Oracle")
-SELECT * FROM (
-	SELECT A.*, ROWNUM RNUM FROM (
 SELECT
 #set($i=0)
 #foreach($attribute in $model.attributes)
@@ -250,29 +237,13 @@ WHERE
 	AND ${model.attributes.get(0).name} = #searchKeyword#
 ]]>
 		</isEqual>
+
 		<isEqual property="searchCondition" compareValue="1">
 <![CDATA[
 	AND ${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
 ]]>
 		</isEqual>
-<![CDATA[
-ORDER BY
-#if(!${model.primaryKeys} == [])
-	${model.attributes.get(0).name} DESC
-#else
-#set($i=0)
-#foreach($attribute in $model.primaryKeys)
-#if($i == 0)
-	${attribute.name} DESC
-#else
-	, ${attribute.name} DESC
-#end
-#set($i=$i+1)
-#end
-#end
-	) A WHERE ROWNUM <= #lastIndex#
-)WHERE RNUM > #firstIndex#
-]]>
+
 #elseif($vender == "MySql")
 SELECT
 #set($i=0)
@@ -296,11 +267,69 @@ WHERE
 	AND ${model.attributes.get(0).name} = #searchKeyword#
 ]]>
 		</isEqual>
+
 		<isEqual property="searchCondition" compareValue="1">
 <![CDATA[
 	AND ${model.attributes.get(1).name} LIKE CONCAT('%', #searchKeyword#, '%')
 ]]>
 		</isEqual>
+
+#else
+
+#end
+	</sql>
+
+## ##################################################################################################
+	<select id="${selectListQueryId}" parameterClass="${parameterClass}" resultClass="org.egovframe.rte.psl.dataaccess.util.EgovMap">
+<![CDATA[
+/* ${selectListQueryId} */
+/* ${model.author} ${model.entity.name} 조회(멀티건) */
+#if($vender == "HSQLDB")
+]]>
+	<include refid="${selectListQueryId}.sql" />
+<![CDATA[
+ORDER BY
+#if(!${model.primaryKeys} == [])
+	${model.attributes.get(0).name} DESC
+#else
+#set($i=0)
+#foreach($attribute in $model.primaryKeys)
+#if($i == 0)
+	${attribute.name} DESC
+#else
+	, ${attribute.name} DESC
+#end
+#set($i=$i+1)
+#end
+#end
+LIMIT #recordCountPerPage# OFFSET #firstIndex#
+]]>
+#elseif($vender == "Oracle")
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
+]]>
+	<include refid="${selectListQueryId}.sql" />
+<![CDATA[
+ORDER BY
+#if(!${model.primaryKeys} == [])
+	${model.attributes.get(0).name} DESC
+#else
+#set($i=0)
+#foreach($attribute in $model.primaryKeys)
+#if($i == 0)
+	${attribute.name} DESC
+#else
+	, ${attribute.name} DESC
+#end
+#set($i=$i+1)
+#end
+#end
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
+#elseif($vender == "MySql")
+]]>
+	<include refid="${selectListQueryId}.sql" />
 <![CDATA[
 ORDER BY
 #if(!${model.primaryKeys} == [])
@@ -331,59 +360,30 @@ LIMIT #firstIndex#, #recordCountPerPage#
 #if($vender == "HSQLDB")
 SELECT
 	COUNT(*) AS TOTCNT
-FROM
-	${model.entity.name}
-WHERE
-	1 = 1
+FROM (
 ]]>
-		<isEqual property="searchCondition" compareValue="0">
+	<include refid="${selectListQueryId}.sql" />
 <![CDATA[
-	AND ${model.attributes.get(0).name} = #searchKeyword#
+) AS A
 ]]>
-		</isEqual>
-
-		<isEqual property="searchCondition" compareValue="1">
-<![CDATA[
-	AND ${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
-]]>
-		</isEqual>
 #elseif($vender == "Oracle")
 SELECT
 	COUNT(*) AS TOTCNT
-FROM
-	${model.entity.name}
-WHERE 1 = 1
+FROM (
 ]]>
-		<isEqual property="searchCondition" compareValue="0">
+	<include refid="${selectListQueryId}.sql" />
 <![CDATA[
-	AND ${model.attributes.get(0).name} = #searchKeyword#
+) A
 ]]>
-		</isEqual>
-
-		<isEqual property="searchCondition" compareValue="1">
-<![CDATA[
-	AND ${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
-]]>
-		</isEqual>
 #elseif($vender == "MySql")
 SELECT
 	COUNT(*) AS TOTCNT
-FROM
-	${model.entity.name}
-WHERE
-	1 = 1
+FROM (
 ]]>
-		<isEqual property="searchCondition" compareValue="0">
+	<include refid="${selectListQueryId}.sql" />
 <![CDATA[
-	AND ${model.attributes.get(0).name} = #searchKeyword#
+) AS A
 ]]>
-		</isEqual>
-
-		<isEqual property="searchCondition" compareValue="1">
-<![CDATA[
-	AND ${model.attributes.get(1).name} LIKE CONCAT('%', #searchKeyword#, '%')
-]]>
-		</isEqual>
 #else
 
 #end
