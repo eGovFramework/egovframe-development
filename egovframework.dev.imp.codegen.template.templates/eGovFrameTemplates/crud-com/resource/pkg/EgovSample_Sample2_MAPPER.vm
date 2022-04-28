@@ -27,86 +27,100 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="$namespace">
-	
-## --------------------------------------------------------------------------------------------------------
 
 ## --------------------------------------------------------------------------------------------------------
+##
+## --------------------------------------------------------------------------------------------------------
 	<resultMap id="$resultMapId" type="$resultMapClass">
-#set($i=0)	
+#set($i=0)
 #foreach($attribute in $model.attributes)
-#set($i=$i+1)	
+#set($i=$i+1)
 		<result property="${attribute.ccName}" column="${attribute.name}" />
-#end		
+#end
 	</resultMap>
-	
+
 ## ##################################################################################################
 	<insert id="${insertQueryId}">
-		<![CDATA[
-			INSERT INTO ${model.entity.name} 
-#set($i=0)	
+<![CDATA[
+/* ${insertQueryId} */
+/* ${model.author} ${model.entity.name} 등록 */
+INSERT INTO
+	${model.entity.name}
+(
+#set($i=0)
 #foreach($attribute in $model.attributes)
 #if($i == 0)
-				( ${attribute.name}
-#elseif($i < ($model.attributes.size() - 1))
-				  , ${attribute.name}
+	${attribute.name},
+#elseif($i == $model.attributes.size() - 1)
+	${attribute.name}
 #else
-				  , ${attribute.name} )
+	${attribute.name},
+#end
+#set($i=$i+1)
+#end
+) VALUES (
+##
+#set($i=0)
+#foreach($attribute in $model.attributes)
+#if($i == 0)
+	#{${attribute.ccName}},
+#elseif($i == $model.attributes.size() - 1)
+	#{${attribute.ccName}}
+#else
+	#{${attribute.ccName}},
+#end
+#set($i=$i+1)
+#end
+)
+]]>
+	</insert>
+
+## ##################################################################################################
+	<update id="${updateQueryId}">
+<![CDATA[
+/* ${updateQueryId} */
+/* ${model.author} ${model.entity.name} 수정 */
+UPDATE
+	${model.entity.name}
+SET
+#set($i=0)
+#foreach($attribute in $model.attributes)
+#if($i == 0)
+	${attribute.name} = #{${attribute.ccName}},
+#elseif($i == $model.attributes.size() - 1)
+	${attribute.name} = #{${attribute.ccName}}
+#else
+	${attribute.name} = #{${attribute.ccName}},
 #end
 #set($i=$i+1)
 #end
 ##
-#set($i=0)	
-#foreach($attribute in $model.attributes)
-#if($i == 0)
-			VALUES ( #{${attribute.ccName}}
-#elseif($i < ($model.attributes.size() - 1))
-				  , #{${attribute.ccName}}
-#else
-				  , #{${attribute.ccName}} )
-#end
-#set($i=$i+1)
-#end
-		]]>
-	</insert>
-	
-## ##################################################################################################	
-	<update id="${updateQueryId}">
-		<![CDATA[
-			UPDATE ${model.entity.name}
-#set($i=0)	
-#foreach($attribute in $model.attributes)
-#if($i == 0)
-			SET ${attribute.name}=#{${attribute.ccName}}
-#else
-				, ${attribute.name}=#{${attribute.ccName}}
-#end
-#set($i=$i+1)
-#end	
-##		
 #if(!${model.primaryKeys} == [])
-                WHERE ${model.attributes.get(0).name}=#{${model.attributes.get(0).ccName}}
+WHERE
+	${model.attributes.get(0).name} = #{${model.attributes.get(0).ccName}}
 #else
-	#set($i=0)	
-	#foreach($attribute in $model.primaryKeys)
-	#if($i == 0)
-				WHERE ${attribute.name}=#{${attribute.ccName}}
-	#else
-					AND ${attribute.name}=#{${attribute.ccName}}
-	#end
-	#set($i=$i+1)
-	#end
+#set($i=0)
+#foreach($attribute in $model.primaryKeys)
+#if($i == 0)
+WHERE
+	${attribute.name} = #{${attribute.ccName}}
+#else
+	AND ${attribute.name} = #{${attribute.ccName}}
 #end
-		]]>
+#set($i=$i+1)
+#end
+#end
+]]>
 	</update>
-	
+
 ## ##################################################################################################
 	<delete id="${deleteQueryId}">
 		<![CDATA[
-			DELETE FROM ${model.entity.name} 
+			DELETE FROM ${model.entity.name}
 #if(!${model.primaryKeys} == [])
                 WHERE ${model.attributes.get(0).name}=#{${model.attributes.get(0).ccName}}
-#else 
-	#set($i=0)	
+#else
+	#set($i=0)
 	#foreach($attribute in $model.primaryKeys)
 	#if($i == 0)
 				WHERE ${attribute.name}=#{${attribute.ccName}}
@@ -118,12 +132,12 @@
 #end
 		]]>
 	</delete>
-	
-## ##################################################################################################	
+
+## ##################################################################################################
 	<select id="${selectQueryId}" resultMap="$resultMapId">
 		<![CDATA[
 			SELECT
-#set($i=0)	
+#set($i=0)
 #foreach($attribute in $model.attributes)
 #if($i == 0)
 				${attribute.name}
@@ -131,12 +145,12 @@
 				, ${attribute.name}
 #end
 #set($i=$i+1)
-#end				
+#end
 			FROM ${model.entity.name}
 #if(!${model.primaryKeys} == [])
                 WHERE ${model.attributes.get(0).name}=#{${model.attributes.get(0).ccName}}
-#else 
-	#set($i=0)	
+#else
+	#set($i=0)
 	#foreach($attribute in $model.primaryKeys)
 	#if($i == 0)
 				WHERE ${attribute.name}=#{${attribute.ccName}}
@@ -148,12 +162,12 @@
 #end
 		]]>
 	</select>
-	
-## ##################################################################################################	
+
+## ##################################################################################################
 	<select id="${selectListQueryId}" parameterType="${resultMapClass}" resultType="egovMap">
 #if($vender == "HSQLDB")
 			SELECT
-	#set($i=0)	
+	#set($i=0)
 	#foreach($attribute in $model.attributes)
 	#if($i == 0)
 					${attribute.name}
@@ -161,7 +175,7 @@
 					, ${attribute.name}
 	#end
 	#set($i=$i+1)
-	#end	
+	#end
 			FROM ${model.entity.name}
 			WHERE 1=1
 			<if test="searchKeyword != null and searchKeyword != ''">
@@ -172,11 +186,11 @@
 					${model.attributes.get(1).name} LIKE '%' || #{searchKeyword} || '%'
 				</if>
 			</if>
-				ORDER BY 
+				ORDER BY
 #if(!${model.primaryKeys} == [])
                 ${model.attributes.get(0).name} DESC
-#else 				
-	#set($i=0)				
+#else
+	#set($i=0)
 	#foreach($attribute in $model.primaryKeys)
 	#if($i == 0)
 				${attribute.name} DESC
@@ -191,7 +205,7 @@
 SELECT * FROM (
 	SELECT A.*, ROWNUM RNUM FROM (
 				SELECT
-	#set($i=0)	
+	#set($i=0)
 	#foreach($attribute in $model.attributes)
 	#if($i == 0)
 					${attribute.name}
@@ -210,11 +224,11 @@ SELECT * FROM (
 						${model.attributes.get(1).name} LIKE '%' || #{searchKeyword} || '%'
 					</if>
 				</if>
-					ORDER BY 
+					ORDER BY
 #if(!${model.primaryKeys} == [])
                 ${model.attributes.get(0).name} DESC
-#else					
-	#set($i=0)				
+#else
+	#set($i=0)
 	#foreach($attribute in $model.primaryKeys)
 	#if($i == 0)
 				${attribute.name} DESC
@@ -225,13 +239,13 @@ SELECT * FROM (
 	#end
 #end
 
-		<![CDATA[					
+		<![CDATA[
 	) A WHERE ROWNUM <= #{lastIndex}
 )WHERE RNUM > #{firstIndex}
 ]]>
 #elseif($vender == "MySql" || $vender == "postgres")
 			SELECT
-	#set($i=0)	
+	#set($i=0)
 	#foreach($attribute in $model.attributes)
 	#if($i == 0)
 					${attribute.name}
@@ -250,11 +264,11 @@ SELECT * FROM (
 					${model.attributes.get(1).name} LIKE CONCAT('%',#{searchKeyword},'%')
 				</if>
 			</if>
-				ORDER BY 
+				ORDER BY
 #if(!${model.primaryKeys} == [])
                 ${model.attributes.get(0).name} DESC
-#else				
-	#set($i=0)				
+#else
+	#set($i=0)
 	#foreach($attribute in $model.primaryKeys)
 	#if($i == 0)
 				${attribute.name} DESC
@@ -264,12 +278,12 @@ SELECT * FROM (
 	#set($i=$i+1)
 	#end
 #end
-			limit #{recordCountPerPage} offset #{firstIndex}	
+			limit #{recordCountPerPage} offset #{firstIndex}
 #else
 
-#end			
-	</select>	
-## ##################################################################################################	
+#end
+	</select>
+## ##################################################################################################
 	<select id="${selectListTotCntQueryId}" parameterType="${resultMapClass}" resultType="int">
 #if($vender == "HSQLDB")
 			SELECT COUNT(*) totcnt
@@ -306,10 +320,10 @@ SELECT * FROM (
 				<if test="searchCondition == 1">AND
 					${model.attributes.get(1).name} LIKE CONCAT('%',#{searchKeyword},'%')
 				</if>
-			</if>			
+			</if>
 #else
 
-#end			
+#end
 	</select>
 
 </mapper>
