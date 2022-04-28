@@ -11,7 +11,7 @@
 ##
 #set($vender="$model.vender")
 #set($namespace="${mapperPackage}.${mapperClassName}")
-#set($resultMapId="${model.entity.ccName}")
+#set($resultMapId="resultMap${model.entity.pcName}")
 #set($resultMapClass="${voPackage}.${voClassName}")
 ##
 ##
@@ -115,52 +115,65 @@ WHERE
 
 ## ##################################################################################################
 	<delete id="${deleteQueryId}">
-		<![CDATA[
-			DELETE FROM ${model.entity.name}
+<![CDATA[
+/* ${deleteQueryId} */
+/* ${model.author} ${model.entity.name} 삭제 */
+DELETE
+FROM
+	${model.entity.name}
 #if(!${model.primaryKeys} == [])
-                WHERE ${model.attributes.get(0).name}=#{${model.attributes.get(0).ccName}}
+WHERE
+	${model.attributes.get(0).name} = #{${model.attributes.get(0).ccName}}
 #else
-	#set($i=0)
-	#foreach($attribute in $model.primaryKeys)
-	#if($i == 0)
-				WHERE ${attribute.name}=#{${attribute.ccName}}
-	#else
-					AND ${attribute.name}=#{${attribute.ccName}}
-	#end
-	#set($i=$i+1)
-	#end
+#set($i=0)
+#foreach($attribute in $model.primaryKeys)
+#if($i == 0)
+WHERE
+	${attribute.name} = #{${attribute.ccName}}
+#else
+	AND ${attribute.name} = #{${attribute.ccName}}
 #end
-		]]>
+#set($i=$i+1)
+#end
+#end
+]]>
 	</delete>
 
 ## ##################################################################################################
 	<select id="${selectQueryId}" resultMap="$resultMapId">
-		<![CDATA[
-			SELECT
+<![CDATA[
+/* ${selectQueryId} */
+/* ${model.author} ${model.entity.name} 조회(단건) */
+SELECT
 #set($i=0)
 #foreach($attribute in $model.attributes)
 #if($i == 0)
-				${attribute.name}
+	${attribute.name},
+#elseif($i == $model.attributes.size() - 1)
+	${attribute.name}
 #else
-				, ${attribute.name}
+	${attribute.name},
 #end
 #set($i=$i+1)
 #end
-			FROM ${model.entity.name}
+FROM
+	${model.entity.name}
 #if(!${model.primaryKeys} == [])
-                WHERE ${model.attributes.get(0).name}=#{${model.attributes.get(0).ccName}}
+WHERE
+	${model.attributes.get(0).name} = #{${model.attributes.get(0).ccName}}
 #else
-	#set($i=0)
-	#foreach($attribute in $model.primaryKeys)
-	#if($i == 0)
-				WHERE ${attribute.name}=#{${attribute.ccName}}
-	#else
-					AND ${attribute.name}=#{${attribute.ccName}}
-	#end
-	#set($i=$i+1)
-	#end
+#set($i=0)
+#foreach($attribute in $model.primaryKeys)
+#if($i == 0)
+WHERE
+	${attribute.name} = #{${attribute.ccName}}
+#else
+	AND ${attribute.name} = #{${attribute.ccName}}
 #end
-		]]>
+#set($i=$i+1)
+#end
+#end
+]]>
 	</select>
 
 ## ##################################################################################################
