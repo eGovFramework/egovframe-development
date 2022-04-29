@@ -1,6 +1,7 @@
 ##
 #set($voPackage="${voPackage}")
 #set($voClassName="${model.entity.pcName}VO")
+#set($voInstanceName="${model.entity.ccName}VO")
 #set($defaultVoClassName="${model.entity.pcName}DefaultVO")
 #set($mapperPackage="${mapperPackage}")
 #set($mapperClassName="${model.entity.pcName}Mapper")
@@ -32,6 +33,7 @@ import ${voPackage}.${voClassName};
 import ${voPackage}.${defaultVoClassName};
 
 import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 
 /**
  * @Class Name : ${mapperClassName}.java
@@ -42,59 +44,53 @@ import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
  * @since ${createDate}
  * @version 1.0
  * @see
- *  
+ *
  *  Copyright (C)  All right reserved.
  */
 
 @Mapper
-public interface ${mapperClassName} {
+interface ${mapperClassName} {
 
 	/**
 	 * ${model.entity.name}을 등록한다.
-	 * @param vo - 등록할 정보가 담긴 ${voClassName}
+	 * @param ${voInstanceName} - 등록할 정보가 담긴 ${voClassName}
 	 * @return 등록 결과
-	 * @exception Exception
 	 */
-    public void ${insertMethodName}(${voClassName} vo);
+	 int ${insertMethodName}(${voClassName} ${voInstanceName});
 
-    /**
+	 /**
 	 * ${model.entity.name}을 수정한다.
-	 * @param vo - 수정할 정보가 담긴 ${voClassName}
+	 * @param ${voInstanceName} - 수정할 정보가 담긴 ${voClassName}
 	 * @return void형
-	 * @exception Exception
 	 */
-    public void ${updateMethodName}(${voClassName} vo);
+	 int ${updateMethodName}(${voClassName} ${voInstanceName});
 
-    /**
+	 /**
 	 * ${model.entity.name}을 삭제한다.
-	 * @param vo - 삭제할 정보가 담긴 ${voClassName}
-	 * @return void형 
-	 * @exception Exception
+	 * @param ${voInstanceName} - 삭제할 정보가 담긴 ${voClassName}
+	 * @return void형
 	 */
-    public void ${deleteMethodName}(${voClassName} vo);
+	 int ${deleteMethodName}(${voClassName} ${voInstanceName});
 
-    /**
+	 /**
 	 * ${model.entity.name}을 조회한다.
-	 * @param vo - 조회할 정보가 담긴 ${voClassName}
+	 * @param ${voInstanceName} - 조회할 정보가 담긴 ${voClassName}
 	 * @return 조회한 ${model.entity.name}
-	 * @exception Exception
 	 */
-    public ${voClassName} ${selectMethodName}(${voClassName} vo);
+	 ${voClassName} ${selectMethodName}(${voClassName} ${voInstanceName});
 
-    /**
+	 /**
 	 * ${model.entity.name} 목록을 조회한다.
-	 * @param searchMap - 조회할 정보가 담긴 Map
+	 * @param ${voInstanceName} - 조회할 정보가 담긴 ${voClassName}
 	 * @return ${model.entity.name} 목록
-	 * @exception Exception
 	 */
-    public List<?> ${selectListMethodName}(${defaultVoClassName} searchVO);
+	 List<EgovMap> ${selectListMethodName}(${voClassName} ${voInstanceName});
 
-    /**
+	 /**
 	 * ${model.entity.name} 총 갯수를 조회한다.
-	 * @param searchMap - 조회할 정보가 담긴 Map
+	 * @param ${voInstanceName} - 조회할 정보가 담긴 ${voClassName}
 	 * @return ${model.entity.name} 총 갯수
-	 * @exception
 	 */
-    public int ${selectListTotCntMethodName}(${defaultVoClassName} searchVO);
+	 int ${selectListTotCntMethodName}(${voClassName} ${voInstanceName});
 
 }
