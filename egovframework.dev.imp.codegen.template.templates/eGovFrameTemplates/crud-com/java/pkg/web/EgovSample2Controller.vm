@@ -100,28 +100,26 @@ public class ${controllerClassName} {
 	 * @exception Exception
 	 */
     @RequestMapping(value="${listPath}")
-    public String ${selectListMethodName}(@ModelAttribute("searchVO") ${defaultVoClassName} searchVO, 
-    		ModelMap model)
-            throws Exception {
+    public String ${selectListMethodName}(${voClassName} ${voInstanceName}, Model model) {
     	
     	/** EgovPropertyService.sample */
-    	searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
-    	searchVO.setPageSize(propertiesService.getInt("pageSize"));
+    	${voInstanceName}.setPageUnit(propertiesService.getInt("pageUnit"));
+    	${voInstanceName}.setPageSize(propertiesService.getInt("pageSize"));
     	
     	/** pageing */
     	PaginationInfo paginationInfo = new PaginationInfo();
-		paginationInfo.setCurrentPageNo(searchVO.getPageIndex());
-		paginationInfo.setRecordCountPerPage(searchVO.getPageUnit());
-		paginationInfo.setPageSize(searchVO.getPageSize());
+		paginationInfo.setCurrentPageNo(${voInstanceName}.getPageIndex());
+		paginationInfo.setRecordCountPerPage(${voInstanceName}.getPageUnit());
+		paginationInfo.setPageSize(${voInstanceName}.getPageSize());
 		
-		searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
-		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+		${voInstanceName}.setFirstIndex(paginationInfo.getFirstRecordIndex());
+		${voInstanceName}.setLastIndex(paginationInfo.getLastRecordIndex());
+		${voInstanceName}.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 		
-        List<?> ${listInstanceName} = ${serviceInstanceName}.${selectListMethodName}(searchVO);
+        List<?> ${listInstanceName} = ${serviceInstanceName}.${selectListMethodName}(${voInstanceName});
         model.addAttribute("resultList", ${listInstanceName});
         
-        int totCnt = ${serviceInstanceName}.${selectListTotCntMethodName}(searchVO);
+        int totCnt = ${serviceInstanceName}.${selectListTotCntMethodName}(${voInstanceName});
 		paginationInfo.setTotalRecordCount(totCnt);
         model.addAttribute("paginationInfo", paginationInfo);
         

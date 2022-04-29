@@ -93,7 +93,7 @@ function fn_egov_link_page(pageNo){
 </script>
 </head>
 <body>
-<form:form commandName="searchVO" name="listForm" id="listForm" method="post" modelAttribute="searchVO">
+<form:form modelAttribute="$voInstanceName" name="listForm" id="listForm" method="post">
 #if(${model.primaryKeys} == [])
     <input type="hidden" name="${model.attributes.get(0).ccName}" />
 #else

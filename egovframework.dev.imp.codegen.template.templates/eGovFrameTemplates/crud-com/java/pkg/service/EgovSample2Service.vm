@@ -49,7 +49,7 @@ public interface $serviceClassName {
 	 * @return 등록 결과
 	 * @exception Exception
 	 */
-    String $insertMethodName($voClassName vo) throws Exception;
+    String $insertMethodName($voClassName vo);
     
     /**
 	 * ${model.entity.name}을 수정한다.
@@ -57,7 +57,7 @@ public interface $serviceClassName {
 	 * @return void형
 	 * @exception Exception
 	 */
-    void $updateMethodName($voClassName vo) throws Exception;
+    void $updateMethodName($voClassName vo);
     
     /**
 	 * ${model.entity.name}을 삭제한다.
@@ -65,7 +65,7 @@ public interface $serviceClassName {
 	 * @return void형 
 	 * @exception Exception
 	 */
-    void $deleteMethodName($voClassName vo) throws Exception;
+    void $deleteMethodName($voClassName vo);
     
     /**
 	 * ${model.entity.name}을 조회한다.
@@ -73,7 +73,7 @@ public interface $serviceClassName {
 	 * @return 조회한 ${model.entity.name}
 	 * @exception Exception
 	 */
-    $voClassName $selectMethodName($voClassName vo) throws Exception;
+    $voClassName $selectMethodName($voClassName vo);
     
     /**
 	 * ${model.entity.name} 목록을 조회한다.
@@ -81,7 +81,7 @@ public interface $serviceClassName {
 	 * @return ${model.entity.name} 목록
 	 * @exception Exception
 	 */
-    List $selectListMethodName(${defaultVoClassName} searchVO) throws Exception;
+    List $selectListMethodName($voClassName vo);
     
     /**
 	 * ${model.entity.name} 총 갯수를 조회한다.
@@ -89,6 +89,6 @@ public interface $serviceClassName {
 	 * @return ${model.entity.name} 총 갯수
 	 * @exception
 	 */
-    int $selectListTotCntMethodName(${defaultVoClassName} searchVO);
+    int $selectListTotCntMethodName($voClassName vo);
     
 }

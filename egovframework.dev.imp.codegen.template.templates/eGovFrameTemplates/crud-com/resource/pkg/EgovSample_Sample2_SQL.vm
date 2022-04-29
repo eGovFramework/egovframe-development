@@ -202,6 +202,7 @@ FROM
 WHERE
 	1 = 1
 ]]>
+
 		<isEqual property="searchCondition" compareValue="0">
 <![CDATA[
 	AND ${model.attributes.get(0).name} = #searchKeyword#
