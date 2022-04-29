@@ -1,6 +1,7 @@
 ##
 #set($voPackage="${voPackage}")
 #set($voClassName="${model.entity.pcName}VO")
+#set($voInstanceName="${model.entity.ccName}VO")
 #set($defaultVoClassName="${model.entity.pcName}DefaultVO")
 #set($daoPackage="${daoPackage}")
 #set($daoClassName="${model.entity.pcName}DAO")
@@ -28,11 +29,12 @@ package ${daoPackage};
 
 import java.util.List;
 
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 import org.springframework.stereotype.Repository;
 
 import egovframework.com.cmm.service.impl.EgovComAbstractDAO;
 import ${voPackage}.${voClassName};
-import ${voPackage}.${defaultVoClassName};
+##import ${voPackage}.${defaultVoClassName};
 
 /**
  * @Class Name : ${daoClassName}.java
@@ -43,7 +45,7 @@ import ${voPackage}.${defaultVoClassName};
  * @since ${createDate}
  * @version 1.0
  * @see
- *  
+ *
  *  Copyright (C)  All right reserved.
  */
 
@@ -52,62 +54,63 @@ public class ${daoClassName} extends EgovComAbstractDAO {
 
 	/**
 	 * ${model.entity.name}을 등록한다.
-	 * @param vo - 등록할 정보가 담긴 ${voClassName}
+	 * @param ${voInstanceName} - 등록할 정보가 담긴 ${voClassName}
 	 * @return 등록 결과
 	 * @exception Exception
 	 */
-    public String ${insertMethodName}(${voClassName} vo) {
-        return (String)insert("${insertQueryId}", vo);
-    }
+	public int ${insertMethodName}(${voClassName} ${voInstanceName}) {
+		return (int) insert("${insertQueryId}", ${voInstanceName});
+	}
 
-    /**
+	/**
 	 * ${model.entity.name}을 수정한다.
-	 * @param vo - 수정할 정보가 담긴 ${voClassName}
+	 * @param ${voInstanceName} - 수정할 정보가 담긴 ${voClassName}
 	 * @return void형
 	 * @exception Exception
 	 */
-    public void ${updateMethodName}(${voClassName} vo) {
-        update("${updateQueryId}", vo);
-    }
+	public int ${updateMethodName}(${voClassName} ${voInstanceName}) {
+		return update("${updateQueryId}", ${voInstanceName});
+	}
 
-    /**
+	/**
 	 * ${model.entity.name}을 삭제한다.
-	 * @param vo - 삭제할 정보가 담긴 ${voClassName}
-	 * @return void형 
+	 * @param ${voInstanceName} - 삭제할 정보가 담긴 ${voClassName}
+	 * @return void형
 	 * @exception Exception
 	 */
-    public void ${deleteMethodName}(${voClassName} vo) {
-        delete("${deleteQueryId}", vo);
-    }
+	public int ${deleteMethodName}(${voClassName} ${voInstanceName}) {
+		return delete("${deleteQueryId}", ${voInstanceName});
+	}
 
-    /**
+	/**
 	 * ${model.entity.name}을 조회한다.
-	 * @param vo - 조회할 정보가 담긴 ${voClassName}
+	 * @param ${voInstanceName} - 조회할 정보가 담긴 ${voClassName}
 	 * @return 조회한 ${model.entity.name}
 	 * @exception Exception
 	 */
-    public ${voClassName} ${selectMethodName}(${voClassName} vo) {
-        return (${voClassName}) select("${selectQueryId}", vo);
-    }
+	public ${voClassName} ${selectMethodName}(${voClassName} ${voInstanceName}) {
+		return (${voClassName}) select("${selectQueryId}", ${voInstanceName});
+	}
 
-    /**
+	/**
 	 * ${model.entity.name} 목록을 조회한다.
-	 * @param searchMap - 조회할 정보가 담긴 Map
+	 * @param ${voInstanceName} - 조회할 정보가 담긴 ${voClassName}
 	 * @return ${model.entity.name} 목록
 	 * @exception Exception
 	 */
-    public List<?> ${selectListMethodName}(${defaultVoClassName} searchVO) {
-        return list("${selectListQueryId}", searchVO);
-    }
+	@SuppressWarnings("unchecked")
+	public List<EgovMap> ${selectListMethodName}(${voClassName} ${voInstanceName}) {
+		return (List<EgovMap>) list("${selectListQueryId}", ${voInstanceName});
+	}
 
-    /**
+	/**
 	 * ${model.entity.name} 총 갯수를 조회한다.
-	 * @param searchMap - 조회할 정보가 담긴 Map
+	 * @param ${voInstanceName} - 조회할 정보가 담긴 ${voClassName}
 	 * @return ${model.entity.name} 총 갯수
 	 * @exception
 	 */
-    public int ${selectListTotCntMethodName}(${defaultVoClassName} searchVO) {
-        return (Integer)select("${selectListTotCntQueryId}", searchVO);
-    }
+	public int ${selectListTotCntMethodName}(${voClassName} ${voInstanceName}) {
+		return (int) select("${selectListTotCntQueryId}", ${voInstanceName});
+	}
 
 }

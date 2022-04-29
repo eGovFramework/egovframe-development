@@ -30,7 +30,7 @@ package ${mapperPackage};
 import java.util.List;
 
 import ${voPackage}.${voClassName};
-import ${voPackage}.${defaultVoClassName};
+##import ${voPackage}.${defaultVoClassName};
 
 import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
