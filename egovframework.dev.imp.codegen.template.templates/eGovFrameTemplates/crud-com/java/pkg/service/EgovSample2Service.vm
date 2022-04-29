@@ -1,6 +1,7 @@
 ##
 #set($voPackage="${voPackage}")
 #set($voClassName="${model.entity.pcName}VO")
+#set($voInstanceName="${model.entity.ccName}VO")
 #set($defaultVoClassName="${model.entity.pcName}DefaultVO")
 #set($daoPackage="${daoPackage}")
 #set($daoClassName="${model.entity.pcName}DAO")
@@ -20,13 +21,15 @@
 package $servicePackage;
 
 import java.util.List;
+
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 #if (${voPackage}=='${voPackage}')
 // Vo 객체에 대한 import 구문
 // import (vo package).${defaultVoClassName};
 // import (vo package).${voClassName};
 #else
-import ${voPackage}.${defaultVoClassName};
-import ${voPackage}.${voClassName};
+##import ${voPackage}.${defaultVoClassName};
+##import ${voPackage}.${voClassName};
 #end
 
 /**
@@ -38,57 +41,57 @@ import ${voPackage}.${voClassName};
  * @since ${createDate}
  * @version 1.0
  * @see
- *  
+ *
  *  Copyright (C)  All right reserved.
  */
 public interface $serviceClassName {
-	
+
 	/**
 	 * ${model.entity.name}을 등록한다.
-	 * @param vo - 등록할 정보가 담긴 $voClassName
+	 * 
+	 * @param ${voInstanceName} - 등록할 정보가 담긴 $voClassName
 	 * @return 등록 결과
-	 * @exception Exception
 	 */
-    String $insertMethodName($voClassName vo);
-    
-    /**
+	int $insertMethodName($voClassName ${voInstanceName});
+
+	/**
 	 * ${model.entity.name}을 수정한다.
-	 * @param vo - 수정할 정보가 담긴 $voClassName
+	 * 
+	 * @param ${voInstanceName} - 수정할 정보가 담긴 $voClassName
 	 * @return void형
-	 * @exception Exception
 	 */
-    void $updateMethodName($voClassName vo);
-    
-    /**
+	int $updateMethodName($voClassName ${voInstanceName});
+
+	/**
 	 * ${model.entity.name}을 삭제한다.
-	 * @param vo - 삭제할 정보가 담긴 $voClassName
-	 * @return void형 
-	 * @exception Exception
+	 * 
+	 * @param ${voInstanceName} - 삭제할 정보가 담긴 $voClassName
+	 * @return void형
 	 */
-    void $deleteMethodName($voClassName vo);
-    
-    /**
+	int $deleteMethodName($voClassName ${voInstanceName});
+
+	/**
 	 * ${model.entity.name}을 조회한다.
-	 * @param vo - 조회할 정보가 담긴 $voClassName
+	 * 
+	 * @param ${voInstanceName} - 조회할 정보가 담긴 $voClassName
 	 * @return 조회한 ${model.entity.name}
-	 * @exception Exception
 	 */
-    $voClassName $selectMethodName($voClassName vo);
-    
-    /**
+	$voClassName $selectMethodName($voClassName ${voInstanceName});
+
+	/**
 	 * ${model.entity.name} 목록을 조회한다.
-	 * @param searchVO - 조회할 정보가 담긴 VO
+	 * 
+	 * @param ${voInstanceName} - 조회할 정보가 담긴 $voClassName
 	 * @return ${model.entity.name} 목록
-	 * @exception Exception
 	 */
-    List $selectListMethodName($voClassName vo);
-    
-    /**
+	List<EgovMap> $selectListMethodName($voClassName ${voInstanceName});
+
+	/**
 	 * ${model.entity.name} 총 갯수를 조회한다.
-	 * @param searchVO - 조회할 정보가 담긴 VO
+	 * 
+	 * @param ${voInstanceName} - 조회할 정보가 담긴 $voClassName
 	 * @return ${model.entity.name} 총 갯수
-	 * @exception
 	 */
-    int $selectListTotCntMethodName($voClassName vo);
-    
+	int $selectListTotCntMethodName($voClassName ${voInstanceName});
+
 }
