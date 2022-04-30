@@ -32,13 +32,15 @@ package ${serviceImplPackage};
 import java.util.List;
 
 ##import javax.annotation.Resource;
-import org.springframework.beans.factory.annotation.Autowired;
+##import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
+import org.egovframe.rte.fdl.cmmn.exception.FdlException;
 import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
+import org.egovframe.rte.fdl.idgnr.impl.EgovUUIdGnrServiceImpl;
 import ${servicePackage}.${serviceClassName};
 #if (${voPackage}=='${voPackage}')
 // Vo 객체에 대한 import 구문
@@ -77,16 +79,24 @@ import ${voPackage}.${voClassName};
 public class ${serviceImplClassName} extends EgovAbstractServiceImpl implements ${serviceClassName} {
 ##
 ##	private static final egovLogger egovLogger = egovLoggerFactory.getegovLogger(${serviceImplClassName}.class);
+##
+##	@Autowired
+##	private ${mapperClassName} ${daoInstanceName};
+##
+##//	@Autowired
+##//	private ${daoClassName} ${daoInstanceName};
+##
+##	/** ID Generation */
+##	//@Resource(name="{$idGnrService}")
+##	//private EgovIdGnrService egovIdGnrService;
 
-	@Autowired
-	private ${mapperClassName} ${daoInstanceName};
+	private final ${mapperClassName} ${daoInstanceName};
+	private final EgovIdGnrService ${model.entity.ccName}EgovIdGnrService;
 
-//	@Autowired
-//	private ${daoClassName} ${daoInstanceName};
-
-	/** ID Generation */
-	//@Resource(name="{$idGnrService}")
-	//private EgovIdGnrService egovIdGnrService;
+	public Sample2ServiceImpl(${mapperClassName} ${daoInstanceName}) {
+		this.${daoInstanceName} = ${daoInstanceName};
+		this.${model.entity.ccName}EgovIdGnrService = new EgovUUIdGnrServiceImpl();
+	}
 
 	/**
 	 * ${model.entity.name}을 등록한다.
@@ -95,13 +105,17 @@ public class ${serviceImplClassName} extends EgovAbstractServiceImpl implements 
 	 * @return 등록 결과
 	 */
 	public int ${insertMethodName}(${voClassName} ${voInstanceName}) {
-		egovLogger.debug(${voInstanceName}.toString());
+		egovLogger.debug("${voInstanceName}=", ${voInstanceName});
 
-		/** ID Generation Service */
-		//TODO 해당 테이블 속성에 따라 ID 제너레이션 서비스 사용
-		//String id = egovIdGnrService.getNextStringId();
-		//${voInstanceName}.setId(id);
-		egovLogger.debug(${voInstanceName}.toString());
+		try {
+			sample2VO.setId(sample2EgovIdGnrService.getNextStringId());
+			egovLogger.debug("id={}", sample2VO.getId());
+		} catch (FdlException e) {
+			egovLogger.error("sample2EgovIdGnrService FdlException");
+			return 0;
+		}
+
+		egovLogger.debug("${voInstanceName}=", ${voInstanceName});
 
 		return ${daoInstanceName}.${insertMethodName}(${voInstanceName});
 	}
@@ -133,8 +147,8 @@ public class ${serviceImplClassName} extends EgovAbstractServiceImpl implements 
 	 * @return 조회한 ${model.entity.name}
 	 */
 	public ${voClassName} ${selectMethodName}(${voClassName} ${voInstanceName}) {
-		${voClassName} resultVO = ${daoInstanceName}.${selectMethodName}(${voInstanceName});
-		if (resultVO == null) {
+		${voClassName} result = ${daoInstanceName}.${selectMethodName}(${voInstanceName});
+		if (result == null) {
 			try {
 				throw processException("info.nodata.msg");
 			} catch (Exception e) {
@@ -142,7 +156,7 @@ public class ${serviceImplClassName} extends EgovAbstractServiceImpl implements 
 				return null;
 			}
 		}
-		return resultVO;
+		return result;
 	}
 
 	/**

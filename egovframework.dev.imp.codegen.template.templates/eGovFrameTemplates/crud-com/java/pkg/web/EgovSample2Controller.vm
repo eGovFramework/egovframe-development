@@ -84,7 +84,7 @@ import ${voPackage}.${voClassName};
  */
 
 @Controller
-@SessionAttributes(types=${voClassName}.class)
+##@SessionAttributes(types=${voClassName}.class)
 public class ${controllerClassName} {
 
     @Autowired
