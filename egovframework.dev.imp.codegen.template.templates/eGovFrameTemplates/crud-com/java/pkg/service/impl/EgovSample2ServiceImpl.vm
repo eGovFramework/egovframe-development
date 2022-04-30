@@ -38,9 +38,10 @@ import org.springframework.stereotype.Service;
 
 import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.egovframe.rte.fdl.cmmn.exception.FdlException;
 import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
-import org.egovframe.rte.fdl.idgnr.impl.EgovUUIdGnrServiceImpl;
+##import org.egovframe.rte.fdl.idgnr.impl.EgovUUIdGnrServiceImpl;
 import ${servicePackage}.${serviceClassName};
 #if (${voPackage}=='${voPackage}')
 // Vo 객체에 대한 import 구문
@@ -93,9 +94,15 @@ public class ${serviceImplClassName} extends EgovAbstractServiceImpl implements 
 	private final ${mapperClassName} ${daoInstanceName};
 	private final EgovIdGnrService ${model.entity.ccName}EgovIdGnrService;
 
-	public Sample2ServiceImpl(${mapperClassName} ${daoInstanceName}) {
+##	public ${serviceImplClassName}(${mapperClassName} ${daoInstanceName}) {
+##		this.${daoInstanceName} = ${daoInstanceName};
+##		this.${model.entity.ccName}EgovIdGnrService = new EgovUUIdGnrServiceImpl();
+##	}
+	public ${serviceImplClassName}(${mapperClassName} ${daoInstanceName},
+			// TODO 이백행 egovFileIdGnrService 수정
+			@Qualifier("egovFileIdGnrService") EgovIdGnrService ${model.entity.ccName}EgovIdGnrService) {
 		this.${daoInstanceName} = ${daoInstanceName};
-		this.${model.entity.ccName}EgovIdGnrService = new EgovUUIdGnrServiceImpl();
+		this.${model.entity.ccName}EgovIdGnrService = ${model.entity.ccName}EgovIdGnrService;
 	}
 
 	/**
