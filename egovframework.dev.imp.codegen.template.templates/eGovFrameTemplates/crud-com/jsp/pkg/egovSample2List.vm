@@ -7,7 +7,7 @@
 #set($voInstanceName="${model.entity.ccName}VO")
 ##
 ##
-#set($listPath="/${model.entity.ccName}/${model.entity.pcName}List.do")
+#set($listPath="/${model.entity.ccName}/select${model.entity.pcName}List.do")
 #set($addViewPath="/${model.entity.ccName}/add${model.entity.pcName}View.do")
 #set($addPath="/${model.entity.ccName}/add${model.entity.pcName}.do")
 #set($selectPath="/${model.entity.ccName}/select${model.entity.pcName}.do")
@@ -93,7 +93,7 @@ function fn_egov_link_page(pageNo){
 </script>
 </head>
 <body>
-<form:form modelAttribute="$voInstanceName" name="listForm" id="listForm" method="post">
+<form:form modelAttribute="$voInstanceName" name="listForm" id="listForm" method="get">
 #if(${model.primaryKeys} == [])
     <input type="hidden" name="${model.attributes.get(0).ccName}" />
 #else

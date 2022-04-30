@@ -5,7 +5,7 @@
 #set($voInstanceName="${model.entity.ccName}VO")
 ##
 ##
-#set($listPath="/${model.entity.ccName}/${model.entity.pcName}List.do")
+#set($listPath="/${model.entity.ccName}/select${model.entity.pcName}List.do")
 #set($addViewPath="/${model.entity.ccName}/add${model.entity.pcName}View.do")
 #set($addPath="/${model.entity.ccName}/add${model.entity.pcName}.do")
 #set($selectPath="/${model.entity.ccName}/select${model.entity.pcName}.do")
@@ -59,6 +59,7 @@
 <!--
 /* 글 목록 화면 function */
 function fn_egov_selectList() {
+	document.getElementById("detailForm").method = "get";
    	document.getElementById("detailForm").action = "<c:url value='${listPath}'/>";
    	document.getElementById("detailForm").submit();		
 }
@@ -85,7 +86,7 @@ function fn_egov_save() {
 </head>
 <body>
 
-<form:form commandName="${voInstanceName}" name="detailForm" id="detailForm" modelAttribute="${voInstanceName}">
+<form:form modelAttribute="${voInstanceName}" name="detailForm" id="detailForm">
 <div id="content_pop">
 	<!-- 타이틀 -->
 	<div id="title">
@@ -163,9 +164,9 @@ function fn_egov_save() {
 	</div>
 </div>
 <!-- 검색조건 유지 -->
-<input type="hidden" name="searchCondition" value="<c:out value='${D}{searchVO.searchCondition}'/>"/>
-<input type="hidden" name="searchKeyword" value="<c:out value='${D}{searchVO.searchKeyword}'/>"/>
-<input type="hidden" name="pageIndex" value="<c:out value='${D}{searchVO.pageIndex}'/>"/>
+<form:hidden path="searchCondition" />
+<form:hidden path="searchKeyword" />
+<form:hidden path="pageIndex" />
 </form:form>
 </body>
 </html>

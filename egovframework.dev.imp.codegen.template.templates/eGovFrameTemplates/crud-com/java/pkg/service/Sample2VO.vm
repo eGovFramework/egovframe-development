@@ -19,7 +19,7 @@ package $voPackage;
  *  Copyright (C)  All right reserved.
  */
 @SuppressWarnings("serial")
-public class ${voClassName} extends ${defaultVoClassName}{
+public class ${voClassName} extends ${defaultVoClassName} {
 
 #set($i=0)
 #foreach($attribute in $model.attributes)
