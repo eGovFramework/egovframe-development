@@ -7,7 +7,7 @@
 ##
 #set($listPath="/${model.entity.ccName}/select${model.entity.pcName}List.do")
 #set($addViewPath="/${model.entity.ccName}/add${model.entity.pcName}View.do")
-#set($addPath="/${model.entity.ccName}/add${model.entity.pcName}.do")
+#set($addPath="/${model.entity.ccName}/insert${model.entity.pcName}.do")
 #set($selectPath="/${model.entity.ccName}/select${model.entity.pcName}.do")
 #set($updatePath="/${model.entity.ccName}/update${model.entity.pcName}.do")
 #set($updateViewPath="/${model.entity.ccName}/update${model.entity.pcName}View.do")

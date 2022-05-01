@@ -16,6 +16,8 @@
 #set($selectMethodName="select${model.entity.pcName}")
 #set($selectListMethodName="select${model.entity.pcName}List")
 #set($selectListTotCntMethodName="select${model.entity.pcName}ListTotCnt")
+#set($mergeMethodName="merge${model.entity.pcName}")
+#set($multiMethodName="multi${model.entity.pcName}")
 ##
 ##
 package $servicePackage;
@@ -93,5 +95,21 @@ public interface $serviceClassName {
 	 * @return ${model.entity.name} 총 갯수
 	 */
 	int $selectListTotCntMethodName($voClassName ${voInstanceName});
+
+	/**
+	 * ${model.entity.name}을 등록/수정한다.
+	 * 
+	 * @param ${voInstanceName} - 등록/수정할 정보가 담긴 $voClassName
+	 * @return 등록/수정 결과
+	 */
+	int $mergeMethodName($voClassName ${voInstanceName});
+
+	/**
+	 * ${model.entity.name}을 등록/수정/삭제한다.
+	 * 
+	 * @param ${voInstanceName} - 등록/수정/삭제할 정보가 담긴 $voClassName
+	 * @return 등록/수정/삭제 결과
+	 */
+	int $multiMethodName($voClassName ${voInstanceName});
 
 }

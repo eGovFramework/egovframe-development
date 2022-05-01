@@ -15,22 +15,26 @@
 #set($insertMethodName="insert${model.entity.pcName}")
 #set($updateMethodName="update${model.entity.pcName}")
 #set($deleteMethodName="delete${model.entity.pcName}")
+#set($mergeMethodName="merge${model.entity.pcName}")
+#set($multiMethodName="multi${model.entity.pcName}")
 #set($selectMethodName="select${model.entity.pcName}")
 #set($selectListMethodName="select${model.entity.pcName}List")
 #set($selectListTotCntMethodName="select${model.entity.pcName}ListTotCnt")
 ##
 ##
-#set($updateViewMethodName="update${model.entity.pcName}View")
-#set($addMethodName="add${model.entity.pcName}")
-#set($addViewMethodName="add${model.entity.pcName}View")
+#set($updateViewMethodName="update${model.entity.pcName}")
+#set($addMethodName="insert${model.entity.pcName}")
+#set($addViewMethodName="insert${model.entity.pcName}")
 ##
 #set($listPath="/${model.entity.ccName}/select${model.entity.pcName}List.do")
-#set($addViewPath="/${model.entity.ccName}/add${model.entity.pcName}View.do")
-#set($addPath="/${model.entity.ccName}/add${model.entity.pcName}.do")
+#set($addViewPath="/${model.entity.ccName}/insert${model.entity.pcName}.do")
+#set($addPath="/${model.entity.ccName}/insert${model.entity.pcName}.do")
 #set($selectPath="/${model.entity.ccName}/select${model.entity.pcName}.do")
 #set($updatePath="/${model.entity.ccName}/update${model.entity.pcName}.do")
-#set($updateViewPath="/${model.entity.ccName}/update${model.entity.pcName}View.do")
+#set($updateViewPath="/${model.entity.ccName}/update${model.entity.pcName}.do")
 #set($deletePath="/${model.entity.ccName}/delete${model.entity.pcName}.do")
+#set($mergePath="/${model.entity.ccName}/merge${model.entity.pcName}.do")
+#set($multiPath="/${model.entity.ccName}/multi${model.entity.pcName}.do")
 ##
 #set($listView="${model.folder.jspListFolder2}")
 #set($registerView="${model.folder.jspRegistFolder2}")
@@ -103,10 +107,12 @@ public class ${controllerClassName} {
 
 	/**
 	 * ${model.entity.name} 목록을 조회한다. (pageing)
-	 * @param searchVO - 조회할 정보가 담긴 ${defaultVoClassName}
+	 *
+	 * @param ${voInstanceName} - 조회할 정보가 담긴 ${voClassName}
+	 * @param model
 	 * @return "${listView}"
 	 */
-	@GetMapping(value="${listPath}")
+	@GetMapping("${listPath}")
 	public String ${selectListMethodName}(${voClassName} ${voInstanceName}, Model model) {
 
 		/** EgovPropertyService.sample */
@@ -182,6 +188,30 @@ public class ${controllerClassName} {
 	public String ${deleteMethodName}(${voClassName} ${voInstanceName}) {
 		int ${deleteMethodName} = ${serviceInstanceName}.${deleteMethodName}(${voInstanceName});
 		return "redirect:${listPath}?${deleteMethodName}=" + ${deleteMethodName};
+	}
+
+	/**
+	 * 등록/수정
+	 * 
+	 * @param sample2VO
+	 * @return
+	 */
+	@PostMapping("${mergePath}")
+	public String ${mergeMethodName}(${voClassName} ${voInstanceName}) {
+		int ${mergeMethodName} = ${serviceInstanceName}.${mergeMethodName}(${voInstanceName});
+		return "redirect:${listPath}?${mergeMethodName}=" + ${mergeMethodName};
+	}
+
+	/**
+	 * 등록/수정/삭제
+	 * 
+	 * @param sample2VO
+	 * @return
+	 */
+	@PostMapping("${multiPath}")
+	public String ${multiMethodName}(${voClassName} ${voInstanceName}) {
+		int ${multiMethodName} = ${serviceInstanceName}.${multiMethodName}(${voInstanceName});
+		return "redirect:${listPath}?${multiMethodName}=" + ${multiMethodName};
 	}
 
 }
