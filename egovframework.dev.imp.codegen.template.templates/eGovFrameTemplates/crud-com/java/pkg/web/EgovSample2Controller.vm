@@ -34,6 +34,7 @@
 ##
 #set($listView="${model.folder.jspListFolder2}")
 #set($registerView="${model.folder.jspRegistFolder2}")
+#set($detailView="${model.folder.jspDetailFolder2}")
 ##
 ##
 package ${controllerPackage};
@@ -166,8 +167,9 @@ public class ${controllerClassName} {
 	}
 
 	@GetMapping("${selectPath}")
-	public ${voClassName} ${selectMethodName}(${voClassName} ${voInstanceName}) {
-		return ${serviceInstanceName}.${selectMethodName}(${voInstanceName});
+	public String ${selectMethodName}(${voClassName} ${voInstanceName}, Model model) {
+		model.addAttribute(${serviceInstanceName}.${selectMethodName}(${voInstanceName}));
+		return "${detailView}";
 	}
 
 	@PostMapping("${updatePath}")

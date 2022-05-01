@@ -13,6 +13,7 @@
 #set($selectPath="/${model.entity.ccName}/select${model.entity.pcName}.do")
 #set($updatePath="/${model.entity.ccName}/update${model.entity.pcName}.do")
 #set($updateViewPath="/${model.entity.ccName}/update${model.entity.pcName}View.do")
+#set($selectPath="/${model.entity.ccName}/select${model.entity.pcName}.do")
 #set($deletePath="/${model.entity.ccName}/delete${model.entity.pcName}.do")
 ##
 #set($listPageName="${model.entity.pcName}List.jsp")
@@ -64,7 +65,7 @@
 #set($i=$i+1)
 #end
 #end
-function fn_egov_select(${params}) {
+function fn_egov_update(${params}) {
 #if(${model.primaryKeys} == [])
     document.getElementById("listForm").${model.attributes.get(0).ccName}.value = ${model.attributes.get(0).ccName};
 #else
@@ -73,6 +74,18 @@ function fn_egov_select(${params}) {
 #end
 #end
    	document.getElementById("listForm").action = "<c:url value='${updateViewPath}'/>";
+   	document.getElementById("listForm").submit();
+}
+
+function fn_egov_select(${params}) {
+#if(${model.primaryKeys} == [])
+    document.getElementById("listForm").${model.attributes.get(0).ccName}.value = ${model.attributes.get(0).ccName};
+#else
+#foreach($attribute in $model.primaryKeys)
+	document.getElementById("listForm").${attribute.ccName}.value = ${attribute.ccName};
+#end
+#end
+   	document.getElementById("listForm").action = "<c:url value='${selectPath}'/>";
    	document.getElementById("listForm").submit();
 }
 
@@ -128,7 +141,10 @@ function fn_egov_link_page(pageNo){
 	 	#set($linkParams="'<c:out value=${Q}${D}{result.${model.attributes.get(0).ccName}}${Q}/>'")
 	 	#foreach($attribute in $model.attributes)
 			#if($attribute.ccName == ${model.attributes.get(0).ccName})				
-<td align="center" class="listtd"><a href="javascript:fn_egov_select(${linkParams})"><c:out value="${D}{result.${attribute.ccName}}"/></a>&nbsp;</td>
+<td align="center" class="listtd">
+<a href="javascript:fn_egov_update(${linkParams})">수정</a>&nbsp;
+<a href="javascript:fn_egov_select(${linkParams})">상세</a>&nbsp;
+</td>
 			#else
 <td align="center" class="listtd"><c:out value="${D}{result.${attribute.ccName}}"/>&nbsp;</td>
 			#end
@@ -146,7 +162,10 @@ function fn_egov_link_page(pageNo){
 		#end
 		#foreach($attribute in $model.attributes)
 		#if($attribute.primaryKey == true)				
-<td align="center" class="listtd"><a href="javascript:fn_egov_select(${linkParams})"><c:out value="${D}{result.${attribute.ccName}}"/></a>&nbsp;</td>
+<td align="center" class="listtd">
+<a href="javascript:fn_egov_update(${linkParams})">수정</a>&nbsp;
+<a href="javascript:fn_egov_select(${linkParams})">상세</a>&nbsp;
+</td>
 		#else
 <td align="center" class="listtd"><c:out value="${D}{result.${attribute.ccName}}"/>&nbsp;</td>
 		#end
