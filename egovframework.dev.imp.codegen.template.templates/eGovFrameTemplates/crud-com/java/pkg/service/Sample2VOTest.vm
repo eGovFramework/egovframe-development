@@ -1,0 +1,120 @@
+##
+#set($voPackage="${voPackage}")
+#set($voClassName="${model.entity.pcName}VO")
+#set($voInstanceName="${model.entity.ccName}VO")
+#set($defaultVoClassName="${model.entity.pcName}DefaultVO")
+#set($defaultVoInstanceName="${model.entity.ccName}DefaultVO")
+##
+##
+package $voPackage;
+
+import java.util.ArrayList;
+
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ * @Class Name : ${voClassName}Test.java
+ * @Description : ${model.entity.pcName} VO Test class
+ * @Modification Information
+ *
+ * @author ${author}
+ * @since ${createDate}
+ * @version 1.0
+ * @see
+ *  
+ *  Copyright (C)  All right reserved.
+ */
+public class ${voClassName}Test {
+
+	protected Logger egovLogger = LoggerFactory.getLogger(${voClassName}Test.class);
+
+	@Test
+	public void test() {
+		egovLogger.debug("test");
+
+		${voClassName} ${voInstanceName} = new ${voClassName}();
+
+#foreach($attribute in $model.attributes)
+		${voInstanceName}.set${attribute.pcName}(null);
+#end
+
+#foreach($attribute in $model.attributes)
+		${voInstanceName}.set${attribute.pcName}("");
+#end
+
+#foreach($attribute in $model.attributes)
+		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
+
+		egovLogger.debug("${voInstanceName}={}", ${voInstanceName});
+
+#foreach($attribute in $model.attributes)
+		egovLogger.debug("${attribute.ccName}={}", ${voInstanceName}.get${attribute.pcName}());
+#end
+	}
+
+	@Test
+	public void test2() {
+		egovLogger.debug("test2");
+
+		${voClassName} ${voInstanceName} = new ${voClassName}();
+
+#foreach($attribute in $model.attributes)
+//		${attribute.javaType} ${attribute.ccName} = null;
+#end
+
+#foreach($attribute in $model.attributes)
+//		${attribute.javaType} ${attribute.ccName} = "";
+#end
+
+#foreach($attribute in $model.attributes)
+		${attribute.javaType} ${attribute.ccName} = "test ${attribute.ccName}";
+#end
+
+#foreach($attribute in $model.attributes)
+		egovLogger.debug("${attribute.ccName}={}", ${attribute.ccName});
+#end
+
+#foreach($attribute in $model.attributes)
+		${voInstanceName}.set${attribute.pcName}(${attribute.ccName});
+#end
+
+		egovLogger.debug("${voInstanceName}={}", ${voInstanceName});
+
+#foreach($attribute in $model.attributes)
+		egovLogger.debug("${attribute.ccName}={}", ${voInstanceName}.get${attribute.pcName}());
+#end
+	}
+
+	@Test
+	public void test_${defaultVoClassName}() {
+		egovLogger.debug("test_${defaultVoClassName}");
+
+		${voClassName} ${voInstanceName} = new ${voClassName}();
+
+#foreach($attribute in $model.attributes)
+		${voInstanceName}.set${attribute.pcName}s(null);
+#end
+
+#foreach($attribute in $model.attributes)
+		${voInstanceName}.set${attribute.pcName}s(new ArrayList<>());
+#end
+
+		for (int i = 1; i < 10; i++) {
+#foreach($attribute in $model.attributes)
+			${voInstanceName}.get${attribute.pcName}s().add("test ${attribute.ccName} " + i);
+#end
+		}
+
+		egovLogger.debug("${voInstanceName}={}", ${voInstanceName});
+#foreach($attribute in $model.attributes)
+
+		egovLogger.debug("${attribute.ccName}s={}", ${voInstanceName}.get${attribute.pcName}s());
+		egovLogger.debug("size={}", ${voInstanceName}.get${attribute.pcName}s().size());
+		egovLogger.debug("isEmpty={}", ${voInstanceName}.get${attribute.pcName}s().isEmpty());
+#end
+	}
+
+}
