@@ -52,6 +52,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import egovframework.rte.cmmn.SampleDefaultVO;
 import egovframework.rte.fdl.property.EgovPropertyService;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import ${servicePackage}.${serviceClassName};
 import ${voPackage}.${voClassName};
@@ -109,7 +110,7 @@ public class ${controllerClassName} {
 		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
 		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 		
-        List<?> ${listInstanceName} = ${serviceInstanceName}.${selectListMethodName}(searchVO);
+        List<EgovMap> ${listInstanceName} = ${serviceInstanceName}.${selectListMethodName}(searchVO);
         model.addAttribute("resultList", ${listInstanceName});
         
         int totCnt = ${serviceInstanceName}.${selectListTotCntMethodName}(searchVO);

@@ -15,6 +15,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import egovframework.rte.cmmn.SampleDefaultVO;
 import egovframework.rte.fdl.property.EgovPropertyService;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import pkg.service.EgovSample2Service;
 import pkg.service.Sample2VO;
@@ -72,7 +73,7 @@ public class EgovSample2Controller {
 		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
 		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 		
-        List sample2List = sample2Service.selectSample2List(searchVO);
+        List<EgovMap> sample2List = sample2Service.selectSample2List(searchVO);
         model.addAttribute("resultList", sample2List);
         
         int totCnt = sample2Service.selectSample2ListTotCnt(searchVO);
