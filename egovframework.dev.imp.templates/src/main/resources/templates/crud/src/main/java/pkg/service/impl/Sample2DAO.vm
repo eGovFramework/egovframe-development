@@ -27,6 +27,7 @@ package ${daoPackage};
 
 import java.util.List;
 
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 import org.springframework.stereotype.Repository;
 
 import egovframework.rte.cmmn.SampleDefaultVO;
@@ -99,7 +100,7 @@ public class ${daoClassName} extends EgovAbstractDAO {
 	 * @return ${entity.name} 목록
 	 * @exception Exception
 	 */
-    public List<?> ${selectListMethodName}(SampleDefaultVO searchVO) throws Exception {
+    public List<EgovMap> ${selectListMethodName}(SampleDefaultVO searchVO) throws Exception {
         return list("${selectListQueryId}", searchVO);
     }
 

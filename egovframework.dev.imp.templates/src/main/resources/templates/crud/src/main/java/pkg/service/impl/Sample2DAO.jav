@@ -2,6 +2,7 @@ package pkg.service.impl;
 
 import java.util.List;
 
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 import org.springframework.stereotype.Repository;
 
 import egovframework.rte.cmmn.SampleDefaultVO;
@@ -74,7 +75,7 @@ public class Sample2DAO extends EgovAbstractDAO {
 	 * @return SAMPLE2 목록
 	 * @exception Exception
 	 */
-    public List selectSample2List(SampleDefaultVO searchVO) throws Exception {
+    public List<EgovMap> selectSample2List(SampleDefaultVO searchVO) throws Exception {
         return list("sample2DAO.selectSample2List_D", searchVO);
     }
 
