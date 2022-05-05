@@ -27,13 +27,14 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+##
+##import org.slf4j.Logger;
+##import org.slf4j.LoggerFactory;
 
 import egovframework.rte.cmmn.SampleDefaultVO;
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 import ${servicePackage}.${serviceClassName};
 import ${servicePackage}.${voClassName};
 
@@ -58,8 +59,8 @@ import ${servicePackage}.${voClassName};
 @Service("${serviceName}")
 public class ${serviceImplClassName} extends EgovAbstractServiceImpl implements
         ${serviceClassName} {
-        
-    private static final Logger LOGGER = LoggerFactory.getLogger(${serviceImplClassName}.class);
+##        
+##    private static final Logger LOGGER = LoggerFactory.getLogger(${serviceImplClassName}.class);
 
     @Resource(name="${daoName}")
     private ${daoClassName} ${daoInstanceName};
@@ -75,12 +76,12 @@ public class ${serviceImplClassName} extends EgovAbstractServiceImpl implements
 	 * @exception Exception
 	 */
     public String ${insertMethodName}(${voClassName} vo) throws Exception {
-    	LOGGER.debug(vo.toString());
+    	egovLogger.debug(vo.toString());
     	
     	/** ID Generation Service */
     	String id = egovIdGnrService.getNextStringId();
     	vo.setId(id);
-    	LOGGER.debug(vo.toString());
+    	egovLogger.debug(vo.toString());
     	
     	${daoInstanceName}.${insertMethodName}(vo);    	
         return id;
@@ -125,7 +126,7 @@ public class ${serviceImplClassName} extends EgovAbstractServiceImpl implements
 	 * @return ${entity.name} 목록
 	 * @exception Exception
 	 */
-    public List<?> ${selectListMethodName}(SampleDefaultVO searchVO) throws Exception {
+    public List<EgovMap> ${selectListMethodName}(SampleDefaultVO searchVO) throws Exception {
         return ${daoInstanceName}.${selectListMethodName}(searchVO);
     }
 

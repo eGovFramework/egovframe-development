@@ -7,8 +7,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import egovframework.rte.cmmn.SampleDefaultVO;
-import egovframework.rte.fdl.cmmn.AbstractServiceImpl;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 import pkg.service.EgovSample2Service;
 import pkg.service.Sample2VO;
 
@@ -31,7 +32,7 @@ import pkg.service.Sample2VO;
  */
 
 @Service("sample2Service")
-public class EgovSample2ServiceImpl extends AbstractServiceImpl implements
+public class EgovSample2ServiceImpl extends EgovAbstractServiceImpl implements
         EgovSample2Service {
 
     @Resource(name="sample2DAO")
@@ -48,12 +49,12 @@ public class EgovSample2ServiceImpl extends AbstractServiceImpl implements
 	 * @exception Exception
 	 */
     public String insertSample2(Sample2VO vo) throws Exception {
-    	log.debug(vo.toString());
+    	egovLogger.debug(vo.toString());
     	
     	/** ID Generation Service */
     	String id = egovIdGnrService.getNextStringId();
     	vo.setId(id);
-    	log.debug(vo.toString());
+    	egovLogger.debug(vo.toString());
     	
     	sample2DAO.insertSample2(vo);    	
         return id;
@@ -98,7 +99,7 @@ public class EgovSample2ServiceImpl extends AbstractServiceImpl implements
 	 * @return SAMPLE2 목록
 	 * @exception Exception
 	 */
-    public List selectSample2List(SampleDefaultVO searchVO) throws Exception {
+    public List<EgovMap> selectSample2List(SampleDefaultVO searchVO) throws Exception {
         return sample2DAO.selectSample2List(searchVO);
     }
 
