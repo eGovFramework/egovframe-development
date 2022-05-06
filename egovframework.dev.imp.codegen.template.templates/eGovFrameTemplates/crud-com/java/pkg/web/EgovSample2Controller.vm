@@ -64,6 +64,7 @@ import org.egovframe.rte.fdl.property.EgovPropertyService;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
+import egovframework.com.cmm.web.EgovComAbstractController;
 #if (${servicePackage}=='${servicePackage}')
 // Servoce 객체에 대한 import 구문
 // import (service package).${serviceClassName};
@@ -94,15 +95,18 @@ import ${voPackage}.${voClassName};
 
 @Controller
 ##@SessionAttributes(types=${voClassName}.class)
-public class ${controllerClassName} {
+public class ${controllerClassName} extends EgovComAbstractController {
 
 	private final ${serviceClassName} ${serviceInstanceName};
-	private final EgovPropertyService egovPropertyService;
-
-	public ${controllerClassName}(${serviceClassName} ${serviceInstanceName},
+##	private final EgovPropertyService egovPropertyService;
+##
+#*	public ${controllerClassName}(${serviceClassName} ${serviceInstanceName},
 			@Qualifier("propertiesService") EgovPropertyService egovPropertyService) {
 		this.${serviceInstanceName} = ${serviceInstanceName};
 		this.egovPropertyService = egovPropertyService;
+	}*#
+	public ${controllerClassName}(${serviceClassName} ${serviceInstanceName}) {
+		this.${serviceInstanceName} = ${serviceInstanceName};
 	}
 
 	/**
@@ -114,8 +118,8 @@ public class ${controllerClassName} {
 	 */
 	@GetMapping("${listPath}")
 	public String ${selectListMethodName}(${voClassName} ${voInstanceName}, Model model) {
-
-		/** EgovPropertyService.sample */
+##
+#*		/** EgovPropertyService.sample */
 		${voInstanceName}.setPageUnit(egovPropertyService.getInt("pageUnit"));
 		${voInstanceName}.setPageSize(egovPropertyService.getInt("pageSize"));
 
@@ -127,7 +131,8 @@ public class ${controllerClassName} {
 
 		${voInstanceName}.setFirstIndex(paginationInfo.getFirstRecordIndex());
 		${voInstanceName}.setLastIndex(paginationInfo.getLastRecordIndex());
-		${voInstanceName}.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+		${voInstanceName}.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());*#
+		PaginationInfo paginationInfo = builderPaginationInfo(sample2VO);
 
 		List<EgovMap> ${listInstanceName} = ${serviceInstanceName}.${selectListMethodName}(${voInstanceName});
 		model.addAttribute("resultList", ${listInstanceName});

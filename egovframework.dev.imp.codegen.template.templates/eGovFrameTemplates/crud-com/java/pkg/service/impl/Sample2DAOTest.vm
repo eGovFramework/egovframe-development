@@ -1,0 +1,143 @@
+##
+#set($voPackage="${voPackage}")
+#set($voClassName="${model.entity.pcName}VO")
+#set($voInstanceName="${model.entity.ccName}VO")
+#set($defaultVoClassName="${model.entity.pcName}DefaultVO")
+#set($daoPackage="${daoPackage}")
+#set($daoClassName="${model.entity.pcName}DAO")
+#set($daoName="${model.entity.ccName}DAO")
+#set($daoInstanceName="${model.entity.ccName}DAO")
+##
+##
+#set($insertMethodName="insert${model.entity.pcName}")
+#set($updateMethodName="update${model.entity.pcName}")
+#set($deleteMethodName="delete${model.entity.pcName}")
+#set($selectMethodName="select${model.entity.pcName}")
+#set($selectListMethodName="select${model.entity.pcName}List")
+#set($selectListTotCntMethodName="select${model.entity.pcName}ListTotCnt")
+##
+##
+#set($insertQueryId="${daoInstanceName}.insert${model.entity.pcName}_S")
+#set($updateQueryId="${daoInstanceName}.update${model.entity.pcName}_S")
+#set($deleteQueryId="${daoInstanceName}.delete${model.entity.pcName}_S")
+#set($selectQueryId="${daoInstanceName}.select${model.entity.pcName}_S")
+#set($selectListQueryId="${daoInstanceName}.select${model.entity.pcName}List_D")
+#set($selectListTotCntQueryId="${daoInstanceName}.select${model.entity.pcName}ListTotCnt_S")
+##
+##
+package ${daoPackage};
+
+import java.util.List;
+
+import org.egovframe.rte.fdl.cmmn.exception.FdlException;
+import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
+import org.egovframe.rte.psl.dataaccess.util.EgovMap;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import ${voPackage}.${voClassName};
+##import ${voPackage}.${defaultVoClassName};
+
+/**
+ * @Class Name : ${daoClassName}.java
+ * @Description : ${model.entity.pcName} DAO Class
+ * @Modification Information
+ *
+ * @author ${author}
+ * @since ${createDate}
+ * @version 1.0
+ * @see
+ *
+ *  Copyright (C)  All right reserved.
+ */
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { "classpath*:egovframework/spring/com/**/context-*.xml" })
+@ActiveProfiles("mysql")
+public class ${daoClassName}Test {
+
+	protected Logger egovLogger = LoggerFactory.getLogger(${daoClassName}Test.class);
+
+	@Autowired
+	private ${daoClassName} ${daoInstanceName};
+
+	@Autowired
+	@Qualifier("egovFileIdGnrService")
+	private EgovIdGnrService ${model.entity.ccName}EgovIdGnrService;
+
+	/**
+	 * ${model.entity.name}을 등록한다.
+	 */
+	@Test
+	public void ${insertMethodName}() {
+		${voClassName} ${voInstanceName} = new ${voClassName}();
+
+		try {
+			${voInstanceName}.setId(sample2EgovIdGnrService.getNextStringId());
+			egovLogger.debug("id={}", ${voInstanceName}.getId());
+		} catch (FdlException e) {
+			egovLogger.error("sample2EgovIdGnrService FdlException");
+		}
+
+		int ${insertMethodName} = ${daoInstanceName}.${insertMethodName}(${voInstanceName});
+		egovLogger.debug("${insertMethodName}={}", ${insertMethodName});
+	}
+
+	/**
+	 * ${model.entity.name}을 수정한다.
+	 */
+	@Test
+	public void ${updateMethodName}() {
+		${voClassName} ${voInstanceName} = new ${voClassName}();
+		int ${updateMethodName} = ${daoInstanceName}.${updateMethodName}(${voInstanceName});
+		egovLogger.debug("${updateMethodName}={}", ${updateMethodName});
+	}
+
+	/**
+	 * ${model.entity.name}을 삭제한다.
+	 */
+	@Test
+	public void ${deleteMethodName}() {
+		${voClassName} ${voInstanceName} = new ${voClassName}();
+		int ${deleteMethodName} = ${daoInstanceName}.${deleteMethodName}(${voInstanceName});
+		egovLogger.debug("${deleteMethodName}={}", ${deleteMethodName});
+	}
+
+	/**
+	 * ${model.entity.name}을 조회한다.
+	 */
+	@Test
+	public void ${selectMethodName}() {
+		${voClassName} ${voInstanceName} = new ${voClassName}();
+		${voClassName} result = ${daoInstanceName}.${selectMethodName}(${voInstanceName});
+		egovLogger.debug("result={}", result);
+	}
+
+	/**
+	 * ${model.entity.name} 목록을 조회한다.
+	 */
+	@Test
+	public void ${selectListMethodName}() {
+		${voClassName} ${voInstanceName} = new ${voClassName}();
+		List<EgovMap> resultList = ${daoInstanceName}.${selectListMethodName}(${voInstanceName});
+		egovLogger.debug("resultList={}", resultList);
+	}
+
+	/**
+	 * ${model.entity.name} 총 갯수를 조회한다.
+	 */
+	@Test
+	public void ${selectListTotCntMethodName}() {
+		${voClassName} ${voInstanceName} = new ${voClassName}();
+		int ${selectListTotCntMethodName} = ${daoInstanceName}.${selectListTotCntMethodName}(${voInstanceName});
+		egovLogger.debug("${selectListTotCntMethodName}={}", ${selectListTotCntMethodName});
+	}
+
+}
