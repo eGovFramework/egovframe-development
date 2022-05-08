@@ -79,12 +79,18 @@ public class ${daoClassName}Test {
 	public void ${insertMethodName}() {
 		${voClassName} ${voInstanceName} = new ${voClassName}();
 
+#foreach($attribute in $model.primaryKeys)
 		try {
-			${voInstanceName}.setId(sample2EgovIdGnrService.getNextStringId());
-			egovLogger.debug("id={}", ${voInstanceName}.getId());
+			${voInstanceName}.set${attribute.pcName}(${model.entity.ccName}EgovIdGnrService.getNextStringId());
+			egovLogger.debug("${attribute.ccName}={}", ${voInstanceName}.get${attribute.pcName}());
 		} catch (FdlException e) {
-			egovLogger.error("sample2EgovIdGnrService FdlException");
+			egovLogger.error("${model.entity.ccName}EgovIdGnrService FdlException");
 		}
+#end
+
+#foreach($attribute in $model.attributes)
+//		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
 
 		int ${insertMethodName} = ${daoInstanceName}.${insertMethodName}(${voInstanceName});
 		egovLogger.debug("${insertMethodName}={}", ${insertMethodName});
@@ -96,6 +102,15 @@ public class ${daoClassName}Test {
 	@Test
 	public void ${updateMethodName}() {
 		${voClassName} ${voInstanceName} = new ${voClassName}();
+
+#foreach($attribute in $model.primaryKeys)
+		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
+
+#foreach($attribute in $model.attributes)
+//		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
+
 		int ${updateMethodName} = ${daoInstanceName}.${updateMethodName}(${voInstanceName});
 		egovLogger.debug("${updateMethodName}={}", ${updateMethodName});
 	}
@@ -106,6 +121,15 @@ public class ${daoClassName}Test {
 	@Test
 	public void ${deleteMethodName}() {
 		${voClassName} ${voInstanceName} = new ${voClassName}();
+
+#foreach($attribute in $model.primaryKeys)
+		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
+
+#foreach($attribute in $model.attributes)
+//		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
+
 		int ${deleteMethodName} = ${daoInstanceName}.${deleteMethodName}(${voInstanceName});
 		egovLogger.debug("${deleteMethodName}={}", ${deleteMethodName});
 	}
@@ -116,6 +140,15 @@ public class ${daoClassName}Test {
 	@Test
 	public void ${selectMethodName}() {
 		${voClassName} ${voInstanceName} = new ${voClassName}();
+
+#foreach($attribute in $model.primaryKeys)
+		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
+
+#foreach($attribute in $model.attributes)
+//		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
+
 		${voClassName} result = ${daoInstanceName}.${selectMethodName}(${voInstanceName});
 		egovLogger.debug("result={}", result);
 	}
@@ -126,6 +159,11 @@ public class ${daoClassName}Test {
 	@Test
 	public void ${selectListMethodName}() {
 		${voClassName} ${voInstanceName} = new ${voClassName}();
+
+#foreach($attribute in $model.attributes)
+//		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
+
 		List<EgovMap> resultList = ${daoInstanceName}.${selectListMethodName}(${voInstanceName});
 		egovLogger.debug("resultList={}", resultList);
 	}
@@ -136,6 +174,11 @@ public class ${daoClassName}Test {
 	@Test
 	public void ${selectListTotCntMethodName}() {
 		${voClassName} ${voInstanceName} = new ${voClassName}();
+
+#foreach($attribute in $model.attributes)
+//		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
+
 		int ${selectListTotCntMethodName} = ${daoInstanceName}.${selectListTotCntMethodName}(${voInstanceName});
 		egovLogger.debug("${selectListTotCntMethodName}={}", ${selectListTotCntMethodName});
 	}

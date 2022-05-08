@@ -59,7 +59,8 @@ public class ${daoClassName} extends EgovComAbstractDAO {
 	 * @exception Exception
 	 */
 	public int ${insertMethodName}(${voClassName} ${voInstanceName}) {
-		return (int) insert("${insertQueryId}", ${voInstanceName});
+##		return (int) insert("${insertQueryId}", ${voInstanceName});
+		return (int) update("${insertQueryId}", ${voInstanceName});
 	}
 
 	/**
