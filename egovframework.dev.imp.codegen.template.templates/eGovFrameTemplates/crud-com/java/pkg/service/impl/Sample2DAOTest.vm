@@ -89,7 +89,9 @@ public class ${daoClassName}Test {
 #end
 
 #foreach($attribute in $model.attributes)
+#if($attribute.isPrimaryKey == false)
 //		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
 #end
 
 		int ${insertMethodName} = ${daoInstanceName}.${insertMethodName}(${voInstanceName});
@@ -108,7 +110,9 @@ public class ${daoClassName}Test {
 #end
 
 #foreach($attribute in $model.attributes)
+#if($attribute.isPrimaryKey == false)
 //		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
 #end
 
 		int ${updateMethodName} = ${daoInstanceName}.${updateMethodName}(${voInstanceName});
@@ -127,7 +131,9 @@ public class ${daoClassName}Test {
 #end
 
 #foreach($attribute in $model.attributes)
+#if($attribute.isPrimaryKey == false)
 //		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
 #end
 
 		int ${deleteMethodName} = ${daoInstanceName}.${deleteMethodName}(${voInstanceName});
@@ -146,7 +152,9 @@ public class ${daoClassName}Test {
 #end
 
 #foreach($attribute in $model.attributes)
+#if($attribute.isPrimaryKey == false)
 //		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
 #end
 
 		${voClassName} result = ${daoInstanceName}.${selectMethodName}(${voInstanceName});
@@ -160,8 +168,17 @@ public class ${daoClassName}Test {
 	public void ${selectListMethodName}() {
 		${voClassName} ${voInstanceName} = new ${voClassName}();
 
-#foreach($attribute in $model.attributes)
+		${voInstanceName}.setFirstIndex(1);
+		${voInstanceName}.setRecordCountPerPage(10);
+
+#foreach($attribute in $model.primaryKeys)
 //		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
+
+#foreach($attribute in $model.attributes)
+#if($attribute.isPrimaryKey == false)
+//		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
 #end
 
 		List<EgovMap> resultList = ${daoInstanceName}.${selectListMethodName}(${voInstanceName});
@@ -175,8 +192,17 @@ public class ${daoClassName}Test {
 	public void ${selectListTotCntMethodName}() {
 		${voClassName} ${voInstanceName} = new ${voClassName}();
 
-#foreach($attribute in $model.attributes)
+		${voInstanceName}.setFirstIndex(1);
+		${voInstanceName}.setRecordCountPerPage(10);
+
+#foreach($attribute in $model.primaryKeys)
 //		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
+
+#foreach($attribute in $model.attributes)
+#if($attribute.isPrimaryKey == false)
+//		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
 #end
 
 		int ${selectListTotCntMethodName} = ${daoInstanceName}.${selectListTotCntMethodName}(${voInstanceName});
