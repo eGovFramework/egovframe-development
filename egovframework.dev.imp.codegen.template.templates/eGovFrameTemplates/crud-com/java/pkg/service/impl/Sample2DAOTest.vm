@@ -171,6 +171,18 @@ public class ${daoClassName}Test {
 		${voInstanceName}.setFirstIndex(1);
 		${voInstanceName}.setRecordCountPerPage(10);
 
+		${voInstanceName}.setSearchCondition("");
+		${voInstanceName}.setSearchKeyword("");
+		${voInstanceName}.setSearchUseYn("");
+//		${voInstanceName}.setPageIndex(1);
+//		${voInstanceName}.setPageUnit(10);
+//		${voInstanceName}.setPageSize(10);
+//		${voInstanceName}.setFirstIndex(1);
+//		${voInstanceName}.setLastIndex(1);
+//		${voInstanceName}.setRecordCountPerPage(10);
+		${voInstanceName}.setSearchKeywordFrom("");
+		${voInstanceName}.setSearchKeywordTo("");
+
 #foreach($attribute in $model.primaryKeys)
 //		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
 #end
@@ -194,6 +206,18 @@ public class ${daoClassName}Test {
 
 		${voInstanceName}.setFirstIndex(1);
 		${voInstanceName}.setRecordCountPerPage(10);
+
+		${voInstanceName}.setSearchCondition("");
+		${voInstanceName}.setSearchKeyword("");
+		${voInstanceName}.setSearchUseYn("");
+//		${voInstanceName}.setPageIndex(1);
+//		${voInstanceName}.setPageUnit(10);
+//		${voInstanceName}.setPageSize(10);
+//		${voInstanceName}.setFirstIndex(1);
+//		${voInstanceName}.setLastIndex(1);
+//		${voInstanceName}.setRecordCountPerPage(10);
+		${voInstanceName}.setSearchKeywordFrom("");
+		${voInstanceName}.setSearchKeywordTo("");
 
 #foreach($attribute in $model.primaryKeys)
 //		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
