@@ -3,10 +3,10 @@
 #set($voClassName="${model.entity.pcName}VO")
 #set($voInstanceName="${model.entity.ccName}VO")
 #set($defaultVoClassName="${model.entity.pcName}DefaultVO")
-#set($daoPackage="${daoPackage}")
-#set($daoClassName="${model.entity.pcName}DAO")
-#set($daoName="${model.entity.ccName}DAO")
-#set($daoInstanceName="${model.entity.ccName}DAO")
+#set($mapperPackage="${mapperPackage}")
+#set($mapperClassName="${model.entity.pcName}Mapper")
+#set($mapperName="${model.entity.ccName}Mapper")
+#set($mapperInstanceName="${model.entity.ccName}Mapper")
 ##
 ##
 #set($insertMethodName="insert${model.entity.pcName}")
@@ -17,12 +17,12 @@
 #set($selectListTotCntMethodName="select${model.entity.pcName}ListTotCnt")
 ##
 ##
-#set($insertQueryId="${daoInstanceName}.insert${model.entity.pcName}_S")
-#set($updateQueryId="${daoInstanceName}.update${model.entity.pcName}_S")
-#set($deleteQueryId="${daoInstanceName}.delete${model.entity.pcName}_S")
-#set($selectQueryId="${daoInstanceName}.select${model.entity.pcName}_S")
-#set($selectListQueryId="${daoInstanceName}.select${model.entity.pcName}List_D")
-#set($selectListTotCntQueryId="${daoInstanceName}.select${model.entity.pcName}ListTotCnt_S")
+#set($insertQueryId="${mapperInstanceName}.insert${model.entity.pcName}_S")
+#set($updateQueryId="${mapperInstanceName}.update${model.entity.pcName}_S")
+#set($deleteQueryId="${mapperInstanceName}.delete${model.entity.pcName}_S")
+#set($selectQueryId="${mapperInstanceName}.select${model.entity.pcName}_S")
+#set($selectListQueryId="${mapperInstanceName}.select${model.entity.pcName}List_D")
+#set($selectListTotCntQueryId="${mapperInstanceName}.select${model.entity.pcName}ListTotCnt_S")
 ##
 ##
 package ${daoPackage};
@@ -48,7 +48,7 @@ import ${voPackage}.${voClassName};
 ##import ${voPackage}.${defaultVoClassName};
 
 /**
- * @Class Name : ${daoClassName}.java
+ * @Class Name : ${mapperClassName}.java
  * @Description : ${model.entity.pcName} DAO Class
  * @Modification Information
  *
@@ -63,13 +63,13 @@ import ${voPackage}.${voClassName};
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath*:egovframework/spring/com/**/context-*.xml" })
 @ActiveProfiles("mysql")
-public class ${daoClassName}Test {
+public class ${mapperClassName}Test {
 
-	protected Logger egovLogger = LoggerFactory.getLogger(${daoClassName}Test.class);
+	protected Logger egovLogger = LoggerFactory.getLogger(${mapperClassName}Test.class);
 
 ##	@Autowired
 	@Resource
-	private ${daoClassName} ${daoInstanceName};
+	private ${mapperClassName} ${mapperInstanceName};
 
 ##	@Autowired
 ##	@Qualifier("egovFileIdGnrService")
@@ -98,7 +98,7 @@ public class ${daoClassName}Test {
 #end
 #end
 
-		int ${insertMethodName} = ${daoInstanceName}.${insertMethodName}(${voInstanceName});
+		int ${insertMethodName} = ${mapperInstanceName}.${insertMethodName}(${voInstanceName});
 		egovLogger.debug("${insertMethodName}={}", ${insertMethodName});
 	}
 
@@ -119,7 +119,7 @@ public class ${daoClassName}Test {
 #end
 #end
 
-		int ${updateMethodName} = ${daoInstanceName}.${updateMethodName}(${voInstanceName});
+		int ${updateMethodName} = ${mapperInstanceName}.${updateMethodName}(${voInstanceName});
 		egovLogger.debug("${updateMethodName}={}", ${updateMethodName});
 	}
 
@@ -140,7 +140,7 @@ public class ${daoClassName}Test {
 #end
 #end
 
-		int ${deleteMethodName} = ${daoInstanceName}.${deleteMethodName}(${voInstanceName});
+		int ${deleteMethodName} = ${mapperInstanceName}.${deleteMethodName}(${voInstanceName});
 		egovLogger.debug("${deleteMethodName}={}", ${deleteMethodName});
 	}
 
@@ -161,7 +161,7 @@ public class ${daoClassName}Test {
 #end
 #end
 
-		${voClassName} result = ${daoInstanceName}.${selectMethodName}(${voInstanceName});
+		${voClassName} result = ${mapperInstanceName}.${selectMethodName}(${voInstanceName});
 		egovLogger.debug("result={}", result);
 	}
 
@@ -197,7 +197,7 @@ public class ${daoClassName}Test {
 #end
 #end
 
-		List<EgovMap> resultList = ${daoInstanceName}.${selectListMethodName}(${voInstanceName});
+		List<EgovMap> resultList = ${mapperInstanceName}.${selectListMethodName}(${voInstanceName});
 		egovLogger.debug("resultList={}", resultList);
 	}
 
@@ -233,7 +233,7 @@ public class ${daoClassName}Test {
 #end
 #end
 
-		int ${selectListTotCntMethodName} = ${daoInstanceName}.${selectListTotCntMethodName}(${voInstanceName});
+		int ${selectListTotCntMethodName} = ${mapperInstanceName}.${selectListTotCntMethodName}(${voInstanceName});
 		egovLogger.debug("${selectListTotCntMethodName}={}", ${selectListTotCntMethodName});
 	}
 

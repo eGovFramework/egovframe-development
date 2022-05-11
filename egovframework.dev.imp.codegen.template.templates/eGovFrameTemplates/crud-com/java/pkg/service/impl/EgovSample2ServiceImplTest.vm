@@ -3,10 +3,13 @@
 #set($voClassName="${model.entity.pcName}VO")
 #set($voInstanceName="${model.entity.ccName}VO")
 #set($defaultVoClassName="${model.entity.pcName}DefaultVO")
-#set($daoPackage="${daoPackage}")
-#set($daoClassName="${model.entity.pcName}DAO")
-#set($daoName="${model.entity.ccName}DAO")
-#set($daoInstanceName="${model.entity.ccName}DAO")
+##
+#set($servicePackage="${servicePackage}")
+#set($serviceClassName="${model.entity.pcName}Service")
+#set($serviceImplPackage="${implPackage}")
+#set($serviceImplClassName="${model.entity.pcName}ServiceImpl")
+#set($serviceName="${model.entity.ccName}Service")
+#set($serviceInstanceName="${model.entity.ccName}Service")
 ##
 ##
 #set($insertMethodName="insert${model.entity.pcName}")
@@ -17,12 +20,12 @@
 #set($selectListTotCntMethodName="select${model.entity.pcName}ListTotCnt")
 ##
 ##
-#set($insertQueryId="${daoInstanceName}.insert${model.entity.pcName}_S")
-#set($updateQueryId="${daoInstanceName}.update${model.entity.pcName}_S")
-#set($deleteQueryId="${daoInstanceName}.delete${model.entity.pcName}_S")
-#set($selectQueryId="${daoInstanceName}.select${model.entity.pcName}_S")
-#set($selectListQueryId="${daoInstanceName}.select${model.entity.pcName}List_D")
-#set($selectListTotCntQueryId="${daoInstanceName}.select${model.entity.pcName}ListTotCnt_S")
+#set($insertQueryId="${serviceInstanceName}.insert${model.entity.pcName}_S")
+#set($updateQueryId="${serviceInstanceName}.update${model.entity.pcName}_S")
+#set($deleteQueryId="${serviceInstanceName}.delete${model.entity.pcName}_S")
+#set($selectQueryId="${serviceInstanceName}.select${model.entity.pcName}_S")
+#set($selectListQueryId="${serviceInstanceName}.select${model.entity.pcName}List_D")
+#set($selectListTotCntQueryId="${serviceInstanceName}.select${model.entity.pcName}ListTotCnt_S")
 ##
 ##
 package ${daoPackage};
@@ -31,8 +34,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.egovframe.rte.fdl.cmmn.exception.FdlException;
-import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
+##import org.egovframe.rte.fdl.cmmn.exception.FdlException;
+##import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,11 +47,17 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+#if (${servicePackage}=='${servicePackage}')
+// Servoce 객체에 대한 import 구문
+// import (service package).${serviceClassName};
+#else
+import ${servicePackage}.${serviceClassName};
+#end
 import ${voPackage}.${voClassName};
 ##import ${voPackage}.${defaultVoClassName};
 
 /**
- * @Class Name : ${daoClassName}.java
+ * @Class Name : ${serviceClassName}.java
  * @Description : ${model.entity.pcName} DAO Class
  * @Modification Information
  *
@@ -63,26 +72,26 @@ import ${voPackage}.${voClassName};
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath*:egovframework/spring/com/**/context-*.xml" })
 @ActiveProfiles("mysql")
-public class ${daoClassName}Test {
+public class ${serviceImplClassName}Test {
 
-	protected Logger egovLogger = LoggerFactory.getLogger(${daoClassName}Test.class);
+	protected Logger egovLogger = LoggerFactory.getLogger(${serviceImplClassName}Test.class);
 
 ##	@Autowired
 	@Resource
-	private ${daoClassName} ${daoInstanceName};
+	private ${serviceClassName} ${serviceInstanceName};
 
 ##	@Autowired
 ##	@Qualifier("egovFileIdGnrService")
-	@Resource(name = "egovFileIdGnrService")
-	private EgovIdGnrService ${model.entity.ccName}EgovIdGnrService;
-
+##	@Resource(name = "egovFileIdGnrService")
+##	private EgovIdGnrService ${model.entity.ccName}EgovIdGnrService;
+##
 	/**
 	 * ${model.entity.name}을 등록한다.
 	 */
 	@Test
 	public void ${insertMethodName}() {
 		${voClassName} ${voInstanceName} = new ${voClassName}();
-
+#*
 #foreach($attribute in $model.primaryKeys)
 		try {
 			${voInstanceName}.set${attribute.pcName}(${model.entity.ccName}EgovIdGnrService.getNextStringId());
@@ -91,14 +100,14 @@ public class ${daoClassName}Test {
 			egovLogger.error("${model.entity.ccName}EgovIdGnrService FdlException");
 		}
 #end
-
+*#
 #foreach($attribute in $model.attributes)
 #if($attribute.isPrimaryKey == false)
 //		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
 #end
 #end
 
-		int ${insertMethodName} = ${daoInstanceName}.${insertMethodName}(${voInstanceName});
+		int ${insertMethodName} = ${serviceInstanceName}.${insertMethodName}(${voInstanceName});
 		egovLogger.debug("${insertMethodName}={}", ${insertMethodName});
 	}
 
@@ -119,7 +128,7 @@ public class ${daoClassName}Test {
 #end
 #end
 
-		int ${updateMethodName} = ${daoInstanceName}.${updateMethodName}(${voInstanceName});
+		int ${updateMethodName} = ${serviceInstanceName}.${updateMethodName}(${voInstanceName});
 		egovLogger.debug("${updateMethodName}={}", ${updateMethodName});
 	}
 
@@ -140,7 +149,7 @@ public class ${daoClassName}Test {
 #end
 #end
 
-		int ${deleteMethodName} = ${daoInstanceName}.${deleteMethodName}(${voInstanceName});
+		int ${deleteMethodName} = ${serviceInstanceName}.${deleteMethodName}(${voInstanceName});
 		egovLogger.debug("${deleteMethodName}={}", ${deleteMethodName});
 	}
 
@@ -161,7 +170,7 @@ public class ${daoClassName}Test {
 #end
 #end
 
-		${voClassName} result = ${daoInstanceName}.${selectMethodName}(${voInstanceName});
+		${voClassName} result = ${serviceInstanceName}.${selectMethodName}(${voInstanceName});
 		egovLogger.debug("result={}", result);
 	}
 
@@ -197,7 +206,7 @@ public class ${daoClassName}Test {
 #end
 #end
 
-		List<EgovMap> resultList = ${daoInstanceName}.${selectListMethodName}(${voInstanceName});
+		List<EgovMap> resultList = ${serviceInstanceName}.${selectListMethodName}(${voInstanceName});
 		egovLogger.debug("resultList={}", resultList);
 	}
 
@@ -233,7 +242,7 @@ public class ${daoClassName}Test {
 #end
 #end
 
-		int ${selectListTotCntMethodName} = ${daoInstanceName}.${selectListTotCntMethodName}(${voInstanceName});
+		int ${selectListTotCntMethodName} = ${serviceInstanceName}.${selectListTotCntMethodName}(${voInstanceName});
 		egovLogger.debug("${selectListTotCntMethodName}={}", ${selectListTotCntMethodName});
 	}
 
