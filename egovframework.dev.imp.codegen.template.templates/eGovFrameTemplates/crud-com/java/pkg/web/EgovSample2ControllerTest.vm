@@ -107,6 +107,9 @@ public class ${controllerClassName}Test {
 
 	private MockMvc mockMvc;
 
+
+	static ${voClassName} ${voInstanceName};
+
 	@Before
 	public void setup() {
 		mockMvc = webAppContextSetup(wac).build();
@@ -133,10 +136,10 @@ public class ${controllerClassName}Test {
 
 		// @formatter:off
 		mockMvc.perform(get("${addViewPath}").params(params))
-			.andDo(print())
 			.andExpect(status().isOk())
 //			.andExpect(content().contentType("text/html"))
 			.andExpect(forwardedUrl("/WEB-INF/jsp/${registerView}.jsp"))
+			.andDo(print())
 		;
 		// @formatter:on
 	}
@@ -162,15 +165,15 @@ public class ${controllerClassName}Test {
 
 		// @formatter:off
 		ResultActions resultActions = mockMvc.perform(post("${addPath}").params(params))
-			.andDo(print())
 			.andExpect(status().isFound())
 //			.andExpect(content().contentType("text/html"))
 			.andExpect(redirectedUrl("${listPath}?${insertMethodName}=1"))
+			.andDo(print())
 		;
 		// @formatter:on
 
 		MvcResult mvcResult = resultActions.andReturn();
-		${voClassName} ${voInstanceName} = (${voClassName}) mvcResult.getModelAndView().getModel().get("${voInstanceName}");
+		${voInstanceName} = (${voClassName}) mvcResult.getModelAndView().getModel().get("${voInstanceName}");
 #foreach($attribute in $model.primaryKeys)
 		egovLogger.debug("${attribute.ccName}={}", ${voInstanceName}.get${attribute.pcName}());
 #end
@@ -198,7 +201,8 @@ public class ${controllerClassName}Test {
 //		params.add("setSearchKeywordTo", "");
 
 #foreach($attribute in $model.primaryKeys)
-//		params.add("${attribute.ccName}", "test ${attribute.ccName}");
+		params.add("${attribute.ccName}", ${voInstanceName}.get${attribute.pcName}());
+		egovLogger.debug("${attribute.ccName}={}", ${voInstanceName}.get${attribute.pcName}());
 #end
 
 #foreach($attribute in $model.attributes)
@@ -209,10 +213,10 @@ public class ${controllerClassName}Test {
 
 		// @formatter:off
 		mockMvc.perform(get("${listPath}").params(params))
-			.andDo(print())
 			.andExpect(status().isOk())
 //			.andExpect(content().contentType("text/html"))
 			.andExpect(forwardedUrl("/WEB-INF/jsp/${listView}.jsp"))
+			.andDo(print())
 		;
 		// @formatter:on
 	}
@@ -227,7 +231,8 @@ public class ${controllerClassName}Test {
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 
 #foreach($attribute in $model.primaryKeys)
-//		params.add("${attribute.ccName}", "test ${attribute.ccName}");
+		params.add("${attribute.ccName}", ${voInstanceName}.get${attribute.pcName}());
+		egovLogger.debug("${attribute.ccName}={}", ${voInstanceName}.get${attribute.pcName}());
 #end
 
 #foreach($attribute in $model.attributes)
@@ -238,10 +243,10 @@ public class ${controllerClassName}Test {
 
 		// @formatter:off
 		mockMvc.perform(get("${selectPath}").params(params))
-			.andDo(print())
 			.andExpect(status().isOk())
 //			.andExpect(content().contentType("text/html"))
 			.andExpect(forwardedUrl("/WEB-INF/jsp/${detailView}.jsp"))
+			.andDo(print())
 		;
 		// @formatter:on
 	}
@@ -256,7 +261,8 @@ public class ${controllerClassName}Test {
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 
 #foreach($attribute in $model.primaryKeys)
-//		params.add("${attribute.ccName}", "test ${attribute.ccName}");
+		params.add("${attribute.ccName}", ${voInstanceName}.get${attribute.pcName}());
+		egovLogger.debug("${attribute.ccName}={}", ${voInstanceName}.get${attribute.pcName}());
 #end
 
 #foreach($attribute in $model.attributes)
@@ -267,10 +273,10 @@ public class ${controllerClassName}Test {
 
 		// @formatter:off
 		mockMvc.perform(get("${updateViewPath}").params(params))
-			.andDo(print())
 			.andExpect(status().isOk())
 //			.andExpect(content().contentType("text/html"))
 			.andExpect(forwardedUrl("/WEB-INF/jsp/${registerView}.jsp"))
+			.andDo(print())
 		;
 		// @formatter:on
 	}
@@ -285,7 +291,8 @@ public class ${controllerClassName}Test {
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 
 #foreach($attribute in $model.primaryKeys)
-//		params.add("${attribute.ccName}", "test ${attribute.ccName}");
+		params.add("${attribute.ccName}", ${voInstanceName}.get${attribute.pcName}());
+		egovLogger.debug("${attribute.ccName}={}", ${voInstanceName}.get${attribute.pcName}());
 #end
 
 #foreach($attribute in $model.attributes)
@@ -296,10 +303,10 @@ public class ${controllerClassName}Test {
 
 		// @formatter:off
 		mockMvc.perform(post("${updatePath}").params(params))
-			.andDo(print())
 			.andExpect(status().isFound())
 //			.andExpect(content().contentType("text/html"))
 			.andExpect(redirectedUrl("${listPath}?${updateMethodName}=1"))
+			.andDo(print())
 		;
 		// @formatter:on
 	}
@@ -314,7 +321,8 @@ public class ${controllerClassName}Test {
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 
 #foreach($attribute in $model.primaryKeys)
-//		params.add("${attribute.ccName}", "test ${attribute.ccName}");
+		params.add("${attribute.ccName}", ${voInstanceName}.get${attribute.pcName}());
+		egovLogger.debug("${attribute.ccName}={}", ${voInstanceName}.get${attribute.pcName}());
 #end
 
 #foreach($attribute in $model.attributes)
@@ -325,10 +333,10 @@ public class ${controllerClassName}Test {
 
 		// @formatter:off
 		mockMvc.perform(post("${deletePath}").params(params))
-			.andDo(print())
 			.andExpect(status().isFound())
 //			.andExpect(content().contentType("text/html"))
 			.andExpect(redirectedUrl("${listPath}?${deleteMethodName}=1"))
+			.andDo(print())
 		;
 		// @formatter:on
 	}
