@@ -1,0 +1,336 @@
+##
+#set($voPackage="${voPackage}")
+#set($voClassName="${model.entity.pcName}VO")
+#set($defaultVoClassName="${model.entity.pcName}DefaultVO")
+#set($voInstanceName="${model.entity.ccName}VO")
+#set($servicePackage="${servicePackage}")
+#set($serviceClassName="${model.entity.pcName}Service")
+#set($serviceName="${model.entity.ccName}Service")
+#set($serviceInstanceName="${model.entity.ccName}Service")
+#set($controllerPackage="${controllerPackage}")
+#set($controllerClassName="${model.entity.pcName}Controller")
+##
+##
+#set($listInstanceName="${model.entity.ccName}List")
+#set($insertMethodName="insert${model.entity.pcName}")
+#set($updateMethodName="update${model.entity.pcName}")
+#set($deleteMethodName="delete${model.entity.pcName}")
+#set($mergeMethodName="merge${model.entity.pcName}")
+#set($multiMethodName="multi${model.entity.pcName}")
+#set($selectMethodName="select${model.entity.pcName}")
+#set($selectListMethodName="select${model.entity.pcName}List")
+#set($selectListTotCntMethodName="select${model.entity.pcName}ListTotCnt")
+##
+##
+#set($updateViewMethodName="update${model.entity.pcName}")
+#set($addMethodName="insert${model.entity.pcName}")
+#set($addViewMethodName="insert${model.entity.pcName}")
+##
+#set($listPath="/${model.entity.ccName}/select${model.entity.pcName}List.do")
+#set($addViewPath="/${model.entity.ccName}/insert${model.entity.pcName}.do")
+#set($addPath="/${model.entity.ccName}/insert${model.entity.pcName}.do")
+#set($selectPath="/${model.entity.ccName}/select${model.entity.pcName}.do")
+#set($updatePath="/${model.entity.ccName}/update${model.entity.pcName}.do")
+#set($updateViewPath="/${model.entity.ccName}/update${model.entity.pcName}.do")
+#set($deletePath="/${model.entity.ccName}/delete${model.entity.pcName}.do")
+#set($mergePath="/${model.entity.ccName}/merge${model.entity.pcName}.do")
+#set($multiPath="/${model.entity.ccName}/multi${model.entity.pcName}.do")
+##
+#set($listView="${model.folder.jspListFolder2}")
+#set($registerView="${model.folder.jspRegistFolder2}")
+#set($detailView="${model.folder.jspDetailFolder2}")
+##
+##
+package ${controllerPackage};
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
+
+import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
+import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.context.WebApplicationContext;
+
+#if (${voPackage}=='${voPackage}')
+// Vo 객체에 대한 import 구문
+// import (vo package).${defaultVoClassName};
+// import (vo package).${voClassName};
+#else
+##import ${voPackage}.${defaultVoClassName};
+import ${voPackage}.${voClassName};
+#end
+
+/**
+ * @Class Name : ${daoClassName}.java
+ * @Description : ${model.entity.pcName} DAO Class
+ * @Modification Information
+ *
+ * @author ${author}
+ * @since ${createDate}
+ * @version 1.0
+ * @see
+ *
+ *  Copyright (C)  All right reserved.
+ */
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@RunWith(SpringJUnit4ClassRunner.class)
+@WebAppConfiguration
+@ContextConfiguration({ "classpath*:egovframework/spring/com/**/context-*.xml",
+		"file:src/main/webapp/WEB-INF/config/egovframework/springmvc/egov-com-*.xml" })
+@ActiveProfiles("mysql")
+public class ${controllerClassName}Test {
+
+	protected Logger egovLogger = LoggerFactory.getLogger(${controllerClassName}Test.class);
+
+	@Autowired
+	private WebApplicationContext wac;
+
+	private MockMvc mockMvc;
+
+	@Before
+	public void setup() {
+		mockMvc = webAppContextSetup(wac).build();
+	}
+
+	/**
+	 * ${model.entity.name}을 등록한다.
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void a1_${addViewMethodName}View() throws Exception {
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+
+#foreach($attribute in $model.primaryKeys)
+//		params.add("${attribute.ccName}", "test ${attribute.ccName}");
+#end
+
+#foreach($attribute in $model.attributes)
+#if($attribute.isPrimaryKey == false)
+//		params.add("${attribute.ccName}", "test ${attribute.ccName}");
+#end
+#end
+
+		// @formatter:off
+		mockMvc.perform(get("${addViewPath}").params(params))
+			.andDo(print())
+			.andExpect(status().isOk())
+//			.andExpect(content().contentType("text/html"))
+			.andExpect(forwardedUrl("/WEB-INF/jsp/${registerView}.jsp"))
+		;
+		// @formatter:on
+	}
+
+	/**
+	 * ${model.entity.name}을 등록한다.
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void b1_${addMethodName}() throws Exception {
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+
+#foreach($attribute in $model.primaryKeys)
+//		params.add("${attribute.ccName}", "test ${attribute.ccName}");
+#end
+
+#foreach($attribute in $model.attributes)
+#if($attribute.isPrimaryKey == false)
+//		params.add("${attribute.ccName}", "test ${attribute.ccName}");
+#end
+#end
+
+		// @formatter:off
+		ResultActions resultActions = mockMvc.perform(post("${addPath}").params(params))
+			.andDo(print())
+			.andExpect(status().isFound())
+//			.andExpect(content().contentType("text/html"))
+			.andExpect(redirectedUrl("${listPath}?${insertMethodName}=1"))
+		;
+		// @formatter:on
+
+		MvcResult mvcResult = resultActions.andReturn();
+		${voClassName} ${voInstanceName} = (${voClassName}) mvcResult.getModelAndView().getModel().get("${voInstanceName}");
+#foreach($attribute in $model.primaryKeys)
+		egovLogger.debug("${attribute.ccName}={}", ${voInstanceName}.get${attribute.pcName}());
+#end
+	}
+
+	/**
+	 * ${model.entity.name} 목록을 조회한다.
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void c1_${selectListMethodName}() throws Exception {
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+
+		params.add("setPageIndex", "1");
+		params.add("setPageUnit", "10");
+
+//		params.add("setSearchCondition", "");
+//		params.add("setSearchKeyword", "");
+//		params.add("setSearchUseYn", "Y");
+//		params.add("setPageIndex", "1");
+//		params.add("setPageUnit", "10");
+//		params.add("setPageSize", "10");
+//		params.add("setSearchKeywordFrom", "");
+//		params.add("setSearchKeywordTo", "");
+
+#foreach($attribute in $model.primaryKeys)
+//		params.add("${attribute.ccName}", "test ${attribute.ccName}");
+#end
+
+#foreach($attribute in $model.attributes)
+#if($attribute.isPrimaryKey == false)
+//		params.add("${attribute.ccName}", "test ${attribute.ccName}");
+#end
+#end
+
+		// @formatter:off
+		mockMvc.perform(get("${listPath}").params(params))
+			.andDo(print())
+			.andExpect(status().isOk())
+//			.andExpect(content().contentType("text/html"))
+			.andExpect(forwardedUrl("/WEB-INF/jsp/${listView}.jsp"))
+		;
+		// @formatter:on
+	}
+
+	/**
+	 * ${model.entity.name}을 조회한다.
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void d1_${selectMethodName}() throws Exception {
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+
+#foreach($attribute in $model.primaryKeys)
+//		params.add("${attribute.ccName}", "test ${attribute.ccName}");
+#end
+
+#foreach($attribute in $model.attributes)
+#if($attribute.isPrimaryKey == false)
+//		params.add("${attribute.ccName}", "test ${attribute.ccName}");
+#end
+#end
+
+		// @formatter:off
+		mockMvc.perform(get("${selectPath}").params(params))
+			.andDo(print())
+			.andExpect(status().isOk())
+//			.andExpect(content().contentType("text/html"))
+			.andExpect(forwardedUrl("/WEB-INF/jsp/${detailView}.jsp"))
+		;
+		// @formatter:on
+	}
+
+	/**
+	 * ${model.entity.name}을 수정한다.
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void e1_${updateViewMethodName}View() throws Exception {
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+
+#foreach($attribute in $model.primaryKeys)
+//		params.add("${attribute.ccName}", "test ${attribute.ccName}");
+#end
+
+#foreach($attribute in $model.attributes)
+#if($attribute.isPrimaryKey == false)
+//		params.add("${attribute.ccName}", "test ${attribute.ccName}");
+#end
+#end
+
+		// @formatter:off
+		mockMvc.perform(get("${updateViewPath}").params(params))
+			.andDo(print())
+			.andExpect(status().isOk())
+//			.andExpect(content().contentType("text/html"))
+			.andExpect(forwardedUrl("/WEB-INF/jsp/${registerView}.jsp"))
+		;
+		// @formatter:on
+	}
+
+	/**
+	 * ${model.entity.name}을 수정한다.
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void f1_${updateMethodName}() throws Exception {
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+
+#foreach($attribute in $model.primaryKeys)
+//		params.add("${attribute.ccName}", "test ${attribute.ccName}");
+#end
+
+#foreach($attribute in $model.attributes)
+#if($attribute.isPrimaryKey == false)
+//		params.add("${attribute.ccName}", "test ${attribute.ccName}");
+#end
+#end
+
+		// @formatter:off
+		mockMvc.perform(post("${updatePath}").params(params))
+			.andDo(print())
+			.andExpect(status().isFound())
+//			.andExpect(content().contentType("text/html"))
+			.andExpect(redirectedUrl("${listPath}?${updateMethodName}=1"))
+		;
+		// @formatter:on
+	}
+
+	/**
+	 * ${model.entity.name}을 삭제한다.
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void g1_${deleteMethodName}() throws Exception {
+		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
+
+#foreach($attribute in $model.primaryKeys)
+//		params.add("${attribute.ccName}", "test ${attribute.ccName}");
+#end
+
+#foreach($attribute in $model.attributes)
+#if($attribute.isPrimaryKey == false)
+//		params.add("${attribute.ccName}", "test ${attribute.ccName}");
+#end
+#end
+
+		// @formatter:off
+		mockMvc.perform(post("${deletePath}").params(params))
+			.andDo(print())
+			.andExpect(status().isFound())
+//			.andExpect(content().contentType("text/html"))
+			.andExpect(redirectedUrl("${listPath}?${deleteMethodName}=1"))
+		;
+		// @formatter:on
+	}
+
+}
