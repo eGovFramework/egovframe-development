@@ -51,6 +51,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
+import java.util.Date;
+
+import org.egovframe.rte.fdl.string.EgovDateUtil;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -110,6 +113,8 @@ public class ${controllerClassName}Test {
 
 	static ${voClassName} ${voInstanceName};
 
+	static String today = " " + EgovDateUtil.toString(new Date(), null, null);
+
 	@Before
 	public void setup() {
 		mockMvc = webAppContextSetup(wac).build();
@@ -159,7 +164,7 @@ public class ${controllerClassName}Test {
 
 #foreach($attribute in $model.attributes)
 #if($attribute.isPrimaryKey == false)
-//		params.add("${attribute.ccName}", "test ${attribute.ccName}");
+		params.add("${attribute.ccName}", "test ${attribute.ccName}" + today);
 #end
 #end
 
@@ -297,7 +302,7 @@ public class ${controllerClassName}Test {
 
 #foreach($attribute in $model.attributes)
 #if($attribute.isPrimaryKey == false)
-//		params.add("${attribute.ccName}", "test ${attribute.ccName}");
+		params.add("${attribute.ccName}", "test ${attribute.ccName}" + today + " 수정");
 #end
 #end
 
