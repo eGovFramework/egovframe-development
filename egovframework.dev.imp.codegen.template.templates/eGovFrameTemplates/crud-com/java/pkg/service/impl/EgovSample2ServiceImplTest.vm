@@ -37,8 +37,10 @@ import javax.annotation.Resource;
 ##import org.egovframe.rte.fdl.cmmn.exception.FdlException;
 ##import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.MethodSorters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 ##import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +71,7 @@ import ${voPackage}.${voClassName};
  *  Copyright (C)  All right reserved.
  */
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath*:egovframework/spring/com/**/context-*.xml" })
 @ActiveProfiles("mysql")
@@ -89,7 +92,7 @@ public class ${serviceImplClassName}Test {
 	 * ${model.entity.name}을 등록한다.
 	 */
 	@Test
-	public void ${insertMethodName}() {
+	public void a_${insertMethodName}() {
 		${voClassName} ${voInstanceName} = new ${voClassName}();
 #*
 #foreach($attribute in $model.primaryKeys)
@@ -112,52 +115,10 @@ public class ${serviceImplClassName}Test {
 	}
 
 	/**
-	 * ${model.entity.name}을 수정한다.
-	 */
-	@Test
-	public void ${updateMethodName}() {
-		${voClassName} ${voInstanceName} = new ${voClassName}();
-
-#foreach($attribute in $model.primaryKeys)
-		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
-#end
-
-#foreach($attribute in $model.attributes)
-#if($attribute.isPrimaryKey == false)
-//		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
-#end
-#end
-
-		int ${updateMethodName} = ${serviceInstanceName}.${updateMethodName}(${voInstanceName});
-		egovLogger.debug("${updateMethodName}={}", ${updateMethodName});
-	}
-
-	/**
-	 * ${model.entity.name}을 삭제한다.
-	 */
-	@Test
-	public void ${deleteMethodName}() {
-		${voClassName} ${voInstanceName} = new ${voClassName}();
-
-#foreach($attribute in $model.primaryKeys)
-		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
-#end
-
-#foreach($attribute in $model.attributes)
-#if($attribute.isPrimaryKey == false)
-//		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
-#end
-#end
-
-		int ${deleteMethodName} = ${serviceInstanceName}.${deleteMethodName}(${voInstanceName});
-		egovLogger.debug("${deleteMethodName}={}", ${deleteMethodName});
-	}
-
-	/**
 	 * ${model.entity.name}을 조회한다.
 	 */
 	@Test
-	public void ${selectMethodName}() {
+	public void b1_${selectMethodName}() {
 		${voClassName} ${voInstanceName} = new ${voClassName}();
 
 #foreach($attribute in $model.primaryKeys)
@@ -178,7 +139,7 @@ public class ${serviceImplClassName}Test {
 	 * ${model.entity.name} 목록을 조회한다.
 	 */
 	@Test
-	public void ${selectListMethodName}() {
+	public void b1_${selectListMethodName}() {
 		${voClassName} ${voInstanceName} = new ${voClassName}();
 
 		${voInstanceName}.setFirstIndex(1);
@@ -214,7 +175,7 @@ public class ${serviceImplClassName}Test {
 	 * ${model.entity.name} 총 갯수를 조회한다.
 	 */
 	@Test
-	public void ${selectListTotCntMethodName}() {
+	public void b1_${selectListTotCntMethodName}() {
 		${voClassName} ${voInstanceName} = new ${voClassName}();
 
 		${voInstanceName}.setFirstIndex(1);
@@ -244,6 +205,48 @@ public class ${serviceImplClassName}Test {
 
 		int ${selectListTotCntMethodName} = ${serviceInstanceName}.${selectListTotCntMethodName}(${voInstanceName});
 		egovLogger.debug("${selectListTotCntMethodName}={}", ${selectListTotCntMethodName});
+	}
+
+	/**
+	 * ${model.entity.name}을 수정한다.
+	 */
+	@Test
+	public void c1_${updateMethodName}() {
+		${voClassName} ${voInstanceName} = new ${voClassName}();
+
+#foreach($attribute in $model.primaryKeys)
+		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
+
+#foreach($attribute in $model.attributes)
+#if($attribute.isPrimaryKey == false)
+//		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
+#end
+
+		int ${updateMethodName} = ${serviceInstanceName}.${updateMethodName}(${voInstanceName});
+		egovLogger.debug("${updateMethodName}={}", ${updateMethodName});
+	}
+
+	/**
+	 * ${model.entity.name}을 삭제한다.
+	 */
+	@Test
+	public void d1_${deleteMethodName}() {
+		${voClassName} ${voInstanceName} = new ${voClassName}();
+
+#foreach($attribute in $model.primaryKeys)
+		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
+
+#foreach($attribute in $model.attributes)
+#if($attribute.isPrimaryKey == false)
+//		${voInstanceName}.set${attribute.pcName}("test ${attribute.ccName}");
+#end
+#end
+
+		int ${deleteMethodName} = ${serviceInstanceName}.${deleteMethodName}(${voInstanceName});
+		egovLogger.debug("${deleteMethodName}={}", ${deleteMethodName});
 	}
 
 }

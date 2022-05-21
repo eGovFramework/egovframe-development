@@ -155,7 +155,7 @@ public class ${controllerClassName}Test {
 	 * @throws Exception
 	 */
 	@Test
-	public void b1_${addMethodName}() throws Exception {
+	public void a1_${addMethodName}() throws Exception {
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 
 #foreach($attribute in $model.primaryKeys)
@@ -190,7 +190,7 @@ public class ${controllerClassName}Test {
 	 * @throws Exception
 	 */
 	@Test
-	public void c1_${selectListMethodName}() throws Exception {
+	public void b1_${selectListMethodName}() throws Exception {
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 
 		params.add("setPageIndex", "1");
@@ -232,7 +232,7 @@ public class ${controllerClassName}Test {
 	 * @throws Exception
 	 */
 	@Test
-	public void d1_${selectMethodName}() throws Exception {
+	public void b1_${selectMethodName}() throws Exception {
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 
 #foreach($attribute in $model.primaryKeys)
@@ -262,7 +262,7 @@ public class ${controllerClassName}Test {
 	 * @throws Exception
 	 */
 	@Test
-	public void e1_${updateViewMethodName}View() throws Exception {
+	public void c1_${updateViewMethodName}View() throws Exception {
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 
 #foreach($attribute in $model.primaryKeys)
@@ -292,7 +292,7 @@ public class ${controllerClassName}Test {
 	 * @throws Exception
 	 */
 	@Test
-	public void f1_${updateMethodName}() throws Exception {
+	public void c1_${updateMethodName}() throws Exception {
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 
 #foreach($attribute in $model.primaryKeys)
@@ -322,7 +322,7 @@ public class ${controllerClassName}Test {
 	 * @throws Exception
 	 */
 	@Test
-	public void g1_${deleteMethodName}() throws Exception {
+	public void d1_${deleteMethodName}() throws Exception {
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
 
 #foreach($attribute in $model.primaryKeys)

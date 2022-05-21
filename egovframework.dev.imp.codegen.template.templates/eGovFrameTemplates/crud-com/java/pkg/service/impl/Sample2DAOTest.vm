@@ -145,7 +145,7 @@ public class ${daoClassName}Test {
 	 * ${model.entity.name} 총 갯수를 조회한다.
 	 */
 	@Test
-	public void c1_${selectListTotCntMethodName}() {
+	public void b1_${selectListTotCntMethodName}() {
 		${voClassName} ${voInstanceName} = new ${voClassName}();
 
 		${voInstanceName}.setFirstIndex(1);
@@ -181,7 +181,7 @@ public class ${daoClassName}Test {
 	 * ${model.entity.name}을 조회한다.
 	 */
 	@Test
-	public void d1_${selectMethodName}() {
+	public void b1_${selectMethodName}() {
 		${voClassName} ${voInstanceName} = new ${voClassName}();
 
 #foreach($attribute in $model.primaryKeys)
@@ -202,7 +202,7 @@ public class ${daoClassName}Test {
 	 * ${model.entity.name}을 수정한다.
 	 */
 	@Test
-	public void e1_${updateMethodName}() {
+	public void c1_${updateMethodName}() {
 		${voClassName} ${voInstanceName} = new ${voClassName}();
 
 #foreach($attribute in $model.primaryKeys)
@@ -223,7 +223,7 @@ public class ${daoClassName}Test {
 	 * ${model.entity.name}을 삭제한다.
 	 */
 	@Test
-	public void f1_${deleteMethodName}() {
+	public void d1_${deleteMethodName}() {
 		${voClassName} ${voInstanceName} = new ${voClassName}();
 
 #foreach($attribute in $model.primaryKeys)
