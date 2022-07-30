@@ -459,4 +459,9 @@ public class JobParameterDialog extends StatusDialog {
 	protected Point getInitialSize() {
 		return new Point(380, 265);
 	}
+
+	@Override
+	protected boolean isResizable() {
+		return true;
+	}
 }

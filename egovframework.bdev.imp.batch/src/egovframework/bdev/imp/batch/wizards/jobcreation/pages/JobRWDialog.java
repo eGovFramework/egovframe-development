@@ -463,4 +463,9 @@ abstract public class JobRWDialog extends StatusDialog {
 		
 		super.okPressed();
 	}
+
+	@Override
+	protected boolean isResizable() {
+		return true;
+	}
 }

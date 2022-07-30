@@ -371,4 +371,8 @@ public class GenerateFileDialog extends StatusDialog {
 		}
 	};
 
+	@Override
+	protected boolean isResizable() {
+		return true;
+	}
 }

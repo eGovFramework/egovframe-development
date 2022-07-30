@@ -329,4 +329,8 @@ public class ListenerDialog extends StatusDialog {
 		return infos;
 	}
 
+	@Override
+	protected boolean isResizable() {
+		return true;
+	}
 }
