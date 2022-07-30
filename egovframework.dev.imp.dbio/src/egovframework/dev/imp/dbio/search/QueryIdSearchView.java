@@ -17,18 +17,24 @@ package egovframework.dev.imp.dbio.search;
 
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IDoubleClickListener;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeNodeContentProvider;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.FocusAdapter;
+import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -115,20 +121,44 @@ public class QueryIdSearchView extends ViewPart implements SearchQueryId{
 		Label label = new Label(composite, SWT.NONE);
 		label.setText("Project:");
 		
+		GridData gd = new GridData();
+		gd.widthHint = 300;
+
 		projectViewer = new ComboViewer(composite, SWT.READ_ONLY | SWT.DROP_DOWN);
 		projectViewer.setContentProvider(new WorkbenchContentProvider());
 		projectViewer.setLabelProvider(new WorkbenchLabelProvider());
 		projectViewer.setInput(ResourcesPlugin.getWorkspace().getRoot());
+
 		projectViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 			public void selectionChanged(SelectionChangedEvent event) {
 				toggleSearchButton();
 			}
 		});
+		projectViewer.getCombo().setLayoutData(gd);
+		projectViewer.getCombo().addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				refreshProjectsList();
+			}
+		});
+		projectViewer.setFilters(new ViewerFilter() {
+			@Override
+			public boolean select(Viewer viewer, Object parentElement, Object element) {
+				if (element instanceof IProject) {
+					IProject project = (IProject) element;
+					if (!project.isOpen()) {
+						return false;
+					}
+				}
+				return true;
+			}
+		});
+
 		label = new Label(composite, SWT.NONE);
 		label.setText("Query ID:");
 
 		queryInput = new Text(composite, SWT.BORDER);
-		GridData gd = new GridData();
+		gd = new GridData();
 		gd.widthHint = 200;
 		queryInput.setLayoutData(gd);
 		queryInput.addModifyListener(new ModifyListener() {
@@ -164,6 +194,13 @@ public class QueryIdSearchView extends ViewPart implements SearchQueryId{
 		}
 		
 		searchButton.setEnabled(true);
+	}
+
+	/**
+	 * 프로젝트 리스트 새로고침
+	 */
+	private void refreshProjectsList() {
+		projectViewer.refresh();
 	}
 
 	protected void openEditor(Object obj) {
@@ -253,3 +290,4 @@ public class QueryIdSearchView extends ViewPart implements SearchQueryId{
 		
 	}
 }
+
