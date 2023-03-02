@@ -26,14 +26,14 @@ import egovframework.boot.dev.imp.ide.EgovBootIdePlugin;
  * 로깅 처리 클래스
  * 
  * @author 개발환경 개발팀 이흥주
- * @since 2022.02.14
+ * @since 2009.06.01
  * @version 1.0
  * @see <pre>
  * &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *   
  *   수정일      수정자           수정내용
  *  -------    --------    ---------------------------
- *   2022.02.14  이정은          최초 생성
+ *   2009.02.20  이흥주          최초 생성
  * 
  * 
  * </pre>

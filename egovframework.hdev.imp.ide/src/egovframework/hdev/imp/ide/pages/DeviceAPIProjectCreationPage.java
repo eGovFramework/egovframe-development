@@ -44,7 +44,9 @@ import egovframework.hdev.imp.ide.model.DeviceAPIContext;
  * @since 2012.07.24
  * @author 디바이스 API 개발환경 팀 조용현
  * @version 1.0
- * @see <pre>
+ * @see
+ * 
+ *      <pre>
  * &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *   
  *수정일	  	수정자	  수정내용
@@ -52,252 +54,250 @@ import egovframework.hdev.imp.ide.model.DeviceAPIContext;
  *2012.07.24	조용현	최초생성
  *
  * 
- * </pre>
+ *      </pre>
  */
 abstract public class DeviceAPIProjectCreationPage extends DeviceAPIBaseProjectCreationPage {
 
-    /** 위젯 */
-    protected Text groupIdText;
-    protected Text artifactIdText;
-    protected Combo versionCombo;
-    protected Text packageText;
-    protected DeviceAPIContext context;
+	/** 위젯 */
+	protected Text groupIdText;
+	protected Text artifactIdText;
+	protected Combo versionCombo;
+	protected Text packageText;
+	protected DeviceAPIContext context;
 
 	/**
-     * 생성자
-     * @param pageName
-     * @param context
-     */
-    public DeviceAPIProjectCreationPage(String pageName, DeviceAPIContext context) {
-        super(pageName);
-        this.context = context;
-        
-        setTitle(DeviceAPIMessages.PROJECT_CREATION_PAGE_TITLE);
-        setDescription(DeviceAPIMessages.PROJECT_CREATION_PAGE_DESCRIPTION);
-    }
+	 * 생성자
+	 * 
+	 * @param pageName
+	 * @param context
+	 */
+	public DeviceAPIProjectCreationPage(String pageName, DeviceAPIContext context) {
+		super(pageName);
+		this.context = context;
 
-    /**
-     * 프로젝트명 변경 이벤트 리스너
-     */
-    private final Listener projectNameModifyListener = new Listener() {
-        public void handleEvent(Event e) {
-            updateArtifactId();
-            boolean valid = validatePage();
-            setPageComplete(valid);
-        }
-    };
+		setTitle(DeviceAPIMessages.PROJECT_CREATION_PAGE_TITLE);
+		setDescription(DeviceAPIMessages.PROJECT_CREATION_PAGE_DESCRIPTION);
+	}
 
-    /**
-     * Web 설정을 위한 위젯
-     * @param container
-     */
-    private void createWebSettingGroup(Composite container) {
+	/**
+	 * 프로젝트명 변경 이벤트 리스너
+	 */
+	private final Listener projectNameModifyListener = new Listener() {
+		public void handleEvent(Event e) {
+			updateArtifactId();
+			boolean valid = validatePage();
+			setPageComplete(valid);
+		}
+	};
 
-        // 그룹
-        Group mavenGroup = new Group(container, SWT.NONE);
-        mavenGroup.setText(DeviceAPIMessages.PROJECT_CREATION_MAVEN_GROUP_TEXT);
-        GridLayout dirLayout = new GridLayout(3, false);
-        mavenGroup.setLayout(dirLayout);
-        mavenGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+	/**
+	 * Web 설정을 위한 위젯
+	 * 
+	 * @param container
+	 */
+	private void createWebSettingGroup(Composite container) {
 
-        // 그룹 아이디
-        groupIdText =
-            IdeUIUtil.createTextField(mavenGroup,
-            		DeviceAPIMessages.PROJECT_CREATION_GROUP_ID_LABEL);
-        groupIdText.addModifyListener(new ModifyListener() {
-            public void modifyText(ModifyEvent e) {
-                setPageComplete(validatePage());
-            }
-        });
+		// 그룹
+		Group mavenGroup = new Group(container, SWT.NONE);
+		mavenGroup.setText(DeviceAPIMessages.PROJECT_CREATION_MAVEN_GROUP_TEXT);
+		GridLayout dirLayout = new GridLayout(3, false);
+		mavenGroup.setLayout(dirLayout);
+		mavenGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
-        // 아티팩트 아이디
-        artifactIdText =
-            IdeUIUtil.createTextField(mavenGroup,
-            		DeviceAPIMessages.PROJECT_CREATION_ARTIFACT_ID_LABEL);
-        artifactIdText.addModifyListener(new ModifyListener() {
-            public void modifyText(ModifyEvent e) {
-                setPageComplete(validatePage());
-            }
-        });
+		// 그룹 아이디
+		groupIdText = IdeUIUtil.createTextField(mavenGroup, DeviceAPIMessages.PROJECT_CREATION_GROUP_ID_LABEL);
+		groupIdText.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				setPageComplete(validatePage());
+			}
+		});
 
-        // 버젼
-        versionCombo =
-            IdeUIUtil.createComboField(mavenGroup,
-            		DeviceAPIMessages.PROJECT_CREATION_VERSION_LABEL);
-        versionCombo.addModifyListener(new ModifyListener() {
-            public void modifyText(ModifyEvent e) {
-                setPageComplete(validatePage());
-            }
-        });
-    }
+		// 아티팩트 아이디
+		artifactIdText = IdeUIUtil.createTextField(mavenGroup, DeviceAPIMessages.PROJECT_CREATION_ARTIFACT_ID_LABEL);
+		artifactIdText.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				setPageComplete(validatePage());
+			}
+		});
 
-    /**
-     * 프로젝트 명에 따라 그룹아이디,아티팩아이디 자동 설정
-     */
-    private void updateArtifactId() {
-        String projectName = getDeviceapiProjectName();
-        String groupId = "";  //$NON-NLS-1$
-        String artifactId = "";  //$NON-NLS-1$
+		// 버젼
+		versionCombo = IdeUIUtil.createComboField(mavenGroup, DeviceAPIMessages.PROJECT_CREATION_VERSION_LABEL);
+		versionCombo.addModifyListener(new ModifyListener() {
+			public void modifyText(ModifyEvent e) {
+				setPageComplete(validatePage());
+			}
+		});
+	}
 
-        if ((projectName.length() > 0)
-            && (".".equals(projectName.substring(projectName.length() - 1)))) {  //$NON-NLS-1$
-            projectName = projectName.substring(0, projectName.length() - 1);
-        }
+	/**
+	 * 프로젝트 명에 따라 그룹아이디,아티팩아이디 자동 설정
+	 */
+	private void updateArtifactId() {
+		String projectName = getDeviceapiProjectName();
+		String groupId = ""; //$NON-NLS-1$
+		String artifactId = ""; //$NON-NLS-1$
 
-        artifactId = projectName;
+		if ((projectName.length() > 0) && (".".equals(projectName.substring(projectName.length() - 1)))) { //$NON-NLS-1$
+			projectName = projectName.substring(0, projectName.length() - 1);
+		}
 
-        if (projectName.lastIndexOf(".") > 0) {  //$NON-NLS-1$
-            groupId = projectName.substring(0, projectName.lastIndexOf("."));  //$NON-NLS-1$
-            groupIdText.setText(TextProcessor.process(groupId));
-            artifactId =
-                projectName.substring(projectName.lastIndexOf(".") + 1);  //$NON-NLS-1$
-        }
+		artifactId = projectName;
 
-        artifactIdText.setText(TextProcessor.process(artifactId));
-    }
+		if (projectName.lastIndexOf(".") > 0) { //$NON-NLS-1$
+			groupId = projectName.substring(0, projectName.lastIndexOf(".")); //$NON-NLS-1$
+			groupIdText.setText(TextProcessor.process(groupId));
+			artifactId = projectName.substring(projectName.lastIndexOf(".") + 1); //$NON-NLS-1$
+		}
 
-    /**
-     * 위젯 생성
-     */
-    @Override
-    protected void createControls(Composite parent) {
+		artifactIdText.setText(TextProcessor.process(artifactId));
+	}
 
-        createWebSettingGroup(parent);
+	/**
+	 * 위젯 생성
+	 */
+	@Override
+	protected void createControls(Composite parent) {
 
-        addProjectNameListener(projectNameModifyListener);  
-    }
-    
-    /**
-     * 검증 페이지
-     */
-    @Override
-    protected boolean validatePage() {
-    	String groupID = null;
-    	String artifactID = null;
-    	String version = null;
-    	
-        if (!super.validatePage()) {
-            return false;
-        }
-        
-        groupID = getGroupId();
+		createWebSettingGroup(parent);
 
-        if (groupID.length() < 1) {  //$NON-NLS-1$
-        	setErrorMessage(DeviceAPIMessages.PROJECT_CREATION_ERROR_GROUP_ID_EMPTY);
-        	return false;
-        }
-        
-        if (!StringUtil.isProjectElementNameAvailable(groupID)) {  //$NON-NLS-1$
-            setErrorMessage(DeviceAPIMessages.PROJECT_CREATION_ERROR_GROUP_ID_INVALID);
-            return false;
-        }
-        
-        artifactID = getArtifactId();
+		addProjectNameListener(projectNameModifyListener);
+	}
 
-        if (artifactID.length() < 1) {  //$NON-NLS-1$
-        	setErrorMessage(DeviceAPIMessages.PROJECT_CREATION_ERROR_ARTIFACT_ID_EMPTY);
-        	return false;
-        }
-        
-        if (!StringUtil.isProjectElementNameAvailable(artifactID)) {  //$NON-NLS-1$
-            setErrorMessage(DeviceAPIMessages.PROJECT_CREATION_ERROR_ARTIFACT_ID_INVALID);
-            return false;
-        }
-        
-        version = getVersion();
-        
-        if (version.length() < 1) { //$NON-NLS-1$
-        	setErrorMessage(DeviceAPIMessages.PROJECT_CREATION_ERROR_VERSION_EMPTY);
-        	return false;
-        }
-        
-        if (!StringUtil.isProjectElementNameAvailable(version)) { //$NON-NLS-1$
-        	setErrorMessage(DeviceAPIMessages.PROJECT_CREATION_ERROR_VERSION_INVALID);
-        	return false;
-        }
+	/**
+	 * 검증 페이지
+	 */
+	@Override
+	protected boolean validatePage() {
+		String groupID = null;
+		String artifactID = null;
+		String version = null;
 
-        return true;
-    }
-    
-    /**
-     * 프로젝트 핸들
-     * @return
-     */
-    public IProject getWebProjectHandle() {
-        return ResourcesPlugin.getWorkspace().getRoot().getProject(
-            getWebProjectName());
-    }
-    
-    /**
-     * 프로젝트명 가져오기
-     * @return
-     */
-    protected String getWebProjectName() {
-    	if (projectNameText == null) {
-            return ""; //$NON-NLS-1$
-        }
+		if (!super.validatePage()) {
+			return false;
+		}
 
-        return projectNameText.getText();
-    }
-    
-    // 선택된 workspace 체크
-    private boolean isInWorkspace() {
-        return useDefaultWorkspaceLocationButton.getSelection();
-    }
-    
-    /**
-     * get path
-     * @return
-     */
-    public IPath getWebLocationPath() {
+		groupID = getGroupId();
 
-        String path = "";  //$NON-NLS-1$
-        if (isInWorkspace()) {
-            path = Platform.getLocation().toOSString();
+		if (groupID.length() < 1) { // $NON-NLS-1$
+			setErrorMessage(DeviceAPIMessages.PROJECT_CREATION_ERROR_GROUP_ID_EMPTY);
+			return false;
+		}
 
-        } else {
-            path = locationPathText.getText();
-        }
+		if (!StringUtil.isProjectElementNameAvailable(groupID)) { // $NON-NLS-1$
+			setErrorMessage(DeviceAPIMessages.PROJECT_CREATION_ERROR_GROUP_ID_INVALID);
+			return false;
+		}
 
-        return new Path(path);
-    }
-    
-    //getter
-    public String getWebPackage() {
-        if (packageText == null) {
-            return "";  //$NON-NLS-1$
-        }
-        return packageText.getText();
-    }
-    
-    //getter
-    public String getGroupId() {
-        if (groupIdText == null) {
-            return "";  //$NON-NLS-1$
-        }
+		artifactID = getArtifactId();
 
-        return groupIdText.getText();
-    }
-    //getter
-    public String getArtifactId() {
-        if (artifactIdText == null) {
-            return "";  //$NON-NLS-1$
-        }
+		if (artifactID.length() < 1) { // $NON-NLS-1$
+			setErrorMessage(DeviceAPIMessages.PROJECT_CREATION_ERROR_ARTIFACT_ID_EMPTY);
+			return false;
+		}
 
-        return artifactIdText.getText();
-    }
-    //getter
-    public String getVersion() {
-        if (versionCombo == null) {
-            return "";  //$NON-NLS-1$
-        }
+		if (!StringUtil.isProjectElementNameAvailable(artifactID)) { // $NON-NLS-1$
+			setErrorMessage(DeviceAPIMessages.PROJECT_CREATION_ERROR_ARTIFACT_ID_INVALID);
+			return false;
+		}
 
-        return versionCombo.getText();
-    }
+		version = getVersion();
 
-    // 화면 생성
-    @Override
-    public void createControl(Composite parent) {
-        super.createControl(parent);
-    }
+		if (version.length() < 1) { // $NON-NLS-1$
+			setErrorMessage(DeviceAPIMessages.PROJECT_CREATION_ERROR_VERSION_EMPTY);
+			return false;
+		}
+
+		if (!StringUtil.isProjectElementNameAvailable(version)) { // $NON-NLS-1$
+			setErrorMessage(DeviceAPIMessages.PROJECT_CREATION_ERROR_VERSION_INVALID);
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * 프로젝트 핸들
+	 * 
+	 * @return
+	 */
+	public IProject getWebProjectHandle() {
+		return ResourcesPlugin.getWorkspace().getRoot().getProject(getWebProjectName());
+	}
+
+	/**
+	 * 프로젝트명 가져오기
+	 * 
+	 * @return
+	 */
+	protected String getWebProjectName() {
+		if (projectNameText == null) {
+			return ""; //$NON-NLS-1$
+		}
+
+		return projectNameText.getText();
+	}
+
+	// 선택된 workspace 체크
+	private boolean isInWorkspace() {
+		return useDefaultWorkspaceLocationButton.getSelection();
+	}
+
+	/**
+	 * get path
+	 * 
+	 * @return
+	 */
+	public IPath getWebLocationPath() {
+
+		String path = ""; //$NON-NLS-1$
+		if (isInWorkspace()) {
+			path = Platform.getLocation().toOSString();
+
+		} else {
+			path = locationPathText.getText();
+		}
+
+		return new Path(path);
+	}
+
+	// getter
+	public String getWebPackage() {
+		if (packageText == null) {
+			return ""; //$NON-NLS-1$
+		}
+		return packageText.getText();
+	}
+
+	// getter
+	public String getGroupId() {
+		if (groupIdText == null) {
+			return ""; //$NON-NLS-1$
+		}
+
+		return groupIdText.getText();
+	}
+
+	// getter
+	public String getArtifactId() {
+		if (artifactIdText == null) {
+			return ""; //$NON-NLS-1$
+		}
+
+		return artifactIdText.getText();
+	}
+
+	// getter
+	public String getVersion() {
+		if (versionCombo == null) {
+			return ""; //$NON-NLS-1$
+		}
+
+		return versionCombo.getText();
+	}
+
+	// 화면 생성
+	@Override
+	public void createControl(Composite parent) {
+		super.createControl(parent);
+	}
 }

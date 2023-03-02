@@ -16,12 +16,12 @@
 #set($selectListTotCntMethodName="select${model.entity.pcName}ListTotCnt")
 ##
 ##
-#set($insertQueryId="${daoInstanceName}.insert${model.entity.pcName}")
-#set($updateQueryId="${daoInstanceName}.update${model.entity.pcName}")
-#set($deleteQueryId="${daoInstanceName}.delete${model.entity.pcName}")
-#set($selectQueryId="${daoInstanceName}.select${model.entity.pcName}")
-#set($selectListQueryId="${daoInstanceName}.select${model.entity.pcName}List")
-#set($selectListTotCntQueryId="${daoInstanceName}.select${model.entity.pcName}ListTotCnt")
+#set($insertQueryId="${daoInstanceName}.insert${model.entity.pcName}_S")
+#set($updateQueryId="${daoInstanceName}.update${model.entity.pcName}_S")
+#set($deleteQueryId="${daoInstanceName}.delete${model.entity.pcName}_S")
+#set($selectQueryId="${daoInstanceName}.select${model.entity.pcName}_S")
+#set($selectListQueryId="${daoInstanceName}.select${model.entity.pcName}List_D")
+#set($selectListTotCntQueryId="${daoInstanceName}.select${model.entity.pcName}ListTotCnt_S")
 ##
 ##
 package ${daoPackage};
@@ -30,7 +30,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import org.egovframe.rte.psl.dataaccess.EgovAbstractMapper;
+import org.egovframe.rte.psl.dataaccess.EgovAbstractDAO;
 import ${voPackage}.${voClassName};
 import ${voPackage}.${defaultVoClassName};
 
@@ -48,7 +48,7 @@ import ${voPackage}.${defaultVoClassName};
  */
 
 @Repository("${daoName}")
-public class ${daoClassName} extends EgovAbstractMapper {
+public class ${daoClassName} extends EgovAbstractDAO {
 
 	/**
 	 * ${model.entity.name}을 등록한다.
@@ -56,8 +56,8 @@ public class ${daoClassName} extends EgovAbstractMapper {
 	 * @return 등록 결과
 	 * @exception Exception
 	 */
-    public void ${insertMethodName}(${voClassName} vo) throws Exception {
-        insert("${insertQueryId}", vo);
+    public String ${insertMethodName}(${voClassName} vo) throws Exception {
+        return (String)insert("${insertQueryId}", vo);
     }
 
     /**
@@ -87,17 +87,17 @@ public class ${daoClassName} extends EgovAbstractMapper {
 	 * @exception Exception
 	 */
     public ${voClassName} ${selectMethodName}(${voClassName} vo) throws Exception {
-        return (${voClassName}) selectOne("${selectQueryId}", vo);
+        return (${voClassName}) select("${selectQueryId}", vo);
     }
 
     /**
 	 * ${model.entity.name} 목록을 조회한다.
-	 * @param searchMap - 조회할 정보가 담긴 List<${defaultVoClassName}>
+	 * @param searchMap - 조회할 정보가 담긴 Map
 	 * @return ${model.entity.name} 목록
 	 * @exception Exception
 	 */
-    public List<${defaultVoClassName}> ${selectListMethodName}(${defaultVoClassName} searchVO) throws Exception {
-        return selectList("${selectListQueryId}", searchVO);
+    public List<?> ${selectListMethodName}(${defaultVoClassName} searchVO) throws Exception {
+        return list("${selectListQueryId}", searchVO);
     }
 
     /**
@@ -107,7 +107,7 @@ public class ${daoClassName} extends EgovAbstractMapper {
 	 * @exception
 	 */
     public int ${selectListTotCntMethodName}(${defaultVoClassName} searchVO) {
-        return (Integer)selectOne("${selectListTotCntQueryId}", searchVO);
+        return (Integer)select("${selectListTotCntQueryId}", searchVO);
     }
 
 }

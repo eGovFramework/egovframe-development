@@ -50,7 +50,9 @@ import egovframework.dev.imp.core.utils.StringUtil;
  * @author 배치개발환경 개발팀 조용현
  * @since 2012.06.28
  * @version 1.0
- * @see <pre>
+ * @see
+ * 
+ *      <pre>
  *  &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *    
  * 수정일	  	수정자	  수정내용
@@ -58,7 +60,7 @@ import egovframework.dev.imp.core.utils.StringUtil;
  * 2012.07.24	조용현	최초생성
  * 
  * 
- * </pre>
+ *      </pre>
  */
 
 @SuppressWarnings("restriction")
@@ -94,7 +96,7 @@ public class BatchJobSelectProjectPage extends WizardPage {
 	/** Package Explorer의 Selection */
 	private IStructuredSelection selection = null;
 
-	/** 새로운 폴더 생성 버튼*/
+	/** 새로운 폴더 생성 버튼 */
 	private Button createNewFolderButton = null;
 
 	/**
@@ -136,34 +138,32 @@ public class BatchJobSelectProjectPage extends WizardPage {
 	 * @param context
 	 * @param type
 	 */
-	public BatchJobSelectProjectPage(String pageName, BatchJobContext context,
-			ISelection selection) {
+	public BatchJobSelectProjectPage(String pageName, BatchJobContext context, ISelection selection) {
 		super(pageName);
 		this.selection = (IStructuredSelection) selection;
 		this.context = context;
 
 		eGovProjects = getEgovProjectList();
 	}
-	
+
 	/**
 	 * Egov Nature를 가진 Project의 목록을 가져온다.
 	 * 
 	 * @return
 	 */
-	private ArrayList<IProject> getEgovProjectList(){
+	private ArrayList<IProject> getEgovProjectList() {
 		ArrayList<IProject> eGovProjects = new ArrayList<IProject>();
 		IProject[] allProjects = ResourcesPlugin.getWorkspace().getRoot().getProjects();
 		for (IProject project : allProjects) {
 			try {
-				if (EgovJavaElementUtil.isJavaProject(project)
-						&& (EgovBatchNature.isEgovNatureEnabled(project))) {
+				if (EgovJavaElementUtil.isJavaProject(project) && (EgovBatchNature.isEgovNatureEnabled(project))) {
 					eGovProjects.add(project);
 				}
 			} catch (CoreException e) {
 				e.getStackTrace();
 			}
 		}
-		
+
 		return eGovProjects;
 	}
 
@@ -187,19 +187,18 @@ public class BatchJobSelectProjectPage extends WizardPage {
 
 		createNoteControl(control);
 	}
-	
+
 	/**
 	 * Container Name control을 생성한다.
 	 * 
 	 * @param control
 	 */
-	private void createContainerNameControl(Composite control){
+	private void createContainerNameControl(Composite control) {
 		aboveContainerNameLabel = new Label(control, SWT.NONE);
 		aboveContainerNameLabel.setText(BatchMessages.BatchJobSelectProjectPage_ABOVE_CONTAINER_NAME_LABEL);
 
 		containerNameField = new Text(control, SWT.BORDER);
-		containerNameField
-				.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		containerNameField.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		containerNameField.addListener(SWT.Modify, validation);
 	}
 
@@ -209,15 +208,13 @@ public class BatchJobSelectProjectPage extends WizardPage {
 	 * @param control
 	 */
 	private void createTreeTableViewer(Composite control) {
-		DrillDownComposite drillDown = new DrillDownComposite(control,
-				SWT.BORDER);
+		DrillDownComposite drillDown = new DrillDownComposite(control, SWT.BORDER);
 		GridData spec = new GridData(SWT.FILL, SWT.FILL, true, true);
 		spec.widthHint = 320;
 		spec.heightHint = 300;
 		drillDown.setLayoutData(spec);
 
-		ILabelProvider labelProvider = WorkbenchLabelProvider
-				.getDecoratingWorkbenchLabelProvider();
+		ILabelProvider labelProvider = WorkbenchLabelProvider.getDecoratingWorkbenchLabelProvider();
 		ITreeContentProvider contentsProvider = new SelectProjectTreeTableContentProvider();
 
 		// Create tree viewer inside drill down.
@@ -229,18 +226,15 @@ public class BatchJobSelectProjectPage extends WizardPage {
 		treeViewer.setUseHashlookup(true);
 		treeViewer.addSelectionChangedListener(new ISelectionChangedListener() {
 			public void selectionChanged(SelectionChangedEvent event) {
-				IStructuredSelection selection = (IStructuredSelection) event
-						.getSelection();
-				containerSelectionChanged((IContainer) selection
-						.getFirstElement()); // allow null
+				IStructuredSelection selection = (IStructuredSelection) event.getSelection();
+				containerSelectionChanged((IContainer) selection.getFirstElement()); // allow null
 			}
 		});
 		treeViewer.addDoubleClickListener(new IDoubleClickListener() {
 			public void doubleClick(DoubleClickEvent event) {
 				ISelection selection = event.getSelection();
 				if (selection instanceof IStructuredSelection) {
-					Object item = ((IStructuredSelection) selection)
-							.getFirstElement();
+					Object item = ((IStructuredSelection) selection).getFirstElement();
 					if (item == null) {
 						return;
 					}
@@ -254,50 +248,44 @@ public class BatchJobSelectProjectPage extends WizardPage {
 		});
 		treeViewer.setInput(eGovProjects.toArray(new IProject[0]));
 	}
-	
-	
+
 	/**
 	 * 새 폴더 생성 버튼을 생성한다.
 	 * 
 	 * @param control
 	 */
-	private void createNewFolderButton(Composite control){
+	private void createNewFolderButton(Composite control) {
 		createNewFolderButton = new Button(control, SWT.PUSH);
 		createNewFolderButton.setText(BatchMessages.BatchJobSelectProjectPage_NEW_FOLDER_BUTTON);
 		createNewFolderButton.setEnabled(false);
 		createNewFolderButton.addListener(SWT.Selection, new Listener() {
 
 			public void handleEvent(Event event) {
-				IStructuredSelection selection = (IStructuredSelection) treeViewer
-						.getSelection();
+				IStructuredSelection selection = (IStructuredSelection) treeViewer.getSelection();
 				if (!selection.isEmpty()) {
-					IContainer selectResource = (IContainer) selection
-							.getFirstElement();
+					IContainer selectResource = (IContainer) selection.getFirstElement();
 
-					NewFolderDialog dialog = new NewFolderDialog(getShell(),
-							selectResource);
+					NewFolderDialog dialog = new NewFolderDialog(getShell(), selectResource);
 					if (dialog.open() == Window.OK) {
 						eGovProjects = getEgovProjectList();
 						treeViewer.setInput(eGovProjects.toArray(new IProject[0]));
-						
-						treeViewer.setSelection(new StructuredSelection(dialog
-								.getFirstResult()));
+
+						treeViewer.setSelection(new StructuredSelection(dialog.getFirstResult()));
 					}
 				}
 			}
 		});
 	}
-	
+
 	/**
 	 * File명을 입력하는 control을 생성한다.
 	 * 
 	 * @param control
 	 */
-	private void createFileNameControl(Composite control){
+	private void createFileNameControl(Composite control) {
 		Composite fileNameControl = new Composite(control, SWT.None);
 		fileNameControl.setLayout(new GridLayout(2, false));
-		fileNameControl.setLayoutData(new GridData(
-				GridData.HORIZONTAL_ALIGN_FILL | GridData.GRAB_HORIZONTAL));
+		fileNameControl.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_FILL | GridData.GRAB_HORIZONTAL));
 
 		fileNameLabel = new Label(fileNameControl, SWT.None);
 		fileNameLabel.setText(BatchMessages.BatchJobSelectProjectPage_FILE_NAME_LABEL);
@@ -318,14 +306,13 @@ public class BatchJobSelectProjectPage extends WizardPage {
 			}
 		});
 	}
-	
-	
+
 	/**
 	 * Note를 표시하는 Control을 생성한다.
 	 * 
 	 * @param control
 	 */
-	private void createNoteControl(Composite control){
+	private void createNoteControl(Composite control) {
 		Composite noteControl = new Composite(control, SWT.None);
 		noteControl.setLayout(new GridLayout(2, false));
 		noteControl.setLayoutData(new GridData());
@@ -350,8 +337,7 @@ public class BatchJobSelectProjectPage extends WizardPage {
 		if (container == null) {
 			containerNameField.setText("");//$NON-NLS-1$
 		} else {
-			String text = TextProcessor.process(container.getFullPath()
-					.makeRelative().toString());
+			String text = TextProcessor.process(container.getFullPath().makeRelative().toString());
 			containerNameField.setText(text);
 			containerNameField.setToolTipText(text);
 
@@ -407,8 +393,7 @@ public class BatchJobSelectProjectPage extends WizardPage {
 
 			IProject project = null;
 			boolean canFlipToNextPage = false;
-			String[] containerClassName = containerNameField.getText().split(
-					"/", 2); //$NON-NLS-1$
+			String[] containerClassName = containerNameField.getText().split("/", 2); //$NON-NLS-1$
 
 			for (int i = 0; i < eGovProjects.size(); i++) {
 				project = eGovProjects.get(i);
@@ -417,8 +402,7 @@ public class BatchJobSelectProjectPage extends WizardPage {
 				if (project.getName().equals(containerClassName[0])) {
 					// class 명 뒤에 subfolder명이 있으면( / 로 split)비교후 member을 찾을 수 있으면 true
 					if (containerClassName.length == 2) {
-						if (!NullUtil.isNull(project
-								.findMember(containerClassName[1]))) {
+						if (!NullUtil.isNull(project.findMember(containerClassName[1]))) {
 							canFlipToNextPage = true;
 							context.setProject((Project) project);
 							context.setFilePath(containerNameField.getText());
@@ -476,8 +460,7 @@ public class BatchJobSelectProjectPage extends WizardPage {
 	 * @return
 	 */
 	private boolean validateFileName(String fileName) {
-		if (StringUtil.hasKorean(fileName)
-				|| StringUtil.hasInvalidClassFileSignal(fileName)
+		if (StringUtil.hasKorean(fileName) || StringUtil.hasInvalidClassFileSignal(fileName)
 				|| StringUtil.hasEmptySpace(fileName)) {
 			return false;
 		} else {
@@ -487,17 +470,17 @@ public class BatchJobSelectProjectPage extends WizardPage {
 
 	/**
 	 * <pre>
-	 * EgovBatchNature를 가진 Project 또는 그 하위 디렉토리 선택시
-	 * Project와 Path정보를 context에 저장하고 project 선택 Page는 넘어간다.
+	 * EgovBatchNature를 가진 Project 또는 그 하위 디렉토리 선택시 Project와 Path정보를 context에 저장하고
+	 * project 선택 Page는 넘어간다.
 	 * 
 	 * <pre>
+	 * 
 	 * @return boolean
 	 */
 	private IPath getPackageExplorerSelection() {
 		if (!selection.isEmpty()) {
 			IPath selectedPath = null;
-			Object object = ((IStructuredSelection) selection)
-					.getFirstElement();
+			Object object = ((IStructuredSelection) selection).getFirstElement();
 
 			if (object instanceof IJavaElement) {
 				IJavaElement element = (IJavaElement) object;
@@ -521,8 +504,7 @@ public class BatchJobSelectProjectPage extends WizardPage {
 	private void selectTreeViewerItem(IPath selectedPath) {
 
 		if (!NullUtil.isNull(selectedPath)) {
-			IResource resource = ResourcesPlugin.getWorkspace().getRoot()
-					.findMember(selectedPath);
+			IResource resource = ResourcesPlugin.getWorkspace().getRoot().findMember(selectedPath);
 			treeViewer.setSelection(new StructuredSelection(resource));
 		}
 	}
@@ -531,7 +513,7 @@ public class BatchJobSelectProjectPage extends WizardPage {
 	public void setVisible(boolean visible) {
 		if (visible) {
 			getShell().setMinimumSize(0, 0);
-			getShell().setSize(533, 659);
+			getShell().setSize(900, 800);
 
 			if (NullUtil.isEmpty(context.getFilePath())) {
 				IPath selectedPath = getPackageExplorerSelection();

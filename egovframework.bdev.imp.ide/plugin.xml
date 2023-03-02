@@ -10,7 +10,7 @@
              hasPages="true"
              icon="icons/sm_BatchTemplate.png"
              id="egovframework.bdev.imp.ide.wizards.egovbatchtemplateprojectwizard"
-             name="eGovFrame Batch Template Project"
+             name="eGovFrame Boot Batch Template Project"
              project="true">
       </wizard>
          

@@ -44,7 +44,9 @@ import egovframework.dev.imp.core.utils.StringUtil;
  * @author 배치개발환경 개발팀 조용현
  * @since 2012.06.28
  * @version 1.0
- * @see <pre>
+ * @see
+ * 
+ *      <pre>
  *  &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *    
  * 수정일	  	수정자	  수정내용
@@ -52,7 +54,7 @@ import egovframework.dev.imp.core.utils.StringUtil;
  * 2012.07.24	조용현	최초생성
  * 
  * 
- * </pre>
+ *      </pre>
  */
 @SuppressWarnings("restriction")
 public class ListenerDialog extends StatusDialog {
@@ -65,16 +67,16 @@ public class ListenerDialog extends StatusDialog {
 
 	/** 기존에 선택한 Job / Step / Chunk Listener 목록 */
 	private String[] items = null;
-	
+
 	/** Apply한 JobVo 및 Step, Decision Vo들의 Bean ID list */
 	private BatchXMLFileBeanIDList batchJobListBeanIDList = null;
-	
-	/** Info 페이지에서 입력된 Bean ID를 저장하는 Bean ID list*/
+
+	/** Info 페이지에서 입력된 Bean ID를 저장하는 Bean ID list */
 	private BatchPageBeanIDList pageBeanIDs = null;
-	
+
 	/** Description 1 */
 	private String descriptionOneString = null;
-	
+
 	/** Description 2 */
 	private String descriptionTwoString = null;
 
@@ -116,19 +118,15 @@ public class ListenerDialog extends StatusDialog {
 
 	/**
 	 * <pre>
-	 * ListenerInfoToWizardDialog 생성자
-	 * type 1: Job Listener
-	 * type 2: Step Listener
-	 * type 3: Chunk Listener
-	 * </pre
+	 * ListenerInfoToWizardDialog 생성자 type 1: Job Listener type 2: Step Listener
+	 * type 3: Chunk Listener </pre
 	 * 
 	 * ?
 	 * 
 	 * @param parent
 	 * @param type
 	 */
-	public ListenerDialog(Shell parent, String[] items,
-			BatchXMLFileBeanIDList batchJobListBeanIDList,
+	public ListenerDialog(Shell parent, String[] items, BatchXMLFileBeanIDList batchJobListBeanIDList,
 			BatchPageBeanIDList pageBeanIDs) {
 		super(parent);
 		this.items = items;
@@ -140,7 +138,7 @@ public class ListenerDialog extends StatusDialog {
 	protected Control createDialogArea(Composite parent) {
 		GridData tableGData = new GridData(GridData.FILL_HORIZONTAL);
 		tableGData.heightHint = 400;
-		
+
 		Composite control = new Composite(parent, SWT.NONE);
 		control.setLayout(new GridLayout());
 		control.setLayoutData(tableGData);
@@ -159,25 +157,23 @@ public class ListenerDialog extends StatusDialog {
 
 			public void handleEvent(Event event) {
 				PreferencesUtil
-						.createPreferenceDialogOn(
-								PlatformUI.getWorkbench()
-										.getActiveWorkbenchWindow().getShell(),
+						.createPreferenceDialogOn(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
 								"egovframework.bdev.imp.confmngt.preferences.listenerpreperencepage", //$NON-NLS-1$
 								new String[] { "egovframework.bdev.imp.confmngt.preferences.listenerpreperencepage" }, //$NON-NLS-1$
-								null).open();
+								null)
+						.open();
 				contents.refreshInputData();
-				
+
 				checkPreExistItems();
 			}
 		});
-		
+
 		BatchTableColumn[] columns = createColumns();
-		
+
 		contents.setTableColumnProperty(columns);
 		contents.createTableViewerContents(control);
 		contents.getTableViewer().addSelectionChangedListener(validation);
 		contents.getTableViewer().getTable().addListener(SWT.Selection, setCheckedItem);
-		
 
 		Composite buttonControl = new Composite(control, SWT.None);
 		buttonControl.setLayout(new GridLayout(2, true));
@@ -212,33 +208,31 @@ public class ListenerDialog extends StatusDialog {
 
 		return control;
 	}
-	
+
 	/**
 	 * Column 생성
 	 * 
 	 * @return
 	 */
-	private BatchTableColumn[] createColumns(){
+	private BatchTableColumn[] createColumns() {
 		ArrayList<BatchTableColumn> columns = new ArrayList<BatchTableColumn>();
 		columns.add(new BatchTableColumn(BatchMessages.ListenerDialog_COLUMN_NAME, 175));
 		columns.add(new BatchTableColumn(BatchMessages.ListenerDialog_COLUMN_CLASS, 150, SWT.LEFT));
 		columns.add(new BatchTableColumn(BatchMessages.ListenerDialog_COLUMN_LISTENER_TYPE, 122));
-		
+
 		return columns.toArray(new BatchTableColumn[0]);
 	}
-	
+
 	/** 기존에 선택된 항목을 Link를 통해서 수정하고 난 뒤에도 계속 체크된 상태를 유지하도록 설정 */
-	private void checkPreExistItems(){
+	private void checkPreExistItems() {
 		if (!NullUtil.isEmpty(items)) {
-			CheckboxTableViewer tableViewer = (CheckboxTableViewer) contents
-					.getTableViewer();
+			CheckboxTableViewer tableViewer = (CheckboxTableViewer) contents.getTableViewer();
 			Item[] preferenceItems = tableViewer.getTable().getItems();
 
 			if (!NullUtil.isEmpty(preferenceItems)) {
 				for (int i = 0; i < items.length; i++) {
 					for (int j = 0; j < preferenceItems.length; j++) {
-						ListenerInfo info = (ListenerInfo) preferenceItems[j]
-								.getData();
+						ListenerInfo info = (ListenerInfo) preferenceItems[j].getData();
 						if (items[i].equals(info.getName())) {
 							tableViewer.setChecked(info, true);
 							break;
@@ -248,41 +242,39 @@ public class ListenerDialog extends StatusDialog {
 			}
 		}
 	}
-	
+
 	/** Dialog의 validation Listener */
 	ISelectionChangedListener validation = new ISelectionChangedListener() {
 
 		public void selectionChanged(SelectionChangedEvent event) {
 			StatusInfo status = new StatusInfo();
-			
-			CheckboxTableViewer chTableViewer = (CheckboxTableViewer) contents
-			.getTableViewer();
+
+			CheckboxTableViewer chTableViewer = (CheckboxTableViewer) contents.getTableViewer();
 			Object[] object = chTableViewer.getCheckedElements();
 			for (int i = 0; i < object.length; i++) {
-				ListenerInfo info = (ListenerInfo)object[i];
-				if(!validateBeanID(info.getName())){
-					status.setError(info.getName()+BatchMessages.ListenerDialog_DUPLICATE_BEAN_ID_ERROR);
+				ListenerInfo info = (ListenerInfo) object[i];
+				if (!validateBeanID(info.getName())) {
+					status.setError(info.getName() + BatchMessages.ListenerDialog_DUPLICATE_BEAN_ID_ERROR);
 					updateStatus(status);
 					return;
 				}
 			}
-			
+
 			status.setOK();
 			updateStatus(status);
 		}
 	};
-	
-	
+
 	/** Check한 Item 목록 생성하는 Listener */
 	Listener setCheckedItem = new Listener() {
 		public void handleEvent(Event event) {
 			ListenerInfo[] checkedItems = getCheckedItem();
 			String[] checkedItemsName = new String[checkedItems.length];
-			
-			for(int i =0; i < checkedItems.length; i++){
+
+			for (int i = 0; i < checkedItems.length; i++) {
 				checkedItemsName[i] = checkedItems[i].getName();
 			}
-			
+
 			items = checkedItemsName;
 		}
 	};
@@ -293,40 +285,45 @@ public class ListenerDialog extends StatusDialog {
 
 		super.okPressed();
 	}
-	
+
 	/**
-	 * Bean ID의 validation 
+	 * Bean ID의 validation
 	 * 
 	 * @param beanID
 	 * @return
 	 */
-	private boolean validateBeanID(String beanID){
-		if(pageBeanIDs.isBeanIDExist(beanID)){
+	private boolean validateBeanID(String beanID) {
+		if (pageBeanIDs.isBeanIDExist(beanID)) {
 			return false;
 		}
-		
-		if(batchJobListBeanIDList.isBeanIDExistIncludeJobRWBeanList(beanID)){
+
+		if (batchJobListBeanIDList.isBeanIDExistIncludeJobRWBeanList(beanID)) {
 			return false;
 		}
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * Check한 Item 목록 생성
 	 * 
 	 * @return
 	 */
-	private ListenerInfo[] getCheckedItem(){
+	private ListenerInfo[] getCheckedItem() {
 		CheckboxTableViewer chTableViewer = (CheckboxTableViewer) contents.getTableViewer();
-		
+
 		Object[] object = chTableViewer.getCheckedElements();
 		ListenerInfo[] infos = new ListenerInfo[object.length];
 		for (int i = 0; i < object.length; i++) {
 			infos[i] = (ListenerInfo) object[i];
 		}
-		
+
 		return infos;
+	}
+
+	@Override
+	protected boolean isResizable() {
+		return true;
 	}
 
 }

@@ -38,7 +38,9 @@ import egovframework.dev.imp.core.utils.NullUtil;
  * @author 배치개발환경 개발팀 조용현
  * @since 2012.06.28
  * @version 1.0
- * @see <pre>
+ * @see
+ * 
+ *      <pre>
  *  &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *    
  * 수정일	  	수정자	  수정내용
@@ -46,15 +48,14 @@ import egovframework.dev.imp.core.utils.NullUtil;
  * 2012.07.24	조용현	최초생성
  * 
  * 
- * </pre>
+ *      </pre>
  */
-public class EgovNewBatchJobLauncherWizard extends Wizard implements
-		INewWizard {
+public class EgovNewBatchJobLauncherWizard extends Wizard implements INewWizard {
 
 	/** Project Explorer에서 선택한 프로젝트 */
 	private ISelection selection;
-	
-	/** EgovNewBatchJobLauncherWizard의 Context  */
+
+	/** EgovNewBatchJobLauncherWizard의 Context */
 	private BatchJobLauncherContext context = new BatchJobLauncherContext();
 
 	/** Job Launcher 정보 입력 Page */
@@ -65,9 +66,8 @@ public class EgovNewBatchJobLauncherWizard extends Wizard implements
 		super();
 		setNeedsProgressMonitor(true);
 		setWindowTitle(BatchMessages.EgovNewBatchJobLauncherWizard_TITLE);
-		setDefaultPageImageDescriptor(EgovBatchPlugin.getDefault()
-				.getImageDescriptor(
-						EgovBatchPlugin.IMG_BATCH_JOB_LAUNCHER_WIZ_BANNER));
+		setDefaultPageImageDescriptor(
+				EgovBatchPlugin.getDefault().getImageDescriptor(EgovBatchPlugin.IMG_BATCH_JOB_LAUNCHER_WIZ_BANNER));
 	}
 
 	/** Adding the page to the wizard. */
@@ -77,39 +77,39 @@ public class EgovNewBatchJobLauncherWizard extends Wizard implements
 				BatchMessages.EgovNewBatchJobLauncherWizard_1, context, selection);
 		addPage(selectProjectPage);
 
-		customizePage = new BatchJobLauncherCustomizePage(BatchMessages.EgovNewBatchJobLauncherWizard_2,
-				context);
+		customizePage = new BatchJobLauncherCustomizePage(BatchMessages.EgovNewBatchJobLauncherWizard_2, context);
 		addPage(customizePage);
 
-		if (!NullUtil.isNull(getContainer())) {
-			getContainer().getShell().setLocation(550, 100);
-		}
+		/*
+		 * if (!NullUtil.isNull(getContainer())) {
+		 * getContainer().getShell().setLocation(550, 100); }
+		 */
+
 	}
 
 	public boolean performFinish() {
 
 		String duplicateBeanID = getDuplicateBeanID();
 
-		if(!NullUtil.isEmpty(duplicateBeanID)){
-			customizePage.setErrorMessage(BatchMessages.EgovNewBatchJobLauncherWizard_DUPLICAT_BEAN_ID_1+duplicateBeanID+BatchMessages.EgovNewBatchJobLauncherWizard_DUPLICAT_BEAN_ID_2);
+		if (!NullUtil.isEmpty(duplicateBeanID)) {
+			customizePage.setErrorMessage(BatchMessages.EgovNewBatchJobLauncherWizard_DUPLICAT_BEAN_ID_1
+					+ duplicateBeanID + BatchMessages.EgovNewBatchJobLauncherWizard_DUPLICAT_BEAN_ID_2);
 			return false;
-		}else {
+		} else {
 			checkDuplicateDBBeanID();
 			checkDuplicateJobRepositoryBeanID();
 		}
-		
+
 		boolean result = true;
 
 		try {
 			getContainer().run(true, true, new IRunnableWithProgress() {
 
-				public void run(IProgressMonitor monitor)
-						throws InvocationTargetException, InterruptedException {
+				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
 
 					monitor.beginTask(BatchMessages.EgovNewBatchJobLauncherWizard_CREATING_JOB_LAUNCHER, 3);
 
-					IFile newXMLFile = HandlingFileOperation
-							.createFile(context);
+					IFile newXMLFile = HandlingFileOperation.createFile(context);
 					monitor.subTask(BatchMessages.EgovNewBatchJobLauncherWizard_CREATE_JOB_LAUNCHER_FILE);
 					monitor.worked(1);
 
@@ -123,8 +123,7 @@ public class EgovNewBatchJobLauncherWizard extends Wizard implements
 					monitor.worked(1);
 
 					if (monitor.isCanceled()) {
-						HandlingFileOperation
-								.deleteFile(HandlingFileOperation.newXMLFile);
+						HandlingFileOperation.deleteFile(HandlingFileOperation.newXMLFile);
 						throw new InterruptedException();
 					}
 
@@ -132,9 +131,9 @@ public class EgovNewBatchJobLauncherWizard extends Wizard implements
 
 				}
 			});
-			
+
 			openCreatedFile(HandlingFileOperation.newXMLFile);
-			
+
 		} catch (InvocationTargetException e) {
 			HandlingFileOperation.deleteFile(HandlingFileOperation.newXMLFile);
 			BatchLog.logError(e);
@@ -147,20 +146,21 @@ public class EgovNewBatchJobLauncherWizard extends Wizard implements
 		return result;
 
 	}
-	
-	private void openCreatedFile(IFile file){
-		
+
+	private void openCreatedFile(IFile file) {
+
 		IEditorInput editorInput = new FileEditorInput(file);
-		
+
 		IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
 		IWorkbenchPage page = window.getActivePage();
-		
+
 		IEditorDescriptor desc = PlatformUI.getWorkbench().getEditorRegistry().getDefaultEditor(file.getName());
-		
+
 		try {
 			page.openEditor(editorInput, desc.getId());
-		} catch (PartInitException e) {	}
-		
+		} catch (PartInitException e) {
+		}
+
 	}
 
 	@Override
@@ -177,29 +177,28 @@ public class EgovNewBatchJobLauncherWizard extends Wizard implements
 	}
 
 	/**
-	 * 중복된 BeanID를 가져온다.
-	 * 없을경우 null을 return
+	 * 중복된 BeanID를 가져온다. 없을경우 null을 return
 	 * 
 	 * @return
 	 */
 	private String getDuplicateBeanID() {
 		List<String> findingNode = new ArrayList<String>();
 		findingNode.add("/beans/bean"); //$NON-NLS-1$
-		
+
 		List<String> beanList = FindXMLFileBeanIdValueUtil.findXMLFiles(context, findingNode, "id", 1); //$NON-NLS-1$
 		context.setBeanList(beanList);
 		HashMap<String, String> jobExecutorIDs = getJobExecutorIDs();
 
 		for (int i = 0; i < beanList.size(); i++) {
 			String duplicateBeanID = returnDuplicateBeanIdIfExist(jobExecutorIDs, beanList.get(i));
-			if(!NullUtil.isNull(duplicateBeanID)){
+			if (!NullUtil.isNull(duplicateBeanID)) {
 				return duplicateBeanID;
 			}
 		}
-		
+
 		return null;
 	}
-	
+
 	/**
 	 * 중복된 Bean ID를 가져온다
 	 * 
@@ -207,71 +206,70 @@ public class EgovNewBatchJobLauncherWizard extends Wizard implements
 	 * @param preExistBeanID
 	 * @return
 	 */
-	private String returnDuplicateBeanIdIfExist(HashMap<String,String> jobExecutorIDs, String preExistBeanID){
+	private String returnDuplicateBeanIdIfExist(HashMap<String, String> jobExecutorIDs, String preExistBeanID) {
 		String duplicateBeanID = jobExecutorIDs.get(preExistBeanID);
-		
-		if(!NullUtil.isNull(duplicateBeanID)){
+
+		if (!NullUtil.isNull(duplicateBeanID)) {
 			return duplicateBeanID;
-		}else{
+		} else {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * Page의 입력 정보를 모두 가져온다.
 	 * 
 	 * @return
 	 */
-	private HashMap<String, String> getJobExecutorIDs(){
+	private HashMap<String, String> getJobExecutorIDs() {
 		HashMap<String, String> iDs = new HashMap<String, String>();
-		
+
 		iDs.put(context.getJobLauncerId(), "Launcher ID"); //$NON-NLS-1$
 		iDs.put(context.getOperatorId(), "Operator ID"); //$NON-NLS-1$
 		iDs.put(context.getExplorerId(), "Explorer ID"); //$NON-NLS-1$
 		iDs.put(context.getRegisterId(), "Register ID"); //$NON-NLS-1$
-		
+
 		String repositoryType = context.getRepositoryType();
-		if("Memory".equals(repositoryType)){ //$NON-NLS-1$
+		if ("Memory".equals(repositoryType)) { //$NON-NLS-1$
 			iDs.put(context.getDatasourceBeanID(), "Datasource Bean ID"); //$NON-NLS-1$
 		}
-		
+
 		return iDs;
 	}
-	
 
 	/**
 	 * db 관련 bean id 중복 체크
 	 * 
 	 */
 	private void checkDuplicateDBBeanID() {
-		
+
 		List<String> beanList = context.getBeanList();
 
 		for (int i = 0; i < beanList.size(); i++) {
 			String beanID = beanList.get(i);
-			if("transactionManager".equals(beanID)){ //$NON-NLS-1$
+			if ("transactionManager".equals(beanID)) { //$NON-NLS-1$
 				context.setIsTransactionManagerExist(true);
 			}
-			if("lobHandler".equals(beanID)){ //$NON-NLS-1$
+			if ("lobHandler".equals(beanID)) { //$NON-NLS-1$
 				context.setIsLobHandlerExist(true);
 			}
-			if("jdbcTemplate".equals(beanID)){ //$NON-NLS-1$
+			if ("jdbcTemplate".equals(beanID)) { //$NON-NLS-1$
 				context.setIsJdbcTemplateExist(true);
 			}
 		}
 	}
-	
+
 	/**
-	 * jobRepository  bean id 중복 체크
+	 * jobRepository bean id 중복 체크
 	 * 
 	 */
 	private void checkDuplicateJobRepositoryBeanID() {
-		
+
 		List<String> beanList = context.getBeanList();
 
 		for (int i = 0; i < beanList.size(); i++) {
 			String beanID = beanList.get(i);
-			if("jobRepository".equals(beanID)){ //$NON-NLS-1$
+			if ("jobRepository".equals(beanID)) { //$NON-NLS-1$
 				context.setIsJobRepositoryExist(true);
 			}
 		}

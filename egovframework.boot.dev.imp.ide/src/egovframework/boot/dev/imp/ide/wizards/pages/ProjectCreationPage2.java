@@ -15,14 +15,24 @@
  */
 package egovframework.boot.dev.imp.ide.wizards.pages;
 
+import java.util.regex.Pattern;
 
+import org.eclipse.osgi.util.TextProcessor;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
+import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 import egovframework.boot.dev.imp.ide.common.BootIdeMessages;
 import egovframework.boot.dev.imp.ide.wizards.model.NewProjectContext;
+import egovframework.dev.imp.core.utils.IdeUIUtil;
 
 
 /**

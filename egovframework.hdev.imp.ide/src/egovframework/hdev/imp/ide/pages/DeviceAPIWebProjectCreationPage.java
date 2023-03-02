@@ -22,6 +22,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.SortedSet;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.jst.j2ee.internal.web.archive.operations.WebFacetProjectCreationDataModelProvider;
@@ -40,6 +44,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin;
 import org.eclipse.wst.common.componentcore.datamodel.properties.IFacetProjectCreationDataModelProperties;
 import org.eclipse.wst.common.frameworks.datamodel.DataModelEvent;
 import org.eclipse.wst.common.frameworks.datamodel.DataModelFactory;
@@ -70,12 +75,14 @@ import egovframework.hdev.imp.ide.model.DeviceAPIContext;
 import egovframework.hdev.imp.ide.wizards.examples.DeviceAPITemplateInfo;
 
 /**
- * evice API Web Project 생성 마법사 페이지 클래스
+ * device API Web Project 생성 마법사 페이지 클래스
  * 
  * @since 2012.07.24
  * @author 디바이스 API 개발환경 팀 조용현
  * @version 1.0
- * @see <pre>
+ * @see
+ * 
+ *      <pre>
  *  &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *    
  * 수정일	  	수정자	  수정내용
@@ -83,12 +90,11 @@ import egovframework.hdev.imp.ide.wizards.examples.DeviceAPITemplateInfo;
  * 2012.07.24	조용현	최초생성
  * 
  * 
- * </pre>
+ *      </pre>
  */
 @SuppressWarnings({ "restriction", "unchecked" })
-public class DeviceAPIWebProjectCreationPage extends
-		DeviceAPIProjectCreationPage implements
-		IFacetProjectCreationDataModelProperties, IDataModelListener {
+public class DeviceAPIWebProjectCreationPage extends DeviceAPIProjectCreationPage
+		implements IFacetProjectCreationDataModelProperties, IDataModelListener {
 
 	/** 위젯 */
 	private Combo serverTargetCombo;
@@ -100,10 +106,8 @@ public class DeviceAPIWebProjectCreationPage extends
 	private NewProjectGroup projectNameGroup;
 	private final IFacetedProjectWorkingCopy fpjwc;
 	private final IFacetedProjectListener fpjwcListener;
-	private String[] validationPropertyNames = new String[] {
-			IProjectCreationPropertiesNew.PROJECT_NAME,
-			IProjectCreationPropertiesNew.PROJECT_LOCATION, FACET_RUNTIME,
-			FACETED_PROJECT_WORKING_COPY };
+	private String[] validationPropertyNames = new String[] { IProjectCreationPropertiesNew.PROJECT_NAME,
+			IProjectCreationPropertiesNew.PROJECT_LOCATION, FACET_RUNTIME, FACETED_PROJECT_WORKING_COPY };
 
 	private Map<String, Integer> validationMap;
 	private final ValidationStatus status = new ValidationStatus();
@@ -111,7 +115,7 @@ public class DeviceAPIWebProjectCreationPage extends
 
 	private Button defaultButton = null;
 	private Button selectDBButton = null;
-	
+
 	private Text descriptionText = null;
 
 	/**
@@ -120,24 +124,22 @@ public class DeviceAPIWebProjectCreationPage extends
 	 * @param pageName
 	 * @param context
 	 */
-	public DeviceAPIWebProjectCreationPage(String pageName,
-			DeviceAPIContext context) {
+	public DeviceAPIWebProjectCreationPage(String pageName, DeviceAPIContext context) {
+
 		super(pageName, context);
 		setTitle(DeviceAPIMessages.WEB_PROJECT_TITLE);
 		setDescription(DeviceAPIMessages.WEB_PROJECT_DESCRIPTION);
 
 		createDataModel();
 
-		this.fpjwc = (IFacetedProjectWorkingCopy) this.model
-				.getProperty(FACETED_PROJECT_WORKING_COPY);
+		this.fpjwc = (IFacetedProjectWorkingCopy) this.model.getProperty(FACETED_PROJECT_WORKING_COPY);
 
 		this.fpjwcListener = new IFacetedProjectListener() {
 			public void handleEvent(final IFacetedProjectEvent event) {
 				// do nothing
 			}
 		};
-		this.fpjwc.addListener(this.fpjwcListener,
-				IFacetedProjectEvent.Type.VALIDATION_PROBLEMS_CHANGED);
+		this.fpjwc.addListener(this.fpjwcListener, IFacetedProjectEvent.Type.VALIDATION_PROBLEMS_CHANGED);
 
 		synchRuntimes();
 	}
@@ -146,8 +148,7 @@ public class DeviceAPIWebProjectCreationPage extends
 	 * 데이터 모델 생성
 	 */
 	private void createDataModel() {
-		IDataModel dataModel = DataModelFactory
-				.createDataModel(new WebFacetProjectCreationDataModelProvider());
+		IDataModel dataModel = DataModelFactory.createDataModel(new WebFacetProjectCreationDataModelProvider());
 		this.model = dataModel;
 		this.model.addListener(this);
 		synchHelper = initializeSynchHelper(this.model);
@@ -161,14 +162,13 @@ public class DeviceAPIWebProjectCreationPage extends
 	 * @param serverTypeID
 	 * @return
 	 */
-	private boolean launchNewTargetRuntimeWizard(Shell shell,
-			final IDataModel model, String serverTypeID) {
+	private boolean launchNewTargetRuntimeWizard(Shell shell, final IDataModel model, String serverTypeID) {
+
 		if (model == null) {
 			return false;
 		}
 
-		final DataModelPropertyDescriptor[] preDescriptors = model
-				.getValidPropertyDescriptors(FACET_RUNTIME);
+		final DataModelPropertyDescriptor[] preDescriptors = model.getValidPropertyDescriptors(FACET_RUNTIME);
 
 		final boolean[] waiting = { true };
 
@@ -187,8 +187,7 @@ public class DeviceAPIWebProjectCreationPage extends
 
 		model.addListener(dataModelListener);
 
-		boolean isOK = ServerUIUtil.showNewRuntimeWizard(shell, serverTypeID,
-				null);
+		boolean isOK = ServerUIUtil.showNewRuntimeWizard(shell, serverTypeID, null);
 
 		if (isOK) {
 
@@ -204,8 +203,7 @@ public class DeviceAPIWebProjectCreationPage extends
 						}
 					}
 
-					DataModelPropertyDescriptor[] postDescriptors = model
-							.getValidPropertyDescriptors(FACET_RUNTIME);
+					DataModelPropertyDescriptor[] postDescriptors = model.getValidPropertyDescriptors(FACET_RUNTIME);
 					Object[] preProperty = new Object[preDescriptors.length];
 					for (int i = 0; i < preProperty.length; i++) {
 						preProperty[i] = preDescriptors[i].getPropertyValue();
@@ -230,8 +228,7 @@ public class DeviceAPIWebProjectCreationPage extends
 	}
 
 	private Object getNewObject(Object[] oldObjects, Object[] newObjects) {
-		if (oldObjects != null && newObjects != null
-				&& oldObjects.length < newObjects.length) {
+		if (oldObjects != null && newObjects != null && oldObjects.length < newObjects.length) {
 			for (int i = 0; i < newObjects.length; i++) {
 				boolean found = false;
 				Object object = newObjects[i];
@@ -279,18 +276,16 @@ public class DeviceAPIWebProjectCreationPage extends
 				}
 			}
 		});
-		
+
 		Control[] deps = new Control[] { newServerTargetButton };
 		synchHelper.synchCombo(serverTargetCombo, FACET_RUNTIME, deps);
-		if (serverTargetCombo.getSelectionIndex() == -1
-				&& serverTargetCombo.getVisibleItemCount() != 0)
+		if (serverTargetCombo.getSelectionIndex() == -1 && serverTargetCombo.getVisibleItemCount() != 0)
 			serverTargetCombo.select(0);
 	}
 
 	private void createModuleVersionComposite(Composite top) {
 
-		temprojectFacet = ProjectFacetsManager
-				.getProjectFacet(getModuleTypeID());
+		temprojectFacet = ProjectFacetsManager.getProjectFacet(getModuleTypeID());
 		if (temprojectFacet.getVersions().size() <= 1) {
 			return;
 		}
@@ -316,64 +311,50 @@ public class DeviceAPIWebProjectCreationPage extends
 
 		moduleVersionCombo.addSelectionListener(selectionAdapter);
 
-		fpjwc.addListener(
-				new IFacetedProjectListener() {
-					public void handleEvent(IFacetedProjectEvent event) {
-						if (event.getType() == IFacetedProjectEvent.Type.PROJECT_FACETS_CHANGED) {
-							IProjectFacetsChangedEvent actionEvent = (IProjectFacetsChangedEvent) event;
-							Set<IProjectFacetVersion> versions = actionEvent
-									.getFacetsWithChangedVersions();
+		fpjwc.addListener(new IFacetedProjectListener() {
+			public void handleEvent(IFacetedProjectEvent event) {
+				if (event.getType() == IFacetedProjectEvent.Type.PROJECT_FACETS_CHANGED) {
+					IProjectFacetsChangedEvent actionEvent = (IProjectFacetsChangedEvent) event;
+					Set<IProjectFacetVersion> versions = actionEvent.getFacetsWithChangedVersions();
 
-							for (IProjectFacetVersion facetVersion : versions) {
-								if (facetVersion.getProjectFacet().equals(
-										temprojectFacet)) {
-									String selectedFacetVersionString = facetVersion
-											.getVersionString();
-									String selectedText = moduleVersionCombo
-											.getItem(moduleVersionCombo
-													.getSelectionIndex());
-									if (!selectedText
-											.equals(selectedFacetVersionString)) {
-										String[] items = moduleVersionCombo
-												.getItems();
-										int selectedVersionIndex = -1;
-										for (int i = 0; i < items.length
-												&& selectedVersionIndex == -1; i++) {
-											if (items[i]
-													.equals(selectedFacetVersionString)) {
-												selectedVersionIndex = i;
-												moduleVersionCombo
-														.select(selectedVersionIndex);
-											}
-										}
+					for (IProjectFacetVersion facetVersion : versions) {
+						if (facetVersion.getProjectFacet().equals(temprojectFacet)) {
+							String selectedFacetVersionString = facetVersion.getVersionString();
+							String selectedText = moduleVersionCombo.getItem(moduleVersionCombo.getSelectionIndex());
+							if (!selectedText.equals(selectedFacetVersionString)) {
+								String[] items = moduleVersionCombo.getItems();
+								int selectedVersionIndex = -1;
+								for (int i = 0; i < items.length && selectedVersionIndex == -1; i++) {
+									if (items[i].equals(selectedFacetVersionString)) {
+										selectedVersionIndex = i;
+										moduleVersionCombo.select(selectedVersionIndex);
 									}
-									continue;
-								} // if
-							}// for
+								}
+							}
+							continue;
+						} // if
+					} // for
 
-							validatePage();
+					validatePage();
 
-						} else if (event.getType() == IFacetedProjectEvent.Type.PRIMARY_RUNTIME_CHANGED) {
-							// 런타입 설정 변경시 버젼 콤보 아이템 변경
-							updateModuleVersions();
-						}
-					}
+				} else if (event.getType() == IFacetedProjectEvent.Type.PRIMARY_RUNTIME_CHANGED) {
+					// 런타입 설정 변경시 버젼 콤보 아이템 변경
+					updateModuleVersions();
+				}
+			}
 
-				}, IFacetedProjectEvent.Type.PROJECT_FACETS_CHANGED,
-				IFacetedProjectEvent.Type.PRIMARY_RUNTIME_CHANGED);
+		}, IFacetedProjectEvent.Type.PROJECT_FACETS_CHANGED, IFacetedProjectEvent.Type.PRIMARY_RUNTIME_CHANGED);
 	}
 
 	private void createButtonDescriptionControl(Composite control) {
+
 		Composite buttonDescriptionControl = new Composite(control, SWT.None);
 		buttonDescriptionControl.setLayout(new GridLayout(2, false));
-		buttonDescriptionControl
-				.setLayoutData(new GridData(GridData.FILL_BOTH));
+		buttonDescriptionControl.setLayoutData(new GridData(GridData.FILL_BOTH));
 
-		Group tableCreationTypeGroup = new Group(buttonDescriptionControl,
-				SWT.None);
+		Group tableCreationTypeGroup = new Group(buttonDescriptionControl, SWT.None);
 		tableCreationTypeGroup.setLayout(new GridLayout());
-		tableCreationTypeGroup.setLayoutData(new GridData(
-				GridData.FILL_VERTICAL));
+		tableCreationTypeGroup.setLayoutData(new GridData(GridData.FILL_VERTICAL));
 		tableCreationTypeGroup.setText(DeviceAPIMessages.WEB_PROJECT_TABLE_CREATE_GROUP_TEXT);
 
 		defaultButton = new Button(tableCreationTypeGroup, SWT.RADIO);
@@ -402,20 +383,21 @@ public class DeviceAPIWebProjectCreationPage extends
 		descriptionGroup.setLayoutData(new GridData(GridData.FILL_BOTH));
 		descriptionGroup.setText("설명");
 
-		descriptionText = new Text(descriptionGroup, SWT.V_SCROLL
-				| SWT.READ_ONLY | SWT.MULTI);
+		descriptionText = new Text(descriptionGroup, SWT.V_SCROLL | SWT.READ_ONLY | SWT.MULTI);
 		descriptionText.setLayoutData(new GridData(GridData.FILL_BOTH));
 		descriptionText.setText(DeviceAPIMessages.WEB_PROJECT_DESCRIPTION_GROUP_TEXT1);
 		descriptionText.setSize(270, 1000);
 	}
 
 	private void setEnableFinishButton() {
+
 		isEnableFinishButton = true;
 		setPageComplete(false);
 		getContainer().updateButtons();
 	}
 
 	private void setDisableFinishButton(boolean isPageComplete) {
+
 		isEnableFinishButton = false;
 		setPageComplete(isPageComplete);
 		getContainer().updateButtons();
@@ -426,16 +408,13 @@ public class DeviceAPIWebProjectCreationPage extends
 	 */
 	private void updateModuleVersions() {
 
-		SortedSet<IProjectFacetVersion> facetVersions = fpjwc
-				.getAvailableVersions(temprojectFacet);
+		SortedSet<IProjectFacetVersion> facetVersions = fpjwc.getAvailableVersions(temprojectFacet);
 		String[] items = new String[facetVersions.size()];
 		int i = 0;
 		int selectedVersionIndex = -1;
 		for (IProjectFacetVersion facetVersion : facetVersions) {
 			items[i] = facetVersion.getVersionString();
-			if (selectedVersionIndex == -1
-					&& items[i]
-							.equals(ProjectFacetConstants.DEFAULT_SERVLET_VERSION)) {
+			if (selectedVersionIndex == -1 && items[i].equals(ProjectFacetConstants.DEFAULT_SERVLET_VERSION)) {
 				selectedVersionIndex = i;
 			}
 			i++;
@@ -450,15 +429,14 @@ public class DeviceAPIWebProjectCreationPage extends
 	}
 
 	private IProjectFacetVersion getPrimaryFacetVersion() {
+
 		IProjectFacetVersion facetVersion = null;
 
 		if (this.temprojectFacet.getVersions().size() > 1) {
-			final int selectedIndex = this.moduleVersionCombo
-					.getSelectionIndex();
+			final int selectedIndex = this.moduleVersionCombo.getSelectionIndex();
 
 			if (selectedIndex != -1) {
-				final String fvstr = this.moduleVersionCombo
-						.getItem(selectedIndex);
+				final String fvstr = this.moduleVersionCombo.getItem(selectedIndex);
 				facetVersion = this.temprojectFacet.getVersion(fvstr);
 			}
 		} else {
@@ -468,8 +446,8 @@ public class DeviceAPIWebProjectCreationPage extends
 		return facetVersion;
 	}
 
-	private Set<IProjectFacetVersion> getFacetConfiguration(
-			final IProjectFacetVersion primaryFacetVersion) {
+	private Set<IProjectFacetVersion> getFacetConfiguration(final IProjectFacetVersion primaryFacetVersion) {
+
 		final Set<IProjectFacetVersion> config = new HashSet<IProjectFacetVersion>();
 
 		for (IProjectFacet fixedFacet : this.fpjwc.getFixedProjectFacets()) {
@@ -484,22 +462,18 @@ public class DeviceAPIWebProjectCreationPage extends
 	}
 
 	private void projectFacetVersionSelectedEvent() {
+
 		final IProjectFacetVersion facetVersion = getPrimaryFacetVersion();
 		if (facetVersion != null) {
 			String presetID = null;
 			IRuntime runtime = (IRuntime) model.getProperty(FACET_RUNTIME);
 			if (runtime != null) {
 				if (runtime.getRuntimeComponents().size() > 0) {
-					IRuntimeComponent runtimeComponent = runtime
-							.getRuntimeComponents().get(0);
-					presetID = RuntimePresetMappingRegistry.INSTANCE
-							.getPresetID(runtimeComponent
-									.getRuntimeComponentType().getId(),
-									runtimeComponent
-											.getRuntimeComponentVersion()
-											.getVersionString(), facetVersion
-											.getProjectFacet().getId(),
-									facetVersion.getVersionString());
+					IRuntimeComponent runtimeComponent = runtime.getRuntimeComponents().get(0);
+					presetID = RuntimePresetMappingRegistry.INSTANCE.getPresetID(
+							runtimeComponent.getRuntimeComponentType().getId(),
+							runtimeComponent.getRuntimeComponentVersion().getVersionString(),
+							facetVersion.getProjectFacet().getId(), facetVersion.getVersionString());
 				}
 			}
 
@@ -522,11 +496,11 @@ public class DeviceAPIWebProjectCreationPage extends
 	 * @param validationKey
 	 */
 	private void validateProperty(String propertyName, Integer validationKey) {
+
 		setOKStatus(validationKey);
 		IStatus status1 = model.validateProperty(propertyName);
 		if (!status1.isOK()) {
-			String message = status1.isMultiStatus() ? status1.getChildren()[0]
-					.getMessage() : status1.getMessage();
+			String message = status1.isMultiStatus() ? status1.getChildren()[0].getMessage() : status1.getMessage();
 			switch (status1.getSeverity()) {
 			case IStatus.ERROR:
 				setErrorStatus(validationKey, message);
@@ -545,8 +519,7 @@ public class DeviceAPIWebProjectCreationPage extends
 
 	private void initializeValidationProperties() {
 		validationPropertyNames = getValidationPropertyNames();
-		if (validationPropertyNames == null
-				|| validationPropertyNames.length == 0)
+		if (validationPropertyNames == null || validationPropertyNames.length == 0)
 			validationMap = Collections.EMPTY_MAP;
 		else {
 			validationMap = new HashMap<String, Integer>(validationPropertyNames.length);
@@ -587,14 +560,13 @@ public class DeviceAPIWebProjectCreationPage extends
 	 * 런타임 동기화
 	 */
 	private void synchRuntimes() {
+
 		final Boolean[] suppressBackEvents = { Boolean.FALSE };
 
 		model.addListener(new IDataModelListener() {
 			public void propertyChanged(DataModelEvent event) {
-				if (IDataModel.VALUE_CHG == event.getFlag()
-						|| IDataModel.DEFAULT_CHG == event.getFlag()) {
-					if (IFacetProjectCreationDataModelProperties.FACET_RUNTIME
-							.equals(event.getPropertyName())) {
+				if (IDataModel.VALUE_CHG == event.getFlag() || IDataModel.DEFAULT_CHG == event.getFlag()) {
+					if (IFacetProjectCreationDataModelProperties.FACET_RUNTIME.equals(event.getPropertyName())) {
 						if (!suppressBackEvents[0].booleanValue()) {
 							IRuntime runtime = (IRuntime) event.getProperty();
 							try {
@@ -608,17 +580,14 @@ public class DeviceAPIWebProjectCreationPage extends
 			}
 		});
 
-		getFacetedProjectWorkingCopy().addListener(
-				new IFacetedProjectListener() {
-					public void handleEvent(final IFacetedProjectEvent event) {
-						suppressBackEvents[0] = Boolean.TRUE;
-						model.setProperty(
-								IFacetProjectCreationDataModelProperties.FACET_RUNTIME,
-								getFacetedProjectWorkingCopy()
-										.getPrimaryRuntime());
-						suppressBackEvents[0] = Boolean.FALSE;
-					}
-				}, IFacetedProjectEvent.Type.PRIMARY_RUNTIME_CHANGED);
+		getFacetedProjectWorkingCopy().addListener(new IFacetedProjectListener() {
+			public void handleEvent(final IFacetedProjectEvent event) {
+				suppressBackEvents[0] = Boolean.TRUE;
+				model.setProperty(IFacetProjectCreationDataModelProperties.FACET_RUNTIME,
+						getFacetedProjectWorkingCopy().getPrimaryRuntime());
+				suppressBackEvents[0] = Boolean.FALSE;
+			}
+		}, IFacetedProjectEvent.Type.PRIMARY_RUNTIME_CHANGED);
 	}
 
 	/**
@@ -627,11 +596,11 @@ public class DeviceAPIWebProjectCreationPage extends
 	 * @param runtime
 	 * @throws CoreException
 	 */
-	private void setRuntimeAndDefaultFacets(final IRuntime runtime)
-			throws CoreException {
+	private void setRuntimeAndDefaultFacets(final IRuntime runtime) throws CoreException {
+
 		final IFacetedProjectWorkingCopy dm = getFacetedProjectWorkingCopy();
 
-		dm.setTargetedRuntimes(Collections.<IRuntime> emptySet());
+		dm.setTargetedRuntimes(Collections.<IRuntime>emptySet());
 
 		if (runtime != null) {
 			final Set<IProjectFacetVersion> minFacets = new HashSet<IProjectFacetVersion>();
@@ -650,6 +619,7 @@ public class DeviceAPIWebProjectCreationPage extends
 
 	protected void updateControls() {
 		updateModuleVersions();
+
 	}
 
 	protected IProjectFacet getPrimaryFacet() {
@@ -661,6 +631,7 @@ public class DeviceAPIWebProjectCreationPage extends
 	 */
 	@Override
 	protected void createControls(Composite parent) {
+
 		initializeValidationProperties();
 
 		createServerTargetComposite(parent);
@@ -673,43 +644,76 @@ public class DeviceAPIWebProjectCreationPage extends
 
 	@Override
 	protected boolean validatePage() {
+
+		IWorkspace workspace = IDEWorkbenchPlugin.getPluginWorkspace();
 		setDisableFinishButton(false);
 
-		String deviceAPIProjectName = context.getDeviceapiProjectName();
-		
-		if(deviceAPIProjectName.length() > 0)
-		if (getWebProjectName().equals(deviceAPIProjectName)) {
-			setErrorMessage(DeviceAPIMessages.WEB_PROJECT_ERROR_EQUAL_WITH_DEVICE_API_PJT);
-			setPageComplete(false);
+		String webProjectName = getWebProjectName();
+
+		IStatus status = workspace.validateName(webProjectName, IResource.PROJECT);
+		if (!status.isOK()) {
+			setErrorMessage(status.getMessage());
 			return false;
 		}
 
-		if (!super.validatePage()) {
+		IProject project = getWebProjectHandle();
+
+		if (project.exists()) {
+			setErrorMessage(DeviceAPIMessages.PROJECT_CREATION_ERROR_PROJECT_NAME_ALREADY_EXIST);
+			return false;
+		}
+
+		if (!isValidProjectLocation(project)) {
+			setErrorMessage(DeviceAPIMessages.PROJECT_CREATION_ERROR_WORKSPACE_LOCATION_NOT_VALID);
+			return false;
+		}
+
+		if (webProjectName.length() > 165) {
+			setErrorMessage(DeviceAPIMessages.PROJECT_CREATION_ERROR_PROJECT_NAME_TOOLONG);
 			return false;
 		}
 
 		String javaVersion = System.getProperty("java.version"); //$NON-NLS-1$
-		if ("3.0".equals(moduleVersionCombo.getText()) && javaVersion != null && (javaVersion.indexOf("1.5") > -1 || javaVersion.indexOf("1.4") > -1)) { //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+		if ("3.0".equals(moduleVersionCombo.getText()) && javaVersion != null //$NON-NLS-1$
+				&& (javaVersion.indexOf("1.5") > -1 || javaVersion.indexOf("1.4") > -1)) { //$NON-NLS-1$ //$NON-NLS-2$
 			setErrorMessage(DeviceAPIMessages.WEB_PROJECT_ERROR_REQUIRE_JAVA_VERSION);
 			setPageComplete(false);
 			return false;
 		}
+
+		if ("".equals(getGroupId())) {
+			setErrorMessage(DeviceAPIMessages.PROJECT_CREATION_ERROR_GROUP_ID_EMPTY);
+			return false;
+		}
+
+		setErrorMessage(null);
 
 		validateControlsBase();
 
 		updateContext();
 
 		if (defaultButton.getSelection()) {
-			
+
 			setEnableFinishButton();
 			return false;
 		} else if (selectDBButton.getSelection()) {
-			
+
 			setDisableFinishButton(true);
 			return true;
+
 		} else {
 			return true;
 		}
+
+	}
+
+	/**
+	 * 프로젝트 핸들
+	 * 
+	 * @return IProject
+	 */
+	public IProject getWebProjectHandle() {
+		return ResourcesPlugin.getWorkspace().getRoot().getProject(getWebProjectName());
 	}
 
 	// 컨텍스트 정보 변경
@@ -718,14 +722,13 @@ public class DeviceAPIWebProjectCreationPage extends
 		context.setWebProjectName(getWebProjectName());
 		context.setWebProject(getWebProjectHandle());
 		context.setWebPomFileName(DeviceAPITemplateInfo.webPomFile);
+		context.setWebExampleFile(DeviceAPITemplateInfo.webexample);
 		context.setWebLocationPath(getWebLocationPath());
 		context.setWebPackageName(getWebPackage());
 		context.setVersion(getVersion());
 
-		context.setServletVersion(moduleVersionCombo.getItem(moduleVersionCombo
-				.getSelectionIndex()));
-		context.setRuntimeName(serverTargetCombo.getItem(serverTargetCombo
-				.getSelectionIndex()));
+		context.setServletVersion(moduleVersionCombo.getItem(moduleVersionCombo.getSelectionIndex()));
+		context.setRuntimeName(serverTargetCombo.getItem(serverTargetCombo.getSelectionIndex()));
 
 		context.setGroupId(getGroupId());
 		context.setArtifactId(getArtifactId());
@@ -751,9 +754,8 @@ public class DeviceAPIWebProjectCreationPage extends
 		final Runnable uiChanges = new Runnable() {
 			public void run() {
 				String propertyName = event.getPropertyName();
-				if (validationPropertyNames != null
-						&& (event.getFlag() == DataModelEvent.VALUE_CHG || (!isPageComplete() && event
-								.getFlag() == DataModelEvent.VALID_VALUES_CHG))) {
+				if (validationPropertyNames != null && (event.getFlag() == DataModelEvent.VALUE_CHG
+						|| (!isPageComplete() && event.getFlag() == DataModelEvent.VALID_VALUES_CHG))) {
 					for (int i = 0; i < validationPropertyNames.length; i++) {
 						if (validationPropertyNames[i].equals(propertyName)) {
 							validatePage();
@@ -787,7 +789,7 @@ public class DeviceAPIWebProjectCreationPage extends
 	@Override
 	public void setVisible(boolean visible) {
 		if (visible) {
-			getShell().setSize(533, 659);
+			getShell().setSize(800, 900);
 		}
 		super.setVisible(visible);
 	}

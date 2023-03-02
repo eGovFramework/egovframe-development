@@ -1,8 +1,0 @@
-plugin.name=UML Java Generator Plug-in
-plugin.author=Project Amateras
-plugin.menu=Java
-plugin.menu.export=Export
-plugin.menu.import=Import
-plugin.menu.open=Open
-plugin.sample.view=Stack Trace Sample
-plugin.category=AmaterasUML

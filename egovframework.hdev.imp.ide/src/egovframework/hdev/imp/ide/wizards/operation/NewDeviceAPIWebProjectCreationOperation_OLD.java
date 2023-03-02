@@ -71,7 +71,7 @@ import egovframework.hdev.imp.ide.model.DeviceAPIContext;
  * @see
  * 
  */
-public abstract class NewDeviceAPIWebProjectCreationOperation extends NewDeviceAPIWebProjectOperation {
+public abstract class NewDeviceAPIWebProjectCreationOperation_OLD extends NewDeviceAPIWebProjectOperation {
 
 	/** 실행 */
 	public abstract void run(IProgressMonitor pmonitor) throws InvocationTargetException, InterruptedException;
@@ -81,7 +81,7 @@ public abstract class NewDeviceAPIWebProjectCreationOperation extends NewDeviceA
 	 * 
 	 * @param context
 	 */
-	public NewDeviceAPIWebProjectCreationOperation(DeviceAPIContext context) {
+	public NewDeviceAPIWebProjectCreationOperation_OLD(DeviceAPIContext context) {
 		super(context);
 	}
 
@@ -181,7 +181,6 @@ public abstract class NewDeviceAPIWebProjectCreationOperation extends NewDeviceA
 			IFacetedProject facetedProject = ProjectFacetsManager.create(getWebProject());
 			IRuntime runtime = findFacetRuntime(null/* runtime */);
 			facetedProject.setRuntime(runtime, monitor);
-
 			if (runtime != null) {
 				Set<IRuntime> set = new HashSet<IRuntime>();
 				set.add(runtime);

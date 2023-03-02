@@ -23,17 +23,18 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.m2e.core.MavenPlugin;
 
 import egovframework.hdev.imp.ide.common.DeviceAPIIdeLog;
 import egovframework.hdev.imp.ide.common.DeviceAPIIdeUtils;
 import egovframework.hdev.imp.ide.model.DeviceAPIContext;
 
 /**
- * @Class Name : TemplateGenerateOperation
- * @Description : TemplateGenerateOperation Class
+ * @Class Name : NewDeviceAPITemplateGenerateOperation
+ * @Description : NewDeviceAPITemplateGenerateOperation Class
  * @Modification Information
  * @ @ 수정일 수정자 수정내용 @ --------- --------- ------------------------------- @
- *   2012. 8. 24. 이율경 최초생성
+ * 2012. 8. 24. 이율경 최초생성
  * 
  * @author 디바이스 API 개발환경 팀
  * @since 2012. 8. 24.
@@ -41,12 +42,12 @@ import egovframework.hdev.imp.ide.model.DeviceAPIContext;
  * @see
  * 
  */
-public class AddDeviceAPITemplateGenerateOperation extends NewDeviceAPIHybridProjectCreationOperation {
+public class NewDeviceAPITemplateGenerateOperation_OLD extends NewDeviceAPIHybridProjectCreationOperation {
 
 	/*
 	 * 생성자
 	 */
-	public AddDeviceAPITemplateGenerateOperation(DeviceAPIContext context) {
+	public NewDeviceAPITemplateGenerateOperation_OLD(DeviceAPIContext context) {
 		super(context);
 	}
 
@@ -64,21 +65,54 @@ public class AddDeviceAPITemplateGenerateOperation extends NewDeviceAPIHybridPro
 			Thread.sleep(20);
 			pmonitor.worked(2);
 
-			pmonitor.subTask("delete project resource");
-			deleteFileExists(getDeviceapiProject(), nullMointor);
+			pmonitor.subTask("create DeviceAPI project");
+			createDeviceapiProject(nullMointor);
 			pmonitor.worked(2);
+			Thread.sleep(20);
 
 			pmonitor.subTask("create default resource");
 			createAndroidDefaultResource(nullMointor);
 			pmonitor.worked(2);
 
-			pmonitor.subTask("create DeviceAPI Example");
-			createDeviceAPIExample();
-			pmonitor.worked(2);
+			pmonitor.subTask("create pom file");
+			createDeviceapiPomFile(getDeviceapiProject(), nullMointor);
+			pmonitor.worked(1);
+
+			pmonitor.worked(1);
+			createMavenNature(nullMointor, getDeviceapiProject());
+
+			pmonitor.subTask("create pre javanature");
+			preAndroidJavaNature(nullMointor, getDeviceapiProject());
+			pmonitor.worked(1);
+
+			pmonitor.subTask("create java nature");
+			JavaCore.create(getDeviceapiProject());
+			pmonitor.worked(1);
+
+			pmonitor.subTask("configure classpath");
+			configureAndroidClasspath(nullMointor);
+			pmonitor.worked(1);
+
+			pmonitor.subTask("create android nature");
+			updateAndroidNature(nullMointor);
+			pmonitor.worked(1);
+
+			pmonitor.subTask("create maven nature");
+			updateMavenNature(nullMointor);
+			pmonitor.worked(1);
 
 			pmonitor.subTask("create egov nature");
 			createEgovNature(nullMointor, getDeviceapiProject());
 			pmonitor.worked(1);
+
+			pmonitor.subTask("create DeviceAPI Example");
+			createDeviceAPIExample();
+			pmonitor.worked(1);
+
+			pmonitor.subTask("refresh Project");
+			getDeviceapiProject().refreshLocal(IResource.DEPTH_INFINITE, nullMointor);
+			pmonitor.worked(1);
+			Thread.sleep(1000);
 
 			if (context.getIsWebContextUse()) {
 
@@ -87,10 +121,9 @@ public class AddDeviceAPITemplateGenerateOperation extends NewDeviceAPIHybridPro
 				pmonitor.worked(1);
 			}
 
-			pmonitor.subTask("refresh Project");
-			getDeviceapiProject().refreshLocal(IResource.DEPTH_INFINITE, nullMointor);
-			pmonitor.worked(1);
-			Thread.sleep(1000);
+			removeJavaClasspath(nullMointor);
+
+			DeviceAPIIdeUtils.sortClasspathEntry(getDeviceapiProject());
 
 			if (context.getIsTemplate()) {
 
@@ -122,10 +155,6 @@ public class AddDeviceAPITemplateGenerateOperation extends NewDeviceAPIHybridPro
 				postJavaNature(nullMointor);
 				pmonitor.worked(1);
 
-				pmonitor.subTask("configure classpath");
-				configureClasspath(nullMointor);
-				pmonitor.worked(1);
-
 				pmonitor.subTask("create spring nature");
 				createSpringNature(nullMointor);
 				pmonitor.worked(1);
@@ -138,11 +167,28 @@ public class AddDeviceAPITemplateGenerateOperation extends NewDeviceAPIHybridPro
 				createEgovNature(nullMointor, getWebProject());
 				pmonitor.worked(1);
 
+				pmonitor.subTask("configure classpath");
+				configureClasspath(nullMointor);
+				pmonitor.worked(1);
+
 				pmonitor.subTask("generate sample");
 				createExample();
 				pmonitor.worked(1);
 
 				DeviceAPIIdeUtils.sortClasspathEntry(getWebProject());
+			}
+
+			try {
+				// if(MavenPlugin.getDefault() != null ) {
+				if (MavenPlugin.getMaven() != null) {
+					// MavenPlugin.getProjectConfigurationManager().updateProjectConfiguration(this.getDeviceapiProject(),
+					// nullMointor);
+					MavenPlugin.getProjectConfigurationManager().updateProjectConfiguration(this.getDeviceapiProject(),
+							pmonitor);
+				}
+
+			} catch (Exception e) {
+				DeviceAPIIdeLog.logError(e);
 			}
 
 		} catch (CoreException e) {

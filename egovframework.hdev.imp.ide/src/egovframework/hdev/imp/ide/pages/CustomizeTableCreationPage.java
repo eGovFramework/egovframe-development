@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -40,14 +38,12 @@ import egovframework.hdev.imp.ide.common.NullUtil;
 import egovframework.hdev.imp.ide.model.DeviceAPIContext;
 import egovframework.hdev.imp.ide.wizards.examples.DeviceAPITemplateInfo;
 
-/**  
+/**
  * @Class Name : CustomizeTableCreationPage
  * @Description : CustomizeTableCreationPage Class
- * @Modification Information  
- * @
- * @  수정일			수정자		수정내용
- * @ ---------		---------	-------------------------------
- * @ 2012. 9. 17.		조용현		최초생성
+ * @Modification Information
+ * @ @ 수정일 수정자 수정내용 @ --------- --------- ------------------------------- @
+ *   2012. 9. 17. 조용현 최초생성
  * 
  * @author 디바이스 API 개발환경 팀
  * @since 2012. 9. 17.
@@ -92,6 +88,7 @@ public class CustomizeTableCreationPage extends WizardPage {
 
 	/**
 	 * CustomizeTableCreation 생성자
+	 * 
 	 * @param pageName
 	 * @param context
 	 */
@@ -125,8 +122,9 @@ public class CustomizeTableCreationPage extends WizardPage {
 
 	/**
 	 * Database ComboBox(selectDBCombo) 생성, Listener 생성
+	 * 
 	 * @param CustomizeTableCreationPage
-	 * @param parent void
+	 * @param parent                     void
 	 */
 	private void createSelectDbCombo(Composite parent) {
 
@@ -139,14 +137,14 @@ public class CustomizeTableCreationPage extends WizardPage {
 
 		selectDBCombo = new Combo(control, SWT.FILL);
 		selectDBCombo.setItems(DataToolsPlatformUtil.getProfileNames());
-		selectDBCombo.setLayoutData(new GridData(GridData.FILL_HORIZONTAL
-				| GridData.GRAB_HORIZONTAL));
+		selectDBCombo.setLayoutData(new GridData(GridData.FILL_HORIZONTAL | GridData.GRAB_HORIZONTAL));
 		selectDBCombo.addListener(SWT.Selection, selectDBListener);
 	}
 
 	/**
-	 * DB입력 정보(dbTypeCombo, driverClassName, url, username, password) 생성
-	 * Connection Test, Create Table 버튼 생성
+	 * DB입력 정보(dbTypeCombo, driverClassName, url, username, password) 생성 Connection
+	 * Test, Create Table 버튼 생성
+	 * 
 	 * @param parent
 	 */
 	private void insertDatasourceGrp(Composite parent) {
@@ -166,10 +164,8 @@ public class CustomizeTableCreationPage extends WizardPage {
 		dbTypeLabel.setLayoutData(dbLabelData);
 
 		dbTypeCombo = new Combo(descriptionGrp, SWT.READ_ONLY | SWT.FILL);
-		String items[] = { DeviceAPIMessages.MYSQL_DBTYPE,
-				DeviceAPIMessages.ORACLE_DBTYPE,
-				DeviceAPIMessages.ALTIBASE_DBTYPE,
-				DeviceAPIMessages.TIBERO_DBTYPE }; //$NON-NLS-1$
+		String items[] = { DeviceAPIMessages.MYSQL_DBTYPE, DeviceAPIMessages.ORACLE_DBTYPE,
+				DeviceAPIMessages.ALTIBASE_DBTYPE, DeviceAPIMessages.TIBERO_DBTYPE }; // $NON-NLS-1$
 		dbTypeCombo.setItems(items);
 		dbTypeCombo.setLayoutData(dbTypeInfoData);
 		dbTypeCombo.setEnabled(false);
@@ -246,16 +242,14 @@ public class CustomizeTableCreationPage extends WizardPage {
 		createTableGroup.setLayoutData(new GridData(GridData.FILL_BOTH));
 		createTableGroup.setText(DeviceAPIMessages.CREATE_TABLE_GROUP_TEXT);
 
-		tableList = new TableViewer(createTableGroup, SWT.H_SCROLL
-				| SWT.V_SCROLL | SWT.BORDER | SWT.FULL_SELECTION);
+		tableList = new TableViewer(createTableGroup, SWT.H_SCROLL | SWT.V_SCROLL | SWT.BORDER | SWT.FULL_SELECTION);
 
 		Table table = tableList.getTable();
 		table.setLinesVisible(true);
 		table.setHeaderVisible(true);
 		table.setLayoutData(new GridData(GridData.FILL_BOTH));
 
-		String[] columnNames = new String[] {
-				DeviceAPIMessages.CREATE_TABLE_TABLEVIEWER_COLUMN_TABLENAME,
+		String[] columnNames = new String[] { DeviceAPIMessages.CREATE_TABLE_TABLEVIEWER_COLUMN_TABLENAME,
 				DeviceAPIMessages.CREATE_TABLE_TABLEVIEWER_COLUMN_RESULT,
 				DeviceAPIMessages.CREATE_TABLE_TABLEVIEWER_COLUMN_DESCRIPTION };
 		int[] columnAlignment = new int[] { SWT.LEFT, SWT.LEFT, SWT.LEFT };
@@ -292,9 +286,9 @@ public class CustomizeTableCreationPage extends WizardPage {
 
 					String tableName = tableNameList.get(i);
 					String tableDesc = tableDescMap.get(tableName);
-					
-					//TODO 설계 변경 불가로 인한 컨버터 추가
-					String realTabelName = convert2RealTableName(tableName.toUpperCase()); 
+
+					// TODO 설계 변경 불가로 인한 컨버터 추가
+					String realTabelName = convert2RealTableName(tableName.toUpperCase());
 
 					apiTable = new DeviceAPITable(realTabelName, "", tableDesc);
 
@@ -310,43 +304,67 @@ public class CustomizeTableCreationPage extends WizardPage {
 			DeviceAPIIdeLog.logError(e);
 		}
 	}
-	
-	//TODO 설계 변환 불가로 인한 임시 컨버터 추가 
+
+	// TODO 설계 변환 불가로 인한 임시 컨버터 추가
 	private String convert2RealTableName(String tableName) {
 		String realTableName = "";
-		if("SAMPLE".equals(tableName)) 					realTableName = "COMTECOPSEQ";//
-		else if("CONTACT_INFO".equals(tableName)) 		realTableName = "CONTACT_INFO";
-		else if("GPS".equals(tableName))				realTableName = "GPS";
-		else if("ACCELERATOR".equals(tableName)) 		realTableName = "ACCELERATOR";
-		else if("COMPASS".equals(tableName)) 			realTableName = "COMPASS";
-		else if("CAMERA".equals(tableName)) 			realTableName = "CAMERA";
-		else if("VIBRATOR".equals(tableName)) 			realTableName = "VIBRATOR";
-		else if("MEDIA".equals(tableName)) 				realTableName = "MEDIA";
-		else if("FILE_READER_WRITE".equals(tableName)) 	realTableName = "FILE_READER_WRITE";
-		else if("DEVICE".equals(tableName)) 			realTableName = "DEVICE";
-		else if("NETWORK".equals(tableName)) 			realTableName = "NETWORK";
-		else if("MAGICXSIGN".equals(tableName)) 		realTableName = "PKI";//
-		else if("WIZSIGN".equals(tableName)) 			realTableName = "PKI";//
-		else if("XECURESMART".equals(tableName)) 		realTableName = "PKI";//
-		else if("INTERFACE".equals(tableName)) 			realTableName = "INTERFACE_EGOV";//
-		else if("BARCODESCANNER".equals(tableName)) 	realTableName = "BARCODE_INFO";//
-		else if("DEVICEFILEMGMT".equals(tableName)) 	realTableName = "FILE_DETAIL_INFO";//
-		else if("FILEOPENER".equals(tableName)) 		realTableName = "FILE_OPENER_LIST";//
-		else if("JAILBREAKDETECTION".equals(tableName)) realTableName = "DETECTION";//
-		else if("PUSHNOTIFLCATIONS".equals(tableName)) 	realTableName = "PUSH_DEVICE";//
-		else if("SOCKETIO".equals(tableName)) 			realTableName = "CODE";//
-		else if("SQLITE".equals(tableName)) 			realTableName = "CODE";//
-		else if("STREAMINGMEDIA".equals(tableName)) 	realTableName = "CODE";//
-		else if("UNZIP".equals(tableName)) 				realTableName = "CODE";//
-		else if("WEBRESOURCEUPDATE".equals(tableName)) 	realTableName = "RESOURCE_UPDATE";//
+		if ("SAMPLE".equals(tableName))
+			realTableName = "COMTECOPSEQ";//
+		else if ("CONTACT_INFO".equals(tableName))
+			realTableName = "CONTACT_INFO";
+		else if ("GPS".equals(tableName))
+			realTableName = "GPS";
+		else if ("ACCELERATOR".equals(tableName))
+			realTableName = "ACCELERATOR";
+		else if ("COMPASS".equals(tableName))
+			realTableName = "COMPASS";
+		else if ("CAMERA".equals(tableName))
+			realTableName = "CAMERA";
+		else if ("VIBRATOR".equals(tableName))
+			realTableName = "VIBRATOR";
+		else if ("MEDIA".equals(tableName))
+			realTableName = "MEDIA";
+		else if ("FILE_READER_WRITE".equals(tableName))
+			realTableName = "FILE_READER_WRITE";
+		else if ("DEVICE".equals(tableName))
+			realTableName = "DEVICE";
+		else if ("NETWORK".equals(tableName))
+			realTableName = "NETWORK";
+		else if ("MAGICXSIGN".equals(tableName))
+			realTableName = "PKI";//
+		else if ("WIZSIGN".equals(tableName))
+			realTableName = "PKI";//
+		else if ("XECURESMART".equals(tableName))
+			realTableName = "PKI";//
+		else if ("INTERFACE".equals(tableName))
+			realTableName = "INTERFACE_EGOV";//
+		else if ("BARCODESCANNER".equals(tableName))
+			realTableName = "BARCODE_INFO";//
+		else if ("DEVICEFILEMGMT".equals(tableName))
+			realTableName = "FILE_DETAIL_INFO";//
+		else if ("FILEOPENER".equals(tableName))
+			realTableName = "FILE_OPENER_LIST";//
+		else if ("JAILBREAKDETECTION".equals(tableName))
+			realTableName = "DETECTION";//
+		else if ("PUSHNOTIFLCATIONS".equals(tableName))
+			realTableName = "PUSH_DEVICE";//
+		else if ("SOCKETIO".equals(tableName))
+			realTableName = "CODE";//
+		else if ("SQLITE".equals(tableName))
+			realTableName = "CODE";//
+		else if ("STREAMINGMEDIA".equals(tableName))
+			realTableName = "CODE";//
+		else if ("UNZIP".equals(tableName))
+			realTableName = "CODE";//
+		else if ("WEBRESOURCEUPDATE".equals(tableName))
+			realTableName = "RESOURCE_UPDATE";//
 		return realTableName;
 	}
 
 	/**
 	 * 라벨 제공자 클래스
 	 */
-	class DeviceAPITableLabelProvider extends LabelProvider implements
-			ITableLabelProvider {
+	class DeviceAPITableLabelProvider extends LabelProvider implements ITableLabelProvider {
 
 		@Override
 		public String getColumnText(Object element, int columnIndex) {
@@ -380,8 +398,7 @@ public class CustomizeTableCreationPage extends WizardPage {
 		private String tableInstall;
 		private String tableDesc;
 
-		public DeviceAPITable(String tableName, String tableInstall,
-				String tableDesc) {
+		public DeviceAPITable(String tableName, String tableInstall, String tableDesc) {
 
 			this.tableName = tableName;
 			this.tableInstall = tableInstall;
@@ -419,12 +436,11 @@ public class CustomizeTableCreationPage extends WizardPage {
 
 		public void handleEvent(Event event) {
 			if (!NullUtil.isEmpty(selectDBCombo)) {
-				Map<String, String> dBProfile = DataToolsPlatformUtil
-						.getProperty(selectDBCombo.getText());
+				Map<String, String> dBProfile = DataToolsPlatformUtil.getProperty(selectDBCombo.getText());
 				if (!dBProfile.isEmpty()) {
 					usernameField.setText(dBProfile.get("username"));
 					String password = dBProfile.get("password");
-					passwordField.setText(password == null ? "":password);
+					passwordField.setText(password == null ? "" : password);
 					driverClassNameField.setText(dBProfile.get("driverClass"));
 					urlField.setText(dBProfile.get("url"));
 
@@ -457,10 +473,8 @@ public class CustomizeTableCreationPage extends WizardPage {
 			}
 
 			try {
-				IConnectionProfile profile = ProfileUtil
-						.getProfile(selectDBCombo.getText());
-				conn = ProfileUtil.createConnection(profile,
-						dbTypeCombo.getText());
+				IConnectionProfile profile = ProfileUtil.getProfile(selectDBCombo.getText());
+				conn = ProfileUtil.createConnection(profile, dbTypeCombo.getText());
 
 			} catch (NoSuchProfileException e1) {
 				setErrorMessage(DeviceAPIMessages.ERROR_CANNOT_CONNECT_DB);
@@ -502,19 +516,19 @@ public class CustomizeTableCreationPage extends WizardPage {
 				String dbType = dbTypeCombo.getText().toLowerCase();
 
 				List<DeviceAPITable> list = (ArrayList<DeviceAPITable>) tableList.getInput();
-				
-				//최초 생성시 Constraint Key문제로 Fail 나는 문제 임시 수정
+
+				// 최초 생성시 Constraint Key문제로 Fail 나는 문제 임시 수정
 				for (int i = 0; i < list.size(); i++) {
 					DeviceAPITable creatingTable = list.get(i);
-					if(creatingTable.getTableName().equals("FILE_DETAIL_INFO")) {//constrain key 걸린 것 앞으로 보내기
-						//앞으로 보내기
-						if(i!=0) { 
-							list.add(0,creatingTable);
-							list.remove(i-1);//자기 자신 지우기 , 추가 후 index 증가
+					if (creatingTable.getTableName().equals("FILE_DETAIL_INFO")) {// constrain key 걸린 것 앞으로 보내기
+						// 앞으로 보내기
+						if (i != 0) {
+							list.add(0, creatingTable);
+							list.remove(i - 1);// 자기 자신 지우기 , 추가 후 index 증가
 						}
 					}
 				}
-				
+
 				ArrayList<DeviceAPITable> updateList = new ArrayList<CustomizeTableCreationPage.DeviceAPITable>();
 
 				String fileContent = DatabaseUtil.getScriptFileinZip(fileName, dbType).get("create");
@@ -533,17 +547,18 @@ public class CustomizeTableCreationPage extends WizardPage {
 
 						if (DatabaseUtil.isExistTable(tableName.toUpperCase())) {
 
-							table.setTableInstall(DeviceAPIMessages.CREATE_TABLE_TABLEVIEWER_COLUMN_RESULT_ALREADY_EXIST);
+							table.setTableInstall(
+									DeviceAPIMessages.CREATE_TABLE_TABLEVIEWER_COLUMN_RESULT_ALREADY_EXIST);
 						} else {
 							sql = createMap.get(tableName.toUpperCase());
 
 							if (DatabaseUtil.excuteSQL(sql)) {
-								
+
 								String insertSQL = mapDML.get(tableName.toUpperCase());
-								if(insertSQL != null && !"".equals(insertSQL)) {
+								if (insertSQL != null && !"".equals(insertSQL)) {
 									DatabaseUtil.excuteSQL(insertSQL);
 								}
-									
+
 								table.setTableInstall(DeviceAPIMessages.CREATE_TABLE_TABLEVIEWER_COLUMN_RESULT_SUCCESS);
 							} else {
 

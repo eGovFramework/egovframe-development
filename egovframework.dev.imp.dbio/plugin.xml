@@ -3,7 +3,6 @@
 <plugin>
    <extension
          point="org.eclipse.core.contenttype.contentTypes">
-      <!-- iBatis -->
       <content-type
             base-type="org.eclipse.core.runtime.xml"
             default-charset="UTF-8"
@@ -34,6 +33,7 @@
             </parameter>
          </describer>
       </content-type>
+
       <!-- myBatis -->
       <content-type
             base-type="org.eclipse.core.runtime.xml"
@@ -46,7 +46,7 @@
                class="org.eclipse.core.runtime.content.XMLRootElementContentDescriber2">
             <parameter
                   name="element"
-                  value="mapperConfiguration">
+                  value="configuration">
             </parameter>
          </describer>
       </content-type>
@@ -68,7 +68,6 @@
    </extension>
    <extension
          point="org.eclipse.ui.editors">
-      <!-- iBatis -->
       <editor
             class="egovframework.dev.imp.dbio.editor.SqlMapConfigEditor"
             contributorClass="egovframework.dev.imp.dbio.editor.XMLFormEditorContributor"
@@ -91,6 +90,7 @@
                contentTypeId="egovframework.dev.imp.dbio.sqlMap">
          </contentTypeBinding>
       </editor>
+
       <!-- myBatis -->
       <editor
             class="egovframework.dev.imp.dbio.editor.MapperConfigurationEditor"
@@ -118,7 +118,7 @@
    <extension
          point="org.eclipse.wst.xml.core.catalogContributions">
       <catalogContribution>
-		<!-- iBatis -->
+		<!-- iBatis 제거
          <public
                id="mybatis-3-config.dtd"
                publicId="-//mybatis.org//DTD Config 3.0//EN"
@@ -131,6 +131,7 @@
                uri="dtd/mybatis-3-mapper.dtd"
                webURL="http://mybatis.org/dtd/mybatis-3-mapper.dtd">
          </public>
+         -->
 		<!-- myBatis -->
          <public
                id="ibatis-2-config.dtd"
@@ -148,7 +149,7 @@
    </extension>
    <extension
          point="org.eclipse.ui.newWizards">
-      <!-- iBatis -->
+      <!-- iBatis 제거
       <wizard
             category="egovframework.dev.imp.core.wizards"
             class="egovframework.dev.imp.dbio.wizard.NewSqlMapConfigWizard"
@@ -163,6 +164,7 @@
             id="egovframework.dev.imp.dbio.wizard.newSqlMap"
             name="sqlMap">
       </wizard>
+      -->
       <!-- myBatis -->
       <wizard
             category="egovframework.dev.imp.core.wizards"
@@ -202,13 +204,14 @@
          point="org.eclipse.ui.perspectiveExtensions">
       <perspectiveExtension
             targetID="egovframework.dev.imp.core.perspectives.egovperspective">
-         <!-- iBatis -->
+         <!-- iBatis 제거
          <newWizardShortcut
                id="egovframework.dev.imp.dbio.wizard.newSqlMapConfig">
          </newWizardShortcut>
          <newWizardShortcut
                id="egovframework.dev.imp.dbio.wizard.newSqlMap">
          </newWizardShortcut>
+         -->
          <!-- myBatis -->
          <newWizardShortcut
                id="egovframework.dev.imp.dbio.wizard.newMapperConfiguration">
@@ -237,13 +240,14 @@
       </perspectiveExtension>
       <perspectiveExtension
             targetID="org.eclipse.jdt.ui.JavaPerspective">
-         <!-- iBatis -->
+         <!-- iBatis 
          <newWizardShortcut
                id="egovframework.dev.imp.dbio.wizard.newSqlMapConfig">
          </newWizardShortcut>
          <newWizardShortcut
                id="egovframework.dev.imp.dbio.wizard.newSqlMap">
          </newWizardShortcut>
+         -->
          <!-- myBatis -->
          <newWizardShortcut
                id="egovframework.dev.imp.dbio.wizard.newMapperConfiguration">
@@ -267,7 +271,7 @@
          point="org.eclipse.ui.menus">
       <menuContribution
             locationURI="menu:egovframework.dev.imp.core.menu.implementation?after=additions">
-         <!-- iBatis -->
+         <!-- iBatis 제거
          <command
                commandId="egovframework.dev.imp.dbio.commands.newSqlMapConfig"
                style="push">
@@ -275,6 +279,7 @@
          <command
                commandId="egovframework.dev.imp.dbio.commands.newSqlMap">
          </command>
+         -->
          <!-- myBatis -->
          <command
                commandId="egovframework.dev.imp.dbio.commands.newMapperConfiguration"
@@ -295,7 +300,7 @@
    </extension>
    <extension
          point="org.eclipse.ui.commands">
-      <!-- iBatis -->
+      <!-- iBatis 제거
       <command
             categoryId="egovframework.dev.imp.ide.commands.category"
             id="egovframework.dev.imp.dbio.commands.newSqlMapConfig"
@@ -306,6 +311,7 @@
             id="egovframework.dev.imp.dbio.commands.newSqlMap"
             name="New SQL Map">
       </command>
+       -->
       <!-- myBatis -->
       <command
             categoryId="egovframework.dev.imp.ide.commands.category"
@@ -326,7 +332,7 @@
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
-      <!-- iBatis -->
+      <!-- iBatis 제거
       <handler
             class="egovframework.dev.imp.dbio.handlers.NewSqlMapConfig"
             commandId="egovframework.dev.imp.dbio.commands.newSqlMapConfig">
@@ -335,6 +341,7 @@
             class="egovframework.dev.imp.dbio.handlers.NewSqlMap"
             commandId="egovframework.dev.imp.dbio.commands.newSqlMap">
       </handler>
+      -->
       <!-- myBatis -->
       <handler
             class="egovframework.dev.imp.dbio.handlers.NewMapperConfiguration"

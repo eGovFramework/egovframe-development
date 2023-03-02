@@ -65,10 +65,13 @@ import egovframework.bdev.imp.ide.scheduler.wizards.model.NewBatchWebProjectCont
 
 /**
  * Batch eGovFramework 프로젝트 생성 오퍼레이션 추상 클래스
+ * 
  * @author 배치개발환경 개발팀
  * @since 2012.07.02
  * @version 1.0
- * @see <pre>
+ * @see
+ * 
+ *      <pre>
  * &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *   
  *	수정일      	수정자           수정내용
@@ -76,7 +79,7 @@ import egovframework.bdev.imp.ide.scheduler.wizards.model.NewBatchWebProjectCont
  *	2012.07.02	배치개발환경 개발팀    최초 생성
  *
  * 
- * </pre>
+ *      </pre>
  */
 public abstract class BatchProjectCreationOperation implements IRunnableWithProgress, EgovBatchProject {
 
@@ -102,6 +105,7 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 
 	/**
 	 * 생성자
+	 * 
 	 * @param context
 	 */
 	public BatchProjectCreationOperation(NewBatchProjectContext context) {
@@ -110,6 +114,7 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 
 	/**
 	 * 예제 템플릿 생성
+	 * 
 	 * @param monitor
 	 * @throws CoreException
 	 */
@@ -128,6 +133,7 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 
 	/**
 	 * 예제 템플릿 생성
+	 * 
 	 * @param monitor
 	 * @throws CoreException
 	 */
@@ -159,7 +165,8 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 
 				if (entryName.equals(ResourceConstants.POM_FILENAME)) {
 					updatePomFile(getProject(), is);
-				} else if (entryName.equals("src/main/java/egovframework/rte/cmmn/web/ImagePaginationRenderer.java") || entryName.equals("src/main/webapp/WEB-INF/web.xml")) {
+				} else if (entryName.equals("src/main/java/egovframework/rte/cmmn/web/ImagePaginationRenderer.java")
+						|| entryName.equals("src/main/webapp/WEB-INF/web.xml")) {
 					updateContextFile(getProject(), is, entryName);
 				} else {
 					file = getProject().getFile(new Path(entryName));
@@ -180,6 +187,7 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 
 	/**
 	 * 예제 템플릿 생성
+	 * 
 	 * @throws CoreException
 	 */
 	@SuppressWarnings("unchecked")
@@ -223,7 +231,7 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 					dest.flush();
 					dest.close();
 					fos.close();
-				}	
+				}
 				is.close();
 			}
 			zipFile.close();
@@ -235,6 +243,7 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 
 	/**
 	 * POM 파일 변경
+	 * 
 	 * @param project
 	 * @param is
 	 * @throws CoreException
@@ -246,7 +255,8 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 			file.delete(true, null);
 		}
 		try {
-			String document = stream2string(is, context.getGroupId(), context.getArtifactId(), context.getVersion(), context.getPackageName());
+			String document = stream2string(is, context.getGroupId(), context.getArtifactId(), context.getVersion(),
+					context.getPackageName());
 			ByteArrayInputStream stream = new ByteArrayInputStream(document.getBytes());
 
 			file.create(stream, true, null);
@@ -257,6 +267,7 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 
 	/**
 	 * 컨텍스트 설정 후 파일 생성
+	 * 
 	 * @param project
 	 * @param is
 	 * @param fileName
@@ -269,7 +280,8 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 			file.delete(true, null);
 		}
 		try {
-			String document = stream2string(is, context.getGroupId(), context.getArtifactId(), context.getVersion(), context.getPackageName());
+			String document = stream2string(is, context.getGroupId(), context.getArtifactId(), context.getVersion(),
+					context.getPackageName());
 			ByteArrayInputStream stream = new ByteArrayInputStream(document.getBytes());
 
 			file.create(stream, true, null);
@@ -280,6 +292,7 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 
 	/**
 	 * 프로젝트 생성
+	 * 
 	 * @param monitor
 	 * @throws CoreException
 	 */
@@ -313,6 +326,7 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 
 	/**
 	 * eGovFramework 네이처 추가
+	 * 
 	 * @param monitor
 	 * @throws CoreException
 	 */
@@ -323,15 +337,18 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 	private void createMavenNature(IProgressMonitor monitor) throws CoreException {
 		ProvisioningUI provisioningUI = ProvisioningUI.getDefaultUI();
 		ProvisioningSession session = provisioningUI.getSession();
-		IProfileRegistry profileRegistry = (IProfileRegistry) session.getProvisioningAgent().getService(IProfileRegistry.SERVICE_NAME);
+		IProfileRegistry profileRegistry = (IProfileRegistry) session.getProvisioningAgent()
+				.getService(IProfileRegistry.SERVICE_NAME);
 		IProfile[] profiles = profileRegistry.getProfiles();
 
 		for (int idx = 0; idx < profiles.length; idx++) {
-			IQueryResult<IInstallableUnit> queryResult = profiles[idx].query(QueryUtil.createIUQuery(ProjectFacetConstants.MAVEN2_FEATURE_ID), null);
+			IQueryResult<IInstallableUnit> queryResult = profiles[idx]
+					.query(QueryUtil.createIUQuery(ProjectFacetConstants.MAVEN2_FEATURE_ID), null);
 			if (!queryResult.isEmpty()) {
 				BatchIdeUtils.addNatureToProject(getProject(), ProjectFacetConstants.MAVEN2_NATURE_ID, monitor);
 			} else {
-				IQueryResult<IInstallableUnit> queryResult2 = profiles[idx].query(QueryUtil.createIUQuery(ProjectFacetConstants.MAVEN3_FEATURE_ID), null);
+				IQueryResult<IInstallableUnit> queryResult2 = profiles[idx]
+						.query(QueryUtil.createIUQuery(ProjectFacetConstants.MAVEN3_FEATURE_ID), null);
 				if (!queryResult2.isEmpty()) {
 					BatchIdeUtils.addNatureToProject(getProject(), ProjectFacetConstants.MAVEN3_NATURE_ID, monitor);
 				}
@@ -341,21 +358,25 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 
 	/**
 	 * Maven ContainerPath 설정
+	 * 
 	 * @throws CoreException
 	 */
 	private IPath createMavenContainerPath() throws CoreException {
 
 		ProvisioningUI provisioningUI = ProvisioningUI.getDefaultUI();
 		ProvisioningSession session = provisioningUI.getSession();
-		IProfileRegistry profileRegistry = (IProfileRegistry) session.getProvisioningAgent().getService(IProfileRegistry.SERVICE_NAME);
+		IProfileRegistry profileRegistry = (IProfileRegistry) session.getProvisioningAgent()
+				.getService(IProfileRegistry.SERVICE_NAME);
 		IProfile[] profiles = profileRegistry.getProfiles();
 
 		for (int idx = 0; idx < profiles.length; idx++) {
-			IQueryResult<IInstallableUnit> queryResult = profiles[idx].query(QueryUtil.createIUQuery(ProjectFacetConstants.MAVEN2_FEATURE_ID), null);
+			IQueryResult<IInstallableUnit> queryResult = profiles[idx]
+					.query(QueryUtil.createIUQuery(ProjectFacetConstants.MAVEN2_FEATURE_ID), null);
 			if (!queryResult.isEmpty()) {
 				return new Path(ProjectFacetConstants.MAVEN2_CLASSPATH_CONTAINER_ID);
 			} else {
-				IQueryResult<IInstallableUnit> queryResult2 = profiles[idx].query(QueryUtil.createIUQuery(ProjectFacetConstants.MAVEN3_FEATURE_ID), null);
+				IQueryResult<IInstallableUnit> queryResult2 = profiles[idx]
+						.query(QueryUtil.createIUQuery(ProjectFacetConstants.MAVEN3_FEATURE_ID), null);
 				if (!queryResult2.isEmpty()) {
 					return new Path(ProjectFacetConstants.MAVEN3_CLASSPATH_CONTAINER_ID);
 				}
@@ -367,6 +388,7 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 
 	/**
 	 * 메이븐 네이처 추가
+	 * 
 	 * @param monitor
 	 * @throws CoreException
 	 */
@@ -376,20 +398,23 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 
 		IClasspathEntry sdkEntry = null;
 		if (this.context instanceof NewBatchProjectContext || this.context instanceof NewBatchWebProjectContext) {
-			IClasspathAttribute attribute = JavaCore.newClasspathAttribute(MAVEN_CLASSPATHENTRY_ATTRIBUTE_NAME, MAVEN_CLASSPATHENTRY_ATTRIBUTE_VALUE);
-			sdkEntry = JavaCore.newContainerEntry(containerPath, new IAccessRule[0], new IClasspathAttribute[] { attribute }, false);
-			
+			IClasspathAttribute attribute = JavaCore.newClasspathAttribute(MAVEN_CLASSPATHENTRY_ATTRIBUTE_NAME,
+					MAVEN_CLASSPATHENTRY_ATTRIBUTE_VALUE);
+			sdkEntry = JavaCore.newContainerEntry(containerPath, new IAccessRule[0],
+					new IClasspathAttribute[] { attribute }, false);
+
 		} else {
 			sdkEntry = JavaCore.newContainerEntry(containerPath);
 		}
 
 		BatchIdeUtils.assignClasspathEntryToJavaProject(getProject(), sdkEntry, true);
 
-		//        createMavenNature(monitor);
+		// createMavenNature(monitor);
 	}
 
 	/**
 	 * 메이븐 POM파일 생성
+	 * 
 	 * @param project
 	 * @param monitor
 	 * @throws CoreException
@@ -400,7 +425,8 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 
 		IFile file = project.getFile(new Path(ResourceConstants.POM_FILENAME));
 		try {
-			String document = stream2string(openPomContentStream(), context.getGroupId(), context.getArtifactId(), context.getVersion(), context.getPackageName());
+			String document = stream2string(openPomContentStream(), context.getGroupId(), context.getArtifactId(),
+					context.getVersion(), context.getPackageName());
 			ByteArrayInputStream stream = new ByteArrayInputStream(document.getBytes());
 
 			file.create(stream, true, monitor);
@@ -412,6 +438,7 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 
 	/**
 	 * POM 파일 스트림을 기본 데이터 적용하여 문자열로 변환
+	 * 
 	 * @param stream
 	 * @param groupId
 	 * @param artifactId
@@ -420,7 +447,8 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 	 * @return
 	 * @throws IOException
 	 */
-	private String stream2string(InputStream stream, String groupId, String artifactId, String version, String packageName) throws IOException {
+	private String stream2string(InputStream stream, String groupId, String artifactId, String version,
+			String packageName) throws IOException {
 		String lineSeparator = System.getProperty("line.separator");
 		BufferedReader br = new BufferedReader(new InputStreamReader(stream));
 		StringBuffer sb = new StringBuffer();
@@ -442,10 +470,12 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 
 	/**
 	 * POM 파일에서 스트림으로 로딩
+	 * 
 	 * @return
 	 */
 	private InputStream openPomContentStream() {
-		return getClass().getClassLoader().getResourceAsStream(ResourceConstants.POM_EXAMPLE_PATH + context.getPomFileName());
+		return getClass().getClassLoader()
+				.getResourceAsStream(ResourceConstants.POM_EXAMPLE_PATH + context.getPomFileName());
 	}
 
 	/**
@@ -457,6 +487,7 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 
 	/**
 	 * 위치경로 가져오기
+	 * 
 	 * @return
 	 */
 	protected IPath getLocationPath() {
@@ -465,6 +496,7 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 
 	/**
 	 * 프로젝트명 가져오기
+	 * 
 	 * @return
 	 */
 	protected String getProjectName() {
@@ -473,6 +505,7 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 
 	/**
 	 * 프로젝트 위치
+	 * 
 	 * @return
 	 */
 	protected String getProjectLocation() {
@@ -481,6 +514,7 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 
 	/**
 	 * 아티팩트 아이디 가져오기
+	 * 
 	 * @return
 	 */
 	protected String getArtifactId() {
@@ -509,7 +543,8 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 		try {
 
 			if (this.context.getTemplateProjectDescription().equals(BatchIdeMessages.wizardPageBatchJobDBWebDescription)
-					|| this.context.getTemplateProjectDescription().equals(BatchIdeMessages.wizardPageBatchJobFileWebDescription)) {
+					|| this.context.getTemplateProjectDescription()
+							.equals(BatchIdeMessages.wizardPageBatchJobFileWebDescription)) {
 
 				Thread.sleep(20);
 				pmonitor.worked(2);
@@ -525,7 +560,7 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 
 				pmonitor.worked(2);
 				pmonitor.subTask("create pom file");
-				createPomFile(getProject(), nullMointor);//2017-01-19 modify by jdh
+				createPomFile(getProject(), nullMointor);// 2017-01-19 modify by jdh
 
 				pmonitor.worked(1);
 				createMavenNature(nullMointor);
@@ -546,10 +581,10 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 
 				pmonitor.subTask("create maven nature");
 				updateMavenNature(nullMointor);
-				//pmonitor.worked(1);
+				// pmonitor.worked(1);
 
 				pmonitor.subTask("create spring nature");
-				createSpringNature(nullMointor);
+//				createSpringNature(nullMointor);
 				pmonitor.worked(1);
 
 				pmonitor.subTask("create egov nature");
@@ -614,7 +649,7 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 				pmonitor.worked(1);
 
 				pmonitor.subTask("create spring nature");
-				createSpringNature(nullMointor);
+//				createSpringNature(nullMointor);
 				pmonitor.worked(1);
 
 				pmonitor.subTask("create egov nature");
@@ -633,10 +668,12 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 			}
 
 			try {
-				//if (MavenPlugin.getDefault() != null) {
+				// if (MavenPlugin.getDefault() != null) {
 				if (MavenPlugin.getMaven() != null) {
-					//MavenPlugin.getProjectConfigurationManager().updateProjectConfiguration(this.getProject(), nullMointor);
-					MavenPlugin.getProjectConfigurationManager().updateProjectConfiguration(this.getProject(), pmonitor);
+					// MavenPlugin.getProjectConfigurationManager().updateProjectConfiguration(this.getProject(),
+					// nullMointor);
+					MavenPlugin.getProjectConfigurationManager().updateProjectConfiguration(this.getProject(),
+							pmonitor);
 				}
 
 			} catch (Exception e) {
