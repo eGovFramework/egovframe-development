@@ -53,11 +53,11 @@
 <img width="709" alt="image" src="https://user-images.githubusercontent.com/68622744/230294638-029c75d1-afb9-420f-8716-54ce9713fb9d.png">
 
 ## 개발환경 RCP 구성 (4.1.0)
-### RCP 구성 준비물 (Win)
-- Open JDK 11 (Win)
-- Eclipse IDE for RCP and RAP Developers (2022-03) WIn, 64bit
-- Eclipse IDE for Enterprise Java and Web Developers (2022-03) WIn, 64bit
-- Tomcat 9.0 (Win)
+### RCP 구성 준비물
+- Open JDK 11
+- Eclipse IDE for RCP and RAP Developers (2022-03)
+- Eclipse IDE for Enterprise Java and Web Developers (2022-03)
+- Tomcat 9.0
 
 ### (테스트용) 이클립스 JEE 개발환경 구성
 ※ 표준프레임워크 플러그인 (eGovFrame Plug-ins)의 테스트 환경 구성하는 방법을 소개한다.
