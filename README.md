@@ -54,7 +54,7 @@
 
 ## 개발환경 RCP 구성 (4.1.0)
 ### RCP 구성 준비물 (Win)
-- Open JDK 11
+- Open JDK 11 (Win)
 - Eclipse IDE for RCP and RAP Developers (2022-03) WIn, 64bit
 - Eclipse IDE for Enterprise Java and Web Developers (2022-03) WIn, 64bit
 - Tomcat 9.0 (Win)
