@@ -44,10 +44,10 @@
 
 ### 구성 요소
 
-`구현도구`	 개발자의 코드 작성을 지원하는 도구로 IDE, Mobile IDE, Common Component, Mobile Common Component, Editor, Debug, Batch IDE로 구성  
-`테스트도구` 개발자가 작성된 코드를 테스트 하기 위한 도구로 Unit Test, Test Automation, Test Coverage, Test Reporting, Batch Job Test 으로 구성  
-`빌드도구`	개발자가 작성된 코드를 컴파일, 빌드, 배포하기 위한 도구로 Build와 Deploy  
-`형상관리도구`	형상요소에 대한 식별 및 등록, 이력관리를 지원하는 Configuration Management와 이슈를 등록하고 검색할 수 있는 ChangeManagement로 구성   
+- `구현도구`	 개발자의 코드 작성을 지원하는 도구로 IDE, Mobile IDE, Common Component, Mobile Common Component, Editor, Debug, Batch IDE로 구성  
+- `테스트도구` 개발자가 작성된 코드를 테스트 하기 위한 도구로 Unit Test, Test Automation, Test Coverage, Test Reporting, Batch Job Test 으로 구성  
+- `빌드도구`	개발자가 작성된 코드를 컴파일, 빌드, 배포하기 위한 도구로 Build와 Deploy  
+- `형상관리도구`	형상요소에 대한 식별 및 등록, 이력관리를 지원하는 Configuration Management와 이슈를 등록하고 검색할 수 있는 ChangeManagement로 구성   
 
 
 <img width="709" alt="image" src="https://user-images.githubusercontent.com/68622744/230294638-029c75d1-afb9-420f-8716-54ce9713fb9d.png">
