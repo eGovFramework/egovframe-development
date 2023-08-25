@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><?pde version="3.8"?><target includeMode="feature" name="egovframework target" sequenceNumber="40">
-<locations>
-<location id="org.eclipse.rcp" path="${eclipse_home}" type="Feature"/>
-<location path="${workspace_loc}" type="Directory"/>
-	<location path="D:\eclipse-jee-photon-R-win32\eclipse" type="Directory"/>
-</locations>
-<targetJRE path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_45"/>
-</target>

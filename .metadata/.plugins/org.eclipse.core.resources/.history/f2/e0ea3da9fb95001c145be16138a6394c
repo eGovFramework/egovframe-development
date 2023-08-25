@@ -1,5 +1,0 @@
-txtAppenderName=appender1
-txtLogFileName=./logs/daily/dailyRollingSample.log
-cboAppend=true
-txtDatePattern=.yyyy-MM-dd-HH-mm-ss
-txtConversionPattern=%d %5p [%c] %m%n
