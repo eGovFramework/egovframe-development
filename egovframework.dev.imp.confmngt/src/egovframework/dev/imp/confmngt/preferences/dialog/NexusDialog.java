@@ -34,7 +34,9 @@ import egovframework.dev.imp.confmngt.common.ConfMngtMessages;
  * @author 개발환경 개발팀 조윤정
  * @since 2011.06.13
  * @version 1.0
- * @see <pre>
+ * @see
+ * 
+ *      <pre>
  *      개정이력(Modification Information)
  *   
  *   수정일      수정자           수정내용
@@ -42,7 +44,7 @@ import egovframework.dev.imp.confmngt.common.ConfMngtMessages;
  *  2011.06.13  조윤정     최초 생성
  * 
  * 
- * </pre>
+ *      </pre>
  */
 
 @SuppressWarnings("restriction")
@@ -76,9 +78,8 @@ public class NexusDialog extends StatusDialog {
 	 * @param nexusId
 	 * @param nexusUrl
 	 */
-	public NexusDialog(Shell parentShell, String nexusId, String nexusUrl,
-			boolean isReleaseButtonPressed, boolean isSnapshotsButtonPressed,
-			boolean isAddButton, List<String> nexusIdList) {
+	public NexusDialog(Shell parentShell, String nexusId, String nexusUrl, boolean isReleaseButtonPressed,
+			boolean isSnapshotsButtonPressed, boolean isAddButton, List<String> nexusIdList) {
 		super(parentShell);
 
 		this.nexusId = nexusId;
@@ -94,13 +95,14 @@ public class NexusDialog extends StatusDialog {
 			doValidation();
 		}
 	}
+
 	@Override
 	protected Point getInitialSize() {
 		Point point;
 		if (isAddButton) {
-			point = new Point(380, 225);
+			point = new Point(550, 350);
 		} else {
-			point = new Point(380, 200);
+			point = new Point(550, 300);
 		}
 		return point;
 	}
@@ -135,7 +137,6 @@ public class NexusDialog extends StatusDialog {
 		return nexusUrl;
 	}
 
-
 	/**
 	 * Dialog영역의 Layout을 구성하는 메소드
 	 * 
@@ -144,7 +145,7 @@ public class NexusDialog extends StatusDialog {
 	 * @see org.eclipse.jface.dialogs.Dialog#createDialogArea(org.eclipse.swt.widgets.Composite)
 	 */
 	protected Control createDialogArea(Composite parent) {
-		if(isAddButton) {
+		if (isAddButton) {
 			getShell().setText(ConfMngtMessages.nexusDialogNEWTITLE);
 		} else {
 			getShell().setText(ConfMngtMessages.nexusDialogEDITTITLE);
@@ -174,24 +175,21 @@ public class NexusDialog extends StatusDialog {
 		snapshotsButton = new Button(composite, SWT.CHECK);
 		snapshotsButton.setText(ConfMngtMessages.nexusDialogSNAPSHOTS);
 		snapshotsButton.setSelection(isSnapshotsButtonPressed);
-		
+
 		if (isAddButton) {
 			nexusIdField.doFillIntoGrid(inner, 2);
 			nexusUrlField.doFillIntoGrid(inner, 2);
-		
+
 			LayoutUtil.setHorizontalGrabbing(nexusIdField.getTextControl(null));
-			LayoutUtil.setWidthHint(nexusIdField.getTextControl(null),
-					convertWidthInCharsToPixels(45));
+			LayoutUtil.setWidthHint(nexusIdField.getTextControl(null), convertWidthInCharsToPixels(45));
 
 			nexusIdField.postSetFocusOnDialogField(parent.getDisplay());
 
 		} else {
 			nexusUrlField.doFillIntoGrid(inner, 2);
 
-			LayoutUtil
-					.setHorizontalGrabbing(nexusUrlField.getTextControl(null));
-			LayoutUtil.setWidthHint(nexusUrlField.getTextControl(null),
-					convertWidthInCharsToPixels(45));
+			LayoutUtil.setHorizontalGrabbing(nexusUrlField.getTextControl(null));
+			LayoutUtil.setWidthHint(nexusUrlField.getTextControl(null), convertWidthInCharsToPixels(45));
 		}
 
 		return composite;
@@ -229,4 +227,10 @@ public class NexusDialog extends StatusDialog {
 		}
 		updateStatus(status);
 	}
+
+	@Override
+	protected boolean isResizable() {
+		return true;
+	}
+
 }

@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
-   <bean name="${txtIdServiceName}" class="egovframework.rte.fdl.idgnr.impl.EgovTableIdGnrService" 
+   <bean name="${txtIdServiceName}" class="org.egovframe.rte.fdl.idgnr.impl.EgovTableIdGnrService" 
                            destroy-method="destroy">
       <property name="dataSource" ref="${txtDatasourceName}"/>
       <property name="table"	  value="${txtTableId}"/>
@@ -15,7 +15,7 @@
    </bean>	
 
 #if(${chkStrategy}) 
-   <bean name="${txtStrategyName}" class="egovframework.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl">
+   <bean name="${txtStrategyName}" class="org.egovframe.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl">
       <property name="prefix" value="${txtPrefix}"/>
       <property name="cipers" value="${txtCipers}"/>
       <property name="fillChar" value="${txtFillChar}"/>

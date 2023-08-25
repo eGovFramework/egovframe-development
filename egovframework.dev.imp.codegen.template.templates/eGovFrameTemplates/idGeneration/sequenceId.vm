@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
     
-    <bean name="${txtIdServiceName}" class="egovframework.rte.fdl.idgnr.impl.EgovSequenceIdGnrService" 
+    <bean name="${txtIdServiceName}" class="org.egovframe.rte.fdl.idgnr.impl.EgovSequenceIdGnrService" 
                          destroy-method="destroy">
         <property name="dataSource" ref="${txtDatasourceName}"/>
         <property name="query"  value="${txtQuery}"/>

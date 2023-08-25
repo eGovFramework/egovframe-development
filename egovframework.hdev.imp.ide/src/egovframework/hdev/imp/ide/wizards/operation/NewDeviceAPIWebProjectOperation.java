@@ -58,14 +58,12 @@ import egovframework.hdev.imp.ide.common.ResourceConstants;
 import egovframework.hdev.imp.ide.common.ResourceUtils;
 import egovframework.hdev.imp.ide.model.DeviceAPIContext;
 
-/**  
+/**
  * @Class Name : DeviceAPIProjectCreationOperation
  * @Description : DeviceAPIProjectCreationOperation Class
- * @Modification Information  
- * @
- * @  수정일			수정자		수정내용
- * @ ---------		---------	-------------------------------
- * @ 2012. 8. 22.		이율경		최초생성
+ * @Modification Information
+ * @ @ 수정일 수정자 수정내용 @ --------- --------- ------------------------------- @
+ *   2012. 8. 22. 이율경 최초생성
  * 
  * @author 디바이스 API 개발환경 팀
  * @since 2012. 8. 22.
@@ -73,428 +71,422 @@ import egovframework.hdev.imp.ide.model.DeviceAPIContext;
  * @see
  * 
  */
-public abstract class NewDeviceAPIWebProjectOperation implements 
-		IRunnableWithProgress, EgovDeviceAPIWebProject {
+public abstract class NewDeviceAPIWebProjectOperation implements IRunnableWithProgress, EgovDeviceAPIWebProject {
 
-    /** 메이븐 클래스 패스 엔트리 속성 값 */
-    private static final String MAVEN_CLASSPATHENTRY_ATTRIBUTE_VALUE =
-        "/WEB-INF/lib"; 
-    /** 메이븐 클래스 패스 엔트리 속성 명 */
-    private static final String MAVEN_CLASSPATHENTRY_ATTRIBUTE_NAME =
-        "org.eclipse.jst.component.dependency"; 
+	/** 메이븐 클래스 패스 엔트리 속성 값 */
+	private static final String MAVEN_CLASSPATHENTRY_ATTRIBUTE_VALUE = "/WEB-INF/lib";
+	/** 메이븐 클래스 패스 엔트리 속성 명 */
+	private static final String MAVEN_CLASSPATHENTRY_ATTRIBUTE_NAME = "org.eclipse.jst.component.dependency";
 
-    /** DeviceAPI 컨텍스트 */
-    protected DeviceAPIContext context;
+	/** DeviceAPI 컨텍스트 */
+	protected DeviceAPIContext context;
 
-    /** pre 자바 네이처 */
-    protected abstract void preJavaNature(IProgressMonitor monitor, IProject project)
-            throws CoreException;
+	/** pre 자바 네이처 */
+	protected abstract void preJavaNature(IProgressMonitor monitor, IProject project) throws CoreException;
 
-    /** post 자바 네이처 */
-    protected abstract void postJavaNature(IProgressMonitor monitor)
-            throws CoreException;
+	/** post 자바 네이처 */
+	protected abstract void postJavaNature(IProgressMonitor monitor) throws CoreException;
 
-    /** default 리소스 생성 */
-    protected abstract void createDefaultResource(IProgressMonitor monitor)
-            throws CoreException;
+	/** default 리소스 생성 */
+	protected abstract void createDefaultResource(IProgressMonitor monitor) throws CoreException;
 
-    /** configure 클래스패스 */
-    protected abstract void configureClasspath(IProgressMonitor monitor)
-            throws CoreException;
-    
-    /** 실행 */
-    public abstract void run(IProgressMonitor pmonitor) throws InvocationTargetException, InterruptedException;
+	/** configure 클래스패스 */
+	protected abstract void configureClasspath(IProgressMonitor monitor) throws CoreException;
 
-    /**
-     * 생성자
-     * @param context
-     */
-    public NewDeviceAPIWebProjectOperation(DeviceAPIContext context) {
-        this.context = context;
-    }
+	/** 실행 */
+	public abstract void run(IProgressMonitor pmonitor) throws InvocationTargetException, InterruptedException;
 
-    /**
-     * 예제 템플릿 생성
-     * @throws CoreException
-     * @throws IOException 
-     */
-    @SuppressWarnings("unchecked")
+	/**
+	 * 생성자
+	 * 
+	 * @param context
+	 */
+	public NewDeviceAPIWebProjectOperation(DeviceAPIContext context) {
+		this.context = context;
+	}
+
+	/**
+	 * 예제 템플릿 생성
+	 * 
+	 * @throws CoreException
+	 * @throws IOException
+	 */
+	@SuppressWarnings("unchecked")
 	protected void createExample() throws CoreException {
 
-    	BufferedInputStream is = null;
-    	ZipFile zipFile = null;
-    	FileOutputStream fos = null;
-        try {
-            Path path = new Path(EgovDeviceAPIIdePlugin.getDefault().getInstalledPath());
-            String zipFileName = path.append("examples/web/").append(context.getWebExampleFile()).toOSString();
-            zipFile = new ZipFile(zipFileName, "UTF-8");
-            Enumeration<? extends ZipEntry> enumeration = zipFile.getEntries();
-            IPath targetPath = getWebLocationPath();
+		BufferedInputStream is = null;
+		ZipFile zipFile = null;
+		FileOutputStream fos = null;
+		try {
+			Path path = new Path(EgovDeviceAPIIdePlugin.getDefault().getInstalledPath());
+			String zipFileName = path.append("examples/web/").append(context.getWebExampleFile()).toOSString();
+			zipFile = new ZipFile(zipFileName, "UTF-8");
+			Enumeration<? extends ZipEntry> enumeration = zipFile.getEntries();
+			IPath targetPath = getWebLocationPath();
 
-            ZipEntry entry;
-            BufferedOutputStream dest = null;
-            int BUFFER = 2048;
-            while (enumeration.hasMoreElements()) {
-                entry = (ZipEntry) enumeration.nextElement();
+			ZipEntry entry;
+			BufferedOutputStream dest = null;
+			int BUFFER = 2048;
+			while (enumeration.hasMoreElements()) {
+				entry = (ZipEntry) enumeration.nextElement();
 
-                is = new BufferedInputStream(zipFile.getInputStream(entry));
-                int count;
-                byte data[] = new byte[BUFFER];
+				is = new BufferedInputStream(zipFile.getInputStream(entry));
+				int count;
+				byte data[] = new byte[BUFFER];
 
-                if (entry.isDirectory())
-                    continue;
+				if (entry.isDirectory())
+					continue;
 
-                ResourceUtils.ensureFolderExists(getWebProject(), entry.getName());
+				ResourceUtils.ensureFolderExists(getWebProject(), entry.getName());
 
-                if (entry.getName().equals(ResourceConstants.WEB_POM_FILENAME)) {
-                    updatePomFile(getWebProject(), is);
-                } else {
-                    fos = new FileOutputStream(targetPath.append(entry.getName())
-                            .toOSString());
+				if (entry.getName().equals(ResourceConstants.WEB_POM_FILENAME)) {
+					updatePomFile(getWebProject(), is);
+				} else {
+					fos = new FileOutputStream(targetPath.append(entry.getName()).toOSString());
 
-                    dest = new BufferedOutputStream(fos, BUFFER);
-                    while ((count = is.read(data, 0, BUFFER)) != -1) {
-                        dest.write(data, 0, count);
-                    }
-                    dest.flush();
-                    dest.close();
-                    fos.flush();
-                    fos.close();
-                }
-                is.close();
-            }
+					dest = new BufferedOutputStream(fos, BUFFER);
+					while ((count = is.read(data, 0, BUFFER)) != -1) {
+						dest.write(data, 0, count);
+					}
+					dest.flush();
+					dest.close();
+					fos.flush();
+					fos.close();
+				}
+				is.close();
+			}
 
-        } catch (Exception ex) {
-        	
-            DeviceAPIIdeLog.logError(ex);
-        } finally {
-        	
-        	if(is != null) {
-        		
-        		try {
+		} catch (Exception ex) {
+
+			DeviceAPIIdeLog.logError(ex);
+		} finally {
+
+			if (is != null) {
+
+				try {
 					is.close();
 				} catch (IOException e) {
-					
+
 					DeviceAPIIdeLog.logError(e);
 				}
-        	}
-        	
-        	if(zipFile != null) {
-        		try {
-        			zipFile.close();
-        		} catch (IOException e) {
-					
+			}
+
+			if (zipFile != null) {
+				try {
+					zipFile.close();
+				} catch (IOException e) {
+
 					DeviceAPIIdeLog.logError(e);
 				}
-        	}
-        	
-        	if(fos != null) {
-        		
-        		try {
-        			fos.close();
-	        	} catch (IOException e) {
-					
+			}
+
+			if (fos != null) {
+
+				try {
+					fos.close();
+				} catch (IOException e) {
+
 					DeviceAPIIdeLog.logError(e);
 				}
-        	}
-        }
-    }
+			}
+		}
+	}
 
-    /**
-     * POM 파일 변경
-     * @param project
-     * @param is
-     * @throws CoreException
-     */
-    protected void updatePomFile(IProject project, BufferedInputStream is)
-            throws CoreException {
+	/**
+	 * POM 파일 변경
+	 * 
+	 * @param project
+	 * @param is
+	 * @throws CoreException
+	 */
+	protected void updatePomFile(IProject project, BufferedInputStream is) throws CoreException {
 
-        IFile file = project.getFile(new Path(ResourceConstants.WEB_POM_FILENAME));
-        if (file.exists()) {
-            file.delete(true, null);
-        }
-        try {
-            String document =
-                stream2string(is, context.getGroupId(),
-                    context.getArtifactId(), context.getVersion(), context
-                        .getWebPackageName());
-            ByteArrayInputStream stream =
-                new ByteArrayInputStream(document.getBytes());
+		IFile file = project.getFile(new Path(ResourceConstants.WEB_POM_FILENAME));
+		if (file.exists()) {
+			file.delete(true, null);
+		}
+		try {
+			String document = stream2string(is, context.getGroupId(), context.getArtifactId(), context.getVersion(),
+					context.getWebPackageName());
+			ByteArrayInputStream stream = new ByteArrayInputStream(document.getBytes());
 
-            file.create(stream, true, null);
-        } catch (IOException e) {
-            DeviceAPIIdeLog.logError(e);
-        }
-    }
+			file.create(stream, true, null);
+		} catch (IOException e) {
+			DeviceAPIIdeLog.logError(e);
+		}
+	}
 
-    /**
-     * 컨텍스트 설정 후 파일 생성
-     * @param project
-     * @param is
-     * @param fileName
-     * @throws CoreException
-     */
-    protected void updateContextFile(IProject project, BufferedInputStream is,
-            String fileName) throws CoreException {
+	/**
+	 * 컨텍스트 설정 후 파일 생성
+	 * 
+	 * @param project
+	 * @param is
+	 * @param fileName
+	 * @throws CoreException
+	 */
+	protected void updateContextFile(IProject project, BufferedInputStream is, String fileName) throws CoreException {
 
-        IFile file = project.getFile(new Path(fileName));
-        if (file.exists()) {
-            file.delete(true, null);
-        }
-        try {
-            String document =
-                stream2string(is, context.getGroupId(),
-                    context.getArtifactId(), context.getVersion(), context
-                        .getWebPackageName());
-            ByteArrayInputStream stream =
-                new ByteArrayInputStream(document.getBytes());
+		IFile file = project.getFile(new Path(fileName));
+		if (file.exists()) {
+			file.delete(true, null);
+		}
+		try {
+			String document = stream2string(is, context.getGroupId(), context.getArtifactId(), context.getVersion(),
+					context.getWebPackageName());
+			ByteArrayInputStream stream = new ByteArrayInputStream(document.getBytes());
 
-            file.create(stream, true, null);
-        } catch (IOException e) {
-            DeviceAPIIdeLog.logError(e);
-        }
-    }
+			file.create(stream, true, null);
+		} catch (IOException e) {
+			DeviceAPIIdeLog.logError(e);
+		}
+	}
 
-    /**
-     * 프로젝트 생성
-     * @param monitor
-     * @throws CoreException
-     */
-    protected void createProject(IProgressMonitor monitor) throws CoreException {
-        IProject project = getWebProject();
-        IProjectDescription desc = project.getWorkspace().newProjectDescription(project.getName());
-        IPath locationPath = getWebLocationPath();
-        if (Platform.getLocation().equals(locationPath))
-            locationPath = null;
-        desc.setLocation(locationPath);
-        project.create(desc, Policy.subMonitorFor(monitor, 1));
+	/**
+	 * 프로젝트 생성
+	 * 
+	 * @param monitor
+	 * @throws CoreException
+	 */
+	protected void createProject(IProgressMonitor monitor) throws CoreException {
+		IProject project = getWebProject();
+		IProjectDescription desc = project.getWorkspace().newProjectDescription(project.getName());
+		IPath locationPath = getWebLocationPath();
+		if (Platform.getLocation().equals(locationPath))
+			locationPath = null;
+		desc.setLocation(locationPath);
+		project.create(desc, Policy.subMonitorFor(monitor, 1));
 
-        if (!project.isOpen())
-            project.open(Policy.subMonitorFor(monitor, 1));
-    }
+		if (!project.isOpen())
+			project.open(Policy.subMonitorFor(monitor, 1));
+	}
 
-    /**
-     * 스프링 네이처 추가
-     */
-    protected void createSpringNature(IProgressMonitor monitor)
-            throws CoreException {
-        DeviceAPIIdeUtils.addNatureToProject(getWebProject(),
-            "org.springframework.ide.eclipse.core.springnature", monitor);
-    }
+	/**
+	 * 스프링 네이처 추가
+	 */
+	protected void createSpringNature(IProgressMonitor monitor) throws CoreException {
+		DeviceAPIIdeUtils.addNatureToProject(getWebProject(), "org.springframework.ide.eclipse.core.springnature",
+				monitor);
 
-    /**
-     * eGovFramework 네이처 추가
-     * @param monitor
-     * @throws CoreException
-     */
-    protected void createEgovNature(IProgressMonitor monitor, IProject project)
-            throws CoreException {
-    	DeviceAPIIdeUtils.addNatureToProject(project, EgovDeviceAPIIdePlugin.ID_NATURE,
-            monitor);
-    }
-    
-    /**
-     * Maven 네이처 추가
-     * @param monitor
-     * @throws CoreException
-     */
-    protected void createMavenNature(IProgressMonitor monitor, IProject project) throws CoreException {
-    	
-    	ProvisioningUI provisioningUI = ProvisioningUI.getDefaultUI();
-    	ProvisioningSession session = provisioningUI.getSession();
-    	IProfileRegistry profileRegistry = (IProfileRegistry)session.getProvisioningAgent().getService(IProfileRegistry.SERVICE_NAME);
-    	IProfile[] profiles = profileRegistry.getProfiles();
-    	
-    	for (int idx = 0; idx < profiles.length; idx++) {
-            IQueryResult<IInstallableUnit> queryResult = profiles[idx].query(QueryUtil.createIUQuery(ProjectFacetConstants.MAVEN2_FEATURE_ID), null);
-            if (!queryResult.isEmpty()){
-            	DeviceAPIIdeUtils.addNatureToProject(project, ProjectFacetConstants.MAVEN2_NATURE_ID, monitor);
-            } else {
-            	IQueryResult<IInstallableUnit> queryResult2 = profiles[idx].query(QueryUtil.createIUQuery(ProjectFacetConstants.MAVEN3_FEATURE_ID), null);
-            	if (!queryResult2.isEmpty()){
-            		DeviceAPIIdeUtils.addNatureToProject(project, ProjectFacetConstants.MAVEN3_NATURE_ID, monitor);
-            	}
-            }
-    	}
-    }
-    
-    /**
-     * Maven ContainerPath 설정
-     * @throws CoreException
-     */
-    private IPath createMavenContainerPath() throws CoreException {
-    	
-    	ProvisioningUI provisioningUI = ProvisioningUI.getDefaultUI();
-    	ProvisioningSession session = provisioningUI.getSession();
-    	IProfileRegistry profileRegistry = (IProfileRegistry)session.getProvisioningAgent().getService(IProfileRegistry.SERVICE_NAME);
-    	IProfile[] profiles = profileRegistry.getProfiles();
-    	
-    	for (int idx = 0; idx < profiles.length; idx++) {
-    		IQueryResult<IInstallableUnit> queryResult = profiles[idx].query(QueryUtil.createIUQuery(ProjectFacetConstants.MAVEN2_FEATURE_ID), null);
-    		if (!queryResult.isEmpty()){
-    			return new Path(ProjectFacetConstants.MAVEN2_CLASSPATH_CONTAINER_ID);
-    		} else {
-    			IQueryResult<IInstallableUnit> queryResult2 = profiles[idx].query(QueryUtil.createIUQuery(ProjectFacetConstants.MAVEN3_FEATURE_ID), null);
-    			if (!queryResult2.isEmpty()){
-    				return new Path(ProjectFacetConstants.MAVEN3_CLASSPATH_CONTAINER_ID);
-    			}
-    		}
-    	}
-    	
-    	return new Path(ProjectFacetConstants.MAVEN2_CLASSPATH_CONTAINER_ID);
-    }
+	}
 
-    /**
-     * 메이븐 네이처 추가
-     * @param monitor
-     * @throws CoreException
-     */
-    protected void updateMavenNature(IProgressMonitor monitor)
-            throws CoreException {
+	/**
+	 * eGovFramework 네이처 추가
+	 * 
+	 * @param monitor
+	 * @throws CoreException
+	 */
+	protected void createEgovNature(IProgressMonitor monitor, IProject project) throws CoreException {
+		DeviceAPIIdeUtils.addNatureToProject(project, EgovDeviceAPIIdePlugin.ID_NATURE, monitor);
+	}
 
-    	IPath containerPath = createMavenContainerPath();
+	/**
+	 * Maven 네이처 추가
+	 * 
+	 * @param monitor
+	 * @throws CoreException
+	 */
+	protected void createMavenNature(IProgressMonitor monitor, IProject project) throws CoreException {
 
-        IClasspathEntry sdkEntry = null;
+		ProvisioningUI provisioningUI = ProvisioningUI.getDefaultUI();
+		ProvisioningSession session = provisioningUI.getSession();
+		IProfileRegistry profileRegistry = (IProfileRegistry) session.getProvisioningAgent()
+				.getService(IProfileRegistry.SERVICE_NAME);
+		IProfile[] profiles = profileRegistry.getProfiles();
 
-        if (this.context instanceof DeviceAPIContext) {
-            IClasspathAttribute attribute =
-                JavaCore.newClasspathAttribute(
-                    MAVEN_CLASSPATHENTRY_ATTRIBUTE_NAME,
-                    MAVEN_CLASSPATHENTRY_ATTRIBUTE_VALUE);
-            sdkEntry =
-                JavaCore.newContainerEntry(containerPath, new IAccessRule[0],
-                    new IClasspathAttribute[] {attribute }, false);
-        } else if (this.context instanceof DeviceAPIContext) {
-            sdkEntry = JavaCore.newContainerEntry(containerPath);
-        }
+		for (int idx = 0; idx < profiles.length; idx++) {
+			IQueryResult<IInstallableUnit> queryResult = profiles[idx]
+					.query(QueryUtil.createIUQuery(ProjectFacetConstants.MAVEN2_FEATURE_ID), null);
+			if (!queryResult.isEmpty()) {
+				DeviceAPIIdeUtils.addNatureToProject(project, ProjectFacetConstants.MAVEN2_NATURE_ID, monitor);
+			} else {
+				IQueryResult<IInstallableUnit> queryResult2 = profiles[idx]
+						.query(QueryUtil.createIUQuery(ProjectFacetConstants.MAVEN3_FEATURE_ID), null);
+				if (!queryResult2.isEmpty()) {
+					DeviceAPIIdeUtils.addNatureToProject(project, ProjectFacetConstants.MAVEN3_NATURE_ID, monitor);
+				}
+			}
+		}
+	}
 
-        DeviceAPIIdeUtils
-            .assignClasspathEntryToJavaProject(getWebProject(), sdkEntry, true);
-    }
+	/**
+	 * Maven ContainerPath 설정
+	 * 
+	 * @throws CoreException
+	 */
+	private IPath createMavenContainerPath() throws CoreException {
 
-    /**
-     * 메이븐 POM파일 생성
-     * @param project
-     * @param monitor
-     * @throws CoreException
-     * @throws IOException 
-     */
-    protected void createPomFile(IProject project, IProgressMonitor monitor)
-            throws CoreException {
+		ProvisioningUI provisioningUI = ProvisioningUI.getDefaultUI();
+		ProvisioningSession session = provisioningUI.getSession();
+		IProfileRegistry profileRegistry = (IProfileRegistry) session.getProvisioningAgent()
+				.getService(IProfileRegistry.SERVICE_NAME);
+		IProfile[] profiles = profileRegistry.getProfiles();
 
-    	InputStream inputStream = null;
-    	ByteArrayInputStream stream = null;
-        IFile file = project.getFile(new Path(ResourceConstants.WEB_POM_FILENAME));
-        try {
-        	inputStream = openPomContentStream();
-            String document =
-                stream2string(inputStream, context.getGroupId(),
-                    context.getArtifactId(), context.getVersion(), context
-                        .getWebPackageName());
-            stream = new ByteArrayInputStream(document.getBytes());
+		for (int idx = 0; idx < profiles.length; idx++) {
+			IQueryResult<IInstallableUnit> queryResult = profiles[idx]
+					.query(QueryUtil.createIUQuery(ProjectFacetConstants.MAVEN2_FEATURE_ID), null);
+			if (!queryResult.isEmpty()) {
+				return new Path(ProjectFacetConstants.MAVEN2_CLASSPATH_CONTAINER_ID);
+			} else {
+				IQueryResult<IInstallableUnit> queryResult2 = profiles[idx]
+						.query(QueryUtil.createIUQuery(ProjectFacetConstants.MAVEN3_FEATURE_ID), null);
+				if (!queryResult2.isEmpty()) {
+					return new Path(ProjectFacetConstants.MAVEN3_CLASSPATH_CONTAINER_ID);
+				}
+			}
+		}
 
-            file.create(stream, true, monitor);
-        } catch (IOException e) {
-        	DeviceAPIIdeLog.logError(e);
-        } finally {
-        	if(inputStream != null) {
-        		
-        		try {
+		return new Path(ProjectFacetConstants.MAVEN2_CLASSPATH_CONTAINER_ID);
+	}
+
+	/**
+	 * 메이븐 네이처 추가
+	 * 
+	 * @param monitor
+	 * @throws CoreException
+	 */
+	protected void updateMavenNature(IProgressMonitor monitor) throws CoreException {
+
+		IPath containerPath = createMavenContainerPath();
+
+		IClasspathEntry sdkEntry = null;
+
+		if (this.context instanceof DeviceAPIContext) {
+			IClasspathAttribute attribute = JavaCore.newClasspathAttribute(MAVEN_CLASSPATHENTRY_ATTRIBUTE_NAME,
+					MAVEN_CLASSPATHENTRY_ATTRIBUTE_VALUE);
+			sdkEntry = JavaCore.newContainerEntry(containerPath, new IAccessRule[0],
+					new IClasspathAttribute[] { attribute }, false);
+		} else if (this.context instanceof DeviceAPIContext) {
+			sdkEntry = JavaCore.newContainerEntry(containerPath);
+		}
+
+		DeviceAPIIdeUtils.assignClasspathEntryToJavaProject(getWebProject(), sdkEntry, true);
+	}
+
+	/**
+	 * 메이븐 POM파일 생성
+	 * 
+	 * @param project
+	 * @param monitor
+	 * @throws CoreException
+	 * @throws IOException
+	 */
+	protected void createPomFile(IProject project, IProgressMonitor monitor) throws CoreException {
+
+		InputStream inputStream = null;
+		ByteArrayInputStream stream = null;
+		IFile file = project.getFile(new Path(ResourceConstants.WEB_POM_FILENAME));
+		try {
+			inputStream = openPomContentStream();
+			String document = stream2string(inputStream, context.getGroupId(), context.getArtifactId(),
+					context.getVersion(), context.getWebPackageName());
+			stream = new ByteArrayInputStream(document.getBytes());
+			file.create(stream, true, monitor);
+		} catch (IOException e) {
+			DeviceAPIIdeLog.logError(e);
+		} finally {
+			if (inputStream != null) {
+
+				try {
 					inputStream.close();
-        		} catch (IOException e) {
-					
+				} catch (IOException e) {
+
 					DeviceAPIIdeLog.logError(e);
 				}
-        	}
-        	if(stream != null) {
-        		
-        		try {
+			}
+			if (stream != null) {
+
+				try {
 					stream.close();
-        		} catch (IOException e) {
-					
+				} catch (IOException e) {
+
 					DeviceAPIIdeLog.logError(e);
 				}
-        	}
-        }
-    }
+			}
+		}
+	}
 
-    /**
-     * POM 파일 스트림을 기본 데이터 적용하여 문자열로 변환
-     * @param stream
-     * @param groupId
-     * @param artifactId
-     * @param version
-     * @param packageName
-     * @return
-     * @throws IOException
-     */
-    protected String stream2string(InputStream stream, String groupId,
-            String artifactId, String version, String packageName)
-            throws IOException {
-        String lineSeparator = System.getProperty("line.separator"); 
-        BufferedReader br = new BufferedReader(new InputStreamReader(stream));
-        StringBuffer sb = new StringBuffer();
-        for (;;) {
-            String line = br.readLine();
-            if (line == null)
-                break;
-            line = line.replace("###GROUP_ID###", groupId); 
-            line = line.replace("###ARTIFACT_ID###", artifactId); 
-            line = line.replace("###VERSION###", version); 
-            line = line.replace("###NAME###", artifactId); 
-            line = line.replace("###URL###", "http://www.egovframe.go.kr");  //$NON-NLS-2$
-            sb.append(line).append(lineSeparator);
-        }
-        br.close();
-        return sb.toString();
-    }
+	/**
+	 * POM 파일 스트림을 기본 데이터 적용하여 문자열로 변환
+	 * 
+	 * @param stream
+	 * @param groupId
+	 * @param artifactId
+	 * @param version
+	 * @param packageName
+	 * @return
+	 * @throws IOException
+	 */
+	protected String stream2string(InputStream stream, String groupId, String artifactId, String version,
+			String packageName) throws IOException {
+		String lineSeparator = System.getProperty("line.separator");
+		BufferedReader br = new BufferedReader(new InputStreamReader(stream));
+		StringBuffer sb = new StringBuffer();
+		for (;;) {
+			String line = br.readLine();
+			if (line == null)
+				break;
+			line = line.replace("###GROUP_ID###", groupId);
+			line = line.replace("###ARTIFACT_ID###", artifactId);
+			line = line.replace("###VERSION###", version);
+			line = line.replace("###NAME###", artifactId);
+			line = line.replace("###URL###", "http://www.egovframe.go.kr"); //$NON-NLS-2$
+			sb.append(line).append(lineSeparator);
+		}
+		br.close();
+		return sb.toString();
+	}
 
-    /**
-     * POM 파일에서 스트림으로 로딩
-     * @return
-     */
-    protected InputStream openPomContentStream() {
-        return getClass().getClassLoader().getResourceAsStream(
-            ResourceConstants.WEB_POM_EXAMPLE_PATH + context.getWebPomFileName());
-    }
+	/**
+	 * POM 파일에서 스트림으로 로딩
+	 * 
+	 * @return
+	 */
+	protected InputStream openPomContentStream() {
+		return getClass().getClassLoader()
+				.getResourceAsStream(ResourceConstants.WEB_POM_EXAMPLE_PATH + context.getWebPomFileName());
+	}
 
-    /**
-     * 프로젝트 가져오기
-     */
-    protected IProject getWebProject() {
-        return context.getWebProject();
-    }
+	/**
+	 * 프로젝트 가져오기
+	 */
+	protected IProject getWebProject() {
+		return context.getWebProject();
+	}
 
-    /**
-     * 위치경로 가져오기
-     * @return
-     */
-    protected IPath getWebLocationPath() {
-        return context.getWebProject().getLocation();
-    }
+	/**
+	 * 위치경로 가져오기
+	 * 
+	 * @return
+	 */
+	protected IPath getWebLocationPath() {
+		return context.getWebProject().getLocation();
+	}
 
-    /**
-     * 프로젝트명 가져오기
-     * @return
-     */
-    protected String getWebProjectName() {
-        return context.getWebProjectName();
-    }
+	/**
+	 * 프로젝트명 가져오기
+	 * 
+	 * @return
+	 */
+	protected String getWebProjectName() {
+		return context.getWebProjectName();
+	}
 
-    /**
-     * 프로젝트 위치
-     * @return
-     */
-    protected String getWebProjectLocation() {
-        return context.getWebLocationPath().toString();
-    }
+	/**
+	 * 프로젝트 위치
+	 * 
+	 * @return
+	 */
+	protected String getWebProjectLocation() {
+		return context.getWebLocationPath().toString();
+	}
 
-    /**
-     * 아티팩트 아이디 가져오기
-     * @return
-     */
-    protected String getArtifactId() {
-        return context.getArtifactId();
-    }
+	/**
+	 * 아티팩트 아이디 가져오기
+	 * 
+	 * @return
+	 */
+	protected String getArtifactId() {
+		return context.getArtifactId();
+	}
 
 }

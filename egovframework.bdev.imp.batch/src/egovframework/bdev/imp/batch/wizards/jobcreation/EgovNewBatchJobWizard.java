@@ -42,7 +42,6 @@ import egovframework.bdev.imp.batch.wizards.jobcreation.model.StepAndDecisionVo;
 import egovframework.bdev.imp.batch.wizards.jobcreation.operation.CreateBatchJobXMLFileOperation;
 import egovframework.bdev.imp.batch.wizards.jobcreation.pages.BatchJobCreationCustomizePage;
 import egovframework.bdev.imp.batch.wizards.jobcreation.pages.BatchJobcreationSelectProjectPage;
-import egovframework.dev.imp.core.utils.NullUtil;
 
 /**
  * Batch Job 생성 Wizard
@@ -50,7 +49,9 @@ import egovframework.dev.imp.core.utils.NullUtil;
  * @author 배치개발환경 개발팀 조용현
  * @since 2012.06.28
  * @version 1.0
- * @see <pre>
+ * @see
+ * 
+ *      <pre>
  *  &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *    
  * 수정일	  	수정자	  수정내용
@@ -58,7 +59,7 @@ import egovframework.dev.imp.core.utils.NullUtil;
  * 2012.07.24	조용현	최초생성
  * 
  * 
- * </pre>
+ *      </pre>
  */
 public class EgovNewBatchJobWizard extends Wizard implements INewWizard {
 
@@ -76,20 +77,23 @@ public class EgovNewBatchJobWizard extends Wizard implements INewWizard {
 		super();
 		setWindowTitle("New eGovFrame Batch Job File"); //$NON-NLS-1$
 		setNeedsProgressMonitor(true);
-		setDefaultPageImageDescriptor(EgovBatchPlugin.getDefault().getImageDescriptor(EgovBatchPlugin.IMG_BATCH_JOB_WIZ_BANNER));
+		setDefaultPageImageDescriptor(
+				EgovBatchPlugin.getDefault().getImageDescriptor(EgovBatchPlugin.IMG_BATCH_JOB_WIZ_BANNER));
 	}
 
 	public void addPages() {
-		BatchJobcreationSelectProjectPage selectProjectPage = new BatchJobcreationSelectProjectPage("SelectProjectPage", context, selection); //$NON-NLS-1$
+		BatchJobcreationSelectProjectPage selectProjectPage = new BatchJobcreationSelectProjectPage("SelectProjectPage", //$NON-NLS-1$
+				context, selection);
 		addPage(selectProjectPage);
 
 		customizePage = new BatchJobCreationCustomizePage("CustomizeCreation", //$NON-NLS-1$
 				context);
 		addPage(customizePage);
 
-		if (!NullUtil.isNull(getContainer())) {
-			getContainer().getShell().setLocation(430, 55);
-		}
+		/*
+		 * if (!NullUtil.isNull(getContainer())) {
+		 * getContainer().getShell().setLocation(430, 55); }
+		 */
 	}
 
 	@Override
@@ -104,7 +108,8 @@ public class EgovNewBatchJobWizard extends Wizard implements INewWizard {
 	public boolean performFinish() {
 
 		String message = BatchMessages.EgovNewBatchJobWizard_CONFIRM_FINISH_MESSAGE;
-		if (!MessageDialog.openConfirm(getShell(), BatchMessages.EgovNewBatchJobWizard_CONFIRM_FINISH_DIALOG_TITLE, message)) {
+		if (!MessageDialog.openConfirm(getShell(), BatchMessages.EgovNewBatchJobWizard_CONFIRM_FINISH_DIALOG_TITLE,
+				message)) {
 			return false;
 		}
 
@@ -186,7 +191,8 @@ public class EgovNewBatchJobWizard extends Wizard implements INewWizard {
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 		IResource resource = root.findMember(new Path(containerName));
 		if (!resource.exists() || !(resource instanceof IContainer)) {
-			throwCoreException(BatchMessages.EgovNewBatchJobWizard_PROGRESS_ERROR_MESSAGE_1 + containerName + BatchMessages.EgovNewBatchJobWizard_PROGRESS_ERROR_MESSAGE_2);
+			throwCoreException(BatchMessages.EgovNewBatchJobWizard_PROGRESS_ERROR_MESSAGE_1 + containerName
+					+ BatchMessages.EgovNewBatchJobWizard_PROGRESS_ERROR_MESSAGE_2);
 		}
 		IContainer container = (IContainer) resource;
 		final IFile file = container.getFile(new Path(fileName));

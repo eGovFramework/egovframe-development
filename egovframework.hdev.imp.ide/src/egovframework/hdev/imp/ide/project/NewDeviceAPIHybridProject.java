@@ -16,14 +16,12 @@ import egovframework.hdev.imp.ide.EgovDeviceAPIIdePlugin;
 import egovframework.hdev.imp.ide.common.DeviceAPIIdeUtils;
 import egovframework.hdev.imp.ide.handlers.EgovDeviceAPIMenu;
 
-/**  
+/**
  * @Class Name : NewDeviceAPIHybridProject
  * @Description : NewDeviceAPIHybridProject Class
- * @Modification Information  
- * @
- * @  수정일			수정자		수정내용
- * @ ---------		---------	-------------------------------
- * @ 2012. 8. 24.		이율경		최초생성
+ * @Modification Information
+ * @ @ 수정일 수정자 수정내용 @ --------- --------- ------------------------------- @
+ *   2012. 8. 24. 이율경 최초생성
  * 
  * @author 디바이스 API 개발환경 팀
  * @since 2012. 8. 24.
@@ -39,11 +37,12 @@ public class NewDeviceAPIHybridProject extends AbstractHandler implements EgovDe
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 
-		if (DeviceAPIIdeUtils.isAndroidDevelopmentTool() == false) {
-
-			MessageDialog.openInformation(EgovDeviceAPIIdePlugin.getActiveWorkbenchWindow().getShell(), "Inform", "Selected function has not been installed. ADT is required.");
-			return null;
-		}
+//		ADT 여부 확인 제거
+//		if (DeviceAPIIdeUtils.isAndroidDevelopmentTool() == false) {
+//
+//			MessageDialog.openInformation(EgovDeviceAPIIdePlugin.getActiveWorkbenchWindow().getShell(), "Inform", "Selected function has not been installed. ADT is required.");
+//			return null;
+//		}
 
 		if (DeviceAPIIdeUtils.isMaven3Version() == false) {
 
@@ -52,14 +51,16 @@ public class NewDeviceAPIHybridProject extends AbstractHandler implements EgovDe
 			return null;
 		}
 
-		if (DeviceAPIIdeUtils.isM2EToAndroid() == false) {
+//		M2E Configure for Android 여부 확인 제거
+//		if (DeviceAPIIdeUtils.isM2EToAndroid() == false) {
+//
+//			MessageDialog.openInformation(EgovDeviceAPIIdePlugin.getActiveWorkbenchWindow().getShell(), "Inform",
+//					"Selected function has not been installed. M2E Configure for Android is required.");
+//			return null;
+//		}
 
-			MessageDialog.openInformation(EgovDeviceAPIIdePlugin.getActiveWorkbenchWindow().getShell(), "Inform",
-					"Selected function has not been installed. M2E Configure for Android is required.");
-			return null;
-		}
-
-		IWizardDescriptor wizardDesc = WorkbenchPlugin.getDefault().getNewWizardRegistry().findWizard("egovframework.hdev.imp.ide.wizards.newdeviceapi");
+		IWizardDescriptor wizardDesc = WorkbenchPlugin.getDefault().getNewWizardRegistry()
+				.findWizard("egovframework.hdev.imp.ide.wizards.newdeviceapi");
 
 		if (wizardDesc == null) {
 			MessageDialog.openInformation(EgovDeviceAPIIdePlugin.getActiveWorkbenchWindow().getShell(), "Inform",

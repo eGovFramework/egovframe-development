@@ -1,4 +1,4 @@
-package egovframework.rte.sample.model;
+package org.egovframe.rte.sample.model;
 
 /**
  * @version 1.0

@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
-    <bean name="${txtPropertyServiceName}" class="egovframework.rte.fdl.property.impl.EgovPropertyServiceImpl" 
+    <bean name="${txtPropertyServiceName}" class="org.egovframe.rte.fdl.property.impl.EgovPropertyServiceImpl" 
          destroy-method="destroy">
 #if(${rdoType} == "Internal Properties")         
         <property name="properties">

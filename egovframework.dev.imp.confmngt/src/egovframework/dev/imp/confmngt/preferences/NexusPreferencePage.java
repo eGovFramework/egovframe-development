@@ -49,7 +49,9 @@ import egovframework.dev.imp.core.utils.PrefrencePropertyUtil;
  * @author 개발환경 개발팀 조윤정
  * @since 2011.06.13
  * @version 1.0
- * @see <pre>
+ * @see
+ * 
+ *      <pre>
  *      개정이력(Modification Information)
  *   
  *   수정일      수정자           수정내용
@@ -57,11 +59,11 @@ import egovframework.dev.imp.core.utils.PrefrencePropertyUtil;
  *  2011.06.13  조윤정     최초 생성
  * 
  * 
- * </pre>
+ *      </pre>
  */
 public class NexusPreferencePage extends PreferencePage implements IWorkbenchPreferencePage {
 
-	/**Nexus Info Preference Page의 TableViewer 정의 */
+	/** Nexus Info Preference Page의 TableViewer 정의 */
 	private TableViewer tableViewer;
 	private Button editButton;
 	private Button removeButton;
@@ -94,7 +96,8 @@ public class NexusPreferencePage extends PreferencePage implements IWorkbenchPre
 				NexusInfo nexusInfo = new NexusInfo();
 				nexusInfo.setId(String.valueOf(i));
 
-				NexusInfo nexusInfo11 = (NexusInfo) PrefrencePropertyUtil.loadPreferences(EgovConfMngtPlugin.getDefault(), nexusInfo);
+				NexusInfo nexusInfo11 = (NexusInfo) PrefrencePropertyUtil
+						.loadPreferences(EgovConfMngtPlugin.getDefault(), nexusInfo);
 				nexusInfoList.add(nexusInfo11);
 			}
 	}
@@ -148,12 +151,14 @@ public class NexusPreferencePage extends PreferencePage implements IWorkbenchPre
 		innerContainer.setLayout(innerLayout);
 
 		// Create table
-		tableViewer = new TableViewer(innerContainer, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI | SWT.FULL_SELECTION);
+		tableViewer = new TableViewer(innerContainer,
+				SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.MULTI | SWT.FULL_SELECTION);
 		Table table = tableViewer.getTable();
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
 		tableViewer.getControl().setLayoutData(gData);
-		String[] columnNames = new String[] { ConfMngtMessages.nexusPreferencePageID, ConfMngtMessages.nexusPreferencePageURL, ConfMngtMessages.nexusPreferencePageRELEASE,
+		String[] columnNames = new String[] { ConfMngtMessages.nexusPreferencePageID,
+				ConfMngtMessages.nexusPreferencePageURL, ConfMngtMessages.nexusPreferencePageRELEASE,
 				ConfMngtMessages.nexusPreferencePageSNAPSHOTS };
 
 		int[] columnWidth = new int[] { 70, 250, 73, 75 };
@@ -193,11 +198,12 @@ public class NexusPreferencePage extends PreferencePage implements IWorkbenchPre
 						nexusIdList.add(nexusInfo.getNexusId());
 					}
 
-				NexusDialog nexusInfoDialog = new NexusDialog(getControl().getShell(), null, null, true, true, true, nexusIdList);
+				NexusDialog nexusInfoDialog = new NexusDialog(getControl().getShell(), null, null, true, true, true,
+						nexusIdList);
 
 				if (nexusInfoDialog.open() == Window.OK) {
-					nexusInfo = new NexusInfo(nexusInfoDialog.getNexusId(), nexusInfoDialog.getNexusUrl(), nexusInfoDialog.isReleaseButtonPressed(), nexusInfoDialog
-							.isSnapshotsButtonPressed());
+					nexusInfo = new NexusInfo(nexusInfoDialog.getNexusId(), nexusInfoDialog.getNexusUrl(),
+							nexusInfoDialog.isReleaseButtonPressed(), nexusInfoDialog.isSnapshotsButtonPressed());
 					tableViewer.add(nexusInfo);
 
 				}
@@ -227,7 +233,8 @@ public class NexusPreferencePage extends PreferencePage implements IWorkbenchPre
 					Object object = selection.getFirstElement();
 					if (object instanceof NexusInfo) {
 						NexusInfo nexusInfo = (NexusInfo) object;
-						NexusDialog nexusInfoDialog = new NexusDialog(getControl().getShell(), nexusInfo.getNexusId(), nexusInfo.getNexusUrl(), nexusInfo.getIsRealeaseSelected(),
+						NexusDialog nexusInfoDialog = new NexusDialog(getControl().getShell(), nexusInfo.getNexusId(),
+								nexusInfo.getNexusUrl(), nexusInfo.getIsRealeaseSelected(),
 								nexusInfo.getIsSnapshotsSelected(), false, nexusIdList);
 
 						if (nexusInfoDialog.open() == Window.OK) {
@@ -276,4 +283,5 @@ public class NexusPreferencePage extends PreferencePage implements IWorkbenchPre
 		innerContainer.layout();
 		return composite;
 	}
+
 }

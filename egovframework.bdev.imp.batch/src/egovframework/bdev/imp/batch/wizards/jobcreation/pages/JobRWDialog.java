@@ -46,7 +46,9 @@ import egovframework.dev.imp.core.utils.StringUtil;
  * @author 배치개발환경 개발팀 조용현
  * @since 2012.06.28
  * @version 1.0
- * @see <pre>
+ * @see
+ * 
+ *      <pre>
  *  &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *    
  * 수정일	  	수정자	  수정내용
@@ -54,7 +56,7 @@ import egovframework.dev.imp.core.utils.StringUtil;
  * 2012.07.24	조용현	최초생성
  * 
  * 
- * </pre>
+ *      </pre>
  */
 @SuppressWarnings("restriction")
 abstract public class JobRWDialog extends StatusDialog {
@@ -81,30 +83,30 @@ abstract public class JobRWDialog extends StatusDialog {
 	@SuppressWarnings("unused")
 	private String noteContent = null;
 
-	/** Job RW의 상세 정보 항목을 생성*/
+	/** Job RW의 상세 정보 항목을 생성 */
 	private JobRWDetailInfoControlConstructor detailInfoControlConstructor = null;
 
-	/** Partition Type 여부*/
+	/** Partition Type 여부 */
 	final private boolean isPartitionType;
 
-	/** Job RW 상세 정보 항목이 생성되는 Composite*/
+	/** Job RW 상세 정보 항목이 생성되는 Composite */
 	private ScrolledComposite detailInfoControl = null;
 
-	/** Job RW의 상세 정보 항목의 Error를 넘겨 받는 Label*/
+	/** Job RW의 상세 정보 항목의 Error를 넘겨 받는 Label */
 	private Label errorSettingLabel = null;
-	
-	/** Job RW의 상세 정보 Context*/
+
+	/** Job RW의 상세 정보 Context */
 	private Map<String, String> detailContext = null;
-	
-	/** SqlPagingQueryJdbcItemReader에서 입력한 Key, Value값 목록*/
+
+	/** SqlPagingQueryJdbcItemReader에서 입력한 Key, Value값 목록 */
 	private List<TypeCSqlKeyValueVo> sqlKeyValueVo = new ArrayList<TypeCSqlKeyValueVo>();
-	
-	/** Wizard의 Context*/
+
+	/** Wizard의 Context */
 	private BatchJobCreationContext context = null;
-	
-	/** 초기 Finish 버튼 비활성화 설정시 String*/
+
+	/** 초기 Finish 버튼 비활성화 설정시 String */
 	final private static String INITAIL_DISABLE_FINISH_BUTTON = "INITAIL_DISABLE_FINISH_BUTTON";
-	
+
 	final private String previousSelectedJobRW;
 
 	/**
@@ -124,8 +126,6 @@ abstract public class JobRWDialog extends StatusDialog {
 	public List<TypeCSqlKeyValueVo> getSqlKeyValueVo() {
 		return sqlKeyValueVo;
 	}
-
-
 
 	/**
 	 * noteContent의 값을 설정한다.
@@ -182,10 +182,9 @@ abstract public class JobRWDialog extends StatusDialog {
 	 * @param parent
 	 * @param type
 	 */
-	public JobRWDialog(Shell parent,
-			BatchXMLFileBeanIDList batchXMLFileBeanIDList,
-			BatchPageBeanIDList pageBeanIDs, JobRWInfo info,
-			boolean isPartitionType, BatchJobCreationContext context, Map<String, String> detailContext, List<TypeCSqlKeyValueVo> sqlKeyValueVo) {
+	public JobRWDialog(Shell parent, BatchXMLFileBeanIDList batchXMLFileBeanIDList, BatchPageBeanIDList pageBeanIDs,
+			JobRWInfo info, boolean isPartitionType, BatchJobCreationContext context, Map<String, String> detailContext,
+			List<TypeCSqlKeyValueVo> sqlKeyValueVo) {
 		super(parent);
 		this.batchXMLFileBeanIDList = batchXMLFileBeanIDList;
 		this.pageBeanIDs = pageBeanIDs;
@@ -193,13 +192,13 @@ abstract public class JobRWDialog extends StatusDialog {
 		this.isPartitionType = isPartitionType;
 		this.context = context;
 		this.detailContext = detailContext;
-		
-		if(NullUtil.isNull(info)){
+
+		if (NullUtil.isNull(info)) {
 			this.previousSelectedJobRW = "";
-		}else{
+		} else {
 			this.previousSelectedJobRW = selectJobRWInfo.getName();
 		}
-		
+
 		this.sqlKeyValueVo = sqlKeyValueVo;
 	}
 
@@ -207,7 +206,7 @@ abstract public class JobRWDialog extends StatusDialog {
 	protected Control createDialogArea(Composite parent) {
 		GridData tableGData = new GridData(GridData.FILL_HORIZONTAL);
 		tableGData.heightHint = 450;
-		
+
 		Composite control = new Composite(parent, SWT.NONE);
 		control.setLayout(new GridLayout());
 		control.setLayoutData(tableGData);
@@ -225,17 +224,15 @@ abstract public class JobRWDialog extends StatusDialog {
 		link.addListener(SWT.MouseUp, new Listener() {
 
 			public void handleEvent(Event event) {
-				PreferencesUtil
-						.createPreferenceDialogOn(
-								PlatformUI.getWorkbench()
-										.getActiveWorkbenchWindow().getShell(),
-								"egovframework.bdev.imp.confmngt.preferences.jobreaderwriterpreperencepage", //$NON-NLS-1$
-								new String[] { "egovframework.bdev.imp.confmngt.preferences.jobreaderwriterpreperencepage" }, //$NON-NLS-1$
-								null).open();
+				PreferencesUtil.createPreferenceDialogOn(
+						PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+						"egovframework.bdev.imp.confmngt.preferences.jobreaderwriterpreperencepage", //$NON-NLS-1$
+						new String[] { "egovframework.bdev.imp.confmngt.preferences.jobreaderwriterpreperencepage" }, //$NON-NLS-1$
+						null).open();
 				contents.refreshInputData();
-				
+
 				setTableViewerSelection(selectJobRWInfo);
-				
+
 				if (isPartitionType) {
 					changeTableInputToPartitionTypeTableInput();
 				}
@@ -244,17 +241,17 @@ abstract public class JobRWDialog extends StatusDialog {
 
 		contents = createJobRWContents();
 		contents.createTableViewerContents(control);
-	
+
 		contents.getTableViewer().getTable().addListener(SWT.Selection, validation);
 		contents.getTableViewer().getTable().addListener(SWT.Selection, contentsListner);
-		
+
 		if (isPartitionType) {
 			changeTableInputToPartitionTypeTableInput();
 		}
 
 		GridData gData = new GridData(GridData.FILL_HORIZONTAL);
 		gData.heightHint = 180;
-		
+
 		Group sqlContentsGroup = new Group(control, SWT.SHADOW_ETCHED_IN);
 		sqlContentsGroup.setLayout(new GridLayout(3, false));
 		sqlContentsGroup.setLayoutData(gData);
@@ -269,9 +266,9 @@ abstract public class JobRWDialog extends StatusDialog {
 		createErrorSettingLabel(control);
 
 		setTableViewerSelection(selectJobRWInfo);
-		
+
 		validation.handleEvent(null);
-		
+
 		return control;
 	}
 
@@ -287,7 +284,7 @@ abstract public class JobRWDialog extends StatusDialog {
 		errorSettingLabel = new Label(control, SWT.BORDER);
 		errorSettingLabel.setVisible(false);
 		errorSettingLabel.addListener(SWT.Modify, validation);
-		
+
 		errorSettingLabel.setText(INITAIL_DISABLE_FINISH_BUTTON);
 	}
 
@@ -295,8 +292,7 @@ abstract public class JobRWDialog extends StatusDialog {
 	Listener validation = new Listener() {
 
 		public void handleEvent(Event event) {
-			IStructuredSelection selection = (IStructuredSelection) contents
-					.getTableViewer().getSelection();
+			IStructuredSelection selection = (IStructuredSelection) contents.getTableViewer().getSelection();
 			StatusInfo status = new StatusInfo();
 
 			if (selection.isEmpty()) {
@@ -312,7 +308,7 @@ abstract public class JobRWDialog extends StatusDialog {
 				return;
 			}
 
-			String errorMessage = errorSettingLabel.getText();			
+			String errorMessage = errorSettingLabel.getText();
 			if (!NullUtil.isEmpty(errorMessage)) {
 				status.setError(errorMessage);
 				updateStatus(status);
@@ -326,8 +322,7 @@ abstract public class JobRWDialog extends StatusDialog {
 	};
 
 	/**
-	 * 입력된 항목이 없을때의 Error Message를 가져온다.
-	 * 자식 클래스에서 구현.
+	 * 입력된 항목이 없을때의 Error Message를 가져온다. 자식 클래스에서 구현.
 	 * 
 	 * @return
 	 */
@@ -356,22 +351,22 @@ abstract public class JobRWDialog extends StatusDialog {
 	 * 
 	 */
 	Listener contentsListner = new Listener() {
-		
+
 		@SuppressWarnings("deprecation")
 		public void handleEvent(Event event) {
 			IStructuredSelection selection = (IStructuredSelection) contents.getTableViewer().getSelection();
 			selectJobRWInfo = (JobRWInfo) selection.getFirstElement();
 
 			createDetailInfoControl(selectJobRWInfo, isPartitionType);
-			
+
 			String errorMessage = errorSettingLabel.getText();
-			if(!NullUtil.isEmpty(errorMessage)){
+			if (!NullUtil.isEmpty(errorMessage)) {
 				errorSettingLabel.setText("");
 				errorSettingLabel.notifyListeners(SWT.Modify, null);
-				
+
 				Button okButton = getOKButton();
 				okButton.setEnabled(false);
-			}			
+			}
 		}
 	};
 
@@ -385,16 +380,18 @@ abstract public class JobRWDialog extends StatusDialog {
 
 		if (!NullUtil.isNull(info)) {
 			String resourceType = info.getResourceType();
-			
-			if (JobRWInfo.DB.equals(resourceType)) {				
+
+			if (JobRWInfo.DB.equals(resourceType)) {
 				JobRWDBDetailInfoControlConstructor detailInfoControlConstructor = new JobRWDBDetailInfoControlConstructor(
-						detailInfoControl, errorSettingLabel, context, detailContext, sqlKeyValueVo, isPreviousSelectedJobRW(info.getName()));
+						detailInfoControl, errorSettingLabel, context, detailContext, sqlKeyValueVo,
+						isPreviousSelectedJobRW(info.getName()));
 				detailInfoControlConstructor.createDetailInfoControl(info);
 
 				this.detailInfoControlConstructor = detailInfoControlConstructor;
 			} else if (JobRWInfo.FILE.equals(resourceType)) {
 				JobRWFileDetailInfoControlConstructor detailInfoControlConstructor = new JobRWFileDetailInfoControlConstructor(
-						detailInfoControl, errorSettingLabel, isPartitionType, context, detailContext, isPreviousSelectedJobRW(info.getName()));
+						detailInfoControl, errorSettingLabel, isPartitionType, context, detailContext,
+						isPreviousSelectedJobRW(info.getName()));
 				detailInfoControlConstructor.createDetailInfoControl(info);
 
 				this.detailInfoControlConstructor = detailInfoControlConstructor;
@@ -402,13 +399,13 @@ abstract public class JobRWDialog extends StatusDialog {
 
 		}
 	}
-	
-	private boolean isPreviousSelectedJobRW(String selectedJobRWName){
+
+	private boolean isPreviousSelectedJobRW(String selectedJobRWName) {
 		return previousSelectedJobRW.equals(selectedJobRWName);
 	}
 
 	/**
-	 * Contents의 TableViewer에서 Selection을 설정한다. 
+	 * Contents의 TableViewer에서 Selection을 설정한다.
 	 * 
 	 * @param info
 	 */
@@ -432,8 +429,7 @@ abstract public class JobRWDialog extends StatusDialog {
 	 * 
 	 */
 	private void changeTableInputToPartitionTypeTableInput() {
-		TableItem[] inputItems = contents.getTableViewer().getTable()
-				.getItems();
+		TableItem[] inputItems = contents.getTableViewer().getTable().getItems();
 
 		ArrayList<JobRWInfo> newInputItems = new ArrayList<JobRWInfo>();
 
@@ -441,7 +437,7 @@ abstract public class JobRWDialog extends StatusDialog {
 			JobRWInfo jobRWInfo = (JobRWInfo) item.getData();
 
 			if (JobRWInfo.FILE.equals(jobRWInfo.getResourceType())) {
-				if(!jobRWInfo.getItemType().contains("MultiResource")){
+				if (!jobRWInfo.getItemType().contains("MultiResource")) {
 					newInputItems.add(jobRWInfo);
 				}
 			}
@@ -452,15 +448,20 @@ abstract public class JobRWDialog extends StatusDialog {
 
 	@Override
 	protected Point getInitialSize() {
-		return new Point(487, 550);
+		return new Point(600, 650);
 	}
-	
+
 	@Override
 	protected void okPressed() {
 		detailContext = detailInfoControlConstructor.getDetailContext();
-		
+
 		sqlKeyValueVo = detailInfoControlConstructor.getSqlKeyValueList();
-		
+
 		super.okPressed();
+	}
+
+	@Override
+	protected boolean isResizable() {
+		return true;
 	}
 }

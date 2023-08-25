@@ -1,4 +1,4 @@
-package egovframework.rte.sample.vo;
+package org.egovframe.rte.sample.vo;
 
 import java.io.Serializable;
 

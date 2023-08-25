@@ -46,7 +46,9 @@ import egovframework.dev.imp.core.utils.NullUtil;
  * @author 배치개발환경 개발팀 조용현
  * @since 2012.06.28
  * @version 1.0
- * @see <pre>
+ * @see
+ * 
+ *      <pre>
  *  &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *    
  * 수정일	  	수정자	  수정내용
@@ -54,7 +56,7 @@ import egovframework.dev.imp.core.utils.NullUtil;
  * 2012.07.24	조용현	최초생성
  * 
  * 
- * </pre>
+ *      </pre>
  */
 public class BatchJobCreationCustomizePage extends WizardPage {
 
@@ -107,9 +109,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 	 * <pre>
 	 * job, step, decision 에 의해서 바뀌는 Label
 	 * 
-	 * ex)	Job -> Job Info
-	 * 	Step -> Step Info
-	 * Decision -> Decision Info
+	 * ex) Job -> Job Info Step -> Step Info Decision -> Decision Info
 	 */
 	private Label infoLabel = null;
 
@@ -118,8 +118,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 
 	/**
 	 * <pre>
-	 * Job info, Step info, Decision info의 화면을
-	 * 그릴 Composite
+	 * Job info, Step info, Decision info의 화면을 그릴 Composite
 	 * 
 	 * <pre>
 	 */
@@ -137,8 +136,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 	 * @param pageName
 	 * @param context
 	 */
-	public BatchJobCreationCustomizePage(String pageName,
-			BatchJobCreationContext context) {
+	public BatchJobCreationCustomizePage(String pageName, BatchJobCreationContext context) {
 		super(pageName);
 		this.context = context;
 		setTitle(BatchMessages.BatchJobCreationCustomizePage_TITLE);
@@ -171,8 +169,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		Group innerPart = new Group(control, SWT.None);
 		innerPart.setLayout(new GridLayout());
 		innerPart.setLayoutData(new GridData(GridData.FILL_VERTICAL));
-		innerPart
-				.setText(BatchMessages.BatchJobCreationCustomizePage_JOB_LIST_GROUP);
+		innerPart.setText(BatchMessages.BatchJobCreationCustomizePage_JOB_LIST_GROUP);
 
 		jobListTable = createAndGetListTable(innerPart, jobListTableListener);
 
@@ -189,11 +186,9 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		Group innerPart = new Group(control, SWT.NONE);
 		innerPart.setLayout(new GridLayout());
 		innerPart.setLayoutData(new GridData(GridData.FILL_VERTICAL));
-		innerPart
-				.setText(BatchMessages.BatchJobCreationCustomizePage_STEP_DECISION_LIST_GROUP);
+		innerPart.setText(BatchMessages.BatchJobCreationCustomizePage_STEP_DECISION_LIST_GROUP);
 
-		stepAndDecisionListTable = createAndGetListTable(innerPart,
-				stepAndDecisionListTableListener);
+		stepAndDecisionListTable = createAndGetListTable(innerPart, stepAndDecisionListTableListener);
 
 		createStepDecisionListTableButtonsControl(innerPart);
 	}
@@ -205,10 +200,9 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 	 * @param tableListener
 	 * @return
 	 */
-	private TableViewer createAndGetListTable(Composite control,
-			Listener tableListener) {
-		TableViewer tableViewer = new TableViewer(control, SWT.BORDER
-				| SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION);
+	private TableViewer createAndGetListTable(Composite control, Listener tableListener) {
+		TableViewer tableViewer = new TableViewer(control,
+				SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL | SWT.FULL_SELECTION);
 
 		Table table = tableViewer.getTable();
 
@@ -217,8 +211,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		tableViewer.setContentProvider(new ArrayContentProvider());
 		tableViewer.setLabelProvider(new ListProvider());
 
-		BatchTableColumn column = new BatchTableColumn("NO_COLUMN_NAME", 120,
-				SWT.LEFT);
+		BatchTableColumn column = new BatchTableColumn("NO_COLUMN_NAME", 120, SWT.LEFT);
 		column.setColumnToTable(table);
 
 		GridData gData = new GridData(GridData.FILL_VERTICAL);
@@ -244,13 +237,11 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 
 		jobAddButton = new Button(buttonControl, SWT.PUSH);
 		jobAddButton.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		jobAddButton
-				.setText(BatchMessages.BatchJobCreationCustomizePage_ADD_BUTTON);
+		jobAddButton.setText(BatchMessages.BatchJobCreationCustomizePage_ADD_BUTTON);
 		jobAddButton.addListener(SWT.Selection, jobAddButtonListener);
 
 		jobRemoveButton = new Button(buttonControl, SWT.PUSH);
-		jobRemoveButton
-				.setText(BatchMessages.BatchJobCreationCustomizePage_REMOVE_BUTTON);
+		jobRemoveButton.setText(BatchMessages.BatchJobCreationCustomizePage_REMOVE_BUTTON);
 		jobRemoveButton.addListener(SWT.Selection, jobRemoveButtonListener);
 	}
 
@@ -266,18 +257,13 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		removeMarginOfGridLayout(buttonControl);
 
 		stepAndDecisionAdd = new Button(buttonControl, SWT.PUSH);
-		stepAndDecisionAdd
-				.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		stepAndDecisionAdd
-				.setText(BatchMessages.BatchJobCreationCustomizePage_ADD_BUTTON);
-		stepAndDecisionAdd.addListener(SWT.Selection,
-				stepAndDecisionAddButtonListener);
+		stepAndDecisionAdd.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		stepAndDecisionAdd.setText(BatchMessages.BatchJobCreationCustomizePage_ADD_BUTTON);
+		stepAndDecisionAdd.addListener(SWT.Selection, stepAndDecisionAddButtonListener);
 
 		stepAndDecisionRemove = new Button(buttonControl, SWT.PUSH);
-		stepAndDecisionRemove
-				.setText(BatchMessages.BatchJobCreationCustomizePage_REMOVE_BUTTON);
-		stepAndDecisionRemove.addListener(SWT.Selection,
-				stepAndDecisionRemoveTableViewerListener);
+		stepAndDecisionRemove.setText(BatchMessages.BatchJobCreationCustomizePage_REMOVE_BUTTON);
+		stepAndDecisionRemove.addListener(SWT.Selection, stepAndDecisionRemoveTableViewerListener);
 	}
 
 	/**
@@ -291,8 +277,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		innerPart.setLayout(new GridLayout());
 		innerPart.setLayoutData(new GridData(GridData.FILL_BOTH));
 		removeMarginOfGridLayout(innerPart);
-		innerPart
-				.setText(BatchMessages.BatchJobCreationCustomizePage_INFO_GROUP);
+		innerPart.setText(BatchMessages.BatchJobCreationCustomizePage_INFO_GROUP);
 
 		createInfoLabelAndDecisionComboControl(innerPart);
 
@@ -309,27 +294,22 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 	private void createInfoLabelAndDecisionComboControl(Composite control) {
 		Composite labelAndDecisionControl = new Composite(control, SWT.None);
 		labelAndDecisionControl.setLayout(new GridLayout(2, false));
-		labelAndDecisionControl.setLayoutData(new GridData(
-				GridData.FILL_HORIZONTAL));
+		labelAndDecisionControl.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		removeMarginOfGridLayout(labelAndDecisionControl);
 
-		Composite labelControl = new Composite(labelAndDecisionControl,
-				SWT.None);
+		Composite labelControl = new Composite(labelAndDecisionControl, SWT.None);
 		labelControl.setLayout(new GridLayout());
 		labelControl.setLayoutData(new GridData());
 		removeMarginOfGridLayout(labelControl);
 
 		infoLabel = new Label(labelControl, SWT.None);
 
-		Composite decisionControl = new Composite(labelAndDecisionControl,
-				SWT.None);
+		Composite decisionControl = new Composite(labelAndDecisionControl, SWT.None);
 		decisionControl.setLayout(new GridLayout());
-		decisionControl.setLayoutData(new GridData(
-				GridData.HORIZONTAL_ALIGN_END | GridData.FILL_HORIZONTAL));
+		decisionControl.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END | GridData.FILL_HORIZONTAL));
 		removeMarginOfGridLayout(decisionControl);
 
-		stepAndDecisionCombo = new Combo(decisionControl, SWT.BORDER
-				| SWT.READ_ONLY);
+		stepAndDecisionCombo = new Combo(decisionControl, SWT.BORDER | SWT.READ_ONLY);
 		stepAndDecisionCombo.setItems(new String[] { DEFAULT, STEP, DECISION });
 	}
 
@@ -358,19 +338,15 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 	private void createInfoButtonsControl(Composite control) {
 		Composite buttonControl = new Composite(control, SWT.NONE);
 		buttonControl.setLayout(new GridLayout(2, true));
-		buttonControl.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END
-				| GridData.FILL_HORIZONTAL));
+		buttonControl.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END | GridData.FILL_HORIZONTAL));
 		removeMarginOfGridLayout(buttonControl);
 
 		restoreDefaultsButton = new Button(buttonControl, SWT.PUSH);
-		restoreDefaultsButton
-				.setText(BatchMessages.BatchJobCreationCustomizePage_RESTORE_DEFAULT_BUTTON);
-		restoreDefaultsButton.setLayoutData(new GridData(
-				GridData.FILL_HORIZONTAL));
+		restoreDefaultsButton.setText(BatchMessages.BatchJobCreationCustomizePage_RESTORE_DEFAULT_BUTTON);
+		restoreDefaultsButton.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
 		applyButton = new Button(buttonControl, SWT.PUSH);
-		applyButton
-				.setText(BatchMessages.BatchJobCreationCustomizePage_APPLY_BUTTON);
+		applyButton.setText(BatchMessages.BatchJobCreationCustomizePage_APPLY_BUTTON);
 		applyButton.setEnabled(false);
 		applyButton.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 	}
@@ -395,17 +371,13 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 			}
 		}
 
-		Listener[] applyButtonListener = applyButton
-				.getListeners(SWT.Selection);
-		Listener[] restoreButtonListener = restoreDefaultsButton
-				.getListeners(SWT.Selection);
+		Listener[] applyButtonListener = applyButton.getListeners(SWT.Selection);
+		Listener[] restoreButtonListener = restoreDefaultsButton.getListeners(SWT.Selection);
 
 		if (applyButtonListener != null & restoreButtonListener != null) {
 			for (int i = 0; i < applyButtonListener.length; i++) {
-				applyButton.removeListener(SWT.Selection,
-						applyButtonListener[i]);
-				restoreDefaultsButton.removeListener(SWT.Selection,
-						restoreButtonListener[i]);
+				applyButton.removeListener(SWT.Selection, applyButtonListener[i]);
+				restoreDefaultsButton.removeListener(SWT.Selection, restoreButtonListener[i]);
 			}
 		}
 
@@ -415,21 +387,19 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 	@Override
 	public void setVisible(boolean visible) {
 		if (visible) {
-			Point size = new Point(840, 785);
+			Point size = new Point(1150, 1200);
 			getShell().setMinimumSize(size);
 			getShell().setSize(size);
 			batchXMLFileBeanIDList = new BatchXMLFileBeanIDList();
 
 			projectBeanIDList = getProjectBeanIDList();
 
-			jobInfoControl = new JobInfoContentsConstructor(this, infoContents,
-					applyButton, batchXMLFileBeanIDList, projectBeanIDList);
-			stepInfoControl = new StepInfoContentsConstructor(this,
-					infoContents, applyButton, batchXMLFileBeanIDList,
-					projectBeanIDList, context);
-			decisionInfoControl = new DecisionInfoContentsConstructor(this,
-					infoContents, applyButton, batchXMLFileBeanIDList,
+			jobInfoControl = new JobInfoContentsConstructor(this, infoContents, applyButton, batchXMLFileBeanIDList,
 					projectBeanIDList);
+			stepInfoControl = new StepInfoContentsConstructor(this, infoContents, applyButton, batchXMLFileBeanIDList,
+					projectBeanIDList, context);
+			decisionInfoControl = new DecisionInfoContentsConstructor(this, infoContents, applyButton,
+					batchXMLFileBeanIDList, projectBeanIDList);
 
 			refreshPage();
 
@@ -477,8 +447,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		Label emptyLabel = new Label(infoContents, SWT.None);
 		emptyLabel.setText("");
 		Label infoImageLabel = new Label(infoContents, SWT.ICON | SWT.CENTER);
-		infoImageLabel.setImage(EgovBatchPlugin.getDefault().getImage(
-				EgovBatchPlugin.IMG_BATCH_JOB_ADD));
+		infoImageLabel.setImage(EgovBatchPlugin.getDefault().getImage(EgovBatchPlugin.IMG_BATCH_JOB_ADD));
 	}
 
 	/**
@@ -492,8 +461,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		findingNode.add("/beans/job"); //$NON-NLS-1$
 		findingNode.add("/beans/job/step"); //$NON-NLS-1$
 
-		return FindXMLFileBeanIdValueUtil.findXMLFiles(context, findingNode,
-				"id", 3); //$NON-NLS-1$
+		return FindXMLFileBeanIdValueUtil.findXMLFiles(context, findingNode, "id", 3); //$NON-NLS-1$
 	}
 
 	/**
@@ -509,8 +477,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 			canFinishButtonEnable = true;
 			for (int i = 0; i < items.length; i++) {
 				JobVo jobVo = (JobVo) items[i].getData();
-				StepAndDecisionVo[] stepAndDecisionVo = jobVo
-						.getStepAndDecisionVoList();
+				StepAndDecisionVo[] stepAndDecisionVo = jobVo.getStepAndDecisionVoList();
 				if (NullUtil.isEmpty(stepAndDecisionVo)) {
 					canFinishButtonEnable = false;
 					break;
@@ -610,8 +577,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 			for (TableItem item : data) {
 				StepAndDecisionVo sdVo = (StepAndDecisionVo) item.getData();
 				if (sdVoName.equals(sdVo.getName())) {
-					stepAndDecisionListTable
-							.setSelection(new StructuredSelection(sdVo));
+					stepAndDecisionListTable.setSelection(new StructuredSelection(sdVo));
 					break;
 				}
 			}
@@ -631,8 +597,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 			StepAndDecisionVo stepAndDecisionSelection) {
 		ArrayList<StepAndDecisionVo> refMember = new ArrayList<StepAndDecisionVo>();
 
-		if (!NullUtil.isNull(jobSelection)
-				&& !NullUtil.isNull(stepAndDecisionSelection)) {
+		if (!NullUtil.isNull(jobSelection) && !NullUtil.isNull(stepAndDecisionSelection)) {
 			StepAndDecisionVo[] list = jobSelection.getStepAndDecisionVoList();
 
 			if (!NullUtil.isEmpty(list)) {
@@ -656,8 +621,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 	 * @param standard
 	 * @return
 	 */
-	private boolean isStepAndDecisionVoReference(StepAndDecisionVo sdVo,
-			String standard) {
+	private boolean isStepAndDecisionVoReference(StepAndDecisionVo sdVo, String standard) {
 		if (sdVo instanceof StepVo) {
 			return isStepVoReference((StepVo) sdVo, standard);
 		} else {
@@ -744,16 +708,14 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 	 * @param stepAndDecisionSelection
 	 * @return
 	 */
-	private String createRefDialogModifyString(String preID,
-			ArrayList<StepAndDecisionVo> refMemberList) {
+	private String createRefDialogModifyString(String preID, ArrayList<StepAndDecisionVo> refMemberList) {
 		String refMemeberString = createReferenceMessage(refMemberList);
 
 		if (NullUtil.isEmpty(refMemeberString)) {
 			return BatchMessages.BatchJobCreationCustomizePage_CONFIRM_UPDATE;
 		}
 
-		String result = preID
-				+ BatchMessages.BatchJobCreationCustomizePage_UPDATE_MESSAGE_1;
+		String result = preID + BatchMessages.BatchJobCreationCustomizePage_UPDATE_MESSAGE_1;
 		result += refMemeberString + "\n\n"; //$NON-NLS-1$
 		result += BatchMessages.BatchJobCreationCustomizePage_UPDATE_MESSAGE_2;
 
@@ -767,19 +729,16 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 	 * @param stepAndDecisionSelection
 	 * @return
 	 */
-	private String createRefDialogRemoveString(String preID,
-			ArrayList<StepAndDecisionVo> refMemberList) {
+	private String createRefDialogRemoveString(String preID, ArrayList<StepAndDecisionVo> refMemberList) {
 		String refMemeberString = createReferenceMessage(refMemberList);
 
 		if (NullUtil.isEmpty(refMemeberString)) {
 			return BatchMessages.BatchJobCreationCustomizePage_CONFIRM_DELETE;
 		}
 
-		String result = preID
-				+ BatchMessages.BatchJobCreationCustomizePage_DELETE_MESSAGE_1;
+		String result = preID + BatchMessages.BatchJobCreationCustomizePage_DELETE_MESSAGE_1;
 		result += refMemeberString + "\n\n"; //$NON-NLS-1$
-		result += preID
-				+ BatchMessages.BatchJobCreationCustomizePage_DELETE_MESSAGE_2;
+		result += preID + BatchMessages.BatchJobCreationCustomizePage_DELETE_MESSAGE_2;
 
 		return result;
 	}
@@ -894,8 +853,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 	 * @param applyButtonListener
 	 * @param restoreButtonListener
 	 */
-	private void setApplyAndRestoreButtonListener(Listener applyButtonListener,
-			Listener restoreButtonListener) {
+	private void setApplyAndRestoreButtonListener(Listener applyButtonListener, Listener restoreButtonListener) {
 		applyButton.addListener(SWT.Selection, applyButtonListener);
 		restoreDefaultsButton.addListener(SWT.Selection, restoreButtonListener);
 	}
@@ -905,22 +863,19 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		currentInfo = DEFAULT;
 
 		Label infoLabel = new Label(infoContents, SWT.None);
-		infoLabel
-				.setText(BatchMessages.BatchJobCreationCustomizePage_STEP_DECISION_ADD_BUTTON_INFORMATION_MESSAGE);
+		infoLabel.setText(BatchMessages.BatchJobCreationCustomizePage_STEP_DECISION_ADD_BUTTON_INFORMATION_MESSAGE);
 
 		// choise
 		Label emptyLabel = new Label(infoContents, SWT.None);
 		emptyLabel.setText(""); //$NON-NLS-1$
 		Label infoImageLabel = new Label(infoContents, SWT.ICON | SWT.CENTER);
-		infoImageLabel.setImage(EgovBatchPlugin.getDefault().getImage(
-				EgovBatchPlugin.IMG_BATCH_STEPDECISION_ADD));
+		infoImageLabel.setImage(EgovBatchPlugin.getDefault().getImage(EgovBatchPlugin.IMG_BATCH_STEPDECISION_ADD));
 
 	}
 
 	/** Job List의 Selection을 가져온다. */
 	private JobVo getJobListSelection() {
-		IStructuredSelection selection = (IStructuredSelection) jobListTable
-				.getSelection();
+		IStructuredSelection selection = (IStructuredSelection) jobListTable.getSelection();
 
 		if (!selection.isEmpty()) {
 			JobVo jobVo = (JobVo) selection.getFirstElement();
@@ -932,12 +887,10 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 
 	/** Step/Decision List의 Selection을 가져온다. */
 	private StepAndDecisionVo getStepDecisionListSelection() {
-		IStructuredSelection stepAndDecisionSelection = (IStructuredSelection) stepAndDecisionListTable
-				.getSelection();
+		IStructuredSelection stepAndDecisionSelection = (IStructuredSelection) stepAndDecisionListTable.getSelection();
 
 		if (!stepAndDecisionSelection.isEmpty()) {
-			StepAndDecisionVo selectStepAndDecisionVo = (StepAndDecisionVo) stepAndDecisionSelection
-					.getFirstElement();
+			StepAndDecisionVo selectStepAndDecisionVo = (StepAndDecisionVo) stepAndDecisionSelection.getFirstElement();
 			return selectStepAndDecisionVo;
 		} else {
 			return null;
@@ -987,23 +940,20 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 				if (!NullUtil.isEmpty(selectJobVo.getStepAndDecisionVoList())) {
 					String message = selectJobVo.getJobName()
 							+ BatchMessages.BatchJobCreationCustomizePage_CONFIRM_DELETE_JOB_HAVING_STEP_DECISION;
-					if (!openConfirmDialog(
-							BatchMessages.BatchJobCreationCustomizePage_DELETE_BUTTON_DIALOG_TITLE,
+					if (!openConfirmDialog(BatchMessages.BatchJobCreationCustomizePage_DELETE_BUTTON_DIALOG_TITLE,
 							message)) {
 						return;
 					}
 				} else {
 					String message = selectJobVo.getJobName()
 							+ BatchMessages.BatchJobCreationCustomizePage_CONFIRM_DELETE_JOB_WITHOUT_STEP_DECISION;
-					if (!openConfirmDialog(
-							BatchMessages.BatchJobCreationCustomizePage_DELETE_BUTTON_DIALOG_TITLE,
+					if (!openConfirmDialog(BatchMessages.BatchJobCreationCustomizePage_DELETE_BUTTON_DIALOG_TITLE,
 							message)) {
 						return;
 					}
 				}
 
-				batchXMLFileBeanIDList.removeJobBeanIDList(selectJobVo
-						.getJobName());
+				batchXMLFileBeanIDList.removeJobBeanIDList(selectJobVo.getJobName());
 
 				jobListTable.remove(selectJobVo);
 
@@ -1023,8 +973,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 			setMessage(BatchMessages.BatchJobCreationCustomizePage_SELECT_JOB);
 
 			if (!NullUtil.isNull(selectJobVo)) {
-				stepAndDecisionListTable.setInput(selectJobVo
-						.getStepAndDecisionVoList());
+				stepAndDecisionListTable.setInput(selectJobVo.getStepAndDecisionVoList());
 
 				refreshInfoToJob(selectJobVo);
 
@@ -1053,8 +1002,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 
 		jobInfoControl.createJobInfoContents(jobVo, getJobVoNameList());
 
-		setApplyAndRestoreButtonListener(jobApplyButtonListener,
-				jobRestoreButtonListener);
+		setApplyAndRestoreButtonListener(jobApplyButtonListener, jobRestoreButtonListener);
 
 		stepAndDecisionCombo.setVisible(false);
 
@@ -1068,8 +1016,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 			JobVo newJobVo = jobInfoControl.getJobVo();
 
 			if (!NullUtil.isNull(selectJobVo)) {
-				if (openConfirmDialog(
-						BatchMessages.BatchJobCreationCustomizePage_APPLY_BUTTON_DIALOG_TITLE,
+				if (openConfirmDialog(BatchMessages.BatchJobCreationCustomizePage_APPLY_BUTTON_DIALOG_TITLE,
 						BatchMessages.BatchJobCreationCustomizePage_CONFIRM_UPDATE)) {
 
 					updateJobVoAndBeanIDList(selectJobVo, newJobVo);
@@ -1093,8 +1040,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 	 * @param newJobVo
 	 */
 	private void updateJobVoAndBeanIDList(JobVo selectJobVo, JobVo newJobVo) {
-		batchXMLFileBeanIDList.updateJobVoBeanIDList(selectJobVo.getJobName(),
-				newJobVo);
+		batchXMLFileBeanIDList.updateJobVoBeanIDList(selectJobVo.getJobName(), newJobVo);
 		selectJobVo.copyValues(newJobVo);
 		jobListTable.update(selectJobVo, null);
 	}
@@ -1118,8 +1064,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 
 		public void handleEvent(Event event) {
 			String message = BatchMessages.BatchJobCreationCustomizePage_RESTORE_DEFAULT_CONFIRM_MESSAGE;
-			if (openConfirmDialog(
-					BatchMessages.BatchJobCreationCustomizePage_RESTORE_DEFAULT_BUTTON_DIALOG_TITLE,
+			if (openConfirmDialog(BatchMessages.BatchJobCreationCustomizePage_RESTORE_DEFAULT_BUTTON_DIALOG_TITLE,
 					message)) {
 
 				if (NullUtil.isNull(getJobListSelection())) {
@@ -1178,13 +1123,11 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 
 		stepAndDecisionCombo.setText(STEP);
 
-		infoLabel
-				.setText(BatchMessages.BatchJobCreationCustomizePage_STEP_INFO_LABEL);
+		infoLabel.setText(BatchMessages.BatchJobCreationCustomizePage_STEP_INFO_LABEL);
 
 		stepInfoControl.createStepInfoContents(jobVo, stepVo);
 
-		setApplyAndRestoreButtonListener(stepAndDecisionApplyButtonListener,
-				stepAndDecisionRestoreButtonListener);
+		setApplyAndRestoreButtonListener(stepAndDecisionApplyButtonListener, stepAndDecisionRestoreButtonListener);
 
 		refreshInfoControl();
 	}
@@ -1202,13 +1145,11 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 
 		stepAndDecisionCombo.setText(DECISION);
 
-		infoLabel
-				.setText(BatchMessages.BatchJobCreationCustomizePage_DECISION_INFO_LABEL);
+		infoLabel.setText(BatchMessages.BatchJobCreationCustomizePage_DECISION_INFO_LABEL);
 
 		decisionInfoControl.createDecisionInfoContents(jobVo, decisionVo);
 
-		setApplyAndRestoreButtonListener(stepAndDecisionApplyButtonListener,
-				stepAndDecisionRestoreButtonListener);
+		setApplyAndRestoreButtonListener(stepAndDecisionApplyButtonListener, stepAndDecisionRestoreButtonListener);
 
 		refreshInfoControl();
 	}
@@ -1240,8 +1181,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		 * @param selectJobVo
 		 * @param selectSDVo
 		 */
-		private void applyDecisionAndBeanIDList(JobVo selectJobVo,
-				StepAndDecisionVo selectSDVo) {
+		private void applyDecisionAndBeanIDList(JobVo selectJobVo, StepAndDecisionVo selectSDVo) {
 			DecisionVo newDecisionVo = decisionInfoControl.getDecisionVo();
 
 			if (NullUtil.isNull(selectSDVo)) {
@@ -1250,8 +1190,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 				addNewDecisionVOAndbeanIDList(selectJobVo, newDecisionVo);
 
 			} else {
-				updateDecisionVoAndBeanIDList(selectJobVo,
-						(DecisionVo) selectSDVo, newDecisionVo);
+				updateDecisionVoAndBeanIDList(selectJobVo, (DecisionVo) selectSDVo, newDecisionVo);
 
 			}
 		}
@@ -1259,11 +1198,8 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		/** 새로운 DecisionVo가 Apply됐을 경우 InfomMessage Dialog 생성 */
 		private void openNewDecisionApplyInformDialog() {
 			String informMessage = BatchMessages.BatchJobCreationCustomizePage_INFORM_AFTER_ADD_DICISION;
-			MessageDialog
-					.openInformation(
-							getShell(),
-							BatchMessages.BatchJobCreationCustomizePage_INFORM_AFTER_ADD_DICISION_DIALOG_TITLE,
-							informMessage);
+			MessageDialog.openInformation(getShell(),
+					BatchMessages.BatchJobCreationCustomizePage_INFORM_AFTER_ADD_DICISION_DIALOG_TITLE, informMessage);
 		}
 
 		/**
@@ -1272,12 +1208,10 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		 * @param selectJobVo
 		 * @param newDecisionVo
 		 */
-		private void addNewDecisionVOAndbeanIDList(JobVo selectJobVo,
-				DecisionVo newDecisionVo) {
+		private void addNewDecisionVOAndbeanIDList(JobVo selectJobVo, DecisionVo newDecisionVo) {
 			addNewStepAndDecisionVo(selectJobVo, newDecisionVo);
 
-			batchXMLFileBeanIDList.addDecisionVoBeanIDList(selectJobVo,
-					newDecisionVo);
+			batchXMLFileBeanIDList.addDecisionVoBeanIDList(selectJobVo, newDecisionVo);
 
 			setMessage(BatchMessages.BatchJobCreationCustomizePage_ADD_DECISION);
 		}
@@ -1288,8 +1222,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		 * @param selectJobVo
 		 * @param newSDVo
 		 */
-		private void addNewStepAndDecisionVo(JobVo selectJobVo,
-				StepAndDecisionVo newSDVo) {
+		private void addNewStepAndDecisionVo(JobVo selectJobVo, StepAndDecisionVo newSDVo) {
 			stepAndDecisionListTable.add(newSDVo);
 
 			selectJobVo.setStepAndDecisionVoList(getStepAndDecisionList());
@@ -1304,22 +1237,18 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		 * @param selectSDVo
 		 * @param newDecisionVo
 		 */
-		private void updateDecisionVoAndBeanIDList(JobVo selectJobVo,
-				DecisionVo selectSDVo, DecisionVo newDecisionVo) {
+		private void updateDecisionVoAndBeanIDList(JobVo selectJobVo, DecisionVo selectSDVo, DecisionVo newDecisionVo) {
 			String preDecisionID = selectSDVo.getName();
 			String postDecisionID = newDecisionVo.getName();
 
 			if (preDecisionID.equals(postDecisionID)) {
-				if (openConfirmDialog(
-						BatchMessages.BatchJobCreationCustomizePage_APPLY_BUTTON_DIALOG_TITLE,
+				if (openConfirmDialog(BatchMessages.BatchJobCreationCustomizePage_APPLY_BUTTON_DIALOG_TITLE,
 						BatchMessages.BatchJobCreationCustomizePage_UPDATE_MESSAGE_2)) {
-					updateDecisionVoAndBeanIDListWhenIDNotChanged(selectJobVo,
-							selectSDVo, newDecisionVo);
+					updateDecisionVoAndBeanIDListWhenIDNotChanged(selectJobVo, selectSDVo, newDecisionVo);
 				}
 
 			} else {
-				updateDecisionVoAndBeanIDListWhenIDChanged(selectJobVo,
-						selectSDVo, newDecisionVo, preDecisionID,
+				updateDecisionVoAndBeanIDListWhenIDChanged(selectJobVo, selectSDVo, newDecisionVo, preDecisionID,
 						postDecisionID);
 
 			}
@@ -1332,13 +1261,11 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		 * @param selectSDVo
 		 * @param newDecisionVo
 		 */
-		private void updateDecisionVoAndBeanIDListWhenIDNotChanged(
-				JobVo selectJobVo, DecisionVo selectSDVo,
+		private void updateDecisionVoAndBeanIDListWhenIDNotChanged(JobVo selectJobVo, DecisionVo selectSDVo,
 				DecisionVo newDecisionVo) {
 			DecisionVo selectDecisionVo = (DecisionVo) selectSDVo;
 
-			batchXMLFileBeanIDList.updateDecisionVoBeanIDList(selectDecisionVo,
-					selectJobVo, newDecisionVo);
+			batchXMLFileBeanIDList.updateDecisionVoBeanIDList(selectDecisionVo, selectJobVo, newDecisionVo);
 
 			selectDecisionVo.copyValues(newDecisionVo);
 
@@ -1354,24 +1281,16 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		 * @param preDecisionID
 		 * @param postDecisionID
 		 */
-		private void updateDecisionVoAndBeanIDListWhenIDChanged(
-				JobVo selectJobVo, DecisionVo selectSDVo,
-				DecisionVo newDecisionVo, String preDecisionID,
-				String postDecisionID) {
-			ArrayList<StepAndDecisionVo> refList = getReferenceList(
-					selectJobVo, selectSDVo);
+		private void updateDecisionVoAndBeanIDListWhenIDChanged(JobVo selectJobVo, DecisionVo selectSDVo,
+				DecisionVo newDecisionVo, String preDecisionID, String postDecisionID) {
+			ArrayList<StepAndDecisionVo> refList = getReferenceList(selectJobVo, selectSDVo);
 
-			String message = createRefDialogModifyString(selectSDVo.getName(),
-					refList);
+			String message = createRefDialogModifyString(selectSDVo.getName(), refList);
 
-			if (openConfirmDialog(
-					BatchMessages.BatchJobCreationCustomizePage_APPLY_BUTTON_DIALOG_TITLE,
-					message)) {
-				updateDecisionVoAndBeanIDListWhenIDNotChanged(selectJobVo,
-						selectSDVo, newDecisionVo);
+			if (openConfirmDialog(BatchMessages.BatchJobCreationCustomizePage_APPLY_BUTTON_DIALOG_TITLE, message)) {
+				updateDecisionVoAndBeanIDListWhenIDNotChanged(selectJobVo, selectSDVo, newDecisionVo);
 
-				updateStepDecisionIDToRefList(preDecisionID, postDecisionID,
-						refList);
+				updateStepDecisionIDToRefList(preDecisionID, postDecisionID, refList);
 			}
 		}
 
@@ -1382,16 +1301,14 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		 * @param newID
 		 * @param refList
 		 */
-		private void updateStepDecisionIDToRefList(String preID, String newID,
-				ArrayList<StepAndDecisionVo> refList) {
+		private void updateStepDecisionIDToRefList(String preID, String newID, ArrayList<StepAndDecisionVo> refList) {
 			if (!NullUtil.isEmpty(refList)) {
 				for (StepAndDecisionVo vo : refList) {
 					if (vo instanceof StepVo) {
 						updateStepDecisionIDToStepVo(preID, newID, (StepVo) vo);
 
 					} else if (vo instanceof DecisionVo) {
-						updateStepDecisionIDToDecisionVo(preID, newID,
-								(DecisionVo) vo);
+						updateStepDecisionIDToDecisionVo(preID, newID, (DecisionVo) vo);
 
 					}
 				}
@@ -1405,8 +1322,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		 * @param newStepID
 		 * @param refDecisionVo
 		 */
-		private void updateStepDecisionIDToDecisionVo(String preStepID,
-				String newStepID, DecisionVo refDecisionVo) {
+		private void updateStepDecisionIDToDecisionVo(String preStepID, String newStepID, DecisionVo refDecisionVo) {
 			NextVo[] nextVos = refDecisionVo.getNextVo();
 			if (!NullUtil.isEmpty(nextVos)) {
 				for (NextVo nextVo : nextVos) {
@@ -1433,8 +1349,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		 * @param newStepID
 		 * @param refStepVo
 		 */
-		private void updateStepDecisionIDToStepVo(String preStepID,
-				String newStepID, StepVo refStepVo) {
+		private void updateStepDecisionIDToStepVo(String preStepID, String newStepID, StepVo refStepVo) {
 			String nextStepID = refStepVo.getNextStep();
 			if (!NullUtil.isEmpty(nextStepID)) {
 				if (nextStepID.equals(preStepID)) {
@@ -1450,8 +1365,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		 * @param selectJobVo
 		 * @param selectSDVo
 		 */
-		private void applyStepAndBeanIDList(JobVo selectJobVo,
-				StepAndDecisionVo selectSDVo) {
+		private void applyStepAndBeanIDList(JobVo selectJobVo, StepAndDecisionVo selectSDVo) {
 			StepVo newStepVo = stepInfoControl.getStepVo();
 
 			if (NullUtil.isNull(selectSDVo)) {
@@ -1462,19 +1376,16 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 				addNewStepVoAndBeanIDList(selectJobVo, newStepVo);
 
 			} else {
-				updateStepVoAndBeanIDList(selectJobVo, (StepVo) selectSDVo,
-						newStepVo);
+				updateStepVoAndBeanIDList(selectJobVo, (StepVo) selectSDVo, newStepVo);
 
 			}
 		}
 
 		/** 2번째 StepVo 이상 Apply 할 경우 InformMessaage Dialog 생성 */
 		private void openMoreTwoStepApplyInformDialog() {
-			MessageDialog
-					.openInformation(
-							getShell(),
-							BatchMessages.BatchJobCreationCustomizePage_INFORM_AFTER_ADD_MORE_TWO_STEPS_DIALOG_TITLE,
-							BatchMessages.BatchJobCreationCustomizePage_INFORM_AFTER_ADD_MORE_TWO_STEPS);
+			MessageDialog.openInformation(getShell(),
+					BatchMessages.BatchJobCreationCustomizePage_INFORM_AFTER_ADD_MORE_TWO_STEPS_DIALOG_TITLE,
+					BatchMessages.BatchJobCreationCustomizePage_INFORM_AFTER_ADD_MORE_TWO_STEPS);
 		}
 
 		/**
@@ -1483,14 +1394,12 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		 * @param selectJobVo
 		 * @param newStepVo
 		 */
-		private void addNewStepVoAndBeanIDList(JobVo selectJobVo,
-				StepVo newStepVo) {
+		private void addNewStepVoAndBeanIDList(JobVo selectJobVo, StepVo newStepVo) {
 			addNewStepAndDecisionVo(selectJobVo, newStepVo);
 
 			batchXMLFileBeanIDList.addStepVoBeanIDList(selectJobVo, newStepVo);
 
-			selectJobVo.setSharedValues(stepInfoControl
-					.applyStepIDToSharedVoAndGetList(newStepVo.getName()));
+			selectJobVo.setSharedValues(stepInfoControl.applyStepIDToSharedVoAndGetList(newStepVo.getName()));
 
 			setMessage(BatchMessages.BatchJobCreationCustomizePage_ADD_STEP);
 		}
@@ -1502,22 +1411,19 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		 * @param selectSDVo
 		 * @param newStepVo
 		 */
-		private void updateStepVoAndBeanIDList(JobVo selectJobVo,
-				StepVo selectSDVo, StepVo newStepVo) {
+		private void updateStepVoAndBeanIDList(JobVo selectJobVo, StepVo selectSDVo, StepVo newStepVo) {
 			String preStepID = selectSDVo.getName();
 			String postStepID = newStepVo.getName();
 
 			if (preStepID.equals(postStepID)) {
-				if (openConfirmDialog(
-						BatchMessages.BatchJobCreationCustomizePage_APPLY_BUTTON_DIALOG_TITLE,
+				if (openConfirmDialog(BatchMessages.BatchJobCreationCustomizePage_APPLY_BUTTON_DIALOG_TITLE,
 						BatchMessages.BatchJobCreationCustomizePage_UPDATE_MESSAGE_2)) {
-					updateStepVoAndBeanIDListWhenIDNotChanged(selectJobVo,
-							selectSDVo, newStepVo, preStepID, postStepID);
+					updateStepVoAndBeanIDListWhenIDNotChanged(selectJobVo, selectSDVo, newStepVo, preStepID,
+							postStepID);
 				}
 
 			} else {
-				updateStepVoAndBeanIDListWhenIDChanged(selectJobVo, selectSDVo,
-						newStepVo, preStepID, postStepID);
+				updateStepVoAndBeanIDListWhenIDChanged(selectJobVo, selectSDVo, newStepVo, preStepID, postStepID);
 
 			}
 		}
@@ -1531,21 +1437,17 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		 * @param preStepID
 		 * @param postStepID
 		 */
-		private void updateStepVoAndBeanIDListWhenIDNotChanged(
-				JobVo selectJobVo, StepVo selectSDVo, StepVo newStepVo,
+		private void updateStepVoAndBeanIDListWhenIDNotChanged(JobVo selectJobVo, StepVo selectSDVo, StepVo newStepVo,
 				String preStepID, String postStepID) {
 			StepVo selectStepVo = (StepVo) selectSDVo;
 
-			batchXMLFileBeanIDList.updateStepVoBeanIDList(selectStepVo,
-					selectJobVo, newStepVo);
+			batchXMLFileBeanIDList.updateStepVoBeanIDList(selectStepVo, selectJobVo, newStepVo);
 
 			selectStepVo.copyValues(newStepVo);
 
 			stepAndDecisionListTable.update(selectStepVo, null);
 
-			selectJobVo.setSharedValues(stepInfoControl
-					.updateStepIDToSharedValueVoAndGetList(preStepID,
-							postStepID));
+			selectJobVo.setSharedValues(stepInfoControl.updateStepIDToSharedValueVoAndGetList(preStepID, postStepID));
 		}
 
 		/**
@@ -1557,25 +1459,18 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		 * @param preStepID
 		 * @param postStepID
 		 */
-		private void updateStepVoAndBeanIDListWhenIDChanged(JobVo selectJobVo,
-				StepVo selectSDVo, StepVo newStepVo, String preStepID,
-				String postStepID) {
+		private void updateStepVoAndBeanIDListWhenIDChanged(JobVo selectJobVo, StepVo selectSDVo, StepVo newStepVo,
+				String preStepID, String postStepID) {
 
-			ArrayList<StepAndDecisionVo> refList = getReferenceList(
-					selectJobVo, selectSDVo);
+			ArrayList<StepAndDecisionVo> refList = getReferenceList(selectJobVo, selectSDVo);
 
-			String message = createRefDialogModifyString(selectSDVo.getName(),
-					refList);
+			String message = createRefDialogModifyString(selectSDVo.getName(), refList);
 
-			if (openConfirmDialog(
-					BatchMessages.BatchJobCreationCustomizePage_APPLY_BUTTON_DIALOG_TITLE,
-					message)) {
+			if (openConfirmDialog(BatchMessages.BatchJobCreationCustomizePage_APPLY_BUTTON_DIALOG_TITLE, message)) {
 
-				updateStepVoAndBeanIDListWhenIDNotChanged(selectJobVo,
-						selectSDVo, newStepVo, preStepID, postStepID);
+				updateStepVoAndBeanIDListWhenIDNotChanged(selectJobVo, selectSDVo, newStepVo, preStepID, postStepID);
 
-				updateStepDecisionIDToRefList(preStepID, newStepVo.getName(),
-						refList);
+				updateStepDecisionIDToRefList(preStepID, newStepVo.getName(), refList);
 			}
 		}
 
@@ -1586,16 +1481,14 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 
 		public void handleEvent(Event event) {
 			String message = BatchMessages.BatchJobCreationCustomizePage_RESTORE_DEFAULT_CONFIRM_MESSAGE;
-			if (!openConfirmDialog(
-					BatchMessages.BatchJobCreationCustomizePage_RESTORE_DEFAULT_BUTTON_DIALOG_TITLE,
+			if (!openConfirmDialog(BatchMessages.BatchJobCreationCustomizePage_RESTORE_DEFAULT_BUTTON_DIALOG_TITLE,
 					message)) {
 				return;
 			}
 
 			StepAndDecisionVo selectSDVo = getStepDecisionListSelection();
 			if (NullUtil.isNull(selectSDVo)) {
-				stepAndDecisionCombo
-						.notifyListeners(SWT.Selection, new Event());
+				stepAndDecisionCombo.notifyListeners(SWT.Selection, new Event());
 			} else {
 				stepAndDecisionListTableListener.handleEvent(new Event());
 			}
@@ -1610,9 +1503,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 
 			deselectStepDecisionList();
 
-			setMessage(
-					BatchMessages.BatchJobCreationCustomizePage_SHOW_NEW_STEP_DECISION_INFO,
-					NONE);
+			setMessage(BatchMessages.BatchJobCreationCustomizePage_SHOW_NEW_STEP_DECISION_INFO, NONE);
 
 			infoLabel.setText("");
 
@@ -1657,26 +1548,20 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 			JobVo selectJobVo = getJobListSelection();
 			StepAndDecisionVo selectStepAndDecisionVo = getStepDecisionListSelection();
 
-			ArrayList<StepAndDecisionVo> refMemberList = getReferenceList(
-					selectJobVo, selectStepAndDecisionVo);
+			ArrayList<StepAndDecisionVo> refMemberList = getReferenceList(selectJobVo, selectStepAndDecisionVo);
 
-			String message = createRefDialogRemoveString(
-					selectStepAndDecisionVo.getName(), refMemberList);
+			String message = createRefDialogRemoveString(selectStepAndDecisionVo.getName(), refMemberList);
 
-			if (!openConfirmDialog(
-					BatchMessages.BatchJobCreationCustomizePage_REMOVE_STEP_DECISION_DIALOG_TITLE,
+			if (!openConfirmDialog(BatchMessages.BatchJobCreationCustomizePage_REMOVE_STEP_DECISION_DIALOG_TITLE,
 					message)) {
 				return;
 			}
 
 			if (!NullUtil.isNull(selectStepAndDecisionVo)) {
-				BatchJobBeanIDList jobBeanList = batchXMLFileBeanIDList
-						.getJobBeanIDList(selectJobVo.getJobName());
-				jobBeanList.removeStepDecision(selectStepAndDecisionVo
-						.getName());
+				BatchJobBeanIDList jobBeanList = batchXMLFileBeanIDList.getJobBeanIDList(selectJobVo.getJobName());
+				jobBeanList.removeStepDecision(selectStepAndDecisionVo.getName());
 
-				removeStepDecisionIDToRefList(
-						selectStepAndDecisionVo.getName(), refMemberList);
+				removeStepDecisionIDToRefList(selectStepAndDecisionVo.getName(), refMemberList);
 
 				stepAndDecisionListTable.remove(selectStepAndDecisionVo);
 
@@ -1702,8 +1587,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		 * @param newID
 		 * @param refList
 		 */
-		private void removeStepDecisionIDToRefList(String preID,
-				ArrayList<StepAndDecisionVo> refList) {
+		private void removeStepDecisionIDToRefList(String preID, ArrayList<StepAndDecisionVo> refList) {
 			if (!NullUtil.isEmpty(refList)) {
 				for (StepAndDecisionVo vo : refList) {
 					if (vo instanceof StepVo) {
@@ -1724,10 +1608,8 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		 * @param newStepID
 		 * @param refDecisionVo
 		 */
-		private void updateRefDecisionVo(String removedID,
-				DecisionVo refDecisionVo) {
-			NextVo[] nextVosExceptRefID = getNextVoListExceptRefID(removedID,
-					refDecisionVo);
+		private void updateRefDecisionVo(String removedID, DecisionVo refDecisionVo) {
+			NextVo[] nextVosExceptRefID = getNextVoListExceptRefID(removedID, refDecisionVo);
 			refDecisionVo.setNextVo(nextVosExceptRefID);
 
 			updateStopOnTo(removedID, refDecisionVo);
@@ -1740,8 +1622,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		 * @param refDecisionVo
 		 * @return
 		 */
-		private NextVo[] getNextVoListExceptRefID(String preStepID,
-				DecisionVo refDecisionVo) {
+		private NextVo[] getNextVoListExceptRefID(String preStepID, DecisionVo refDecisionVo) {
 			ArrayList<NextVo> updateNextVos = new ArrayList<NextVo>();
 			NextVo[] nextVos = refDecisionVo.getNextVo();
 			if (!NullUtil.isEmpty(nextVos)) {
@@ -1808,8 +1689,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 				}
 			}
 
-			sharedValueVoList = afterRemovedSVVoList
-					.toArray(new SharedValueVo[0]);
+			sharedValueVoList = afterRemovedSVVoList.toArray(new SharedValueVo[0]);
 			selectJobVo.setSharedValues(sharedValueVoList);
 		}
 

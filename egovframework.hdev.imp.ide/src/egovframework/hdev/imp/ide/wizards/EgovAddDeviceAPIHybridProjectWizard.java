@@ -41,13 +41,16 @@ import egovframework.hdev.imp.ide.pages.DeviceAPIWebProjectCreationPage;
 import egovframework.hdev.imp.ide.pages.GenerateTemplatePage;
 import egovframework.hdev.imp.ide.pages.SelectProjectPage;
 import egovframework.hdev.imp.ide.wizards.operation.AddDeviceAPITemplateGenerateOperation;
+
 /**
  * AddDeviceAPIHybridProject Wizard
  * 
  * @since 2012.07.24
  * @author 디바이스 API 개발환경 팀 조용현
  * @version 1.0
- * @see <pre>
+ * @see
+ * 
+ *      <pre>
  * &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *   
  *수정일	  	수정자	  수정내용
@@ -55,41 +58,42 @@ import egovframework.hdev.imp.ide.wizards.operation.AddDeviceAPITemplateGenerate
  *2012.07.24	조용현	최초생성
  *
  * 
- * </pre>
+ *      </pre>
  */
 
-public class EgovAddDeviceAPIHybridProjectWizard extends Wizard implements INewWizard, IExecutableExtension{
-	
+public class EgovAddDeviceAPIHybridProjectWizard extends Wizard implements INewWizard, IExecutableExtension {
+
 	/** 프로젝트 기본 정보 입력 Page */
 	DeviceAPIProjectCreationPage createPage = null;
-	
+
 	/** DB connection Test 및 Table create Page */
 	CustomizeTableCreationPage customizeTablePage = null;
-	
+
 	/** Web 프로젝트 생성 페이지 */
 	DeviceAPIWebProjectCreationPage createWebPJT = null;
-	
+
 	/** 템플릿 선택 페이지 */
 	GenerateTemplatePage generateTemplatePage = null;
-	
+
 	/** 프로젝트 선택 페이지 */
 	SelectProjectPage selectPJTPage = null;
-	
+
 	/** EgovAddDeviceAPIHybridProjectWizard의 context */
 	DeviceAPIContext context = new DeviceAPIContext();
-	
+
 	protected IConfigurationElement fConfigElement;
-	
+
 	/**
 	 * 생성자
 	 */
 	public EgovAddDeviceAPIHybridProjectWizard() {
-		
+
 		setContext(new DeviceAPIContext());
 		setWindowTitle(DeviceAPIMessages.WIZARD_ADD_PROJECT_TITLE);
-		setDefaultPageImageDescriptor(EgovDeviceAPIIdePlugin.getDefault().getImageDescriptor(EgovDeviceAPIIdePlugin.IMG_CORE_PROJ_WIZ_BANNER));
+		setDefaultPageImageDescriptor(EgovDeviceAPIIdePlugin.getDefault()
+				.getImageDescriptor(EgovDeviceAPIIdePlugin.IMG_CORE_PROJ_WIZ_BANNER));
 	}
-	
+
 	/**
 	 * @return DeviceAPIContext
 	 */
@@ -108,21 +112,22 @@ public class EgovAddDeviceAPIHybridProjectWizard extends Wizard implements INewW
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
 		setContext(new DeviceAPIContext());
 		setWindowTitle("New eGovFrame DeviceAPI Hybrid Project");
-		
+
 		setNeedsProgressMonitor(true);
 	}
-	
+
 	/**
 	 * @param EgovAddDeviceAPIHybridProjectWizard
-	 * @see org.eclipse.core.runtime.IExecutableExtension#setInitializationData(org.eclipse.core.runtime.IConfigurationElement, java.lang.String, java.lang.Object)
+	 * @see org.eclipse.core.runtime.IExecutableExtension#setInitializationData(org.eclipse.core.runtime.IConfigurationElement,
+	 *      java.lang.String, java.lang.Object)
 	 */
 	@Override
-	public void setInitializationData(IConfigurationElement config,
-			String propertyName, Object data) throws CoreException {
-		
+	public void setInitializationData(IConfigurationElement config, String propertyName, Object data)
+			throws CoreException {
+
 		fConfigElement = config;
 	}
-	
+
 	/**
 	 * @param EgovAddDeviceAPIHybridProjectWizard
 	 * @see org.eclipse.jface.wizard.Wizard#addPages()
@@ -132,96 +137,99 @@ public class EgovAddDeviceAPIHybridProjectWizard extends Wizard implements INewW
 
 		selectPJTPage = new SelectProjectPage("SelectProject", context);
 		addPage(selectPJTPage);
-		
+
 //		Template generate Page
 		generateTemplatePage = new GenerateTemplatePage("GenerateTemplatePage", context);
 		addPage(generateTemplatePage);
-		
+
 		createWebPJT = new DeviceAPIWebProjectCreationPage("test", context);
 		addPage(createWebPJT);
-		
+
 		customizeTablePage = new CustomizeTableCreationPage("CustomizePage", context);
 		addPage(customizeTablePage);
 	}
-	
+
 	/**
-     * 오퍼레이션 추가
-     */
-    protected IRunnableWithProgress createOperation() {
-    	
-        return new AddDeviceAPITemplateGenerateOperation(getContext());
-    }
-    
-    @Override
-    public IWizardPage getStartingPage() {
-    	if(DeviceAPIIdeUtils.isAndroidDevelopmentTool() == false) {
-			
-			MessageDialog.openInformation(EgovDeviceAPIIdePlugin
-					.getActiveWorkbenchWindow().getShell(), "Inform", "Selected function has not been installed. ADT is required.");
-			return null;
-		}else{
-    		return super.getStartingPage();
-    		
-    	}
-    }
-    
-    /**
-     * 종료시 실행
-     */
-    @Override
-    public boolean performFinish() {
-    	
-    	if(!MessageDialog.openConfirm(getShell(), "Confirm", "기존 프로젝트 내용은 삭제 됩니다")){
-    		return false;
-    	}
-    	
-        boolean result = true;
-        IRunnableWithProgress runnable = createOperation();
-        IRunnableWithProgress op = new WorkspaceModifyDelegatingOperation(runnable);
-        
-        try {
-        	
-            getContainer().run(false, true, op);
-            BasicNewProjectResourceWizard.updatePerspective(fConfigElement);
-            BasicNewProjectResourceWizard.selectAndReveal(context.getDeviceapiProject(), EgovDeviceAPIIdePlugin.getActiveWorkbenchWindow());
-        } catch (InvocationTargetException e) {
-        	
-            DeviceAPIIdeLog.logError(e);
-            result = false;
-        } catch (InterruptedException e) {
-        	
-        	DeviceAPIIdeLog.logError(e);
-            result = false;
-        }
-        return result;
-    }
-	
-    /** generateTemplate checkBox가 체크이면서 customizeTablePage가 아닌 경우는 무조건 Finish 비활성화*/
+	 * 오퍼레이션 추가
+	 */
+	protected IRunnableWithProgress createOperation() {
+
+		return new AddDeviceAPITemplateGenerateOperation(getContext());
+	}
+
 	@Override
-	public boolean canFinish() {
-		
-		IWizardPage currentPage = getContainer().getCurrentPage();
-		
-		if(currentPage.equals(selectPJTPage)){
+	public IWizardPage getStartingPage() {
+		if (DeviceAPIIdeUtils.isAndroidDevelopmentTool() == false) {
+
+			MessageDialog.openInformation(EgovDeviceAPIIdePlugin.getActiveWorkbenchWindow().getShell(), "Inform",
+					"Selected function has not been installed. ADT is required.");
+			return null;
+		} else {
+			return super.getStartingPage();
+
+		}
+	}
+
+	/**
+	 * 종료시 실행
+	 */
+	@Override
+	public boolean performFinish() {
+
+		if (!MessageDialog.openConfirm(getShell(), "Confirm", "기존 프로젝트 내용은 삭제 됩니다")) {
 			return false;
 		}
-		
-		if(currentPage.equals(generateTemplatePage)){
-			if(generateTemplatePage.isEnableFinishButton()){
+
+		boolean result = true;
+		IRunnableWithProgress runnable = createOperation();
+		IRunnableWithProgress op = new WorkspaceModifyDelegatingOperation(runnable);
+
+		try {
+
+			getContainer().run(false, true, op);
+			BasicNewProjectResourceWizard.updatePerspective(fConfigElement);
+			BasicNewProjectResourceWizard.selectAndReveal(context.getDeviceapiProject(),
+					EgovDeviceAPIIdePlugin.getActiveWorkbenchWindow());
+		} catch (InvocationTargetException e) {
+
+			DeviceAPIIdeLog.logError(e);
+			result = false;
+		} catch (InterruptedException e) {
+
+			DeviceAPIIdeLog.logError(e);
+			result = false;
+		}
+		return result;
+	}
+
+	/**
+	 * generateTemplate checkBox가 체크이면서 customizeTablePage가 아닌 경우는 무조건 Finish 비활성화
+	 */
+	@Override
+	public boolean canFinish() {
+
+		IWizardPage currentPage = getContainer().getCurrentPage();
+
+		if (currentPage.equals(selectPJTPage)) {
+			return false;
+		}
+
+		if (currentPage.equals(generateTemplatePage)) {
+			if (generateTemplatePage.isEnableFinishButton()) {
 				return true;
-			}else{
+			} else {
 				return false;
 			}
 		}
-		
-		if(currentPage.equals(createWebPJT)){
-			if(createWebPJT.isEnableFinishButton()){
+
+		if (currentPage.equals(createWebPJT)) {
+			if (createWebPJT.isEnableFinishButton()) {
 				return true;
-			}else{
+			} else {
 				return false;
 			}
 		}
-		
+
 		return super.canFinish();
 	}
 

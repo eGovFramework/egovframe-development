@@ -22,8 +22,8 @@
 			<group label="DataAccess" required="true" checkbox="checkDataAccess">
 				<checkbox name="checkDataAccess" label="Create DataAccess: "
 					value="true" />
-				<container name="sqlMapFolder" label="Resource(SQLMap) Folder: "
-					required="true" type="folder" />
+				<!-- <container name="sqlMapFolder" label="Resource(SQLMap) Folder: "
+					required="true" type="folder" /> -->
 				<container name="mapperFolder" label="Resource(Mapper) Folder: "
 					required="true" type="folder" />
 				<container name="daoPackage" label="DAO Package: "
@@ -58,12 +58,12 @@
 		<output>
 
 			<!-- DataAccess Resource -->
-			<template component="sqlMap"
+			<!-- <template component="sqlMap"
 				expression="${model.entity.ccName}/${model.entity.pcName}_SQL"
 				velocity="resource/pkg/EgovSample_Sample2_SQL.vm" extension="xml"
 				container="sqlMapFolder">
 				<condition variable="checkDataAccess" value="true" />
-			</template>
+			</template> -->
 			<template component="sqlMapper"
 				expression="${model.entity.ccName}/${model.entity.pcName}_MAPPER"
 				velocity="resource/pkg/EgovSample_Sample2_MAPPER.vm" extension="xml"

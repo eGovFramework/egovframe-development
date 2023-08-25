@@ -40,7 +40,9 @@ import egovframework.dev.imp.core.utils.StringUtil;
  * @since 2012.07.24
  * @author 배치개발환경 개발팀 조용현
  * @version 1.0
- * @see <pre>
+ * @see
+ * 
+ *      <pre>
  *  &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *    
  * 수정일	  	수정자	  수정내용
@@ -48,7 +50,7 @@ import egovframework.dev.imp.core.utils.StringUtil;
  * 2012.07.24	조용현	최초생성
  * 
  * 
- * </pre>
+ *      </pre>
  */
 @SuppressWarnings("restriction")
 public class ListenerDialog extends StatusDialog {
@@ -85,8 +87,7 @@ public class ListenerDialog extends StatusDialog {
 	 * @param classValue
 	 * @param description
 	 */
-	public ListenerDialog(Shell shell, boolean isAddButton,
-			List<String> existingIdList, ListenerInfo listener,
+	public ListenerDialog(Shell shell, boolean isAddButton, List<String> existingIdList, ListenerInfo listener,
 			String description) {
 		super(shell);
 
@@ -174,8 +175,7 @@ public class ListenerDialog extends StatusDialog {
 		classLabel.setText(BConfMngtMessages.ListenerDialog_CLASS_LABEL);
 
 		classText = new Text(control, SWT.BORDER);
-		classText.setText(StringUtil.returnEmptyStringIfNull(listener
-				.getClassValue()));
+		classText.setText(StringUtil.returnEmptyStringIfNull(listener.getClassValue()));
 		classText.addListener(SWT.Modify, validation);
 		classText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
@@ -238,10 +238,8 @@ public class ListenerDialog extends StatusDialog {
 
 		public void handleEvent(Event event) {
 
-			FilteredTypesSelectionDialog dialog = new FilteredTypesSelectionDialog(
-					getShell(), false, PlatformUI.getWorkbench()
-							.getProgressService(),
-					SearchEngine.createWorkspaceScope(),
+			FilteredTypesSelectionDialog dialog = new FilteredTypesSelectionDialog(getShell(), false,
+					PlatformUI.getWorkbench().getProgressService(), SearchEngine.createWorkspaceScope(),
 					IJavaSearchConstants.CLASS);
 			dialog.setTitle(BConfMngtMessages.ListenerDialog_BROWSE_BUTTON_DIALOG_TITLE);
 			dialog.setMessage(BConfMngtMessages.ListenerDialog_BROWSE_BUTTON_DIALOG_DESCRIPTION);
@@ -252,11 +250,9 @@ public class ListenerDialog extends StatusDialog {
 
 				if (!NullUtil.isNull(type)) {
 					if (type instanceof BinaryType) {
-						classText.setText(((BinaryType) type)
-								.getFullyQualifiedName());
+						classText.setText(((BinaryType) type).getFullyQualifiedName());
 					} else if (type instanceof SourceType) {
-						classText.setText(((SourceType) type)
-								.getFullyQualifiedName());
+						classText.setText(((SourceType) type).getFullyQualifiedName());
 					}
 				}
 				return;
@@ -327,8 +323,7 @@ public class ListenerDialog extends StatusDialog {
 	 * @return
 	 */
 	protected boolean isClassNameOfBatchPreferenceAvailable(String className) {
-		if (StringUtil.hasKorean(className)
-				|| StringUtil.hasInvalidClassFileSignal(className)
+		if (StringUtil.hasKorean(className) || StringUtil.hasInvalidClassFileSignal(className)
 				|| StringUtil.hasEmptySpace(className)) {
 			return false;
 		} else {
@@ -354,6 +349,11 @@ public class ListenerDialog extends StatusDialog {
 	 */
 	public ListenerInfo getListener() {
 		return listener;
+	}
+
+	@Override
+	protected boolean isResizable() {
+		return true;
 	}
 
 }

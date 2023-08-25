@@ -24,7 +24,9 @@ import egovframework.bdev.imp.ide.scheduler.wizards.operation.CoreProjectCreatio
  * @author 조용현
  * @since 2012.07.24
  * @version 1.0
- * @see <pre>
+ * @see
+ * 
+ *      <pre>
  *  &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *    
  * 수정일	  	수정자	  수정내용
@@ -32,7 +34,7 @@ import egovframework.bdev.imp.ide.scheduler.wizards.operation.CoreProjectCreatio
  * 2012.07.24	조용현	최초생성
  * 
  * 
- * </pre>
+ *      </pre>
  */
 public class BatchTemplateProjectSelectExecuteTypePage extends WizardPage {
 
@@ -54,8 +56,7 @@ public class BatchTemplateProjectSelectExecuteTypePage extends WizardPage {
 	 * @param pageName
 	 * @param context
 	 */
-	public BatchTemplateProjectSelectExecuteTypePage(String pageName,
-			NewBatchProjectContext context) {
+	public BatchTemplateProjectSelectExecuteTypePage(String pageName, NewBatchProjectContext context) {
 		super(pageName);
 		this.context = context;
 		setTitle(BatchIdeMessages.wizardPageBatchJobTemplatePage0);
@@ -66,17 +67,20 @@ public class BatchTemplateProjectSelectExecuteTypePage extends WizardPage {
 		Composite container = new Composite(parent, SWT.NONE);
 		container.setLayout(new GridLayout(2, false));
 
-		radioSelectScheduler = createSelectControl(container, BatchIdeMessages.BatchTemplateProjectSelectExecuteTypePage_SCHEDULER_RADIO_BUTTON,
+		radioSelectScheduler = createSelectControl(container,
+				BatchIdeMessages.BatchTemplateProjectSelectExecuteTypePage_SCHEDULER_RADIO_BUTTON,
 				EgovBatchIdePlugin.IMG_BATCH_TMP_PROJ_WIZ_SCHEDULER,
-		BatchIdeMessages.BatchTemplateProjectSelectExecuteTypePage_SCHEDULER_EXPLANATION);
+				BatchIdeMessages.BatchTemplateProjectSelectExecuteTypePage_SCHEDULER_EXPLANATION);
 
 		radioSelectCommandLine = createSelectControl(container,
-				BatchIdeMessages.BatchTemplateProjectSelectExecuteTypePage_COMMAND_LINE_RADIO_BUTTON, EgovBatchIdePlugin.IMG_BATCH_TMP_PROJ_WIZ_COMMANDLINE,
+				BatchIdeMessages.BatchTemplateProjectSelectExecuteTypePage_COMMAND_LINE_RADIO_BUTTON,
+				EgovBatchIdePlugin.IMG_BATCH_TMP_PROJ_WIZ_COMMANDLINE,
 				BatchIdeMessages.BatchTemplateProjectSelectExecuteTypePage_COMMAND_LINE_EXPLANATION);
 
-		radioSelectWeb = createSelectControl(container, BatchIdeMessages.BatchTemplateProjectSelectExecuteTypePage_WEB_RADIO_BUTTON,
+		radioSelectWeb = createSelectControl(container,
+				BatchIdeMessages.BatchTemplateProjectSelectExecuteTypePage_WEB_RADIO_BUTTON,
 				EgovBatchIdePlugin.IMG_BATCH_TMP_PROJ_WIZ_WEB,
-		BatchIdeMessages.BatchTemplateProjectSelectExecuteTypePage_WEB_EXPLANATION);
+				BatchIdeMessages.BatchTemplateProjectSelectExecuteTypePage_WEB_EXPLANATION);
 
 		radioSelectScheduler.setSelection(true);
 
@@ -84,14 +88,13 @@ public class BatchTemplateProjectSelectExecuteTypePage extends WizardPage {
 	}
 
 	/** Scheduler, CommandLine, Web 선택 Radio Button의 Control 생성 */
-	private Button createSelectControl(Composite parent, String buttonName,
-			String imageAddr, String explanation) {
+	private Button createSelectControl(Composite parent, String buttonName, String imageAddr, String explanation) {
 		GridData gd1 = new GridData();
 
 		GridData empty = new GridData();
 		empty.heightHint = 10;
 		GridData empty2 = new GridData();
-		empty2.widthHint = 350;
+		empty2.widthHint = 500;
 
 		Button radioButton = new Button(parent, SWT.RADIO);
 		radioButton.setText(buttonName);
@@ -124,67 +127,48 @@ public class BatchTemplateProjectSelectExecuteTypePage extends WizardPage {
 	Listener selectTypeListener = new Listener() {
 
 		public void handleEvent(Event event) {
-			if (context.getCreationType().equals(
-					BatchIdeMessages.wizardPageBatchJobTemplatePage5)) {
+			if (context.getCreationType().equals(BatchIdeMessages.wizardPageBatchJobTemplatePage5)) {
 				if (radioSelectCommandLine.getSelection()) {
 					context.setExecutionType(BatchIdeMessages.wizardPageBatchJobTemplatePage9);
-					settingProjectValue(
-							BatchIdeMessages.DBCommandLineDefaultsrc,
-							BatchIdeMessages.CommandLinePomFile,
+					settingProjectValue(BatchIdeMessages.DBCommandLineDefaultsrc, BatchIdeMessages.CommandLinePomFile,
 							BatchIdeMessages.wizardPageBatchJobDBCommandLineDescription);
 					((EgovNewBatchTemplateProjectWizard) getWizard())
-							.setOperation(new CoreProjectCreationOperation(
-									context));
+							.setOperation(new CoreProjectCreationOperation(context));
 				} else if (radioSelectWeb.getSelection()) {
 					context.setExecutionType(BatchIdeMessages.wizardPageBatchJobTemplatePage11);
-					settingProjectValue(BatchIdeMessages.DBWebDefaultsrc,
-							BatchIdeMessages.WebPomFile,
+					settingProjectValue(BatchIdeMessages.DBWebDefaultsrc, BatchIdeMessages.WebPomFile,
 							BatchIdeMessages.wizardPageBatchJobDBWebDescription);
 					((EgovNewBatchTemplateProjectWizard) getWizard())
-							.setOperation(new BatchWebProjectCreationOperation(
-									context));
+							.setOperation(new BatchWebProjectCreationOperation(context));
 				} else if (radioSelectScheduler.getSelection()) {
 					context.setExecutionType(BatchIdeMessages.wizardPageBatchJobTemplatePage7);
-					settingProjectValue(
-							BatchIdeMessages.DBSchedulerDefaultsrc,
-							BatchIdeMessages.SchedulerPomFile,
+					settingProjectValue(BatchIdeMessages.DBSchedulerDefaultsrc, BatchIdeMessages.SchedulerPomFile,
 							BatchIdeMessages.wizardPageBatchJobDBSchedulerDescription);
 					((EgovNewBatchTemplateProjectWizard) getWizard())
-							.setOperation(new CoreProjectCreationOperation(
-									context));
+							.setOperation(new CoreProjectCreationOperation(context));
 				} else {
 
 				}
 
-			} else if (context.getCreationType().equals(
-					BatchIdeMessages.wizardPageBatchJobTemplatePage3)) {
+			} else if (context.getCreationType().equals(BatchIdeMessages.wizardPageBatchJobTemplatePage3)) {
 				if (radioSelectCommandLine.getSelection()) {
 					context.setExecutionType(BatchIdeMessages.wizardPageBatchJobTemplatePage9);
-					settingProjectValue(
-							BatchIdeMessages.SamCommandLineDefaultsrc,
-							BatchIdeMessages.CommandLinePomFile,
+					settingProjectValue(BatchIdeMessages.SamCommandLineDefaultsrc, BatchIdeMessages.CommandLinePomFile,
 							BatchIdeMessages.wizardPageBatchJobFileCommandLineDescription);
 					((EgovNewBatchTemplateProjectWizard) getWizard())
-							.setOperation(new CoreProjectCreationOperation(
-									context));
+							.setOperation(new CoreProjectCreationOperation(context));
 				} else if (radioSelectWeb.getSelection()) {
 					context.setExecutionType(BatchIdeMessages.wizardPageBatchJobTemplatePage11);
-					settingProjectValue(
-							BatchIdeMessages.SamWebDefaultsrc,
-							BatchIdeMessages.WebPomFile,
+					settingProjectValue(BatchIdeMessages.SamWebDefaultsrc, BatchIdeMessages.WebPomFile,
 							BatchIdeMessages.wizardPageBatchJobFileWebDescription);
 					((EgovNewBatchTemplateProjectWizard) getWizard())
-							.setOperation(new BatchWebProjectCreationOperation(
-									context));
+							.setOperation(new BatchWebProjectCreationOperation(context));
 				} else if (radioSelectScheduler.getSelection()) {
 					context.setExecutionType(BatchIdeMessages.wizardPageBatchJobTemplatePage7);
-					settingProjectValue(
-							BatchIdeMessages.SamSchedulerDefaultsrc,
-							BatchIdeMessages.SchedulerPomFile,
+					settingProjectValue(BatchIdeMessages.SamSchedulerDefaultsrc, BatchIdeMessages.SchedulerPomFile,
 							BatchIdeMessages.wizardPageBatchJobFileSchedulerDescription);
 					((EgovNewBatchTemplateProjectWizard) getWizard())
-							.setOperation(new CoreProjectCreationOperation(
-									context));
+							.setOperation(new CoreProjectCreationOperation(context));
 				} else {
 
 				}
@@ -195,11 +179,9 @@ public class BatchTemplateProjectSelectExecuteTypePage extends WizardPage {
 	};
 
 	/**
-	 * Page의 입력 정보에 따라 Context에 Example File, Pom File Name과 다음 Page의
-	 * Description 설정
+	 * Page의 입력 정보에 따라 Context에 Example File, Pom File Name과 다음 Page의 Description 설정
 	 */
-	public void settingProjectValue(String defaultsrc, String pomFile,
-			String templateProjectTitle) {
+	public void settingProjectValue(String defaultsrc, String pomFile, String templateProjectTitle) {
 
 		context.setDefaultExampleFile(defaultsrc);
 		context.setPomFileName(pomFile);

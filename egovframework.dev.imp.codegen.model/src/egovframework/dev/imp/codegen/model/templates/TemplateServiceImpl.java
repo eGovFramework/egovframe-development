@@ -144,7 +144,7 @@ public class TemplateServiceImpl implements IGenerator {
 		}
 
 		GenUtil.addImportSyntax(iptList, "import org.springframework.stereotype.Service;");
-		GenUtil.addImportSyntax(iptList, "import egovframework.rte.fdl.cmmn.AbstractServiceImpl;");
+		GenUtil.addImportSyntax(iptList, "import org.egovframe.rte.fdl.cmmn.AbstractServiceImpl;");
 		GenUtil.addImportSyntax(iptList, "import javax.annotation.Resource;");
 		/**************************** 스테레오타입 로직 삽입구 끝 ***************************/
 

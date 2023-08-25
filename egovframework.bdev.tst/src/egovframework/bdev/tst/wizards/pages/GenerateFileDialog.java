@@ -27,12 +27,16 @@ import egovframework.bdev.tst.common.BatchTestMessages;
 import egovframework.bdev.tst.wizards.views.GenerateTestFileContentProvider;
 import egovframework.dev.imp.core.utils.NullUtil;
 import egovframework.dev.imp.core.utils.StringUtil;
+
 /**
  * Generate Batch Test File Dialog
+ * 
  * @author 조용현
  * @since 2012.10.10
  * @version 1.0
- * @see <pre>
+ * @see
+ * 
+ *      <pre>
  * &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *   
  *수정일	  	수정자	  수정내용
@@ -40,26 +44,26 @@ import egovframework.dev.imp.core.utils.StringUtil;
  *2012.10.10	조용현	최초생성
  *
  * 
- * </pre>
+ *      </pre>
  */
 @SuppressWarnings("restriction")
 public class GenerateFileDialog extends StatusDialog {
 
 	/** 기본 Folder Path */
 	final private String defaultfolderPath;
-	
+
 	/** 선택한 Project */
 	private IProject selectProject = null;
 
 	/** 폴더 Path */
 	private String folderPath = null;
-	
+
 	/** 파일명 */
 	private String fileName = null;
 
 	/** 폴더 Path가 입력되는 Text */
 	private Text folderPathText = null;
-	
+
 	/** File명이 입력되는 Text */
 	private Text fileNameText = null;
 
@@ -89,8 +93,7 @@ public class GenerateFileDialog extends StatusDialog {
 	 * @param filePath
 	 * @param selectProject
 	 */
-	public GenerateFileDialog(Shell parent, String folderPath, String filePath,
-			IProject selectProject) {
+	public GenerateFileDialog(Shell parent, String folderPath, String filePath, IProject selectProject) {
 		super(parent);
 		setTitle(BatchTestMessages.GenerateFileDialog_TITLE);
 		this.folderPath = folderPath;
@@ -150,8 +153,7 @@ public class GenerateFileDialog extends StatusDialog {
 
 		folderPathText = new Text(control, SWT.BORDER);
 		folderPathText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		folderPathText.setText(NullUtil.isEmpty(folderPath) ? defaultfolderPath
-				: folderPath);
+		folderPathText.setText(NullUtil.isEmpty(folderPath) ? defaultfolderPath : folderPath);
 		folderPathText.addListener(SWT.Modify, validate);
 
 		Button browseSelectButton = new Button(control, SWT.PUSH);
@@ -201,12 +203,13 @@ public class GenerateFileDialog extends StatusDialog {
 		public void handleEvent(Event event) {
 			ILabelProvider labelProvider = WorkbenchLabelProvider.getDecoratingWorkbenchLabelProvider();
 			ITreeContentProvider contentProvider = new GenerateTestFileContentProvider();
-			
-			BatchTestFolderSelectionDialog dialog = new BatchTestFolderSelectionDialog(getShell(), labelProvider, contentProvider);
+
+			BatchTestFolderSelectionDialog dialog = new BatchTestFolderSelectionDialog(getShell(), labelProvider,
+					contentProvider);
 
 			dialog.setComparator(new ViewerComparator());
 
-			dialog.setInput(new IProject[]{selectProject});
+			dialog.setInput(new IProject[] { selectProject });
 			dialog.setTitle(BatchTestMessages.GenerateFileDialog_BROWSE_BUTTON_DIALOG_TITLE);
 
 			String selectFolderPathString = folderPathText.getText();
@@ -242,8 +245,8 @@ public class GenerateFileDialog extends StatusDialog {
 	 * @return
 	 */
 	private boolean isFileNameAvailable(String fileName) {
-		if (isFileNameHasInvalidCharacter(fileName)
-				|| isInvalidFileName(fileName) || StringUtil.isStringStartWithNumber(fileName)) {
+		if (isFileNameHasInvalidCharacter(fileName) || isInvalidFileName(fileName)
+				|| StringUtil.isStringStartWithNumber(fileName)) {
 			return false;
 		} else {
 			return true;
@@ -273,10 +276,8 @@ public class GenerateFileDialog extends StatusDialog {
 	 * @return
 	 */
 	private boolean isFileNameHasInvalidCharacter(String fileName) {
-		if (StringUtil.hasInvalidClassFileSignal(fileName)
-				|| StringUtil.hasKorean(fileName)
-				|| StringUtil.doesStringHasSignal('.', fileName)
-				|| StringUtil.hasEmptySpace(fileName)) {
+		if (StringUtil.hasInvalidClassFileSignal(fileName) || StringUtil.hasKorean(fileName)
+				|| StringUtil.doesStringHasSignal('.', fileName) || StringUtil.hasEmptySpace(fileName)) {
 			return true;
 		} else {
 			return false;
@@ -302,8 +303,8 @@ public class GenerateFileDialog extends StatusDialog {
 					updateStatus(status);
 					return;
 				}
-				
-				if(!isFolderPathIncludeJavaFolder(folderPath)){
+
+				if (!isFolderPathIncludeJavaFolder(folderPath)) {
 					status.setError(BatchTestMessages.GenerateFileDialog_FOLDER_PATH_MUST_CONTAIN_JAVA);
 					updateStatus(status);
 					return;
@@ -332,7 +333,7 @@ public class GenerateFileDialog extends StatusDialog {
 			}
 		}
 
-		/** 
+		/**
 		 * FileName에서 .Java 확장자를 제외한 이름만 가져온다.
 		 * 
 		 * @param fileName
@@ -349,26 +350,31 @@ public class GenerateFileDialog extends StatusDialog {
 			}
 			return fileName;
 		}
-		
+
 		/**
 		 * FolderPath에서 .Java확장자가 있는지 확인
 		 * 
 		 * @param folderPath
 		 * @return
 		 */
-		private boolean isFolderPathIncludeJavaFolder(String folderPath){
+		private boolean isFolderPathIncludeJavaFolder(String folderPath) {
 			String[] folders = folderPath.split("/"); //$NON-NLS-1$
-			
-			if(!NullUtil.isEmpty(folders)){
-				for(String folder : folders){
-					if("java".equals(folder)){ //$NON-NLS-1$
+
+			if (!NullUtil.isEmpty(folders)) {
+				for (String folder : folders) {
+					if ("java".equals(folder)) { //$NON-NLS-1$
 						return true;
 					}
 				}
 			}
-			
+
 			return false;
 		}
 	};
+
+	@Override
+	protected boolean isResizable() {
+		return true;
+	}
 
 }

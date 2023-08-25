@@ -25,7 +25,6 @@ import org.eclipse.ui.internal.actions.NewWizardShortcutAction;
 import org.eclipse.ui.wizards.IWizardDescriptor;
 
 import egovframework.hdev.imp.ide.EgovDeviceAPIIdePlugin;
-import egovframework.hdev.imp.ide.common.DeviceAPIIdeUtils;
 import egovframework.hdev.imp.ide.handlers.EgovDeviceAPIMenu;
 
 /**
@@ -34,7 +33,9 @@ import egovframework.hdev.imp.ide.handlers.EgovDeviceAPIMenu;
  * @since 2012.07.24
  * @author 디바이스 API 개발환경 팀 조용현
  * @version 1.0
- * @see <pre>
+ * @see
+ * 
+ *      <pre>
  * &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *   
  *수정일	  	수정자	  수정내용
@@ -42,7 +43,7 @@ import egovframework.hdev.imp.ide.handlers.EgovDeviceAPIMenu;
  *2012.07.24	조용현	최초생성
  *
  * 
- * </pre>
+ *      </pre>
  */
 
 @SuppressWarnings("restriction")
@@ -51,14 +52,16 @@ public class AddDeviceAPIHybridProject extends AbstractHandler implements EgovDe
 	 * 기본 프로젝트 생성 마법사 실행
 	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
+		/*
+		 * if (DeviceAPIIdeUtils.isAndroidDevelopmentTool() == false) {
+		 * 
+		 * MessageDialog.openInformation(EgovDeviceAPIIdePlugin.getActiveWorkbenchWindow
+		 * ().getShell(), "Inform",
+		 * "Selected function has not been installed. ADT is required."); return null; }
+		 */
 
-		if (DeviceAPIIdeUtils.isAndroidDevelopmentTool() == false) {
-
-			MessageDialog.openInformation(EgovDeviceAPIIdePlugin.getActiveWorkbenchWindow().getShell(), "Inform", "Selected function has not been installed. ADT is required.");
-			return null;
-		}
-
-		IWizardDescriptor wizardDesc = WorkbenchPlugin.getDefault().getNewWizardRegistry().findWizard("egovframework.hdev.imp.ide.wizards.adddiviceapi");
+		IWizardDescriptor wizardDesc = WorkbenchPlugin.getDefault().getNewWizardRegistry()
+				.findWizard("egovframework.hdev.imp.ide.wizards.adddiviceapi");
 
 		if (wizardDesc == null) {
 			MessageDialog.openInformation(EgovDeviceAPIIdePlugin.getActiveWorkbenchWindow().getShell(), "Inform",

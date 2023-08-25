@@ -4,7 +4,7 @@
     <groupId>egovframework</groupId>
     <artifactId>egovframework</artifactId>
     <packaging>war</packaging>
-    <version>1.0.0</version>
+    <version>4.1.0</version>
     <name>egovframework</name>
     <url>http://www.egovframe.go.kr</url>
 
@@ -14,10 +14,12 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
+    
     <properties>
-        <spring.maven.artifact.version>5.3.6</spring.maven.artifact.version>
-        <org.egovframe.rte.version>4.0.0</org.egovframe.rte.version>
+        <spring.maven.artifact.version>5.3.20</spring.maven.artifact.version>
+        <org.egovframe.rte.version>4.1.0</org.egovframe.rte.version>
     </properties>
+    
     <repositories>
         <repository>
             <id>mvn2s</id>

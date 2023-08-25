@@ -17,8 +17,8 @@
     </licenses>
     
 	<properties>
-	    <spring.maven.artifact.version>5.3.6</spring.maven.artifact.version>
-        <org.egovframe.rte.version>4.0.0</org.egovframe.rte.version>
+	    <spring.maven.artifact.version>5.3.20</spring.maven.artifact.version>
+		<org.egovframe.rte.version>4.1.0</org.egovframe.rte.version>
 	</properties>
 
 	<repositories>
@@ -41,6 +41,11 @@
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
+		</repository>
+		<repository>
+		    <id>projectRepository</id> 
+		    <name>Project Repository</name> 
+		    <url>file://${project.basedir}/src/main/webapp/WEB-INF/lib</url>
 		</repository>
     </repositories>
 
@@ -79,29 +84,25 @@
 			<scope>provided</scope>
 			<version>3.1.0</version>
 		</dependency>
-
-        <dependency>
-		    <groupId>javax.servlet</groupId>
-		    <artifactId>jstl</artifactId>
-		    <version>1.2</version>
+		<dependency>
+            <groupId>javax.servlet.jsp.jstl</groupId>
+            <artifactId>jstl-api</artifactId>
+            <version>1.2</version>
         </dependency>
-
         <dependency>
 		    <groupId>taglibs</groupId>
 		    <artifactId>standard</artifactId>
 		    <version>1.1.2</version>
         </dependency>
-
 		<dependency>
 	        <groupId>org.antlr</groupId>
 	        <artifactId>antlr</artifactId>
 	        <version>3.5</version>
    		</dependency>
-
 		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
-			<version>2.5.0</version>
+			<version>2.5.2</version>
 		</dependency>
         
         <!-- mysql이나 oracle DB 사용시 아래 설정 추가  
@@ -118,15 +119,15 @@
         </dependency>
         
         <dependency>
-            <groupId>commons-dbcp</groupId>
-            <artifactId>commons-dbcp</artifactId>
-            <version>1.4</version>
-        </dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-dbcp2</artifactId>
+		    <version>2.9.0</version>
+		</dependency>
         
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.31</version>
+            <version>8.0.29</version>
         </dependency>
 
         <dependency>
@@ -145,21 +146,26 @@
         <finalName>${artifactId}-${version}</finalName>
         <pluginManagement>
             <plugins>
-                <plugin>
-	                <groupId>org.apache.tomcat.maven</groupId>
-	                <artifactId>tomcat7-maven-plugin</artifactId>
-	                <version>2.2</version>
-	                <configuration>
-	                    <port>80</port>
-	                    <path>/</path>
-	                    <systemProperties>
-	                        <JAVA_OPTS>-Xms256m -Xmx768m -XX:MaxPermSize=256m</JAVA_OPTS>
-	                    </systemProperties>
-	                </configuration>
-	            </plugin>
+				<plugin>
+					<groupId>org.codehaus.cargo</groupId>
+					<artifactId>cargo-maven3-plugin</artifactId>
+					<version>1.9.13</version>
+					<configuration>
+						<container>
+							<containerId>tomcat8x</containerId>
+							<type>embedded</type>
+						</container>
+						<configuration>
+							<properties>
+								<cargo.servlet.port>8080</cargo.servlet.port>
+							</properties>
+						</configuration>
+					</configuration>
+				</plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.10.1</version>
                     <configuration>
                         <source>1.8</source>
                         <target>1.8</target>
@@ -169,7 +175,7 @@
                 <plugin>
                 	<groupId>org.apache.maven.plugins</groupId>
                 	<artifactId>maven-war-plugin</artifactId>
-                	<version>2.4</version>
+                	<version>3.3.2</version>
                 	<configuration>
                 		<failOnMissingWebXml>false</failOnMissingWebXml>
                 	</configuration>
@@ -190,7 +196,7 @@
                         <dependency>
                             <groupId>org.hsqldb</groupId>
                             <artifactId>hsqldb</artifactId>
-                            <version>2.5.0</version>
+                            <version>2.5.2</version>
                         </dependency>
                     </dependencies>
                 </plugin>
@@ -204,7 +210,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-pmd-plugin</artifactId>
-                    <version>3.12.0</version>
+                    <version>3.17.0</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -213,6 +219,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
                 <configuration>
                     <skipTests>true</skipTests>
                     <forkMode>once</forkMode>
@@ -235,7 +242,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.1.1</version>
+                <version>3.4.0</version>
             </plugin>
         </plugins>
     </build>
@@ -245,7 +252,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>3.3.0</version>
                 <reportSets>
                     <reportSet>
                         <id>sunlink</id>
@@ -255,7 +262,7 @@
                         <inherited>true</inherited>
                         <configuration>
                             <links>
-                                <link>http://docs.oracle.com/javase/6/docs/api/</link>
+                                <link>https://docs.oracle.com/javase/8/docs/api/</link>
                             </links>
                         </configuration>
                     </reportSet>

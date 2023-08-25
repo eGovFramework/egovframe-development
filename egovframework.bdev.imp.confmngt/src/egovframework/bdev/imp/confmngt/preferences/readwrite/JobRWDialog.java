@@ -462,5 +462,10 @@ public class JobRWDialog extends StatusDialog {
 	protected Point getInitialSize() {
 		return new Point(380, 250);
 	}
+	
+	@Override
+	protected boolean isResizable() {
+		return true;
+	}
 
 }

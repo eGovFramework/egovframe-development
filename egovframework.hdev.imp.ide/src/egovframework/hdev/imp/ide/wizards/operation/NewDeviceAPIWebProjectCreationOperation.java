@@ -58,14 +58,12 @@ import egovframework.hdev.imp.ide.common.ResourceConstants;
 import egovframework.hdev.imp.ide.common.ResourceUtils;
 import egovframework.hdev.imp.ide.model.DeviceAPIContext;
 
-/**  
+/**
  * @Class Name : DeviceAPIWebProjectCreationOperation
  * @Description : DeviceAPIWebProjectCreationOperation Class
- * @Modification Information  
- * @
- * @  수정일			수정자		수정내용
- * @ ---------		---------	-------------------------------
- * @ 2012. 8. 22.		이율경		최초생성
+ * @Modification Information
+ * @ @ 수정일 수정자 수정내용 @ --------- --------- ------------------------------- @
+ *   2012. 8. 22. 이율경 최초생성
  * 
  * @author 디바이스 API 개발환경 팀
  * @since 2012. 8. 22.
@@ -77,206 +75,182 @@ public abstract class NewDeviceAPIWebProjectCreationOperation extends NewDeviceA
 
 	/** 실행 */
 	public abstract void run(IProgressMonitor pmonitor) throws InvocationTargetException, InterruptedException;
-	
-    /**
-     * 생성자
-     * @param context
-     */
-    public NewDeviceAPIWebProjectCreationOperation(DeviceAPIContext context) {
-        super(context);
-    }
 
-    /** 서블릿 버전 */
-    private String getServletVersion() {
-        return ((DeviceAPIContext) context).getServletVersion();
-    }
+	/**
+	 * 생성자
+	 * 
+	 * @param context
+	 */
+	public NewDeviceAPIWebProjectCreationOperation(DeviceAPIContext context) {
+		super(context);
+	}
 
-    /** 런타임 이름 */
-    private String getRuntimeName() {
-        return ((DeviceAPIContext) context).getRuntimeName();
-    }
+	/** 서블릿 버전 */
+	private String getServletVersion() {
+		return ((DeviceAPIContext) context).getServletVersion();
+	}
 
-    /**
-     * 패싯 런타임 찾기
-     * @param runtime
-     * @return
-     */
-    private IRuntime findFacetRuntime(IRuntime runtime) {
-        String runtimeName = getRuntimeName();
-        if (runtimeName == null)
-            return null;
-        if (runtime != null)
-            runtimeName = runtime.getName();
-        Set<IRuntime> set = RuntimeManager.getRuntimes();
-        Iterator<IRuntime> iterator = set.iterator();
-        while (iterator.hasNext()) {
-            IRuntime r = (IRuntime) iterator.next();
+	/** 런타임 이름 */
+	private String getRuntimeName() {
+		return ((DeviceAPIContext) context).getRuntimeName();
+	}
 
-            if (runtimeName.equals(r.getName()))
-                return r;
-        }
-        return null;
-    }
+	/**
+	 * 패싯 런타임 찾기
+	 * 
+	 * @param runtime
+	 * @return
+	 */
+	private IRuntime findFacetRuntime(IRuntime runtime) {
+		String runtimeName = getRuntimeName();
+		if (runtimeName == null)
+			return null;
+		if (runtime != null)
+			runtimeName = runtime.getName();
+		Set<IRuntime> set = RuntimeManager.getRuntimes();
+		Iterator<IRuntime> iterator = set.iterator();
+		while (iterator.hasNext()) {
+			IRuntime r = (IRuntime) iterator.next();
 
-    /**
-     * 프로젝트 패싯 추가
-     * @param monitor
-     * @throws CoreException
-     */
-    @SuppressWarnings( {"deprecation" })
-    private void addProjectFacets(IProgressMonitor monitor, IProject project)
-            throws CoreException {
-        
-        IFacetedProject facetedProject =
-            ProjectFacetsManager.create(project.getProject(), true, null);
-        IProjectFacet javaFacet =
-            ProjectFacetsManager
-                .getProjectFacet(ProjectFacetConstants.JAVA_FACET_ID);
-        IProjectFacetVersion javaFacetVersion =
-            javaFacet.getVersion(ProjectFacetConstants.DEFAULT_JAVA_VERSION);
-        Set<Action> facetActions = new HashSet<Action>(2);
-        for (IActionDefinition def : javaFacetVersion
-            .getActionDefinitions(IFacetedProject.Action.Type.INSTALL)) {
-            Object object =
-                def.createConfigObject(javaFacetVersion, project.getProject()
-                    .getName());
-            JavaFacetInstallConfig config = (JavaFacetInstallConfig) object;
-            config.setSourceFolder(ResourceConstants.WEB_SOURCE_FOLDER);
-            config
-                .setDefaultOutputFolder(ResourceConstants.WEB_DEFAULT_OUTPUT_FOLDER);
+			if (runtimeName.equals(r.getName()))
+				return r;
+		}
+		return null;
+	}
 
-            facetActions.add(new Action(Action.Type.INSTALL, javaFacetVersion,
-                config));
-        }
+	/**
+	 * 프로젝트 패싯 추가
+	 * 
+	 * @param monitor
+	 * @throws CoreException
+	 */
+	@SuppressWarnings({ "deprecation" })
+	private void addProjectFacets(IProgressMonitor monitor, IProject project) throws CoreException {
 
-        IProjectFacet webFacet =
-            ProjectFacetsManager
-                .getProjectFacet(ProjectFacetConstants.WEB_FACET_ID);
-        IProjectFacetVersion webFacetVersion =
-            webFacet.getVersion(getServletVersion());
-        for (IActionDefinition def : webFacetVersion
-            .getActionDefinitions(IFacetedProject.Action.Type.INSTALL)) {
-            Object object =
-                def.createConfigObject(webFacetVersion, project.getProject()
-                    .getName());
-            IDataModel model = (IDataModel) object;
-            model.setStringProperty(
-                IWebFacetInstallDataModelProperties.SOURCE_FOLDER,
-                ResourceConstants.WEB_SOURCE_FOLDER.toString());
-            model.setStringProperty(
-                IWebFacetInstallDataModelProperties.CONFIG_FOLDER,
-                ResourceConstants.WEB_ROOT.toString());
-            model.setStringProperty(
-                IWebFacetInstallDataModelProperties.CONTEXT_ROOT,
-                getArtifactId());
-            facetActions.add(new Action(Action.Type.INSTALL, webFacetVersion,
-                model));
-        }
-        facetedProject.modify(facetActions, Policy.subMonitorFor(monitor, 1));
-    }
+		IFacetedProject facetedProject = ProjectFacetsManager.create(project.getProject(), true, null);
+		IProjectFacet javaFacet = ProjectFacetsManager.getProjectFacet(ProjectFacetConstants.JAVA_FACET_ID);
+		IProjectFacetVersion javaFacetVersion = javaFacet.getVersion(ProjectFacetConstants.DEFAULT_JAVA_VERSION);
+		Set<Action> facetActions = new HashSet<Action>(2);
+		for (IActionDefinition def : javaFacetVersion.getActionDefinitions(IFacetedProject.Action.Type.INSTALL)) {
+			Object object = def.createConfigObject(javaFacetVersion, project.getProject().getName());
+			JavaFacetInstallConfig config = (JavaFacetInstallConfig) object;
+			config.setSourceFolder(ResourceConstants.WEB_SOURCE_FOLDER);
+			config.setDefaultOutputFolder(ResourceConstants.WEB_DEFAULT_OUTPUT_FOLDER);
 
-    /**
-     * 기본 리소스 생성
-     */
-    @Override
-    protected void createDefaultResource(IProgressMonitor monitor)
-            throws CoreException {
+			facetActions.add(new Action(Action.Type.INSTALL, javaFacetVersion, config));
+		}
 
-        for (int i = 0; i < ResourceConstants.WEB_SYSTEM_FOLDERS.length; i++) {
-            org.eclipse.core.resources.IFolder folder =
-                getWebProject().getFolder(ResourceConstants.WEB_SYSTEM_FOLDERS[i]);
-            ResourceUtils.ensureFolderExists(folder, Policy.subMonitorFor(
-                monitor, 1));
-        }
-    }
+		IProjectFacet webFacet = ProjectFacetsManager.getProjectFacet(ProjectFacetConstants.WEB_FACET_ID);
+		IProjectFacetVersion webFacetVersion = webFacet.getVersion(getServletVersion());
+		for (IActionDefinition def : webFacetVersion.getActionDefinitions(IFacetedProject.Action.Type.INSTALL)) {
+			Object object = def.createConfigObject(webFacetVersion, project.getProject().getName());
+			IDataModel model = (IDataModel) object;
+			model.setStringProperty(IWebFacetInstallDataModelProperties.SOURCE_FOLDER,
+					ResourceConstants.WEB_SOURCE_FOLDER.toString());
+			model.setStringProperty(IWebFacetInstallDataModelProperties.CONFIG_FOLDER,
+					ResourceConstants.WEB_ROOT.toString());
+			model.setStringProperty(IWebFacetInstallDataModelProperties.CONTEXT_ROOT, getArtifactId());
+			facetActions.add(new Action(Action.Type.INSTALL, webFacetVersion, model));
+		}
+		facetedProject.modify(facetActions, Policy.subMonitorFor(monitor, 1));
+	}
 
-    /**
-     * 자바 네이처 추가 이후 작업 처리
-     */
-    @SuppressWarnings("deprecation")
-    @Override
-    protected void postJavaNature(IProgressMonitor monitor)
-            throws CoreException {
+	/**
+	 * 기본 리소스 생성
+	 */
+	@Override
+	protected void createDefaultResource(IProgressMonitor monitor) throws CoreException {
 
-        try {
-            // if(wcco != null) wcco.execute(monitor,
-            // null);
-            IFacetedProject facetedProject =
-                ProjectFacetsManager.create(getWebProject());
-            IRuntime runtime = findFacetRuntime(null/* runtime */);
-            facetedProject.setRuntime(runtime, monitor);
-            if (runtime != null) {
-                Set<IRuntime> set = new HashSet<IRuntime>();
-                set.add(runtime);
-                facetedProject.setTargetedRuntimes(set, monitor);
-            }
-        } catch (Exception e) {
-            DeviceAPIIdeLog.logError(e);
-        }
+		for (int i = 0; i < ResourceConstants.WEB_SYSTEM_FOLDERS.length; i++) {
+			org.eclipse.core.resources.IFolder folder = getWebProject()
+					.getFolder(ResourceConstants.WEB_SYSTEM_FOLDERS[i]);
+			ResourceUtils.ensureFolderExists(folder, Policy.subMonitorFor(monitor, 1));
+		}
+	}
 
-    }
+	/**
+	 * 자바 네이처 추가 이후 작업 처리
+	 */
+	@SuppressWarnings("deprecation")
+	@Override
+	protected void postJavaNature(IProgressMonitor monitor) throws CoreException {
 
-    /**
-     * 자바 네이처 추가 이전 작업
-     */
-    @Override
-    protected void preJavaNature(IProgressMonitor monitor, IProject project) throws CoreException {
-        // createWTPNature(monitor);
-        addProjectFacets(monitor, project);
-    }
+		try {
+			// if(wcco != null) wcco.execute(monitor,
+			// null);
+			IFacetedProject facetedProject = ProjectFacetsManager.create(getWebProject());
+			IRuntime runtime = findFacetRuntime(null/* runtime */);
+			facetedProject.setRuntime(runtime, monitor);
 
-    /**
-     * 클래스 패스 설정
-     */
-    @Override
-    protected void configureClasspath(IProgressMonitor monitor)
-            throws CoreException {
+			if (runtime != null) {
+				Set<IRuntime> set = new HashSet<IRuntime>();
+				set.add(runtime);
+				facetedProject.setTargetedRuntimes(set, monitor);
+			}
+		} catch (Exception e) {
+			DeviceAPIIdeLog.logError(e);
+		}
 
-        IPath projectPath = getWebProject().getFullPath();
+	}
 
-        List<IClasspathEntry> entries = new ArrayList<IClasspathEntry>();
+	/**
+	 * 자바 네이처 추가 이전 작업
+	 */
+	@Override
+	protected void preJavaNature(IProgressMonitor monitor, IProject project) throws CoreException {
+		// createWTPNature(monitor);
+		addProjectFacets(monitor, project);
+	}
 
-        entries.add(JavaCore.newSourceEntry(projectPath
-            .append(ResourceConstants.WEB_RESOURCE_FOLDER), new IPath[]{ResourceConstants.WEB_EXCLUDING_PATH},
-            projectPath.append(ResourceConstants.WEB_DEFAULT_OUTPUT_FOLDER)));
+	/**
+	 * 클래스 패스 설정
+	 */
+	@Override
+	protected void configureClasspath(IProgressMonitor monitor) throws CoreException {
 
-        entries.add(JavaCore.newSourceEntry(projectPath
-            .append(ResourceConstants.WEB_TEST_SOURCE_FOLDER), new IPath[0],
-            projectPath.append(ResourceConstants.WEB_TEST_OUTPUT_FOLDER)));
+		IPath projectPath = getWebProject().getFullPath();
 
-        entries.add(JavaCore.newSourceEntry(projectPath
-            .append(ResourceConstants.WEB_TEST_RESOURCE_FOLDER), new IPath[]{ResourceConstants.WEB_EXCLUDING_PATH},
-            projectPath.append(ResourceConstants.WEB_TEST_OUTPUT_FOLDER)));
+		List<IClasspathEntry> entries = new ArrayList<IClasspathEntry>();
 
-        IClasspathEntry[] classpathEntrys =
-            (IClasspathEntry[]) entries.toArray(new IClasspathEntry[entries
-                .size()]);
+		entries.add(JavaCore.newSourceEntry(projectPath.append(ResourceConstants.WEB_RESOURCE_FOLDER),
+				new IPath[] { ResourceConstants.WEB_EXCLUDING_PATH },
+				projectPath.append(ResourceConstants.WEB_DEFAULT_OUTPUT_FOLDER)));
 
-        DeviceAPIIdeUtils.assignClasspathEntryToJavaProject(getWebProject(),
-            classpathEntrys, true);
+		entries.add(JavaCore.newSourceEntry(projectPath.append(ResourceConstants.WEB_TEST_SOURCE_FOLDER), new IPath[0],
+				projectPath.append(ResourceConstants.WEB_TEST_OUTPUT_FOLDER)));
 
-    }
+		entries.add(JavaCore.newSourceEntry(projectPath.append(ResourceConstants.WEB_TEST_RESOURCE_FOLDER),
+				new IPath[] { ResourceConstants.WEB_EXCLUDING_PATH },
+				projectPath.append(ResourceConstants.WEB_TEST_OUTPUT_FOLDER)));
 
-    /**
-     * 프로젝트 가져오기
-     */
-    protected IProject getWebProject() {
-        return context.getWebProject();
-    }
+		IClasspathEntry[] classpathEntrys = (IClasspathEntry[]) entries.toArray(new IClasspathEntry[entries.size()]);
 
-    /**
-     * 위치경로 가져오기
-     * @return
-     */
-    protected IPath getWebLocationPath() {
-        return context.getWebProject().getLocation();
-    }
+		DeviceAPIIdeUtils.assignClasspathEntryToJavaProject(getWebProject(), classpathEntrys, true);
 
-    /**
-     * 프로젝트명 가져오기
-     * @return
-     */
-    protected String getWebProjectName() {
-        return context.getWebProjectName();
-    }
+	}
+
+	/**
+	 * 프로젝트 가져오기
+	 */
+	protected IProject getWebProject() {
+		return context.getWebProject();
+	}
+
+	/**
+	 * 위치경로 가져오기
+	 * 
+	 * @return
+	 */
+	protected IPath getWebLocationPath() {
+		return context.getWebProject().getLocation();
+	}
+
+	/**
+	 * 프로젝트명 가져오기
+	 * 
+	 * @return
+	 */
+	protected String getWebProjectName() {
+		return context.getWebProjectName();
+	}
 }

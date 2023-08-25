@@ -121,7 +121,7 @@ public class TemplateDao implements IGenerator {
 		GenUtil.addImportSyntaxForOperations(iptList, basePkg, cls.getAllOperations());
 
 		/**************************** 스테레오타입 로직 삽입구 시작 ***************************/
-		GenUtil.addImportSyntax(iptList, "import egovframework.rte.psl.dataaccess.EgovAbstractDAO;");
+		GenUtil.addImportSyntax(iptList, "import org.egovframe.rte.psl.dataaccess.EgovAbstractDAO;");
 		GenUtil.addImportSyntax(iptList, "import org.springframework.stereotype.Repository;");
 		/**************************** 스테레오타입 로직 삽입구 끝 ***************************/
 

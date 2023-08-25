@@ -17,10 +17,13 @@ import egovframework.bdev.imp.ide.job.wizards.model.NewBatchProjectContext;
 
 /**
  * 배치 프로젝트 생성 타입 선택 마법사 페이지 클래스
+ * 
  * @author 조용현
  * @since 2012.07.24
  * @version 1.0
- * @see <pre>
+ * @see
+ * 
+ *      <pre>
  * &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *   
  *수정일	  	수정자	  수정내용
@@ -28,7 +31,7 @@ import egovframework.bdev.imp.ide.job.wizards.model.NewBatchProjectContext;
  *2012.07.24	조용현	최초생성
  *
  * 
- * </pre>
+ *      </pre>
  */
 public class BatchTemplateProjectSelectCreateTypePage extends WizardPage {
 
@@ -84,7 +87,7 @@ public class BatchTemplateProjectSelectCreateTypePage extends WizardPage {
 		GridData empty = new GridData();
 		empty.heightHint = 10;
 		GridData empty2 = new GridData();
-		empty2.widthHint = 350;
+		empty2.widthHint = 500;
 
 		radioSelectDB = new Button(parent, SWT.RADIO);
 		radioSelectDB.setText(BatchIdeMessages.BatchTemplateProjectSelectCreateTypePage_DB_RADIO_BUTTON);
@@ -112,7 +115,7 @@ public class BatchTemplateProjectSelectCreateTypePage extends WizardPage {
 		GridData empty = new GridData();
 		empty.heightHint = 10;
 		GridData empty2 = new GridData();
-		empty2.widthHint = 350;
+		empty2.widthHint = 500;
 
 		radioSelectFile = new Button(parent, SWT.RADIO);
 		radioSelectFile.setText(BatchIdeMessages.BatchTemplateProjectSelectCreateTypePage_FILE_SAM_RADIO_BUTTON);
@@ -159,8 +162,8 @@ public class BatchTemplateProjectSelectCreateTypePage extends WizardPage {
 	};
 
 	public void setVisible(boolean visible) {
-		getShell().setSize(533, 571);
-		getShell().setLocation(550, 150);
+		getShell().setSize(750, 800);
+		// getShell().setLocation(550, 150);
 		super.setVisible(visible);
 	};
 }
