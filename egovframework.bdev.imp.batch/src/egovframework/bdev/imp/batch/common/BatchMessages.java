@@ -402,7 +402,6 @@ public class BatchMessages extends NLS {
 	public static String StepListenerDialog_SEMI_TITLE;
 	public static String StepListenerDialog_TITLE;
 
-
 	/** 리소스 번들 초기화 */
     static {
         NLS.initializeMessages(BUNDLE_NAME, BatchMessages.class);

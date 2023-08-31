@@ -20,6 +20,7 @@ public class UMLColorRegistry {
 	private UMLColorRegistry() {
 		registry = new ColorRegistry();
 	}
+	
 	public static final Color getColor(RGB rgb) {
 		if (instance == null) {
 			instance = new UMLColorRegistry();
