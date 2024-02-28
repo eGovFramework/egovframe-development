@@ -1,45 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/egovframework.bdev.imp.ide.feature_4.1.0.qualifier.jar" id="egovframework.bdev.imp.ide.feature" version="4.1.0.qualifier">
+   <feature url="features/egovframework.bdev.imp.ide.feature_4.2.0.202311011715.jar" id="egovframework.bdev.imp.ide.feature" version="4.2.0.202311011715">
       <category name="eGovFrame"/>
    </feature>
-   <feature url="features/egovframework.boot.dev.imp.ide.feature_4.1.0.qualifier.jar" id="egovframework.boot.dev.imp.ide.feature" version="4.1.0.qualifier">
+   <feature url="features/egovframework.boot.dev.imp.ide.feature_4.2.0.202311011715.jar" id="egovframework.boot.dev.imp.ide.feature" version="4.2.0.202311011715">
       <category name="eGovFrame"/>
    </feature>
-   <feature url="features/egovframework.dev.imp.amateras.erd.feature_1.0.9.qualifier.jar" id="egovframework.dev.imp.amateras.erd.feature" version="1.0.9.qualifier">
+   <feature url="features/egovframework.dev.imp.codegen.feature_4.2.0.202311011715.jar" id="egovframework.dev.imp.codegen.feature" version="4.2.0.202311011715">
       <category name="eGovFrame"/>
    </feature>
-   <feature url="features/egovframework.dev.imp.amateras.uml.feature_1.3.4.qualifier.jar" id="egovframework.dev.imp.amateras.uml.feature" version="1.3.4.qualifier">
+   <feature url="features/egovframework.dev.imp.codegen.templates_4.2.0.202311011715.jar" id="egovframework.dev.imp.codegen.templates" version="4.2.0.202311011715">
       <category name="eGovFrame"/>
    </feature>
-   <feature url="features/egovframework.dev.imp.codegen.feature_4.1.0.qualifier.jar" id="egovframework.dev.imp.codegen.feature" version="4.1.0.qualifier">
+   <feature url="features/egovframework.dev.imp.core.feature_4.2.0.202311011715.jar" id="egovframework.dev.imp.core.feature" version="4.2.0.202311011715">
       <category name="eGovFrame"/>
    </feature>
-   <feature url="features/egovframework.dev.imp.codegen.templates_4.1.0.qualifier.jar" id="egovframework.dev.imp.codegen.templates" version="4.1.0.qualifier">
+   <feature url="features/egovframework.dev.imp.dbio.feature_4.2.0.202311011715.jar" id="egovframework.dev.imp.dbio.feature" version="4.2.0.202311011715">
       <category name="eGovFrame"/>
    </feature>
-   <feature url="features/egovframework.dev.imp.core.feature_4.1.0.qualifier.jar" id="egovframework.dev.imp.core.feature" version="4.1.0.qualifier">
+   <feature url="features/egovframework.dev.imp.ide.feature_4.2.0.202311011715.jar" id="egovframework.dev.imp.ide.feature" version="4.2.0.202311011715">
       <category name="eGovFrame"/>
    </feature>
-   <feature url="features/egovframework.dev.imp.dbio.feature_4.1.0.qualifier.jar" id="egovframework.dev.imp.dbio.feature" version="4.1.0.qualifier">
+   <feature url="features/egovframework.dev.tst.tctemplates_4.2.0.202311011715.jar" id="egovframework.dev.tst.tctemplates" version="4.2.0.202311011715">
       <category name="eGovFrame"/>
    </feature>
-   <feature url="features/egovframework.dev.imp.ide.feature_4.1.0.qualifier.jar" id="egovframework.dev.imp.ide.feature" version="4.1.0.qualifier">
+   <feature url="features/egovframework.hdev.imp.ide.feature_4.2.0.202311011715.jar" id="egovframework.hdev.imp.ide.feature" version="4.2.0.202311011715">
       <category name="eGovFrame"/>
    </feature>
-   <feature url="features/egovframework.dev.tst.tctemplates_4.1.0.qualifier.jar" id="egovframework.dev.tst.tctemplates" version="4.1.0.qualifier">
+   <feature url="features/egovframework.mdev.imp.ide.feature_4.2.0.202311011715.jar" id="egovframework.mdev.imp.ide.feature" version="4.2.0.202311011715">
       <category name="eGovFrame"/>
    </feature>
-   <feature url="features/egovframework.hdev.imp.ide.feature_4.1.0.qualifier.jar" id="egovframework.hdev.imp.ide.feature" version="4.1.0.qualifier">
+   <feature url="features/egovframework.rte.rdt.feature_4.2.0.202311011715.jar" id="egovframework.rte.rdt.feature" version="4.2.0.202311011715">
       <category name="eGovFrame"/>
    </feature>
-   <feature url="features/egovframework.mdev.imp.ide.feature_4.1.0.qualifier.jar" id="egovframework.mdev.imp.ide.feature" version="4.1.0.qualifier">
-      <category name="eGovFrame"/>
-   </feature>
-   <feature url="features/egovframework.rte.rdt.feature_4.1.0.qualifier.jar" id="egovframework.rte.rdt.feature" version="4.1.0.qualifier">
-      <category name="eGovFrame"/>
-   </feature>
-   <feature url="features/egovframework.verification.kw3c.feature_4.1.0.qualifier.jar" id="egovframework.verification.kw3c.feature" version="4.1.0.qualifier">
+   <feature url="features/egovframework.verification.kw3c.feature_4.2.0.202311011715.jar" id="egovframework.verification.kw3c.feature" version="4.2.0.202311011715">
       <category name="eGovFrame"/>
    </feature>
    <category-def name="eGovFrame" label="eGovFrame Plug-ins"/>

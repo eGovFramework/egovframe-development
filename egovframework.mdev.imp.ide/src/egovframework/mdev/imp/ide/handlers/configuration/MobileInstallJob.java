@@ -123,9 +123,9 @@ public class MobileInstallJob implements IRunnableWithProgress {
 		ProvisioningSession session = provisioningUI.getSession();
 
 		// 세로운 업데이트 사이트 운영으로 변경 (2017.07.04-sh.jang)
-		final URI[] uris = { new URL("https://maven.egovframe.go.kr/update_4.1").toURI(),
+		final URI[] uris = { new URL("https://maven.egovframe.go.kr/update_4.2").toURI(),
 				/* new URL("http://update.eclemma.org/").toURI(), */ new URL(
-						"https://download.springsource.com/release/TOOLS/sts4/update/e4.23/").toURI() };
+						"https://download.springsource.com/release/TOOLS/sts4/update/4.17.2.RELEASE/e4.26/").toURI() };
 		// final URI[] uris = { new URL("http://www.egovframe.go.kr/update").toURI(),
 		// /*new URL("http://update.eclemma.org/").toURI(),*/ new
 		// URL("http://dist.springframework.org/release/IDE").toURI() };

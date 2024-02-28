@@ -118,21 +118,7 @@
    <extension
          point="org.eclipse.wst.xml.core.catalogContributions">
       <catalogContribution>
-		<!-- iBatis 제거
-         <public
-               id="mybatis-3-config.dtd"
-               publicId="-//mybatis.org//DTD Config 3.0//EN"
-               uri="dtd/mybatis-3-config.dtd"
-               webURL="http://mybatis.org/dtd/mybatis-3-config.dtd">
-         </public>
-         <public
-               id="mybatis-3-mapper.dtd"
-               publicId="-//mybatis.org//DTD Mapper 3.0//EN"
-               uri="dtd/mybatis-3-mapper.dtd"
-               webURL="http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-         </public>
-         -->
-		<!-- myBatis -->
+      	<!-- iBatis 제거
          <public
                id="ibatis-2-config.dtd"
                publicId="-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
@@ -144,6 +130,20 @@
                publicId="-//ibatis.apache.org//DTD SQL Map 2.0//EN"
                uri="dtd/sql-map-2.dtd"
                webURL="http://ibatis.apache.org/dtd/sql-map-2.dtd">
+         </public>
+         -->
+		<!-- myBatis -->
+         <public
+               id="mybatis-3-config.dtd"
+               publicId="-//mybatis.org//DTD Config 3.0//EN"
+               uri="dtd/mybatis-3-config.dtd"
+               webURL="http://mybatis.org/dtd/mybatis-3-config.dtd">
+         </public>
+         <public
+               id="mybatis-3-mapper.dtd"
+               publicId="-//mybatis.org//DTD Mapper 3.0//EN"
+               uri="dtd/mybatis-3-mapper.dtd"
+               webURL="http://mybatis.org/dtd/mybatis-3-mapper.dtd">
          </public>
       </catalogContribution>
    </extension>

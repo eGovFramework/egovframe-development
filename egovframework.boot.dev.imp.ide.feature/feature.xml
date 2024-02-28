@@ -2,7 +2,7 @@
 <feature
       id="egovframework.boot.dev.imp.ide.feature"
       label="%featureName"
-      version="4.1.0.qualifier"
+      version="4.2.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://www.example.com/description">
@@ -21,6 +21,6 @@
          id="egovframework.boot.dev.imp.ide"
          download-size="0"
          install-size="0"
-         version="4.1.0.qualifier"/>
+         version="4.2.0.qualifier"/>
 
 </feature>

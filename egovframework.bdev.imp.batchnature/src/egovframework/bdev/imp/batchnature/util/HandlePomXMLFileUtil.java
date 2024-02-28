@@ -136,8 +136,8 @@ public class HandlePomXMLFileUtil {
 						Node oriVersion = XmlUtil.getNode(oriDependency, "./version");
 
 						// 현재 3.1.0 버전의 eGovBatch 적용 (2017.07.05 sh.jang)
-						if (oriVersion != null && !oriVersion.getFirstChild().getNodeValue().equals("3.1.0")) {
-							oriVersion.getFirstChild().setNodeValue("3.1.0");
+						if (oriVersion != null && !oriVersion.getFirstChild().getNodeValue().equals("4.2.0")) {
+							oriVersion.getFirstChild().setNodeValue("4.2.0");
 						}
 					}
 
@@ -152,11 +152,11 @@ public class HandlePomXMLFileUtil {
 					}
 				}
 
-				// 3.1 batch 적용 (2017.07.04 sh.jang)
+				// 4.2 batch 적용 (2017.07.04 sh.jang)
 				if (eGovBatchNoExist) {
-					String xmlStr = "<dependency>" + "\n\t\t\t<groupId>" + "egovframework.rte" + "</groupId>"
-							+ "\n\t\t\t<artifactId>" + "egovframework.rte.bat.core" + "</artifactId>"
-							+ "\n\t\t\t<version>" + "4.1.0" + "</version>\n\t\t" + "</dependency>" + "\n ";
+					String xmlStr = "<dependency>" + "\n\t\t\t<groupId>" + "org.egovframe.rte" + "</groupId>"
+							+ "\n\t\t\t<artifactId>" + "org.egovframe.rte.bat.core" + "</artifactId>"
+							+ "\n\t\t\t<version>" + "4.2.0" + "</version>\n\t\t" + "</dependency>" + "\n ";
 
 					XmlUtil.addFirstNode(rootNode, "/project/dependencies", xmlStr, "\n\t\t", "\t");
 				}
@@ -164,7 +164,7 @@ public class HandlePomXMLFileUtil {
 				if (springBatchInfraNoExist) {
 					String xmlStr = "<dependency>" + "\n\t\t\t<groupId>" + "org.springframework.batch" + "</groupId>"
 							+ "\n\t\t\t<artifactId>" + "spring-batch-infrastructure" + "</artifactId>"
-							+ "\n\t\t\t<version>" + "4.3.6.RELEASE" + "</version>\n\t\t" + "</dependency>" + "\n ";
+							+ "\n\t\t\t<version>" + "4.3.8.RELEASE" + "</version>\n\t\t" + "</dependency>" + "\n ";
 
 					XmlUtil.addFirstNode(rootNode, "/project/dependencies", xmlStr, "\n\t\t", "\t");
 				}
@@ -172,7 +172,7 @@ public class HandlePomXMLFileUtil {
 				if (springBatchCoreNoExist) {
 					String xmlStr = "<dependency>" + "\n\t\t\t<groupId>" + "org.springframework.batch" + "</groupId>"
 							+ "\n\t\t\t<artifactId>" + "spring-batch-core" + "</artifactId>" + "\n\t\t\t<version>"
-							+ "4.3.6.RELEASE" + "</version>\n\t\t" + "</dependency>" + "\n ";
+							+ "4.3.8.RELEASE" + "</version>\n\t\t" + "</dependency>" + "\n ";
 
 					XmlUtil.addFirstNode(rootNode, "/project/dependencies", xmlStr, "\n\t\t", "\t");
 				}

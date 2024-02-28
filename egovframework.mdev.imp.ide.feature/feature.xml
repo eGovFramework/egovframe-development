@@ -2,7 +2,7 @@
 <feature
       id="egovframework.mdev.imp.ide.feature"
       label="%featureName"
-      version="4.1.0.qualifier"
+      version="4.2.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://www.example.com/description">
@@ -21,19 +21,19 @@
          id="egovframework.mdev.imp.commngt"
          download-size="0"
          install-size="0"
-         version="4.1.0.qualifier"/>
+         version="4.2.0.qualifier"/>
 
    <plugin
          id="egovframework.mdev.imp.confmngt"
          download-size="0"
          install-size="0"
-         version="4.1.0.qualifier"
+         version="4.2.0.qualifier"
          unpack="false"/>
 
    <plugin
          id="egovframework.mdev.imp.ide"
          download-size="0"
          install-size="0"
-         version="4.1.0.qualifier"/>
+         version="4.2.0.qualifier"/>
 
 </feature>

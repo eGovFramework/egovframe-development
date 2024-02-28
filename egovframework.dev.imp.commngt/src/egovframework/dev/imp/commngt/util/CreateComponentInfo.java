@@ -17,15 +17,14 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
  * 생성된 파일의 내용을 각각의 실제 파일에 덮어쓴다.
  * 
  * 엑셀파일 형식 - 행 : 3행부터 데이터 시작 - 열 : B) 카테고리 명 C) 카테고리 설명 D) 컴포넌트 명 E) 패키지명 F)
- * dependency 패키지 (콤마 또는 줄바꿈으로 연결) G) 컴포넌트 설명 H) 테이블명 (콤마로 연결) I) 버전 J) web.xml
+ * dependency 패키지 (콤마 또는 줄바꿈으로 연결) G) 컴포넌트 설명 H) 테이블명 (줄바꿈으로 연결) I) 버전 J) web.xml
  * 배포여부 K) 게시판 추가기능 사용여부 (사용안함) L) 카테고리 명_영문 M) 카테고리 설명_영문 N) 컴포넌트 명_영문 O) 컴포넌트
  * 설명_영문
  * 
- * 생성 파일 : components_ko.properties (실제 파일경로 :
- * egovframework.dev.imp.commngt\common) components_en.properties (실제 파일경로 :
- * egovframework.dev.imp.commngt\common) EgovComponentsInfo.java (실제 파일경로 :
- * egovframework.dev.imp.commngt\common) components.xml (실제 파일경로 :
- * egovframework.dev.imp.commngt\example)
+ * 생성 파일 : components_ko.properties (실제 파일경로 :  * egovframework.dev.imp.commngt\common) 
+ * components_en.properties (실제 파일경로 :  * egovframework.dev.imp.commngt\common) 
+ * EgovComponentsInfo.java (실제 파일경로 : egovframework.dev.imp.commngt\common) 
+ * components.xml (실제 파일경로 :  * egovframework.dev.imp.commngt\example)
  *
  */
 
@@ -35,11 +34,11 @@ public class CreateComponentInfo {
 	public static void main(String[] args) throws Exception {
 		try {
 			// 컴포넌트 정보 엑셀 파일 경로
-			String readFilePath = "D:\\eclipse-rcp-2022-03-R-win32-x86_64\\workspace\\egovframework.dev.imp.commngt\\examples\\components.xls";
+			String readFilePath = "C:\\eclipse-rcp-2022-12-R-win32-x86_64\\workspace\\egovframework.dev.imp.commngt\\examples\\components.xls";
 			// 컴포넌트 정보 2가지 properties, java 파일 생성 경로
-			String generateFilePath = "D:\\eclipse-rcp-2022-03-R-win32-x86_64\\workspace\\egovframework.dev.imp.commngt\\src\\egovframework\\dev\\imp\\commngt\\common";
+			String generateFilePath = "C:\\eclipse-rcp-2022-12-R-win32-x86_64\\workspace\\egovframework.dev.imp.commngt\\src\\egovframework\\dev\\imp\\commngt\\common";
 			// xml 파일 생성 경로
-			String generateXMLFilePath = "D:\\eclipse-rcp-2022-03-R-win32-x86_64\\workspace\\egovframework.dev.imp.commngt\\examples";
+			String generateXMLFilePath = "C:\\eclipse-rcp-2022-12-R-win32-x86_64\\workspace\\egovframework.dev.imp.commngt\\examples";
 
 			// properties 파일
 			File propertiesKoFile = File.createTempFile("components_ko", ".properties", new File(generateFilePath));

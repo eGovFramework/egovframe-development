@@ -2,11 +2,11 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: eGovFramework Batch Confmngt
 Bundle-SymbolicName: egovframework.bdev.imp.confmngt; singleton:=true
-Bundle-Version: 4.1.0.qualifier
+Bundle-Version: 4.2.0.qualifier
 Bundle-Activator: egovframework.bdev.imp.confmngt.EgovBatchConfMngtPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- egovframework.dev.imp.core;bundle-version="4.1.0",
+ egovframework.dev.imp.core;bundle-version="4.2.0",
  org.eclipse.jdt.ui,
  org.eclipse.jdt.core,
  org.eclipse.core.resources

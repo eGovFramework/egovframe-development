@@ -5,7 +5,7 @@
     <groupId>eGovframeBatch</groupId>
     <artifactId>eGovframeBatch.example</artifactId>
     <packaging>jar</packaging>
-    <version>4.1.0</version>
+    <version>4.2.0</version>
     <name>eGovframeBatch.pom</name>
     <url>http://www.egovframe.go.kr</url>
 
@@ -17,9 +17,9 @@
 	</licenses>
 
 	<properties>
-		<spring.maven.artifact.version>5.3.20</spring.maven.artifact.version>
-        <org.egovframe.rte.version>4.1.0</org.egovframe.rte.version>
-		<batch.maven.artifact.version>4.3.6</batch.maven.artifact.version>
+		<spring.maven.artifact.version>5.3.27</spring.maven.artifact.version>
+        <org.egovframe.rte.version>4.2.0</org.egovframe.rte.version>
+		<batch.maven.artifact.version>4.3.8</batch.maven.artifact.version>
 	</properties>
 
     <repositories>
@@ -48,7 +48,7 @@
 	<parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.0</version>
+        <version>2.7.12</version>
     </parent>
 
 	<dependencies>
@@ -57,6 +57,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -104,51 +110,40 @@
 			<artifactId>org.egovframe.rte.fdl.property</artifactId>
 			<version>${org.egovframe.rte.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.egovframe.rte</groupId>
+			<artifactId>org.egovframe.rte.itl.integration</artifactId>
+			<version>${org.egovframe.rte.version}</version>
+		</dependency>
 
 		<!-- For Testing -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
-			<version>${spring.maven.artifact.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.13.2</version>
 			<scope>test</scope>
-		</dependency>
-
-		<!-- Persistence 추가 -->
-		<dependency>
-			<groupId>javax.persistence</groupId>
-            <artifactId>javax.persistence-api</artifactId>
-            <version>2.2</version>
-			<optional>true</optional>
 		</dependency>
 
 		<dependency>
 	        <groupId>org.quartz-scheduler</groupId>
 	        <artifactId>quartz</artifactId>
-	        <version>2.3.2</version>
 	    </dependency>
 
 		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
-			<version>2.5.2</version>
+			<version>2.7.2</version>
+			<classifier>jdk8</classifier>
 		</dependency>
 
 		<dependency>
 			<groupId>org.antlr</groupId>
 			<artifactId>antlr</artifactId>
 			<version>3.5</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.maven.surefire</groupId>
-			<artifactId>surefire-junit</artifactId>
-			<version>2.6</version>
 		</dependency>
 
         <dependency>
@@ -166,13 +161,12 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
-            <version>2.9.0</version>
         </dependency>
 
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.29</version>
+            <version>8.0.33</version>
         </dependency>
 
         <dependency>
@@ -232,32 +226,12 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.10.1</version>
+					<version>3.11.0</version>
 					<configuration>
 						<source>1.8</source>
 						<target>1.8</target>
 						<encoding>UTF-8</encoding>
 					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>hibernate3-maven-plugin</artifactId>
-					<version>3.0</version>
-					<configuration>
-						<components>
-							<component>
-								<name>hbm2ddl</name>
-								<implementation>annotationconfiguration</implementation>
-							</component>
-						</components>
-					</configuration>
-					<dependencies>
-						<dependency>
-							<groupId>hsqldb</groupId>
-							<artifactId>hsqldb</artifactId>
-							<version>2.5.2</version>
-						</dependency>
-					</dependencies>
 				</plugin>
 				<!-- EMMA -->
 				<plugin>
@@ -269,7 +243,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-pmd-plugin</artifactId>
-					<version>3.17.0</version>
+					<version>3.21.0</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
@@ -278,7 +252,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.2</version>
 				<configuration>
 					<skipTests>false</skipTests>
 					<forkMode>once</forkMode>
@@ -301,7 +274,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.4.0</version>
 			</plugin>
 		</plugins>
 	</build>
@@ -311,7 +283,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.3.0</version>
+                <version>3.4.4</version>
 				<reportSets>
 					<reportSet>
 						<id>sunlink</id>
