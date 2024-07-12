@@ -4,7 +4,7 @@
 <locations>
 <location id="org.eclipse.rcp" path="${eclipse_home}" type="Feature"/>
 <location path="${workspace_loc}" type="Directory"/>
-	<location path="E:\eclipse-jee-2022-03-R-win32-x86_64-RCP-TEST\eclipse" type="Directory"/>
+	<location path="C:\eclipse-jee-2022-12-R-win32-x86_64-RCP-TEST\eclipse" type="Directory"/>
 </locations>
 <targetJRE path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_45"/>
 </target>

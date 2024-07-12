@@ -5,7 +5,7 @@
 		<layer>Core</layer>
 		<name>Foundation Common</name>
 		<dependencies>
-			<dependency>egovframework.rte.egovframework.rte.fdl.cmmn</dependency>
+			<dependency>org.egovframe.rte.org.egovframe.rte.fdl.cmmn</dependency>
 		</dependencies>
 	</service>
 
@@ -13,7 +13,7 @@
 		<layer>Foundation</layer>
 		<name>Server Security</name>
 		<dependencies>
-			<dependency>egovframework.rte.egovframework.rte.fdl.security</dependency>
+			<dependency>org.egovframe.rte.org.egovframe.rte.fdl.security</dependency>
 		</dependencies>
 	</service>
     
@@ -21,7 +21,7 @@
         <layer>Foundation</layer>
         <name>Encryption/Decryption</name>
         <dependencies>
-            <dependency>egovframework.rte.egovframework.rte.fdl.crypto</dependency>
+            <dependency>org.egovframe.rte.org.egovframe.rte.fdl.crypto</dependency>
         </dependencies>
     </service>
 
@@ -29,7 +29,7 @@
         <layer>Foundation</layer>
         <name>Excel</name>
         <dependencies>
-            <dependency>egovframework.rte.egovframework.rte.fdl.excel</dependency>
+            <dependency>org.egovframe.rte.org.egovframe.rte.fdl.excel</dependency>
         </dependencies>
     </service>
 
@@ -37,7 +37,7 @@
         <layer>Foundation</layer>
         <name>File Handling</name>
         <dependencies>
-            <dependency>egovframework.rte.egovframework.rte.fdl.filehandling</dependency>
+            <dependency>org.egovframe.rte.org.egovframe.rte.fdl.filehandling</dependency>
         </dependencies>
     </service>
     
@@ -45,7 +45,8 @@
         <layer>Foundation</layer>
         <name>XML Manipulation</name>
         <dependencies>
-            <dependency>egovframework.rte.egovframework.rte.fdl.xml</dependency>
+            <dependency>org.egovframe.rte.org.egovframe.rte.fdl.xml</dependency>
+            <dependency>xerces.xercesImpl</dependency>
         </dependencies>
     </service>
     
@@ -53,7 +54,7 @@
         <layer>Foundation</layer>
         <name>String Util</name>
         <dependencies>
-            <dependency>egovframework.rte.egovframework.rte.fdl.string</dependency>
+            <dependency>org.egovframe.rte.org.egovframe.rte.fdl.string</dependency>
         </dependencies>
     </service>
         
@@ -61,7 +62,7 @@
         <layer>Foundation</layer>
         <name>Id Generation</name>
         <dependencies>
-            <dependency>egovframework.rte.egovframework.rte.fdl.idgnr</dependency>
+            <dependency>org.egovframe.rte.org.egovframe.rte.fdl.idgnr</dependency>
         </dependencies>
     </service>
     
@@ -69,7 +70,7 @@
         <layer>Foundation</layer>
         <name>logging Service</name>
         <dependencies>
-            <dependency>egovframework.rte.egovframework.rte.fdl.logging</dependency>
+            <dependency>org.egovframe.rte.org.egovframe.rte.fdl.logging</dependency>
         </dependencies>
     </service>
     
@@ -77,7 +78,7 @@
         <layer>Foundation</layer>
         <name>property</name>
         <dependencies>
-            <dependency>egovframework.rte.egovframework.rte.fdl.property</dependency>
+            <dependency>org.egovframe.rte.org.egovframe.rte.fdl.property</dependency>
         </dependencies>
     </service>
         
@@ -85,7 +86,8 @@
         <layer>Presentation</layer>
         <name>MVC</name>
         <dependencies>
-            <dependency>egovframework.rte.egovframework.rte.ptl.mvc</dependency>
+            <dependency>org.egovframe.rte.org.egovframe.rte.ptl.mvc</dependency>
+            <dependency>commons-validator.commons-validator</dependency>
         </dependencies>
     </service>
         
@@ -93,7 +95,7 @@
         <layer>Batch</layer>
         <name>Batch Process</name>
         <dependencies>
-            <dependency>egovframework.rte.egovframework.rte.bat.core</dependency>
+            <dependency>org.egovframe.rte.org.egovframe.rte.bat.core</dependency>
         </dependencies>
     </service>
     
@@ -101,7 +103,7 @@
         <name>Integration</name>
         <layer>Integration</layer>
         <dependencies>
-            <dependency>egovframework.rte.egovframework.rte.itl.integration</dependency>
+            <dependency>org.egovframe.rte.org.egovframe.rte.itl.integration</dependency>
         </dependencies>
     </service>
     
@@ -109,7 +111,7 @@
         <layer>Integration</layer>
         <name>Web Service</name>
         <dependencies>
-            <dependency>egovframework.rte.egovframework.rte.itl.webservice</dependency>
+            <dependency>org.egovframe.rte.org.egovframe.rte.itl.webservice</dependency>
         </dependencies>
     </service>
     
@@ -117,7 +119,7 @@
         <layer>Persistence</layer>
         <name>Data Access</name>
         <dependencies>
-            <dependency>egovframework.rte.egovframework.rte.psl.dataaccess</dependency>
+            <dependency>org.egovframe.rte.org.egovframe.rte.psl.dataaccess</dependency>
         </dependencies>
     </service>
     
@@ -125,7 +127,7 @@
         <layer>Persistence</layer>
         <name>Data Access</name>
         <dependencies>
-            <dependency>egovframework.rte.egovframework.rte.psl.data.jpa</dependency>
+            <dependency>org.egovframe.rte.org.egovframe.rte.psl.data.jpa</dependency>
         </dependencies>
     </service>
 	
@@ -133,8 +135,7 @@
 		<layer>Foundation</layer>
 		<name>Cache</name>
 		<dependencies>
-			<dependency>net.sf.ehcache.ehcache-core</dependency>
-			<dependency>net.sf.ehcache.ehcache-terracotta</dependency>
+			<dependency>net.sf.ehcache.ehcache</dependency>
 		</dependencies>
 	</service>
 	
@@ -158,7 +159,19 @@
 		<layer>Foundation</layer>
 		<name>FTP</name>
 		<dependencies>
-			<dependency>commons-net.commons-net</dependency>
+			<dependency>org.apache.commons.commons-vfs2</dependency>
+		</dependencies>
+	</service>
+	<service>
+		<layer>Foundation</layer>
+		<name>LOGGING</name>
+		<dependencies>
+			<dependency>org.apache.logging.log4j.log4j-core</dependency>
+			<dependency>org.apache.logging.log4j.log4j-slf4j2-impl</dependency>
+			<dependency>org.slf4j.jcl-over-slf4j</dependency>
+			<dependency>org.slf4j.log4j-over-slf4j</dependency>
+			<dependency>javax.annotation.javax.annotation-api</dependency>
+			<dependency>junit.junit</dependency>
 		</dependencies>
 	</service>
 	
@@ -186,7 +199,7 @@
 		<layer>Foundation</layer>
 		<name>Object Pooling</name>
 		<dependencies>
-			<dependency>commons-pool.commons-pool</dependency>
+			<dependency>org.apache.commons.commons-pool2</dependency>
 		</dependencies>
 	</service>
 	
@@ -195,15 +208,6 @@
 		<name>Scheduling</name>
 		<dependencies>
 			<dependency>org.quartz-scheduler.quartz</dependency>
-			<dependency>org.quartz-scheduler.quartz-jobs</dependency>
-		</dependencies>
-	</service>
-
-	<service>
-		<layer>Business Logic</layer>
-		<name>Process Control</name>
-		<dependencies>
-			<dependency>org.springframework.webflow.org.springframework.webflow</dependency>
 		</dependencies>
 	</service>
     
@@ -211,10 +215,19 @@
         <layer>Persistence</layer>
         <name>ORM</name>
         <dependencies>
+        	<dependency>org.springframework.spring-orm</dependency>
             <dependency>org.hibernate.hibernate-entitymanager</dependency>
             <dependency>org.hibernate.hibernate-annotations</dependency>
-            <dependency>org.hibernate.hibernate-validator</dependency>
+            <dependency>org.hibernate.validator.hibernate-validator</dependency>
         </dependencies>
     </service>
+    <service>
+		<layer>Integration</layer>
+		<name>Web Service Interface</name>
+		<dependencies>
+			<dependency>org.apache.cxf.cxf-rt-frontend-jaxws</dependency>
+			<dependency>org.apache.cxf.cxf-rt-transports-http-jetty</dependency>
+		</dependencies>
+	</service>
 	
 </services>

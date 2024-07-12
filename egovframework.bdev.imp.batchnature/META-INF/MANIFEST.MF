@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: eGovFramework Batch Nature
 Bundle-SymbolicName: egovframework.bdev.imp.batchnature;singleton:=true
-Bundle-Version: 4.1.0.qualifier
+Bundle-Version: 4.2.0.qualifier
 Bundle-Activator: egovframework.bdev.imp.batchnature.EgovBatchNaturePlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -10,8 +10,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jdt.core,
  org.eclipse.core.expressions,
  org.eclipse.search,
- egovframework.dev.imp.core;bundle-version="4.1.0",
- egovframework.bdev.imp.ide;bundle-version="4.1.0"
+ egovframework.dev.imp.core;bundle-version="4.2.0",
+ egovframework.bdev.imp.ide;bundle-version="4.2.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: MOIS

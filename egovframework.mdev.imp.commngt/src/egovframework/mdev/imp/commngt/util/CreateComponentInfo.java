@@ -49,9 +49,9 @@ public class CreateComponentInfo{
 	public static void main(String[] args) throws Exception{
 		try{
 			//컴포넌트 정보 엑셀 파일 경로			
-			String readFilePath = "D:\\eclipse-rcp-2020-06-R-win32-x86_64\\workspace\\egovframework.mdev.imp.commngt\\examples\\componentsMobile.xls";
+			String readFilePath = "C:\\\\eclipse-rcp-2022-12-R-win32-x86_64\\workspace\\egovframework.mdev.imp.commngt\\examples\\componentsMobile.xls";
 			//컴포넌트 정보 properties, java, xml 파일 생성 경로
-			String generateFilePath="D:\\eclipse-rcp-2020-06-R-win32-x86_64\\workspace\\egovframework.mdev.imp.commngt\\examples";
+			String generateFilePath="C:\\\\eclipse-rcp-2022-12-R-win32-x86_64\\workspace\\egovframework.mdev.imp.commngt\\examples";
 			
 			//properties 파일
 			File propertiesKoFile = File.createTempFile("components_ko", ".properties", new File(generateFilePath));

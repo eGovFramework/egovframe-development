@@ -1,4 +1,4 @@
-# 표준프레임워크 개발환경  4.1.0  (egovframe-development)
+# 표준프레임워크 개발환경  4.2.0  (egovframe-development)
 
 ![Eclipse](https://img.shields.io/badge/Eclipse-FE7A16.svg?style=for-the-badge&logo=Eclipse&logoColor=white)
 ![java](https://img.shields.io/badge/java-007396?style=for-the-badge&logo=JAVA&logoColor=white)

@@ -52,7 +52,6 @@ public class IdeMessages extends NLS {
 	public static String TemplateProjectSelectPage4;
 	public static String TemplateProjectSelectPage6;
 	public static String TemplateProjectSelectPage7;
-	public static String TemplateProjectSelectPage8
 	;
 	public static String webProjectCreationPage5;
 	/** 신규 기본 프로젝트 마법사 타이틀 */
