@@ -5,127 +5,58 @@
 ##
 package $voPackage;
 
-import java.io.Serializable;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import egovframework.com.cmm.ComDefaultVO;
+import lombok.NoArgsConstructor;
 
 /**
  * @Class Name : ${defaultVoClassName}.java
  * @Description : ${model.entity.pcName} Default VO class
  * @Modification Information
  *
- * @author ${author}
- * @since ${createDate}
- * @version 1.0
+ * @author 이백행
+ * @since ${author}
+ * @version ${createDate}
  * @see
- *  
- *  Copyright (C)  All right reserved.
+ * 
+ *      Copyright (C) All right reserved.
  */
-public class ${defaultVoClassName} implements Serializable {
+@NoArgsConstructor
+public class ${defaultVoClassName} extends ComDefaultVO {
 
-	private static final long serialVersionUID = 1L;
-	
-	/** 검색조건 */
-    private String searchCondition = "";
-    
-    /** 검색Keyword */
-    private String searchKeyword = "";
-    
-    /** 검색사용여부 */
-    private String searchUseYn = "";
-    
-    /** 현재페이지 */
-    private int pageIndex = 1;
-    
-    /** 페이지갯수 */
-    private int pageUnit = 10;
-    
-    /** 페이지사이즈 */
-    private int pageSize = 10;
+	/**
+	 * 직렬 버전 UID
+	 */
+	private static final long serialVersionUID = 1L; // TODO Add generated serial version ID
 
-    /** firstIndex */
-    private int firstIndex = 1;
+	/**
+	 * 최초등록자명
+	 * 
+	 * @컬럼 `FRST_REGISTER_ID` varchar(20) DEFAULT NULL COMMENT '최초등록자ID',
+	 */
+	private String frstRegisterNm;
 
-    /** lastIndex */
-    private int lastIndex = 1;
-
-    /** recordCountPerPage */
-    private int recordCountPerPage = 10;
-    
-        
-	public int getFirstIndex() {
-		return firstIndex;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
-	public void setFirstIndex(int firstIndex) {
-		this.firstIndex = firstIndex;
+	/**
+	 * 최초등록자명 값읽기
+	 * 
+	 * @return
+	 * @컬럼 `FRST_REGISTER_ID` varchar(20) DEFAULT NULL COMMENT '최초등록자ID',
+	 */
+	public String getFrstRegisterNm() {
+		return frstRegisterNm;
 	}
 
-	public int getLastIndex() {
-		return lastIndex;
+	/**
+	 * 최초등록자명 값설정
+	 * 
+	 * @param frstRegisterNm
+	 * @컬럼 `FRST_REGISTER_ID` varchar(20) DEFAULT NULL COMMENT '최초등록자ID',
+	 */
+	public void setFrstRegisterNm(final String frstRegisterNm) {
+		this.frstRegisterNm = frstRegisterNm;
 	}
-
-	public void setLastIndex(int lastIndex) {
-		this.lastIndex = lastIndex;
-	}
-
-	public int getRecordCountPerPage() {
-		return recordCountPerPage;
-	}
-
-	public void setRecordCountPerPage(int recordCountPerPage) {
-		this.recordCountPerPage = recordCountPerPage;
-	}
-
-	public String getSearchCondition() {
-        return searchCondition;
-    }
-
-    public void setSearchCondition(String searchCondition) {
-        this.searchCondition = searchCondition;
-    }
-
-    public String getSearchKeyword() {
-        return searchKeyword;
-    }
-
-    public void setSearchKeyword(String searchKeyword) {
-        this.searchKeyword = searchKeyword;
-    }
-
-    public String getSearchUseYn() {
-        return searchUseYn;
-    }
-
-    public void setSearchUseYn(String searchUseYn) {
-        this.searchUseYn = searchUseYn;
-    }
-
-    public int getPageIndex() {
-        return pageIndex;
-    }
-
-    public void setPageIndex(int pageIndex) {
-        this.pageIndex = pageIndex;
-    }
-
-    public int getPageUnit() {
-        return pageUnit;
-    }
-
-    public void setPageUnit(int pageUnit) {
-        this.pageUnit = pageUnit;
-    }
-
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
-    }
 
 }
