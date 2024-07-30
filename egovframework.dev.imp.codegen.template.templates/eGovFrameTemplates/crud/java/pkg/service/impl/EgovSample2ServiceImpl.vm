@@ -79,11 +79,11 @@ public class ${serviceImplClassName} extends EgovAbstractServiceImpl implements
         
     private static final Logger LOGGER = LoggerFactory.getLogger(${serviceImplClassName}.class);
 
-    @Resource(name="${mapperName}")
-    private ${mapperClassName} ${daoInstanceName};
+    //@Resource(name="${mapperName}")
+    //private ${mapperClassName} ${daoInstanceName};
     
-    //@Resource(name="${daoName}")
-    //private ${daoClassName} ${daoInstanceName};
+    @Resource(name="${daoName}")
+    private ${daoClassName} ${daoInstanceName};
     
     /** ID Generation */
     //@Resource(name="{$idGnrService}")    
