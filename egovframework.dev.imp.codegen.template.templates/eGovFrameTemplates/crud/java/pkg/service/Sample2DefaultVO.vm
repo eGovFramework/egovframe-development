@@ -13,9 +13,9 @@ import lombok.NoArgsConstructor;
  * @Description : ${model.entity.pcName} Default VO class
  * @Modification Information
  *
- * @author 이백행
- * @since ${author}
- * @version ${createDate}
+ * @author ${author}
+ * @since ${createDate}
+ * @version 1.0
  * @see
  * 
  *      Copyright (C) All right reserved.
