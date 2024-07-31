@@ -74,7 +74,7 @@ public class Sample2DAO extends EgovAbstractDAO {
 	 * @return SAMPLE2 목록
 	 * @exception Exception
 	 */
-    public List selectSample2List(SampleDefaultVO searchVO) throws Exception {
+    public List<?> selectSample2List(SampleDefaultVO searchVO) throws Exception {
         return list("sample2DAO.selectSample2List_D", searchVO);
     }
 
