@@ -6,8 +6,11 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import egovframework.rte.cmmn.SampleDefaultVO;
-import egovframework.rte.fdl.cmmn.AbstractServiceImpl;
+import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
 import egovframework.rte.fdl.idgnr.EgovIdGnrService;
 import pkg.service.EgovSample2Service;
 import pkg.service.Sample2VO;
@@ -31,8 +34,10 @@ import pkg.service.Sample2VO;
  */
 
 @Service("sample2Service")
-public class EgovSample2ServiceImpl extends AbstractServiceImpl implements
+public class EgovSample2ServiceImpl extends EgovAbstractServiceImpl implements
         EgovSample2Service {
+        
+    private static final Logger LOGGER = LoggerFactory.getLogger(EgovSample2ServiceImpl.class);
 
     @Resource(name="sample2DAO")
     private Sample2DAO sample2DAO;
@@ -48,12 +53,12 @@ public class EgovSample2ServiceImpl extends AbstractServiceImpl implements
 	 * @exception Exception
 	 */
     public String insertSample2(Sample2VO vo) throws Exception {
-    	log.debug(vo.toString());
+    	LOGGER.debug(vo.toString());
     	
     	/** ID Generation Service */
     	String id = egovIdGnrService.getNextStringId();
     	vo.setId(id);
-    	log.debug(vo.toString());
+    	LOGGER.debug(vo.toString());
     	
     	sample2DAO.insertSample2(vo);    	
         return id;
@@ -98,7 +103,7 @@ public class EgovSample2ServiceImpl extends AbstractServiceImpl implements
 	 * @return SAMPLE2 목록
 	 * @exception Exception
 	 */
-    public List selectSample2List(SampleDefaultVO searchVO) throws Exception {
+    public List<?> selectSample2List(SampleDefaultVO searchVO) throws Exception {
         return sample2DAO.selectSample2List(searchVO);
     }
 
