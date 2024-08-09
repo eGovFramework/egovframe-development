@@ -65,7 +65,7 @@
 				<condition variable="checkDataAccess" value="true" />
 			</template> -->
 			<template component="sqlMapper"
-				expression="${model.entity.ccName}/${model.entity.pcName}_MAPPER"
+				expression="${model.entity.ccName}/${model.entity.pcName}_SQL_mysql"
 				velocity="resource/pkg/EgovSample_Sample2_MAPPER.vm" extension="xml"
 				container="mapperFolder">
 				<condition variable="checkDataAccess" value="true" />
