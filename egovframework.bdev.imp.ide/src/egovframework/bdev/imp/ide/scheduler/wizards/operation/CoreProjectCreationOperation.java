@@ -146,47 +146,47 @@ public class CoreProjectCreationOperation extends BatchProjectCreationOperation 
         //addProjectFacets(monitor);
     }
 
-    /**
-     * 프로젝트 패싯 추가
-     * @param monitor
-     * @throws CoreException
-     */
-    @SuppressWarnings("deprecation")
-    private void addProjectFacets(IProgressMonitor monitor)
-            throws CoreException {
-
-        IProject project = getProject();
-
-        IFacetedProject facetedProject =
-            ProjectFacetsManager.create(project.getProject(), true, null);
-        IProjectFacet javaFacet =
-            ProjectFacetsManager
-                .getProjectFacet(ProjectFacetConstants.JAVA_FACET_ID);
-        IProjectFacetVersion javaFacetVersion = javaFacet.getVersion(ProjectFacetConstants.DEFAULT_JAVA_VERSION);
-/*        
-//        IProjectFacetVersion javaFacetVersion =
-//            javaFacet.getVersion(System.getProperty("java.version").substring(0,3));
-        String javaVersion = System.getProperty("java.version").substring(0,3);
-        
-        if(javaVersion != null && javaVersion.indexOf("1.5")>-1) javaVersion = "5.0";
-        IProjectFacetVersion javaFacetVersion = javaFacet.getVersion(javaVersion);
-*/
-        Set<Action> facetActions = new HashSet<Action>(1);
-        for (IActionDefinition def : javaFacetVersion
-            .getActionDefinitions(IFacetedProject.Action.Type.INSTALL)) {
-            Object object =
-                def.createConfigObject(javaFacetVersion, project.getProject()
-                    .getName());
-            JavaFacetInstallConfig config = (JavaFacetInstallConfig) object;
-            config.setSourceFolder(ResourceConstants.SOURCE_FOLDER);
-            config
-                .setDefaultOutputFolder(ResourceConstants.DEFAULT_OUTPUT_FOLDER);
-
-            facetActions.add(new Action(Action.Type.INSTALL, javaFacetVersion,
-                config));
-        }
-        
-        facetedProject.modify(facetActions, Policy.subMonitorFor(monitor, 1));
-    }
+//    /**
+//     * 프로젝트 패싯 추가
+//     * @param monitor
+//     * @throws CoreException
+//     */
+//    @SuppressWarnings("deprecation")
+//    private void addProjectFacets(IProgressMonitor monitor)
+//            throws CoreException {
+//
+//        IProject project = getProject();
+//
+//        IFacetedProject facetedProject =
+//            ProjectFacetsManager.create(project.getProject(), true, null);
+//        IProjectFacet javaFacet =
+//            ProjectFacetsManager
+//                .getProjectFacet(ProjectFacetConstants.JAVA_FACET_ID);
+//        IProjectFacetVersion javaFacetVersion = javaFacet.getVersion(ProjectFacetConstants.DEFAULT_JAVA_VERSION);
+///*        
+////        IProjectFacetVersion javaFacetVersion =
+////            javaFacet.getVersion(System.getProperty("java.version").substring(0,3));
+//        String javaVersion = System.getProperty("java.version").substring(0,3);
+//        
+//        if(javaVersion != null && javaVersion.indexOf("1.5")>-1) javaVersion = "5.0";
+//        IProjectFacetVersion javaFacetVersion = javaFacet.getVersion(javaVersion);
+//*/
+//        Set<Action> facetActions = new HashSet<Action>(1);
+//        for (IActionDefinition def : javaFacetVersion
+//            .getActionDefinitions(IFacetedProject.Action.Type.INSTALL)) {
+//            Object object =
+//                def.createConfigObject(javaFacetVersion, project.getProject()
+//                    .getName());
+//            JavaFacetInstallConfig config = (JavaFacetInstallConfig) object;
+//            config.setSourceFolder(ResourceConstants.SOURCE_FOLDER);
+//            config
+//                .setDefaultOutputFolder(ResourceConstants.DEFAULT_OUTPUT_FOLDER);
+//
+//            facetActions.add(new Action(Action.Type.INSTALL, javaFacetVersion,
+//                config));
+//        }
+//        
+//        facetedProject.modify(facetActions, Policy.subMonitorFor(monitor, 1));
+//    }
 
 }
