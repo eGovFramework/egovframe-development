@@ -317,12 +317,12 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 	// assignClasspathEntryToJavaProject(PreferenceConstants.getDefaultJRELibrary());
 	// }
 
-	/**
-	 * 스프링 네이처 추가
-	 */
-	private void createSpringNature(IProgressMonitor monitor) throws CoreException {
-		BatchIdeUtils.addNatureToProject(getProject(), "org.springframework.ide.eclipse.core.springnature", monitor);
-	}
+//	/**
+//	 * 스프링 네이처 추가
+//	 */
+//	private void createSpringNature(IProgressMonitor monitor) throws CoreException {
+//		BatchIdeUtils.addNatureToProject(getProject(), "org.springframework.ide.eclipse.core.springnature", monitor);
+//	}
 
 	/**
 	 * eGovFramework 네이처 추가
