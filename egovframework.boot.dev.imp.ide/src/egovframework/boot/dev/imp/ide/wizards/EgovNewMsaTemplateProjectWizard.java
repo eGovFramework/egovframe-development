@@ -24,7 +24,7 @@ import egovframework.boot.dev.imp.ide.common.BootIdeMessages;
 import egovframework.boot.dev.imp.ide.wizards.model.NewProjectContext;
 import egovframework.boot.dev.imp.ide.wizards.operation.BootWebProjectCreationOperation;
 import egovframework.boot.dev.imp.ide.wizards.pages.TemplateProjectCreationPage;
-import egovframework.boot.dev.imp.ide.wizards.pages.TemplateProjectSelectPage2;
+import egovframework.boot.dev.imp.ide.wizards.pages.TemplateMSAProjectSelectPage;
 
 /**
  * 템플릿 프로젝트 마법사 클래스
@@ -65,7 +65,7 @@ public class EgovNewMsaTemplateProjectWizard extends EgovNewProjectWizard {
     public void addPages() {
         try {
         	
-        	IWizardPage templateSelectPage = new TemplateProjectSelectPage2("basePage", getContext());
+        	IWizardPage templateSelectPage = new TemplateMSAProjectSelectPage("basePage", getContext());
         	addPage(templateSelectPage);
         	
             IWizardPage firstPage = new TemplateProjectCreationPage("firstPage", getContext()); 

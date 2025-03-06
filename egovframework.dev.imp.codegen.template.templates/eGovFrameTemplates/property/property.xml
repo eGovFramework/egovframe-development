@@ -7,10 +7,17 @@
 			<!-- NewProperty	New Property -->
 			<description>Create Property</description>
 			<group label="Generation File" required="true">
-				<container name="txtPath" label="File Path: " required="true"
-					type="folder" value="" />
-				<textfield name="txtFileName" label="File Name: "
-					required="true" value="" />
+				<radio name="rdoConfigType" label="Configuration Type : " value="XML" required="true" listener="true">
+					<elements>
+						<option>XML</option>
+						<option>Java</option>
+					</elements>
+				</radio>
+			
+				<container name="txtPath" label="File Path: " required="true" type="folder" value="" radio="XML"/>
+				<textfield name="txtFileName" label="File Name: " required="true" value="context-property" radio="XML"/>
+				<container name="txtConfigPackage" label="Config Package: " required="true" type="package" radio="Java"/>
+            	<textfield name="txtClassName" label="Class Name :" required="true" value="EgovConfigProperty" radio="Java"/>
 			</group>
 			<group label="Configuration" required="true">
 				<radio name="rdoType" label="Internal or External" value="Internal Properties" required="true"
@@ -21,13 +28,12 @@
 					</elements>
 				</radio>
 
-				<textfield name="txtPropertyServiceName" label="Property Service Name: "
-					required="true" value="" />
+				<textfield name="txtPropertyServiceName" label="Property Service Name: " required="true" value="propertiesService" />
 
 				<textfield name="txtKey" label="Key: " required="true"
-					radio="Internal Properties" />
+					radio="Internal Properties" value="pageUnit"/>
 				<textfield name="txtValue" label="Value: " required="true"
-					radio="Internal Properties" />
+					radio="Internal Properties" value="20"/>
 				
 				<combo name="cboEncoding" label="Encoding: " required=""
 					value="UTF-8" radio="External File">
@@ -41,7 +47,7 @@
 						<option>UTF-8</option>
 					</elements>
 				</combo>					
-				<textfield name="txtPropertyFile" label="Property File: " value="classpath*:" required="true"
+				<textfield name="txtPropertyFile" label="Property File: " value="classpath*:/egovframework/egovProps/conf/config.properties" required="true"
 					radio="External File" />
 			</group>
 		</component-page>
@@ -49,7 +55,13 @@
 		<output>
 			<template component="txtFileName" velocity="property.vm"
 				extension="xml" container="txtPath">
+				<condition variable="rdoConfigType" value="XML" />
+			</template>
+			<template component="txtClassName" velocity="property-java.vm"
+				extension="java" container="txtConfigPackage">
+				<condition variable="rdoConfigType" value="Java" />
 			</template>
 		</output>
+		
 	</wizard>
 </EclipseWork>

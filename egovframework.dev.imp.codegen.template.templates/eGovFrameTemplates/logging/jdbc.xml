@@ -6,31 +6,46 @@
 		<component-page required="true">
 			<!-- NewJdbcAppender	New JDBC Appender -->
 			<description>Create JDBC Appender</description>
+			<group label="Generation File Type" required="true">
+				<radio name="rdoConfigType" label="Configuration Type : " value="XML" required="true" listener="true">
+					<elements>
+						<option>XML</option>
+						<option>YAML</option>
+					</elements>
+				</radio>
+			</group>
 			<group label="Generation File" required="true">
-				<container name="txtPath" label="File Path: " required="true"
-					type="folder" value="" /> <!-- #webroot -->
-				<textfield name="txtFileName" label="File Name: "
-					required="true" value="" />
+				<container name="txtPath" label="File Path: " required="true" type="folder" value="" /> <!-- #webroot -->
+				<textfield name="txtFileName" label="File Name: " required="true" value="log4j2-jdbc" />
 			</group>
 			<group label="Configuration" required="true">
-				<textfield name="txtAppenderName" label="Appender Name: "
-					required="true" value="" />
-				<textfield name="txtDriver" label="Driver: " required="true"
-					value="" />
-				<textfield name="txtUrl" label="URL: " required="true"
-					value="" />
-				<textfield name="txtUser" label="User: " required="true"
-					value="" />
-				<textfield name="txtPasswd" label="Password: " required="true"
-					value="" />
-				<textfield name="txtQuery" label="Query: " required="true"
-					value="insert into STMR_LOG (msg) values('%d %p [%c] - &lt;%m&gt;%n')" />
+				<radio name="rdoConnectionType" label="Connection Type : " value="DriverManager" required="true" listener="true">
+					<elements>
+						<option>DriverManager</option>
+						<option>ConnectionFactory</option>
+					</elements>
+				</radio>
+			
+				<textfield name="txtAppenderName" label="Appender Name: " required="true" value="jdbc" />
+				<textfield name="txtTableName" label="Driver: " required="true" value="log"/>
+				<type name="txtConnectionFactoryClass" label="Connection Factory Class : " required="true"  radio="ConnectionFactory"/>
+				<textfield name="txtConnectionFactoryMethod" label="Connection Factory Method: " required="true" value="getDatabaseConnection" radio="ConnectionFactory"/>
+				<textfield name="txtDriverClass" label="Driver: " required="true" value="com.mysql.cj.jdbc.Driver" radio="DriverManager"/>
+				<textfield name="txtUrl" label="URL: " required="true" value="jdbc:mysql://localhost:3306/log" radio="DriverManager"/>
+				<textfield name="txtUser" label="User: " required="true" value="log" radio="DriverManager"/>
+				<textfield name="txtPasswd" label="Password: " required="true" value="log01" radio="DriverManager"/>
 			</group>
 		</component-page>
 
 		<output>
 			<template component="txtFileName" velocity="jdbc.vm"
-				extension="xml" container="txtPath" />
+				extension="xml" container="txtPath" >
+				<condition variable="rdoConfigType" value="XML" />
+			</template>
+			<template component="txtFileName" velocity="jdbc-yaml.vm"
+				extension="yaml" container="txtPath">
+				<condition variable="rdoConfigType" value="Yaml" />
+			</template>
 		</output>
 	</wizard>
 </EclipseWork>

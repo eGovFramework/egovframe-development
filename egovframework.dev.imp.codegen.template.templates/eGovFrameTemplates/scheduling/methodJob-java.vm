@@ -1,0 +1,21 @@
+package ${txtConfigPackage};
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean;
+
+import ${txtServiceClass};
+
+@Configuration
+public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
+
+    // MethodInvoking JobDetail 설정
+    @Bean(name="${txtJobName}")
+    public MethodInvokingJobDetailFactoryBean testMethodInvokingJobDetail(${templateUtil.substringAfterLast(${txtServiceClass}, ".")} ${txtServiceName}) {
+        MethodInvokingJobDetailFactoryBean jobDetailFactory = new MethodInvokingJobDetailFactoryBean();
+        jobDetailFactory.setTargetObject(${txtServiceName});
+        jobDetailFactory.setTargetMethod("${txtServiceMethod}");
+        jobDetailFactory.setConcurrent(${cboConcurrent});
+        return jobDetailFactory;
+    }
+
+}

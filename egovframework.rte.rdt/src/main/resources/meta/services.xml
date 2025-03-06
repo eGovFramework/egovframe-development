@@ -187,10 +187,12 @@
 		<layer>Foundation</layer>
 		<name>Marshalling/Unmarshalling</name>
 		<dependencies>
+			<!--
 			<dependency>org.codehaus.castor.castor-core</dependency>
 			<dependency>org.codehaus.castor.castor-codegen</dependency>
 			<dependency>org.codehaus.castor.castor-xml-schema</dependency>
 			<dependency>org.codehaus.castor.castor-xml</dependency>
+			-->
 			<dependency>org.apache.xmlbeans.xmlbeans</dependency>
 		</dependencies>
 	</service>

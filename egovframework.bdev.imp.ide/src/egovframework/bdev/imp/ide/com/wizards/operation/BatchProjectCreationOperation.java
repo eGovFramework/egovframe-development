@@ -320,9 +320,9 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 	/**
 	 * 스프링 네이처 추가
 	 */
-	private void createSpringNature(IProgressMonitor monitor) throws CoreException {
-		BatchIdeUtils.addNatureToProject(getProject(), "org.springframework.ide.eclipse.core.springnature", monitor);
-	}
+//	private void createSpringNature(IProgressMonitor monitor) throws CoreException {
+//		BatchIdeUtils.addNatureToProject(getProject(), "org.springframework.ide.eclipse.core.springnature", monitor);
+//	}
 
 	/**
 	 * eGovFramework 네이처 추가

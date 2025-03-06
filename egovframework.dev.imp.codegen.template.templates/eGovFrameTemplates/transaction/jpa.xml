@@ -5,32 +5,129 @@
 
 		<component-page required="true">
 			<!-- NewJpaTransaction	New JPA Transaction -->
-			<description>Create JPA Transaction</description>
+			<description>Create JPA(Java Persistence API) Transaction</description>
 
 			<group label="Generation File" required="true">
-				<container name="txtPath" label="File Path: " required="true"
-					type="folder" value="" />
-				<textfield name="txtFileName" label="File Name: "
-					required="true" value="" />
+				<radio name="rdoConfigType" label="Configuration Type : " value="XML" required="true" listener="true">
+					<elements>
+						<option>XML</option>
+						<option>Java</option>
+					</elements>
+				</radio>
+			
+				<container name="txtPath" label="File Path: " required="true" type="folder" value=""  radio="XML"/>
+				<textfield name="txtFileName" label="File Name: " required="true" value="context-transaction-jpa"  radio="XML"/>
+				<container name="txtConfigPackage" label="Config Package: " required="true" type="package" radio="Java"/>
+            	<textfield name="txtClassName" label="Class Name :" required="true" value="EgovConfigTransactionJpa" radio="Java"/>
 			</group>
 
-			<group label="Configuration" required="true">
+			<group label="Transaction Bean" required="true">
 				<textfield name="txtTransactionName" label="Transaction Name: "
-					required="true" value="" />
-				<textfield name="txtEttMgrFactory" label="Entity Manager Factory: "
-					required="true" value="" />
-				<textfield name="txtPstUnitName" label="Persistence Unit Name: "
-					required="true" value="" />
-				<textfield name="txtPstXMLLoc" label="Persistence XML Location: "
-					required="true" value="classpath:" />				
+					required="true" value="transactionManager" />
 				<textfield name="txtDataSourceName" label="DataSource Name: "
-					required="true" value="" />
+					required="true" value="dataSource" />
 			</group>
+			
+			<group label="Entity Manager" required="true">
+				<textfield name="txtEttMgrFactory" label="Entity Manager Factory: "
+					required="true" value="entityManagerFactory" />
+				<container name="txtPackagesToScan" label="Entity Packages to scan: " required="true" type="package"/>
+				<combo name="cmbDialect" label="Dialect Name: " required="false"
+						value="org.hibernate.dialect.H2Dialect">
+					<elements>
+						<option>org.hibernate.dialect.H2Dialect</option>
+						<option>org.hibernate.dialect.MySQL5Dialect</option>
+						<option>org.hibernate.dialect.MySQL5InnoDBDialect</option>
+						<option>org.hibernate.dialect.MySQL8Dialect</option>
+						<option>org.hibernate.dialect.MariaDBDialect</option>
+						<option>org.hibernate.dialect.MariaDB53Dialect</option>
+						<option>org.hibernate.dialect.MariaDB102Dialect</option>
+						<option>org.hibernate.dialect.MariaDB103Dialect</option>
+						<option>org.hibernate.dialect.PostgreSQL9Dialect</option>
+						<option>org.hibernate.dialect.PostgreSQL10Dialect</option>
+						<option>org.hibernate.dialect.PostgreSQL11Dialect</option>
+						<option>org.hibernate.dialect.PostgreSQL12Dialect</option>
+						<option>org.hibernate.dialect.Oracle10gDialect</option>
+						<option>org.hibernate.dialect.Oracle11gDialect</option>
+						<option>org.hibernate.dialect.Oracle12cDialect</option>
+						<option>org.hibernate.dialect.Oracle21cDialect</option>
+						<option>org.hibernate.dialect.SQLServer2008Dialect</option>
+						<option>org.hibernate.dialect.SQLServer2012Dialect</option>
+						<option>org.hibernate.dialect.SQLServer2016Dialect</option>
+						<option>org.hibernate.dialect.DB2Dialect</option>
+						<option>org.hibernate.dialect.DB2400Dialect</option>
+						<option>org.hibernate.dialect.DB2390Dialect</option>
+						<option>org.hibernate.dialect.HSQLDialect</option>
+						<option>org.hibernate.dialect.DerbyDialect</option>
+						<option>org.hibernate.dialect.DerbyTenSevenDialect</option>
+						<option>org.hibernate.dialect.DerbyTenFiveDialect</option>
+						<option>org.hibernate.dialect.DerbyTenSixDialect</option>
+						<option>org.hibernate.dialect.InformixDialect</option>
+						<option>org.hibernate.dialect.FirebirdDialect</option>
+						<option>org.hibernate.dialect.SybaseASE15Dialect</option>
+						<option>org.hibernate.dialect.SQLAnywhereDialect</option>
+						<option>org.hibernate.dialect.SQLiteDialect</option>
+						<option>org.hibernate.dialect.TeradataDialect</option>
+						<option>org.hibernate.dialect.HANARowStoreDialect</option>
+						<option>org.hibernate.dialect.HANACalcViewDialect</option>
+					</elements>
+				</combo>
+			</group>
+			
+			<group label="Spring Data JPA" required="true">
+				<container name="txtSpringDataJPAPackage" label="Repository Package: " required="true" type="package"/>
+			</group>
+			
+		</component-page>
+
+		<component-page required="false">
+			<!-- New Configurational TransactionManagement  -->
+			<description>Configurational Transaction Management</description>
+			<group label="AOP Config" required="true">
+				<textfield name="txtPointCutName" label="PointCut Name: " required="true" value="requiredTx"/>
+				<textfield name="txtPointCutExpression" label="PointCut Expression: " required="true" value="execution(* egovframework.sample..*Impl.*(..))"/>
+			</group>
+			<group label="Advice" required="true">
+				<textfield name="txtAdviceName" label="Advice Name: " required="true" value="txAdvice"/>
+				<group label="Method" required="true">
+					<textfield name="txtMethodName" label="Method Name: " required="true" value="*"/>
+					<textfield name="txtRollbackFor"
+						label="rollback-for: " required="false" value="Exception"/>
+
+					<combo name="cmbIsolation" label="isolation: " required="false"
+						value="DEFAULT">
+						<elements>
+							<option>DEFAULT</option>
+							<option>READ_UNCOMMITTED</option>
+							<option>READ_COMMITTED</option>
+							<option>REPEATABLE_READ</option>
+							<option>SERIALIZABLE</option>
+						</elements>
+					</combo>
+					<combo name="cmbPropagation" label="propagation: " required="false"
+						value="REQUIRED">
+						<elements>
+							<option>REQUIRED</option>
+							<option>SUPPORTS</option>
+							<option>MANDATORY</option>
+							<option>REQUIRES_NEW</option>
+							<option>NOT_SUPPORTED</option>
+							<option>NEVER</option>
+							<option>NESTED</option>
+						</elements>
+					</combo>
+				</group>
+			</group>
+
 		</component-page>
 
 		<output>
-			<template component="txtFileName" velocity="jpa.vm"
-				extension="xml" container="txtPath" />
+			<template component="txtFileName" velocity="jpa.vm" extension="xml" container="txtPath">
+				<condition variable="rdoConfigType" value="XML" />
+			</template>	
+			<template component="txtClassName" velocity="jpa-java.vm" extension="java" container="txtConfigPackage">
+				<condition variable="rdoConfigType" value="Java" />
+			</template>
 		</output>
 	</wizard>
 </EclipseWork>

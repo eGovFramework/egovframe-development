@@ -19,7 +19,7 @@
 	</category>
 	<category name="Transaction">
 		<wizards>
-			<wizard-def description="New Datasource Transaction" template="transaction/datasource.xml"/>
+			<wizard-def description="New Datasource Transaction" template="transaction/transaction.xml"/>
 			<wizard-def description="New JPA Transaction" template="transaction/jpa.xml"/>
 			<wizard-def description="New JTA Transaction" template="transaction/jta.xml"/>
 		</wizards>
@@ -50,10 +50,8 @@
 			<wizard-def description="New Console Appender" template="logging/console.xml"/>
 			<wizard-def description="New File Appender" template="logging/file.xml"/>
 			<wizard-def description="New Rolling File Appender" template="logging/rollingFile.xml"/>
-			<wizard-def description="New Daily Rolling File Appender" template="logging/dailyRollingFile.xml"/>
+			<wizard-def description="New Time-Based Rolling File Appender" template="logging/timeBasedRollingFile.xml"/>
 			<wizard-def description="New JDBC Appender" template="logging/jdbc.xml"/>
-			<wizard-def description="New eGovDB Appender" template="logging/egovDb.xml"/>
-			<wizard-def description="New eGovJDBC Appender" template="logging/egovJdbc.xml"/>
 		</wizards>
 	</category>
 </templates>

@@ -54,13 +54,14 @@ import egovframework.dev.imp.core.utils.NullUtil;
  * 수정일	  	수정자	  수정내용
  * -----------	------	----------------
  * 2012.07.24	조용현	최초생성
+ * 2025.02.26	신용호	셀렉트 박스 기본 한글 메시지 깨짐 수정
  * 
  * 
  *      </pre>
  */
 public class BatchJobCreationCustomizePage extends WizardPage {
 
-	private final String DEFAULT = "선택"; //$NON-NLS-1$
+	private final String DEFAULT = BatchMessages.BatchJobCreationCustomizePage_SELECT_TITLE; //$NON-NLS-1$ // 선택
 
 	/** stepAndDecisionCombo에 넣은 문자열(Step / Decision) */
 	private final String STEP = "Step"; //$NON-NLS-1$

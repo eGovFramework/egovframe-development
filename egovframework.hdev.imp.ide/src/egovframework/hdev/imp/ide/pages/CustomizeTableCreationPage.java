@@ -330,12 +330,6 @@ public class CustomizeTableCreationPage extends WizardPage {
 			realTableName = "DEVICE";
 		else if ("NETWORK".equals(tableName))
 			realTableName = "NETWORK";
-		else if ("MAGICXSIGN".equals(tableName))
-			realTableName = "PKI";//
-		else if ("WIZSIGN".equals(tableName))
-			realTableName = "PKI";//
-		else if ("XECURESMART".equals(tableName))
-			realTableName = "PKI";//
 		else if ("INTERFACE".equals(tableName))
 			realTableName = "INTERFACE_EGOV";//
 		else if ("BARCODESCANNER".equals(tableName))

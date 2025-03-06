@@ -29,26 +29,27 @@ import egovframework.dev.imp.core.utils.StringUtil;
  * @see <pre>
  * &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *   
- *   수정일      수정자           수정내용
- *  -------    --------    ---------------------------
- *   2009.02.20  이흥주          최초 생성
- * 
+ *  수정일         수정자        수정내용
+ *  ----------   --------    ---------------------------
+ *  2009.02.20   이흥주        최초 생성
+ *  2024.07.23   윤창원        변수명 가독성 고려하여 변경
+ *  2024.08.06   신용호        example.boot.core.optional 삭제
  * 
  * </pre>
  */
 public class ExampleInfo {
 	
-	/** CORE 프로젝트 POM 파일 */
-    public static String bootCorePomFile;
     /** WEB 프로젝트 POM 파일 */
     public static String bootWebPomFile;
     
-    /** CORE 부트 프로젝트 예제 */
-    public static String defaultBootCoreExample;
     /** CORE 부트 프로젝트 추가 예제 */
     public static String[] optionalBootCoreExample;
     /** WEB 부트 프로젝트 예제 */
     public static String defaultBootWebExample;
+    
+    /** WEB 부트 프로젝트 예제 */
+    public static String defaultBootCoreExample;
+    
     /** WEB 부트 프로젝트 추가 예제 */
     public static String[] optionalBootWebExample;
 
@@ -56,15 +57,15 @@ public class ExampleInfo {
     public static String templateSimpleExample;
 
     /** MSA 예제*/
-    public static String templateMSAExample1;
-    public static String templateMSAExample2;
-    public static String templateMSAExample3;
-    public static String templateMSAExample4;
-    public static String templateMSAExample5;
-    public static String templateMSAExample6;
-    public static String templateMSAExample7;
-    public static String templateMSAExample8;
-    public static String templateMSAExample9;
+    public static String templateMSAExampleDiscovery;
+    public static String templateMSAExampleConfig;
+    public static String templateMSAExampleGateway;
+    public static String templateMSAExampleBoardService;
+    public static String templateMSAExamplePortalService;
+    public static String templateMSAExampleUserService;
+    public static String templateMSAExampleReserveCheckService;
+    public static String templateMSAExampleReserveItemService;
+    public static String templateMSAExampleReserveRequestService;
     
     /**
      * 리소스 번들로 부터 속성 값 읽어오기
@@ -73,12 +74,12 @@ public class ExampleInfo {
         try {
             ResourceBundle resource = ResourceBundle.getBundle("egovframework.boot.dev.imp.ide.wizards.examples.examples");
 
-            bootCorePomFile = resource.getString("pom.boot.core");
             bootWebPomFile = resource.getString("pom.boot.web");
 
-            defaultBootCoreExample = resource.getString("example.boot.core.default");
             defaultBootWebExample = resource.getString("example.boot.web.default");
+            defaultBootCoreExample = resource.getString("example.boot.core.default");
 
+            /*
             String bootCoreOption = resource.getString("example.boot.core.optional");
             if (!"".equals(StringUtil.nvl(bootCoreOption))) {
                 StringTokenizer tokens = new StringTokenizer(bootCoreOption, ",");
@@ -89,6 +90,7 @@ public class ExampleInfo {
             } else {
             	optionalBootCoreExample = new String[0];
             }
+            */
 
             String bootWebOption = resource.getString("example.boot.web.optional");
             if (!"".equals(StringUtil.nvl(bootWebOption))) {
@@ -101,15 +103,15 @@ public class ExampleInfo {
             	optionalBootWebExample = new String[0];
             }
 
-            templateMSAExample1 = resource.getString("example.template.msa1");
-            templateMSAExample2 = resource.getString("example.template.msa2");
-            templateMSAExample3 = resource.getString("example.template.msa3");
-            templateMSAExample4 = resource.getString("example.template.msa4");
-            templateMSAExample5 = resource.getString("example.template.msa5");
-            templateMSAExample6 = resource.getString("example.template.msa6");
-            templateMSAExample7 = resource.getString("example.template.msa7");
-            templateMSAExample8 = resource.getString("example.template.msa8");
-            templateMSAExample9 = resource.getString("example.template.msa9");
+            templateMSAExampleDiscovery = resource.getString("example.template.msa1");
+            templateMSAExampleConfig = resource.getString("example.template.msa2");
+            templateMSAExampleGateway = resource.getString("example.template.msa3");
+            templateMSAExampleBoardService = resource.getString("example.template.msa4");
+            templateMSAExamplePortalService = resource.getString("example.template.msa5");
+            templateMSAExampleUserService = resource.getString("example.template.msa6");
+            templateMSAExampleReserveCheckService = resource.getString("example.template.msa7");
+            templateMSAExampleReserveItemService = resource.getString("example.template.msa8");
+            templateMSAExampleReserveRequestService = resource.getString("example.template.msa9");
             templateSimpleExample = resource.getString("example.template.simple");
 
         } catch (Exception ex) {

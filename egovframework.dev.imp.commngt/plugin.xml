@@ -44,7 +44,7 @@
    <extension
          point="org.eclipse.ui.menus">
       <menuContribution
-            locationURI="menu:egovframework.dev.imp.core.menu.implementation?before=egovframework.mdev.imp.ide.commands.addMobileCommonComponent">
+            locationURI="menu:egovframework.dev.imp.core.menu.implementation?after=additions">
          <command
                commandId="egovframework.dev.imp.commngt.commands.newEgovCommngt">
          </command>

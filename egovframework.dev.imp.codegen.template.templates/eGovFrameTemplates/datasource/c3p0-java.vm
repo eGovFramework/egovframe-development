@@ -1,0 +1,52 @@
+package ${txtConfigPackage};
+
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import javax.sql.DataSource;
+import java.beans.PropertyVetoException;
+
+@Configuration
+public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
+
+    @Bean(name="${txtDatasourceName}", destroyMethod = "close")
+    public DataSource dataSource(
+            @Value("${txtDriver}") String driverClassName,
+            @Value("${txtUrl}") String url,
+            @Value("${txtUser}") String username,
+            @Value("${txtPasswd}") String password) throws PropertyVetoException {
+
+        ComboPooledDataSource dataSource = new ComboPooledDataSource();
+        dataSource.setDriverClass(driverClassName);
+        dataSource.setJdbcUrl(url);
+        dataSource.setUser(username);
+
+        if (password != null && !password.isEmpty()) {
+            dataSource.setPassword(password);
+        }
+
+        dataSource.setInitialPoolSize(3);
+        dataSource.setMinPoolSize(3);
+        dataSource.setMaxPoolSize(50);
+        dataSource.setIdleConnectionTestPeriod(200);
+        dataSource.setAcquireIncrement(1);
+        dataSource.setMaxStatements(0);
+        dataSource.setNumHelperThreads(3);
+
+        return dataSource;
+    }
+    
+    /* 다음 라이브러리 추가 필요
+	=== Maven pom.xml ===
+	<dependency>
+	    <groupId>com.mchange</groupId>
+	    <artifactId>c3p0</artifactId>
+	    <version>0.10.1</version>
+	</dependency>
+	
+	=== Gradle ===
+	implementation 'com.mchange:c3p0:0.10.1'
+	*/
+}

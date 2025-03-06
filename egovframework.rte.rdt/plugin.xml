@@ -37,7 +37,7 @@
    <extension
          point="org.eclipse.ui.preferencePages">
       <page
-    		category="egovframework.dev.imp.confmngt.preferences.emptyconfpreperencepage"
+    		category="egovframework.dev.imp.core.preferences.emptyconfpreperencepage"
             class="egovframework.rte.rdt.plugin.preferences.RdtPreferencePage"
             id="egovframework.rte.rdt.plugin.preferences.RdtPreferencePage"
             name="RTE Distribution Tool">

@@ -27,9 +27,10 @@ import org.eclipse.osgi.util.NLS;
  * @see <pre>
  * &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *   
- *수정일	  	수정자	  수정내용
- *-----------	------	----------------
- *2012.07.24	조용현	최초생성
+ * 수정일	  	    수정자	        수정내용
+ * ----------   ------------	----------------
+ * 2012.07.24   조용현            최초생성
+ * 2025.02.26   신용호            항목 추가 (다국어)
  *
  * 
  * </pre>
@@ -80,6 +81,7 @@ public class BatchMessages extends NLS {
 	public static String BatchJobCreationCustomizePage_TITLE;
 	public static String BatchJobCreationCustomizePage_UPDATE_MESSAGE_1;
 	public static String BatchJobCreationCustomizePage_UPDATE_MESSAGE_2;
+	public static String BatchJobCreationCustomizePage_SELECT_TITLE;
 	public static String BatchJobcreationSelectProjectPage_DESCRIPTION;
 	public static String BatchJobcreationSelectProjectPage_NOTE_CONTENTS;
 	public static String BatchJobcreationSelectProjectPage_TITLE;

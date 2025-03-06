@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: eGovFramework Templates
 Bundle-SymbolicName: egovframework.dev.imp.templates;singleton:=true
-Bundle-Version: 4.2.0.qualifier
+Bundle-Version: 4.3.0.qualifier
 Bundle-Activator: egovframework.dev.imp.templates.TemplatesPlugin
 Bundle-Vendor: MOIS
 Require-Bundle: org.eclipse.ui,
@@ -23,6 +23,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.ecore.edit,
  org.junit,
  org.eclipse.core.resources
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: egovframework.dev.imp.templates

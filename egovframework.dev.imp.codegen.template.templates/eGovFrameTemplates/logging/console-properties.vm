@@ -1,0 +1,28 @@
+#set($txtAppenderName = $txtAppenderName.replace(".", "-"))
+
+# Appender Configuration
+appender.console0.type = Console
+appender.console0.name = ${txtAppenderName}
+appender.console0.target = SYSTEM_OUT
+appender.console0.layout.type = PatternLayout
+appender.console0.layout.pattern = ${txtConversionPattern}
+
+# Logger Configuration
+logger.egovframework.name = egovframework
+logger.egovframework.level = DEBUG
+logger.egovframework.additivity = false
+logger.egovframework.appenderRef.console0.ref = ${txtAppenderName}
+
+logger.org_egovframe.name = org.egovframe
+logger.org_egovframe.level = DEBUG
+logger.org_egovframe.additivity = false
+logger.org_egovframe.appenderRef.console0.ref = ${txtAppenderName}
+
+logger.org_springframework.name = org.springframework
+logger.org_springframework.level = DEBUG
+logger.org_springframework.additivity = false
+logger.org_springframework.appenderRef.console0.ref = ${txtAppenderName}
+
+# Root Logger Configuration
+rootLogger.level = INFO
+rootLogger.appenderRef.console0.ref = ${txtAppenderName}

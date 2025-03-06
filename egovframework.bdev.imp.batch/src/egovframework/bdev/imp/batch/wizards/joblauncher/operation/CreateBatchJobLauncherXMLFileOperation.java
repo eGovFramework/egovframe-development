@@ -22,9 +22,10 @@ import egovframework.bdev.imp.batch.wizards.joblauncher.model.BatchJobLauncherCo
  * @see <pre>
  * &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *   
- *   수정일      수정자           수정내용
- *  -------    --------    ---------------------------
- *   2012.07.26  최서윤          최초 생성
+ *  수정일        수정자        수정내용
+ *  ----------  --------    ---------------------------
+ *  2012.07.26  최서윤        최초 생성
+ *  2012.07.26  신용호        표준프레임워크 v4.0 패키지 적용
  * 
  * 
  * </pre>
@@ -184,7 +185,8 @@ public class CreateBatchJobLauncherXMLFileOperation {
 		
 		// unique egovBatchRunner id 생성
 		eGovBatchRunnerBean.setAttribute(new Attribute("id", jobExecutorContext.getFileName().split("\\.")[0] + ".egovBatchRunner"));
-		eGovBatchRunnerBean.setAttribute(new Attribute("class", "egovframework.brte.core.launch.support.EgovBatchRunner"));
+		// 표준프레임워크 v4.0 패키지명 적용
+		eGovBatchRunnerBean.setAttribute(new Attribute("class", "org.egovframe.rte.bat.core.launch.support.EgovBatchRunner"));
 		
 		// egovBatchRunner에 JobRepository constructor-arg 추가
 		Element constructorBeanJobRepository = new Element("constructor-arg");

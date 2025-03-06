@@ -1,0 +1,47 @@
+package ${txtConfigPackage};
+
+import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
+
+    @Bean(name="${txtDatasourceName}", destroyMethod = "close")
+    public BasicDataSource dataSource(
+            @Value("${txtDriver}") String driverClassName,
+            @Value("${txtUrl}") String url,
+            @Value("${txtUser}") String username,
+            @Value("${txtPasswd}") String password) {
+
+        BasicDataSource dataSource = new BasicDataSource();
+        dataSource.setDriverClassName(driverClassName);
+        dataSource.setUrl(url);
+        dataSource.setUsername(username);
+
+        if (!password.isEmpty()) {
+            dataSource.setPassword(password);
+        }
+
+        dataSource.setDefaultAutoCommit(false);
+        /* preparedStatement 풀링 여부
+        dataSource.setPoolPreparedStatements(true);
+        dataSource.setMaxOpenPreparedStatements(50);
+		*/
+
+        return dataSource;
+    }
+    
+    /* 다음 라이브러리 추가 필요
+    === Maven pom.xml ===
+	<dependency>
+	    <groupId>org.apache.commons</groupId>
+	    <artifactId>commons-dbcp2</artifactId>
+	    <version>2.9.0</version>
+	</dependency>
+	
+	=== Gradle ===
+	implementation 'org.apache.commons:commons-dbcp2:2.9.0'
+	*/
+}

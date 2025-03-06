@@ -26,9 +26,10 @@ import org.eclipse.osgi.util.NLS;
  * @see <pre>
  * &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *   
- *   수정일      수정자           수정내용
- *  -------    --------    ---------------------------
- *   2022.02.14  이정은          최초 생성
+ *  수정일        수정자        수정내용
+ *  ----------  --------    ---------------------------
+ *  2022.02.14  이정은        최초 생성
+ *  2024.07.22  신용호        영문 메시지 오기 수정
  * 
  * 
  * </pre>
@@ -110,18 +111,19 @@ public class BootIdeMessages extends NLS {
     /** 부트 템플릿 프로젝트 생성 메세지 */
     public static String boottemplateProjectCreationPage0;
     /** 심플 템플릿 프로젝트 생성 메세지 */
-    public static String bootTemplateProjectSelectPage1;
+    public static String bootTemplateSimpleHomeProjectSelectPage;
     /** MSA 템플릿 프로젝트 생성 메세지 */
-    public static String bootTemplateProjectSelectPage2;
-    public static String bootTemplateProjectSelectPage3;
-    public static String bootTemplateProjectSelectPage4;
-    public static String bootTemplateProjectSelectPage5;
-    public static String bootTemplateProjectSelectPage6;
-    public static String bootTemplateProjectSelectPage7;
-    public static String bootTemplateProjectSelectPage8;
-    public static String bootTemplateProjectSelectPage9;
-    public static String bootTemplateProjectSelectPage10;
-    public static String bootTemplateProjectSelectPage11;
+    public static String bootTemplateMSAProjectSelectPage;
+    
+    public static String bootTemplateMSAProjectSelectPageDiscovery;
+    public static String bootTemplateMSAProjectSelectPageConfig;
+    public static String bootTemplateMSAProjectSelectPageGateway;
+    public static String bootTemplateMSAProjectSelectPageBoard;
+    public static String bootTemplateMSAProjectSelectPagePortal;
+    public static String bootTemplateMSAProjectSelectPageUser;
+    public static String bootTemplateMSAProjectSelectPageReserveCheck;
+    public static String bootTemplateMSAProjectSelectPageReserveItem;
+    public static String bootTemplateMSAProjectSelectPageReserveRequest;
     
     /** MSA 템플릿 프로젝트 생성화면 목록 & description */
     public static String wizardspagesBootTemplateProjectCreationPage7;
@@ -130,24 +132,24 @@ public class BootIdeMessages extends NLS {
     public static String wizardspagesBootTemplateProjectCreationPage9;
 	public static String wizardspagesBootTemplateProjectCreationPage10;
 	/** MSA 템플릿 생성 프로젝트 타이틀 및 설명 */
-	public static String wizardspagesBootTemplateProjectCreationPage11;
-	public static String wizardspagesBootTemplateProjectCreationPage12;
-	public static String wizardspagesBootTemplateProjectCreationPage13;
-	public static String wizardspagesBootTemplateProjectCreationPage14;
-	public static String wizardspagesBootTemplateProjectCreationPage15;
-	public static String wizardspagesBootTemplateProjectCreationPage16;
-	public static String wizardspagesBootTemplateProjectCreationPage17;
-	public static String wizardspagesBootTemplateProjectCreationPage18;
-	public static String wizardspagesBootTemplateProjectCreationPage19;
-	public static String wizardspagesBootTemplateProjectCreationPage20;
-	public static String wizardspagesBootTemplateProjectCreationPage21;
-	public static String wizardspagesBootTemplateProjectCreationPage22;
-	public static String wizardspagesBootTemplateProjectCreationPage23;
-	public static String wizardspagesBootTemplateProjectCreationPage24;
-	public static String wizardspagesBootTemplateProjectCreationPage25;
-	public static String wizardspagesBootTemplateProjectCreationPage26;
-	public static String wizardspagesBootTemplateProjectCreationPage27;
-	public static String wizardspagesBootTemplateProjectCreationPage28;
+	public static String wizardspagesBootTemplateMSAProjectCreationPageDiscoveryTitle;
+	public static String wizardspagesBootTemplateMSAProjectCreationPageDiscoveryDesc;
+	public static String wizardspagesBootTemplateMSAProjectCreationPageConfigTitle;
+	public static String wizardspagesBootTemplateMSAProjectCreationPageConfigDesc;
+	public static String wizardspagesBootTemplateMSAProjectCreationPageGatewayTitle;
+	public static String wizardspagesBootTemplateMSAProjectCreationPageGatewayDesc;
+	public static String wizardspagesBootTemplateMSAProjectCreationPageBoardTitle;
+	public static String wizardspagesBootTemplateMSAProjectCreationPageBoardDesc;
+	public static String wizardspagesBootTemplateMSAProjectCreationPagePortalTitle;
+	public static String wizardspagesBootTemplateMSAProjectCreationPagePortalDesc;
+	public static String wizardspagesBootTemplateMSAProjectCreationPageUserTitle;
+	public static String wizardspagesBootTemplateMSAProjectCreationPageUserDesc;
+	public static String wizardspagesBootTemplateMSAProjectCreationPageReserveCheckTitle;
+	public static String wizardspagesBootTemplateMSAProjectCreationPageReserveCheckDesc;
+	public static String wizardspagesBootTemplateMSAProjectCreationPageReserveItemTitle;
+	public static String wizardspagesBootTemplateMSAProjectCreationPageReserveItemDesc;
+	public static String wizardspagesBootTemplateMSAProjectCreationPageReserveRequestTitle;
+	public static String wizardspagesBootTemplateMSAProjectCreationPageReserveRequestDesc;
     
     
     /** 리소스 번들 초기화 */

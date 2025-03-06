@@ -143,10 +143,12 @@
       		class="egovframework.mdev.imp.ide.handlers.project.NewMoblieTemplateProject"
             commandId="egovframework.mdev.imp.ide.commands.newMobileTemplateProject">
       </handler>
+      <!--
       <handler
             class="egovframework.mdev.imp.ide.handlers.implementation.AddMobileCommngt"
             commandId="egovframework.mdev.imp.ide.commands.addMobileCommonComponent">
       </handler>
+      -->
       <handler
             class="egovframework.mdev.imp.ide.handlers.configuration.MobileCustIdeHandler"      	
             commandId="egovframework.mdev.imp.ide.commands.addMobilePlugin">
@@ -199,6 +201,7 @@
                visible="true">
          </separator>
       </menuContribution>
+      <!--
       <menuContribution locationURI="menu:egovframework.dev.imp.core.menu.implementation?after=additions">
          <command
                commandId="egovframework.mdev.imp.ide.commands.addMobileCommonComponent"
@@ -210,6 +213,7 @@
          </separator>
          
       </menuContribution>
+      -->
       <!-- This Site was Expired.-->
       <!--
       <menuContribution locationURI="menu:egovframework.dev.imp.core.menu.implementation?after=egovframework.dev.kw3c">
