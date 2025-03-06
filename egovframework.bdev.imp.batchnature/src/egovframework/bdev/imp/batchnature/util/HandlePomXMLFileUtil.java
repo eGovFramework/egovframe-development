@@ -164,7 +164,7 @@ public class HandlePomXMLFileUtil {
 				if (springBatchInfraNoExist) {
 					String xmlStr = "<dependency>" + "\n\t\t\t<groupId>" + "org.springframework.batch" + "</groupId>"
 							+ "\n\t\t\t<artifactId>" + "spring-batch-infrastructure" + "</artifactId>"
-							+ "\n\t\t\t<version>" + "4.3.8.RELEASE" + "</version>\n\t\t" + "</dependency>" + "\n ";
+							+ "\n\t\t\t<version>" + "4.3.8" + "</version>\n\t\t" + "</dependency>" + "\n ";
 
 					XmlUtil.addFirstNode(rootNode, "/project/dependencies", xmlStr, "\n\t\t", "\t");
 				}
@@ -172,7 +172,7 @@ public class HandlePomXMLFileUtil {
 				if (springBatchCoreNoExist) {
 					String xmlStr = "<dependency>" + "\n\t\t\t<groupId>" + "org.springframework.batch" + "</groupId>"
 							+ "\n\t\t\t<artifactId>" + "spring-batch-core" + "</artifactId>" + "\n\t\t\t<version>"
-							+ "4.3.8.RELEASE" + "</version>\n\t\t" + "</dependency>" + "\n ";
+							+ "4.3.8" + "</version>\n\t\t" + "</dependency>" + "\n ";
 
 					XmlUtil.addFirstNode(rootNode, "/project/dependencies", xmlStr, "\n\t\t", "\t");
 				}

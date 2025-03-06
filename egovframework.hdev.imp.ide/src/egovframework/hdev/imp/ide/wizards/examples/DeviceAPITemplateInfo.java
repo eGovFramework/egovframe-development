@@ -310,7 +310,17 @@ public class DeviceAPITemplateInfo {
     	
     	for(int i=1; i< HDEV_TABLES_COUNT+1 ; i++) {
     		
-    		tableList.add(c.getField("table" + i).get(c).toString());
+    		switch (i) {
+            case 18: // SOCKETIO
+            case 19: // SQLITE
+            case 20: // STREAMINGMEDIA
+            case 21: // UNZIP
+                    break;
+            default:
+        		tableList.add(c.getField("table" + i).get(c).toString());
+                break;
+    		}
+    		
     	}
     	
     	return tableList;

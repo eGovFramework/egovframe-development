@@ -1,0 +1,22 @@
+package ${txtConfigPackage};
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.quartz.JobDetailFactoryBean;
+import org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean;
+import org.springframework.scheduling.quartz.SimpleTriggerFactoryBean;
+
+@Configuration
+public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
+
+    // SimpleTrigger 설정
+    @Bean(name="${txtTriggerName}")
+    public SimpleTriggerFactoryBean simpleTrigger(@Qualifier("${txtJobName}") ${cboBeanType} jobDetailBean) {
+        SimpleTriggerFactoryBean trigger = new SimpleTriggerFactoryBean();
+        trigger.setJobDetail(jobDetailBean.getObject());
+        trigger.setStartDelay(${txtStartDelay}); // 2초 후에 시작 (milisecond)
+        trigger.setRepeatInterval(${txtRepeatInterval}); // 매 10초마다 실행 (milisecond)
+        return trigger;
+    }
+}

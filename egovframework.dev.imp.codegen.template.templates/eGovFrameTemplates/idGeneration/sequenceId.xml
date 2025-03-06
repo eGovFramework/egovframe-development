@@ -7,10 +7,17 @@
 			<!-- NewSequenceIdGen	New Sequence ID Generation -->
 			<description>Create Sequence ID Generation</description>
 			<group label="Generation File" required="true">
-				<container name="txtPath" label="File Path: " required="true"
-					type="folder" value="" /> <!-- #webroot -->
-				<textfield name="txtFileName" label="File Name: "
-					required="true" value="" />
+				<radio name="rdoConfigType" label="Configuration Type : " value="XML" required="true" listener="true">
+					<elements>
+						<option>XML</option>
+						<option>Java</option>
+					</elements>
+				</radio>
+			
+				<container name="txtPath" label="File Path: " required="true" type="folder" value="" radio="XML"/>
+				<textfield name="txtFileName" label="File Name: " required="true" value="context-idgen-sequence" radio="XML"/>
+				<container name="txtConfigPackage" label="Config Package: " required="true" type="package" radio="Java"/>
+            	<textfield name="txtClassName" label="Class Name :" required="true" value="EgovConfigIdGenSequence" radio="Java"/>
 			</group>
 			<group label="Configuration" required="true">
 				<radio name="rdoType" label="Type: " value="Base" required="true">
@@ -20,16 +27,21 @@
 					</elements>
 				</radio>				
 				<textfield name="txtIdServiceName" label="ID Service Name: "
-					required="true" value="" />
+					required="true" value="sequenceIdGnrService" />
 				<textfield name="txtDatasourceName" label="DataSource Name: "
-					required="true" value="" />
-				<textfield name="txtQuery" label="Query:" required="true" />
+					required="true" value="dataSource" />
+				<textfield name="txtQuery" label="Query:" required="true" value="SELECT SEQ_NO.NEXTVAL FROM DUAL"/>
 			</group>
 		</component-page>
 
 		<output>
 			<template component="txtFileName" velocity="sequenceId.vm"
 				extension="xml" container="txtPath">
+				<condition variable="rdoConfigType" value="XML" />
+			</template>
+			<template component="txtClassName" velocity="sequenceId-java.vm"
+				extension="java" container="txtConfigPackage">
+				<condition variable="rdoConfigType" value="Java" />
 			</template>
 		</output>
 	</wizard>

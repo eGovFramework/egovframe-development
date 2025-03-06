@@ -5,19 +5,34 @@
 
         <component-page required="true">
         	<!-- NewEhcacheConfig	New Ehcache Configuration -->
-            <description>Select config file.</description>
+            <description>Select config package or path.</description>
 			
-			<group label="Generation File" required="true" >			
-		    	<container name="txtPath" label="File Path : " required="true" type="folder" value="#webroot" />
-            	<textfield name="txtFileName" label="File Name :" required="true" value="context-cache"/>
-            </group>
-            <group label="" required="true" >
+            <group label="Configuration Options" required="true">
+	            <radio name="rdoConfigType" label="Configuration Type : " value="XML" required="true" listener="true">
+					<elements>
+						<option>XML</option>
+						<option>Java</option>
+					</elements>
+				</radio>
+				<container name="txtPath" label="Config Path : " required="true" type="folder" value="#webroot" radio="XML"/>
+				<textfield name="txtFileName" label="File Name :" required="true" value="context-cache" radio="XML"/>
+				<container name="txtConfigPackage" label="Config Package: " required="true" type="package" radio="Java"/>
+            	<textfield name="txtClassName" label="Class Name :" required="true" value="EgovConfigCache" radio="Java"/>
+			</group>
+            <group label="Default Config Location" required="true" >
             	<file name="txtConfigLocation" label="Config Location : " required="true" type="folder" extensions="xml" value="#txtConfigLocation" />
            	</group>
         </component-page>
 
         <output>
-            <template component="txtFileName" velocity="ehcacheConfigForSpring.vm" extension="xml" container="txtPath"/>
+            <template component="txtFileName" velocity="ehcacheConfigForSpring.vm"
+            	extension="xml" container="txtPath">
+            	<condition variable="rdoConfigType" value="XML" />
+            </template>
+            <template component="txtClassName" velocity="ehcacheConfigForSpring-java.vm"
+				extension="java" container="txtConfigPackage">
+				<condition variable="rdoConfigType" value="Java" />
+			</template>
         </output>
     </wizard>
 </EclipseWork>

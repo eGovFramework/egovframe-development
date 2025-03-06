@@ -30,9 +30,10 @@ import org.eclipse.core.resources.IProject;
  * <pre>
  *  == 개정이력(Modification Information) ==
  *   
- *   수정일      수정자           수정내용
- *  -------    --------    ---------------------------
- *   2009.08.03  이흥주          최초 생성
+ *  수정일         수정자        수정내용
+ *  ----------   --------    ---------------------------
+ *  2009.08.03   이흥주        최초 생성
+ *  2024.08.21   신용호        substringAfterLast() 추가
  *
  * </pre>
  */
@@ -70,4 +71,30 @@ public class TemplateUtil {
         }        
         return result;
     }
+    
+    /**
+     * 
+     * 특정 문자 이후 문자열 추출
+     *
+     * @param fullStr
+     * @param baseStr
+     * @return
+     */
+    public String substringAfterLast(Object fullStr, String baseStr){
+    	// null 체크
+        if (fullStr == null || baseStr == null) {
+            return "";
+        }
+        String result = fullStr.toString();
+
+        // baseStr이 result에 존재하는지 확인
+        int lastIndex = result.lastIndexOf(baseStr);
+        if (lastIndex == -1) {
+            return result;  // baseStr이 result에 없으면 원 문자열 반환
+        }
+
+        // baseStr 이후의 문자열을 반환
+        return result.substring(lastIndex + baseStr.length());
+    }
+
 }

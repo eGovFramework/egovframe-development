@@ -1,0 +1,29 @@
+package ${txtConfigPackage};
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jndi.JndiObjectFactoryBean;
+
+@Configuration
+public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
+
+    @Bean(name = "${txtDatasourceName}")
+    public JndiObjectFactoryBean dataSource() {
+        JndiObjectFactoryBean jndiObjectFactoryBean = new JndiObjectFactoryBean();
+        jndiObjectFactoryBean.setJndiName("${txtJndiName}");
+        return jndiObjectFactoryBean;
+    }
+    
+    /* 다음 라이브러리 추가 필요
+    === Maven pom.xml ===
+	<dependency>
+	    <groupId>org.apache.commons</groupId>
+	    <artifactId>commons-dbcp2</artifactId>
+	    <version>2.9.0</version>
+	</dependency>
+	
+	=== Gradle ===
+	implementation '~~~'
+	*/
+    
+}

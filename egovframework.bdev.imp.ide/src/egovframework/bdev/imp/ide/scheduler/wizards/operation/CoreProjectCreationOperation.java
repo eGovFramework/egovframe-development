@@ -146,11 +146,11 @@ public class CoreProjectCreationOperation extends BatchProjectCreationOperation 
         //addProjectFacets(monitor);
     }
 
-//    /**
-//     * 프로젝트 패싯 추가
-//     * @param monitor
-//     * @throws CoreException
-//     */
+    /**
+     * 프로젝트 패싯 추가
+     * @param monitor
+     * @throws CoreException
+     */
 //    @SuppressWarnings("deprecation")
 //    private void addProjectFacets(IProgressMonitor monitor)
 //            throws CoreException {

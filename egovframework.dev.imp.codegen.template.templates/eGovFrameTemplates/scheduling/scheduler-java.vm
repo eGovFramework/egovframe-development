@@ -1,0 +1,21 @@
+package ${txtConfigPackage};
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
+import org.springframework.scheduling.quartz.SchedulerFactoryBean;
+import org.springframework.scheduling.quartz.SimpleTriggerFactoryBean;
+
+@Configuration
+public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
+
+    // Scheduler 설정
+    @Bean(name="${txtSchedulerName}")
+    public SchedulerFactoryBean schedulerFactory(@Qualifier("${txtTriggerName}") ${cboBeanType} triggerBean) {
+        SchedulerFactoryBean schedulerFactory = new SchedulerFactoryBean();
+        schedulerFactory.setTriggers(triggerBean.getObject());
+        return schedulerFactory;
+    }
+
+}

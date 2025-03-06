@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: eGovFramework Core
 Bundle-SymbolicName: egovframework.dev.imp.core;singleton:=true
-Bundle-Version: 4.2.0.qualifier
+Bundle-Version: 4.3.0.qualifier
 Bundle-Activator: egovframework.dev.imp.ui.EgovCorePlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.datatools.sqltools.sqlscrapbook,
  org.eclipse.datatools.sqltools.sqlbuilder
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: egovframework.dev.imp.core.common,
  egovframework.dev.imp.core.perspectives,
  egovframework.dev.imp.core.utils

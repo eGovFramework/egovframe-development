@@ -381,7 +381,7 @@ public class DeviceAPIWebProjectCreationPage extends DeviceAPIProjectCreationPag
 		Group descriptionGroup = new Group(buttonDescriptionControl, SWT.None);
 		descriptionGroup.setLayout(new GridLayout());
 		descriptionGroup.setLayoutData(new GridData(GridData.FILL_BOTH));
-		descriptionGroup.setText("설명");
+		descriptionGroup.setText(DeviceAPIMessages.WEB_PROJECT_DESCRIPTION_GROUP_NAME);
 
 		descriptionText = new Text(descriptionGroup, SWT.V_SCROLL | SWT.READ_ONLY | SWT.MULTI);
 		descriptionText.setLayoutData(new GridData(GridData.FILL_BOTH));

@@ -26,9 +26,10 @@ import org.eclipse.osgi.util.NLS;
  * @see <pre>
  * &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *   
- *	수정일      	수정자           수정내용
- *  -------			--------    ---------------------------
- *	2012.07.02	배치개발환경 개발팀    최초 생성
+ *	수정일      	 수정자               수정내용
+ *  ----------   ----------------   ---------------------------
+ *	2012.07.02   배치개발환경 개발팀     최초 생성
+ *	2025.02.26   신용호               항목 추가 (다국어)
  * 
  * 
  * </pre>
@@ -67,6 +68,7 @@ public class BatchTestMessages extends NLS {
 	public static String BatchJobTestCustomizePage_TEST_BUTTON;
 	public static String BatchJobTestCustomizePage_TEST_BUTTON_CONFIRM_DIALOG_TITLE;
 	public static String BatchJobTestCustomizePage_TITLE;
+	public static String BatchJobTestCustomizePage_JOB_PARAMETER_MESSAGE;
 	public static String BatchJobTestSelectProjectPage_CONTAINER_NAME_LABEL;
 	public static String BatchJobTestSelectProjectPage_DESCRIPTION;
 	public static String BatchJobTestSelectProjectPage_INVALID_PROJECT_NAME;
@@ -95,5 +97,9 @@ public class BatchTestMessages extends NLS {
 	public static String JobParameterInfoToWizardDialog_TABLE_COLUMN_PARAMETER_NAME;
 	public static String JobParameterInfoToWizardDialog_TABLE_COLUMN_VALUE;
 	public static String JobParameterInfoToWizardDialog_TITLE;
+	public static String BatchJobTestCustomizePage_CONFIRM_CURRENT_CONFIG_INFO;
+	public static String BatchJobTestCustomizePage_CONFIRM_CAUTION_INFO;
+	public static String BatchJobTestCustomizePage_CONFIRM_CONTINUE;
+
 
 }

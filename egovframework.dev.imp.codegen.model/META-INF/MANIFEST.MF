@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: eGovFramework CodeGen Model
 Bundle-SymbolicName: egovframework.dev.imp.codegen.model; singleton:=true
-Bundle-Version: 4.2.0.qualifier
+Bundle-Version: 4.3.0.qualifier
 Bundle-Activator: egovframework.dev.imp.codegen.model.EgovModelCodeGenPlugin
 Bundle-Vendor: MOIS
 Require-Bundle: org.eclipse.core.resources,
@@ -28,10 +28,10 @@ Require-Bundle: org.eclipse.core.resources,
  org.apache.xml.resolver,
  org.apache.xml.serializer,
  org.junit,
- egovframework.dev.imp.core;bundle-version="4.2.0",
- egovframework.dev.imp.ide;bundle-version="4.2.0",
+ egovframework.dev.imp.core;bundle-version="4.3.0",
+ egovframework.dev.imp.ide;bundle-version="4.3.0",
  net.java.amateras.umleditor
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: egovframework-dev-imp-codegen-model.jar,
  lib/log4j-1.2.8.jar

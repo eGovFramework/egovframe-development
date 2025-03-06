@@ -22,7 +22,7 @@ import egovframework.boot.dev.imp.ide.EgovBootIdePlugin;
 import egovframework.boot.dev.imp.ide.wizards.model.NewProjectContext;
 import egovframework.boot.dev.imp.ide.wizards.operation.BootWebProjectCreationOperation;
 import egovframework.boot.dev.imp.ide.wizards.pages.TemplateProjectCreationPage;
-import egovframework.boot.dev.imp.ide.wizards.pages.TemplateProjectSelectPage;
+import egovframework.boot.dev.imp.ide.wizards.pages.TemplateSimpleHomepageProjectSelectPage;
 import egovframework.boot.dev.imp.ide.common.BootIdeLog;
 import egovframework.boot.dev.imp.ide.common.BootIdeMessages;
 
@@ -65,7 +65,7 @@ public class EgovNewBootTemplateProjectWizard extends EgovNewProjectWizard {
     public void addPages() {
         try {
         	
-        	IWizardPage templateSelectPage = new TemplateProjectSelectPage("basePage", getContext());
+        	IWizardPage templateSelectPage = new TemplateSimpleHomepageProjectSelectPage("basePage", getContext());
         	addPage(templateSelectPage);
         	
             IWizardPage firstPage = new TemplateProjectCreationPage("firstPage", getContext()); 

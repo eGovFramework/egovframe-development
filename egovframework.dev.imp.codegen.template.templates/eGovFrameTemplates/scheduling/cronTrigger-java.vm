@@ -1,0 +1,23 @@
+package ${txtConfigPackage};
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
+import org.springframework.scheduling.quartz.JobDetailFactoryBean;
+import org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean;
+
+
+@Configuration
+public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
+
+    // CronTrigger 설정
+    @Bean(name="${txtTriggerName}")
+    public CronTriggerFactoryBean cronTrigger(@Qualifier("${txtJobName}") ${cboBeanType} jobDetailBean) {
+        CronTriggerFactoryBean trigger = new CronTriggerFactoryBean();
+        trigger.setJobDetail(jobDetailBean.getObject());
+        trigger.setCronExpression("${txtExpression}");
+        return trigger;
+    }
+
+}

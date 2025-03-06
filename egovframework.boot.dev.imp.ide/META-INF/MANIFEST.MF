@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: eGovFramework Boot IDE
 Bundle-SymbolicName: egovframework.boot.dev.imp.ide;singleton:=true
-Bundle-Version: 4.2.0.qualifier
+Bundle-Version: 4.3.0.qualifier
 Bundle-Activator: egovframework.boot.dev.imp.ide.EgovBootIdePlugin
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui.ide,
@@ -22,13 +22,13 @@ Require-Bundle: org.eclipse.ui.ide,
  org.eclipse.equinox.p2.operations,
  org.eclipse.equinox.p2.metadata,
  org.eclipse.equinox.p2.repository,
- egovframework.dev.imp.core;bundle-version="4.2.0",
+ egovframework.dev.imp.core;bundle-version="4.3.0",
  org.eclipse.equinox.p2.engine,
  org.eclipse.m2e.core,
  org.gradle.toolingapi,
  org.eclipse.buildship.core
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ClassPath: egovframework-boot-dev-imp-ide.jar,
  lib/jaxb-xalan-1.5.jar,
  lib/ant-1.6.1.jar

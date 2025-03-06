@@ -28,8 +28,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Enumeration;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 import org.apache.tools.zip.ZipEntry;
 import org.apache.tools.zip.ZipFile;
@@ -61,12 +59,7 @@ import org.eclipse.jdt.core.IClasspathAttribute;
 import org.eclipse.jdt.core.IClasspathEntry;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.jst.common.project.facet.core.JavaFacet;
 import org.eclipse.m2e.core.MavenPlugin;
-import org.eclipse.wst.common.project.facet.core.IFacetedProject;
-import org.eclipse.wst.common.project.facet.core.IFacetedProject.Action;
-import org.eclipse.wst.common.project.facet.core.IProjectFacetVersion;
-import org.eclipse.wst.common.project.facet.core.ProjectFacetsManager;
 
 import egovframework.boot.dev.imp.ide.EgovBootIdePlugin;
 import egovframework.boot.dev.imp.ide.common.BootIdeLog;
@@ -75,6 +68,7 @@ import egovframework.boot.dev.imp.ide.common.Policy;
 import egovframework.boot.dev.imp.ide.common.ProjectFacetConstants;
 import egovframework.boot.dev.imp.ide.common.ResourceConstants;
 import egovframework.boot.dev.imp.ide.common.ResourceUtils;
+import egovframework.boot.dev.imp.ide.wizards.examples.ExampleInfo;
 import egovframework.boot.dev.imp.ide.wizards.model.NewProjectContext;
 import egovframework.boot.dev.imp.ide.wizards.model.NewWebProjectContext;
 
@@ -125,8 +119,13 @@ public abstract class ProjectCreationOperation implements IRunnableWithProgress,
 	 */
 	private void createExamples(IProgressMonitor monitor) throws CoreException {
 
-		if (!context.isCreateExample())
-			return;
+		//if (!context.isCreateExample())
+		//	return;
+		if (!context.isCreateExample()) {
+			context.setDefaultExampleFile(ExampleInfo.defaultBootCoreExample);
+			context.setPomFileName(ExampleInfo.bootWebPomFile);
+			context.setOptionalExampleFile(new String[] { ExampleInfo.defaultBootCoreExample });
+		}
 
 		if (context.getOptionalExampleFile() != null) {
 			for (String exampleFile : context.getOptionalExampleFile()) {

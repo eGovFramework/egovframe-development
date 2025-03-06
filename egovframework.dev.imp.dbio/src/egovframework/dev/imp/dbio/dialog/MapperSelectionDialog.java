@@ -44,9 +44,10 @@ import egovframework.dev.imp.dbio.util.JdtUtil;
  * <pre>
  * << 개정이력(Modification Information) >>
  *   
- *   수정일      수정자           수정내용
- *  -------    --------    ---------------------------
- *   2019.02.25  김효수          MyBatis DBIO   
+ *  수정일         수정자        수정내용
+ *  ----------   --------    ---------------------------
+ *  2019.02.25   김효수        MyBatis DBIO
+ *  2024.08.13   신용호        isEGovSqlMapperFile 적용
  * 
  * </pre>
  */
@@ -83,7 +84,7 @@ public class MapperSelectionDialog extends ElementTreeSelectionDialog {
 					return false;
 
 				if (resource.getType() == IResource.FILE) {
-					return FileUtil.isMapperFile((IFile) resource);
+					return FileUtil.isEGovSqlMapperFile((IFile) resource);
 				} else if (resource.getType() == IResource.FOLDER && JdtUtil.isOutputFolder((IFolder) resource)) {
 					return false;
 				}

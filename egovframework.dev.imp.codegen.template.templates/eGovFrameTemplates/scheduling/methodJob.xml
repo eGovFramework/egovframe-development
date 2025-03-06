@@ -7,16 +7,21 @@
 			<!-- NewMethodInvokingJob	New Method Invoking Job -->
 			<description>Create Method Invoking Job</description>
 			<group label="Generation File" required="true">
-				<container name="txtPath" label="File Path: " required="true"
-					type="folder" value="" />
-				<textfield name="txtFileName" label="File Name: "
-					required="true" value="" />
+				<radio name="rdoConfigType" label="Configuration Type : " value="XML" required="true" listener="true">
+					<elements>
+						<option>XML</option>
+						<option>Java</option>
+					</elements>
+				</radio>
+			
+				<container name="txtPath" label="File Path: " required="true" type="folder" value="" radio="XML"/>
+				<textfield name="txtFileName" label="File Name: " required="true" value="context-scheduling" radio="XML"/>
+				<container name="txtConfigPackage" label="Config Package: " required="true" type="package" radio="Java"/>
+            	<textfield name="txtClassName" label="Class Name :" required="true" value="EgovConfigScheduling" radio="Java"/>
 			</group>
 			<group label="Job Configuration" required="true">
-				<textfield name="txtJobName" label="Job Name: " required="true"
-					value="" />
-				<combo name="cboConcurrent" label="Concurrent: " required="true"
-					value="false">
+				<textfield name="txtJobName" label="Job Name: " required="true" value="jobDetail" />
+				<combo name="cboConcurrent" label="Concurrent: " required="true" value="false">
 					<elements>
 						<option>true</option>
 						<option>false</option>
@@ -24,16 +29,13 @@
 				</combo>
 			</group>
 			<group label="Service Configuration" required="true">
-				<textfield name="txtServiceName" label="Service Name: "
-					required="true" value="" />
+				<textfield name="txtServiceName" label="Service Name: " required="true" value="jobService" />
 				<type name="txtServiceClass" label="Service Class: " required="true" />
-				<textfield name="txtServiceMethod" label="Service Method: "
-					required="true" value="" />
+				<textfield name="txtServiceMethod" label="Service Method: " required="true" value="runJob" />
 				<group label="Property" required="true" checkbox="chkProperty">
-					<checkbox name="chkProperty" label="property: " value="true"
-						required="true" />
-					<textfield name="txtPropertyName" label="name: " required="true" />
-					<textfield name="txtPropertyValue" label="value: " required="true" />
+					<checkbox name="chkProperty" label="property: " value="true" required="true" />
+					<textfield name="txtPropertyName" label="name: " required="true" value="paramSampleJob"/>
+					<textfield name="txtPropertyValue" label="value: " required="true" value="SampleJobValue"/>
 				</group>
 			
 			</group>
@@ -41,7 +43,13 @@
 
 		<output>
 			<template component="txtFileName" velocity="methodJob.vm"
-				extension="xml" container="txtPath" />
+				extension="xml" container="txtPath">
+				<condition variable="rdoConfigType" value="XML" />
+			</template>
+			<template component="txtClassName" velocity="methodJob-java.vm"
+				extension="java" container="txtConfigPackage">
+				<condition variable="rdoConfigType" value="Java" />
+			</template>
 		</output>
 	</wizard>
 </EclipseWork>

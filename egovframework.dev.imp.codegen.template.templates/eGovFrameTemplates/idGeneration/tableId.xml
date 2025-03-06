@@ -7,37 +7,45 @@
 			<!-- NewTableIdGen	New Table ID Generation -->
 			<description>Create Table ID Generation</description>
 			<group label="Generation File" required="true">
-				<container name="txtPath" label="File Path: " required="true"
-					type="folder" value="" /> <!-- #webroot -->
-				<textfield name="txtFileName" label="File Name: "
-					required="true" value="" />
+				<radio name="rdoConfigType" label="Configuration Type : " value="XML" required="true" listener="true">
+					<elements>
+						<option>XML</option>
+						<option>Java</option>
+					</elements>
+				</radio>
+			
+				<container name="txtPath" label="File Path: " required="true" type="folder" value="" radio="XML"/>
+				<textfield name="txtFileName" label="File Name: " required="true" value="context-idgen-table" radio="XML"/>
+				<container name="txtConfigPackage" label="Config Package: " required="true" type="package" radio="Java"/>
+            	<textfield name="txtClassName" label="Class Name :" required="true" value="EgovConfigIdGenTable" radio="Java"/>
 			</group>
+			
 			<group label="Configuration"  required="true">
-				<textfield name="txtIdServiceName" label="ID Service Name: "
-					required="true" value="" />			
-				<textfield name="txtDatasourceName" label="DataSource Name: "
-					required="true" value="" />
-				<textfield name="txtTableId" label="Table: " required="true" />
-				<textfield name="txtTableName" label="Table Name: "
-					required="true" />
-				<textfield name="txtBlockSize" label="Block Size: "
-					required="true" />
-
+				<textfield name="txtIdServiceName" label="ID Service Name: " required="true" value="tableIdGnrService" />			
+				<textfield name="txtDatasourceName" label="DataSource Name: " required="true" value="dataSource" />
+				<textfield name="txtTableId" label="Table: " required="true" value="SEQ_TABLE"/>
+				<textfield name="txtTableName" label="Table Name: " required="true" value="SEQ_COLUMN"/>
+				<textfield name="txtBlockSize" label="Block Size: " required="true" value="10"/>
 			</group>
+			
 			<group label="Strategy" checkbox="chkStrategy"  required="true">
-				<checkbox name="chkStrategy" label="Use Strategy: " value="false"
-					required="true" />
-				<textfield name="txtStrategyName" label="Strategy Name: " required="true" />					
-				<textfield name="txtPrefix" label="Prefix: " required="true" />
-				<textfield name="txtCipers" label="Cipers: " required="true" />
-				<textfield name="txtFillChar" label="Fill Char: "
-					required="true" />
+				<checkbox name="chkStrategy" label="Use Strategy: " value="false" required="true" />
+				<textfield name="txtStrategyName" label="Strategy Name: " required="true" value="prefixIdGnrStrategy"/>
+				<textfield name="txtPrefix" label="Prefix: " required="true" value="PRE"/>
+				<textfield name="txtCipers" label="Cipers: " required="true" value="20"/>
+				<textfield name="txtFillChar" label="Fill Char: " required="true" value="0"/>
 			</group>
+			
 		</component-page>
 
 		<output>
 			<template component="txtFileName" velocity="tableId.vm"
 				extension="xml" container="txtPath">
+				<condition variable="rdoConfigType" value="XML" />
+			</template>
+			<template component="txtClassName" velocity="tableId-java.vm"
+				extension="java" container="txtConfigPackage">
+				<condition variable="rdoConfigType" value="Java" />
 			</template>
 		</output>
 

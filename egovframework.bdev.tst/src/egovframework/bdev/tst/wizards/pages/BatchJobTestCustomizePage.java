@@ -78,9 +78,11 @@ import egovframework.dev.imp.core.utils.XmlUtil;
  *      <pre>
  * &lt;&lt; 개정이력(Modification Information) &gt;&gt;
  *   
- *수정일	  	수정자	  수정내용
- *-----------	------	----------------
- *2012.07.24	조용현	최초생성
+ * 수정일	  	    수정자	수정내용
+ * -----------	------	----------------
+ * 2012.07.24	조용현	최초생성
+ * 2024.08.12	신용호	Test Button 클릭시 메세지 다국어 처리
+ * 2025.02.26   신용호    일부 한글 메시지 깨짐 수정
  *
  * 
  *      </pre>
@@ -765,7 +767,7 @@ public class BatchJobTestCustomizePage extends WizardPage {
 		String foundFileString = context.getJobExecName();
 		String jobLauncherName = foundFileString.substring(foundFileString.lastIndexOf("/") + 1, //$NON-NLS-1$
 				foundFileString.length());
-		String message = "현재 설정된 정보는 다음과 같습니다.\n\n"; //$NON-NLS-1$
+		String message = BatchTestMessages.BatchJobTestCustomizePage_CONFIRM_CURRENT_CONFIG_INFO+"\n\n"; //$NON-NLS-1$
 		message += ("\n"); //$NON-NLS-1$
 		message += ("- [Job Name] : " + messageJobName + "\n"); //$NON-NLS-1$ //$NON-NLS-2$
 		message += "- [Job Launcher] : " + jobLauncherName + "\n"; //$NON-NLS-1$ //$NON-NLS-2$
@@ -773,7 +775,8 @@ public class BatchJobTestCustomizePage extends WizardPage {
 		if (jobParameterList != null && newTestButton.getSelection()) {
 			TableItem[] items = jobParameterList.getTable().getItems();
 			if (items.length < 1) {
-				message += "timestamp 파라메터 사용\n"; //$NON-NLS-1$
+				// 다국어 처리
+				message += "timestamp : " + BatchTestMessages.BatchJobTestCustomizePage_JOB_PARAMETER_MESSAGE + "\n"; //$NON-NLS-1$ // 파라미터 사용
 			} else {
 				for (int i = 0; i < items.length - 1; i++) {
 					JobParameterInfo jobPI = (JobParameterInfo) items[i].getData();
@@ -787,7 +790,7 @@ public class BatchJobTestCustomizePage extends WizardPage {
 			message += messageParam + "\n"; //$NON-NLS-1$
 		}
 		message += ("\n"); //$NON-NLS-1$
-		message += "\n주의 : 운영환경의 데이터를 이용하는 경우 실데이터 반영으로 실제 업무에 영향을 줄 수 있습니다.\n\n계속 진행 하시겠습니까?"; //$NON-NLS-1$
+		message += "\n"+BatchTestMessages.BatchJobTestCustomizePage_CONFIRM_CAUTION_INFO+"\n\n"+BatchTestMessages.BatchJobTestCustomizePage_CONFIRM_CONTINUE; //$NON-NLS-1$
 
 		return message;
 	}

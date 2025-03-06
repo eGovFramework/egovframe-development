@@ -1,0 +1,115 @@
+package ${txtConfigPackage};
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Properties;
+
+import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
+
+import org.springframework.aop.Advisor;
+import org.springframework.aop.aspectj.AspectJExpressionPointcut;
+import org.springframework.aop.support.DefaultPointcutAdvisor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource;
+import org.springframework.transaction.interceptor.RollbackRuleAttribute;
+import org.springframework.transaction.interceptor.RuleBasedTransactionAttribute;
+import org.springframework.transaction.interceptor.TransactionAttribute;
+import org.springframework.transaction.interceptor.TransactionInterceptor;
+
+@Configuration
+@EnableAspectJAutoProxy(proxyTargetClass = true)
+@EnableTransactionManagement
+@EnableJpaRepositories(basePackages = "${txtSpringDataJPAPackage}")
+public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
+
+    @Bean(name = "${txtEttMgrFactory}")
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
+        LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
+        em.setDataSource(dataSource);
+        em.setPackagesToScan("${txtPackagesToScan}");
+
+        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+        vendorAdapter.setShowSql(true);
+        vendorAdapter.setGenerateDdl(true);
+        em.setJpaVendorAdapter(vendorAdapter);
+
+        Properties jpaProperties = new Properties();
+        jpaProperties.put("hibernate.dialect", "${cmbDialect}");
+        jpaProperties.put("hibernate.format_sql", "true");
+        jpaProperties.put("hibernate.use_sql_comments", "true");
+        jpaProperties.put("hibernate.jdbc.batch_size", "5");
+        em.setJpaProperties(jpaProperties);
+
+        return em;
+    }
+
+    @Bean(name = "${txtTransactionName}")
+    public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory, DataSource dataSource) {
+        JpaTransactionManager transactionManager = new JpaTransactionManager();
+        transactionManager.setEntityManagerFactory(entityManagerFactory);
+        transactionManager.setDataSource(dataSource);
+        return transactionManager;
+    }
+
+    // AOP 설정 - 트랜잭션 관리 및 포인트컷 설정
+    @Bean(name = "${txtAdviceName}")
+	public TransactionInterceptor txAdvice(PlatformTransactionManager transactionManager) {
+		TransactionInterceptor txAdvice = new TransactionInterceptor();
+		txAdvice.setTransactionManager(transactionManager);
+		txAdvice.setTransactionAttributeSource(getNameMatchTransactionAttributeSource());
+		return txAdvice;
+	}
+
+	private NameMatchTransactionAttributeSource getNameMatchTransactionAttributeSource() {
+		NameMatchTransactionAttributeSource txAttributeSource = new NameMatchTransactionAttributeSource();
+		txAttributeSource.setNameMap(getRuleBasedTxAttributeMap());
+		return txAttributeSource;
+	}
+
+	private HashMap<String, TransactionAttribute> getRuleBasedTxAttributeMap() {
+		HashMap<String, TransactionAttribute> txMethods = new HashMap<String, TransactionAttribute>();
+
+		RuleBasedTransactionAttribute txAttribute = new RuleBasedTransactionAttribute();
+		txAttribute.setPropagationBehavior(TransactionDefinition.PROPAGATION_${cmbPropagation});
+		txAttribute.setIsolationLevel(TransactionDefinition.ISOLATION_${cmbIsolation});
+		txAttribute.setReadOnly(false);
+		
+		// Creating a list for rollback rules
+        List<RollbackRuleAttribute> rollbackRules = new ArrayList<>();
+		// Set to rollback when an exception occurs
+        rollbackRules.add(new RollbackRuleAttribute(${txtRollbackFor}.class));
+        txAttribute.setRollbackRules(rollbackRules);
+		txMethods.put("${txtMethodName}", txAttribute);
+
+		return txMethods;
+	}
+    
+    // -------------------------------------------------------------
+	// TransactionAdvisor 설정
+	// -------------------------------------------------------------
+	@Bean
+	public Advisor txAdvisor(PlatformTransactionManager txManager) {
+		AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
+		pointcut.setExpression("${txtPointCutExpression}");
+		return new DefaultPointcutAdvisor(pointcut, txAdvice(txManager));
+	}
+
+	// 예외변환 후처리기
+    @Bean
+    public PersistenceExceptionTranslationPostProcessor persistenceExceptionTranslationPostProcessor() {
+        return new PersistenceExceptionTranslationPostProcessor();
+    }
+
+}

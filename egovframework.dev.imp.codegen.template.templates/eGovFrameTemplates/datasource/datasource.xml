@@ -6,18 +6,25 @@
 		<component-page required="true">
 			<!-- NewDataSource	New DataSource -->
 			<description>Create Datasource.</description>
-			<group label="Generation File" required="true">
-				<container name="txtPath" label="File Path: " required="true"
-					type="folder" value="" /> <!-- #webroot -->
-				<textfield name="txtFileName" label="File Name: "
-					required="true" value="" />
+			<group label="Generation Options" required="true">
+				<radio name="rdoConfigType" label="Configuration Type : " value="XML" required="true" listener="true">
+					<elements>
+						<option>XML</option>
+						<option>Java</option>
+					</elements>
+				</radio>
+			
+				<container name="txtPath" label="Config Path: " required="true" type="folder" value="" radio="XML"/> <!-- #webroot -->
+				<textfield name="txtFileName" label="File Name: " required="true" value="context-datasource" radio="XML"/>
+				<container name="txtConfigPackage" label="Config Package: " required="true" type="package" radio="Java"/>
+            	<textfield name="txtClassName" label="Class Name :" required="true" value="EgovConfigDatasource" radio="Java"/>
 			</group>
 			<group>
-				<textfield name="txtDatasourceName" label="DataSource Name:" required="true" />
-				<combo name="rdoType" label="Driver Type: " value="C3P0" required="true">
+				<textfield name="txtDatasourceName" label="DataSource Name:" required="true" value="dataSource"/>
+				<combo name="rdoType" label="Driver Type: " value="DBCP" required="true">
 					<elements>
-						<option>C3P0</option>
 						<option>DBCP</option>
+						<option>C3P0</option>
 						<option>JDBC</option>
 					</elements>
 				</combo>
@@ -29,20 +36,42 @@
 		</component-page>
 
 		<output>
-			<template component="txtFileName" velocity="c3p0.vm"
-				extension="xml" container="txtPath">
-				<condition variable="rdoType" value="C3P0" />
-			</template>
-
 			<template component="txtFileName" velocity="dbcp.vm"
 				extension="xml" container="txtPath">
 				<condition variable="rdoType" value="DBCP" />
+				<condition variable="rdoConfigType" value="XML" />
+			</template>
+
+			<template component="txtClassName" velocity="dbcp-java.vm"
+				extension="java" container="txtConfigPackage">
+				<condition variable="rdoType" value="DBCP" />
+				<condition variable="rdoConfigType" value="Java" />
+			</template>
+
+			<template component="txtFileName" velocity="c3p0.vm"
+				extension="xml" container="txtPath">
+				<condition variable="rdoType" value="C3P0" />
+				<condition variable="rdoConfigType" value="XML" />
+			</template>
+
+			<template component="txtClassName" velocity="c3p0-java.vm"
+				extension="java" container="txtConfigPackage">
+				<condition variable="rdoType" value="C3P0" />
+				<condition variable="rdoConfigType" value="Java" />
 			</template>
 
 			<template component="txtFileName" velocity="jdbc.vm"
 				extension="xml" container="txtPath">
 				<condition variable="rdoType" value="JDBC" />
+				<condition variable="rdoConfigType" value="XML" />
 			</template>
+			
+			<template component="txtClassName" velocity="jdbc-java.vm"
+				extension="java" container="txtConfigPackage">
+				<condition variable="rdoType" value="JDBC" />
+				<condition variable="rdoConfigType" value="Java" />
+			</template>
+			
 		</output>
 	</wizard>
 </EclipseWork>

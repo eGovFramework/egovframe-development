@@ -1,0 +1,101 @@
+package ${txtConfigPackage};
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.sql.DataSource;
+
+import org.springframework.aop.Advisor;
+import org.springframework.aop.aspectj.AspectJExpressionPointcut;
+import org.springframework.aop.support.DefaultPointcutAdvisor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource;
+import org.springframework.transaction.interceptor.NoRollbackRuleAttribute;
+import org.springframework.transaction.interceptor.RollbackRuleAttribute;
+import org.springframework.transaction.interceptor.RuleBasedTransactionAttribute;
+import org.springframework.transaction.interceptor.TransactionAttribute;
+import org.springframework.transaction.interceptor.TransactionInterceptor;
+import org.springframework.transaction.support.TransactionTemplate;
+
+@Configuration
+@EnableAspectJAutoProxy(proxyTargetClass = true)
+#if(${chkAnnotationTransactionManagement})
+@EnableTransactionManagement
+#end
+public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
+
+	@Bean(name = "${txtTransactionName}")
+	public DataSourceTransactionManager txManager(DataSource dataSource) {
+		DataSourceTransactionManager dataSourceTransactionManager = new DataSourceTransactionManager();
+		dataSourceTransactionManager.setDataSource(dataSource);
+		return dataSourceTransactionManager;
+	}
+
+#if(${chkTransactionTemplate})
+    @Bean(name = "${txtTransactionTemplateName}")
+    public TransactionTemplate transactionTemplate(DataSourceTransactionManager transactionManager) {
+        return new TransactionTemplate(transactionManager);
+    }
+#end
+
+#if(${chkConfigurationalTransactionManagement})
+    @Bean(name = "${txtAdviceName}")
+	public TransactionInterceptor txAdvice(DataSourceTransactionManager transactionManager) {
+		TransactionInterceptor txAdvice = new TransactionInterceptor();
+		txAdvice.setTransactionManager(transactionManager);
+		txAdvice.setTransactionAttributeSource(getNameMatchTransactionAttributeSource());
+		return txAdvice;
+	}
+
+	private NameMatchTransactionAttributeSource getNameMatchTransactionAttributeSource() {
+		NameMatchTransactionAttributeSource txAttributeSource = new NameMatchTransactionAttributeSource();
+		txAttributeSource.setNameMap(getRuleBasedTxAttributeMap());
+		return txAttributeSource;
+	}
+
+	private HashMap<String, TransactionAttribute> getRuleBasedTxAttributeMap() {
+		HashMap<String, TransactionAttribute> txMethods = new HashMap<String, TransactionAttribute>();
+
+		RuleBasedTransactionAttribute txAttribute = new RuleBasedTransactionAttribute();
+		txAttribute.setPropagationBehavior(TransactionDefinition.PROPAGATION_${cmbPropagation});
+		txAttribute.setIsolationLevel(TransactionDefinition.ISOLATION_${cmbIsolation});
+		txAttribute.setReadOnly(${chkReadOnly});
+		
+		// Creating a list for rollback rules
+#if(${chkRollbackFor} || ${chkNoRollbackFor})
+        List<RollbackRuleAttribute> rollbackRules = new ArrayList<>();
+#if(${chkRollbackFor})
+		// Set to rollback when an exception occurs
+        rollbackRules.add(new RollbackRuleAttribute(${txtRollbackFor}.class));
+#end
+#if(${chkNoRollbackFor})
+        // Disable rollback when exception occurs
+        rollbackRules.add(new NoRollbackRuleAttribute(${txtNoRollbackFor}.class));
+#end
+        txAttribute.setRollbackRules(rollbackRules);
+#end
+#if(${chkTimeout})
+		txAttribute.setTimeout(${txtTimeout});
+#end
+		txMethods.put("${txtMethodName}", txAttribute);
+
+		return txMethods;
+	}
+    
+    // -------------------------------------------------------------
+	// TransactionAdvisor 설정
+	// -------------------------------------------------------------
+	@Bean
+	public Advisor txAdvisor(DataSourceTransactionManager txManager) {
+		AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
+		pointcut.setExpression("${txtPointCutExpression}");
+		return new DefaultPointcutAdvisor(pointcut, txAdvice(txManager));
+	}
+#end
+}

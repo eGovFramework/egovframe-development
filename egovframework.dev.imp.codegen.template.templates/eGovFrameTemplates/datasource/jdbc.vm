@@ -11,5 +11,42 @@
 #if(${txtPasswd} != "")		
 		<property name="password" value="${txtPasswd}" />
 #end		
-	</bean>  
+	</bean>
+	
+	<!-- 다음 JDBC Driver 라이브러리 추가 필요
+    === Maven pom.xml === 
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>8.0.33</version>
+	</dependency>
+	<dependency>
+		<groupId>org.mariadb.jdbc</groupId>
+		<artifactId>mariadb-java-client</artifactId>
+		<version>3.1.4</version>
+	</dependency>
+	<dependency>
+		 <groupId>org.postgresql</groupId>
+		 <artifactId>postgresql</artifactId>
+		 <version>42.6.0</version>
+	</dependency>
+	<dependency>
+		<groupId>cubrid</groupId>
+		<artifactId>cubrid-jdbc</artifactId>
+		<version>10.2.15.8978</version>
+	</dependency>
+	<dependency>
+		<groupId>com.altibase</groupId>
+		<artifactId>altibase-jdbc</artifactId>
+		<version>7.1.0.9.2</version>
+	</dependency>
+	
+	=== Gradle ===
+	implementation 'mysql:mysql-connector-java:8.0.33'
+	implementation 'org.mariadb.jdbc:mariadb-java-client:3.1.4'
+	implementation 'org.postgresql:postgresql:42.6.0'
+	implementation 'cubrid:cubrid-jdbc:10.2.15.8978'
+	implementation 'com.altibase:altibase-jdbc:7.1.0.9.2'
+	-->
+	
 </beans>

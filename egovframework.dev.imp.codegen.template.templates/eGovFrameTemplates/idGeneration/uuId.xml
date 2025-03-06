@@ -9,25 +9,29 @@
 (Address is MAC Address or IP Address)
             </description>
 			<group label="Generation File" required="true">
-				<container name="txtPath" label="File Path: " required="true"
-					type="folder" /> <!-- #webroot -->
-				<textfield name="txtFileName" label="File Name: "
-					required="true" />
+				<radio name="rdoConfigType" label="Configuration Type : " value="XML" required="true" listener="true">
+					<elements>
+						<option>XML</option>
+						<option>Java</option>
+					</elements>
+				</radio>
+			
+				<container name="txtPath" label="File Path: " required="true" type="folder" radio="XML"/>
+				<textfield name="txtFileName" label="File Name: " required="true" value="context-idgen-uuid" radio="XML"/>
+				<container name="txtConfigPackage" label="Config Package: " required="true" type="package" radio="Java"/>
+            	<textfield name="txtClassName" label="Class Name :" required="true" value="EgovConfigIdGenUuid" radio="Java"/>
 			</group>
 			<group label="Configuration" required="true">
-				<textfield name="txtIdServiceName" label="ID Service Name: "
-					required="true" value="" />
+				<textfield name="txtIdServiceName" label="ID Service Name: " required="true" value="uuidIdGnrService" />
 				
 				<group>
-					<radio name="rdoType" label="None or Address? " value="None"
-						required="true" listener="true">
+					<radio name="rdoType" label="None or Address? " value="None" required="true" listener="true">
 						<elements>
 							<option>None</option>
 							<option>Address</option>
 						</elements>
 					</radio>
-					<textfield name="txtAddress" label="Address: " required="true"
-						radio="Address" />
+					<textfield name="txtAddress" label="Address: " required="true" radio="Address" value="12:34:56:78:9A:AB"/>
 				</group>
 			</group>
 
@@ -36,6 +40,11 @@
 		<output>
 			<template component="txtFileName" velocity="uuId.vm"
 				extension="xml" container="txtPath">
+				<condition variable="rdoConfigType" value="XML" />
+			</template>
+			<template component="txtClassName" velocity="uuId-java.vm"
+				extension="java" container="txtConfigPackage">
+				<condition variable="rdoConfigType" value="Java" />
 			</template>
 		</output>
 	</wizard>
