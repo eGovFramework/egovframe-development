@@ -34,11 +34,14 @@ public class CreateComponentInfo {
 	public static void main(String[] args) throws Exception {
 		try {
 			// 컴포넌트 정보 엑셀 파일 경로
-			String readFilePath = "C:\\eclipse-rcp-2022-12-R-win32-x86_64\\workspace\\egovframework.dev.imp.commngt\\examples\\components.xls";
+			//String readFilePath = "C:\\eclipse-rcp-2022-12-R-win32-x86_64\\workspace\\egovframework.dev.imp.commngt\\examples\\components.xls";
+			String readFilePath = "C:\\EGOV_DEV\\eclipse-rcp-2024-03-x64\\workspace\\egovframework.dev.imp.commngt\\examples\\components.xls";
 			// 컴포넌트 정보 2가지 properties, java 파일 생성 경로
-			String generateFilePath = "C:\\eclipse-rcp-2022-12-R-win32-x86_64\\workspace\\egovframework.dev.imp.commngt\\src\\egovframework\\dev\\imp\\commngt\\common";
+			//String generateFilePath = "C:\\eclipse-rcp-2022-12-R-win32-x86_64\\workspace\\egovframework.dev.imp.commngt\\src\\egovframework\\dev\\imp\\commngt\\common";
+			String generateFilePath = "C:\\EGOV_DEV\\eclipse-rcp-2024-03-x64\\workspace\\egovframework.dev.imp.commngt\\src\\egovframework\\dev\\imp\\commngt\\common";
 			// xml 파일 생성 경로
-			String generateXMLFilePath = "C:\\eclipse-rcp-2022-12-R-win32-x86_64\\workspace\\egovframework.dev.imp.commngt\\examples";
+			//String generateXMLFilePath = "C:\\eclipse-rcp-2022-12-R-win32-x86_64\\workspace\\egovframework.dev.imp.commngt\\examples";
+			String generateXMLFilePath = "C:\\EGOV_DEV\\eclipse-rcp-2024-03-x64\\workspace\\egovframework.dev.imp.commngt\\examples";
 
 			// properties 파일
 			File propertiesKoFile = File.createTempFile("components_ko", ".properties", new File(generateFilePath));
