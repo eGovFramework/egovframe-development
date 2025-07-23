@@ -11,5 +11,14 @@
 			<artifactId>velocity</artifactId>
 			<version>1.6.2</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.incava/java-diff -->
+		<dependency>
+			<groupId>org.incava</groupId>
+			<artifactId>java-diff</artifactId>
+			<version>1.1</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 </project>
