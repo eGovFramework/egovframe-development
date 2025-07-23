@@ -7,38 +7,35 @@
 			<!-- NewJndiDataSource	New JNDI DataSource -->
 			<description>Create JNDI DataSource</description>
 			<group label="Generation File" required="true">
-				<container name="txtPath" label="File Path: " required="true"
-					type="folder" value="" /> <!-- #webroot -->
-				<textfield name="txtFileName" label="File Name: "
-					required="true" value="" />
-			</group>
-			<group>
-				<radio name="rdoType" label="WAS: " value="Jeus" required="true" listener="true">
+				<radio name="rdoConfigType" label="Configuration Type : " value="XML" required="true" listener="true">
 					<elements>
-						<option>Jeus</option>
-						<option>Weblogic</option>
+						<option>XML</option>
+						<option>Java</option>
 					</elements>
 				</radio>
-				<textfield name="txtDatasourceName" label="DataSource Name:" required="true" />
-				<textfield name="txtJndiName" label="JNDI Name: " required="true" />
-				
-				<textfield name="txtFactoryInitial" label="Factory Initial: " required="true" radio="Jeus"/>
-				<textfield name="txtProviderUrl" label="Provider Url: " required="true"  radio="Jeus"/>
-				<textfield name="txtPropertiesLocation" label="Properties Location: " required="true"  radio="Weblogic" value="classpath:"/>
-								
+			
+				<container name="txtPath" label="File Path: " required="true" type="folder" value=""  radio="XML"/> <!-- #webroot -->
+				<textfield name="txtFileName" label="File Name: " required="true" value="context-datasource-jndi"  radio="XML"/>
+				<container name="txtConfigPackage" label="Config Package: " required="true" type="package" radio="Java"/>
+            	<textfield name="txtClassName" label="Class Name :" required="true" value="EgovConfigDatasourceJndi" radio="Java"/>
+			</group>
+			
+			<group>
+				<textfield name="txtDatasourceName" label="DataSource Name:" value="jndiDataSource" required="true" />
+				<textfield name="txtJndiName" label="JNDI Name: " value="jdbc/PROJECT_DS" required="true" />
 			</group>
 			
 		</component-page>
 
    	    <output>
-			<template component="txtFileName" velocity="jeus.vm"
+			<template component="txtFileName" velocity="jndiDatasource.vm"
 				extension="xml" container="txtPath">
-				<condition variable="rdoType" value="Jeus" />
+				<condition variable="rdoConfigType" value="XML" />
 			</template>
 
-			<template component="txtFileName" velocity="weblogic.vm"
-				extension="xml" container="txtPath">
-				<condition variable="rdoType" value="Weblogic" />
+			<template component="txtClassName" velocity="jndiDatasource-java.vm"
+				extension="java" container="txtConfigPackage">
+				<condition variable="rdoConfigType" value="Java" />
 			</template>
 		</output>
 	</wizard>

@@ -48,8 +48,13 @@
 <script type="text/javaScript" language="javascript" defer="defer">
 <!--
 /* 글 수정 화면 function */
+
 #set($params="")
 #set($i=0)
+
+#if(${model.primaryKeys} == [])
+  #set($params="${model.attributes.get(0).ccName}")
+#else
 #foreach($attribute in $model.primaryKeys)
 #if($i == 0)
   #set($params="${attribute.ccName}")
@@ -58,12 +63,17 @@
 #end
 #set($i=$i+1)
 #end
+#end
 function fn_egov_select(${params}) {
+#if(${model.primaryKeys} == [])
+    document.getElementById("listForm").${model.attributes.get(0).ccName}.value = ${model.attributes.get(0).ccName};
+#else
 #foreach($attribute in $model.primaryKeys)
 	document.getElementById("listForm").${attribute.ccName}.value = ${attribute.ccName};
 #end
+#end
    	document.getElementById("listForm").action = "<c:url value='${updateViewPath}'/>";
-   	document.getElementById("listForm").submit();		
+   	document.getElementById("listForm").submit();
 }
 
 /* 글 등록 화면 function */
@@ -83,9 +93,13 @@ function fn_egov_link_page(pageNo){
 </script>
 </head>
 <body>
-<form:form commandName="searchVO" name="listForm" method="post">
-#foreach($attribute in $model.primaryKeys)
+<form:form modelAttribute="searchVO" name="listForm" id="listForm" method="post">
+#if(${model.primaryKeys} == [])
+    <input type="hidden" name="${model.attributes.get(0).ccName}" />
+#else
+#foreach($attribute in ${model.primaryKeys})
 	<input type="hidden" name="${attribute.ccName}" />
+#end
 #end
 <div id="content_pop">
 	<!-- 타이틀 -->
@@ -110,24 +124,34 @@ function fn_egov_link_page(pageNo){
 			</tr>
 			<c:forEach var="result" items="${D}{resultList}" varStatus="status">
 			<tr>
-				#set($linkParams="")
-				#set($i=0)
-				#foreach($attribute in $model.primaryKeys)
-				#if($i == 0)
-				  #set($linkParams="<c:out value=${Q}${D}{result.${attribute.ccName}}${Q}/>")
-				#else
-				  #set($linkParams="$linkParams, <c:out value=${Q}{D}{result.${attribute.ccName}}${Q}/>")
-				#end
-				#set($i=$i+1)					
-				#end
-							
-				#foreach($attribute in $model.attributes)
-				#if($attribute.primaryKey == true)				
-				<td align="center" class="listtd"><a href="javascript:fn_egov_select('${linkParams}')"><c:out value="${D}{result.${attribute.ccName}}"/></a>&nbsp;</td>
-				#else
-				<td align="center" class="listtd"><c:out value="${D}{result.${attribute.ccName}}"/>&nbsp;</td>
-				#end
-				#end	
+	#if(${model.primaryKeys} == [])
+	 	#set($linkParams="'<c:out value=${Q}${D}{result.${model.attributes.get(0).ccName}}${Q}/>'")
+	 	#foreach($attribute in $model.attributes)
+			#if($attribute.ccName == ${model.attributes.get(0).ccName})				
+<td align="center" class="listtd"><a href="javascript:fn_egov_select(${linkParams})"><c:out value="${D}{result.${attribute.ccName}}"/></a>&nbsp;</td>
+			#else
+<td align="center" class="listtd"><c:out value="${D}{result.${attribute.ccName}}"/>&nbsp;</td>
+			#end
+		#end
+	#else
+	    #set($linkParams="")
+		#set($i=0)
+		#foreach($attribute in $model.primaryKeys)
+		#if($i == 0)
+		  #set($linkParams="'<c:out value=${Q}${D}{result.${attribute.ccName}}${Q}/>'")
+		#else
+		  #set($linkParams="$linkParams, '<c:out value=${Q}${D}{result.${attribute.ccName}}${Q}/>'")
+		#end
+		#set($i=$i+1)					
+		#end
+		#foreach($attribute in $model.attributes)
+		#if($attribute.primaryKey == true)				
+<td align="center" class="listtd"><a href="javascript:fn_egov_select(${linkParams})"><c:out value="${D}{result.${attribute.ccName}}"/></a>&nbsp;</td>
+		#else
+<td align="center" class="listtd"><c:out value="${D}{result.${attribute.ccName}}"/>&nbsp;</td>
+		#end
+		#end
+    #end
 			</tr>
 			</c:forEach>
 		</table>

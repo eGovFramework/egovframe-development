@@ -1,0 +1,115 @@
+package ${txtConfigPackage};
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.transaction.SystemException;
+
+import org.springframework.aop.Advisor;
+import org.springframework.aop.aspectj.AspectJExpressionPointcut;
+import org.springframework.aop.support.DefaultPointcutAdvisor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.interceptor.NameMatchTransactionAttributeSource;
+import org.springframework.transaction.interceptor.RollbackRuleAttribute;
+import org.springframework.transaction.interceptor.RuleBasedTransactionAttribute;
+import org.springframework.transaction.interceptor.TransactionAttribute;
+import org.springframework.transaction.interceptor.TransactionInterceptor;
+import org.springframework.transaction.jta.JtaTransactionManager;
+
+import com.atomikos.icatch.jta.UserTransactionImp;
+import com.atomikos.icatch.jta.UserTransactionManager;
+
+@Configuration
+@EnableAspectJAutoProxy(proxyTargetClass = true)
+#if(${chkAnnotationTransactionManagement})
+@EnableTransactionManagement
+#end
+public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
+
+    @Bean
+    public UserTransactionImp userTransaction() {
+        UserTransactionImp userTransaction = new UserTransactionImp();
+        try {
+			userTransaction.setTransactionTimeout(${txtGlobalTimeout});
+		} catch (SystemException e) {
+			e.printStackTrace();
+		}
+        return userTransaction;
+    }
+
+    @Bean(initMethod = "init", destroyMethod = "close")
+    public UserTransactionManager atomikosTransactionManager() {
+        UserTransactionManager transactionManager = new UserTransactionManager();
+        transactionManager.setForceShutdown(false);
+        return transactionManager;
+    }
+
+    @Bean(name = "${txtTransactionName}")
+    public PlatformTransactionManager transactionManager(UserTransactionImp userTransaction, UserTransactionManager atomikosTransactionManager) {
+        JtaTransactionManager transactionManager = new JtaTransactionManager();
+        transactionManager.setUserTransaction(userTransaction);
+        transactionManager.setTransactionManager(atomikosTransactionManager);
+        return transactionManager;
+    }
+
+    // AOP 설정 - 트랜잭션 관리 및 포인트컷 설정
+    @Bean(name = "${txtAdviceName}")
+	public TransactionInterceptor txAdvice(PlatformTransactionManager transactionManager) {
+		TransactionInterceptor txAdvice = new TransactionInterceptor();
+		txAdvice.setTransactionManager(transactionManager);
+		txAdvice.setTransactionAttributeSource(getNameMatchTransactionAttributeSource());
+		return txAdvice;
+	}
+
+	private NameMatchTransactionAttributeSource getNameMatchTransactionAttributeSource() {
+		NameMatchTransactionAttributeSource txAttributeSource = new NameMatchTransactionAttributeSource();
+		txAttributeSource.setNameMap(getRuleBasedTxAttributeMap());
+		return txAttributeSource;
+	}
+
+	private HashMap<String, TransactionAttribute> getRuleBasedTxAttributeMap() {
+		HashMap<String, TransactionAttribute> txMethods = new HashMap<String, TransactionAttribute>();
+
+		RuleBasedTransactionAttribute txAttribute = new RuleBasedTransactionAttribute();
+		txAttribute.setPropagationBehavior(TransactionDefinition.PROPAGATION_${cmbPropagation});
+		txAttribute.setIsolationLevel(TransactionDefinition.ISOLATION_${cmbIsolation});
+		txAttribute.setReadOnly(${chkReadOnly});
+		
+		// Creating a list for rollback rules
+#if(${chkRollbackFor} || ${chkNoRollbackFor})
+        List<RollbackRuleAttribute> rollbackRules = new ArrayList<>();
+#if(${chkRollbackFor})
+		// Set to rollback when an exception occurs
+        rollbackRules.add(new RollbackRuleAttribute(${txtRollbackFor}.class));
+#end
+#if(${chkNoRollbackFor})
+        // Disable rollback when exception occurs
+        rollbackRules.add(new NoRollbackRuleAttribute(${txtNoRollbackFor}.class));
+#end
+        txAttribute.setRollbackRules(rollbackRules);
+#end
+#if(${chkTimeout})
+		txAttribute.setTimeout(${txtTimeout});
+#end
+		txMethods.put("${txtMethodName}", txAttribute);
+
+		return txMethods;
+	}
+    
+    // -------------------------------------------------------------
+	// TransactionAdvisor 설정
+	// -------------------------------------------------------------
+	@Bean
+	public Advisor txAdvisor(PlatformTransactionManager txManager) {
+		AspectJExpressionPointcut pointcut = new AspectJExpressionPointcut();
+		pointcut.setExpression("${txtPointCutExpression}");
+		return new DefaultPointcutAdvisor(pointcut, txAdvice(txManager));
+	}
+	
+}

@@ -51,8 +51,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import egovframework.rte.fdl.property.EgovPropertyService;
-import egovframework.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.egovframe.rte.fdl.property.EgovPropertyService;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 
 #if (${servicePackage}=='${servicePackage}')
 // Servoce 객체에 대한 import 구문
@@ -148,15 +148,23 @@ public class ${controllerClassName} {
     
     @RequestMapping("${updateViewPath}")
     public String ${updateViewMethodName}(
+#if(${model.primaryKeys} == [])
+            @RequestParam("${model.attributes.get(0).ccName}") ${model.attributes.get(0).javaType} ${model.attributes.get(0).ccName} ,
+#else                     
 #foreach($attribute in $model.primaryKeys)
             @RequestParam("${attribute.ccName}") ${attribute.javaType} ${attribute.ccName} ,
 #end    
+#end
             @ModelAttribute("searchVO") ${defaultVoClassName} searchVO, Model model)
             throws Exception {
         ${voClassName} ${voInstanceName} = new ${voClassName}();
+#if(${model.primaryKeys} == [])
+        ${voInstanceName}.set${model.attributes.get(0).pcName}(${model.attributes.get(0).ccName});        
+#else        
 #foreach($attribute in $model.primaryKeys)        
         ${voInstanceName}.set${attribute.pcName}(${attribute.ccName});
-#end;        
+#end 
+#end       
         // 변수명은 CoC 에 따라 ${voInstanceName}
         model.addAttribute(${selectMethodName}(${voInstanceName}, searchVO));
         return "${registerView}";

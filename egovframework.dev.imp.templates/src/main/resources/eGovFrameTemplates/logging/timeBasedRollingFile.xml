@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>New Time-Based Rolling File Appender</title>
+
+		<component-page required="true">
+			<description>Create Time-Based Rolling File Appender</description>
+			<group label="Generation File Type" required="true">
+				<radio name="rdoConfigType" label="Configuration Type : " value="XML" required="true" listener="true">
+					<elements>
+						<option>XML</option>
+						<option>YAML</option>
+						<option>Properties</option>
+					</elements>
+				</radio>
+			</group>
+			<group label="Generation File" required="true">
+				<container name="txtPath" label="File Path: " required="true" type="folder" value="" /> <!-- #webroot -->
+				<textfield name="txtFileName" label="File Name: " required="true" value="log4j-rolling-file-time" />
+			</group>
+			<group label="Configuration" required="true">
+				<textfield name="txtAppenderName" label="Appender Name: " required="true" value="rolling-file-time" />
+				<textfield name="txtLogFileName" label="Log File Name: " required="true" value="./logs/time/timeBasedRollingSample.log" />
+				<textfield name="txtLogFileNamePattern" label="Log File Name Pattern: " required="true" value="./logs/time/timeBasedRollingSample.%d{yyyy-MM-dd_HH-mm}.log" />
+				<textfield name="txtConversionPattern" label="Conversion Pattern: " required="true" value="%d %5p [%c] %m%n" />
+				<textfield name="txtInterval" label="Interval: " required="true" value="1" />
+				<combo name="cboModulate" label="modulate: " required="true" value="true">
+					<elements>
+						<option>true</option>
+						<option>false</option>
+					</elements>
+				</combo>
+			</group>
+		</component-page>
+
+		<output>
+			<template component="txtFileName" velocity="timeBasedRollingFile.vm"
+				extension="xml" container="txtPath" >
+				<condition variable="rdoConfigType" value="XML" />
+			</template>
+			<template component="txtFileName" velocity="timeBasedRollingFile-yaml.vm"
+				extension="yaml" container="txtPath" >
+				<condition variable="rdoConfigType" value="Yaml" />
+			</template>
+			<template component="txtFileName" velocity="timeBasedRollingFile-properties.vm"
+				extension="properties" container="txtPath" >
+				<condition variable="rdoConfigType" value="Properties" />
+			</template>
+
+		</output>
+	</wizard>
+</EclipseWork>

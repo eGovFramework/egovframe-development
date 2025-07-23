@@ -14,9 +14,9 @@ import org.incava.util.diff.Difference;
 import org.junit.Before;
 import org.junit.Test;
 
-import model.Attribute;
-import model.DataModelContext;
-import model.Entity;
+import egovframework.dev.imp.codegen.template.model.Attribute;
+import egovframework.dev.imp.codegen.template.model.DataModelContext;
+import egovframework.dev.imp.codegen.template.model.Entity;
 import operation.CrudCodeGen;
 
 public class CrudCodeGenTest {
@@ -24,15 +24,17 @@ public class CrudCodeGenTest {
 	private DataModelContext dataModel;
 
 	@Before
-	public void setUp() throws Exception {
+	public void setUp() {
 		crudCodeGen = new CrudCodeGen();
 
 		dataModel = new DataModelContext();
 
-		dataModel.setPackageName("pkg");
-		dataModel.setAuthor("홍길동");
-		dataModel.setTeam("실행환경 개발팀");
-		dataModel.setCreateDate("2009.02.01");
+//		dataModel.setPackageName("pkg");
+//		dataModel.setAuthor("홍길동");
+//		dataModel.setTeam("실행환경 개발팀");
+//		dataModel.setCreateDate("2009.02.01");
+
+		dataModel.setVender("MySql");// HSQLDB, Oracle, MySql, postgres
 
 		Entity entity = new Entity("SAMPLE2");
 
@@ -68,7 +70,7 @@ public class CrudCodeGenTest {
 
 	}
 
-	private void genAndDiff(String templateFile, String targetFile) throws Exception {
+	private void genAndDiff(String templateFile, String targetFile) {
 		String result = crudCodeGen.generate(dataModel, templateFile);
 		String[] targetLines = readResource(targetFile);
 		String[] sourceLines = readString(result);
@@ -102,15 +104,23 @@ public class CrudCodeGenTest {
 	}
 
 	@Test
-	public void testSQLMap() throws Exception {
-		String templateFile = "templates/crud/src/main/resources/pkg/EgovSample_Sample2_SQL.vm";
-		String targetFile = "templates/crud/src/main/resources/pkg/EgovSample_Sample2_SQL.xml";
+	public void testMapper() {
+		String templateFile = "eGovFrameTemplates/crud/resource/pkg/EgovSample_Sample2_MAPPER.vm";
+		String targetFile = "eGovFrameTemplatesResult/crud/resource/pkg/EgovSample_Sample2_MAPPER.xml";
 
 		genAndDiff(templateFile, targetFile);
 	}
 
 	@Test
-	public void testService() throws Exception {
+	public void testSQLMap() {
+		String templateFile = "eGovFrameTemplates/crud/resource/pkg/EgovSample_Sample2_SQL_OLD.vm";
+		String targetFile = "eGovFrameTemplatesResult/crud/resource/pkg/EgovSample_Sample2_SQL_OLD.xml";
+
+		genAndDiff(templateFile, targetFile);
+	}
+
+	@Test
+	public void testService() {
 		String templateFile = "templates/crud/src/main/java/pkg/service/EgovSample2Service.vm";
 		String targetFile = "templates/crud/src/main/java/pkg/service/EgovSample2Service.jav";
 
@@ -118,7 +128,7 @@ public class CrudCodeGenTest {
 	}
 
 	@Test
-	public void testVO() throws Exception {
+	public void testVO() {
 		String templateFile = "templates/crud/src/main/java/pkg/service/Sample2VO.vm";
 		String targetFile = "templates/crud/src/main/java/pkg/service/Sample2VO.jav";
 
@@ -126,7 +136,7 @@ public class CrudCodeGenTest {
 	}
 
 	@Test
-	public void testServiceImpl() throws Exception {
+	public void testServiceImpl() {
 		String templateFile = "templates/crud/src/main/java/pkg/service/impl/EgovSample2ServiceImpl.vm";
 		String targetFile = "templates/crud/src/main/java/pkg/service/impl/EgovSample2ServiceImpl.jav";
 
@@ -134,7 +144,7 @@ public class CrudCodeGenTest {
 	}
 
 	@Test
-	public void testDAO() throws Exception {
+	public void testDAO() {
 		String templateFile = "templates/crud/src/main/java/pkg/service/impl/Sample2DAO.vm";
 		String targetFile = "templates/crud/src/main/java/pkg/service/impl/Sample2DAO.jav";
 
@@ -142,7 +152,7 @@ public class CrudCodeGenTest {
 	}
 
 	@Test
-	public void testController() throws Exception {
+	public void testController() {
 		String templateFile = "templates/crud/src/main/java/pkg/web/EgovSample2Controller.vm";
 		String targetFile = "templates/crud/src/main/java/pkg/web/EgovSample2Controller.jav";
 
@@ -150,7 +160,7 @@ public class CrudCodeGenTest {
 	}
 
 	@Test
-	public void testListView() throws Exception {
+	public void testListView() {
 		String templateFile = "templates/crud/src/webapp/WEB-INF/jsp/pkg/egovSample2List.vm";
 		String targetFile = "templates/crud/src/webapp/WEB-INF/jsp/pkg/egovSample2List.jsp";
 
@@ -158,7 +168,7 @@ public class CrudCodeGenTest {
 	}
 
 	@Test
-	public void testRegisterView() throws Exception {
+	public void testRegisterView() {
 		String templateFile = "templates/crud/src/webapp/WEB-INF/jsp/pkg/egovSample2Register.vm";
 		String targetFile = "templates/crud/src/webapp/WEB-INF/jsp/pkg/egovSample2Register.jsp";
 

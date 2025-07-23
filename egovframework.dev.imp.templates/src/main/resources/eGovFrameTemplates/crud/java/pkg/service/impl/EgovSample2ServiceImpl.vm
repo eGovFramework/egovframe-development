@@ -6,6 +6,10 @@
 #set($daoClassName="${model.entity.pcName}DAO")
 #set($daoName="${model.entity.ccName}DAO")
 #set($daoInstanceName="${model.entity.ccName}DAO")
+#set($mapperPackage="${mapperPackage}")
+#set($mapperClassName="${model.entity.pcName}Mapper")
+#set($mapperName="${model.entity.ccName}Mapper")
+#set($mapperInstanceName="${model.entity.ccName}Mapper")
 #set($servicePackage="${servicePackage}")
 #set($serviceClassName="${model.entity.pcName}Service")
 #set($serviceImplPackage="${implPackage}")
@@ -28,13 +32,13 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.springframework.stereotype.Service;
-
-import egovframework.rte.fdl.cmmn.EgovAbstractServiceImpl;
-import egovframework.rte.fdl.idgnr.EgovIdGnrService;
+import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;
+import org.egovframe.rte.fdl.idgnr.EgovIdGnrService;
 import ${servicePackage}.${serviceClassName};
 #if (${voPackage}=='${voPackage}')
 // Vo 객체에 대한 import 구문
@@ -50,7 +54,12 @@ import ${voPackage}.${voClassName};
 #else
 import ${daoPackage}.${daoClassName};
 #end
-
+#if (${mapperPackage}=='${mapperPackage}')
+// Mapper 객체에 대한 import 구문
+// import (mapper package).${mapperClassName};
+#else
+import ${mapperPackage}.${mapperClassName};
+#end
 /**
  * @Class Name : ${serviceImplClassName}.java
  * @Description : ${model.entity.pcName} Business Implement class
@@ -70,8 +79,11 @@ public class ${serviceImplClassName} extends EgovAbstractServiceImpl implements
         
     private static final Logger LOGGER = LoggerFactory.getLogger(${serviceImplClassName}.class);
 
-    @Resource(name="${daoName}")
-    private ${daoClassName} ${daoInstanceName};
+    @Resource(name="${mapperName}")
+    private ${mapperClassName} ${daoInstanceName};
+    
+    //@Resource(name="${daoName}")
+    //private ${daoClassName} ${daoInstanceName};
     
     /** ID Generation */
     //@Resource(name="{$idGnrService}")    

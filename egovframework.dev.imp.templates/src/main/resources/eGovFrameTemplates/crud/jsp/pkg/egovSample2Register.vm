@@ -41,7 +41,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<c:set var="registerFlag" value="${D}{empty ${voInstanceName}.id ? '등록' : '수정'}"/>
+
+#if(${model.primaryKeys} == [])	
+<c:set var="registerFlag" value="${D}{empty ${voInstanceName}.${model.attributes.get(0).ccName} ? '등록' : '수정'}"/>			
+#else
+<c:set var="registerFlag" value="${D}{empty ${voInstanceName}.${model.primaryKeys.get(0).ccName} ? '등록' : '수정'}"/>
+#end
+
 <title> <c:out value="${D}{registerFlag}"/> </title>
 <link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/sample.css'/>"/>
 
@@ -79,12 +85,12 @@ function fn_egov_save() {
 </head>
 <body>
 
-<form:form commandName="${voInstanceName}" name="detailForm">
+<form:form modelAttribute="${voInstanceName}" name="detailForm" id="detailForm" >
 <div id="content_pop">
 	<!-- 타이틀 -->
 	<div id="title">
 		<ul>
-			<li><img src="<c:url value='/images/egovframework/example/title_dot.gif'/>" alt="" /><c:out value="${D}{registerFlag}"/></li>
+			<li><img src="<c:url value='/images//title_dot.gif'/>" alt="" /><c:out value="${D}{registerFlag}"/></li>
 		</ul>
 	</div>
 	<!-- // 타이틀 -->
@@ -96,6 +102,7 @@ function fn_egov_save() {
 		</colgroup>
 			
 		<c:if test="${D}{registerFlag == '수정'}">
+#if(${model.primaryKeys} == [])	
 #foreach($attribute in $model.primaryKeys)
 		<tr>
 			<th>${attribute.name} *</th>
@@ -103,9 +110,18 @@ function fn_egov_save() {
 				<form:input path="${attribute.ccName}" cssClass="essentiality" readonly="true" />
 			</td>			
 		</tr>					
-#end	
+#end	   		
+#else		
+	   <tr>
+			<th>${model.attributes.get(0).name} *</th>
+			<td>
+				<form:input path="${model.attributes.get(0).ccName}" cssClass="essentiality" readonly="true" />
+			</td>			
+		</tr>	
+#end
 		</c:if>
 		<c:if test="${D}{registerFlag == '등록'}">
+#if(${model.primaryKeys} == [])	
 #foreach($attribute in $model.primaryKeys)
 		<tr>
 			<th>${attribute.name} *</th>
@@ -113,9 +129,16 @@ function fn_egov_save() {
 				<form:input path="${attribute.ccName}" cssClass="txt" readonly="false" />
 			</td>			
 		</tr>					
+#end		   	
+#else		
+	   <tr>
+			<th>${model.attributes.get(0).name} *</th>
+			<td>
+				<form:input path="${model.attributes.get(0).ccName}" cssClass="txt" readonly="false" />
+			</td>			
+		</tr>	
 #end	
 		</c:if>		
-		
 #foreach($attribute in $model.attributes)
 #if($attribute.primaryKey == false)
 		<tr>
@@ -131,12 +154,12 @@ function fn_egov_save() {
   </div>
 	<div id="sysbtn">
 		<ul>
-			<li><span class="btn_blue_l"><a href="javascript:fn_egov_selectList();">List</a><img src="<c:url value='/images/egovframework/example/btn_bg_r.gif'/>" alt="" /></span></li>
-			<li><span class="btn_blue_l"><a href="javascript:fn_egov_save();"><c:out value='${D}{registerFlag}'/></a><img src="<c:url value='/images/egovframework/example/btn_bg_r.gif'/>" alt="" /></span></li>
+			<li><span class="btn_blue_l"><a href="javascript:fn_egov_selectList();">List</a><img src="<c:url value='/images//btn_bg_r.gif'/>" alt="" /></span></li>
+			<li><span class="btn_blue_l"><a href="javascript:fn_egov_save();"><c:out value='${D}{registerFlag}'/></a><img src="<c:url value='/images//btn_bg_r.gif'/>" alt="" /></span></li>
 			<c:if test="${D}{registerFlag == '수정'}">
-			<li><span class="btn_blue_l"><a href="javascript:fn_egov_delete();">삭제</a><img src="<c:url value='/images/egovframework/example/btn_bg_r.gif'/>" alt="" /></span></li>
+			<li><span class="btn_blue_l"><a href="javascript:fn_egov_delete();">삭제</a><img src="<c:url value='/images//btn_bg_r.gif'/>" alt="" /></span></li>
 			</c:if>
-			<li><span class="btn_blue_l"><a href="javascript:document.getElementById("detailForm").reset();">Reset</a><img src="<c:url value='/images/egovframework/example/btn_bg_r.gif'/>" alt="" /></span></li></ul>
+			<li><span class="btn_blue_l"><a href="javascript:document.detailForm.reset();">Reset</a><img src="<c:url value='/images//btn_bg_r.gif'/>" alt="" /></span></li></ul>
 	</div>
 </div>
 <!-- 검색조건 유지 -->

@@ -1,5 +1,6 @@
 package operation;
 
+import java.io.IOException;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.Properties;
@@ -11,10 +12,10 @@ import org.apache.velocity.exception.MethodInvocationException;
 import org.apache.velocity.exception.ParseErrorException;
 import org.apache.velocity.exception.ResourceNotFoundException;
 
-import model.DataModelContext;
+import egovframework.dev.imp.codegen.template.model.DataModelContext;
 
 public class CrudCodeGen {
-	public String generate(DataModelContext dataModel, String templateFile) throws Exception {
+	public String generate(DataModelContext dataModel, String templateFile) {
 		StringWriter sw = new StringWriter();
 		generate(dataModel, templateFile, sw);
 
@@ -23,7 +24,7 @@ public class CrudCodeGen {
 		return sw.toString();
 	}
 
-	private void generate(DataModelContext dataModel, String templateFile, Writer writer) throws Exception {
+	private void generate(DataModelContext dataModel, String templateFile, Writer writer) {
 		String templateEncoding = "UTF-8";
 
 		Properties p = new Properties();
@@ -34,16 +35,22 @@ public class CrudCodeGen {
 		p.setProperty("file.resource.loader.cache", "false");
 		p.setProperty("file.resource.loader.modificationCheckInterval", "0");
 
-		Velocity.init(p);
+		try {
+			Velocity.init(p);
+		} catch (Exception e) {
+			throw new IllegalArgumentException(e);
+		}
 
 		VelocityContext context = new VelocityContext();
 
-		context.put("package", dataModel.getPackageName());
-		context.put("entity", dataModel.getEntity());
-		context.put("attributes", dataModel.getAttributes());
-		context.put("primaryKeys", dataModel.getPrimaryKeys());
-		context.put("createDate", dataModel.getCreateDate());
-		context.put("author", dataModel.getAuthor());
+//		context.put("package", dataModel.getPackageName());
+//		context.put("entity", dataModel.getEntity());
+//		context.put("attributes", dataModel.getAttributes());
+//		context.put("primaryKeys", dataModel.getPrimaryKeys());
+//		context.put("createDate", dataModel.getCreateDate());
+//		context.put("author", dataModel.getAuthor());
+
+		context.put("model", dataModel);
 
 		Template template = null;
 
@@ -59,7 +66,11 @@ public class CrudCodeGen {
 		} catch (Exception e) {
 		}
 
-		template.merge(context, writer);
+		try {
+			template.merge(context, writer);
+		} catch (ResourceNotFoundException | ParseErrorException | MethodInvocationException | IOException e) {
+			throw new IllegalArgumentException(e);
+		}
 
 	}
 

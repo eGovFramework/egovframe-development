@@ -24,12 +24,12 @@
 ##
 ##
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="$namespace">
 	
 ## --------------------------------------------------------------------------------------------------------
-	<typeAlias  alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
+	<typeAlias  alias="egovMap" type="org.egovframe.rte.psl.dataaccess.util.EgovMap"/>
 	<typeAlias  alias="${searchVOAlias}" type="${voPackage}.${defaultVoClassName}"/>
 	
 ## --------------------------------------------------------------------------------------------------------
@@ -85,14 +85,18 @@
 #set($i=$i+1)
 #end	
 ##		
-#set($i=0)	
-#foreach($attribute in $model.primaryKeys)
-#if($i == 0)
-			WHERE ${attribute.name}=#${attribute.ccName}#
+#if(!${model.primaryKeys} == [])
+                WHERE ${model.attributes.get(0).name}=#${model.attributes.get(0).ccName}#
 #else
-				AND ${attribute.name}=#${attribute.ccName}#
-#end
-#set($i=$i+1)
+	#set($i=0)	
+	#foreach($attribute in $model.primaryKeys)
+	#if($i == 0)
+				WHERE ${attribute.name}=#${attribute.ccName}#
+	#else
+					AND ${attribute.name}=#${attribute.ccName}#
+	#end
+	#set($i=$i+1)
+	#end
 #end
 		]]>
 	</update>
@@ -101,14 +105,18 @@
 	<delete id="${deleteQueryId}">
 		<![CDATA[
 			DELETE FROM ${model.entity.name} 
-#set($i=0)	
-#foreach($attribute in $model.primaryKeys)
-#if($i == 0)
-			WHERE ${attribute.name}=#${attribute.ccName}#
-#else
-				AND ${attribute.name}=#${attribute.ccName}#
-#end
-#set($i=$i+1)
+#if(!${model.primaryKeys} == [])
+                WHERE ${model.attributes.get(0).name}=#${model.attributes.get(0).ccName}#
+#else 
+	#set($i=0)	
+	#foreach($attribute in $model.primaryKeys)
+	#if($i == 0)
+				WHERE ${attribute.name}=#${attribute.ccName}#
+	#else
+					AND ${attribute.name}=#${attribute.ccName}#
+	#end
+	#set($i=$i+1)
+	#end
 #end
 		]]>
 	</delete>
@@ -127,14 +135,18 @@
 #set($i=$i+1)
 #end				
 			FROM ${model.entity.name}
-#set($i=0)	
-#foreach($attribute in $model.primaryKeys)
-#if($i == 0)
-			WHERE ${attribute.name}=#${attribute.ccName}#
-#else
-				AND ${attribute.name}=#${attribute.ccName}#
-#end
-#set($i=$i+1)
+#if(!${model.primaryKeys} == [])
+                WHERE ${model.attributes.get(0).name}=#${model.attributes.get(0).ccName}#
+#else 
+	#set($i=0)	
+	#foreach($attribute in $model.primaryKeys)
+	#if($i == 0)
+				WHERE ${attribute.name}=#${attribute.ccName}#
+	#else
+					AND ${attribute.name}=#${attribute.ccName}#
+	#end
+	#set($i=$i+1)
+	#end
 #end
 		]]>
 	</select>
@@ -161,6 +173,9 @@
 				${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
 			</isEqual>
 				ORDER BY 
+#if(!${model.primaryKeys} == [])
+                ${model.attributes.get(0).name} DESC
+#else 				
 	#set($i=0)				
 	#foreach($attribute in $model.primaryKeys)
 	#if($i == 0)
@@ -170,20 +185,11 @@
 	#end
 	#set($i=$i+1)
 	#end
+#end
 			LIMIT #recordCountPerPage# OFFSET #firstIndex#
 #elseif($vender == "Oracle")
-	       SELECT 
-	#set($i=0)	
-	#foreach($attribute in $model.attributes)
-	#if($i == 0)
-					A.${attribute.name}
-	#else
-					, A.${attribute.name}
-	#end
-	#set($i=$i+1)
-	#end
-	       FROM
-            (
+SELECT * FROM (
+	SELECT A.*, ROWNUM RNUM FROM (
 				SELECT
 	#set($i=0)	
 	#foreach($attribute in $model.attributes)
@@ -194,7 +200,6 @@
 	#end
 	#set($i=$i+1)
 	#end
-					, ROWNUM
 				FROM ${model.entity.name}
 				WHERE 1=1
 				<isEqual prepend="AND" property="searchCondition" compareValue="0">
@@ -204,6 +209,9 @@
 					${model.attributes.get(1).name} LIKE '%' || #searchKeyword# || '%'
 				</isEqual>
 					ORDER BY 
+#if(!${model.primaryKeys} == [])
+                ${model.attributes.get(0).name} DESC
+#else					
 	#set($i=0)				
 	#foreach($attribute in $model.primaryKeys)
 	#if($i == 0)
@@ -213,8 +221,12 @@
 	#end
 	#set($i=$i+1)
 	#end
-			) A
-			WHERE ROWNUM BETWEEN #firstIndex# AND #recordCountPerPage#
+#end
+
+		<![CDATA[					
+	) A WHERE ROWNUM <= #lastIndex#
+)WHERE RNUM > #firstIndex#
+]]>
 #elseif($vender == "MySql")
 			SELECT
 	#set($i=0)	
@@ -235,6 +247,9 @@
 				${model.attributes.get(1).name} LIKE CONCAT('%',#searchKeyword#,'%')
 			</isEqual>
 				ORDER BY 
+#if(!${model.primaryKeys} == [])
+                ${model.attributes.get(0).name} DESC
+#else				
 	#set($i=0)				
 	#foreach($attribute in $model.primaryKeys)
 	#if($i == 0)
@@ -244,6 +259,7 @@
 	#end
 	#set($i=$i+1)
 	#end
+#end
 			limit #firstIndex#, #recordCountPerPage#	
 #else
 

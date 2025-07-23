@@ -1,0 +1,29 @@
+Configuration:
+  Appenders:
+    Console:
+      name: "${txtAppenderName}"
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: "${txtConversionPattern}"
+
+  Loggers:
+    Logger:
+      - name: "egovframework"
+        level: DEBUG
+        additivity: false
+        AppenderRef:
+          ref: "${txtAppenderName}"
+      - name: "org.egovframe"
+        level: DEBUG
+        additivity: false
+        AppenderRef:
+          ref: "${txtAppenderName}"
+      - name: "org.springframework"
+        level: DEBUG
+        additivity: false
+        AppenderRef:
+          ref: "${txtAppenderName}"
+    Root:
+      level: INFO
+      AppenderRef:
+        ref: "${txtAppenderName}"

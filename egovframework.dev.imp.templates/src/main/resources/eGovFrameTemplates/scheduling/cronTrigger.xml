@@ -7,25 +7,43 @@
 			<!-- NewCronTrigger	New Cron Trigger -->
 			<description>Create Cron Trigger</description>
 			<group label="Generation File" required="true">
-				<container name="txtPath" label="File Path: " required="true"
-					type="folder" value="" />
-				<textfield name="txtFileName" label="File Name: "
-					required="true" value="" />
+				<radio name="rdoConfigType" label="Configuration Type : " value="XML" required="true" listener="true">
+					<elements>
+						<option>XML</option>
+						<option>Java</option>
+					</elements>
+				</radio>
+			
+				<container name="txtPath" label="File Path: " required="true" type="folder" value="" radio="XML"/>
+				<textfield name="txtFileName" label="File Name: " required="true" value="context-scheduling" radio="XML"/>
+				<container name="txtConfigPackage" label="Config Package: " required="true" type="package" radio="Java"/>
+            	<textfield name="txtClassName" label="Class Name :" required="true" value="EgovConfigScheduling" radio="Java"/>
 			</group>
 			<group label="Configuration" required="true">
-				<textfield name="txtTriggerName" label="Trigger Name: "
-					required="true" value="" />
-				<textfield name="txtJobName" label="Job Name: " required="true"
-					value="" />
+				<combo name="cboBeanType" label="JobDetailFactoryBean Type: " required="true" value="JobDetailFactoryBean">
+					<elements>
+						<option>JobDetailFactoryBean</option>
+						<option>MethodInvokingJobDetailFactoryBean</option>
+					</elements>
+				</combo>
+			
+				<textfield name="txtTriggerName" label="Trigger Name: " required="true" value="cronTrigger" />
+				<textfield name="txtJobName" label="Job Name: " required="true" value="jobDetail" />
 				<!-- 매 10초마다 실행 -->
-				<textfield name="txtExpression" label="Expression: "
-					required="true" value="*/10 * * * * ?" />
+				<textfield name="txtExpression" label="Expression: " required="true" value="*/10 * * * * ?" />
 			</group>
 		</component-page>
 
 		<output>
 			<template component="txtFileName" velocity="cronTrigger.vm"
-				extension="xml" container="txtPath" />
+				extension="xml" container="txtPath" >
+				<condition variable="rdoConfigType" value="XML" />
+			</template>
+			<template component="txtClassName" velocity="cronTrigger-java.vm"
+				extension="java" container="txtConfigPackage">
+				<condition variable="rdoConfigType" value="Java" />
+			</template>
+
 		</output>
 	</wizard>
 </EclipseWork>

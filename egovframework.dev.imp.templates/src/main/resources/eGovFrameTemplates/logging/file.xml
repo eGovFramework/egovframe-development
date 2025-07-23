@@ -6,17 +6,22 @@
 		<component-page required="true">
 			<!-- NewFileAppender	New File Appender -->
 			<description>Create File Appender</description>
+			<group label="Generation File Type" required="true">
+				<radio name="rdoConfigType" label="Configuration Type : " value="XML" required="true" listener="true">
+					<elements>
+						<option>XML</option>
+						<option>YAML</option>
+						<option>Properties</option>
+					</elements>
+				</radio>
+			</group>
 			<group label="Generation File" required="true">
-				<container name="txtPath" label="File Path: " required="true"
-					type="folder" value="" /> <!-- #webroot -->
-				<textfield name="txtFileName" label="File Name: "
-					required="true" value="" />
+				<container name="txtPath" label="File Path: " required="true" type="folder" value="" /> <!-- #webroot -->
+				<textfield name="txtFileName" label="File Name: " required="true" value="log4j-file" />
 			</group>
 			<group label="Configuration" required="true">
-				<textfield name="txtAppenderName" label="Appedner Name: "
-					required="true" value="" />
-				<textfield name="txtLogFileName" label="Log File Name: "
-					required="true" value="./logs/file/sample.log" />
+				<textfield name="txtAppenderName" label="Appedner Name: " required="true" value="file" />
+				<textfield name="txtLogFileName" label="Log File Name: " required="true" value="./logs/file/sample.log" />
 				<combo name="cboAppend" label="Append: " required="true"
 					value="true">
 					<elements>
@@ -24,14 +29,23 @@
 						<option>false</option>
 					</elements>
 				</combo>
-				<textfield name="txtConversionPattern" label="Conversion Pattern: "
-					required="true" value="%d %5p [%c] %m%n" />
+				<textfield name="txtConversionPattern" label="Conversion Pattern: " required="true" value="%d %5p [%c] %m%n" />
 			</group>
 		</component-page>
 
 		<output>
 			<template component="txtFileName" velocity="file.vm"
-				extension="xml" container="txtPath" />
+				extension="xml" container="txtPath" >
+				<condition variable="rdoConfigType" value="XML" />
+			</template>
+			<template component="txtFileName" velocity="file-yaml.vm"
+				extension="yaml" container="txtPath" >
+				<condition variable="rdoConfigType" value="Yaml" />
+			</template>
+			<template component="txtFileName" velocity="file-properties.vm"
+				extension="properties" container="txtPath" >
+				<condition variable="rdoConfigType" value="Properties" />
+			</template>
 		</output>
 	</wizard>
 </EclipseWork>

@@ -22,12 +22,14 @@
 			<group label="DataAccess" required="true" checkbox="checkDataAccess">
 				<checkbox name="checkDataAccess" label="Create DataAccess: "
 					value="true" />
-				<container name="sqlMapFolder" label="Resource(SQLMap) Folder: "
-					required="true" type="folder" />
+				<!-- <container name="sqlMapFolder" label="Resource(SQLMap) Folder: "
+					required="true" type="folder" /> -->
 				<container name="mapperFolder" label="Resource(Mapper) Folder: "
-					required="true" type="folder" />					
+					required="true" type="folder" />
 				<container name="daoPackage" label="DAO Package: "
 					required="true" type="package" />
+				<container name="mapperPackage" label="Mapper Package: "
+					required="true" type="package" />					
 				<container name="voPackage" label="VO Package: " required="true"
 					type="package" />
 				<!--
@@ -56,15 +58,15 @@
 		<output>
 
 			<!-- DataAccess Resource -->
-			<template component="sqlMap"
+			<!-- <template component="sqlMap"
 				expression="${model.entity.ccName}/${model.entity.pcName}_SQL"
 				velocity="resource/pkg/EgovSample_Sample2_SQL.vm" extension="xml"
 				container="sqlMapFolder">
 				<condition variable="checkDataAccess" value="true" />
-			</template>
-			<template component="mapper"
+			</template> -->
+			<template component="sqlMapper"
 				expression="${model.entity.ccName}/${model.entity.pcName}_MAPPER"
-				velocity="resource/pkg/EgovSample_Sample2_SQL.vm" extension="xml"
+				velocity="resource/pkg/EgovSample_Sample2_MAPPER.vm" extension="xml"
 				container="mapperFolder">
 				<condition variable="checkDataAccess" value="true" />
 			</template>			
@@ -82,7 +84,13 @@
 				container="daoPackage">
 				<condition variable="checkDataAccess" value="true" />
 			</template>
+			<template component="mapper" expression="${model.entity.pcName}Mapper"
+				velocity="java/pkg/service/impl/Sample2Mapper.vm" extension="java"
+				container="mapperPackage">
+				<condition variable="checkDataAccess" value="true" />
+			</template>
 
+			
 			<!-- Service Resource -->
 			<template component="service" expression="${model.entity.pcName}Service"
 				velocity="java/pkg/service/EgovSample2Service.vm" extension="java"

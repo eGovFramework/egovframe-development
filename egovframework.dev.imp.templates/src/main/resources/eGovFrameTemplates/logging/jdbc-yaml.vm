@@ -1,0 +1,60 @@
+Configuration:
+  Appenders:
+    JDBC:
+      name: ${txtAppenderName}
+      tableName: ${txtTableName}
+#if(${rdoConnectionType} == "ConnectionFactory")
+      ConnectionFactory:
+        class: "${txtConnectionFactoryClass}"
+        method: "${txtConnectionFactoryMethod}"
+#end
+#if(${rdoConnectionType} == "DriverManager")
+      DriverManager:
+        driverClassName: ${txtDriverClass}
+        connectionString: ${txtUrl}
+        userName: ${txtUser}
+        password: ${txtPasswd}
+#end
+      Column:
+        - name: "reg_dt"
+          isEventTimestamp: true
+        - name: "level"
+          pattern: "%p"
+        - name: "logger"
+          pattern: "%c"
+        - name: "message"
+          pattern: "%m"
+        - name: "exception"
+          pattern: "%ex{full}"
+      # Filters 설정
+      # Filters:
+      #   - ThresholdFilter:
+      #       level: "INFO"
+      #       onMatch: "DENY"
+      #       onMismatch: "NEUTRAL"
+      #   - RegexFilter:
+      #       regex: ".*Exception.*"
+      #       onMatch: "NEUTRAL"
+      #       onMismatch: "DENY"
+  Loggers:
+    Logger:
+      - name: "egovframework"
+        level: DEBUG
+        additivity: false
+        appenderRef:
+          - ref: ${txtAppenderName}
+      - name: "org.egovframe"
+        level: DEBUG
+        additivity: false
+        appenderRef:
+          - ref: ${txtAppenderName}
+      - name: "org.springframework"
+        level: DEBUG
+        additivity: false
+        appenderRef:
+          - ref: ${txtAppenderName}
+
+    Root:
+      level: INFO
+      appenderRef:
+        - ref: ${txtAppenderName}
