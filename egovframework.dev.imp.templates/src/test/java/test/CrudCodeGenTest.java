@@ -18,10 +18,12 @@ import egovframework.dev.imp.codegen.template.model.Attribute;
 import egovframework.dev.imp.codegen.template.model.DataModelContext;
 import egovframework.dev.imp.codegen.template.model.Entity;
 import operation.CrudCodeGen;
+import operation.CrudCodeGen.CrudWizard;
 
 public class CrudCodeGenTest {
 	private CrudCodeGen crudCodeGen;
 	private DataModelContext dataModel;
+	private CrudWizard crudWizard;
 
 	@Before
 	public void setUp() {
@@ -33,6 +35,18 @@ public class CrudCodeGenTest {
 //		dataModel.setAuthor("홍길동");
 //		dataModel.setTeam("실행환경 개발팀");
 //		dataModel.setCreateDate("2009.02.01");
+
+		crudWizard = new CrudWizard();
+		crudWizard.setAuthor("홍길동");
+		crudWizard.setCreateDate("실행환경 개발팀");
+		crudWizard.setMapperFolder("2009.02.01");
+		crudWizard.setDaoPackage("pkg.service.impl");
+		crudWizard.setMapperPackage(crudWizard.getDaoPackage());
+		crudWizard.setVoPackage("pkg.service");
+		crudWizard.setServicePackage(crudWizard.getVoPackage());
+		crudWizard.setImplPackage(crudWizard.getDaoPackage());
+		crudWizard.setControllerPackage("pkg.web");
+		crudWizard.setJspFolder("WEB-INF/jsp/pkg");
 
 		dataModel.setVender("MySql");// HSQLDB, Oracle, MySql, postgres
 
@@ -71,7 +85,7 @@ public class CrudCodeGenTest {
 	}
 
 	private void genAndDiff(String templateFile, String targetFile) {
-		String result = crudCodeGen.generate(dataModel, templateFile);
+		String result = crudCodeGen.generate(dataModel, templateFile, crudWizard);
 		String[] targetLines = readResource(targetFile);
 		String[] sourceLines = readString(result);
 
@@ -121,8 +135,8 @@ public class CrudCodeGenTest {
 
 	@Test
 	public void testService() {
-		String templateFile = "templates/crud/src/main/java/pkg/service/EgovSample2Service.vm";
-		String targetFile = "templates/crud/src/main/java/pkg/service/EgovSample2Service.jav";
+		String templateFile = "eGovFrameTemplates/crud/java/pkg/service/EgovSample2Service.vm";
+		String targetFile = "eGovFrameTemplatesResult/crud/java/pkg/service/EgovSample2Service.jav";
 
 		genAndDiff(templateFile, targetFile);
 	}

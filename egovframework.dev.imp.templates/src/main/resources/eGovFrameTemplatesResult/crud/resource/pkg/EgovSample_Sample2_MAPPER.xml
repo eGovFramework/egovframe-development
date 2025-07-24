@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- <mapper namespace="sample2DAO"> -->
-<mapper namespace="${mapperPackage}.Sample2Mapper">
+<mapper namespace="pkg.service.impl.Sample2Mapper">
 	
 
-	<resultMap id="sample2" type="${voPackage}.Sample2VO">
+	<resultMap id="sample2" type="pkg.service.Sample2VO">
 		<result property="id" column="ID" />
 		<result property="name" column="NAME" />
 		<result property="description" column="DESCRIPTION" />
@@ -61,7 +61,7 @@
 				]]>
 	</select>
 	
-	<select id="selectSample2List" parameterType="${voPackage}.Sample2VO" resultType="egovMap">
+	<select id="selectSample2List" parameterType="pkg.service.Sample2VO" resultType="egovMap">
 			SELECT
 								ID
 								, NAME
@@ -82,7 +82,7 @@
 						ID DESC
 					limit #{recordCountPerPage} offset #{firstIndex}	
 	</select>	
-	<select id="selectSample2ListTotCnt" parameterType="${voPackage}.Sample2VO" resultType="int">
+	<select id="selectSample2ListTotCnt" parameterType="pkg.service.Sample2VO" resultType="int">
 			SELECT COUNT(*) totcnt
 			FROM SAMPLE2
 			WHERE 1=1

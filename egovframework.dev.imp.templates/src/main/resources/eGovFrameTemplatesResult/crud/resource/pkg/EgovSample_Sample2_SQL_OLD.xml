@@ -4,9 +4,9 @@
 <sqlMap namespace="Sample2">
 	
 	<typeAlias  alias="egovMap" type="org.egovframe.rte.psl.dataaccess.util.EgovMap"/>
-	<typeAlias  alias="sample2SerarchVO" type="${voPackage}.Sample2DefaultVO"/>
+	<typeAlias  alias="sample2SerarchVO" type="pkg.service.Sample2DefaultVO"/>
 	
-	<resultMap id="sample2" class="${voPackage}.Sample2VO">
+	<resultMap id="sample2" class="pkg.service.Sample2VO">
 		<result property="id" column="ID" columnIndex="1"/>
 		<result property="name" column="NAME" columnIndex="2"/>
 		<result property="description" column="DESCRIPTION" columnIndex="3"/>
