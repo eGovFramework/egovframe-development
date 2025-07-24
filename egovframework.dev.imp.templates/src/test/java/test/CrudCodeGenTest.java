@@ -143,48 +143,48 @@ public class CrudCodeGenTest {
 
 	@Test
 	public void testVO() {
-		String templateFile = "templates/crud/src/main/java/pkg/service/Sample2VO.vm";
-		String targetFile = "templates/crud/src/main/java/pkg/service/Sample2VO.jav";
+		String templateFile = "eGovFrameTemplates/crud/java/pkg/service/Sample2VO.vm";
+		String targetFile = "eGovFrameTemplatesResult/crud/java/pkg/service/Sample2VO.jav";
 
 		genAndDiff(templateFile, targetFile);
 	}
 
 	@Test
 	public void testServiceImpl() {
-		String templateFile = "templates/crud/src/main/java/pkg/service/impl/EgovSample2ServiceImpl.vm";
-		String targetFile = "templates/crud/src/main/java/pkg/service/impl/EgovSample2ServiceImpl.jav";
+		String templateFile = "eGovFrameTemplates/crud/java/pkg/service/impl/EgovSample2ServiceImpl.vm";
+		String targetFile = "eGovFrameTemplatesResult/crud/java/pkg/service/impl/EgovSample2ServiceImpl.jav";
 
 		genAndDiff(templateFile, targetFile);
 	}
 
 	@Test
 	public void testDAO() {
-		String templateFile = "templates/crud/src/main/java/pkg/service/impl/Sample2DAO.vm";
-		String targetFile = "templates/crud/src/main/java/pkg/service/impl/Sample2DAO.jav";
+		String templateFile = "eGovFrameTemplates/crud/java/pkg/service/impl/Sample2DAO.vm";
+		String targetFile = "eGovFrameTemplatesResult/crud/java/pkg/service/impl/Sample2DAO.jav";
 
 		genAndDiff(templateFile, targetFile);
 	}
 
 	@Test
 	public void testController() {
-		String templateFile = "templates/crud/src/main/java/pkg/web/EgovSample2Controller.vm";
-		String targetFile = "templates/crud/src/main/java/pkg/web/EgovSample2Controller.jav";
+		String templateFile = "eGovFrameTemplates/crud/java/pkg/web/EgovSample2Controller.vm";
+		String targetFile = "eGovFrameTemplatesResult/crud/java/pkg/web/EgovSample2Controller.jav";
 
 		genAndDiff(templateFile, targetFile);
 	}
 
 	@Test
 	public void testListView() {
-		String templateFile = "templates/crud/src/webapp/WEB-INF/jsp/pkg/egovSample2List.vm";
-		String targetFile = "templates/crud/src/webapp/WEB-INF/jsp/pkg/egovSample2List.jsp";
+		String templateFile = "eGovFrameTemplates/crud/jsp/pkg/egovSample2List.vm";
+		String targetFile = "eGovFrameTemplatesResult/crud/jsp/pkg/egovSample2List.jsp";
 
 		genAndDiff(templateFile, targetFile);
 	}
 
 	@Test
 	public void testRegisterView() {
-		String templateFile = "templates/crud/src/webapp/WEB-INF/jsp/pkg/egovSample2Register.vm";
-		String targetFile = "templates/crud/src/webapp/WEB-INF/jsp/pkg/egovSample2Register.jsp";
+		String templateFile = "eGovFrameTemplates/crud/jsp/pkg/egovSample2Register.vm";
+		String targetFile = "eGovFrameTemplatesResult/crud/jsp/pkg/egovSample2Register.jsp";
 
 		genAndDiff(templateFile, targetFile);
 	}
