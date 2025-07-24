@@ -7,38 +7,44 @@
 package $voPackage;
 
 /**
- * @Class Name : ${voClassName}.java
- * @Description : ${model.entity.pcName} VO class
- * @Modification Information
- *
+ * ${model.entity.pcName} VO class
+ * 
  * @author ${author}
  * @since ${createDate}
  * @version 1.0
  * @see
- *  
- *  Copyright (C)  All right reserved.
+ *
+ *      <pre>
+ *  == 개정이력(Modification Information) ==
+ *
+ *   수정일      수정자           수정내용
+ *  -------    --------    ---------------------------
+ *   ${createDate}  ${author}          최초 생성
+ *
+ *      </pre>
  */
-public class ${voClassName} extends ${defaultVoClassName}{
-    private static final long serialVersionUID = 1L;
-    
+public class ${voClassName} extends ${defaultVoClassName} {
+
+	private static final long serialVersionUID = 1L;
+
 #set($i=0)	
 #foreach($attribute in $model.attributes)
-    /** ${attribute.name} */
-    private ${attribute.javaType} ${attribute.ccName};
-    
+	/** ${attribute.name} */
+	private ${attribute.javaType} ${attribute.ccName};
+
 #set($i=$i+1)
 #end
 ##
 #set($i=0)	
 #foreach($attribute in $model.attributes)
-    public ${attribute.javaType} get${attribute.pcName}() {
-        return this.${attribute.ccName};
-    }
-    
-    public void set${attribute.pcName}(${attribute.javaType} ${attribute.ccName}) {
-        this.${attribute.ccName} = ${attribute.ccName};
-    }
-    
+	public ${attribute.javaType} get${attribute.pcName}() {
+		return this.${attribute.ccName};
+	}
+
+	public void set${attribute.pcName}(${attribute.javaType} ${attribute.ccName}) {
+		this.${attribute.ccName} = ${attribute.ccName};
+	}
+
 #set($i=$i+1)
 #end  
 }

@@ -142,6 +142,14 @@ public class CrudCodeGenTest {
 	}
 
 	@Test
+	public void testDefaultVO() {
+		String templateFile = "eGovFrameTemplates/crud/java/pkg/service/Sample2DefaultVO.vm";
+		String targetFile = "eGovFrameTemplatesResult/crud/java/pkg/service/Sample2DefaultVO.jav";
+
+		genAndDiff(templateFile, targetFile);
+	}
+
+	@Test
 	public void testVO() {
 		String templateFile = "eGovFrameTemplates/crud/java/pkg/service/Sample2VO.vm";
 		String targetFile = "eGovFrameTemplatesResult/crud/java/pkg/service/Sample2VO.jav";

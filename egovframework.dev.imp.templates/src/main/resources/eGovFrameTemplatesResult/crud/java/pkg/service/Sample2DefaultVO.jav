@@ -1,17 +1,12 @@
-##
-#set($voPackage="${voPackage}")
-#set($defaultVoClassName="${model.entity.pcName}DefaultVO")
-##
-##
-package $voPackage;
+package pkg.service;
 
 import java.io.Serializable;
 
 /**
- * ${model.entity.pcName} Default VO class
+ * Sample2 Default VO class
  * 
- * @author ${author}
- * @since ${createDate}
+ * @author 홍길동
+ * @since 실행환경 개발팀
  * @version 1.0
  * @see
  *
@@ -20,11 +15,11 @@ import java.io.Serializable;
  *
  *   수정일      수정자           수정내용
  *  -------    --------    ---------------------------
- *   ${createDate}  ${author}          최초 생성
+ *   실행환경 개발팀  홍길동          최초 생성
  *
  *      </pre>
  */
-public class ${defaultVoClassName} implements Serializable {
+public class Sample2DefaultVO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
