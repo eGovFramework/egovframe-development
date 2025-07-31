@@ -52,57 +52,84 @@
 
 <img width="709" alt="image" src="https://user-images.githubusercontent.com/68622744/230294638-029c75d1-afb9-420f-8716-54ce9713fb9d.png">
 
-## 개발환경 RCP 구성 (4.1.0)
-### RCP 구성 준비물
-- Open JDK 11
-- Eclipse IDE for RCP and RAP Developers (2022-03)
-- Eclipse IDE for Enterprise Java and Web Developers (2022-03)
-- Tomcat 9.0
+## 개발환경 RCP 구성 (4.3.1)
+### RCP 및 JEE 구성, 기타 준비물
+- Windows, Linux
+     - Open JDK 17
+     - Eclipse IDE for RCP and RAP Developers (2024-03)
+          - Windows : x86_64 / Linux : x86_64
+     - Eclipse IDE for Enterprise Java and Web Developers (2024-03)
+          - Windows : x86_64 / Linux : x86_64
+     - Tomcat 9.0
+
+- macOS AArch64, macOS x86_64
+     - Open JDK 21
+     - Eclipse IDE for RCP and RAP Developers (2024-09)
+          - macOS AArch64 : AArch64 / macOS x86_64 : x86_64
+     - Eclipse IDE for Enterprise Java and Web Developers (2024-09)
+          - macOS AArch64 : AArch64 / macOS x86_64 : x86_64
+     - Tomcat 9.0
 
 ### (테스트용) 이클립스 JEE 개발환경 구성
-※ 표준프레임워크 플러그인 (eGovFrame Plug-ins)의 테스트 환경 구성하는 방법을 소개한다.
+표준프레임워크 플러그인 (eGovFrame Plug-ins)의 테스트 환경 구성하는 방법을 소개한다.   
+※ 이하 모든 설명은 Windows를 기준으로 설명한다. Linux 및 macOS의 경우 "### RCP 및 JEE 구성, 기타 준비물"을 참고하여 적용하면 된다.
+
 #### 1. 이클립스 JEE 다운로드 
-     https://www.eclipse.org/downloads/packages/release/2022-03/r
+https://www.eclipse.org/downloads/packages/release/2024-03/r
+
 #### 2. JEE 추가 Plug-ins 프로그램 설치
 Eclipse를 키고 메뉴에 Help > Install New Software... 클릭하여 설치한다.
+
 |소프트웨어|버전|자동설치/업데이트주소|필수여부|
 |:---------|:----|:-------------------|:-------|
-| Spring Tools | 4.16.1  | `https://download.springsource.com/release/TOOLS/sts4/update/e4.23/`  → Spring Tools → Spring Boot Language Server Feature , Spring IDE Boot Microservices Dash , Spring Tool Suite 4 main Feature , Spring XML Namespace Support \\ → Spring Tools - Developer Resources → Spring Boot Language Server Feature Developer Resources , Spring IDE Boot Microservices Dash Developer Resources , Spring Tool Suite 4 main Feature Developer Resources , Spring XML Namespace Support Developer Resources 설치 |  필수  |
-| UML2 Extension | 5.5.2 | `https://download.eclipse.org/releases/2022-03/` → Modeling → UML2 Extender SDK |  필수  |
-| Subversive SVN Team Provider | 4.0.5 | `http://download.eclipse.org/technology/subversive/4.0/update-site/` → Subversive SVN Team Provider Plugin → Subversive SVN Team Provider 설치 |  필수  |
-| Subversive SVN Connectors | 6.0.4 | `https://community.polarion.com/projects/subversive/download/eclipse/6.0/update-site/` → Subversive SVN Connectors → Subversive SVN Connectors 설치,  SVNKit 1.8.14 Implementation 설치 |  필수  |
-| MyBatipse | 1.2.5 | `https://harawata.jfrog.io/artifactory/eclipse-local/` → MyBatipse → MyBatipse |  선택  |
-| PMD | 4.40.0 | `https://pmd.github.io/pmd-eclipse-plugin-p2-site/`  → PMD for Eclipse → PMD Plug-in |  선택  |
-| Properties Editor | 6.0.5 \\ 6.0.0 | `http://propedit.sourceforge.jp/eclipse/updates/` → PropertiesEditor → Properties Editor , PropertiesEditor_Asian_NLS 설치  |  선택   |
-| SpotBugs | 3.1.13 | `https://spotbugs.github.io/eclipse/` → FindBugs  → FindBugs Feature |  선택  |
-| Lombok | 1.18.24 | `https://projectlombok.org/p2` → Lombok > Lombok  |  선택  | 
-| Grep Console | 3.7.0 | `http://eclipse.schedenig.name` → Grep Console > Grep Console |  선택  |
-| Cloud Foundry | 1.2.3 | Market Place > Eclipse Tools for Cloud Foundry |  선택  |
-| Eclipse Docker Tooling | 5.6.0 | Market Place > Eclipse Docker Tooling |  선택  |
+| Eclipse | 4.31.0 | https://www.eclipse.org/downloads/packages/release/2024-03/r → Eclipse IDE for Enterprise Java and Web Developers 다운로드 |  필수  |
+| Spring Tools | 4.22.1  | https://cdn.spring.io/spring-tools/release/TOOLS/sts4/update/4.22.1.RELEASE/e4.31/ → **Spring Tools** : Spring Boot Language Server Feature, Spring IDE Boot Microservices Dash, Spring Tool Suite 4 main Feature |  필수  |
+| UML2 Extension | 5.5.3 | https://download.eclipse.org/releases/2023-09/ → **Modeling** : UML2 Extender SDK |  필수  |
+| Subversive SVN Team Provider | 4.8.0 | https://download.eclipse.org/technology/subversive/4.8/release/latest/ → **Subversive** : Subversive SVN Team Provider |  필수  |
+| Subversive SVN Connectors | 6.0.4 | https://osspit.org/eclipse/subversive-connectors/ → **Subversive SVN Connectors** : Subversive SVN Connectors, SVNKit 1.10.x Implementation |  필수  |
+| MyBatipse | 1.3.0 | https://harawata.github.io/eclipse-site/ → **MyBatipse** : MyBatipse |  선택  |
+| PMD | 7.4 | https://pmd.github.io/pmd-eclipse-plugin-p2-site/ → **PMD for Eclipse** : PMD Plug-in |  선택  |
+| Properties Editor | 6.0.5 | http://propedit.sourceforge.jp/eclipse/updates/ 또는 http://osdn.net/projects/propedit/storage/eclipse/updates → **PropertiesEditor** : Properties Editor v6.0.5, ropertiesEditor_Asian_NLS v6.0.0 (* 위 url로 연결이 안 되는 경우가 잦음)  |  선택   |
+| SpotBugs | 4.8.5 | https://spotbugs.github.io/eclipse/ → **SpotBugs** : SpotBugs |  선택  |
+| Lombok | 1.18.34 | https://projectlombok.org/p2 → **Lombok** : Lombok |  선택  | 
+| Grep Console | 3.7.0 | http://eclipse.schedenig.name → **Grep Console** : Grep Console (* 위 url로 연결이 안 되는 경우가 잦음) |  선택  |
+| Eclipse Docker Tooling | 5.14.0 | https://download.eclipse.org/linuxtools/update-docker → **Linux Tools** : Docker Tooling |  선택  |
+| Amateras Modeler| 2.2.0 | https://takezoe.github.io/amateras-update-site/ → **Amateras Modeler** : Amateras Modeler (* 설치 후 eclipse.ini 에 –add-opens=java.desktop/java.beans=ALL-UNNAMED 추가) |  필수  |
+| ~~eGovFrame~~ | ~~4.3.0~~ | ~~https://maven.egovframe.go.kr/update_4.3/ → **eGovFrame Plug-ins** : 필요 기능 설치~~ |  ~~필수~~  |
 
-※ 개발환경의 플러그인 설치 항목 (필수/옵션) 을 모두 설치한다. 단, eGovFrame Plugins만 설치하지 않는다.  
-※ 설치가이드 플러그인 [자동설치/업데이트주소]는 해당 플러그인을 공식적으로 받을 수 있는 저작자의 배포 주소 입니다. 주소가 변경되거나 상황에 따라서 다운로드가 안될 수 있습니다.
+※ 개발환경의 플러그인 설치 항목 (필수/옵션) 을 모두 설치한다. 단, **eGovFrame Plugins만 설치하지 않는다.**  
+※ 설치가이드 플러그인 [자동설치/업데이트주소]는 해당 플러그인을 공식적으로 받을 수 있는 저작자의 배포 주소이다. 주소가 변경되거나 상황에 따라서 다운로드가 안 될 수 있다.
 
 
 
 ### (플러그인 개발용) 이클립스 RCP 환경 구축
+
 #### 1. 이클립스 RCP 다운로드 
-     https://www.eclipse.org/downloads/packages/release/2022-03/r
+https://www.eclipse.org/downloads/packages/release/2024-03/r
+
 #### 2. RCP 추가 Plug-ins 프로그램 설치
 Properties Editor 설치 : 위의 [ JEE 추가 Plug-ins 프로그램 설치 표 ] 를 참고하여 Properties Editor 를 설치한다.
+
 ### 개발환경 Plug-ins 프로젝트 설정
+
 #### 1. egovframe-development import
 다운로드 받은 개발환경 소스를 Eclipse 메뉴에서 File>Import… 를 클릭하여 프로젝트를 가져온다.
+
 #### 2. Target 설정
+
 ##### 2-1. ‘egovframework.target’ 프로젝트에서 egovframework.target.target 파일 열기  
+
 ##### 2-2. 이전 이클립스 JEE 삭제    
-(예 : D:\eclipse-jee-photon-R-win32\eclipse ← 삭제)    
+(예 : C:\EGOV_DEV\eclipse-ide-2024-03-x64-RCP-TEST\eclipse ← 삭제)    
 ![이전 이클립스 JEE 삭제](https://user-images.githubusercontent.com/68622744/230328765-15fa9e76-e3f9-4c9d-9f91-30858dafab95.png)  
+
 ##### 2-3. ‘Add…’ 버튼을 클릭 후 > ‘Directory’ 선택 후 > Location에 위에서 설치한 이클립스 JEE 설정    
-(예 :  D:\eclipse-jee-2022-03-R-win32-x86_64-RCP-TEST\eclipse)    
+(예 :  C:\EGOV_DEV\eeclipse-jee-2024-03-R-win32-x86_64\eclipse)    
+
 ##### 2-4. Content탭에서 모든 Plug-ins 선택  
 Content탭에서 Plug-ins 선택 후 ‘Select All’로 모든 플러그인을 선택    
 ![Target Platorm 설정](https://user-images.githubusercontent.com/68622744/230327199-12988bda-4be7-4fdb-b91a-8483d652ca36.png)  
+
 ##### 2-5. Target Platorm 설정  
 Export 버튼을 클릭 후 RCP 내 workspace의 update 프로젝트 선택
 ![Target Platorm 설정](https://user-images.githubusercontent.com/68622744/230329271-f8119b4b-9226-43fc-abd1-1b59f96924b5.png)  
@@ -117,9 +144,12 @@ Target Definition에서 ‘Reload Target Platform’ 클릭
 RCP및 Plug-ins소스 설정과 빌드가 완료되면 테스트를 위하여 이클립스 JEE와 연결하도록 설정한다.
 
 #### 1. RCP 이클립스 상단 메뉴 Run > Run Configurations  
+
 #### 2. Eclipse Application > New Configuration 생성  
+
 #### 3. Main 탭에서 Workspace Data의 Location을 이클립스 JEE의 workspace로 지정  
 ![Main 탭에서 Workspace Data의 Location을 이클립스 JEE의 workspace로 지정](https://user-images.githubusercontent.com/68622744/230327833-5152ac6e-74d6-4fc3-81e7-9c10ac2c6fb7.png)  
+
 #### 4. Arguments 탭에서 VM argument에 인코딩 ‘UTF-8’ 설정 추가  
     -Dfile.encoding=UTF-8  
 ![Arguments 탭에서 VM argument에 인코딩 ‘UTF-8’ 설정 추가](https://user-images.githubusercontent.com/68622744/230328038-b39e687a-999f-4c5e-941e-7ba7f25cab0f.png)  
@@ -129,7 +159,7 @@ RCP및 Plug-ins소스 설정과 빌드가 완료되면 테스트를 위하여 �
 
 
 ## 참조
-1. [개발환경 위키가이드](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:dev4.1:dev4.1)
+1. [개발환경 위키가이드](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:dev4.3)
 2. [개발환경 다운로드](https://www.egovframe.go.kr/home/sub.do?menuNo=94)
 
 
