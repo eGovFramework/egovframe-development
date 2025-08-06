@@ -1,21 +1,23 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
-<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
-
-	<appender name="console" class="org.apache.log4j.ConsoleAppender">
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d %5p [%c] %m%n" />
-		</layout>
-	</appender>
-	
-	<logger name="org.springframework" additivity="false">
-		<level value="DEBUG" />
-		<appender-ref ref="console" />
-	</logger>
-	
-	<root>
-		<level value="OFF" />
-		<appender-ref ref="console" />
-	</root>
-		
-</log4j:configuration>	
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<Configuration>
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %5p [%c] %m%n" />
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="egovframework" level="DEBUG" additivity="false">
+            <AppenderRef ref="console" />
+        </Logger>
+        <Logger name="org.egovframe" level="DEBUG" additivity="false">
+            <AppenderRef ref="console" />
+        </Logger>
+        <Logger name="org.springframework" level="DEBUG" additivity="false">
+            <AppenderRef ref="console" />
+        </Logger>
+        <Root level="INFO">
+            <AppenderRef ref="console" />
+        </Root>
+    </Loggers>
+</Configuration>
