@@ -1,28 +1,27 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
-<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
-	
-	<appender name="appender" class="org.apache.log4j.rolling.RollingFileAppender">
-		<rollingPolicy class="org.apache.log4j.rolling.FixedWindowRollingPolicy">
-			<param name="FileNamePattern" value="./logs/rolling/rollingSample.%i.log" />
-			<param name="MaxIndex" value="3" />
-		</rollingPolicy>
-		<triggeringPolicy class="org.apache.log4j.rolling.SizeBasedTriggeringPolicy">
-			<param name="MaxFileSize" value="1000" />
-		</triggeringPolicy>
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d %5p [%c] %m%n" />
-		</layout>
-	</appender>
-	
-	<logger name="org.springframework" additivity="false">
-		<level value="DEBUG" />
-		<appender-ref ref="appender" />
-	</logger>
-	
-	<root>
-		<level value="OFF" />
-		<appender-ref ref="appender" />
-	</root>
-		
-</log4j:configuration>		
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<Configuration>
+    <Appenders>
+        <RollingFile name="appender" fileName="${txtLogFileName}" filePattern="./logs/rolling/rollingSample.%i.log">
+            <PatternLayout pattern="%d %5p [%c] %m%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1000"/>
+            </Policies>
+            <DefaultRolloverStrategy max="3"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="egovframework" level="DEBUG" additivity="false">
+            <AppenderRef ref="appender" />
+        </Logger>
+        <Logger name="org.egovframe" level="DEBUG" additivity="false">
+            <AppenderRef ref="appender" />
+        </Logger>
+        <Logger name="org.springframework" level="DEBUG" additivity="false">
+            <AppenderRef ref="appender" />
+        </Logger>
+        <Root level="INFO">
+            <AppenderRef ref="appender" />
+        </Root>
+    </Loggers>
+</Configuration>
