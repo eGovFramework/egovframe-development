@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+	<appender name="${txtAppenderName}" class="org.apache.log4j.db.EgovDBAppender">
+		<!-- caller_filename, caller_class, caller_method, caller_line -->		
+		<param name="locationInfo" value="${chkLocationInfo}" />
+		<!-- Oracle 인 경우 아래를 false 로 설정 또는 아래 옵션 라인 삭제(기본 false) -->
+		<param name="useSupportsGetGeneratedKeys" value="${chkSupportsGetGeneratedKeys}" />
+		<connectionSource class="org.apache.log4j.db.DriverManagerConnectionSource">
+			<param name="driverClass" value="${txtDriver}" />
+			<param name="url" value="${txtUrl}" />
+			<param name="user" value="${txtUser}" />
+			<param name="password" value="${txtPasswd}" />
+		</connectionSource>
+	</appender>
+	
+	<logger name="org.springframework" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="${txtAppenderName}" />
+	</logger>
+	
+	<root>
+		<level value="OFF" />
+		<appender-ref ref="${txtAppenderName}" />
+	</root>
+		
+</log4j:configuration>		
