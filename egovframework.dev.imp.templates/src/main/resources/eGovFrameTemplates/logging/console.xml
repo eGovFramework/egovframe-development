@@ -6,23 +6,38 @@
 		<component-page required="true">
 			<!-- NewConsoleAppender	New Console Appender -->
 			<description>Create Console Appender</description>
+			<group label="Generation File Type" required="true">
+				<radio name="rdoConfigType" label="Configuration Type : " value="XML" required="true" listener="true">
+					<elements>
+						<option>XML</option>
+						<option>YAML</option>
+						<option>Properties</option>
+					</elements>
+				</radio>
+			</group>
 			<group label="Generation File" required="true">
-				<container name="txtPath" label="File Path: " required="true"
-					type="folder" value="" /> <!-- #webroot -->
-				<textfield name="txtFileName" label="File Name: "
-					required="true" value="" />
+				<container name="txtPath" label="File Path: " required="true" type="folder" value="" /> <!-- #webroot -->
+				<textfield name="txtFileName" label="File Name: " required="true" value="log4j2-console" />
 			</group>
 			<group label="Configuration" required="true">
-				<textfield name="txtAppenderName" label="Appender Name: "
-					required="true" value="console" />
-				<textfield name="txtConversionPattern" label="Conversion Pattern: "
-					required="true" value="%d %5p [%c] %m%n" />
+				<textfield name="txtAppenderName" label="Appender Name: " required="true" value="console" />
+				<textfield name="txtConversionPattern" label="Conversion Pattern: " required="true" value="%d %5p [%c] %m%n" />
 			</group>
 		</component-page>
 
 		<output>
 			<template component="txtFileName" velocity="console.vm"
-				extension="xml" container="txtPath" />
+				extension="xml" container="txtPath" >
+				<condition variable="rdoConfigType" value="XML" />
+			</template>
+			<template component="txtFileName" velocity="console-yaml.vm"
+				extension="yaml" container="txtPath" >
+				<condition variable="rdoConfigType" value="Yaml" />
+			</template>
+			<template component="txtFileName" velocity="console-properties.vm"
+				extension="properties" container="txtPath" >
+				<condition variable="rdoConfigType" value="Properties" />
+			</template>
 		</output>
 	</wizard>
 </EclipseWork>

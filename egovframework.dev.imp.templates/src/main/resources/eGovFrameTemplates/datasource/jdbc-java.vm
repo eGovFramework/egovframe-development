@@ -1,0 +1,67 @@
+package ${txtConfigPackage};
+
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import javax.sql.DataSource;
+
+@Configuration
+public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
+
+    @Bean(name="${txtDatasourceName}")
+    public DataSource dataSource(
+            @Value("${txtDriver}") String driverClassName,
+            @Value("${txtUrl}") String url,
+            @Value("${txtUser}") String username,
+            @Value("${txtPasswd}") String password) {
+
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName(driverClassName);
+        dataSource.setUrl(url);
+        dataSource.setUsername(username);
+
+        if (password != null && !password.isEmpty()) {
+            dataSource.setPassword(password);
+        }
+
+        return dataSource;
+    }
+    
+    /* 다음 JDBC Driver 라이브러리 추가 필요
+    === Maven pom.xml === 
+	<dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>8.0.33</version>
+	</dependency>
+	<dependency>
+		<groupId>org.mariadb.jdbc</groupId>
+		<artifactId>mariadb-java-client</artifactId>
+		<version>3.1.4</version>
+	</dependency>
+	<dependency>
+		 <groupId>org.postgresql</groupId>
+		 <artifactId>postgresql</artifactId>
+		 <version>42.6.0</version>
+	</dependency>
+	<dependency>
+		<groupId>cubrid</groupId>
+		<artifactId>cubrid-jdbc</artifactId>
+		<version>10.2.15.8978</version>
+	</dependency>
+	<dependency>
+		<groupId>com.altibase</groupId>
+		<artifactId>altibase-jdbc</artifactId>
+		<version>7.1.0.9.2</version>
+	</dependency>
+	
+	=== Gradle ===
+	implementation 'mysql:mysql-connector-java:8.0.33'
+	implementation 'org.mariadb.jdbc:mariadb-java-client:3.1.4'
+	implementation 'org.postgresql:postgresql:42.6.0'
+	implementation 'cubrid:cubrid-jdbc:10.2.15.8978'
+	implementation 'com.altibase:altibase-jdbc:7.1.0.9.2'
+	*/
+}

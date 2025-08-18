@@ -1,0 +1,35 @@
+Configuration:
+  Appenders:
+    RollingFile:
+      name: ${txtAppenderName}
+      fileName: "${txtLogFileName}"
+      filePattern: "${txtLogFileNamePattern}"
+      PatternLayout:
+        pattern: "${txtConversionPattern}"
+      Policies:
+        TimeBasedTriggeringPolicy:
+          interval: ${txtInterval} # 매 시간 주기 마다 롤링
+          modulate: ${cboModulate} # 매 시간 정각에 처리
+
+  Loggers:
+    Logger:
+      - name: "egovframework"
+        level: DEBUG
+        additivity: false
+        appenderRef:
+          - ref: ${txtAppenderName}
+      - name: "org.egovframe"
+        level: DEBUG
+        additivity: false
+        appenderRef:
+          - ref: ${txtAppenderName}
+      - name: "org.springframework"
+        level: DEBUG
+        additivity: false
+        appenderRef:
+          - ref: ${txtAppenderName}
+
+    Root:
+      level: INFO
+      appenderRef:
+        - ref: ${txtAppenderName}

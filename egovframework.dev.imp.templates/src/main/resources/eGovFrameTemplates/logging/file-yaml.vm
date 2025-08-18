@@ -1,0 +1,30 @@
+Configuration:
+  Appenders:
+    File:
+      name: ${txtAppenderName}
+      fileName: "${txtLogFileName}"
+      append: ${cboAppend}
+      PatternLayout:
+        pattern: "${txtConversionPattern}"
+  Loggers:
+    Logger:
+      - name: "egovframework"
+        level: DEBUG
+        additivity: false
+        appenderRef:
+          - ref: ${txtAppenderName}
+      - name: "org.egovframe"
+        level: DEBUG
+        additivity: false
+        appenderRef:
+          - ref: ${txtAppenderName}
+      - name: "org.springframework"
+        level: DEBUG
+        additivity: false
+        appenderRef:
+          - ref: ${txtAppenderName}
+
+    Root:
+      level: INFO
+      appenderRef:
+        - ref: ${txtAppenderName}

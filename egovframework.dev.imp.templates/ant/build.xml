@@ -1,0 +1,92 @@
+<project name="MyProject" default="dist" basedir=".">
+	<description>
+    simple example build file
+  </description>
+	<!-- set global properties for this build -->
+
+	<property name="model" value="egovframework/dev/imp/codegen/template/model" />
+	<property name="src.model" location="../../egovframework.dev.imp.codegen.template/src/${model}" />
+	<property name="build.model" location="../src/main/java/${model}" />
+
+	<property name="util" value="egovframework/dev/imp/codegen/template/util" />
+	<property name="src.util" location="../../egovframework.dev.imp.codegen.template/src/${util}" />
+	<property name="build.util" location="../src/main/java/${util}" />
+
+	<property name="eGovFrameTemplates" value="eGovFrameTemplates" />
+	<property name="src.eGovFrameTemplates" location="../../egovframework.dev.imp.codegen.template.templates/${eGovFrameTemplates}" />
+	<property name="build.eGovFrameTemplates" location="../src/main/resources/${eGovFrameTemplates}" />
+
+	<!--<property name="dist" location="../target/dist" />-->
+
+	<property name="src2" location="" />
+
+	<target name="init">
+		<!-- Create the time stamp -->
+		<tstamp />
+		<!-- Create the build directory structure used by compile -->
+		<!--<mkdir dir="${build}" />-->
+	</target>
+
+	<target name="compile" depends="init" description="compile the source">
+		<!-- Compile the Java code from ${src} into ${build} -->
+		<!--<javac srcdir="${src}" destdir="${build}" />-->
+
+		<delete dir="${build.model}" />
+		<copy todir="${build.model}">
+			<fileset dir="${src.model}">
+				<include name="**/*.java" />
+				<exclude name="WizardsData.java" />
+			</fileset>
+		</copy>
+
+		<delete dir="${build.util}" />
+		<copy todir="${build.util}">
+			<fileset dir="${src.util}">
+				<include name="NamingUtils.java" />
+			</fileset>
+		</copy>
+
+		<delete dir="${build.eGovFrameTemplates}" />
+		<copy todir="${build.eGovFrameTemplates}">
+			<fileset dir="${src.eGovFrameTemplates}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+
+	</target>
+
+	<target name="dist" depends="compile" description="generate the distribution">
+		<!-- Create the distribution directory -->
+		<!--<mkdir dir="${dist}/lib" />-->
+		<!--<mkdir dir="${dist}" />-->
+
+		<!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+		<!--<jar jarfile="${dist}/lib/MyProject-${DSTAMP}.jar" basedir="${build}" />-->
+
+		<echo>model=${model}</echo>
+		<echo>src.model=${src.model}</echo>
+		<echo>build.model=${build.model}</echo>
+
+		<echo>util=${util}</echo>
+		<echo>src.util=${src.util}</echo>
+		<echo>build.util=${build.util}</echo>
+
+		<echo>eGovFrameTemplates=${eGovFrameTemplates}</echo>
+		<echo>src.eGovFrameTemplates=${src.eGovFrameTemplates}</echo>
+		<echo>build.eGovFrameTemplates=${build.eGovFrameTemplates}</echo>
+
+		<!--<echo>dist=${dist}</echo>-->
+		<echo>DSTAMP=${DSTAMP}</echo>
+
+	</target>
+
+	<target name="clean" description="clean up">
+		<!-- Delete the ${build} and ${dist} directory trees -->
+		<!--<delete dir="${build}" />-->
+		<!--<delete dir="${dist}" />-->
+
+		<delete dir="${build.model}" />
+		<delete dir="${build.util}" />
+		<delete dir="${build.eGovFrameTemplates}" verbose="true" />
+	</target>
+</project>

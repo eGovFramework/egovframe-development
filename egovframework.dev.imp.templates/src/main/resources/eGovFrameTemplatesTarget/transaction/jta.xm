@@ -1,19 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xmlns:jee="http://www.springframework.org/schema/jee"
-	xmlns:util="http://www.springframework.org/schema/util"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.5.xsd
-	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
-	
-   <tx:jta-transaction-manager/>
-   <jee:jndi-lookup id="ds1" jndi-name="jndi1" resource-ref="true">
-      <jee:environment>
-         java.naming.factory.initial=factory
-         java.naming.provider.url=http://localhost/
-      </jee:environment>
-   </jee:jndi-lookup>
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+    	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
+	<bean id="userTransaction" class="com.atomikos.icatch.jta.UserTransactionImp">
+		<property name="transactionTimeout" value="${txtGlobalTimeout}"></property>
+	</bean>
+	
+	<bean id="atomikosTransactionManager" class="com.atomikos.icatch.jta.UserTransactionManager" init-method="init" destroy-method="close">
+		<property name="forceShutdown" value="false"></property>
+	</bean>
+
+	<bean id="${txtTransactionName}" class="org.springframework.transaction.jta.JtaTransactionManager">
+		<property name="userTransaction" ref="userTransaction"></property>
+		<property name="transactionManager" ref="atomikosTransactionManager"></property>
+	</bean>
+    
+	<aop:config>
+		<aop:pointcut id="${txtPointCutName}" expression="${txtPointCutExpression}"/>
+		<aop:advisor advice-ref="${txtAdviceName}" pointcut-ref="${txtPointCutName}" />
+	</aop:config>
+	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="${txtMethodName}" read-only="${chkReadOnly}"
+					propagation="${cmbPropagation}"
+					isolation="${cmbIsolation}"/>
+		</tx:attributes>
+	</tx:advice>
+
+	
 </beans>

@@ -1,0 +1,27 @@
+# File Appender 설정
+appender.file0.type = File
+appender.file0.name = ${txtAppenderName}
+appender.file0.fileName = ${txtLogFileName}
+appender.file0.append = ${cboAppend}
+appender.file0.layout.type = PatternLayout
+appender.file0.layout.pattern = ${txtConversionPattern}
+
+# Logger 설정
+logger.egovframework.name = egovframework
+logger.egovframework.level = DEBUG
+logger.egovframework.additivity = false
+logger.egovframework.appenderRef.file0.ref = ${txtAppenderName}
+
+logger.org-egovframe.name = org.egovframe
+logger.org-egovframe.level = DEBUG
+logger.org-egovframe.additivity = false
+logger.org-egovframe.appenderRef.file0.ref = ${txtAppenderName}
+
+logger.org-springframework.name = org.springframework
+logger.org-springframework.level = INFO
+logger.org-springframework.additivity = false
+logger.org-springframework.appenderRef.file0.ref = ${txtAppenderName}
+
+# Root Logger 설정
+rootLogger.level = INFO
+rootLogger.appenderRef.file0.ref = ${txtAppenderName}
