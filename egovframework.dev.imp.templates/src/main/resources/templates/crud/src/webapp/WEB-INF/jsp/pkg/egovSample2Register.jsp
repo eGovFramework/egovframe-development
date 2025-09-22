@@ -16,7 +16,7 @@
   *  @version 1.0
   *  @see
   *  
-  *  Copyright (C) 2009 by MOSPA  All right reserved.
+  *  Copyright (c) 2009-2025 MOIS (MINISTRY OF THE INTERIOR AND SAFETY).
   */
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

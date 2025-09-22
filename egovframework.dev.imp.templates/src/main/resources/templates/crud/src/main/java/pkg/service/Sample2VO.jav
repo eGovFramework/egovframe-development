@@ -16,7 +16,7 @@ import egovframework.rte.cmmn.SampleDefaultVO;
  *  @version 1.0
  *  @see
  *  
- *  Copyright (C) 2009 by MOSPA  All right reserved.
+ *  Copyright (c) 2009-2025 MOIS (MINISTRY OF THE INTERIOR AND SAFETY).
  */
 public class Sample2VO extends SampleDefaultVO{
     private static final long serialVersionUID = 1L;
