@@ -611,20 +611,21 @@ public class SqlMapQueryDetailsPart extends AbstractDetailsPage implements Liste
 				sbp = (SqlBindingParm) tblItm[i].getData();
 				dataTypeIdx = ((Integer) sbp.dataTypeComboBox.getValue()).intValue();
 
-				if ("String".equals(SqlBindingParm.dataTypes[dataTypeIdx]))
+				if ("String".equals(SqlBindingParm.dataTypes[dataTypeIdx])) {
 					parm.put(sbp.parm, sbp.value);
-				else if ("Byte".equals(SqlBindingParm.dataTypes[dataTypeIdx]))
-					parm.put(sbp.parm, new Byte(sbp.value));
-				else if ("Integer".equals(SqlBindingParm.dataTypes[dataTypeIdx]))
-					parm.put(sbp.parm, new Integer(sbp.value));
-				else if ("Long".equals(SqlBindingParm.dataTypes[dataTypeIdx]))
-					parm.put(sbp.parm, new Long(sbp.value));
-				else if ("Float".equals(SqlBindingParm.dataTypes[dataTypeIdx]))
-					parm.put(sbp.parm, new Float(sbp.value));
-				else if ("Double".equals(SqlBindingParm.dataTypes[dataTypeIdx]))
-					parm.put(sbp.parm, new Double(sbp.value));
-				else if ("BigDecimal".equals(SqlBindingParm.dataTypes[dataTypeIdx]))
+				} else if ("Byte".equals(SqlBindingParm.dataTypes[dataTypeIdx])) {
+					parm.put(sbp.parm, Byte.valueOf(sbp.value));
+				} else if ("Integer".equals(SqlBindingParm.dataTypes[dataTypeIdx])) {
+					parm.put(sbp.parm, Integer.valueOf(sbp.value));
+				} else if ("Long".equals(SqlBindingParm.dataTypes[dataTypeIdx])) {
+					parm.put(sbp.parm, Long.valueOf(sbp.value));
+				} else if ("Float".equals(SqlBindingParm.dataTypes[dataTypeIdx])) {
+					parm.put(sbp.parm, Float.valueOf(sbp.value));
+				} else if ("Double".equals(SqlBindingParm.dataTypes[dataTypeIdx])) {
+					parm.put(sbp.parm, Double.valueOf(sbp.value));
+				} else if ("BigDecimal".equals(SqlBindingParm.dataTypes[dataTypeIdx])) {
 					parm.put(sbp.parm, new BigDecimal(sbp.value));
+				}
 			}
 
 			TestManager tm = new TestManager();
