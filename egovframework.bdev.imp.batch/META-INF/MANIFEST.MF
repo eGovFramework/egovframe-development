@@ -15,7 +15,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.jdt.core,
  org.eclipse.search
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: egovframework.bdev.imp.batch.wizards.com,
  egovframework.bdev.imp.batch.wizards.jobcreation.model,
  egovframework.bdev.imp.batch.wizards.joblauncher.model

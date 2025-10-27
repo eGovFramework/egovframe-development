@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.datatools.sqltools.sqlscrapbook,
  org.eclipse.datatools.sqltools.sqlbuilder
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: egovframework.dev.imp.core.common,
  egovframework.dev.imp.core.perspectives,
  egovframework.dev.imp.core.utils

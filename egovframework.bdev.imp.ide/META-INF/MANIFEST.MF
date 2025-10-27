@@ -25,7 +25,7 @@ Require-Bundle: org.eclipse.ui.ide,
  org.eclipse.equinox.p2.repository,
  org.eclipse.m2e.core
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Bundle-ClassPath: egovframework-bdev-imp-ide.jar,
  lib/ant-1.6.1.jar,
  lib/jaxb-xalan-1.5.jar

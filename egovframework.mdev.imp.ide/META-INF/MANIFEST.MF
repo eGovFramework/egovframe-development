@@ -30,7 +30,7 @@ Require-Bundle: org.eclipse.ui.ide,
  org.eclipse.wst.server.ui,
  org.eclipse.m2e.core
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Bundle-ClassPath: egovframework-mdev-imp-ide.jar,
  lib/ant-1.6.1.jar
 Import-Package: org.apache.commons.logging

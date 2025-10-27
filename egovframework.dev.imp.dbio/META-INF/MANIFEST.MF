@@ -21,7 +21,7 @@ Require-Bundle: org.eclipse.debug.core,
  org.eclipse.datatools.sqltools.sqlbuilder,
  org.eclipse.datatools.sqltools.editor.core.ui,
  org.eclipse.core.runtime
-Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Bundle-ClassPath: lib/ibatis-2.3.4.726.jar,
  lib/log4j-1.2.17.jar,
  egovframework-dev-imp-dbio.jar,

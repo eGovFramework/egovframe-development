@@ -15,7 +15,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.datatools.sqltools.sqlscrapbook,
  org.eclipse.datatools.sqltools.sqlbuilder,
  org.eclipse.ui.console
-Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Bundle-ClassPath: egovframework-dev-imp-codegen.jar,
  lib/abstractplugin.jar,
  lib/aspectjtools-1.2.1.jar,

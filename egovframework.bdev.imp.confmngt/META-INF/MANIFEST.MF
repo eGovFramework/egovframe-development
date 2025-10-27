@@ -31,5 +31,5 @@ Export-Package: egovframework.bdev.imp.confmngt;uses:="org.osgi.framework,org.ec
  egovframework.bdev.imp.confmngt.preferences.readwrite;uses:="egovframework.bdev.imp.confmngt.preferences.readwrite.model,org.eclipse.swt.widgets,egovframework.bdev.imp.confmngt.preferences.com",
  egovframework.bdev.imp.confmngt.preferences.readwrite.model;uses:="org.eclipse.jface.viewers,org.eclipse.swt.graphics,egovframework.bdev.imp.confmngt.preferences.com.model"
 Bundle-Vendor: MOIS
-Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Automatic-Module-Name: egovframework.bdev.imp.confmngt

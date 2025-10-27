@@ -26,7 +26,7 @@ Require-Bundle: org.eclipse.ui.ide,
  org.eclipse.datatools.sqltools.editor.core,
  org.eclipse.m2e.core
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: egovframework.hdev.imp.ide,
  egovframework.hdev.imp.ide.common,
  egovframework.hdev.imp.ide.handlers,

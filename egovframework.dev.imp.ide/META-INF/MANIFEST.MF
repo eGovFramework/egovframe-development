@@ -29,7 +29,7 @@ Require-Bundle: org.eclipse.ui.ide,
  org.eclipse.jst.ejb.ui,
  org.eclipse.jst.ejb.ui.infopop
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-17
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Bundle-ClassPath: egovframework-dev-imp-ide.jar,
  lib/jaxb-xalan-1.5.jar,
  lib/ant-1.6.1.jar
