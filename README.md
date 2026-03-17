@@ -1,4 +1,4 @@
-# 표준프레임워크 개발환경  4.3.0  (egovframe-development)
+# 표준프레임워크 개발환경  5.0.0  (egovframe-development)
 
 ![Eclipse](https://img.shields.io/badge/Eclipse-FE7A16.svg?style=for-the-badge&logo=Eclipse&logoColor=white)
 ![java](https://img.shields.io/badge/java-007396?style=for-the-badge&logo=JAVA&logoColor=white)
@@ -52,21 +52,21 @@
 
 <img width="709" alt="image" src="https://user-images.githubusercontent.com/68622744/230294638-029c75d1-afb9-420f-8716-54ce9713fb9d.png">
 
-## 개발환경 RCP 구성 (4.3.1)
+## 개발환경 RCP 구성 (5.0.0)
 ### RCP 및 JEE 구성, 기타 준비물
 - Windows, Linux
-     - Open JDK 17
-     - Eclipse IDE for RCP and RAP Developers (2024-03)
+     - JDK 21
+     - Eclipse IDE for RCP and RAP Developers (2025-03)
           - Windows : x86_64 / Linux : x86_64
-     - Eclipse IDE for Enterprise Java and Web Developers (2024-03)
+     - Eclipse IDE for Enterprise Java and Web Developers (2025-03)
           - Windows : x86_64 / Linux : x86_64
      - Tomcat 9.0
 
 - macOS AArch64, macOS x86_64
      - Open JDK 21
-     - Eclipse IDE for RCP and RAP Developers (2024-09)
+     - Eclipse IDE for RCP and RAP Developers (2025-12)
           - macOS AArch64 : AArch64 / macOS x86_64 : x86_64
-     - Eclipse IDE for Enterprise Java and Web Developers (2024-09)
+     - Eclipse IDE for Enterprise Java and Web Developers (2025-12)
           - macOS AArch64 : AArch64 / macOS x86_64 : x86_64
      - Tomcat 9.0
 
@@ -75,27 +75,49 @@
 ※ 이하 모든 설명은 Windows를 기준으로 설명한다. Linux 및 macOS의 경우 "### RCP 및 JEE 구성, 기타 준비물"을 참고하여 적용하면 된다.
 
 #### 1. 이클립스 JEE 다운로드 
-https://www.eclipse.org/downloads/packages/release/2024-03/r
+- Windows, Linux : https://www.eclipse.org/downloads/packages/release/2025-03/r
+- macOS : https://www.eclipse.org/downloads/packages/release/2025-12/r
 
 #### 2. JEE 추가 Plug-ins 프로그램 설치
 Eclipse를 키고 메뉴에 Help > Install New Software... 클릭하여 설치한다.
 
-|소프트웨어|버전|자동설치/업데이트주소|필수여부|
-|:---------|:----|:-------------------|:-------|
-| Eclipse | 4.31.0 | https://www.eclipse.org/downloads/packages/release/2024-03/r → Eclipse IDE for Enterprise Java and Web Developers 다운로드 |  필수  |
-| Spring Tools | 4.22.1  | https://cdn.spring.io/spring-tools/release/TOOLS/sts4/update/4.22.1.RELEASE/e4.31/ → **Spring Tools** : Spring Boot Language Server Feature, Spring IDE Boot Microservices Dash, Spring Tool Suite 4 main Feature |  필수  |
-| UML2 Extension | 5.5.3 | https://download.eclipse.org/releases/2023-09/ → **Modeling** : UML2 Extender SDK |  필수  |
-| Subversive SVN Team Provider | 4.8.0 | https://download.eclipse.org/technology/subversive/4.8/release/latest/ → **Subversive** : Subversive SVN Team Provider |  필수  |
-| Subversive SVN Connectors | 6.0.4 | https://osspit.org/eclipse/subversive-connectors/ → **Subversive SVN Connectors** : Subversive SVN Connectors, SVNKit 1.10.x Implementation |  필수  |
-| MyBatipse | 1.3.0 | https://harawata.github.io/eclipse-site/ → **MyBatipse** : MyBatipse |  선택  |
-| PMD | 7.4 | https://pmd.github.io/pmd-eclipse-plugin-p2-site/ → **PMD for Eclipse** : PMD Plug-in |  선택  |
-| Properties Editor | 6.0.5 | http://propedit.sourceforge.jp/eclipse/updates/ 또는 http://osdn.net/projects/propedit/storage/eclipse/updates → **PropertiesEditor** : Properties Editor v6.0.5, ropertiesEditor_Asian_NLS v6.0.0 (* 위 url로 연결이 안 되는 경우가 잦음)  |  선택   |
-| SpotBugs | 4.8.5 | https://spotbugs.github.io/eclipse/ → **SpotBugs** : SpotBugs |  선택  |
-| Lombok | 1.18.34 | https://projectlombok.org/p2 → **Lombok** : Lombok |  선택  | 
-| Grep Console | 3.7.0 | http://eclipse.schedenig.name → **Grep Console** : Grep Console (* 위 url로 연결이 안 되는 경우가 잦음) |  선택  |
-| Eclipse Docker Tooling | 5.14.0 | https://download.eclipse.org/linuxtools/update-docker → **Linux Tools** : Docker Tooling |  선택  |
-| Amateras Modeler| 2.2.0 | https://takezoe.github.io/amateras-update-site/ → **Amateras Modeler** : Amateras Modeler (* 설치 후 eclipse.ini 에 –add-opens=java.desktop/java.beans=ALL-UNNAMED 추가) |  필수  |
-| ~~eGovFrame~~ | ~~4.3.0~~ | ~~https://maven.egovframe.go.kr/update_4.3/ → **eGovFrame Plug-ins** : 필요 기능 설치~~ |  ~~필수~~  |
+##### Windows, Linux
+
+| 소프트웨어 | 버전 | 자동설치/업데이트주소 | 필수여부 |
+| ------- | --- | --------------- | ------ |
+| Eclipse | 4.35 | https://www.eclipse.org/downloads/packages/release/2025-03/r <br> → Eclipse IDE for Enterprise Java and Web Developers 다운로드 | 필수 |
+| Spring Tools | 4.31.0 | https://cdn.spring.io/spring-tools/release/TOOLS/sts4/update/e4.35/ <br> → **Spring Tools** : Spring Boot Language Server Feature, Spring IDE Boot Microservices Dash, Spring Tool Suite 4 main Feature <br> → **Spring Tools - Developer Resources** : Spring Boot Language Server Feature Developer Resources, Spring IDE Boot Microservices Dash Developer Resources, Spring Tool Suite 4 main Feature Developer Resources | 필수 |
+| UML2 Extension | 5.5.3 | https://download.eclipse.org/releases/2025-03/ <br> → **Modeling** : UML2 Extender SDK | 필수 |
+| Subversive SVN Team Provider | 5.1.0 | https://download.eclipse.org/technology/subversive/updates/release/5.1.0/ <br> → **Eclipse Subversive SVN Team Provider** : Eclipse Subversive SVN Team Provider | 필수 |
+| Subversive SVN Connectors | 1.0.1 | https://arsysop.github.io/svn/release/ <br> → **Subversive SVN Connectors** : ArSysOp SVN Connectors with SVNKit 1.10 | 필수 |
+| MyBatipse | 1.3.0 | https://harawata.github.io/eclipse-site/ <br> → **MyBatipse** : MyBatipse | 선택 |
+| PMD | 7.15.0 | https://pmd.github.io/pmd-eclipse-plugin-p2-site/ <br> → **PMD for Eclipse** : PMD Plug-in | 선택 |
+| Properties Editor | 6.0.5 | http://propedit.sourceforge.jp/eclipse/updates/ 또는 http://osdn.net/projects/propedit/storage/eclipse/updates <br> → **PropertiesEditor** : Properties Editor v6.0.5, PropertiesEditor_Asian_NLS v6.0.0 <br> * 위 url로 연결이 안 되는 경우가 잦음. 이 경우 다음 url로 설치 : https://maven.egovframe.go.kr/eclipse-plugin/properties-editor/6.0.5/ | 선택 |
+| SpotBugs | 4.9.3 | https://spotbugs.github.io/eclipse/ <br> → **SpotBugs** : SpotBugs | 선택 |
+| Lombok | 1.18.38 | https://projectlombok.org/p2 <br>  → **Lombok** : Lombok | 선택 |
+| Grep Console | 3.7.0 | http://eclipse.schedenig.name <br> → **Grep Console** : Grep Console <br> * 위 url로 연결이 안 되는 경우가 잦음. 이 경우 다음 url로 설치 : https://maven.egovframe.go.kr/eclipse-plugin/grep-console/3.7.0/ | 선택 |
+| Eclipse Docker Tooling | 5.19.0 | https://download.eclipse.org/linuxtools/update-docker-5.19.0/ <br> → **Linux Tools** : Docker Tooling | 선택 |
+| Amateras Modeler | 2.2.0 | https://takezoe.github.io/amateras-update-site/ <br> → **Amateras Modeler** : Amateras Modeler <br> * 설치 후 eclipse.ini 에 –add-opens=java.desktop/java.beans=ALL-UNNAMED 추가 | 필수 |
+| ~~eGovFrame~~ | ~~5.0.0~~ | ~~https://maven.egovframe.go.kr/update_5.0/ <br> → **eGovFrame Plug-ins** : 필요 기능 설치~~ | ~~필수~~ |
+
+##### macOS
+
+| 소프트웨어 | 버전 | 자동설치/업데이트주소 | 필수여부 |
+| ------- | --- | --------------- | ------ |
+| Eclipse | 4.38 | https://www.eclipse.org/downloads/packages/release/2025-12/r <br> → Eclipse IDE for Enterprise Java and Web Developers 다운로드 | 필수 |
+| Spring Tools | 5.0.1 | https://cdn.spring.io/spring-tools/release/update/e4.38/ <br> → **Spring Tools** : Spring Boot Language Server Feature, Spring IDE Boot Microservices Dash, Spring Tool Suite 4 main Feature <br> → **Spring Tools - Developer Resources** : Spring Boot Language Server Feature Developer Resources, Spring IDE Boot Microservices Dash Developer Resources, Spring Tool Suite 4 main Feature Developer Resources | 필수 |
+| UML2 Extension | 5.5.3 | https://download.eclipse.org/releases/2025-12/ <br> → **Modeling** : UML2 Extender SDK | 필수 |
+| Subversive SVN Team Provider | 5.1.0 | https://download.eclipse.org/technology/subversive/updates/release/5.1.0/ <br> → **Eclipse Subversive SVN Team Provider** : Eclipse Subversive SVN Team Provider | 필수 |
+| Subversive SVN Connectors | 1.0.1 | https://arsysop.github.io/svn/release/ <br> → **Subversive SVN Connectors** : ArSysOp SVN Connectors with SVNKit 1.10 | 필수 |
+| MyBatipse | 1.3.0 | https://harawata.github.io/eclipse-site/ <br> → **MyBatipse** : MyBatipse | 선택 |
+| PMD | 7.15.0 | https://pmd.github.io/pmd-eclipse-plugin-p2-site/ <br> → **PMD for Eclipse** : PMD Plug-in | 선택 |
+| Properties Editor | 6.0.5 | http://propedit.sourceforge.jp/eclipse/updates/ 또는 http://osdn.net/projects/propedit/storage/eclipse/updates <br> → **PropertiesEditor** : Properties Editor v6.0.5, PropertiesEditor_Asian_NLS v6.0.0 <br> * 위 url로 연결이 안 되는 경우가 잦음. 이 경우 다음 url로 설치 : https://maven.egovframe.go.kr/eclipse-plugin/properties-editor/6.0.5/ | 선택 |
+| SpotBugs | 4.9.3 | https://spotbugs.github.io/eclipse/ <br> → **SpotBugs** : SpotBugs | 선택 |
+| Lombok | 1.18.38 | https://projectlombok.org/p2 <br>  → **Lombok** : Lombok | 선택 |
+| Grep Console | 3.7.0 | http://eclipse.schedenig.name <br> → **Grep Console** : Grep Console <br> * 위 url로 연결이 안 되는 경우가 잦음. 이 경우 다음 url로 설치 : https://maven.egovframe.go.kr/eclipse-plugin/grep-console/3.7.0/ | 선택 |
+| Eclipse Docker Tooling | 5.21.0 | https://download.eclipse.org/linuxtools/update-docker-5.21.0/ <br> → **Linux Tools** : Docker Tooling | 선택 |
+| Amateras Modeler | 2.2.0 | https://takezoe.github.io/amateras-update-site/ <br> → **Amateras Modeler** : Amateras Modeler <br> * 설치 후 eclipse.ini 에 –add-opens=java.desktop/java.beans=ALL-UNNAMED 추가 | 필수 |
+| ~~eGovFrame~~ | ~~5.0.0~~ | ~~https://maven.egovframe.go.kr/update_5.0/ <br> → **eGovFrame Plug-ins** : 필요 기능 설치~~ | ~~필수~~ |
 
 ※ 개발환경의 플러그인 설치 항목 (필수/옵션) 을 모두 설치한다. 단, **eGovFrame Plugins만 설치하지 않는다.**  
 ※ 설치가이드 플러그인 [자동설치/업데이트주소]는 해당 플러그인을 공식적으로 받을 수 있는 저작자의 배포 주소이다. 주소가 변경되거나 상황에 따라서 다운로드가 안 될 수 있다.
@@ -105,7 +127,8 @@ Eclipse를 키고 메뉴에 Help > Install New Software... 클릭하여 설치�
 ### (플러그인 개발용) 이클립스 RCP 환경 구축
 
 #### 1. 이클립스 RCP 다운로드 
-https://www.eclipse.org/downloads/packages/release/2024-03/r
+- Windows, Linux : https://www.eclipse.org/downloads/packages/release/2024-03/r
+- macOS : https://www.eclipse.org/downloads/packages/release/2025-12/r
 
 #### 2. RCP 추가 Plug-ins 프로그램 설치
 Properties Editor 설치 : 위의 [ JEE 추가 Plug-ins 프로그램 설치 표 ] 를 참고하여 Properties Editor 를 설치한다.
@@ -159,7 +182,7 @@ RCP및 Plug-ins소스 설정과 빌드가 완료되면 테스트를 위하여 �
 
 
 ## 참조
-1. [개발환경 위키가이드](https://www.egovframe.go.kr/wiki/doku.php?id=egovframework:dev4.3)
-2. [개발환경 다운로드](https://www.egovframe.go.kr/home/sub.do?menuNo=94)
+1. [개발환경 가이드](https://www.egovframe.go.kr/docs/5.0/egovframe-development/)
+2. [개발환경 다운로드](https://www.egovframe.go.kr/home/sub.do?menuNo=107)
 
 
