@@ -57,22 +57,26 @@
 - Windows, Linux
      - JDK 21
      - Eclipse IDE for RCP and RAP Developers (2025-03)
-          - Windows : x86_64 / Linux : x86_64
+          - Windows : x86_64
+          - Linux : x86_64
      - Eclipse IDE for Enterprise Java and Web Developers (2025-03)
-          - Windows : x86_64 / Linux : x86_64
-     - Tomcat 9.0
+          - Windows : x86_64
+          - Linux : x86_64
+     - Tomcat 10.0
 
 - macOS AArch64, macOS x86_64
-     - Open JDK 21
+     - JDK 21
      - Eclipse IDE for RCP and RAP Developers (2025-12)
-          - macOS AArch64 : AArch64 / macOS x86_64 : x86_64
+          - macOS AArch64 : AArch64
+          - macOS x86_64 : x86_64
      - Eclipse IDE for Enterprise Java and Web Developers (2025-12)
-          - macOS AArch64 : AArch64 / macOS x86_64 : x86_64
-     - Tomcat 9.0
+          - macOS AArch64 : AArch64
+          - macOS x86_64 : x86_64
+     - Tomcat 10.0
 
 ### (테스트용) 이클립스 JEE 개발환경 구성
-표준프레임워크 플러그인 (eGovFrame Plug-ins)의 테스트 환경 구성하는 방법을 소개한다.   
-※ 이하 모든 설명은 Windows를 기준으로 설명한다. Linux 및 macOS의 경우 "### RCP 및 JEE 구성, 기타 준비물"을 참고하여 적용하면 된다.
+
+표준프레임워크 플러그인 (eGovFrame Plug-ins)의 테스트 환경 구성하는 방법을 소개한다.
 
 #### 1. 이클립스 JEE 다운로드 
 - Windows, Linux : https://www.eclipse.org/downloads/packages/release/2025-03/r
@@ -98,7 +102,6 @@ Eclipse를 키고 메뉴에 Help > Install New Software... 클릭하여 설치�
 | Grep Console | 3.7.0 | http://eclipse.schedenig.name <br> → **Grep Console** : Grep Console <br> * 위 url로 연결이 안 되는 경우가 잦음. 이 경우 다음 url로 설치 : https://maven.egovframe.go.kr/eclipse-plugin/grep-console/3.7.0/ | 선택 |
 | Eclipse Docker Tooling | 5.19.0 | https://download.eclipse.org/linuxtools/update-docker-5.19.0/ <br> → **Linux Tools** : Docker Tooling | 선택 |
 | Amateras Modeler | 2.2.0 | https://takezoe.github.io/amateras-update-site/ <br> → **Amateras Modeler** : Amateras Modeler <br> * 설치 후 eclipse.ini 에 –add-opens=java.desktop/java.beans=ALL-UNNAMED 추가 | 필수 |
-| ~~eGovFrame~~ | ~~5.0.0~~ | ~~https://maven.egovframe.go.kr/update_5.0/ <br> → **eGovFrame Plug-ins** : 필요 기능 설치~~ | ~~필수~~ |
 
 ##### macOS
 
@@ -117,9 +120,8 @@ Eclipse를 키고 메뉴에 Help > Install New Software... 클릭하여 설치�
 | Grep Console | 3.7.0 | http://eclipse.schedenig.name <br> → **Grep Console** : Grep Console <br> * 위 url로 연결이 안 되는 경우가 잦음. 이 경우 다음 url로 설치 : https://maven.egovframe.go.kr/eclipse-plugin/grep-console/3.7.0/ | 선택 |
 | Eclipse Docker Tooling | 5.21.0 | https://download.eclipse.org/linuxtools/update-docker-5.21.0/ <br> → **Linux Tools** : Docker Tooling | 선택 |
 | Amateras Modeler | 2.2.0 | https://takezoe.github.io/amateras-update-site/ <br> → **Amateras Modeler** : Amateras Modeler <br> * 설치 후 eclipse.ini 에 –add-opens=java.desktop/java.beans=ALL-UNNAMED 추가 | 필수 |
-| ~~eGovFrame~~ | ~~5.0.0~~ | ~~https://maven.egovframe.go.kr/update_5.0/ <br> → **eGovFrame Plug-ins** : 필요 기능 설치~~ | ~~필수~~ |
 
-※ 개발환경의 플러그인 설치 항목 (필수/옵션) 을 모두 설치한다. 단, **eGovFrame Plugins만 설치하지 않는다.**  
+※ 개발환경의 플러그인 설치 항목 (필수/옵션) 을 모두 설치한다. 단, **eGovFrame Plug-ins만 설치하지 않는다.**  
 ※ 설치가이드 플러그인 [자동설치/업데이트주소]는 해당 플러그인을 공식적으로 받을 수 있는 저작자의 배포 주소이다. 주소가 변경되거나 상황에 따라서 다운로드가 안 될 수 있다.
 
 
@@ -160,7 +162,7 @@ Export 버튼을 클릭 후 RCP 내 workspace의 update 프로젝트 선택
 ##### 2-6. Target Platform에 적용  
 Target Definition에서 ‘Reload Target Platform’ 클릭
 ![Target Platform에 적용](https://user-images.githubusercontent.com/68622744/230327601-0f8ae1b3-0808-436c-9122-6c55ea0ea7fc.png)  
-※ Reload Target Platform을 클릭하면 전체 프로젝트에 대한 빌드가 진행되며 오류사항들이 없어진다. 만약 오류 사항이 있으면 직접 오류사항을 체크하여 해결하여야 함. 보통 라이브러리 존재 유무에 대한 오류로 필요하거나 변경해야 하는 라이브러리는 수정한다  
+※ Reload Target Platform을 클릭하면 전체 프로젝트에 대한 빌드가 진행되며 오류사항들이 없어진다. 만약 오류 사항이 있으면 직접 오류사항을 체크하여 해결하여야 한다. 보통 라이브러리 존재 유무에 대한 오류로 필요하거나 변경해야 하는 라이브러리는 수정한다.
 
 
 ### 개발환경 Plug-ins 테스트
