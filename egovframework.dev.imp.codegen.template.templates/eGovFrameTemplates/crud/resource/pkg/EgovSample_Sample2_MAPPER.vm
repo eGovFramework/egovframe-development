@@ -10,7 +10,6 @@
 ##
 ##
 #set($vender="$model.vender")
-#set($namespaceDAO="${model.entity.ccName}DAO")
 #set($namespaceMapper="${mapperPackage}.${mapperClassName}")
 #set($resultMapId="${model.entity.ccName}")
 #set($resultMapClass="${voPackage}.${voClassName}")
@@ -27,7 +26,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- <mapper namespace="$namespaceDAO"> -->
 <mapper namespace="$namespaceMapper">
 	
 ## --------------------------------------------------------------------------------------------------------
@@ -43,7 +41,7 @@
 	
 ## ##################################################################################################
 	<insert id="${insertQueryId}">
-		<![CDATA[
+
 			INSERT INTO ${model.entity.name} 
 #set($i=0)	
 #foreach($attribute in $model.attributes)
@@ -58,9 +56,10 @@
 #end
 ##
 #set($i=0)	
+			VALUES
 #foreach($attribute in $model.attributes)
 #if($i == 0)
-			VALUES ( #{${attribute.ccName}}
+				( #{${attribute.ccName}}
 #elseif($i < ($model.attributes.size() - 1))
 				  , #{${attribute.ccName}}
 #else
@@ -68,12 +67,12 @@
 #end
 #set($i=$i+1)
 #end
-		]]>
+
 	</insert>
 	
 ## ##################################################################################################	
 	<update id="${updateQueryId}">
-		<![CDATA[
+
 			UPDATE ${model.entity.name}
 #set($i=0)	
 #foreach($attribute in $model.attributes)
@@ -86,44 +85,44 @@
 #end	
 ##		
 #if(!${model.primaryKeys} == [])
-                WHERE ${model.attributes.get(0).name}=#{${model.attributes.get(0).ccName}}
+			WHERE ${model.attributes.get(0).name}=#{${model.attributes.get(0).ccName}}
 #else
 	#set($i=0)	
 	#foreach($attribute in $model.primaryKeys)
 	#if($i == 0)
-				WHERE ${attribute.name}=#{${attribute.ccName}}
+			WHERE ${attribute.name}=#{${attribute.ccName}}
 	#else
-					AND ${attribute.name}=#{${attribute.ccName}}
+				AND ${attribute.name}=#{${attribute.ccName}}
 	#end
 	#set($i=$i+1)
 	#end
 #end
-		]]>
+
 	</update>
 	
 ## ##################################################################################################
 	<delete id="${deleteQueryId}">
-		<![CDATA[
+
 			DELETE FROM ${model.entity.name} 
 #if(!${model.primaryKeys} == [])
-                WHERE ${model.attributes.get(0).name}=#{${model.attributes.get(0).ccName}}
+			WHERE ${model.attributes.get(0).name}=#{${model.attributes.get(0).ccName}}
 #else 
 	#set($i=0)	
 	#foreach($attribute in $model.primaryKeys)
 	#if($i == 0)
-				WHERE ${attribute.name}=#{${attribute.ccName}}
+			WHERE ${attribute.name}=#{${attribute.ccName}}
 	#else
-					AND ${attribute.name}=#{${attribute.ccName}}
+				AND ${attribute.name}=#{${attribute.ccName}}
 	#end
 	#set($i=$i+1)
 	#end
 #end
-		]]>
+
 	</delete>
 	
 ## ##################################################################################################	
 	<select id="${selectQueryId}" resultMap="$resultMapId">
-		<![CDATA[
+
 			SELECT
 #set($i=0)	
 #foreach($attribute in $model.attributes)
@@ -136,182 +135,293 @@
 #end				
 			FROM ${model.entity.name}
 #if(!${model.primaryKeys} == [])
-                WHERE ${model.attributes.get(0).name}=#{${model.attributes.get(0).ccName}}
+			WHERE ${model.attributes.get(0).name}=#{${model.attributes.get(0).ccName}}
 #else 
 	#set($i=0)	
 	#foreach($attribute in $model.primaryKeys)
 	#if($i == 0)
-				WHERE ${attribute.name}=#{${attribute.ccName}}
+			WHERE ${attribute.name}=#{${attribute.ccName}}
 	#else
-					AND ${attribute.name}=#{${attribute.ccName}}
+				AND ${attribute.name}=#{${attribute.ccName}}
 	#end
 	#set($i=$i+1)
 	#end
 #end
-		]]>
+
 	</select>
 	
 ## ##################################################################################################	
-	<select id="${selectListQueryId}" parameterType="${resultMapClass}" resultType="egovMap">
+	<select id="${selectListQueryId}" resultMap="$resultMapId">
 #if($vender == "HSQLDB")
+
 			SELECT
-	#set($i=0)	
-	#foreach($attribute in $model.attributes)
-	#if($i == 0)
-					${attribute.name}
-	#else
-					, ${attribute.name}
-	#end
-	#set($i=$i+1)
-	#end	
+#set($i=0)
+#foreach($attribute in $model.attributes)
+#if($i == 0)
+				${attribute.name}
+#else
+				, ${attribute.name}
+#end
+#set($i=$i+1)
+#end
 			FROM ${model.entity.name}
 			WHERE 1=1
 			<if test="searchKeyword != null and searchKeyword != ''">
-				<if test="searchCondition == 0">AND
-					${model.attributes.get(0).name} = #{searchKeyword}
-				</if>
-				<if test="searchCondition == 1">AND
-					${model.attributes.get(1).name} LIKE '%' || #{searchKeyword} || '%'
-				</if>
+		        <choose>
+		            <when test="searchCondition == 0">
+#if($model.primaryKeys && $model.primaryKeys.size() > 0)
+						AND	${model.primaryKeys.get(0).name} LIKE '%' || #{searchKeyword} || '%'
+#else
+						AND	${model.attributes.get(0).name} LIKE '%' || #{searchKeyword} || '%'
+#end
+					</when>
+		            <when test="searchCondition == 1">
+#if($model.primaryKeys && $model.primaryKeys.size() > 0)
+#if($model.primaryKeys.size() == 1)
+#set($foundFirst = false)
+#foreach($attribute in $model.attributes)
+#if(!$attribute.primaryKey && !$foundFirst)
+						AND ${attribute.name} LIKE '%' || #{searchKeyword} || '%'
+#set($foundFirst = true)
+#end
+#end
+#else
+						AND	${model.primaryKeys.get(1).name} LIKE '%' || #{searchKeyword} || '%'
+#end
+#else
+#if($model.attributes.size() > 1)
+						AND	${model.attributes.get(1).name} LIKE '%' || #{searchKeyword} || '%'
+#end
+#end
+					</when>
+				</choose>
 			</if>
-				ORDER BY 
-#if(!${model.primaryKeys} == [])
-                ${model.attributes.get(0).name} DESC
-#else 				
-	#set($i=0)				
-	#foreach($attribute in $model.primaryKeys)
-	#if($i == 0)
-				${attribute.name} DESC
-	#else
-				, ${attribute.name} DESC
-	#end
-	#set($i=$i+1)
-	#end
+			ORDER BY
+#if($model.primaryKeys && $model.primaryKeys.size() > 0)
+				${model.primaryKeys.get(0).name} DESC
+#else
+				${model.attributes.get(0).name} DESC
 #end
 			LIMIT #{recordCountPerPage} OFFSET #{firstIndex}
 #elseif($vender == "Oracle")
 SELECT * FROM (
 	SELECT A.*, ROWNUM RNUM FROM (
 				SELECT
-	#set($i=0)	
-	#foreach($attribute in $model.attributes)
-	#if($i == 0)
+#set($i=0)	
+#foreach($attribute in $model.attributes)
+#if($i == 0)
 					${attribute.name}
-	#else
+#else
 					, ${attribute.name}
-	#end
-	#set($i=$i+1)
-	#end
+#end
+#set($i=$i+1)
+#end
 				FROM ${model.entity.name}
 				WHERE 1=1
 				<if test="searchKeyword != null and searchKeyword != ''">
-					<if test="searchCondition == 0">AND
-						${model.attributes.get(0).name} = #{searchKeyword}
-					</if>
-					<if test="searchCondition == 1">AND
-						${model.attributes.get(1).name} LIKE '%' || #{searchKeyword} || '%'
-					</if>
+			        <choose>
+			            <when test="searchCondition == 0">
+#if($model.primaryKeys && $model.primaryKeys.size() > 0)
+							AND	${model.primaryKeys.get(0).name} LIKE '%' || #{searchKeyword} || '%'
+#else
+							AND	${model.attributes.get(0).name} LIKE '%' || #{searchKeyword} || '%'
+#end
+						</when>
+			            <when test="searchCondition == 1">
+#if($model.primaryKeys && $model.primaryKeys.size() > 0)
+#if($model.primaryKeys.size() == 1)
+#set($foundFirst = false)
+#foreach($attribute in $model.attributes)
+#if(!$attribute.primaryKey && !$foundFirst)
+							AND ${attribute.name} LIKE '%' || #{searchKeyword} || '%'
+#set($foundFirst = true)
+#end
+#end
+#else
+							AND	${model.primaryKeys.get(1).name} LIKE '%' || #{searchKeyword} || '%'
+#end
+#else
+#if($model.attributes.size() > 1)
+							AND	${model.attributes.get(1).name} LIKE '%' || #{searchKeyword} || '%'
+#end
+#end
+						</when>
+					</choose>
 				</if>
-					ORDER BY 
-#if(!${model.primaryKeys} == [])
-                ${model.attributes.get(0).name} DESC
-#else					
-	#set($i=0)				
-	#foreach($attribute in $model.primaryKeys)
-	#if($i == 0)
-				${attribute.name} DESC
-	#else
-				, ${attribute.name} DESC
-	#end
-	#set($i=$i+1)
-	#end
+					ORDER BY
+#if($model.primaryKeys && $model.primaryKeys.size() > 0)
+					${model.primaryKeys.get(0).name} DESC
+#else
+					${model.attributes.get(0).name} DESC
 #end
 
-		<![CDATA[					
+		<![CDATA[
 	) A WHERE ROWNUM <= #{lastIndex}
 )WHERE RNUM > #{firstIndex}
 ]]>
 #elseif($vender == "MySql" || $vender == "postgres")
 			SELECT
-	#set($i=0)	
-	#foreach($attribute in $model.attributes)
-	#if($i == 0)
+#set($i=0)	
+#foreach($attribute in $model.attributes)
+#if($i == 0)
 					${attribute.name}
-	#else
+#else
 					, ${attribute.name}
-	#end
-	#set($i=$i+1)
-	#end
+#end
+#set($i=$i+1)
+#end
 			FROM ${model.entity.name}
 			WHERE 1=1
 			<if test="searchKeyword != null and searchKeyword != ''">
-				<if test="searchCondition == 0">AND
-					${model.attributes.get(0).name} = #{searchKeyword}
-				</if>
-				<if test="searchCondition == 1">AND
-					${model.attributes.get(1).name} LIKE CONCAT('%',#{searchKeyword},'%')
-				</if>
+		        <choose>
+		            <when test="searchCondition == 0">
+#if($model.primaryKeys && $model.primaryKeys.size() > 0)
+						AND	${model.primaryKeys.get(0).name} LIKE CONCAT('%',#{searchKeyword},'%')
+#else
+						AND	${model.attributes.get(0).name} LIKE CONCAT('%',#{searchKeyword},'%')
+#end
+					</when>
+		            <when test="searchCondition == 1">
+#if($model.primaryKeys && $model.primaryKeys.size() > 0)
+#if($model.primaryKeys.size() == 1)
+#set($foundFirst = false)
+#foreach($attribute in $model.attributes)
+#if(!$attribute.primaryKey && !$foundFirst)
+						AND ${attribute.name} LIKE CONCAT('%',#{searchKeyword},'%')
+#set($foundFirst = true)
+#end
+#end
+#else
+						AND	${model.primaryKeys.get(1).name} LIKE CONCAT('%',#{searchKeyword},'%')
+#end
+#else
+#if($model.attributes.size() > 1)
+						AND	${model.attributes.get(1).name} LIKE CONCAT('%',#{searchKeyword},'%')
+#end
+#end
+					</when>
+				</choose>
 			</if>
-				ORDER BY 
-#if(!${model.primaryKeys} == [])
-                ${model.attributes.get(0).name} DESC
-#else				
-	#set($i=0)				
-	#foreach($attribute in $model.primaryKeys)
-	#if($i == 0)
-				${attribute.name} DESC
-	#else
-				, ${attribute.name} DESC
-	#end
-	#set($i=$i+1)
-	#end
+				ORDER BY
+#if($model.primaryKeys && $model.primaryKeys.size() > 0)
+				${model.primaryKeys.get(0).name} DESC
+#else
+				${model.attributes.get(0).name} DESC
 #end
 			limit #{recordCountPerPage} offset #{firstIndex}	
 #else
 
 #end			
 	</select>	
-## ##################################################################################################	
-	<select id="${selectListTotCntQueryId}" parameterType="${resultMapClass}" resultType="int">
+	
+## ##################################################################################################
+	<select id="${selectListTotCntQueryId}" parameterType="searchVO" resultType="int">
 #if($vender == "HSQLDB")
+
 			SELECT COUNT(*) totcnt
 			FROM ${model.entity.name}
 			WHERE 1=1
 			<if test="searchKeyword != null and searchKeyword != ''">
-				<if test="searchCondition == 0">AND
-					${model.attributes.get(0).name} = #{searchKeyword}
-				</if>
-				<if test="searchCondition == 1">AND
-					${model.attributes.get(1).name} LIKE '%' || #{searchKeyword} || '%'
-				</if>
+		        <choose>
+		            <when test="searchCondition == 0">
+#if($model.primaryKeys && $model.primaryKeys.size() > 0)
+						AND	${model.primaryKeys.get(0).name} LIKE '%' || #{searchKeyword} || '%'
+#else
+						AND	${model.attributes.get(0).name} LIKE '%' || #{searchKeyword} || '%'
+#end
+					</when>
+		            <when test="searchCondition == 1">
+#if($model.primaryKeys && $model.primaryKeys.size() > 0)
+#if($model.primaryKeys.size() == 1)
+#set($foundFirst = false)
+#foreach($attribute in $model.attributes)
+#if(!$attribute.primaryKey && !$foundFirst)
+						AND ${attribute.name} LIKE '%' || #{searchKeyword} || '%'
+#set($foundFirst = true)
+#end
+#end
+#else
+						AND	${model.primaryKeys.get(1).name} LIKE '%' || #{searchKeyword} || '%'
+#end
+#else
+#if($model.attributes.size() > 1)
+						AND	${model.attributes.get(1).name} LIKE '%' || #{searchKeyword} || '%'
+#end
+#end
+					</when>
+				</choose>
 			</if>
 #elseif($vender == "Oracle")
 			SELECT COUNT(*) totcnt
 			FROM ${model.entity.name}
 			WHERE 1=1
 			<if test="searchKeyword != null and searchKeyword != ''">
-				<if test="searchCondition == 0">AND
-					${model.attributes.get(0).name} = #{searchKeyword}
-				</if>
-				<if test="searchCondition == 1">AND
-					${model.attributes.get(1).name} LIKE '%' || #{searchKeyword} || '%'
-				</if>
+		        <choose>
+		            <when test="searchCondition == 0">
+#if($model.primaryKeys && $model.primaryKeys.size() > 0)
+						AND	${model.primaryKeys.get(0).name} LIKE '%' || #{searchKeyword} || '%'
+#else
+						AND	${model.attributes.get(0).name} LIKE '%' || #{searchKeyword} || '%'
+#end
+					</when>
+		            <when test="searchCondition == 1">
+#if($model.primaryKeys && $model.primaryKeys.size() > 0)
+#if($model.primaryKeys.size() == 1)
+#set($foundFirst = false)
+#foreach($attribute in $model.attributes)
+#if(!$attribute.primaryKey && !$foundFirst)
+						AND ${attribute.name} LIKE '%' || #{searchKeyword} || '%'
+#set($foundFirst = true)
+#end
+#end
+#else
+						AND	${model.primaryKeys.get(1).name} LIKE '%' || #{searchKeyword} || '%'
+#end
+#else
+#if($model.attributes.size() > 1)
+						AND	${model.attributes.get(1).name} LIKE '%' || #{searchKeyword} || '%'
+#end
+#end
+					</when>
+				</choose>
 			</if>
 #elseif($vender == "MySql" || $vender == "postgres")
 			SELECT COUNT(*) totcnt
 			FROM ${model.entity.name}
 			WHERE 1=1
 			<if test="searchKeyword != null and searchKeyword != ''">
-				<if test="searchCondition == 0">AND
-					${model.attributes.get(0).name} = #{searchKeyword}
-				</if>
-				<if test="searchCondition == 1">AND
-					${model.attributes.get(1).name} LIKE CONCAT('%',#{searchKeyword},'%')
-				</if>
-			</if>			
+		        <choose>
+		            <when test="searchCondition == 0">
+#if($model.primaryKeys && $model.primaryKeys.size() > 0)
+						AND	${model.primaryKeys.get(0).name} LIKE CONCAT('%',#{searchKeyword},'%')
+#else
+						AND	${model.attributes.get(0).name} LIKE CONCAT('%',#{searchKeyword},'%')
+#end
+					</when>
+		            <when test="searchCondition == 1">
+#if($model.primaryKeys && $model.primaryKeys.size() > 0)
+#if($model.primaryKeys.size() == 1)
+#set($foundFirst = false)
+#foreach($attribute in $model.attributes)
+#if(!$attribute.primaryKey && !$foundFirst)
+						AND ${attribute.name} LIKE CONCAT('%',#{searchKeyword},'%')
+#set($foundFirst = true)
+#end
+#end
+#else
+						AND	${model.primaryKeys.get(1).name} LIKE CONCAT('%',#{searchKeyword},'%')
+#end
+#else
+#if($model.attributes.size() > 1)
+						AND	${model.attributes.get(1).name} LIKE CONCAT('%',#{searchKeyword},'%')
+#end
+#end
+					</when>
+				</choose>
+			</if>
 #else
 
-#end			
+#end
 	</select>
 
 </mapper>

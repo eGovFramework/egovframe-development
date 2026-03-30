@@ -1,5 +1,6 @@
 package ${txtConfigPackage};
-import javax.sql.DataSource;
+
+import jakarta.sql.DataSource;
 
 import org.egovframe.rte.fdl.idgnr.impl.EgovTableIdGnrServiceImpl;
 import org.egovframe.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl;
@@ -10,22 +11,23 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
 
-    @Bean(name="${txtIdServiceName}", destroyMethod = "destroy")
-    public EgovTableIdGnrServiceImpl tableIdGnrService(@Qualifier("${txtDatasourceName}") DataSource dataSource
-    													,@Qualifier("${txtStrategyName}") EgovIdGnrStrategyImpl prefixIdGnrStrategy) {
+    @Bean(name = "${txtIdServiceName}", destroyMethod = "destroy")
+    public EgovTableIdGnrServiceImpl ${txtIdServiceName}(@Qualifier("${txtDatasourceName}") DataSource dataSource#if(${chkStrategy}),
+                                                          @Qualifier("${txtStrategyName}") EgovIdGnrStrategyImpl ${txtStrategyName}#end) {
         EgovTableIdGnrServiceImpl egovTableIdGnrService = new EgovTableIdGnrServiceImpl();
         egovTableIdGnrService.setDataSource(dataSource);
         egovTableIdGnrService.setTable("${txtTableId}");
         egovTableIdGnrService.setTableName("${txtTableName}");
         egovTableIdGnrService.setBlockSize(${txtBlockSize});
 #if(${chkStrategy})
-        egovTableIdGnrService.setStrategy(prefixIdGnrStrategy);
+        egovTableIdGnrService.setStrategy(${txtStrategyName});
 #end
         return egovTableIdGnrService;
     }
+
 #if(${chkStrategy})
-    @Bean(name="${txtStrategyName}")
-    public EgovIdGnrStrategyImpl prefixIdGnrStrategy() {
+    @Bean(name = "${txtStrategyName}")
+    public EgovIdGnrStrategyImpl ${txtStrategyName}() {
         EgovIdGnrStrategyImpl egovIdGnrStrategy = new EgovIdGnrStrategyImpl();
         egovIdGnrStrategy.setPrefix("${txtPrefix}");
         egovIdGnrStrategy.setCipers(${txtCipers});

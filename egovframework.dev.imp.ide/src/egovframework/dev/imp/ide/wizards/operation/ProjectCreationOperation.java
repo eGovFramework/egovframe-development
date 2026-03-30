@@ -636,6 +636,13 @@ public abstract class ProjectCreationOperation implements IRunnableWithProgress,
 				if (MavenPlugin.getMaven() != null) {
 					//MavenPlugin.getProjectConfigurationManager().updateProjectConfiguration(this.getProject(), nullMointor);
 					MavenPlugin.getProjectConfigurationManager().updateProjectConfiguration(this.getProject(), pmonitor);
+
+					// Maven 업데이트 후 facet 버전이 변경될 수 있으므로 강제로 다시 설정 - 필요시 주석 해제 - 2025-11-12
+					/*
+					if (this.context instanceof NewWebProjectContext) {
+						restoreWebFacetVersion(pmonitor);
+					}
+					*/
 				}
 
 			} catch (Exception e) {
@@ -650,6 +657,63 @@ public abstract class ProjectCreationOperation implements IRunnableWithProgress,
 			pmonitor.done();
 		}
 
+	}
+
+	/**
+	 * Maven 업데이트 후 Web Facet(Dynamic Web Module) 버전을 강제로 복원
+	 * @param monitor
+	 * @since 2025-11-12
+	 */
+	private void restoreWebFacetVersion(IProgressMonitor monitor) {
+		try {
+			String servletVersion = ((NewWebProjectContext) context).getServletVersion();
+			if (servletVersion == null || servletVersion.isEmpty()) {
+				return;
+			}
+
+			org.eclipse.wst.common.project.facet.core.IFacetedProject facetedProject =
+				org.eclipse.wst.common.project.facet.core.ProjectFacetsManager.create(getProject());
+
+			if (facetedProject == null) {
+				return;
+			}
+
+			org.eclipse.wst.common.project.facet.core.IProjectFacet webFacet =
+				org.eclipse.wst.common.project.facet.core.ProjectFacetsManager.getProjectFacet(
+					ProjectFacetConstants.WEB_FACET_ID);
+
+			org.eclipse.wst.common.project.facet.core.IProjectFacetVersion currentWebFacetVersion =
+				facetedProject.getInstalledVersion(webFacet);
+
+			// 현재 버전이 설정하려는 버전과 다르면 변경
+			if (currentWebFacetVersion == null || !servletVersion.equals(currentWebFacetVersion.getVersionString())) {
+				org.eclipse.wst.common.project.facet.core.IProjectFacetVersion targetVersion =
+					webFacet.getVersion(servletVersion);
+
+				if (targetVersion != null) {
+					java.util.Set<org.eclipse.wst.common.project.facet.core.IFacetedProject.Action> actions =
+						new java.util.HashSet<org.eclipse.wst.common.project.facet.core.IFacetedProject.Action>();
+
+					if (currentWebFacetVersion != null) {
+						// 기존 버전이 있으면 버전 변경
+						actions.add(new org.eclipse.wst.common.project.facet.core.IFacetedProject.Action(
+							org.eclipse.wst.common.project.facet.core.IFacetedProject.Action.Type.VERSION_CHANGE,
+							targetVersion, null));
+					} else {
+						// 없으면 설치
+						actions.add(new org.eclipse.wst.common.project.facet.core.IFacetedProject.Action(
+							org.eclipse.wst.common.project.facet.core.IFacetedProject.Action.Type.INSTALL,
+							targetVersion, null));
+					}
+
+					facetedProject.modify(actions, monitor);
+					IdeLog.logInfo("Web facet version restored to: " + servletVersion);
+				}
+			}
+
+		} catch (Exception e) {
+			IdeLog.logError("Failed to restore web facet version", e);
+		}
 	}
 
 }

@@ -102,8 +102,9 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 				"EgovDelimitedMultiResourceItemReader",
 				DefaultJobRW.EGOV_DELIMITED_MULTI_RESOURCE_ITEM_READER);
 
-		defaultJobRWList.makeAndAddDefaultJobReader("IbatisPagingItemReader",
-				DefaultJobRW.IBATIS_PAGING_ITEM_READER);
+		// [비활성화] IbatisPagingItemReader - Spring 6에서 org.springframework.orm.ibatis 패키지 제거로 사용 불가
+		// defaultJobRWList.makeAndAddDefaultJobReader("IbatisPagingItemReader",
+		// 		DefaultJobRW.IBATIS_PAGING_ITEM_READER);
 
 		defaultJobRWList.makeAndAddDefaultJobReader(
 				"CustomizedJdbcCursorItemReader",
@@ -179,8 +180,9 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 				"EgovFixedMultiResourceItemWriter",
 				DefaultJobRW.EGOV_FIXED_MULTI_RESOURCE_ITEM_WRITER);
 
-		defaultJobRWList.makeAndAddDefaultJobWriter("IbatisBatchItemWriter",
-				DefaultJobRW.IBATIS_BATCH_ITEM_WRITER);
+		// [비활성화] IbatisBatchItemWriter - Spring 6에서 org.springframework.orm.ibatis 패키지 제거로 사용 불가
+		// defaultJobRWList.makeAndAddDefaultJobWriter("IbatisBatchItemWriter",
+		// 		DefaultJobRW.IBATIS_BATCH_ITEM_WRITER);
 
 		defaultJobRWList.makeAndAddDefaultJobWriter(
 				"SqlParameterJdbcBatchItemWriter",

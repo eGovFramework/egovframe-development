@@ -1,20 +1,68 @@
-<ehcache>
-    <diskStore path="${txtDiskStore}"/>
-    <defaultCache maxElementsInMemory="${txtDftMaxElements}" 
-                  eternal="${txtDftEternal}" 
-                  timeToIdleSeconds="${txtDftIdelTime}" 
-                  timeToLiveSeconds="${txtDftLiveTime}" 
-                  overflowToDisk="${txtDftOverfow}" 
-                  diskPersistent="${txtDftDiskPersistence}"  
-                  diskExpiryThreadIntervalSeconds="${txtDftDiskExpiry}"/>
- 
-    <cache name="${txtCacheName}"
-           maxElementsInMemory="${txtMaxElements}"
-           eternal="${txtEternal}"
-           timeToIdleSeconds="${txtIdleTime}"
-           timeToLiveSeconds="${txtLiveTime}"
-           overflowToDisk="${txtOverflowToDisk}"
-           diskPersistent="${txtDiskPersistent}"  
-           memoryStoreEvictionPolicy="${cboMemoryPolicy}">
-    </cache>    
-</ehcache>
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.ehcache.org/v3"
+    xsi:schemaLocation="http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.0.xsd">
+
+    <!--
+        EhCache 3.x 설정 파일
+        Spring 6.2.11 + Jakarta EE 9 환경
+    -->
+
+    <!-- 디스크 저장소 설정 -->
+    <persistence directory="${txtDiskStore}" />
+
+    <!-- 기본 캐시 템플릿 -->
+    <cache-template name="defaultCache">
+        <!-- 기본 캐시 만료 정책 -->
+        <expiry>
+#if(${txtDftEternal} == "true")
+            <none />
+#else
+#if(${txtDftLiveTime} != "")
+            <!-- TTL (Time To Live) - 생성 후 만료 시간 -->
+            <ttl unit="minutes">${txtDftLiveTime}</ttl>
+#end
+#end
+        </expiry>
+
+        <!-- 저장소 설정 : Heap -> OffHeap -> Disk 순으로 자동으로 overflow 처리됨-->
+        <resources>
+#if(${txtDftHeapEntries} != "")
+            <!-- 힙 메모리 설정 -->
+            <heap unit="entries">${txtDftHeapEntries}</heap>
+#end
+#if(${txtDftOffheapSize} != "")
+            <!-- 오프힙 메모리 설정-->
+            <offheap unit="MB">${txtDftOffheapSize}</offheap>
+#end
+#if(${txtDftDiskPersistence} == "true")
+            <!-- 디스크 메모리 설정 -->
+            <disk unit="MB" persistent="${txtDftDiskPersistence}">100</disk>
+#end
+        </resources>
+    </cache-template>
+
+    <!-- 사용자 캐시 설정 -->
+    <cache alias="${txtCacheName}" uses-template="defaultCache">
+
+        <!-- 캐시 키와 값 타입 설정 -->
+        <key-type>java.lang.Object</key-type>
+        <value-type>java.lang.Object</value-type>
+
+        <expiry>
+#if(${txtEternal} == "true")
+            <none />
+#else
+#if(${txtIdleTime} != "")
+            <!-- TTI (Time To Idle) - 사용 후 만료 시간 -->
+            <tti unit="seconds">${txtIdleTime}</tti>
+#end
+#end
+        </expiry>
+        <resources>
+#if(${txtHeapEntries} != "")
+            <heap unit="entries">${txtHeapEntries}</heap>
+#end
+        </resources>
+    </cache>
+
+</config>

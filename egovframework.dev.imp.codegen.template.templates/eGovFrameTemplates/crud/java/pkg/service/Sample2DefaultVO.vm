@@ -7,9 +7,11 @@ package $voPackage;
 
 import java.io.Serializable;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 /**
- * ${model.entity.pcName} Default VO class
- * 
+ * ${defaultVoClassName} Default VO class
+ *
  * @author ${author}
  * @since ${createDate}
  * @version 1.0
@@ -26,6 +28,9 @@ import java.io.Serializable;
  */
 public class ${defaultVoClassName} implements Serializable {
 
+	/**
+	 *  serialVersion UID
+	 */
 	private static final long serialVersionUID = 1L;
 
 	/** 검색조건 */
@@ -125,6 +130,11 @@ public class ${defaultVoClassName} implements Serializable {
 
 	public void setPageSize(int pageSize) {
 		this.pageSize = pageSize;
+	}
+
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
 	}
 
 }

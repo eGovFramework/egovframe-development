@@ -1,26 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:cache="http://www.springframework.org/schema/cache"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-		http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.0.xsd">
-  
-  	<cache:annotation-driven />
+<!--
+  Spring Cache Configuration with Ehcache 3.x and JCache (JSR-107)
 
-	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
-	    <property name="cacheManager">
-	        <bean class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
-	            <property name="configLocation" value="classpath:${templateUtil.removeSourcePath(${txtConfigLocation})}"/>
-	        </bean>
-	    </property>
-	</bean>
-	
-	<!-- pom.xml에 다음 라이브러리 추가 필요
-	<dependency>
-	    <groupId>net.sf.ehcache</groupId>
-	    <artifactId>ehcache</artifactId>
-	    <version>2.10.9.2</version>
-	</dependency>
-	-->
+  Requirements:
+  - Ehcache 3.x
+  - Spring Framework 6.x with JCache (JSR-107)
+  - Jakarta EE 9+
+  - JDK 17+
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:cache="http://www.springframework.org/schema/cache"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd
+                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Component Scan -->
+    <context:component-scan base-package="${txtComponentScanBasePackage}" />
+
+    <!-- Enable Spring Cache Annotations -->
+    <cache:annotation-driven />
+
+    <!-- JCache Cache Manager for Spring Framework 6.x -->
+    <bean id="cacheManager" class="org.springframework.cache.jcache.JCacheCacheManager">
+        <property name="cacheManager" ref="jCacheCacheManager" />
+    </bean>
+
+    <!-- JCache CacheManager Configuration with Ehcache 3.x -->
+    <bean id="jCacheCacheManager" class="org.springframework.cache.jcache.JCacheManagerFactoryBean">
+        <property name="cacheManagerUri" value="classpath:${txtConfigLocation}" />
+        <property name="cachingProvider">
+            <bean class="org.ehcache.jsr107.EhcacheCachingProvider" factory-method="getInstance" />
+        </property>
+    </bean>
+
+    <!--
+    pom.xml에 다음 라이브러리 추가 필요:
+
+    <dependency>
+        <groupId>org.ehcache</groupId>
+        <artifactId>ehcache</artifactId>
+        <version>3.10.8</version>
+        <classifier>jakarta</classifier>
+    </dependency>
+
+    <dependency>
+        <groupId>jakarta.cache</groupId>
+        <artifactId>jakarta.cache-api</artifactId>
+        <version>3.1.1</version>
+    </dependency>
+
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-context-support</artifactId>
+    </dependency>
+
+    Note: ${txtConfigLocation} 경로의 파일은 Ehcache 3.x XML 형식이어야 합니다.
+    -->
 
 </beans>

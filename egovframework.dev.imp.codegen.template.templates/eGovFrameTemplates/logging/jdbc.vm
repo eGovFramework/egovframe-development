@@ -30,9 +30,6 @@
 			</Filters>
 			-->
 		</JDBC>
-        <File name="${txtAppenderName}" fileName="${txtLogFileName}" append="${cboAppend}">
-            <PatternLayout pattern="${txtConversionPattern}"/>
-        </File>
     </Appenders>
     <Loggers>
         <Logger name="egovframework" level="DEBUG" additivity="false">

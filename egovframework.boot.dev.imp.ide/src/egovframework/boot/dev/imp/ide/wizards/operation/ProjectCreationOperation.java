@@ -309,7 +309,12 @@ public abstract class ProjectCreationOperation implements IRunnableWithProgress,
 	 * 스프링 네이처 추가
 	 */
 	private void createSpringNature(IProgressMonitor monitor) throws CoreException {
-		BootIdeUtils.addNatureToProject(getProject(), "org.springframework.ide.eclipse.core.springnature", monitor);
+		try {
+			BootIdeUtils.addNatureToProject(getProject(), "org.springframework.ide.eclipse.core.springnature", monitor);
+		} catch (CoreException e) {
+			// Spring IDE 플러그인이 설치되지 않은 경우 무시하고 계속 진행. STS4부터는 위 플러그인은 없고, Boot 중심 구조임. 로그만 남기고 생성 진행 - 2025-12-01
+			BootIdeLog.logError(e);
+		}
 	}
 
 	/**

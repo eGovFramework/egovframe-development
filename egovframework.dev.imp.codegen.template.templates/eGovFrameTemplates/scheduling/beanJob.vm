@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="${txtJobName}" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
-		<property name="jobClass" value="${txtServiceClass}" />
-#if(${chkProperty})		
+	<!-- Job Detail Bean Configuration (Spring Framework 6.x compatible) -->
+	<bean id="${txtJobName}" class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<property name="jobClass" value="${txtServiceClass}" /> <!-- org.springframework.scheduling.quartz.QuartzJobBean 구현 클래스 -->
+#if(${chkProperty})
 		<property name="jobDataAsMap">
 			<map>
-				<entry key="${txtPropertyName}" value="${txtPropertyValue}"/>
+				<entry key="${txtPropertyName}" value="${txtPropertyValue}" />
 			</map>
 		</property>
-#end		
+#end
 	</bean>
-	
+
 </beans>	

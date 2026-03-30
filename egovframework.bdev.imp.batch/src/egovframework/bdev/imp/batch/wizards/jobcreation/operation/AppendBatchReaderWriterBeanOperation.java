@@ -539,49 +539,52 @@ public class AppendBatchReaderWriterBeanOperation {
 			property9.setAttribute("value", fieldName);
 			
 		}
+		
 		//// DB Reader
-		else if(readerType.equals("IbatisPagingItemReader")){
-			 
-			Element property = new Element("property");
-			bean.addContent(property);
-			property.setAttribute("name", "queryId");
-			property.setAttribute("value", ibatisStatement);
+
+		// [비활성화] IbatisPagingItemReader - Spring 6에서 org.springframework.orm.ibatis 패키지 제거로 사용 불가
+		//else if(readerType.equals("IbatisPagingItemReader")){
+		//	 
+		//	Element property = new Element("property");
+		//	bean.addContent(property);
+		//	property.setAttribute("name", "queryId");
+		//	property.setAttribute("value", ibatisStatement);
+		//	
+		//	Element property2 = new Element("property");
+		//	bean.addContent(property2);
+		//	property2.setAttribute("name", "sqlMapClient");
+		//	
+		//	Element beandelegatingReader = new Element("bean");
+		//	property2.addContent(beandelegatingReader);
+		//	beandelegatingReader.setAttribute("class", "org.springframework.orm.ibatis.SqlMapClientFactoryBean");
+		//	
+		//	if(!NullUtil.isNull(datasourceBeanID) && !datasourceBeanID.equalsIgnoreCase("null")){
+		//		Element property3 = new Element("property");
+		//		beandelegatingReader.addContent(property3);
+		//		property3.setAttribute("name", "dataSource");
+		//		property3.setAttribute("ref", datasourceBeanID);
+		//	}
+		//	
+		//	Element property4 = new Element("property");
+		//	beandelegatingReader.addContent(property4);
+		//	property4.setAttribute("name", "configLocation");
+		//	
+		//	String configurationFile = tmpConfigurationFile;
+		//	// only file descriptor(file:)
+		//	if(configurationFile.contains(projectName)) {
+		//		configurationFile = configurationFile.substring(configurationFile.indexOf(projectName) + projectName.length());
+		//		if(configurationFile.indexOf("/") == 0) {
+		//			configurationFile = configurationFile.substring(1);
+		//		}
+		//		
+		//		configurationFile = "file:./" + configurationFile;
+		//	} else {
+		//		configurationFile = "file:" + configurationFile;
+		//	}
+		//	
+		//	property4.setAttribute("value", configurationFile);
 			
-			Element property2 = new Element("property");
-			bean.addContent(property2);
-			property2.setAttribute("name", "sqlMapClient");
-			
-			Element beandelegatingReader = new Element("bean");
-			property2.addContent(beandelegatingReader);
-			beandelegatingReader.setAttribute("class", "org.springframework.orm.ibatis.SqlMapClientFactoryBean");
-			
-			if(!NullUtil.isNull(datasourceBeanID) && !datasourceBeanID.equalsIgnoreCase("null")){
-				Element property3 = new Element("property");
-				beandelegatingReader.addContent(property3);
-				property3.setAttribute("name", "dataSource");
-				property3.setAttribute("ref", datasourceBeanID);
-			}
-			
-			Element property4 = new Element("property");
-			beandelegatingReader.addContent(property4);
-			property4.setAttribute("name", "configLocation");
-			
-			String configurationFile = tmpConfigurationFile;
-			// only file descriptor(file:)
-			if(configurationFile.contains(projectName)) {
-				configurationFile = configurationFile.substring(configurationFile.indexOf(projectName) + projectName.length());
-				if(configurationFile.indexOf("/") == 0) {
-					configurationFile = configurationFile.substring(1);
-				}
-				
-				configurationFile = "file:./" + configurationFile;
-			} else {
-				configurationFile = "file:" + configurationFile;
-			}
-			
-			property4.setAttribute("value", configurationFile);
-			
-		} else if(readerType.equals("CustomizedJdbcCursorItemReader")){
+		else if(readerType.equals("CustomizedJdbcCursorItemReader")){
 			 
 			if(!NullUtil.isNull(datasourceBeanID) && !datasourceBeanID.equalsIgnoreCase("null")){
 				Element property = new Element("property");
@@ -1111,52 +1114,53 @@ public class AppendBatchReaderWriterBeanOperation {
 			property7.setAttribute("value", fieldRange);
 			
 		} 
+		
 		//// DB Writer
-		else if(writerType.equals("IbatisBatchItemWriter")){
-			 
-			Element property = new Element("property");
-			bean.addContent(property);
-			property.setAttribute("name", "statementId");
-			property.setAttribute("value", ibatisStatement);
+
+		// [비활성화] IbatisBatchItemWriter - Spring 6에서 org.springframework.orm.ibatis 패키지 제거로 사용 불가
+		//else if(writerType.equals("IbatisBatchItemWriter")){
+		//	 
+		//	Element property = new Element("property");
+		//	bean.addContent(property);
+		//	property.setAttribute("name", "statementId");
+		//	property.setAttribute("value", ibatisStatement);
+		//	
+		//	Element property2 = new Element("property");
+		//	bean.addContent(property2);
+		//	property2.setAttribute("name", "sqlMapClient");
+		//	
+		//	Element beanFileItemWriter = new Element("bean");
+		//	property2.addContent(beanFileItemWriter);
+		//	
+		//	beanFileItemWriter.setAttribute("class", "org.springframework.orm.ibatis.SqlMapClientFactoryBean");
+		//	
+		//	if(!NullUtil.isNull(datasourceBeanID) && !datasourceBeanID.equalsIgnoreCase("null")){
+		//		Element property4 = new Element("property");
+		//		beanFileItemWriter.addContent(property4);
+		//		property4.setAttribute("name", "dataSource");
+		//		property4.setAttribute("ref", datasourceBeanID);
+		//	}
+		//	
+		//	Element property5 = new Element("property");
+		//	beanFileItemWriter.addContent(property5);
+		//	property5.setAttribute("name", "configLocation");
+		//	
+		//	String configurationFile = tmpConfigurationFile;
+		//	// only file descriptor(file:)
+		//	if(configurationFile.contains(projectName)) {
+		//		configurationFile = configurationFile.substring(configurationFile.indexOf(projectName) + projectName.length());
+		//		if(configurationFile.indexOf("/") == 0) {
+		//			configurationFile = configurationFile.substring(1);
+		//		}
+		//		
+		//		configurationFile = "file:./" + configurationFile;
+		//	} else {
+		//		configurationFile = "file:" + configurationFile;
+		//	}
+		//	
+		//	property5.setAttribute("value", configurationFile);
 			
-			Element property2 = new Element("property");
-			bean.addContent(property2);
-			property2.setAttribute("name", "sqlMapClient");
-			
-			Element beanFileItemWriter = new Element("bean");
-			property2.addContent(beanFileItemWriter);
-			
-			beanFileItemWriter.setAttribute("class", "org.springframework.orm.ibatis.SqlMapClientFactoryBean");
-			
-			if(!NullUtil.isNull(datasourceBeanID) && !datasourceBeanID.equalsIgnoreCase("null")){
-				Element property4 = new Element("property");
-				beanFileItemWriter.addContent(property4);
-				property4.setAttribute("name", "dataSource");
-				property4.setAttribute("ref", datasourceBeanID);
-			}
-			
-			Element property5 = new Element("property");
-			beanFileItemWriter.addContent(property5);
-			property5.setAttribute("name", "configLocation");
-			
-			String configurationFile = tmpConfigurationFile;
-			// only file descriptor(file:)
-			if(configurationFile.contains(projectName)) {
-				configurationFile = configurationFile.substring(configurationFile.indexOf(projectName) + projectName.length());
-				if(configurationFile.indexOf("/") == 0) {
-					configurationFile = configurationFile.substring(1);
-				}
-				
-				configurationFile = "file:./" + configurationFile;
-			} else {
-				configurationFile = "file:" + configurationFile;
-			}
-			
-			property5.setAttribute("value", configurationFile);
-			
-			
-			
-		} else if(writerType.equals("SqlParameterJdbcBatchItemWriter")){
+		else if(writerType.equals("SqlParameterJdbcBatchItemWriter")){
 			 
 			Element property = new Element("property");
 			bean.addContent(property);

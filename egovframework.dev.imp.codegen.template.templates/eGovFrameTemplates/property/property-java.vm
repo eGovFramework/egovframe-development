@@ -1,4 +1,5 @@
 package ${txtConfigPackage};
+
 import org.egovframe.rte.fdl.property.impl.EgovPropertyServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,35 +14,33 @@ public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
 
     @Bean(name = "${txtPropertyServiceName}", destroyMethod = "destroy")
     public EgovPropertyServiceImpl egovPropertyService() {
-    	
         EgovPropertyServiceImpl egovPropertyService = new EgovPropertyServiceImpl();
-        
+
 #if(${rdoType} == "Internal Properties")
         // properties 설정
         Map<String, String> properties = new HashMap<>();
         properties.put("${txtKey}", "${txtValue}");
-        
         egovPropertyService.setProperties(properties);
 #end
-        
+
 #if(${rdoType} == "External File")
         // extFileName 설정
         Set<Object> extFileNameSet = new HashSet<>();
 
-        // Map 정의
+        // MAP을 이용해서 encoding 정보를 입력하는 방법
         Map<String, String> extFileMap = new HashMap<>();
-        extFileMap.put("encoding", "UTF-8");
-        extFileMap.put("filename", "classpath*:/egovframework/egovProps/conf/config.properties");
+        extFileMap.put("encoding", "${cboEncoding}");
+        extFileMap.put("filename", "${txtPropertyFile}");
 
         // Set에 Map 추가
         extFileNameSet.add(extFileMap);
 
-        // 필요시 주석에 있는 단일 값 추가
-        // extFileNameSet.add("classpath*:");
+        // 단일 값 입력 방법 : 필요시 아래와 같은 방식으로 단일 값 추가
+        // extFileNameSet.add("${txtPropertyFile}");
 
         egovPropertyService.setExtFileName(extFileNameSet);
 #end
-        
+
         return egovPropertyService;
     }
 }

@@ -198,12 +198,14 @@ public final class ComponentElementFactory {
 				component.setDesc( getFieldValue(cls, child, "description", "childText") ); 
 				component.setUseTable( getFieldValue(cls, child, "useTable", "childText") ); 
 				component.setDependencyPackage(computeDependency(cls, child, totalComponent));
-				component.setVersion( getFieldValue(cls, child, "version", "childText") ); 
+				//component.setVersion( getFieldValue(cls, child, "version", "childText") ); 
 				component.setParentName(catName);
 				component.setWebExist( getFieldValue(cls, child, "webexist", "childText").equals("true") ? true : false); 
 				component.setAddedOptions( getFieldValue(cls, child, "addedOptions", "childText").equals("true") ? true : false);
 				//파일명 = 패키지명-버전.zip
-				component.setFileName( getFieldValue(cls, child, "packageName", "childText") +"."+ getFieldValue(cls, child, "version", "childText") +".zip"); 
+				//component.setFileName( getFieldValue(cls, child, "packageName", "childText") +"."+ getFieldValue(cls, child, "version", "childText") +".zip");
+				//파일명 = 패키지명.Wizard.zip - 2025-11-11
+				component.setFileName( getFieldValue(cls, child, "packageName", "childText") + ".Wizard.zip"); 
 
 				components.add(component);
 			}

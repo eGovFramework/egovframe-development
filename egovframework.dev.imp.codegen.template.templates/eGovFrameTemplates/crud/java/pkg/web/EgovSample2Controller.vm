@@ -1,7 +1,6 @@
 ##
 #set($voPackage="${voPackage}")
 #set($voClassName="${model.entity.pcName}VO")
-#set($defaultVoClassName="${model.entity.pcName}DefaultVO")
 #set($voInstanceName="${model.entity.ccName}VO")
 #set($servicePackage="${servicePackage}")
 #set($serviceClassName="${model.entity.pcName}Service")
@@ -20,54 +19,48 @@
 #set($selectListTotCntMethodName="select${model.entity.pcName}ListTotCnt")
 ##
 ##
-#set($updateViewMethodName="update${model.entity.pcName}View")
-#set($addMethodName="add${model.entity.pcName}")
-#set($addViewMethodName="add${model.entity.pcName}View")
-##
-#set($listPath="/${model.entity.ccName}/${model.entity.pcName}List.do")
-#set($addViewPath="/${model.entity.ccName}/add${model.entity.pcName}View.do")
+#set($listPath="/${model.entity.ccName}/${model.entity.ccName}List.do")
 #set($addPath="/${model.entity.ccName}/add${model.entity.pcName}.do")
-#set($selectPath="/${model.entity.ccName}/select${model.entity.pcName}.do")
+#set($addViewPath="/${model.entity.ccName}/add${model.entity.pcName}View.do")
 #set($updatePath="/${model.entity.ccName}/update${model.entity.pcName}.do")
 #set($updateViewPath="/${model.entity.ccName}/update${model.entity.pcName}View.do")
 #set($deletePath="/${model.entity.ccName}/delete${model.entity.pcName}.do")
 ##
-#set($listView="/${model.entity.ccName}/${model.entity.pcName}List")
-#set($registerView="/${model.entity.ccName}/${model.entity.pcName}Register")
+#set($listView="${model.entity.ccName}/${model.entity.ccName}List")
+#set($registerView="${model.entity.ccName}/${model.entity.ccName}Register")
 ##
 ##
 package ${controllerPackage};
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
+import org.egovframe.rte.fdl.property.EgovPropertyService;
+import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
-
-import org.egovframe.rte.fdl.property.EgovPropertyService;
-import org.egovframe.rte.ptl.mvc.tags.ui.pagination.PaginationInfo;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 #if (${servicePackage}=='${servicePackage}')
-// Servoce 객체에 대한 import 구문
+// Service 객체에 대한 import 구문
 // import (service package).${serviceClassName};
 #else
 import ${servicePackage}.${serviceClassName};
 #end
 #if (${voPackage}=='${voPackage}')
 // Vo 객체에 대한 import 구문
-// import (vo package).${defaultVoClassName};
 // import (vo package).${voClassName};
 #else
-import ${voPackage}.${defaultVoClassName};
 import ${voPackage}.${voClassName};
 #end
+import jakarta.annotation.Resource;
+import jakarta.validation.Valid;
 
 /**
  * @Class Name : ${controllerClassName}.java
@@ -78,124 +71,168 @@ import ${voPackage}.${voClassName};
  * @since ${createDate}
  * @version 1.0
  * @see
- *  
+ *
  *  Copyright (C)  All right reserved.
  */
 
 @Controller
-@SessionAttributes(types=${voClassName}.class)
 public class ${controllerClassName} {
 
-    @Resource(name = "${serviceName}")
-    private ${serviceClassName} ${serviceInstanceName};
-    
-    /** EgovPropertyService */
-    @Resource(name = "propertiesService")
-    protected EgovPropertyService propertiesService;
-	
-    /**
-	 * ${model.entity.name} 목록을 조회한다. (pageing)
-	 * @param searchVO - 조회할 정보가 담긴 ${defaultVoClassName}
+	/** ${serviceClassName} */
+	@Resource(name = "${serviceName}")
+	private ${serviceClassName} ${serviceInstanceName};
+
+	/** EgovPropertyService */
+	@Resource(name = "propertiesService")
+	private EgovPropertyService propertiesService;
+
+	/**
+	 * 글 목록을 조회한다. (pageing)
+	 * @param ${voInstanceName} - 조회할 정보가 담긴 ${voClassName}
+	 * @param model
 	 * @return "${listView}"
 	 * @exception Exception
 	 */
-    @RequestMapping(value="${listPath}")
-    public String ${selectListMethodName}(@ModelAttribute("searchVO") ${defaultVoClassName} searchVO, 
-    		ModelMap model)
-            throws Exception {
-    	
-    	/** EgovPropertyService.sample */
-    	searchVO.setPageUnit(propertiesService.getInt("pageUnit"));
-    	searchVO.setPageSize(propertiesService.getInt("pageSize"));
-    	
-    	/** pageing */
-    	PaginationInfo paginationInfo = new PaginationInfo();
-		paginationInfo.setCurrentPageNo(searchVO.getPageIndex());
-		paginationInfo.setRecordCountPerPage(searchVO.getPageUnit());
-		paginationInfo.setPageSize(searchVO.getPageSize());
-		
-		searchVO.setFirstIndex(paginationInfo.getFirstRecordIndex());
-		searchVO.setLastIndex(paginationInfo.getLastRecordIndex());
-		searchVO.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
-		
-        List<?> ${listInstanceName} = ${serviceInstanceName}.${selectListMethodName}(searchVO);
-        model.addAttribute("resultList", ${listInstanceName});
-        
-        int totCnt = ${serviceInstanceName}.${selectListTotCntMethodName}(searchVO);
+	@GetMapping("${listPath}")
+	public String ${selectListMethodName}(@ModelAttribute("${voInstanceName}") ${voClassName} ${voInstanceName}, ModelMap model) throws Exception {
+
+		/** EgovPropertyService.sample */
+		${voInstanceName}.setPageUnit(propertiesService.getInt("pageUnit"));
+		${voInstanceName}.setPageSize(propertiesService.getInt("pageSize"));
+
+		/** pageing setting */
+		PaginationInfo paginationInfo = new PaginationInfo();
+		paginationInfo.setCurrentPageNo(${voInstanceName}.getPageIndex());
+		paginationInfo.setRecordCountPerPage(${voInstanceName}.getPageUnit());
+		paginationInfo.setPageSize(${voInstanceName}.getPageSize());
+
+		${voInstanceName}.setFirstIndex(paginationInfo.getFirstRecordIndex());
+		${voInstanceName}.setLastIndex(paginationInfo.getLastRecordIndex());
+		${voInstanceName}.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
+
+		/** List */
+		List<?> ${listInstanceName} = ${serviceInstanceName}.${selectListMethodName}(${voInstanceName});
+		model.addAttribute("resultList", ${listInstanceName});
+
+		/** Count */
+		int totCnt = ${serviceInstanceName}.${selectListTotCntMethodName}(${voInstanceName});
 		paginationInfo.setTotalRecordCount(totCnt);
-        model.addAttribute("paginationInfo", paginationInfo);
-        
-        return "${listView}";
-    } 
-    
-    @RequestMapping("${addViewPath}")
-    public String ${addViewMethodName}(
-            @ModelAttribute("searchVO") ${defaultVoClassName} searchVO, Model model)
-            throws Exception {
-        model.addAttribute("${voInstanceName}", new ${voClassName}());
-        return "${registerView}";
-    }
-    
-    @RequestMapping("${addPath}")
-    public String ${addMethodName}(
-            ${voClassName} ${voInstanceName},
-            @ModelAttribute("searchVO") ${defaultVoClassName} searchVO, SessionStatus status)
-            throws Exception {
-        ${serviceInstanceName}.${insertMethodName}(${voInstanceName});
-        status.setComplete();
-        return "forward:${listPath}";
-    }
-    
-    @RequestMapping("${updateViewPath}")
-    public String ${updateViewMethodName}(
+
+		/** Pagination */
+		model.addAttribute("paginationInfo", paginationInfo);
+
+		return "${listView}";
+	}
+
+	/**
+	 * 글 등록 화면을 조회한다.
+	 * @param ${voInstanceName} - 목록 조회조건 정보가 담긴 VO
+	 * @param model
+	 * @return "${registerView}"
+	 * @exception Exception
+	 */
+	@PostMapping("${addViewPath}")
+	public String add${model.entity.pcName}View(@ModelAttribute("${voInstanceName}") ${voClassName} ${voInstanceName}, Model model) throws Exception {
+	
+		model.addAttribute("${voInstanceName}", ${voInstanceName});
+		
+		return "${registerView}";
+	}
+
+	/**
+	 * 글을 등록한다.
+	 * @param ${voInstanceName} - 등록할 정보가 담긴 VO
+	 * @param bindingResult
+	 * @param model
+	 * @param status
+	 * @return "redirect:${listPath}"
+	 * @exception Exception
+	 */
+	@PostMapping("${addPath}")
+	public String add${model.entity.pcName}(@Valid @ModelAttribute("${voInstanceName}") ${voClassName} ${voInstanceName}, BindingResult bindingResult, Model model, SessionStatus status) throws Exception {
+
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("${voInstanceName}", ${voInstanceName});
+			return "${registerView}";
+		}
+
+		${serviceInstanceName}.${insertMethodName}(${voInstanceName});
+		status.setComplete();
+
+		return "redirect:${listPath}";
+	}
+
+	/**
+	 * 글 수정화면을 조회한다.
 #if(${model.primaryKeys} == [])
-            @RequestParam("${model.attributes.get(0).ccName}") ${model.attributes.get(0).javaType} ${model.attributes.get(0).ccName} ,
-#else                     
+	 * @param ${model.attributes.get(0).ccName} - 수정할 글 ${model.attributes.get(0).ccName}
+#else
 #foreach($attribute in $model.primaryKeys)
-            @RequestParam("${attribute.ccName}") ${attribute.javaType} ${attribute.ccName} ,
-#end    
+	 * @param ${attribute.ccName} - 수정할 글 ${attribute.ccName}
 #end
-            @ModelAttribute("searchVO") ${defaultVoClassName} searchVO, Model model)
-            throws Exception {
-        ${voClassName} ${voInstanceName} = new ${voClassName}();
-#if(${model.primaryKeys} == [])
-        ${voInstanceName}.set${model.attributes.get(0).pcName}(${model.attributes.get(0).ccName});        
-#else        
-#foreach($attribute in $model.primaryKeys)        
-        ${voInstanceName}.set${attribute.pcName}(${attribute.ccName});
-#end 
-#end       
-        // 변수명은 CoC 에 따라 ${voInstanceName}
-        model.addAttribute(${selectMethodName}(${voInstanceName}, searchVO));
-        return "${registerView}";
-    }
+#end
+	 * @param model
+	 * @return "${registerView}"
+	 * @exception Exception
+	 */
+	@PostMapping("${updateViewPath}")
+	public String update${model.entity.pcName}View(@ModelAttribute("${voInstanceName}") ${voClassName} ${voInstanceName}, Model model) throws Exception {
+	
+		${voClassName} detail = ${serviceInstanceName}.${selectMethodName}(${voInstanceName});
+		detail.setSearchCondition(${voInstanceName}.getSearchCondition());
+		detail.setSearchKeyword(${voInstanceName}.getSearchKeyword());
+		detail.setPageIndex(${voInstanceName}.getPageIndex());
+		
+		model.addAttribute("${voInstanceName}", detail);
+		
+		return "${registerView}";
+	}
 
-    @RequestMapping("${selectPath}")
-    public @ModelAttribute("${voInstanceName}")
-    ${voClassName} ${selectMethodName}(
-            ${voClassName} ${voInstanceName},
-            @ModelAttribute("searchVO") ${defaultVoClassName} searchVO) throws Exception {
-        return ${serviceInstanceName}.${selectMethodName}(${voInstanceName});
-    }
+	/**
+	 * 글을 수정한다.
+	 * @param ${voInstanceName} - 수정할 정보가 담긴 VO
+	 * @param bindingResult
+	 * @param model
+	 * @param status
+	 * @return "redirect:${listPath}"
+	 * @exception Exception
+	 */
+	@PostMapping("${updatePath}")
+	public String update${model.entity.pcName}(@Valid @ModelAttribute("${voInstanceName}") ${voClassName} ${voInstanceName}, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes, SessionStatus status) throws Exception {
 
-    @RequestMapping("${updatePath}")
-    public String ${updateMethodName}(
-            ${voClassName} ${voInstanceName},
-            @ModelAttribute("searchVO") ${defaultVoClassName} searchVO, SessionStatus status)
-            throws Exception {
-        ${serviceInstanceName}.${updateMethodName}(${voInstanceName});
-        status.setComplete();
-        return "forward:${listPath}";
-    }
-    
-    @RequestMapping("${deletePath}")
-    public String ${deleteMethodName}(
-            ${voClassName} ${voInstanceName},
-            @ModelAttribute("searchVO") ${defaultVoClassName} searchVO, SessionStatus status)
-            throws Exception {
-        ${serviceInstanceName}.${deleteMethodName}(${voInstanceName});
-        status.setComplete();
-        return "forward:${listPath}";
-    }
+		if (bindingResult.hasErrors()) {
+			model.addAttribute("${voInstanceName}", ${voInstanceName});
+			return "${registerView}";
+		}
+
+		${serviceInstanceName}.${updateMethodName}(${voInstanceName});
+		status.setComplete();
+
+		redirectAttributes.addAttribute("searchCondition", ${voInstanceName}.getSearchCondition());
+		redirectAttributes.addAttribute("searchKeyword", ${voInstanceName}.getSearchKeyword());
+		redirectAttributes.addAttribute("pageIndex", ${voInstanceName}.getPageIndex());
+
+		return "redirect:${listPath}";
+	}
+
+	/**
+	 * 글을 삭제한다.
+	 * @param ${voInstanceName} - 삭제할 정보가 담긴 VO
+	 * @param model
+	 * @param status
+	 * @return "redirect:${listPath}"
+	 * @exception Exception
+	 */
+	@PostMapping("${deletePath}")
+	public String delete${model.entity.pcName}(@ModelAttribute("${voInstanceName}") ${voClassName} ${voInstanceName}, RedirectAttributes redirectAttributes, SessionStatus status) throws Exception {
+		${serviceInstanceName}.${deleteMethodName}(${voInstanceName});
+		status.setComplete();
+
+		redirectAttributes.addAttribute("searchCondition", ${voInstanceName}.getSearchCondition());
+		redirectAttributes.addAttribute("searchKeyword", ${voInstanceName}.getSearchKeyword());
+		redirectAttributes.addAttribute("pageIndex", ${voInstanceName}.getPageIndex());
+
+		return "redirect:${listPath}";
+	}
 
 }

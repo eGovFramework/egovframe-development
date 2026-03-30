@@ -1,5 +1,6 @@
 package ${txtConfigPackage};
-import javax.sql.DataSource;
+
+import jakarta.sql.DataSource;
 
 import org.egovframe.rte.fdl.idgnr.impl.EgovSequenceIdGnrServiceImpl;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -9,14 +10,14 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
 
-    @Bean(name="${txtIdServiceName}", destroyMethod = "destroy")
-    public EgovSequenceIdGnrServiceImpl sequenceIdGnrService(@Qualifier("${txtDatasourceName}") DataSource dataSource) {
-    	EgovSequenceIdGnrServiceImpl egovSequenceIdGnrService = new EgovSequenceIdGnrServiceImpl();
+    @Bean(name = "${txtIdServiceName}", destroyMethod = "destroy")
+    public EgovSequenceIdGnrServiceImpl ${txtIdServiceName}(@Qualifier("${txtDatasourceName}") DataSource dataSource) {
+        EgovSequenceIdGnrServiceImpl egovSequenceIdGnrService = new EgovSequenceIdGnrServiceImpl();
         egovSequenceIdGnrService.setDataSource(dataSource);
         egovSequenceIdGnrService.setQuery("${txtQuery}");
-#if(${rdoType} == "BigDecimal")        
+#if(${rdoType} == "BigDecimal")
         egovSequenceIdGnrService.setUseBigDecimals(true);
-#end        
+#end
         return egovSequenceIdGnrService;
     }
 }

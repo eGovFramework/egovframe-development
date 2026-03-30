@@ -91,8 +91,8 @@ public class CreateBatchJobLauncherXMLFileOperation {
 						if(!jobExecutorContext.getIsJdbcTemplateExist()) {
 							jobExecutionOption.put("jdbcTemplate", "org.springframework.jdbc.core.JdbcTemplate");
 						}
-						// lobHandler bean 중복 생성 가능하도록 수정
-						jobExecutionOption.put("lobHandler", "org.springframework.jdbc.support.lob.DefaultLobHandler");
+						// [비활성화] lobHandler - Spring Batch 5에서 JobRepositoryFactoryBean의 lobHandler 속성 제거로 불필요
+						// jobExecutionOption.put("lobHandler", "org.springframework.jdbc.support.lob.DefaultLobHandler");
 					} else {
 						jobExecutionDefault.put("jobRepository", "jobRepository<org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean");
 						jobExecutionDefault.put("jobExplorer", jobExecutorContext.getExplorerId()+"<"+"org.springframework.batch.core.explore.support.MapJobExplorerFactoryBean");
@@ -260,7 +260,8 @@ public class CreateBatchJobLauncherXMLFileOperation {
 					// JobRepository Type: DB(Reference / New)
 					jobRepositoryBean.setAttribute("dataSource-ref", jobExecutorContext.getDatasourceBeanID(), propertyNameSpace);					
 					jobRepositoryBean.setAttribute("transactionManager-ref", "transactionManager", propertyNameSpace);					
-					jobRepositoryBean.setAttribute("lobHandler-ref", jobLauncherId+".lobHandler", propertyNameSpace);		
+					// [비활성화] lobHandler-ref - Spring Batch 5에서 JobRepositoryFactoryBean의 lobHandler 속성 제거
+					// jobRepositoryBean.setAttribute("lobHandler-ref", jobLauncherId+".lobHandler", propertyNameSpace);
 					
 				} else {
 					
@@ -391,16 +392,18 @@ public class CreateBatchJobLauncherXMLFileOperation {
 				}
 				
 				
-			} else if (key.contains("lobHandler")){
-				
-				jobLauncherOtherBean.setAttribute("id", jobLauncherId+"."+key);
-
-				if(jobExecutorContext.getDriverClassName() != null && jobExecutorContext.getDriverClassName().contains("oracle")){
-					jobLauncherOtherBean.setAttribute("class", "org.springframework.jdbc.support.lob.OracleLobHandler");
-				} else {
-					jobLauncherOtherBean.setAttribute("class", jobExecutionOption.get(key));
-				}
-								
+			// [비활성화] lobHandler bean 생성 - Spring Batch 5에서 불필요
+			//   OracleLobHandler: Spring 6에서 제거됨
+			//   DefaultLobHandler: JobRepositoryFactoryBean의 lobHandler 속성 자체가 Spring Batch 5에서 제거됨
+			// } else if (key.contains("lobHandler")){
+			// 	
+			// 	jobLauncherOtherBean.setAttribute("id", jobLauncherId+"."+key);
+			//
+			// 	if(jobExecutorContext.getDriverClassName() != null && jobExecutorContext.getDriverClassName().contains("oracle")){
+			// 		jobLauncherOtherBean.setAttribute("class", "org.springframework.jdbc.support.lob.OracleLobHandler");
+			// 	} else {
+			// 		jobLauncherOtherBean.setAttribute("class", jobExecutionOption.get(key));
+			// 	}
 			} else if (key.contains("jdbcTemplate") ){
 				
 				jobLauncherOtherBean.setAttribute("id", key);

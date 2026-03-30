@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>###GROUP_ID###</groupId>
 	<artifactId>###ARTIFACT_ID###</artifactId>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<version>###VERSION###</version>
 	<name>###NAME###</name>
-   	<url>###URL###</url>
+	<url>###URL###</url>
 
 	<licenses>
 		<license>
@@ -16,12 +17,27 @@
 		</license>
 	</licenses>
 
+	<!-- eGovFramework Boot Parent 설정 -->
+	<parent>
+		<groupId>org.egovframe.boot</groupId>
+		<artifactId>egovframe-boot-starter-parent</artifactId>
+		<version>5.0.0</version>
+	</parent>
+
 	<properties>
-		<spring.maven.artifact.version>5.3.37</spring.maven.artifact.version>
-		<org.egovframe.rte.version>4.3.0</org.egovframe.rte.version>
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<jakarta.servlet.version>6.1.0</jakarta.servlet.version>
+		<jakarta.servlet.jsp.version>4.0.0</jakarta.servlet.jsp.version>
+		<protobuf.java.version>3.25.5</protobuf.java.version>
+		<springdoc.webmvc.ui.version>2.8.13</springdoc.webmvc.ui.version>
+		<javapns-jdk16.version>2.4.0</javapns-jdk16.version>
+		<json-simple.version>1.1.1</json-simple.version>
+		<google-api-client.version>2.8.1</google-api-client.version>
+		<google-oauth-client.version>1.39.0</google-oauth-client.version>
+		<google-http-client.version>2.0.2</google-http-client.version>
+		<guava.version>33.0.0-jre</guava.version>
 	</properties>
 
 	<repositories>
@@ -45,76 +61,89 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-		<repository>
-			<id>projectRepository</id>
-			<name>Project Repository</name>
-			<url>file://${project.basedir}/src/main/webapp/WEB-INF/lib</url>
-		</repository>
 	</repositories>
 
 	<dependencies>
 		<!-- 실행환경 라이브러리 -->
 		<dependency>
 			<groupId>org.egovframe.rte</groupId>
-			<artifactId>org.egovframe.rte.ptl.mvc</artifactId>
-			<version>${org.egovframe.rte.version}</version>
+			<artifactId>egovframe-rte-ptl-mvc</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.egovframe.rte</groupId>
-			<artifactId>org.egovframe.rte.psl.dataaccess</artifactId>
-			<version>${org.egovframe.rte.version}</version>
+			<artifactId>egovframe-rte-psl-dataaccess</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.egovframe.rte</groupId>
-			<artifactId>org.egovframe.rte.fdl.idgnr</artifactId>
-			<version>${org.egovframe.rte.version}</version>
+			<artifactId>egovframe-rte-fdl-idgnr</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.egovframe.rte</groupId>
-			<artifactId>org.egovframe.rte.fdl.property</artifactId>
-			<version>${org.egovframe.rte.version}</version>
+			<artifactId>egovframe-rte-fdl-property</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.egovframe.rte</groupId>
-			<artifactId>org.egovframe.rte.fdl.xml</artifactId>
-			<version>${org.egovframe.rte.version}</version>
+			<groupId>org.egovframe.boot</groupId>
+			<artifactId>egovframe-boot-starter-crypto</artifactId>
 		</dependency>
+
 		<!-- 실행환경 라이브러리 끝 -->
 
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>4.0.1</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>javax.servlet.jsp.jstl</groupId>
-			<artifactId>jstl-api</artifactId>
-			<version>1.2</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-dbcp2</artifactId>
-			<version>2.12.0</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.taglibs</groupId>
-			<artifactId>taglibs-standard-impl</artifactId>
-			<version>1.2.5</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>cglib</groupId>
-			<artifactId>cglib</artifactId>
-			<version>3.3.0</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>${jakarta.servlet.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.antlr</groupId>
-			<artifactId>antlr</artifactId>
-			<version>3.5</version>
+			<groupId>jakarta.annotation</groupId>
+			<artifactId>jakarta.annotation-api</artifactId>
 		</dependency>
+
+		<!-- mysql driver -->
+		<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+		</dependency>
+
+		<!-- CVE-2024-7254: mysql-connector-j에서 주입되는 protobuf-java 3.25.1 취약점
+		보완용 직접 주입 -->
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+			<version>${protobuf.java.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.googlecode.log4jdbc</groupId>
 			<artifactId>log4jdbc</artifactId>
-			<version>1.2</version>
 			<exclusions>
 				<exclusion>
 					<artifactId>slf4j-api</artifactId>
@@ -122,326 +151,83 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!-- fileupload -->
+
 		<dependency>
-			<groupId>commons-fileupload</groupId>
-			<artifactId>commons-fileupload</artifactId>
-			<version>1.5</version>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
 		</dependency>
 
-		<!-- 모바일 신규공통컴포넌트 -->
 		<dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-impl</artifactId>
-			<version>4.0.5</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-core</artifactId>
-			<version>2.17.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
-			<version>2.17.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.17.1</version>
-		</dependency>
-		<!-- json lib  -->
-		<dependency>
-			<groupId>net.sf.json-lib</groupId>
-			<artifactId>json-lib</artifactId>
-			<version>2.4</version>
-			<classifier>jdk15</classifier>
-			<exclusions>
-				<exclusion>
-					<artifactId>commons-logging</artifactId>
-					<groupId>commons-logging</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>commons-beanutils</artifactId>
-					<groupId>commons-beanutils</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-websocket</artifactId>
-			<version>${spring.maven.artifact.version}</version>
-		</dependency>
-		<!-- 모바일 신규공통컴포넌트 끝 -->
-
-		<!-- mysql driver -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.33</version>
-		</dependency>
-		<!-- oracle 11g driver -->
-		<dependency>
-			<groupId>project</groupId>
-			<artifactId>ojdbc6</artifactId>
-			<version>11.2.0.3</version>
-		</dependency>
-		<!-- altibase driver -->
-		<dependency>
-			<groupId>project</groupId>
-			<artifactId>altibase</artifactId>
-			<version>7.1.0</version>
-		</dependency>
-		<!-- tibero driver -->
-		<dependency>
-			<groupId>project</groupId>
-			<artifactId>tibero5</artifactId>
-			<version>5.0.0</version>
-		</dependency>
-		<!-- cubrid driver -->
-		<dependency>
-			<groupId>project</groupId>
-			<artifactId>cubrid</artifactId>
-			<version>10.2.0</version>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>${springdoc.webmvc.ui.version}</version>
 		</dependency>
 
-		<!-- Google GCM Push -->
-		<dependency>
-			<groupId>com.google.gcm</groupId>
-			<artifactId>gcm-server</artifactId>
-			<version>1.0.0</version>
-		</dependency>
 		<!-- Apple APNS Push -->
 		<dependency>
 			<groupId>com.github.fernandospr</groupId>
 			<artifactId>javapns-jdk16</artifactId>
-			<version>2.4.0</version>
+			<version>${javapns-jdk16.version}</version>
 		</dependency>
 		<!-- FCM(Firebase Cloud Messaging) 구성 시작  -->
 		<dependency>
 			<groupId>com.googlecode.json-simple</groupId>
 			<artifactId>json-simple</artifactId>
-			<version>1.1.1</version>
+			<version>${json-simple.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.api-client</groupId>
 			<artifactId>google-api-client</artifactId>
-			<version>2.2.0</version>
+			<version>${google-api-client.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.oauth-client</groupId>
 			<artifactId>google-oauth-client</artifactId>
-			<version>1.34.1</version>
+			<version>${google-oauth-client.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.http-client</groupId>
 			<artifactId>google-http-client</artifactId>
-			<version>1.43.2</version>
+			<version>${google-http-client.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>32.0.1-jre</version>
+			<version>${guava.version}</version>
 		</dependency>
 		<!-- FCM(Firebase Cloud Messaging) 구성 끝  -->
-		<!-- Swagger-->
+
 		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>2.9.2</version>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>2.9.2</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
 	<build>
-		<defaultGoal>install</defaultGoal>
-		<directory>${basedir}/target</directory>
-		<finalName>${artifactId}-${version}</finalName>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.codehaus.cargo</groupId>
-					<artifactId>cargo-maven3-plugin</artifactId>
-					<version>1.10.14</version>
-					<configuration>
-						<container>
-							<containerId>tomcat8x</containerId>
-							<type>embedded</type>
-						</container>
-						<configuration>
-							<property name="cargo.servlet.port" value="8080" />
-						</configuration>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.13.0</version>
-					<configuration>
-						<source>${java.version}</source>
-						<target>${java.version}</target>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-war-plugin</artifactId>
-					<version>3.4.0</version>
-					<configuration>
-						<failOnMissingWebXml>false</failOnMissingWebXml>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>hibernate3-maven-plugin</artifactId>
-					<version>3.0</version>
-					<dependencies>
-						<dependency>
-							<groupId>org.hsqldb</groupId>
-							<artifactId>hsqldb</artifactId>
-							<version>2.7.2</version>
-						</dependency>
-					</dependencies>
-				</plugin>
-				<!-- EMMA   -->
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>emma-maven-plugin</artifactId>
-					<version>1.0-alpha-3</version>
-				</plugin>
-				<!-- PMD manven plugin -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-pmd-plugin</artifactId>
-					<version>3.23.0</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 		<plugins>
-			<!-- EMMA -->
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.3.0</version>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<skipTests>true</skipTests>
-					<forkMode>once</forkMode>
-					<reportFormat>xml</reportFormat>
 					<excludes>
-						<exclude>**/Abstract*.java</exclude>
-						<exclude>**/*Suite.java</exclude>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
 					</excludes>
-					<includes>
-						<include>**/*Test.java</include>
-					</includes>
 				</configuration>
-			</plugin>
-			<!-- docker server 배포 
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <url>http://192.168.100.251:8086/manager/text</url>
-                    <username>tomcat</username>
-                    <password>tomcat</password>
-                    <path>/</path>
-                    <warFile>target\egovframework-all-in-one.war</warFile>
-                    <update>true</update>
-                </configuration>
-            </plugin>
-            -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>emma-maven-plugin</artifactId>
-				<version>1.0-alpha-3</version>
-				<inherited>true</inherited>
-			</plugin>
-			<!--  JavaDoc -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.7.0</version>
-				<configuration>
-					<doclint>none</doclint>
-				</configuration>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
-
-	<reporting>
-		<outputDirectory>${basedir}/target/site</outputDirectory>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-project-info-reports-plugin</artifactId>
-				<version>3.4.4</version>
-				<reportSets>
-					<reportSet>
-						<id>sunlink</id>
-						<reports>
-							<report>javadoc</report>
-						</reports>
-						<inherited>true</inherited>
-						<configuration>
-							<links>
-								<link>https://docs.oracle.com/javase/8/docs/api/</link>
-							</links>
-						</configuration>
-					</reportSet>
-				</reportSets>
-			</plugin>
-			<!-- JUnit Test Results & EMMA Coverage Reporting -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>emma-maven-plugin</artifactId>
-				<version>1.0-alpha-3</version>
-				<inherited>true</inherited>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-report-plugin</artifactId>
-				<version>3.3.0</version>
-				<inherited>true</inherited>
-				<reportSets>
-					<reportSet>
-						<reports>
-							<report>report-only</report>
-						</reports>
-					</reportSet>
-				</reportSets>
-			</plugin>
-			<!-- Generating JavaDoc Report -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.7.0</version>
-				<configuration>
-					<minmemory>128m</minmemory>
-					<maxmemory>512m</maxmemory>
-				</configuration>
-			</plugin>
-			<!-- Generating Java Source in HTML -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jxr-plugin</artifactId>
-				<version>3.3.0</version>
-				<configuration>
-					<linkJavadoc>true</linkJavadoc>
-					<javadocDir>api docs</javadocDir>
-				</configuration>
-			</plugin>
-		</plugins>
-	</reporting>
 </project>

@@ -34,14 +34,14 @@ public class CreateComponentInfo {
 	public static void main(String[] args) throws Exception {
 		try {
 			// 컴포넌트 정보 엑셀 파일 경로
-			//String readFilePath = "C:\\eclipse-rcp-2022-12-R-win32-x86_64\\workspace\\egovframework.dev.imp.commngt\\examples\\components.xls";
-			String readFilePath = "C:\\EGOV_DEV\\eclipse-rcp-2024-03-x64\\workspace\\egovframework.dev.imp.commngt\\examples\\components.xls";
+			//String readFilePath = "C:\\EGOV_DEV\\eclipse-rcp-2024-03-x64\\workspace\\egovframework.dev.imp.commngt\\examples\\components.xls";
+			String readFilePath = "/Users/EGOV-DEV/v5.0/04_RCP/eclipse-rcp-2025-09-for-macOS/workspace-rcp/egovframework.dev.imp.commngt/examples/components.xls";
 			// 컴포넌트 정보 2가지 properties, java 파일 생성 경로
-			//String generateFilePath = "C:\\eclipse-rcp-2022-12-R-win32-x86_64\\workspace\\egovframework.dev.imp.commngt\\src\\egovframework\\dev\\imp\\commngt\\common";
-			String generateFilePath = "C:\\EGOV_DEV\\eclipse-rcp-2024-03-x64\\workspace\\egovframework.dev.imp.commngt\\src\\egovframework\\dev\\imp\\commngt\\common";
+			//String generateFilePath = "C:\\EGOV_DEV\\eclipse-rcp-2024-03-x64\\workspace\\egovframework.dev.imp.commngt\\src\\egovframework\\dev\\imp\\commngt\\common";
+			String generateFilePath = "/Users/EGOV-DEV/v5.0/04_RCP/eclipse-rcp-2025-09-for-macOS/workspace-rcp/egovframework.dev.imp.commngt/src/egovframework/dev/imp/commngt/common";
 			// xml 파일 생성 경로
-			//String generateXMLFilePath = "C:\\eclipse-rcp-2022-12-R-win32-x86_64\\workspace\\egovframework.dev.imp.commngt\\examples";
-			String generateXMLFilePath = "C:\\EGOV_DEV\\eclipse-rcp-2024-03-x64\\workspace\\egovframework.dev.imp.commngt\\examples";
+			//String generateXMLFilePath = "C:\\EGOV_DEV\\eclipse-rcp-2024-03-x64\\workspace\\egovframework.dev.imp.commngt\\examples";
+			String generateXMLFilePath = "/Users/EGOV-DEV/v5.0/04_RCP/eclipse-rcp-2025-09-for-macOS/workspace-rcp/egovframework.dev.imp.commngt/examples";
 
 			// properties 파일
 			File propertiesKoFile = File.createTempFile("components_ko", ".properties", new File(generateFilePath));
@@ -88,7 +88,8 @@ public class CreateComponentInfo {
 			String category_Component_pac = "";
 			String category_Component_use = "";
 			String category_Component_d01 = "";
-			String category_Component_ver = "";
+			// version 제거 - 2025-11-21
+			//String category_Component_ver = "";
 			String category_Component_web = "";
 			String category_Component_add = "";
 
@@ -143,7 +144,8 @@ public class CreateComponentInfo {
 				category_Component_des = (cellValue6 + "").trim().replace("&", "&#38;").replace("(", "&#40;")
 						.replace(")", "&#41;").replace("-", "&#45;").replace("/", "&#47;").replace("\n", "<br/>");
 				category_Component_use = (cellValue7 + "").trim().replace("\n", ", ");
-				category_Component_ver = (cellValue8 + "").trim().replace("\n", " ");
+				// version 제거 - 2025-11-21
+				//category_Component_ver = (cellValue8 + "").trim().replace("\n", " ");
 				category_Component_web = (cellValue9 + "").trim().replace("\n", " ");
 				category_Component_add = (cellValue10 + "").trim().replace("\n", " ");
 				if (category_Component_use == null || category_Component_use.equals(""))
@@ -219,8 +221,11 @@ public class CreateComponentInfo {
 						.write("category" + catNum + "Component" + comNum + "des=" + category_Component_des + "\n");
 				propertiesKoWriter
 						.write("category" + catNum + "Component" + comNum + "use=" + category_Component_use + "\n");
+				// version 제거 - 2025-11-21
+				/*
 				propertiesKoWriter.write(
 						"category" + catNum + "Component" + comNum + "ver=Wizard." + category_Component_ver + "\n");
+				*/
 				propertiesKoWriter
 						.write("category" + catNum + "Component" + comNum + "web=" + category_Component_web + "\n");
 				propertiesKoWriter
@@ -230,8 +235,11 @@ public class CreateComponentInfo {
 						.write("category" + catNum + "Component" + comNum + "des=" + category_Component_des_en + "\n");
 				propertiesEnWriter
 						.write("category" + catNum + "Component" + comNum + "use=" + category_Component_use + "\n");
+				// version 제거 - 2025-11-21
+				/*
 				propertiesEnWriter.write(
 						"category" + catNum + "Component" + comNum + "ver=Wizard." + category_Component_ver + "\n");
+				*/
 				propertiesEnWriter
 						.write("category" + catNum + "Component" + comNum + "web=" + category_Component_web + "\n");
 				propertiesEnWriter
@@ -241,8 +249,11 @@ public class CreateComponentInfo {
 						+ "des#</description      >\n");
 				xmlWriter.write("\t\t\t<useTable         >#" + "category" + catNum + "Component" + comNum
 						+ "use#</useTable         >\n");
+				// version 제거 - 2025-11-21
+				/*
 				xmlWriter.write("\t\t\t<version          >#" + "category" + catNum + "Component" + comNum
 						+ "ver#</version          >\n");
+				*/
 				xmlWriter.write("\t\t\t<webexist         >#" + "category" + catNum + "Component" + comNum
 						+ "web#</webexist         >\n");
 				xmlWriter.write("\t\t\t<addedOptions     >#" + "category" + catNum + "Component" + comNum
@@ -251,7 +262,8 @@ public class CreateComponentInfo {
 				// java 쓰기
 				javaWriter.write("\tpublic static String category" + catNum + "Component" + comNum + "des;\n");
 				javaWriter.write("\tpublic static String category" + catNum + "Component" + comNum + "use;\n");
-				javaWriter.write("\tpublic static String category" + catNum + "Component" + comNum + "ver;\n");
+				// version 제거 - 2025-11-21
+				//javaWriter.write("\tpublic static String category" + catNum + "Component" + comNum + "ver;\n");
 				javaWriter.write("\tpublic static String category" + catNum + "Component" + comNum + "web;\n");
 				javaWriter.write("\tpublic static String category" + catNum + "Component" + comNum + "add;\n\n");
 

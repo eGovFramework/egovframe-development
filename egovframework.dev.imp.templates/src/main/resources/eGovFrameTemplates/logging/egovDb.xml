@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EclipseWork>
+	<wizard>
+		<title>New eGovDB Appender</title>
+
+		<component-page required="true">
+			<!-- NeweGovDbAppender	New eGovDB Appender -->
+			<description>Create eGovDB Appender</description>
+			<group label="Generation File" required="true">
+				<container name="txtPath" label="File Path: " required="true"
+					type="folder" value="" /> <!-- #webroot -->
+				<textfield name="txtFileName" label="File Name: "
+					required="true" value="" />
+			</group>
+			<group label="Configuration" required="true">
+				<textfield name="txtAppenderName" label="Appender Name: "
+					required="true" value="" />
+				<checkbox name="chkLocationInfo" label="Location Info: "
+					value="true" required="true" />
+				<checkbox name="chkSupportsGetGeneratedKeys" label="Supports Get Generated Keys: "
+					value="false" required="true" />					
+				<textfield name="txtDriver" label="Driver: " required="true"
+					value="" />
+				<textfield name="txtUrl" label="URL: " required="true"
+					value="" />
+				<textfield name="txtUser" label="User: " required="true"
+					value="" />
+				<textfield name="txtPasswd" label="Password: " required="true"
+					value="" />
+			</group>
+		</component-page>
+
+		<output>
+			<template component="txtFileName" velocity="egovDb.vm"
+				extension="xml" container="txtPath" />
+		</output>
+	</wizard>
+</EclipseWork>

@@ -125,7 +125,7 @@
     
     <service>
         <layer>Persistence</layer>
-        <name>Data Access</name>
+        <name>JPA</name>
         <dependencies>
             <dependency>org.egovframe.rte.org.egovframe.rte.psl.data.jpa</dependency>
         </dependencies>

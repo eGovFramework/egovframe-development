@@ -7,51 +7,15 @@
 #set($voInstanceName="${model.entity.ccName}VO")
 ##
 ##
-#set($listPath="/${model.entity.ccName}/${model.entity.pcName}List.do")
+#set($listPath="/${model.entity.ccName}/${model.entity.ccName}List.do")
 #set($addViewPath="/${model.entity.ccName}/add${model.entity.pcName}View.do")
-#set($addPath="/${model.entity.ccName}/add${model.entity.pcName}.do")
-#set($selectPath="/${model.entity.ccName}/select${model.entity.pcName}.do")
-#set($updatePath="/${model.entity.ccName}/update${model.entity.pcName}.do")
 #set($updateViewPath="/${model.entity.ccName}/update${model.entity.pcName}View.do")
-#set($deletePath="/${model.entity.ccName}/delete${model.entity.pcName}.do")
 ##
-#set($listPageName="${model.entity.pcName}List.jsp")
+#set($listPageName="${model.entity.ccName}List.jsp")
 ##
-#set($selectFunctionName="fncSelect${model.entity.pcName}")
-#set($addViewFunctionName="fncAdd${model.entity.pcName}View")
-##
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%
- /**
-  * @Class Name : ${listPageName}
-  * @Description : ${model.entity.pcName} List 화면
-  * @Modification Information
-  * 
-  * @author ${author}
-  * @since ${createDate}
-  * @version 1.0
-  * @see
-  *  
-  * Copyright (C) All right reserved.
-  */
-%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>목록</title>
-<link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframework/sample.css'/>"/>
-<script type="text/javaScript" language="javascript" defer="defer">
-<!--
-/* 글 수정 화면 function */
-
 #set($params="")
 #set($i=0)
-
+##
 #if(${model.primaryKeys} == [])
   #set($params="${model.attributes.get(0).ccName}")
 #else
@@ -64,117 +28,223 @@
 #set($i=$i+1)
 #end
 #end
-function fn_egov_select(${params}) {
+##
+#set($totalColspan = $model.attributes.size() + 1)
+##
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="ui" uri="http://egovframework.gov/ctl/ui"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%
+/**
+* @Class Name : ${listPageName}
+* @Description : ${model.entity.pcName} List 화면
+* @Modification Information
+*
+*   수정일         수정자                   수정내용
+*  -------    --------    ---------------------------
+*  ${createDate}  ${author}          최초 생성
+*
+* author ${author}
+* since ${createDate}
+*
+* Copyright (C) All right reserved.
+*/
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>List</title>
+
+	<!-- KRDS CSS -->
+	<link type="text/css" rel="stylesheet" href="<c:url value='/css/component/output.css'/>" />
+	<link type="text/css" rel="stylesheet" href="<c:url value='/css/egovframe.css'/>" />
+	<script type="text/javaScript" language="javascript" src="<c:url value='/js/jquery.min.js'/>" defer="defer"></script>
+	<script type="text/javaScript" language="javascript" src="<c:url value='/js/egovframework/common.js'/>" defer="defer"></script>
+
+	<script type="text/javaScript" language="javascript" defer="defer">
+	<!--
+		/* 글 수정 화면 function */
+		function fn_egov_select(${params}) {
 #if(${model.primaryKeys} == [])
-    document.getElementById("listForm").${model.attributes.get(0).ccName}.value = ${model.attributes.get(0).ccName};
+			document.listForm.${model.attributes.get(0).ccName}.value = ${model.attributes.get(0).ccName};
 #else
 #foreach($attribute in $model.primaryKeys)
-	document.getElementById("listForm").${attribute.ccName}.value = ${attribute.ccName};
+			document.listForm.${attribute.ccName}.value = ${attribute.ccName};
 #end
 #end
-   	document.getElementById("listForm").action = "<c:url value='${updateViewPath}'/>";
-   	document.getElementById("listForm").submit();
-}
+			document.listForm.action = "<c:url value='${updateViewPath}'/>";
+			document.listForm.submit();
+		}
 
-/* 글 등록 화면 function */
-function fn_egov_addView() {
-   	document.getElementById("listForm").action = "<c:url value='${addViewPath}'/>";
-   	document.getElementById("listForm").submit();		
-}
+		/* 글 등록 화면 function */
+		function fn_egov_addView() {
+			document.listForm.action = "<c:url value='${addViewPath}'/>";
+			document.listForm.submit();
+		}
 
-/* pagination 페이지 링크 function */
-function fn_egov_link_page(pageNo){
-	document.getElementById("listForm").pageIndex.value = pageNo;
-	document.getElementById("listForm").action = "<c:url value='${listPath}'/>";
-   	document.getElementById("listForm").submit();
-}
+		/* 글 목록 화면 function */
+		function fn_egov_selectList() {
+			if(document.listForm.searchKeyword.value == '') {
+				alert("검색어를 입력해주세요.");
+				return false;
+			}
+			document.listForm.action = "<c:url value='${listPath}'/>";
+			document.listForm.method = "get";
+			document.listForm.submit();
+		}
 
- // -->
-</script>
+		/* pagination 페이지 링크 function */
+		function fn_egov_link_page(pageNo) {
+			document.listForm.pageIndex.value = pageNo;
+			document.listForm.action = "<c:url value='${listPath}'/>";
+			document.listForm.method = "get";
+			document.listForm.submit();
+		}
+	//-->
+	</script>
 </head>
+
 <body>
-<form:form modelAttribute="searchVO" name="listForm" id="listForm" method="post">
-#if(${model.primaryKeys} == [])
-    <input type="hidden" name="${model.attributes.get(0).ccName}" />
-#else
-#foreach($attribute in ${model.primaryKeys})
-	<input type="hidden" name="${attribute.ccName}" />
-#end
-#end
-<div id="content_pop">
+<div id="container" class="inner">
+
 	<!-- 타이틀 -->
-	<div id="title">
-		<ul>
-			<li><img src="<c:url value='/images/egovframework/example/title_dot.gif'/>" alt="title" /> List </li>
-		</ul>
-	</div>
+	<h2 class="heading-large">list</h2>
 	<!-- // 타이틀 -->
-	<!-- List -->
-	<div id="table">
-		<table width="100%" border="0" cellpadding="0" cellspacing="0">
-			<colgroup>
-				#foreach($attribute in $model.attributes)			
-				<col/>				
-				#end				
-			</colgroup>		  
-			<tr>
-				#foreach($attribute in $model.attributes)
-				<th align="center">${attribute.pcName}</th>
-				#end			
-			</tr>
-			<c:forEach var="result" items="${D}{resultList}" varStatus="status">
-			<tr>
-	#if(${model.primaryKeys} == [])
-	 	#set($linkParams="'<c:out value=${Q}${D}{result.${model.attributes.get(0).ccName}}${Q}/>'")
-	 	#foreach($attribute in $model.attributes)
-			#if($attribute.ccName == ${model.attributes.get(0).ccName})				
-<td align="center" class="listtd"><a href="javascript:fn_egov_select(${linkParams})"><c:out value="${D}{result.${attribute.ccName}}"/></a>&nbsp;</td>
-			#else
-<td align="center" class="listtd"><c:out value="${D}{result.${attribute.ccName}}"/>&nbsp;</td>
-			#end
-		#end
-	#else
-	    #set($linkParams="")
-		#set($i=0)
-		#foreach($attribute in $model.primaryKeys)
-		#if($i == 0)
-		  #set($linkParams="'<c:out value=${Q}${D}{result.${attribute.ccName}}${Q}/>'")
-		#else
-		  #set($linkParams="$linkParams, '<c:out value=${Q}${D}{result.${attribute.ccName}}${Q}/>'")
-		#end
-		#set($i=$i+1)					
-		#end
-		#foreach($attribute in $model.attributes)
-		#if($attribute.primaryKey == true)				
-<td align="center" class="listtd"><a href="javascript:fn_egov_select(${linkParams})"><c:out value="${D}{result.${attribute.ccName}}"/></a>&nbsp;</td>
-		#else
-<td align="center" class="listtd"><c:out value="${D}{result.${attribute.ccName}}"/>&nbsp;</td>
-		#end
-		#end
-    #end
-			</tr>
-			</c:forEach>
-		</table>
-	</div>
-	<!-- /List -->
-	<div id="paging">
-		<ui:pagination paginationInfo = "${D}{paginationInfo}"
-				   type="image"
-				   jsFunction="fn_egov_link_page"
-				   />
-		<form:hidden path="pageIndex" />
-	</div>
-	<div id="sysbtn1">
-		<ul>
-			<li>
-				<div id="sysbtn">
-					<span class="btn_blue_l"><a href="javascript:fn_egov_addView();">등록</a><img src="<c:url value='/images/egovframework/example/btn_bg_r.gif'/>" alt="" />
-					</span>
+
+	<div id="content_pop">
+		<form:form modelAttribute="${voInstanceName}" id="listForm" name="listForm" method="post">
+#if(${model.primaryKeys} == [])
+			<input type="hidden" id="${model.attributes.get(0).ccName}" name="${model.attributes.get(0).ccName}" />
+#else
+#foreach($attribute in $model.primaryKeys)
+			<input type="hidden" id="${attribute.ccName}" name="${attribute.ccName}" />
+#end
+#end
+			<input type="hidden" id="pageIndex" name="pageIndex" value="1" />
+
+			<!-- Search Form -->
+			<div class="form-group">
+				<div class="search-wrap">
+					<div class="search-body">
+						<div class="form-conts searchOption">
+							<select id="searchCondition" name="searchCondition" class="krds-form-select medium" title="검색어를 선택하세요.">
+#if($model.primaryKeys && $model.primaryKeys.size() > 0)
+#if($model.primaryKeys.size() == 1)
+##-- Case 1. PK 컬럼이 있고, 1개 뿐이라면 : PK 컬럼을 제외한 일반 컬럼 중 맨 앞의 1개와 PK 컬럼이 검색 조건 --##
+#set($foundFirst = false)
+#foreach($attribute in $model.attributes)
+#if(!$attribute.primaryKey && !$foundFirst)
+								<option value="1" <c:if test ="${D}{not empty ${voInstanceName}.searchCondition and ${voInstanceName}.searchCondition eq 1}">selected="selected"</c:if>>${attribute.pcName}</option>
+#set($foundFirst = true)
+#end
+#end
+								<option value="0" <c:if test ="${D}{not empty ${voInstanceName}.searchCondition and ${voInstanceName}.searchCondition eq 0}">selected="selected"</c:if>>${model.primaryKeys.get(0).pcName}</option>
+#else
+##-- Case 2. PK 컬럼이 있고, 2개 이상이라면 : PK 컬럼 2개가 검색 조건 --##
+								<option value="1" <c:if test ="${D}{not empty ${voInstanceName}.searchCondition and ${voInstanceName}.searchCondition eq 1}">selected="selected"</c:if>>${model.primaryKeys.get(1).pcName}</option>
+								<option value="0" <c:if test ="${D}{not empty ${voInstanceName}.searchCondition and ${voInstanceName}.searchCondition eq 0}">selected="selected"</c:if>>${model.primaryKeys.get(0).pcName}</option>
+#end
+#else
+##-- Case 3. PK 컬럼이 없다면 : 일반 컬럼 앞 2개가 검색 조건 --##
+								<option value="1" <c:if test ="${D}{not empty ${voInstanceName}.searchCondition and ${voInstanceName}.searchCondition eq 1}">selected="selected"</c:if>>${model.attributes.get(1).pcName}</option>
+								<option value="0" <c:if test ="${D}{not empty ${voInstanceName}.searchCondition and ${voInstanceName}.searchCondition eq 0}">selected="selected"</c:if>>${model.attributes.get(0).pcName}</option>
+#end
+							</select>
+						</div>
+						<div class="form-conts btn-ico-wrap searchKeyword">
+							<input type="text" id="searchKeyword" name="searchKeyword" value="${D}{${voInstanceName}.searchKeyword}" class="krds-input medium" placeholder="검색어를 입력하세요.">
+							<button type="button" class="krds-btn medium icon" onclick="fn_egov_selectList()">
+								<span class="sr-only">검색</span>
+								<i class="svg-icon ico-sch"></i>
+							</button>
+						</div>
+					</div>
+					<div class="page-btn-wrap">
+						<button type="button" class="krds-btn medium" onclick="fn_egov_addView()">등록</button>
+					</div>
 				</div>
-			</li>
-		</ul>
+			</div>
+		</form:form>
+
+		<!-- List -->
+		<div class="krds-table-wrap">
+			<table class="tbl col data">
+				<colgroup>
+					<col style="width: 10%;">
+#foreach($attribute in $model.attributes)
+					<col style="width: auto;">
+#end
+				</colgroup>
+				<thead>
+					<tr>
+						<th scope="col" class="text-center">No</th>
+#foreach($attribute in $model.attributes)
+						<th scope="col" class="text-center">${attribute.pcName}</th>
+#end
+					</tr>
+				</thead>
+				<tbody>
+					<c:choose>
+						<c:when test="${D}{not empty resultList}">
+							<c:forEach var="result" items="${D}{resultList}" varStatus="status">
+								<tr>
+									<td class="text-center"><c:out value="${D}{paginationInfo.totalRecordCount+1 - ((${voInstanceName}.pageIndex-1) * ${voInstanceName}.pageSize + status.count)}"/></td>
+#set($firstAttribute = true)
+#if(${model.primaryKeys} == [])
+#set($linkParams="'<c:out value=${Q}${D}{result.${model.attributes.get(0).ccName}}${Q}/>'")
+#foreach($attribute in $model.attributes)
+#if($firstAttribute)
+									<td class="text-center"><a href="javascript:fn_egov_select(${linkParams})"><c:out value="${D}{result.${attribute.ccName}}" /></a></td>
+#set($firstAttribute = false)
+#else
+									<td class="text-center"><c:out value="${D}{result.${attribute.ccName}}"/></td>
+#end
+#end
+#else
+#set($linkParams="")
+#set($i=0)
+#foreach($pk in $model.primaryKeys)
+#if($i == 0)
+#set($linkParams="'<c:out value=${Q}${D}{result.${pk.ccName}}${Q}/>'")
+#else
+#set($linkParams="$linkParams, '<c:out value=${Q}${D}{result.${pk.ccName}}${Q}/>'")
+#end
+#set($i=$i+1)
+#end
+#foreach($attribute in $model.attributes)
+#if($attribute.primaryKey == true && $firstAttribute)
+									<td class="text-center"><a href="javascript:fn_egov_select(${linkParams})"><c:out value="${D}{result.${attribute.ccName}}" /></a></td>
+#set($firstAttribute = false)
+#else
+									<td class="text-center"><c:out value="${D}{result.${attribute.ccName}}"/></td>
+#end
+#end
+#end
+								</tr>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<tr>
+								<td class="text-center" colspan="${totalColspan}">해당 데이터가 없습니다.</td>
+							</tr>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
+		</div>
+		<!-- // List -->
+
+		<!-- Pagination -->
+		<div id="paging" class="krds-pagination w-page">
+			<ui:pagination paginationInfo="${D}{paginationInfo}" type="krds" jsFunction="fn_egov_link_page" />
+		</div>
+
 	</div>
+
 </div>
-</form:form>
+
 </body>
 </html>

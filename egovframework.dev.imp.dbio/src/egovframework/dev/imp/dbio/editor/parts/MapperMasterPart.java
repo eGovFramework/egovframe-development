@@ -274,7 +274,7 @@ public class MapperMasterPart{
 		loadedTypes.add("byte[]");
 		loadedTypes.add("char");
 		loadedTypes.add("java.lang.String");
-		loadedTypes.add("java.lang.BigDecimal");
+		loadedTypes.add("java.math.BigDecimal");
 		NodeList children = root.getChildNodes();
 		for (int i = 0; i < children.getLength(); i++) {
 			Node child = children.item(i);

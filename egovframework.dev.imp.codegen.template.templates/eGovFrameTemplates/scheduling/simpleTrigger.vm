@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<!-- Simple Trigger Configuration (Spring Framework 6.x compatible) -->
 	<bean id="${txtTriggerName}" class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
 		<property name="jobDetail" ref="${txtJobName}" />
-		<property name="startDelay" value="${txtStartDelay}" />
-		<property name="repeatInterval" value="${txtRepeatInterval}" />
+		<property name="startDelay" value="${txtStartDelay}" /> <!-- ${txtStartDelay}ms 후에 시작 -->
+		<property name="repeatInterval" value="${txtRepeatInterval}" /> <!-- 매 ${txtRepeatInterval}ms마다 실행 -->
 	</bean>
-	
+
 </beans>

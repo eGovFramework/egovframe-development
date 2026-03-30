@@ -440,7 +440,8 @@ public class BatchJobLauncherCustomizePage extends WizardPage {
 		GridData gData = new GridData(GridData.FILL_HORIZONTAL);
 		gData.horizontalSpan = 3;
 
-		GridLayout gLayout = new GridLayout(3, false);
+		// [비활성화] Memory 모드 제거로 인해 2열로 변경 (기존 3열)
+		GridLayout gLayout = new GridLayout(2, false);
 		gLayout.horizontalSpacing = 20;
 
 		Group repositoryTypeGroup = new Group(control, SWT.None);
@@ -468,17 +469,19 @@ public class BatchJobLauncherCustomizePage extends WizardPage {
 			}
 		});
 
+		// [비활성화] Memory 모드 - Spring6(Spring Batch 5)에서 MapJobRepositoryFactoryBean, MapJobExplorerFactoryBean,
+		//           ResourcelessTransactionManager 제거로 사용 불가. 버튼 객체는 참조 오류 방지를 위해 유지.
+		// memoryType = new Button(repositoryTypeGroup, SWT.RADIO);
+		// memoryType.setText(BatchMessages.BatchJobLauncherCustomizePage_MEMORY_RADIO_BUTTON);
+		// memoryType.addListener(SWT.Selection, new Listener() {
+		// 	public void handleEvent(Event event) {
+		// 		clearAndCreateDatasourceBeanIDControlWithoutBrowseButton();
+		// 		datasourceBeanIDText.setEnabled(false);
+		// 		setDisableDatasourceControl();
+		// 	}
+		// });
 		memoryType = new Button(repositoryTypeGroup, SWT.RADIO);
-		memoryType.setText(BatchMessages.BatchJobLauncherCustomizePage_MEMORY_RADIO_BUTTON);
-		memoryType.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event event) {
-				clearAndCreateDatasourceBeanIDControlWithoutBrowseButton();
-
-				datasourceBeanIDText.setEnabled(false);
-
-				setDisableDatasourceControl();
-			}
-		});
+		memoryType.setVisible(false);
 
 		createDatabaseControl(repositoryTypeGroup);
 	}

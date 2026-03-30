@@ -7,16 +7,28 @@ import org.springframework.scheduling.quartz.JobDetailFactoryBean;
 import org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean;
 import org.springframework.scheduling.quartz.SimpleTriggerFactoryBean;
 
+/**
+ * Simple Trigger Configuration for Quartz Scheduler
+ * Spring Framework 6.x compatible
+ *
+ * Requirements:
+ * - Spring Framework 6.x
+ * - Quartz Scheduler 2.3.2+
+ * - JDK 17+
+ */
 @Configuration
 public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
 
-    // SimpleTrigger 설정
-    @Bean(name="${txtTriggerName}")
-    public SimpleTriggerFactoryBean simpleTrigger(@Qualifier("${txtJobName}") ${cboBeanType} jobDetailBean) {
+    /**
+     * SimpleTrigger 설정
+     * 일정한 간격으로 Job을 실행
+     */
+    @Bean(name = "${txtTriggerName}")
+    public SimpleTriggerFactoryBean ${txtTriggerName}(@Qualifier("${txtJobName}") ${cboBeanType} jobDetailBean) {
         SimpleTriggerFactoryBean trigger = new SimpleTriggerFactoryBean();
         trigger.setJobDetail(jobDetailBean.getObject());
-        trigger.setStartDelay(${txtStartDelay}); // 2초 후에 시작 (milisecond)
-        trigger.setRepeatInterval(${txtRepeatInterval}); // 매 10초마다 실행 (milisecond)
+        trigger.setStartDelay(${txtStartDelay}); // ${txtStartDelay}ms 후에 시작
+        trigger.setRepeatInterval(${txtRepeatInterval}); // 매 ${txtRepeatInterval}ms마다 실행
         return trigger;
     }
 }

@@ -121,17 +121,19 @@ public class GenerateJobTestFileUtil {
 		
 		
 		String partOne = "";
-		if(packageName.length() > 0) { 
+		if(packageName.length() > 0) {
 			 packageName = packageName.substring(1, packageName.length());
 			 packageName = packageName.replaceAll("/", ".");
-			 partOne = 
-					"package " + packageName + ";\n" + 
-					"import static org.junit.Assert.assertEquals;\n" +
-					"import java.util.Date;\n";
+			 partOne =
+					"package " + packageName + ";\n" +
+					"import static org.junit.jupiter.api.Assertions.assertEquals;\n" +
+					"import java.util.Date;\n" +
+					"import java.util.Properties;\n";
 		} else {
-			partOne = 
-				"import static org.junit.Assert.assertEquals;\n" +
-				"import java.util.Date;\n";
+			partOne =
+				"import static org.junit.jupiter.api.Assertions.assertEquals;\n" +
+				"import java.util.Date;\n" +
+				"import java.util.Properties;\n";
 		}
 		   
 		
@@ -145,16 +147,16 @@ public class GenerateJobTestFileUtil {
 		}
 		
 		String partTwo =
-			"import org.junit.Test;\n" +
-			"import org.junit.runner.RunWith;\n" +
+			"import org.junit.jupiter.api.Test;\n" +
+			"import org.junit.jupiter.api.extension.ExtendWith;\n" +
 			"import org.springframework.batch.core.BatchStatus;\n" +
 			"import org.springframework.batch.core.JobParametersBuilder;\n" +
 			"import org.springframework.beans.factory.annotation.Autowired;\n" +
 			"import org.springframework.beans.factory.annotation.Qualifier;\n" +
 			"import org.springframework.test.context.ContextConfiguration;\n" +
-			"import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;\n" +
+			"import org.springframework.test.context.junit.jupiter.SpringExtension;\n" +
 			"import org.egovframe.rte.bat.core.launch.support.EgovBatchRunner;\n" +
-			"@RunWith(SpringJUnit4ClassRunner.class)\n\n";
+			"@ExtendWith(SpringExtension.class)\n\n";
 		
 		String annotation = "/** \n * Test File Information \n"+
 			" * Job:: " + jobFilePath + "\n" +
@@ -211,7 +213,7 @@ public class GenerateJobTestFileUtil {
 			//param Size 만큼 돌면서 jobParametersBuilder에 ADD
 			AddJobParametersBuilder(context) +
 			"\n\n\t\t" +
-			"String jobParameters = egovBatchRunner.convertJobParametersToString(jobParametersBuilder.toJobParameters());\n\n\t\t" +
+			"Properties jobParameters = egovBatchRunner.convertJobParametersToString(jobParametersBuilder.toJobParameters());\n\n\t\t" +
 			"long executionId = egovBatchRunner.start(jobName, jobParameters);\n\n\t\t";
 		
 		String threadSleep = "";
