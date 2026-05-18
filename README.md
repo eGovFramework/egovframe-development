@@ -1,4 +1,4 @@
-# 표준프레임워크 개발환경  5.0.0  (egovframe-development)
+# 표준프레임워크 개발환경 5.0.1 (egovframe-development)
 
 ![Eclipse](https://img.shields.io/badge/Eclipse-FE7A16.svg?style=for-the-badge&logo=Eclipse&logoColor=white)
 ![java](https://img.shields.io/badge/java-007396?style=for-the-badge&logo=JAVA&logoColor=white)
@@ -52,7 +52,7 @@
 
 <img width="709" alt="image" src="https://user-images.githubusercontent.com/68622744/230294638-029c75d1-afb9-420f-8716-54ce9713fb9d.png">
 
-## 개발환경 RCP 구성 (5.0.0)
+## 개발환경 RCP 구성 (5.0.1)
 ### RCP 및 JEE 구성, 기타 준비물
 - Windows, Linux
      - JDK 21
@@ -129,7 +129,7 @@ Eclipse를 키고 메뉴에 Help > Install New Software... 클릭하여 설치�
 ### (플러그인 개발용) 이클립스 RCP 환경 구축
 
 #### 1. 이클립스 RCP 다운로드 
-- Windows, Linux : https://www.eclipse.org/downloads/packages/release/2024-03/r
+- Windows, Linux : https://www.eclipse.org/downloads/packages/release/2025-03/r
 - macOS : https://www.eclipse.org/downloads/packages/release/2025-12/r
 
 #### 2. RCP 추가 Plug-ins 프로그램 설치

@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: eGovFramework CodeGen Customtemplates
 Bundle-SymbolicName: egovframework.dev.imp.codegen.template.customtemplates;singleton:=true
-Bundle-Version: 5.0.0.qualifier
+Bundle-Version: 5.0.1.qualifier
 Bundle-Activator: egovframework.dev.imp.codegen.template.customtemplates.Activator
 Bundle-Vendor: MOIS
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- egovframework.dev.imp.codegen.template;bundle-version="5.0.0"
+ egovframework.dev.imp.codegen.template;bundle-version="5.0.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Bundle-ActivationPolicy: lazy
 Automatic-Module-Name: egovframework.dev.imp.codegen.template.customtemplates
