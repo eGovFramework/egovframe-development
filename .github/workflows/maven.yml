@@ -20,15 +20,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up JDK 8
-      uses: actions/setup-java@v3
+    - uses: actions/checkout@v4
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
       with:
-        java-version: '8'
-        distribution: 'adopt'
+        java-version: '21'
+        distribution: 'temurin'
         cache: maven
+        cache-dependency-path: egovframework.dev.imp.templates/pom.xml
+    # 이 저장소의 대부분은 Eclipse 플러그인(PDE) 프로젝트이며 루트에 Maven 빌드가 없다.
+    # 표준 Maven으로 빌드 가능한 모듈은 egovframework.dev.imp.templates 뿐이므로 해당 모듈을 빌드한다.
     - name: Build with Maven
-      run: mvn -B package --file pom.xml -Dmaven.test.skip=true
+      run: mvn -B package --file egovframework.dev.imp.templates/pom.xml -Dmaven.test.skip=true
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
 #    - name: Update dependency graph
