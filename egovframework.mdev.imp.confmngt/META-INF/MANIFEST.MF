@@ -2,15 +2,15 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: eGovFramework Mobile ConfMngt
 Bundle-SymbolicName: egovframework.mdev.imp.confmngt;singleton:=true
-Bundle-Version: 5.0.1.qualifier
+Bundle-Version: 5.0.2.qualifier
 Bundle-Activator: egovframework.mdev.imp.confmngt.EgovMobileConfMngtPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- egovframework.dev.imp.core;bundle-version="5.0.1",
+ egovframework.dev.imp.core;bundle-version="5.0.2",
  org.eclipse.core.resources,
  org.eclipse.datatools.sqltools.sqlbuilder,
  org.eclipse.jdt.core,
- egovframework.mdev.imp.ide;bundle-version="5.0.1"
+ egovframework.mdev.imp.ide;bundle-version="5.0.2"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Bundle-Vendor: MOIS

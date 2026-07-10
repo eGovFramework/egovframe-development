@@ -517,9 +517,10 @@ public class CustomizeTableCreationPage extends WizardPage {
 					if (creatingTable.getTableName().equals("FILE_DETAIL_INFO")) {// constrain key 걸린 것 앞으로 보내기
 						// 앞으로 보내기
 						if (i != 0) {
-							list.add(0, creatingTable);
-							list.remove(i - 1);// 자기 자신 지우기 , 추가 후 index 증가
+							list.remove(i);             // 원래 위치에서 먼저 제거
+							list.add(0, creatingTable); // 맨 앞에 삽입
 						}
+						break; // 대상은 "FILE_DETAIL_INFO" 하나뿐이므로 종료
 					}
 				}
 

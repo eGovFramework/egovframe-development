@@ -2,7 +2,7 @@
 <feature
       id="egovframework.dev.tst.tctemplates"
       label="%featureName"
-      version="5.0.1.qualifier"
+      version="5.0.2.qualifier"
       provider-name="%providerName">
 
    <description url="http://www.example.com/description">
@@ -19,6 +19,6 @@
 
    <plugin
          id="egovframework.dev.tst.tctemplates"
-         version="5.0.1.qualifier"/>
+         version="5.0.2.qualifier"/>
 
 </feature>

@@ -58,7 +58,39 @@ public class DeviceAPITemplateInfo {
      * egovframework.hdev.imp.ide.wizards.examples.DeviceAPITemplateInfo FIELD들 (table*, table*desc, template*name , template*desc, template*example)
      * egovframework.hdev.imp.ide.wizards.examples.examples.properties 프로퍼티 항목들 (table*, table*desc, template*name , template*desc, template*example)
      * egovframework.hdev.imp.ide.pages.GenerateTemplatePage getTableInputItems()의 fileNames
+     * egovframework.hdev.imp.ide.wizards.examples.DeviceAPITemplateInfo getTableList()
      * */
+    
+    /* Table 정리 -v5.0
+     * 
+     * | No | RCP's Table Name   | Template's Real Name | Desc                       | Use 5.0 | 비고                              |
+     * | -- | ------------------ | -------------------- | -------------------------- | ------- | --------------------------------- |
+     * | 1  | **SAMPLE**         | **COMTECOPSEQ**      | 표준 샘플 관리             | **Y**   |                                   |
+     * | 2  | CONTACT_INFO       | CONTACT_INFO         | 연락처 정보 관리           | N       |                                   |
+     * | 3  | GPS                | GPS                  | GPS 정보 관리              | **Y**   |                                   |
+     * | 4  | ACCELERATOR        | ACCELERATOR          | 가속도 정보 관리           | **Y**   |                                   |
+     * | 5  | COMPASS            | COMPASS              | 방향 정보 관리             | N       |                                   |
+     * | 6  | CAMERA             | CAMERA               | 이미지 정보 관리           | N       |                                   |
+     * | 7  | VIBRATOR           | VIBRATOR             | 알림 정보 관리             | N       |                                   |
+     * | 8  | MEDIA              | MEDIA                | 미디어 정보 관리           | **Y**   |                                   |
+     * | 9  | FILE_READER_WRITE  | FILE_READER_WRITE    | 파일 정보 관리             | **Y**   |                                   |
+     * | 10 | DEVICE             | DEVICE               | 디바이스 정보 관리         | **Y**   |                                   |
+     * | 11 | NETWORK            | NETWORK              | 네트워크 정보 관리         | **Y**   |                                   |
+     * | 12 | INTERFACE          | **INTERFACE_EGOV**   | Interface 로그인 정보 관리 | **Y**   |                                   |
+     * | 13 | BARCODESCANNER     | **BARCODE_INFO**     | 바코드 정보 관리           | N       |                                   |
+     * | 14 | DEVICEFILEMGMT     | **FILE_DETAIL_INFO** | 표준 파일 관리             | **Y**   |                                   |
+     * | 15 | FILEOPENER         | **FILE_OPENER_LIST** | 파일 열기 정보 관리        | **Y**   |                                   |
+     * | 16 | JAILBREAKDETECTION | **DETECTION**        | 탈옥 여부 정보 관리        | N       |                                   |
+     * | 17 | PUSHNOTIFLCATIONS  | **PUSH_DEVICE**      | PUSH 알림 정보 관리        | N       |                                   |
+     * | 18 | SOCKETIO           | ~~CODE~~             | 소켓 IO 정보 관리          | N       | v4.3에서 테이블 생성 정리 (생성X) |
+     * | 19 | SQLITE             | ~~CODE~~             | SQLITE 정보 관리           | N       | v4.3에서 테이블 생성 정리 (생성X) |
+     * | 20 | STREAMINGMEDIA     | ~~CODE~~             | 스트리밍 미디어 정보 관리  | N       | v4.3에서 테이블 생성 정리 (생성X) |
+     * | 21 | UNZIP              | ~~CODE~~             | 압축파일 정보 관리         | N       | v4.3에서 테이블 생성 정리 (생성X) |
+     * | 22 | WEBRESOURCEUPDATE  | **RESOURCE_UPDATE**  | 웹 리소스 정보 관리        | N       |                                   |
+     * | 23 |                    | PKI                  |                            | N       | 예전부터 미사용                   |
+     * | 24 |                    | CODE                 |                            | N       | 예전부터 미사용                   |
+     * | 25 |                    | PUSH_MESSAGE         |                            | N       | 예전부터 미사용                   |
+     */
 
     /** Tables Count */
 	public static final int HDEV_TABLES_COUNT = 22;
@@ -311,14 +343,22 @@ public class DeviceAPITemplateInfo {
     	for(int i=1; i< HDEV_TABLES_COUNT+1 ; i++) {
     		
     		switch (i) {
-            case 18: // SOCKETIO
-            case 19: // SQLITE
-            case 20: // STREAMINGMEDIA
-            case 21: // UNZIP
-                    break;
-            default:
-        		tableList.add(c.getField("table" + i).get(c).toString());
-                break;
+	    		case 2:  // CONTACT_INFO                         (v5.0 no longer use)
+	    		case 5:  // COMPASS                              (v5.0 no longer use)
+	    		case 6:  // CAMERA                               (v5.0 no longer use)
+	    		case 7:  // VIBRATOR                             (v5.0 no longer use)
+	    		case 13: // BARCODESCANNER -> BARCODE_INFO       (v5.0 no longer use)
+	    		case 16: // JAILBREAKDETECTION -> DETECTION      (v5.0 no longer use)
+	    		case 17: // PUSHNOTIFLCATIONS -> PUSH_DEVICE     (v5.0 no longer use)
+	            case 18: // SOCKETIO -> CODE
+	            case 19: // SQLITE -> CODE
+	            case 20: // STREAMINGMEDIA -> CODE
+	            case 21: // UNZIP -> CODE
+	            case 22: // WEBRESOURCEUPDATE -> RESOURCE_UPDATE (v5.0 no longer use)
+	                break;
+	            default:
+	        		tableList.add(c.getField("table" + i).get(c).toString());
+	                break;
     		}
     		
     	}

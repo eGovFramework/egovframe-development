@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: eGovFramework Mobile ComMngt
 Bundle-SymbolicName: egovframework.mdev.imp.commngt;singleton:=true
-Bundle-Version: 5.0.1.qualifier
+Bundle-Version: 5.0.2.qualifier
 Bundle-Activator: egovframework.mdev.imp.commngt.MobileComMngtPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.ide,
@@ -12,8 +12,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.wst.xml.core,
  org.eclipse.datatools.sqltools.sqlscrapbook,
  org.eclipse.datatools.sqltools.sqlbuilder,
- egovframework.mdev.imp.ide;bundle-version="5.0.1",
- egovframework.dev.imp.core;bundle-version="5.0.1",
+ egovframework.mdev.imp.ide;bundle-version="5.0.2",
+ egovframework.dev.imp.core;bundle-version="5.0.2",
  org.eclipse.core.runtime
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-21
