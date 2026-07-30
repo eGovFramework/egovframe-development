@@ -66,7 +66,7 @@
 
 	<script type="text/javaScript" language="javascript" defer="defer">
 	<!--
-		/* 글 수정 화면 function */
+		/* ${model.entity.name} 수정 화면 function */
 		function fn_egov_select(${params}) {
 #if(${model.primaryKeys} == [])
 			document.listForm.${model.attributes.get(0).ccName}.value = ${model.attributes.get(0).ccName};
@@ -79,13 +79,13 @@
 			document.listForm.submit();
 		}
 
-		/* 글 등록 화면 function */
+		/* ${model.entity.name} 등록 화면 function */
 		function fn_egov_addView() {
 			document.listForm.action = "<c:url value='${addViewPath}'/>";
 			document.listForm.submit();
 		}
 
-		/* 글 목록 화면 function */
+		/* ${model.entity.name} 목록 화면 function */
 		function fn_egov_selectList() {
 			if(document.listForm.searchKeyword.value == '') {
 				alert("검색어를 입력해주세요.");
