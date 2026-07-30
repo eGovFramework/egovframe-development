@@ -87,7 +87,7 @@ public class ${controllerClassName} {
 	private EgovPropertyService propertiesService;
 
 	/**
-	 * 글 목록을 조회한다. (pageing)
+	 * ${model.entity.name} 목록을 조회한다. (pageing)
 	 * @param ${voInstanceName} - 조회할 정보가 담긴 ${voClassName}
 	 * @param model
 	 * @return "${listView}"
@@ -125,7 +125,7 @@ public class ${controllerClassName} {
 	}
 
 	/**
-	 * 글 등록 화면을 조회한다.
+	 * ${model.entity.name} 등록 화면을 조회한다.
 	 * @param ${voInstanceName} - 목록 조회조건 정보가 담긴 VO
 	 * @param model
 	 * @return "${registerView}"
@@ -140,7 +140,7 @@ public class ${controllerClassName} {
 	}
 
 	/**
-	 * 글을 등록한다.
+	 * ${model.entity.name}을 등록한다.
 	 * @param ${voInstanceName} - 등록할 정보가 담긴 VO
 	 * @param bindingResult
 	 * @param model
@@ -163,12 +163,12 @@ public class ${controllerClassName} {
 	}
 
 	/**
-	 * 글 수정화면을 조회한다.
+	 * ${model.entity.name} 수정화면을 조회한다.
 #if(${model.primaryKeys} == [])
-	 * @param ${model.attributes.get(0).ccName} - 수정할 글 ${model.attributes.get(0).ccName}
+	 * @param ${model.attributes.get(0).ccName} - 수정할 ${model.entity.name} ${model.attributes.get(0).ccName}
 #else
 #foreach($attribute in $model.primaryKeys)
-	 * @param ${attribute.ccName} - 수정할 글 ${attribute.ccName}
+	 * @param ${attribute.ccName} - 수정할 ${model.entity.name} ${attribute.ccName}
 #end
 #end
 	 * @param model
@@ -189,7 +189,7 @@ public class ${controllerClassName} {
 	}
 
 	/**
-	 * 글을 수정한다.
+	 * ${model.entity.name}을 수정한다.
 	 * @param ${voInstanceName} - 수정할 정보가 담긴 VO
 	 * @param bindingResult
 	 * @param model
@@ -216,7 +216,7 @@ public class ${controllerClassName} {
 	}
 
 	/**
-	 * 글을 삭제한다.
+	 * ${model.entity.name}을 삭제한다.
 	 * @param ${voInstanceName} - 삭제할 정보가 담긴 VO
 	 * @param model
 	 * @param status
