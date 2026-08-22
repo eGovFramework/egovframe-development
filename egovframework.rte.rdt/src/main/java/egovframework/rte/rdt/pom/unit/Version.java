@@ -124,9 +124,10 @@ public class Version extends PomString implements Comparable<Version> {
 		if (properties != null && StringHelper.isPropertyString(getContent())) {
 			String version = StringHelper.getProperty(getContent());
 			if (version != null && version.length()>0) {
-				if (properties.getValue(version) != null)
+				if (properties.getValue(version) != null) {
 					setPropertyVersion(true);
 					realVersion = properties.getValue(version).toString();
+				}
 			}
 		}
 	}
