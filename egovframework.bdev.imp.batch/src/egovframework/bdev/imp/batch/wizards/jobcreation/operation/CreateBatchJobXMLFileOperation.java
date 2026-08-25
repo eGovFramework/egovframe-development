@@ -511,7 +511,6 @@ public class CreateBatchJobXMLFileOperation {
 		if(decisionVOList != null && decisionVOList.size() > 0) {
 			int j = 0;
 			for (j = 0; j < decisionVOList.size(); j++) {
-				j =+ decisionDone;
 				if(decisionVOList.size() > j){
 					if(jobName.equals(decisionVOList.get(j).getJobName())){
 						// decision
