@@ -20,10 +20,9 @@
 # Setting Files #
 .idea/
 .settings/
-.project
-.classpath
+# .project
+# .classpath
 
-.git/
 .svn/
 
 # Build #
@@ -46,3 +45,59 @@ update/*
 # No loger used
 egovframework.verification.kw3c/
 egovframework.verification.kw3c.feature/
+
+# 불필요한 maven 프로젝트 인식 제거
+egovframework.hdev.imp.ide/src/egovframework/hdev/imp/ide/wizards/examples/hyb/.classpath
+egovframework.hdev.imp.ide/src/egovframework/hdev/imp/ide/wizards/examples/hyb/.project
+egovframework.hdev.imp.ide/src/egovframework/hdev/imp/ide/wizards/examples/hyb/.settings/
+egovframework.hdev.imp.ide/src/egovframework/hdev/imp/ide/wizards/examples/hyb/target/
+egovframework.hdev.imp.ide/src/egovframework/hdev/imp/ide/wizards/examples/hyb/bin/
+egovframework.hdev.imp.ide/src/egovframework/hdev/imp/ide/wizards/examples/web/.classpath
+egovframework.hdev.imp.ide/src/egovframework/hdev/imp/ide/wizards/examples/web/.project
+egovframework.hdev.imp.ide/src/egovframework/hdev/imp/ide/wizards/examples/web/.settings/
+egovframework.hdev.imp.ide/src/egovframework/hdev/imp/ide/wizards/examples/web/target/
+egovframework.hdev.imp.ide/src/egovframework/hdev/imp/ide/wizards/examples/web/bin/
+
+# ─────────────── AI 코딩 도구 ───────────────
+
+# JetBrains (IntelliJ 등)
+*.iml
+*.iws
+out/
+
+# Eclipse — eGovFrame 사용 시 아래는 선택적으로 조정
+.metadata/
+
+# Vim / Sublime
+*.swp
+.*.sw?
+*.sublime-workspace
+
+# Cursor
+.cursor/
+
+# Cline / Roo Code
+.cline/
+.roo/
+
+# Windsurf
+.windsurf/
+
+# Continue
+.continue/
+
+# Aider
+.aider*
+
+# AGENTS.md
+AGENTS.md
+CLAUDE.md
+
+# Claude
+.claude/
+
+# Serena
+.serena/
+
+# Codex
+.codex/
