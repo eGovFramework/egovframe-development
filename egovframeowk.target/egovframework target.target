@@ -4,6 +4,6 @@
 <locations>
 <location id="org.eclipse.rcp" path="${eclipse_home}" type="Feature"/>
 <location path="${workspace_loc}" type="Directory"/>
-	<location path="/Users/EGOV-DEV/v5.0/05_RCP-Target-and-Test/eGovFrameDev-2025-03/eGovFrameDev-5.0.0-macOS-AArch64.app/Contents/Eclipse" type="Directory"/>
+	<location path="/Users/EGOV-DEV/v5.1/04-rcp-target/eGovFrameDev-2026-06/eGovFrameDev-5.1.0-macOS-AArch64.app/Contents/Eclipse" type="Directory"/>
 </locations>
 </target>
