@@ -121,9 +121,9 @@ public class FileUtil {
 			if(contentType != null) {
 				baseType = contentType.getBaseType();
 				if (baseType != null) {
-					return false;
-				} else {
 					return matchContentType(baseType, id);
+				} else {
+					return false;
 				}
 			} else {
 				return false;
