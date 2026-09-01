@@ -48,7 +48,10 @@ public class DeviceAPITemplateInfo {
     
     /** Web POM File */
     public static String webPomFile;
-    
+
+    /** DeviceAPI(hyb) POM File */
+    public static String deviceapiPomFile;
+
     /** Web example File */
     public static String webexample;
 

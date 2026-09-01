@@ -71,8 +71,8 @@ public class ResourceConstants {
     /** 웹 루트 */
     public static final String WEB_ROOT = "src/main/webapp"; 
 
-    /** POM 파일명 */
-    public static final String WEB_POM_FILENAME = "pom.xml"; 
+    /** 생성되는 프로젝트의 POM 파일명 (번들 내 템플릿은 examples.properties의 webPomFile) */
+    public static final String WEB_POM_FILENAME = "pom.xml";
     /** POM 예제 파일 경로 */
     public static final String WEB_POM_EXAMPLE_PATH =
         "egovframework/hdev/imp/ide/wizards/examples/web/"; 
@@ -119,8 +119,8 @@ public class ResourceConstants {
     /** 테스트 output 폴더 */
     public static final IPath ANDROID_TEST_OUTPUT_FOLDER = new Path("target/test-classes"); 
 
-    /** POM 파일명 */
-    public static final String ANDROID_POM_FILENAME = "pom.xml"; 
+    /** 생성되는 프로젝트의 POM 파일명 (번들 내 템플릿은 examples.properties의 deviceapiPomFile) */
+    public static final String ANDROID_POM_FILENAME = "pom.xml";
     /** POM 예제 파일 경로 */
     public static final String ANDROID_POM_EXAMPLE_PATH = "egovframework/hdev/imp/ide/wizards/examples/hyb/"; 
     

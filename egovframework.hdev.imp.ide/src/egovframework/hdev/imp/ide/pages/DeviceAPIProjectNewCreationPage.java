@@ -57,7 +57,7 @@ public class DeviceAPIProjectNewCreationPage extends DeviceAPIProjectCreationPag
          context.setDeviceapiLocationPath(getDeviceapiLocationPath());
          
          context.setDeviceapiExampleFile(DeviceAPITemplateInfo.deviceapiExampleFile);
-         context.setDeviceapiPomFileName(DeviceAPITemplateInfo.webPomFile);
+         context.setDeviceapiPomFileName(DeviceAPITemplateInfo.deviceapiPomFile);
     }
     
     /**
