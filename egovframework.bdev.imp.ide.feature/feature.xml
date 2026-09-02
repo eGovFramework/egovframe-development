@@ -2,7 +2,7 @@
 <feature
       id="egovframework.bdev.imp.ide.feature"
       label="%featureName"
-      version="5.0.2.qualifier"
+      version="5.1.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://www.example.com/description">
@@ -19,22 +19,22 @@
 
    <plugin
          id="egovframework.bdev.imp.batch"
-         version="5.0.2.qualifier"/>
+         version="5.1.0.qualifier"/>
 
    <plugin
          id="egovframework.bdev.imp.batchnature"
-         version="5.0.2.qualifier"/>
+         version="5.1.0.qualifier"/>
 
    <plugin
          id="egovframework.bdev.imp.confmngt"
-         version="5.0.2.qualifier"/>
+         version="5.1.0.qualifier"/>
 
    <plugin
          id="egovframework.bdev.imp.ide"
-         version="5.0.2.qualifier"/>
+         version="5.1.0.qualifier"/>
 
    <plugin
          id="egovframework.bdev.tst"
-         version="5.0.2.qualifier"/>
+         version="5.1.0.qualifier"/>
 
 </feature>

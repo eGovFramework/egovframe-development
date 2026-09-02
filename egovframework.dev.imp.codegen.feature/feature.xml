@@ -2,7 +2,7 @@
 <feature
       id="egovframework.dev.imp.codegen.feature"
       label="%featureName"
-      version="5.0.2.qualifier"
+      version="5.1.0.qualifier"
       provider-name="%providerName">
 
    <description url="http://www.example.com/description">
@@ -19,10 +19,10 @@
 
    <plugin
          id="egovframework.dev.imp.codegen.model"
-         version="5.0.2.qualifier"/>
+         version="5.1.0.qualifier"/>
 
    <plugin
          id="egovframework.dev.imp.codegen.template"
-         version="5.0.2.qualifier"/>
+         version="5.1.0.qualifier"/>
 
 </feature>
