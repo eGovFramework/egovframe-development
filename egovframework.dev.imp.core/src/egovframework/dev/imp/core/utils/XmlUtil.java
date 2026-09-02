@@ -69,7 +69,6 @@ public class XmlUtil {
             dbf.setFeature("http://xml.org/sax/features/external-general-entities", false);
             dbf.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
             dbf.setXIncludeAware(false);
-            dbf.setExpandEntityReferences(false);
             if (!validating) {
                 dbf.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
                 dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
