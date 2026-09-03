@@ -21,6 +21,7 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
 
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -47,6 +48,34 @@ public class XmlUtil {
     static {
         factory.setValidating(false);
         vfactory.setValidating(true);
+        // XXE(XML External Entity) 취약점 방지
+        applyXxeProtection(factory, false);
+        applyXxeProtection(vfactory, true);
+    }
+
+    /**
+     * XXE(XML External Entity Injection, CWE-611) 취약점을 방지하기 위해
+     * 외부 엔티티 처리를 제한한다.
+     *
+     * 외부 일반/파라미터 엔티티를 차단하면 검증 여부와 무관하게 외부 엔티티를 통한
+     * 로컬 파일 읽기·SSRF를 막을 수 있다. 스키마 검증(validating=true)이 필요한
+     * 파서는 DTD 로딩을 유지해야 하므로 외부 엔티티 차단만 적용한다.
+     *
+     * @param dbf 보호를 적용할 DocumentBuilderFactory
+     * @param validating 검증 파서 여부(true면 DTD 로딩을 유지)
+     */
+    private static void applyXxeProtection(DocumentBuilderFactory dbf, boolean validating) {
+        try {
+            dbf.setFeature("http://xml.org/sax/features/external-general-entities", false);
+            dbf.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+            dbf.setXIncludeAware(false);
+            if (!validating) {
+                dbf.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+                dbf.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
+            }
+        } catch (ParserConfigurationException e) {
+            // 특정 기능을 지원하지 않는 파서에서도 나머지 방어는 적용되도록 무시한다.
+        }
     }
 	
 	public static Node getRootNode(String filePath) throws Exception{
@@ -184,6 +213,7 @@ public class XmlUtil {
         Node parentsNode = componentList.item(0);
         
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        applyXxeProtection(factory, false);
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document doc = builder.parse(new InputSource(new StringReader(xmlStr)));
         Node node = doc.getDocumentElement();
@@ -202,6 +232,7 @@ public class XmlUtil {
         Node parentsNode = componentList.item(0);
         
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        applyXxeProtection(factory, false);
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document doc = builder.parse(new InputSource(new StringReader(xmlStr)));
         Node node = doc.getDocumentElement();
@@ -225,6 +256,7 @@ public class XmlUtil {
 	    Node parentsNode = componentList.item(0);
 	    
 	    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+	    applyXxeProtection(factory, false);
 	    DocumentBuilder builder = factory.newDocumentBuilder();
 	    Document doc = builder.parse(new InputSource(new StringReader(xmlStr)));
 	    Node node = doc.getDocumentElement();
