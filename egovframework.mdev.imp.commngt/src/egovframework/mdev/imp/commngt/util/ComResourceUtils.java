@@ -180,6 +180,11 @@ public class ComResourceUtils{
     	try {
 
     		DocumentBuilderFactory docBF = DocumentBuilderFactory.newInstance();
+    		// XXE(XML External Entity Injection, CWE-611) 취약점 방지
+    		docBF.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+    		docBF.setFeature("http://xml.org/sax/features/external-general-entities", false);
+    		docBF.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+    		docBF.setXIncludeAware(false);
     		DocumentBuilder docBuilder = (DocumentBuilder) docBF.newDocumentBuilder();
     		
     		// AS-IS 시스템의 document
@@ -245,6 +250,11 @@ public class ComResourceUtils{
     	try {
 
     		DocumentBuilderFactory docBF = DocumentBuilderFactory.newInstance();
+    		// XXE(XML External Entity Injection, CWE-611) 취약점 방지
+    		docBF.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+    		docBF.setFeature("http://xml.org/sax/features/external-general-entities", false);
+    		docBF.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+    		docBF.setXIncludeAware(false);
     		DocumentBuilder docBuilder = (DocumentBuilder) docBF.newDocumentBuilder();
     		
     		// AS-IS 시스템의 document
