@@ -18,6 +18,7 @@ package egovframework.rte.rdt.pom.parser;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.StringReader;
 
 import org.jdom.Document;
 import org.jdom.Element;
@@ -25,6 +26,8 @@ import org.jdom.JDOMException;
 import org.jdom.Namespace;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.XMLOutputter;
+import org.xml.sax.EntityResolver;
+import org.xml.sax.InputSource;
 
 import egovframework.rte.rdt.pom.exception.PomException;
 import egovframework.rte.rdt.pom.unit.DetailPom;
@@ -45,6 +48,15 @@ public class PomParser {
 		DetailPom pom = null;
 
 		SAXBuilder builder = new SAXBuilder();
+		// XXE(XML External Entity Injection, CWE-611) 취약점 방지
+		// 외부 엔티티·외부 DTD를 읽지 않도록 하며, 내부 엔티티 치환은 기존과 동일하게 동작한다.
+		builder.setEntityResolver(new EntityResolver() {
+			public InputSource resolveEntity(String publicId, String systemId) {
+				return new InputSource(new StringReader(""));
+			}
+		});
+		builder.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+		builder.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
 
 		try {
 			Document doc = builder.build(file);
