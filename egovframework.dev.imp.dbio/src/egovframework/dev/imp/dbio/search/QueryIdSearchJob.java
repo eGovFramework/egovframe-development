@@ -248,6 +248,11 @@ public class QueryIdSearchJob extends Job {
 						InputStream stream = file.getContents();						
 						DocumentBuilderFactory fact = DocumentBuilderFactory.newInstance();
 						fact.setValidating(false);
+						// XXE(XML External Entity Injection, CWE-611) 취약점 방지
+						fact.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+						fact.setFeature("http://xml.org/sax/features/external-general-entities", false);
+						fact.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+						fact.setXIncludeAware(false);
 						DocumentBuilder builder = fact.newDocumentBuilder();
 						builder.setEntityResolver(new EntityResolver() {
 							  @Override
