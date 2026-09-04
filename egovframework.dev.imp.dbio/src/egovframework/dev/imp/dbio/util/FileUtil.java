@@ -20,6 +20,7 @@ import java.util.Iterator;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.content.IContentDescription;
 import org.eclipse.core.runtime.content.IContentType;
 
@@ -107,27 +108,17 @@ public class FileUtil {
 	}
 	
 	/**
-	 * ContentType  일치여부 반환
+	 * contentType 이 id 가 가리키는 ContentType 이거나 그 하위 타입인지 반환
 	 * @param contentType
 	 * @param id
-	 * @return ContentType  일치여부
+	 * @return ContentType 일치(상속 포함) 여부
 	 */
 	private static boolean matchContentType(IContentType contentType, String id) {
-		if (contentType != null && id.equals(contentType.getId())) {
-			return true;
-		} else {
-			IContentType baseType;
-			if(contentType != null) {
-				baseType = contentType.getBaseType();
-				if (baseType != null) {
-					return matchContentType(baseType, id);
-				} else {
-					return false;
-				}
-			} else {
-				return false;
-			}
+		if (contentType == null) {
+			return false;
 		}
+		IContentType target = Platform.getContentTypeManager().getContentType(id);
+		return target != null && contentType.isKindOf(target);
 	}
 
 }

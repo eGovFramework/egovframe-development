@@ -17,6 +17,7 @@ package egovframework.dev.imp.codegen.model.util;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.content.IContentDescription;
 import org.eclipse.core.runtime.content.IContentType;
 import org.eclipse.wst.sse.core.StructuredModelManager;
@@ -88,20 +89,19 @@ public class FileUtil {
 	}
 
 	/**
-	 * ContentType  일치여부 반환
+	 * contentType 이 id 가 가리키는 ContentType 이거나 그 하위 타입인지 반환
 	 * 
 	 * @param contentType
 	 * @param id
-	 * @return ContentType  일치여부
+	 * @return ContentType 일치(상속 포함) 여부
 	 * 
 	 */
 	private static boolean matchContentType(IContentType contentType, String id) {
-		for (IContentType type = contentType; type != null; type = type.getBaseType()) {
-			if (id.equals(type.getId())) {
-				return true;
-			}
+		if (contentType == null) {
+			return false;
 		}
-		return false;
+		IContentType target = Platform.getContentTypeManager().getContentType(id);
+		return target != null && contentType.isKindOf(target);
 	}
 	
 	/**
