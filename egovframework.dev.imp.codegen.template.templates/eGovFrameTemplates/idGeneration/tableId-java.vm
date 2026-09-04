@@ -1,6 +1,6 @@
 package ${txtConfigPackage};
 
-import jakarta.sql.DataSource;
+import javax.sql.DataSource;
 
 import org.egovframe.rte.fdl.idgnr.impl.EgovTableIdGnrServiceImpl;
 import org.egovframe.rte.fdl.idgnr.impl.strategy.EgovIdGnrStrategyImpl;
