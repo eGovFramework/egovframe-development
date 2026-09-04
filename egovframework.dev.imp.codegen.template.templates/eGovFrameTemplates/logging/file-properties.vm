@@ -18,7 +18,7 @@ logger.org-egovframe.additivity = false
 logger.org-egovframe.appenderRef.file0.ref = ${txtAppenderName}
 
 logger.org-springframework.name = org.springframework
-logger.org-springframework.level = INFO
+logger.org-springframework.level = DEBUG
 logger.org-springframework.additivity = false
 logger.org-springframework.appenderRef.file0.ref = ${txtAppenderName}
 
