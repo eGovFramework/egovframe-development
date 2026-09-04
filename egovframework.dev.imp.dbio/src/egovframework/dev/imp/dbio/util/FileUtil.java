@@ -15,9 +15,6 @@
  */
 package egovframework.dev.imp.dbio.util;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Platform;
@@ -43,6 +40,13 @@ import org.eclipse.core.runtime.content.IContentType;
  */
 public class FileUtil {
 	private FileUtil() {};
+	
+	/** eGovFrame SQL 매퍼 파일로 취급하는 ContentType id 목록 */
+	private static final String[] SQL_MAPPER_CONTENT_TYPE_IDS = {
+			"net.harawata.mybatipse.mapper", //$NON-NLS-1$
+			"egovframework.dev.imp.dbio.mapper", //$NON-NLS-1$
+			"egovframework.dev.imp.dbio.sqlMap" //$NON-NLS-1$
+	};
 	
 	/**
 	 * SqlMapFile 확인
@@ -71,16 +75,10 @@ public class FileUtil {
 			IContentDescription contentDescription = file.getContentDescription();
 			if (contentDescription == null) return false;
 			IContentType contentType = contentDescription.getContentType();
-			
-			ArrayList<String> matchContents = new ArrayList<>();
-			matchContents.add("net.harawata.mybatipse.mapper");
-			matchContents.add("egovframework.dev.imp.dbio.mapper");
-			matchContents.add("egovframework.dev.imp.dbio.sqlMap");
-			
-			Iterator<String> it = matchContents.iterator();
-			while(it.hasNext()) {
-				if(matchContentType(contentType, it.next()))
+			for (String id : SQL_MAPPER_CONTENT_TYPE_IDS) {
+				if (matchContentType(contentType, id)) {
 					return true;
+				}
 			}
 			return false;
 		} catch (CoreException e) {
