@@ -96,16 +96,12 @@ public class FileUtil {
 	 * 
 	 */
 	private static boolean matchContentType(IContentType contentType, String id) {
-		if (id.equals(contentType.getId())) {
-			return true;
-		} else {
-			IContentType baseType = contentType.getBaseType();
-			if (baseType != null) {
-				return false;
-			} else {
-				return matchContentType(baseType, id);
+		for (IContentType type = contentType; type != null; type = type.getBaseType()) {
+			if (id.equals(type.getId())) {
+				return true;
 			}
 		}
+		return false;
 	}
 	
 	/**
@@ -117,16 +113,13 @@ public class FileUtil {
 	 * 
 	 */
 	public static boolean alikeXMIContentType(IContentType contentType) {
-		if (contentType.getId().indexOf("xmi")>=0 || contentType.getId().indexOf("uml")>=0) {
-			return true;
-		} else {
-			IContentType baseType = contentType.getBaseType();
-			if (baseType != null) {
-				return false;
-			} else {
-				return alikeXMIContentType(baseType);
+		for (IContentType type = contentType; type != null; type = type.getBaseType()) {
+			String id = type.getId();
+			if (id.indexOf("xmi") >= 0 || id.indexOf("uml") >= 0) {
+				return true;
 			}
 		}
+		return false;
 	}
 	
 	/**
