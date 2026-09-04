@@ -100,8 +100,6 @@ public class FileUtil {
 					return true;
 			}
 			return false;
-			
-			//return matchContentType(contentType, "egovframework.dev.imp.dbio.mapper"); //$NON-NLS-1$			
 		} catch (CoreException e) {
 			return false;
 		}
