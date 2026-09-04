@@ -54,8 +54,7 @@ public class FileUtil {
 			IContentDescription contentDescription = file.getContentDescription();
 			if (contentDescription == null) return false;
 			IContentType contentType = contentDescription.getContentType();
-			//return matchContentType(contentType, "egovframework.dev.imp.dbio.sqlMap"); //$NON-NLS-1$
-			return matchContentType(contentType, "net.harawata.mybatipse.mapper"); //$NON-NLS-1$
+			return matchContentType(contentType, "egovframework.dev.imp.dbio.sqlMap"); //$NON-NLS-1$
 		} catch (CoreException e) {
 			return false;
 		}
