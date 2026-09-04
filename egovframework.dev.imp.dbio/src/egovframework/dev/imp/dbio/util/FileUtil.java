@@ -62,23 +62,6 @@ public class FileUtil {
 	}
 	
 	/**
-	 * MapperFile 확인
-	 * 
-	 * @param file
-	 * @return MapperFile 여부 
-	 */
-	public static boolean isMapperFile(IFile file) {
-		try {
-			IContentDescription contentDescription = file.getContentDescription();
-			if (contentDescription == null) return false;
-			IContentType contentType = contentDescription.getContentType();
-			return matchContentType(contentType, "egovframework.dev.imp.dbio.mapper"); //$NON-NLS-1$			
-		} catch (CoreException e) {
-			return false;
-		}
-	}
-	
-	/**
 	 * isEGovSqlMapperFile 확인
 	 * @param file
 	 * @return

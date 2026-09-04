@@ -141,13 +141,6 @@ public class QueryIdSearchJob extends Job {
 					case IResource.FOLDER:
 						return !JdtUtil.isOutputFolder(outputLocations, (IFolder) resource);
 					case IResource.FILE:
-						
-						/*if (FileUtil.isSqlMapFile((IFile) resource)) {
-							searchInFile((IFile) resource);
-						}else if (FileUtil.isMapperFile((IFile) resource)) {
-							searchInFile((IFile) resource);
-						}
-						*/
 						if (FileUtil.isEGovSqlMapperFile((IFile) resource)) {
 							searchInFile((IFile) resource);
 						}
