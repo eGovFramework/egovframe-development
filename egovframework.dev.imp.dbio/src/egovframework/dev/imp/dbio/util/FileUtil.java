@@ -55,14 +55,7 @@ public class FileUtil {
 	 * @return SqlMapFile 여부 
 	 */
 	public static boolean isSqlMapFile(IFile file) {
-		try {
-			IContentDescription contentDescription = file.getContentDescription();
-			if (contentDescription == null) return false;
-			IContentType contentType = contentDescription.getContentType();
-			return matchContentType(contentType, "egovframework.dev.imp.dbio.sqlMap"); //$NON-NLS-1$
-		} catch (CoreException e) {
-			return false;
-		}
+		return matchContentType(contentTypeOf(file), "egovframework.dev.imp.dbio.sqlMap"); //$NON-NLS-1$
 	}
 	
 	/**
@@ -71,18 +64,26 @@ public class FileUtil {
 	 * @return
 	 */
 	public static boolean isEGovSqlMapperFile(IFile file) {
+		IContentType contentType = contentTypeOf(file);
+		for (String id : SQL_MAPPER_CONTENT_TYPE_IDS) {
+			if (matchContentType(contentType, id)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * 파일의 ContentType 반환. 설명을 얻을 수 없으면 null
+	 * @param file
+	 * @return ContentType, 판정 불가 시 null
+	 */
+	private static IContentType contentTypeOf(IFile file) {
 		try {
 			IContentDescription contentDescription = file.getContentDescription();
-			if (contentDescription == null) return false;
-			IContentType contentType = contentDescription.getContentType();
-			for (String id : SQL_MAPPER_CONTENT_TYPE_IDS) {
-				if (matchContentType(contentType, id)) {
-					return true;
-				}
-			}
-			return false;
+			return contentDescription == null ? null : contentDescription.getContentType();
 		} catch (CoreException e) {
-			return false;
+			return null;
 		}
 	}
 	
