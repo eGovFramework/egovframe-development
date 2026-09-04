@@ -1,5 +1,3 @@
-#set($txtAppenderName = $txtAppenderName.replace(".", "-"))
-
 # Appender Configuration
 appender.console0.type = Console
 appender.console0.name = ${txtAppenderName}
