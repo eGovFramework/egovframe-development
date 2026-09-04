@@ -126,14 +126,6 @@ public class CrudCodeGenTest {
 	}
 
 	@Test
-	public void testSQLMap() {
-		String templateFile = "eGovFrameTemplates/crud/resource/pkg/EgovSample_Sample2_SQL_OLD.vm";
-		String targetFile = "eGovFrameTemplatesResult/crud/resource/pkg/EgovSample_Sample2_SQL_OLD.xml";
-
-		genAndDiff(templateFile, targetFile);
-	}
-
-	@Test
 	public void testService() {
 		String templateFile = "eGovFrameTemplates/crud/java/pkg/service/EgovSample2Service.vm";
 		String targetFile = "eGovFrameTemplatesResult/crud/java/pkg/service/EgovSample2Service.jav";
@@ -166,9 +158,9 @@ public class CrudCodeGenTest {
 	}
 
 	@Test
-	public void testDAO() {
-		String templateFile = "eGovFrameTemplates/crud/java/pkg/service/impl/Sample2DAO.vm";
-		String targetFile = "eGovFrameTemplatesResult/crud/java/pkg/service/impl/Sample2DAO.jav";
+	public void testMapperInterface() {
+		String templateFile = "eGovFrameTemplates/crud/java/pkg/service/impl/Sample2Mapper.vm";
+		String targetFile = "eGovFrameTemplatesResult/crud/java/pkg/service/impl/Sample2Mapper.jav";
 
 		genAndDiff(templateFile, targetFile);
 	}
