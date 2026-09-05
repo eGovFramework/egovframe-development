@@ -60,9 +60,6 @@ public class CreateBatchJobXMLFileOperation {
 	/** partitionMode의 Step 정보*/
 	private ArrayList<String> partitionModeStep = new ArrayList<String>(); 
 	
-	/** decisionVOList중 xml파일에 추가한 decision의 수*/
-	private int decisionDone = 0;
-	
 	/** project name **/
 	private String projectName = null;
 	
@@ -568,8 +565,6 @@ public class CreateBatchJobXMLFileOperation {
 							}
 							
 						}
-						
-						decisionDone++;
 					}
 				}
 			}//for-end
