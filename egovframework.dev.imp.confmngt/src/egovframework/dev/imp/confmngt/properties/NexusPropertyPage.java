@@ -408,6 +408,11 @@ public class NexusPropertyPage extends PropertyPage implements
 				}else{
 					//dependencies 바로 앞에 repositories 위치
 				    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+				    // XXE(XML External Entity Injection, CWE-611) 취약점 방지
+				    factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+				    factory.setFeature("http://xml.org/sax/features/external-general-entities", false);
+				    factory.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+				    factory.setXIncludeAware(false);
 				    DocumentBuilder builder = factory.newDocumentBuilder();
 				    Document doc = builder.parse(new InputSource(new StringReader(xmlStr)));
 				    Node node = doc.getDocumentElement();
