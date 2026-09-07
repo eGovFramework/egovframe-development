@@ -60,9 +60,6 @@ public class CreateBatchJobXMLFileOperation {
 	/** partitionMode의 Step 정보*/
 	private ArrayList<String> partitionModeStep = new ArrayList<String>(); 
 	
-	/** decisionVOList중 xml파일에 추가한 decision의 수*/
-	private int decisionDone = 0;
-	
 	/** project name **/
 	private String projectName = null;
 	
@@ -511,7 +508,6 @@ public class CreateBatchJobXMLFileOperation {
 		if(decisionVOList != null && decisionVOList.size() > 0) {
 			int j = 0;
 			for (j = 0; j < decisionVOList.size(); j++) {
-				j =+ decisionDone;
 				if(decisionVOList.size() > j){
 					if(jobName.equals(decisionVOList.get(j).getJobName())){
 						// decision
@@ -569,8 +565,6 @@ public class CreateBatchJobXMLFileOperation {
 							}
 							
 						}
-						
-						decisionDone++;
 					}
 				}
 			}//for-end
