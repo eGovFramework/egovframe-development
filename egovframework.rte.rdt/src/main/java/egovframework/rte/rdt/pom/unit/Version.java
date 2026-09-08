@@ -67,12 +67,14 @@ public class Version extends PomString implements Comparable<Version> {
 	}
 	
 	/**
-	 * 버전 인스턴스를 생성한다.
+	 * 버전 인스턴스를 생성한다. 버전 문자열이 프로퍼티 참조이면 프로퍼티 맵에서 실제 버전을 찾아 설정한다.
 	 * @param version 버전 문자열
 	 * @param properties 프로퍼티 맵
 	 */
 	public Version(String version, PomMap properties) {
-		this(version);
+		super();
+		this.properties = properties;
+		setContent(version);
 	}
 	
 	/**

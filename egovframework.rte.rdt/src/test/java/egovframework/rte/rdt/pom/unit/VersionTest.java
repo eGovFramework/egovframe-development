@@ -86,6 +86,22 @@ public class VersionTest {
 		assertTrue(v.isUnresolvedProperty());
 	}
 
+	@Test
+	public void stringConstructorWithPropertiesResolvesProperty() {
+		Version v = new Version("${spring.version}", properties("spring.version", "4.3.0"));
+		assertEquals("${spring.version}", v.getContent());
+		assertEquals("4.3.0", v.getRealVersion());
+		assertTrue(v.isPropertyVersion());
+		assertFalse(v.isUnresolvedProperty());
+	}
+
+	@Test
+	public void stringConstructorWithPropertiesKeepsLiteral() {
+		Version v = new Version("4.2.0", properties("spring.version", "4.3.0"));
+		assertEquals("4.2.0", v.getRealVersion());
+		assertFalse(v.isPropertyVersion());
+	}
+
 	// --- 프로퍼티 연쇄 참조
 
 	@Test
