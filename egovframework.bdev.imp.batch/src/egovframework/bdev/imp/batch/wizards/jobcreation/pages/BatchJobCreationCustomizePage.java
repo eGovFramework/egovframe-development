@@ -215,7 +215,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 		BatchTableColumn column = new BatchTableColumn("NO_COLUMN_NAME", 120, SWT.LEFT);
 		column.setColumnToTable(table);
 
-		GridData gData = new GridData(GridData.FILL_VERTICAL);
+		GridData gData = new GridData(GridData.FILL_VERTICAL | GridData.FILL_HORIZONTAL);
 		gData.widthHint = 105;
 
 		tableViewer.getControl().setLayoutData(gData);
@@ -388,7 +388,7 @@ public class BatchJobCreationCustomizePage extends WizardPage {
 	@Override
 	public void setVisible(boolean visible) {
 		if (visible) {
-			Point size = new Point(1150, 1200);
+			Point size = new Point(1150, 1000);
 			getShell().setMinimumSize(size);
 			getShell().setSize(size);
 			batchXMLFileBeanIDList = new BatchXMLFileBeanIDList();
