@@ -139,14 +139,15 @@ public class TableList {
 	}
 
 	/**
-	 * 버전을 조회한다. 
+	 * 버전을 조회한다. 프로퍼티로 지정된 버전은 프로퍼티를 해석한 실제 버전을 돌려주고,
+	 * 해석할 수 없으면 원본 프로퍼티 참조 문자열을 그대로 돌려준다.
 	 * @param dependencyId 버전을 조회할 dependencyId
 	 * @return String 조회된 버전
 	 */
 	static public String getVersion(String dependencyId) {
 		Dependency d = searchDependency(dependencyId);
 		if (d != null && d.getVersion() != null) {
-			return d.getVersion().toString();
+			return d.getVersion().getRealVersion();
 		} else {
 			return null;
 		}
