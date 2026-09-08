@@ -47,6 +47,7 @@ import org.eclipse.wst.xml.core.internal.provisional.document.IDOMModel;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import egovframework.dev.imp.core.utils.XmlUtil;
 import egovframework.dev.imp.dbio.editor.model.DOMElementProxy;
 import egovframework.dev.imp.dbio.editor.model.MapperCRUDElement;
 import egovframework.dev.imp.dbio.editor.model.MapperQueryGroupElement;
@@ -234,13 +235,8 @@ public class QueryIdSearchJob extends Job {
 				if("xml".equals(file.getFileExtension())){
 					try {
 						InputStream stream = file.getContents();						
-						DocumentBuilderFactory fact = DocumentBuilderFactory.newInstance();
+						DocumentBuilderFactory fact = XmlUtil.newSecureDocumentBuilderFactory();
 						fact.setValidating(false);
-						// XXE(XML External Entity Injection, CWE-611) 취약점 방지
-						fact.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
-						fact.setFeature("http://xml.org/sax/features/external-general-entities", false);
-						fact.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
-						fact.setXIncludeAware(false);
 						DocumentBuilder builder = fact.newDocumentBuilder();
 						
 						Document domDoc = builder.parse(stream);
