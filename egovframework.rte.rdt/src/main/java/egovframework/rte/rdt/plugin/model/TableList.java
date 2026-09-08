@@ -421,16 +421,19 @@ public class TableList {
 	}
 
 	/**
-	 * property를 수정한다.
+	 * property를 수정한다. 프로퍼티 참조가 아니거나 프로퍼티를 해석할 수 없는 버전이면 어떤 프로퍼티를 고칠지 알 수 없으므로 아무것도 하지 않는다.
 	 * @param version 변경될 버전
 	 */
 	public void changeProperty(Version version) {
+		if (version == null || !version.isPropertyVersion()) {
+			return;
+		}
 		try {
 			IFile ifile = instance.getCurrentProject().getFile(POM_FILENAME);
 			File file = new File(ifile.getLocationURI());
 			PomObject pom = (PomObject) PomParser.parse(file);
 
-			pom.changeProperty(StringHelper.getProperty(version.toString()), version.getRealVersion().toString());
+			pom.changeProperty(StringHelper.getProperty(version.toString()), version.getRealVersion());
 			pom.commit(file);
 		} catch (PomException pe) {
 			System.out.println(pe.getErrorCode());

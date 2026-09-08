@@ -168,12 +168,18 @@ public class PomObject implements DetailPom {
 	}
 	
 	/**
-	 * 특정 프로퍼티를 변경한다.
+	 * 특정 프로퍼티를 변경한다. pom 에 프로퍼티 섹션이 없거나 해당 키의 프로퍼티가 없으면 아무것도 하지 않는다.
 	 * @param key 프로퍼티 키 값
 	 * @param version 변경할 버전
 	 */
 	public void changeProperty(String key, String version) {
+		if (properties == null || key == null) {
+			return;
+		}
 		PomElement ps = properties.getValue(key);
+		if (ps == null || ps.getElement() == null) {
+			return;
+		}
 
 		Element e = ps.getElement();
 		e.setText(version);
