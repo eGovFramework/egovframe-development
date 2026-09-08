@@ -86,6 +86,36 @@ public class VersionTest {
 		assertTrue(v.isUnresolvedProperty());
 	}
 
+	// --- 프로퍼티 연쇄 참조
+
+	@Test
+	public void chainedPropertyIsResolvedToFinalValue() {
+		Version v = new Version(element("version", "${lib.version}"),
+				properties("lib.version", "${spring.version}", "spring.version", "4.3.0"));
+		assertEquals("${lib.version}", v.getContent());
+		assertEquals("4.3.0", v.getRealVersion());
+		assertTrue(v.isPropertyVersion());
+		assertFalse(v.isUnresolvedProperty());
+		assertTrue(v.isOlderThan(new Version("4.4.0")));
+		assertFalse(v.isOlderThan(new Version("4.2.0")));
+	}
+
+	@Test
+	public void chainEndingInUnknownPropertyIsUnresolved() {
+		Version v = new Version(element("version", "${lib.version}"), properties("lib.version", "${spring.version}"));
+		assertFalse(v.isPropertyVersion());
+		assertTrue(v.isUnresolvedProperty());
+		assertFalse(v.isOlderThan(new Version("9.9.9")));
+	}
+
+	@Test
+	public void cyclicPropertyReferenceIsUnresolved() {
+		Version v = new Version(element("version", "${a}"), properties("a", "${b}", "b", "${a}"));
+		assertFalse(v.isPropertyVersion());
+		assertTrue(v.isUnresolvedProperty());
+		assertFalse(v.isOlderThan(new Version("9.9.9")));
+	}
+
 	// --- 비교
 
 	@Test

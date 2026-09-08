@@ -35,6 +35,10 @@ public class Version extends PomString implements Comparable<Version> {
 	 * 프로퍼티에 지정된 버전인지 여부
 	 */
 	protected boolean propertyVersion;
+	/**
+	 * 프로퍼티가 다른 프로퍼티를 참조하는 연쇄를 따라가는 최대 단계. 순환 참조에서 무한 반복을 막는다.
+	 */
+	private static final int MAX_PROPERTY_DEPTH = 10;
 	
 	/**
 	 * 버전 인스턴스를 생성한다.
@@ -138,8 +142,9 @@ public class Version extends PomString implements Comparable<Version> {
 	}
 
 	/**
-	 * 버전 내용을 설정한다. 프로퍼티 맵이 있고 내용이 프로퍼티 참조이면 실제 버전을 프로퍼티에서 찾아 설정하고,
-	 * 그렇지 않으면 내용을 그대로 실제 버전으로 삼는다.
+	 * 버전 내용을 설정한다. 프로퍼티 맵이 있고 내용이 프로퍼티 참조이면 프로퍼티가 다른 프로퍼티를 가리키는 연쇄까지 따라가
+	 * 실제 버전을 찾아 설정하고, 그렇지 않으면 내용을 그대로 실제 버전으로 삼는다.
+	 * 연쇄 도중 프로퍼티를 찾을 수 없거나 순환 참조이면 해석하지 못한 것으로 두어 isUnresolvedProperty 가 true 가 된다.
 	 * @param content 버전 문자열
 	 */
 	@Override
@@ -147,12 +152,22 @@ public class Version extends PomString implements Comparable<Version> {
 		super.setContent(content);
 		setPropertyVersion(false);
 		realVersion = content;
-		if (properties != null && content != null && StringHelper.isPropertyString(content)) {
-			PomElement value = properties.getValue(StringHelper.getProperty(content));
-			if (value != null) {
-				setPropertyVersion(true);
-				realVersion = value.toString();
+		if (properties == null || content == null) {
+			return;
+		}
+		String resolved = content;
+		int depth = 0;
+		while (StringHelper.isPropertyString(resolved) && depth < MAX_PROPERTY_DEPTH) {
+			PomElement value = properties.getValue(StringHelper.getProperty(resolved));
+			if (value == null) {
+				return;
 			}
+			resolved = value.toString();
+			depth++;
+		}
+		if (depth > 0 && !StringHelper.isPropertyString(resolved)) {
+			setPropertyVersion(true);
+			realVersion = resolved;
 		}
 	}
 
