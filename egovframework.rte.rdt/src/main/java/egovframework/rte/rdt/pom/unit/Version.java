@@ -104,31 +104,67 @@ public class Version extends PomString implements Comparable<Version> {
 	}
 
 	/**
-	 * 버전간의 비교를 수행한다.
+	 * 프로퍼티 참조(${...}) 형태이지만 프로퍼티 맵에서 값을 찾지 못해 실제 버전을 알 수 없는지 여부를 가져온다.
+	 * @return 프로퍼티를 해석할 수 없으면 true
+	 */
+	public boolean isUnresolvedProperty() {
+		String content = getContent();
+		return content != null && StringHelper.isPropertyString(content) && !propertyVersion;
+	}
+
+	/**
+	 * 이 버전이 주어진 버전보다 오래되었다고 확정할 수 있는지 여부를 가져온다.
+	 * 어느 한쪽이라도 실제 버전을 알 수 없으면(버전이 없거나 프로퍼티를 해석할 수 없으면) 판단을 유보하고 false 를 반환한다.
+	 * @param other 비교할 버전
+	 * @return 실제 버전 기준으로 이 버전이 더 오래되었으면 true
+	 */
+	public boolean isOlderThan(Version other) {
+		if (realVersion == null || other == null || other.realVersion == null) {
+			return false;
+		}
+		if (isUnresolvedProperty() || other.isUnresolvedProperty()) {
+			return false;
+		}
+		return compareTo(other) < 0;
+	}
+
+	/**
+	 * 버전간의 비교를 수행한다. 프로퍼티 참조가 아닌 실제 버전을 비교한다.
 	 * @param o 비교할 버전
 	 * @return 비교 결과
 	 */
 	public int compareTo(Version o) {
-		return this.getContent().compareTo(o.getContent());
+		return this.realVersion.compareTo(o.realVersion);
 	}
 
 	/**
-	 * 버전 내용을 설정한다. 프로퍼티 맵이 있을 경우 실제 버전도 같이 설정된다.
+	 * 버전 내용을 설정한다. 프로퍼티 맵이 있고 내용이 프로퍼티 참조이면 실제 버전을 프로퍼티에서 찾아 설정하고,
+	 * 그렇지 않으면 내용을 그대로 실제 버전으로 삼는다.
+	 * @param content 버전 문자열
+	 */
+	@Override
+	public void setContent(String content) {
+		super.setContent(content);
+		setPropertyVersion(false);
+		realVersion = content;
+		if (properties != null && content != null && StringHelper.isPropertyString(content)) {
+			PomElement value = properties.getValue(StringHelper.getProperty(content));
+			if (value != null) {
+				setPropertyVersion(true);
+				realVersion = value.toString();
+			}
+		}
+	}
+
+	/**
+	 * 버전 내용을 설정한다. 엘레멘트가 null 이면(pom 에 version 이 없으면) 아무것도 하지 않는다.
 	 * @param element 버전 엘레멘트
 	 */
 	@Override
 	protected void setContent(Element element) {
-		super.setContent(element);
-		setPropertyVersion(false);
-		realVersion = getContent();
-		if (properties != null && StringHelper.isPropertyString(getContent())) {
-			String version = StringHelper.getProperty(getContent());
-			if (version != null && version.length()>0) {
-				if (properties.getValue(version) != null) {
-					setPropertyVersion(true);
-					realVersion = properties.getValue(version).toString();
-				}
-			}
+		if (element == null) {
+			return;
 		}
+		super.setContent(element);
 	}
 }

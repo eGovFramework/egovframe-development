@@ -160,7 +160,7 @@ public class TableList {
 	static public boolean isUpdate(Service service) {
 		for (String s : service.getDependency()) {
 			if (insDMap.get(s) != null && allDpendencyMap.get(s) != null) {
-				if (insDMap.get(s).getVersion().compareTo(allDpendencyMap.get(s).getVersion()) < 0) {
+				if (insDMap.get(s).getVersion().isOlderThan(allDpendencyMap.get(s).getVersion())) {
 					return true;
 				}
 			}
@@ -343,7 +343,7 @@ public class TableList {
 					if (!isInstalled(s)) {
 						pom.insertDependency(allDpendencyMap.get(s)); // 설치
 					} else {
-						if (insDMap.get(s).getVersion().compareTo(allDpendencyMap.get(s).getVersion()) < 0) { // 버전이 낮을때
+						if (insDMap.get(s).getVersion().isOlderThan(allDpendencyMap.get(s).getVersion())) { // 버전이 낮을때
 							// 버전수정
 							pom.changeVersion(insDMap.get(s).getId(), allDpendencyMap.get(s).getVersion());
 						}
