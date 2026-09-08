@@ -244,21 +244,24 @@ public class PomObject implements DetailPom {
 		Element groupId = new Element("groupId", namespace);
 		Element artifactId = new Element("artifactId", namespace);
 		Element scope = new Element("scope", namespace);
-		Element version = new Element("version", namespace);
 		groupId.setText(dependency.getGroupId());
 		artifactId.setText(dependency.getArtifactId());
 		scope.setText(dependency.getScope());
-		version.setText(dependency.getVersion().getContent());
 		element.addContent((Text) firstIndent.clone());
 		element.addContent(groupId);
 		element.addContent((Text) middleIndent.clone());
 		element.addContent(artifactId);
-		element.addContent((Text) middleIndent.clone());
 		if (scope.getText() != null && scope.getText().trim().length() > 0) {
-			element.addContent(scope);
 			element.addContent((Text) middleIndent.clone());
+			element.addContent(scope);
 		}
-		element.addContent(version);
+		// dependencyManagement/BOM 으로 버전을 공급받는 dependency 는 <version> 이 없으므로 그대로 생략한다.
+		if (dependency.getVersion() != null && dependency.getVersion().getContent() != null) {
+			Element version = new Element("version", namespace);
+			version.setText(dependency.getVersion().getContent());
+			element.addContent((Text) middleIndent.clone());
+			element.addContent(version);
+		}
 		element.addContent((Text) lastIndent.clone());
 
 		//lastDependency 끝의 공백을 다지운다.

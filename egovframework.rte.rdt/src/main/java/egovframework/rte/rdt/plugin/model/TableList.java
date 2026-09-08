@@ -145,11 +145,25 @@ public class TableList {
 	 */
 	static public String getVersion(String dependencyId) {
 		Dependency d = searchDependency(dependencyId);
-		if (d != null) {
+		if (d != null && d.getVersion() != null) {
 			return d.getVersion().toString();
 		} else {
 			return null;
 		}
+	}
+
+	/**
+	 * 설치된 dependency 가 마스터 pom 의 dependency 보다 오래되었다고 확정할 수 있는지 판정한다.
+	 * 어느 한쪽이 없거나, dependencyManagement/BOM 으로 버전을 공급받아 &lt;version&gt; 이 없으면 판단을 유보하고 false 를 반환한다.
+	 * @param installed 프로젝트 pom 에 설치된 dependency
+	 * @param master 마스터 pom 의 dependency
+	 * @return 설치된 버전이 더 오래되었으면 true
+	 */
+	private static boolean isOlderThanMaster(Dependency installed, Dependency master) {
+		if (installed == null || master == null || installed.getVersion() == null) {
+			return false;
+		}
+		return installed.getVersion().isOlderThan(master.getVersion());
 	}
 
 	/**
@@ -159,10 +173,8 @@ public class TableList {
 	 */
 	static public boolean isUpdate(Service service) {
 		for (String s : service.getDependency()) {
-			if (insDMap.get(s) != null && allDpendencyMap.get(s) != null) {
-				if (insDMap.get(s).getVersion().isOlderThan(allDpendencyMap.get(s).getVersion())) {
-					return true;
-				}
+			if (isOlderThanMaster(insDMap.get(s), allDpendencyMap.get(s))) {
+				return true;
 			}
 		}
 		return false;
@@ -343,7 +355,7 @@ public class TableList {
 					if (!isInstalled(s)) {
 						pom.insertDependency(allDpendencyMap.get(s)); // 설치
 					} else {
-						if (insDMap.get(s).getVersion().isOlderThan(allDpendencyMap.get(s).getVersion())) { // 버전이 낮을때
+						if (isOlderThanMaster(insDMap.get(s), allDpendencyMap.get(s))) { // 버전이 낮을때
 							// 버전수정
 							pom.changeVersion(insDMap.get(s).getId(), allDpendencyMap.get(s).getVersion());
 						}

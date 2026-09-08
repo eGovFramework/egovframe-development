@@ -211,7 +211,7 @@ public class Dependency extends PomElement {
 	@Override
 	public String toString() {
 		return "Dependency [groupId=" + groupId + ", artifactId=" + artifactId
-				+ ", scope=" + scope + ", version=" + version.realVersion + "]";
+				+ ", scope=" + scope + ", version=" + (version == null ? null : version.realVersion) + "]";
 	}
 
 	/**
