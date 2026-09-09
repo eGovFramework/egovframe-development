@@ -30,6 +30,7 @@ import org.jdom.Namespace;
 import org.jdom.Text;
 
 import egovframework.rte.rdt.pom.parser.PomParser;
+import egovframework.rte.rdt.pom.util.StringHelper;
 
 /**
  * 프로젝트에서 사용되는 POM 파일을 모델링한 모델 클래스.
@@ -563,6 +564,14 @@ public class PomObject implements DetailPom {
 	 */
 	public void changeVersion(String dependencyId, Version version) {
 		Dependency dependencyTochange = dependencies.get(dependencyId);
+		Version installedVersion = dependencyTochange.getVersion();
+		// 설치된 버전이 이 pom 의 <properties> 로 지정돼 있으면 <version> 을 실제 값으로 덮어쓰지 않고
+		// 프로퍼티 자체를 고친다. <version> 만 고치면 같은 프로퍼티를 쓰는 다른 dependency 는
+		// 옛 버전으로 남아 한 라이브러리의 모듈들이 서로 다른 버전으로 갈린다.
+		if (installedVersion != null && installedVersion.isPropertyVersion()) {
+			changeProperty(StringHelper.getProperty(installedVersion.getContent()), version.toString());
+			return;
+		}
 		dependencyTochange.getElement().getChild("version", getNamespace()).setText(version.toString());
 		//changeDependency(dependencyTochange);
 	}
