@@ -15,11 +15,9 @@
  */
 package egovframework.dev.imp.dbio.util;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.content.IContentDescription;
 import org.eclipse.core.runtime.content.IContentType;
 
@@ -43,6 +41,13 @@ import org.eclipse.core.runtime.content.IContentType;
 public class FileUtil {
 	private FileUtil() {};
 	
+	/** eGovFrame SQL 매퍼 파일로 취급하는 ContentType id 목록 */
+	private static final String[] SQL_MAPPER_CONTENT_TYPE_IDS = {
+			"net.harawata.mybatipse.mapper", //$NON-NLS-1$
+			"egovframework.dev.imp.dbio.mapper", //$NON-NLS-1$
+			"egovframework.dev.imp.dbio.sqlMap" //$NON-NLS-1$
+	};
+	
 	/**
 	 * SqlMapFile 확인
 	 * 
@@ -50,32 +55,7 @@ public class FileUtil {
 	 * @return SqlMapFile 여부 
 	 */
 	public static boolean isSqlMapFile(IFile file) {
-		try {
-			IContentDescription contentDescription = file.getContentDescription();
-			if (contentDescription == null) return false;
-			IContentType contentType = contentDescription.getContentType();
-			//return matchContentType(contentType, "egovframework.dev.imp.dbio.sqlMap"); //$NON-NLS-1$
-			return matchContentType(contentType, "net.harawata.mybatipse.mapper"); //$NON-NLS-1$
-		} catch (CoreException e) {
-			return false;
-		}
-	}
-	
-	/**
-	 * MapperFile 확인
-	 * 
-	 * @param file
-	 * @return MapperFile 여부 
-	 */
-	public static boolean isMapperFile(IFile file) {
-		try {
-			IContentDescription contentDescription = file.getContentDescription();
-			if (contentDescription == null) return false;
-			IContentType contentType = contentDescription.getContentType();
-			return matchContentType(contentType, "egovframework.dev.imp.dbio.mapper"); //$NON-NLS-1$			
-		} catch (CoreException e) {
-			return false;
-		}
+		return matchContentType(contentTypeOf(file), "egovframework.dev.imp.dbio.sqlMap"); //$NON-NLS-1$
 	}
 	
 	/**
@@ -84,51 +64,41 @@ public class FileUtil {
 	 * @return
 	 */
 	public static boolean isEGovSqlMapperFile(IFile file) {
+		IContentType contentType = contentTypeOf(file);
+		for (String id : SQL_MAPPER_CONTENT_TYPE_IDS) {
+			if (matchContentType(contentType, id)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * 파일의 ContentType 반환. 설명을 얻을 수 없으면 null
+	 * @param file
+	 * @return ContentType, 판정 불가 시 null
+	 */
+	private static IContentType contentTypeOf(IFile file) {
 		try {
 			IContentDescription contentDescription = file.getContentDescription();
-			if (contentDescription == null) return false;
-			IContentType contentType = contentDescription.getContentType();
-			
-			ArrayList<String> matchContents = new ArrayList<>();
-			matchContents.add("net.harawata.mybatipse.mapper");
-			matchContents.add("egovframework.dev.imp.dbio.mapper");
-			matchContents.add("egovframework.dev.imp.dbio.sqlMap");
-			
-			Iterator<String> it = matchContents.iterator();
-			while(it.hasNext()) {
-				if(matchContentType(contentType, it.next()))
-					return true;
-			}
-			return false;
-			
-			//return matchContentType(contentType, "egovframework.dev.imp.dbio.mapper"); //$NON-NLS-1$			
+			return contentDescription == null ? null : contentDescription.getContentType();
 		} catch (CoreException e) {
-			return false;
+			return null;
 		}
 	}
 	
 	/**
-	 * ContentType  일치여부 반환
+	 * contentType 이 id 가 가리키는 ContentType 이거나 그 하위 타입인지 반환
 	 * @param contentType
 	 * @param id
-	 * @return ContentType  일치여부
+	 * @return ContentType 일치(상속 포함) 여부
 	 */
 	private static boolean matchContentType(IContentType contentType, String id) {
-		if (contentType != null && id.equals(contentType.getId())) {
-			return true;
-		} else {
-			IContentType baseType;
-			if(contentType != null) {
-				baseType = contentType.getBaseType();
-				if (baseType != null) {
-					return false;
-				} else {
-					return matchContentType(baseType, id);
-				}
-			} else {
-				return false;
-			}
+		if (contentType == null) {
+			return false;
 		}
+		IContentType target = Platform.getContentTypeManager().getContentType(id);
+		return target != null && contentType.isKindOf(target);
 	}
 
 }

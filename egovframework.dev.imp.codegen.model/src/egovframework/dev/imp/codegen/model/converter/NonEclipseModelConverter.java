@@ -770,7 +770,7 @@ public class NonEclipseModelConverter extends UMLModelConverter implements IConv
 			if (ownedEnd1.hasAttribute("name"))
 				attributeName1 = ownedEnd1.getAttribute("name");
 			if (ownedEnd2.hasAttribute("name"))
-				attributeName2 = ownedEnd1.getAttribute("name");
+				attributeName2 = ownedEnd2.getAttribute("name");
 			if (ownedEnd1.hasChildNodes()) {
 				String classifierXmiId = ((Element) ownedEnd1.getElementsByTagName("type").item(0)).getAttribute("xmi:idref");
 				classifier1 = (Classifier) xmiIdtoObjectMap.get(classifierXmiId);
@@ -846,7 +846,7 @@ public class NonEclipseModelConverter extends UMLModelConverter implements IConv
 						attributeName1 = CommonUtil.firstCharToLowerCase(classifier1.getName());
 				}
 				if (memberEnd2.hasAttribute("xmi:idref")) {
-					Element attElement2 = (Element) associationAttMap.get(memberEnd1.getAttribute("xmi:idref"));
+					Element attElement2 = (Element) associationAttMap.get(memberEnd2.getAttribute("xmi:idref"));
 					if (attElement2.hasAttribute("name")) {
 						attributeName2 = attElement2.getAttribute("name");
 					}

@@ -1004,7 +1004,7 @@ public class UML2NonEclipseModelConverter  extends UMLModelConverter implements 
 				attributeName1 = ownedEnd1.getAttribute("name");
 
 			if (ownedEnd2.hasAttribute("name"))
-				attributeName2 = ownedEnd1.getAttribute("name");
+				attributeName2 = ownedEnd2.getAttribute("name");
 
 			if (ownedEnd1.hasChildNodes()){
 				String classifierXmiId = ((Element) ownedEnd1.getElementsByTagName("type").item(0)).getAttribute("xmi:idref");

@@ -30,6 +30,7 @@ import egovframework.rte.rdt.pom.exception.PomException;
 import egovframework.rte.rdt.pom.unit.DetailPom;
 import egovframework.rte.rdt.pom.unit.Pom;
 import egovframework.rte.rdt.pom.unit.PomObject;
+import egovframework.rte.rdt.xml.SecureSAXBuilder;
 
 /**
  * pom.xml 파일을 파싱하여 Pom 인스턴스를 만든다
@@ -44,7 +45,7 @@ public class PomParser {
 	public static Pom parse(File file) throws PomException {
 		DetailPom pom = null;
 
-		SAXBuilder builder = new SAXBuilder();
+		SAXBuilder builder = new SecureSAXBuilder();
 
 		try {
 			Document doc = builder.build(file);

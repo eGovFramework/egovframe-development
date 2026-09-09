@@ -139,17 +139,32 @@ public class TableList {
 	}
 
 	/**
-	 * 버전을 조회한다. 
+	 * 버전을 조회한다. 프로퍼티로 지정된 버전은 프로퍼티를 해석한 실제 버전을 돌려주고,
+	 * 해석할 수 없으면 원본 프로퍼티 참조 문자열을 그대로 돌려준다.
 	 * @param dependencyId 버전을 조회할 dependencyId
 	 * @return String 조회된 버전
 	 */
 	static public String getVersion(String dependencyId) {
 		Dependency d = searchDependency(dependencyId);
-		if (d != null) {
-			return d.getVersion().toString();
+		if (d != null && d.getVersion() != null) {
+			return d.getVersion().getRealVersion();
 		} else {
 			return null;
 		}
+	}
+
+	/**
+	 * 설치된 dependency 가 마스터 pom 의 dependency 보다 오래되었다고 확정할 수 있는지 판정한다.
+	 * 어느 한쪽이 없거나, dependencyManagement/BOM 으로 버전을 공급받아 &lt;version&gt; 이 없으면 판단을 유보하고 false 를 반환한다.
+	 * @param installed 프로젝트 pom 에 설치된 dependency
+	 * @param master 마스터 pom 의 dependency
+	 * @return 설치된 버전이 더 오래되었으면 true
+	 */
+	private static boolean isOlderThanMaster(Dependency installed, Dependency master) {
+		if (installed == null || master == null || installed.getVersion() == null) {
+			return false;
+		}
+		return installed.getVersion().isOlderThan(master.getVersion());
 	}
 
 	/**
@@ -159,10 +174,8 @@ public class TableList {
 	 */
 	static public boolean isUpdate(Service service) {
 		for (String s : service.getDependency()) {
-			if (insDMap.get(s) != null && allDpendencyMap.get(s) != null) {
-				if (insDMap.get(s).getVersion().compareTo(allDpendencyMap.get(s).getVersion()) < 0) {
-					return true;
-				}
+			if (isOlderThanMaster(insDMap.get(s), allDpendencyMap.get(s))) {
+				return true;
 			}
 		}
 		return false;
@@ -343,7 +356,7 @@ public class TableList {
 					if (!isInstalled(s)) {
 						pom.insertDependency(allDpendencyMap.get(s)); // 설치
 					} else {
-						if (insDMap.get(s).getVersion().compareTo(allDpendencyMap.get(s).getVersion()) < 0) { // 버전이 낮을때
+						if (isOlderThanMaster(insDMap.get(s), allDpendencyMap.get(s))) { // 버전이 낮을때
 							// 버전수정
 							pom.changeVersion(insDMap.get(s).getId(), allDpendencyMap.get(s).getVersion());
 						}
@@ -409,16 +422,19 @@ public class TableList {
 	}
 
 	/**
-	 * property를 수정한다.
+	 * property를 수정한다. 프로퍼티 참조가 아니거나 프로퍼티를 해석할 수 없는 버전이면 어떤 프로퍼티를 고칠지 알 수 없으므로 아무것도 하지 않는다.
 	 * @param version 변경될 버전
 	 */
 	public void changeProperty(Version version) {
+		if (version == null || !version.isPropertyVersion()) {
+			return;
+		}
 		try {
 			IFile ifile = instance.getCurrentProject().getFile(POM_FILENAME);
 			File file = new File(ifile.getLocationURI());
 			PomObject pom = (PomObject) PomParser.parse(file);
 
-			pom.changeProperty(StringHelper.getProperty(version.toString()), version.getRealVersion().toString());
+			pom.changeProperty(StringHelper.getProperty(version.toString()), version.getRealVersion());
 			pom.commit(file);
 		} catch (PomException pe) {
 			System.out.println(pe.getErrorCode());

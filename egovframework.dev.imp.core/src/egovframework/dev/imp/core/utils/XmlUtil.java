@@ -54,6 +54,25 @@ public class XmlUtil {
     }
 
     /**
+     * XXE(XML External Entity Injection, CWE-611) 방어 설정이 적용된 비검증(non-validating)
+     * DocumentBuilderFactory 를 새로 만들어 돌려준다.
+     *
+     * 사용자 워크스페이스의 XML(web.xml, 매퍼, 설정 파일 등)처럼 신뢰할 수 없는 문서를
+     * DocumentBuilder 로 읽는 코드는 DocumentBuilderFactory.newInstance() 대신 이 메서드를 쓴다.
+     * 외부 DTD·외부 일반/파라미터 엔티티·XInclude 를 차단하며, 내부 엔티티 치환은 기본과 동일하다.
+     * 파서가 지원하지 않는 feature 는 건너뛰므로 호출 측에서 ParserConfigurationException 을
+     * 따로 처리할 필요가 없다. validating, namespaceAware 등 파싱 의미를 바꾸는 옵션은
+     * 호출 측에서 이어서 설정한다.
+     *
+     * @return 외부 엔티티 처리가 차단된 DocumentBuilderFactory
+     */
+    public static DocumentBuilderFactory newSecureDocumentBuilderFactory() {
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        applyXxeProtection(dbf, false);
+        return dbf;
+    }
+
+    /**
      * XXE(XML External Entity Injection, CWE-611) 취약점을 방지하기 위해
      * 외부 엔티티 처리를 제한한다.
      *

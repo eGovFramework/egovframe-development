@@ -17,6 +17,7 @@ package egovframework.dev.imp.codegen.model.util;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.content.IContentDescription;
 import org.eclipse.core.runtime.content.IContentType;
 import org.eclipse.wst.sse.core.StructuredModelManager;
@@ -88,24 +89,19 @@ public class FileUtil {
 	}
 
 	/**
-	 * ContentType  일치여부 반환
+	 * contentType 이 id 가 가리키는 ContentType 이거나 그 하위 타입인지 반환
 	 * 
 	 * @param contentType
 	 * @param id
-	 * @return ContentType  일치여부
+	 * @return ContentType 일치(상속 포함) 여부
 	 * 
 	 */
 	private static boolean matchContentType(IContentType contentType, String id) {
-		if (id.equals(contentType.getId())) {
-			return true;
-		} else {
-			IContentType baseType = contentType.getBaseType();
-			if (baseType != null) {
-				return false;
-			} else {
-				return matchContentType(baseType, id);
-			}
+		if (contentType == null) {
+			return false;
 		}
+		IContentType target = Platform.getContentTypeManager().getContentType(id);
+		return target != null && contentType.isKindOf(target);
 	}
 	
 	/**
@@ -117,16 +113,13 @@ public class FileUtil {
 	 * 
 	 */
 	public static boolean alikeXMIContentType(IContentType contentType) {
-		if (contentType.getId().indexOf("xmi")>=0 || contentType.getId().indexOf("uml")>=0) {
-			return true;
-		} else {
-			IContentType baseType = contentType.getBaseType();
-			if (baseType != null) {
-				return false;
-			} else {
-				return alikeXMIContentType(baseType);
+		for (IContentType type = contentType; type != null; type = type.getBaseType()) {
+			String id = type.getId();
+			if (id.indexOf("xmi") >= 0 || id.indexOf("uml") >= 0) {
+				return true;
 			}
 		}
+		return false;
 	}
 	
 	/**

@@ -27,6 +27,7 @@ import org.jdom.input.SAXBuilder;
 
 import egovframework.rte.rdt.pom.exception.PomException;
 import egovframework.rte.rdt.service.unit.Service;
+import egovframework.rte.rdt.xml.SecureSAXBuilder;
 
 /**
  * 서비스들의 필요한 라이브러리를 정의해둔 Services 메타파일을 파싱하여 값을 가공해주는 클래스
@@ -43,7 +44,7 @@ public class ServicesParser {
 	public static ArrayList<Service> parse(File file) throws PomException {
 		ArrayList<Service> services = null;
 		try {
-			SAXBuilder builder = new SAXBuilder();
+			SAXBuilder builder = new SecureSAXBuilder();
 			Document doc = builder.build(file);
 			services = generateServiceObjectFromXml(doc);
 		} catch (JDOMException jde) {

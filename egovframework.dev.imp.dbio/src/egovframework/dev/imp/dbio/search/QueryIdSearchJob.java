@@ -15,9 +15,7 @@
  */
 package egovframework.dev.imp.dbio.search;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.StringReader;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -48,10 +46,8 @@ import org.eclipse.wst.xml.core.internal.provisional.document.IDOMDocument;
 import org.eclipse.wst.xml.core.internal.provisional.document.IDOMModel;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.xml.sax.EntityResolver;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
 
+import egovframework.dev.imp.core.utils.XmlUtil;
 import egovframework.dev.imp.dbio.editor.model.DOMElementProxy;
 import egovframework.dev.imp.dbio.editor.model.MapperCRUDElement;
 import egovframework.dev.imp.dbio.editor.model.MapperQueryGroupElement;
@@ -141,13 +137,6 @@ public class QueryIdSearchJob extends Job {
 					case IResource.FOLDER:
 						return !JdtUtil.isOutputFolder(outputLocations, (IFolder) resource);
 					case IResource.FILE:
-						
-						/*if (FileUtil.isSqlMapFile((IFile) resource)) {
-							searchInFile((IFile) resource);
-						}else if (FileUtil.isMapperFile((IFile) resource)) {
-							searchInFile((IFile) resource);
-						}
-						*/
 						if (FileUtil.isEGovSqlMapperFile((IFile) resource)) {
 							searchInFile((IFile) resource);
 						}
@@ -246,20 +235,9 @@ public class QueryIdSearchJob extends Job {
 				if("xml".equals(file.getFileExtension())){
 					try {
 						InputStream stream = file.getContents();						
-						DocumentBuilderFactory fact = DocumentBuilderFactory.newInstance();
+						DocumentBuilderFactory fact = XmlUtil.newSecureDocumentBuilderFactory();
 						fact.setValidating(false);
 						DocumentBuilder builder = fact.newDocumentBuilder();
-						builder.setEntityResolver(new EntityResolver() {
-							  @Override
-							  public InputSource resolveEntity(String arg0, String arg1)
-							        throws SAXException, IOException {
-							    if(arg0.contains("iBATIS.com")) {
-							        return new InputSource(new StringReader(""));
-							    } else {
-							        return null;
-							    }
-							  }
-							});
 						
 						Document domDoc = builder.parse(stream);
 						

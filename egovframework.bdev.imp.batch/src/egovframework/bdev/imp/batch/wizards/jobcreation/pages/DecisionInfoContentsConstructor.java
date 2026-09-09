@@ -569,12 +569,15 @@ public class DecisionInfoContentsConstructor extends InfoContentsConstructor {
 		}
 
 		if (items.length > 0) {
+			int j = 0;
+
 			for (int i = 0; i < items.length; i++) {
 				NextVo nextVo = (NextVo) items[i].getData();
 				if (!isAdd && selectedNextVo.compare(nextVo)) {
 					continue;
 				} else {
-					nextVos[i] = (NextVo) items[i].getData();
+					nextVos[j] = (NextVo) items[i].getData();
+					j++;
 				}
 			}
 		}

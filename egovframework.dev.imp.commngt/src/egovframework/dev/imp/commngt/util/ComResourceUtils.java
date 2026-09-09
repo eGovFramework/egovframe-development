@@ -180,7 +180,7 @@ public class ComResourceUtils{
     	
     	try {
 
-    		DocumentBuilderFactory docBF = DocumentBuilderFactory.newInstance();
+    		DocumentBuilderFactory docBF = XmlUtil.newSecureDocumentBuilderFactory();
     		DocumentBuilder docBuilder = (DocumentBuilder) docBF.newDocumentBuilder();
     		
     		// AS-IS 시스템의 document
@@ -210,15 +210,12 @@ public class ComResourceUtils{
     	Document xmlDoc = null;
     	try {
     		
-    		DocumentBuilderFactory docBF = DocumentBuilderFactory.newInstance();
+    		DocumentBuilderFactory docBF = XmlUtil.newSecureDocumentBuilderFactory();
     		
     		docBF.setValidating(false);
     		docBF.setNamespaceAware(false);
     		docBF.setFeature("http://xml.org/sax/features/validation", false);
     		docBF.setFeature("http://apache.org/xml/features/nonvalidating/load-dtd-grammar", false);
-    		docBF.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
-    		docBF.setFeature("http://xml.org/sax/features/external-general-entities", false);
-    		docBF.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
     		
     		DocumentBuilder docBuilder = (DocumentBuilder) docBF.newDocumentBuilder();
     		
@@ -245,7 +242,7 @@ public class ComResourceUtils{
 
     	try {
 
-    		DocumentBuilderFactory docBF = DocumentBuilderFactory.newInstance();
+    		DocumentBuilderFactory docBF = XmlUtil.newSecureDocumentBuilderFactory();
     		DocumentBuilder docBuilder = (DocumentBuilder) docBF.newDocumentBuilder();
     		
     		// AS-IS 시스템의 document
@@ -823,15 +820,12 @@ public class ComResourceUtils{
     				boolean nextWork = true;
     				if(resource.getType() == IResource.FILE && resource.getName().endsWith(".xml") && resource.getName().toUpperCase().indexOf("SQL")==-1 && resource.getFullPath().toOSString().indexOf("\\classes\\")==-1 ){
     					try {
-    						DocumentBuilderFactory docBF = DocumentBuilderFactory.newInstance();
+    						DocumentBuilderFactory docBF = XmlUtil.newSecureDocumentBuilderFactory();
     						
     						docBF.setValidating(false);
     						docBF.setNamespaceAware(false);
     						docBF.setFeature("http://xml.org/sax/features/validation", false);
     						docBF.setFeature("http://apache.org/xml/features/nonvalidating/load-dtd-grammar", false);
-    						docBF.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
-    						docBF.setFeature("http://xml.org/sax/features/external-general-entities", false);
-    						docBF.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
     						
     						DocumentBuilder docBuilder = (DocumentBuilder) docBF.newDocumentBuilder();
     						
@@ -1002,15 +996,12 @@ public class ComResourceUtils{
     				boolean nextWork = true;
     				if(resource.getType() == IResource.FILE && resource.getName().endsWith(".xml") && resource.getName().toUpperCase().indexOf("SQL")==-1 && resource.getFullPath().toOSString().indexOf("\\classes\\")==-1){
     					try {
-    						DocumentBuilderFactory docBF = DocumentBuilderFactory.newInstance();
+    						DocumentBuilderFactory docBF = XmlUtil.newSecureDocumentBuilderFactory();
     						
     						docBF.setValidating(false);
     						docBF.setNamespaceAware(false);
     						docBF.setFeature("http://xml.org/sax/features/validation", false);
     						docBF.setFeature("http://apache.org/xml/features/nonvalidating/load-dtd-grammar", false);
-    						docBF.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
-    						docBF.setFeature("http://xml.org/sax/features/external-general-entities", false);
-    						docBF.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
     						
     						DocumentBuilder docBuilder = (DocumentBuilder) docBF.newDocumentBuilder();
     						
@@ -1194,15 +1185,12 @@ public class ComResourceUtils{
     				
     				if(resource.getType() == IResource.FILE && resource.getName().endsWith(".xml") && resource.getName().toUpperCase().indexOf("SQL")==-1 && resource.getFullPath().toOSString().indexOf("\\classes\\")==-1 && isLocation){
     					try {
-    						DocumentBuilderFactory docBF = DocumentBuilderFactory.newInstance();
+    						DocumentBuilderFactory docBF = XmlUtil.newSecureDocumentBuilderFactory();
     						
     						docBF.setValidating(false);
     						docBF.setNamespaceAware(false);
     						docBF.setFeature("http://xml.org/sax/features/validation", false);
     						docBF.setFeature("http://apache.org/xml/features/nonvalidating/load-dtd-grammar", false);
-    						docBF.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
-    						docBF.setFeature("http://xml.org/sax/features/external-general-entities", false);
-    						docBF.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
     						
     						DocumentBuilder docBuilder = (DocumentBuilder) docBF.newDocumentBuilder();
     						
@@ -1466,15 +1454,12 @@ public class ComResourceUtils{
 					if(resource.getType() == IResource.FILE && resource.getName().equals("web.xml")){
 						
 						try {
-							DocumentBuilderFactory docBF = DocumentBuilderFactory.newInstance();
+							DocumentBuilderFactory docBF = XmlUtil.newSecureDocumentBuilderFactory();
 							
 							docBF.setValidating(false);
 							docBF.setNamespaceAware(false);
 							docBF.setFeature("http://xml.org/sax/features/validation", false);
 							docBF.setFeature("http://apache.org/xml/features/nonvalidating/load-dtd-grammar", false);
-							docBF.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
-							docBF.setFeature("http://xml.org/sax/features/external-general-entities", false);
-							docBF.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
 							
 							DocumentBuilder docBuilder = (DocumentBuilder) docBF.newDocumentBuilder();
 							
@@ -1596,15 +1581,12 @@ public class ComResourceUtils{
     						if(isDiapatcher){
     							
     							try {
-    								DocumentBuilderFactory docBF = DocumentBuilderFactory.newInstance();
+    								DocumentBuilderFactory docBF = XmlUtil.newSecureDocumentBuilderFactory();
     								
     								docBF.setValidating(false);
     								docBF.setNamespaceAware(false);
     								docBF.setFeature("http://xml.org/sax/features/validation", false);
     								docBF.setFeature("http://apache.org/xml/features/nonvalidating/load-dtd-grammar", false);
-    								docBF.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
-    								docBF.setFeature("http://xml.org/sax/features/external-general-entities", false);
-    								docBF.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
     								
     								DocumentBuilder docBuilder = (DocumentBuilder) docBF.newDocumentBuilder();
     								
@@ -1729,15 +1711,12 @@ public class ComResourceUtils{
     						if(isLocation){
     							
     							try {
-    								DocumentBuilderFactory docBF = DocumentBuilderFactory.newInstance();
+    								DocumentBuilderFactory docBF = XmlUtil.newSecureDocumentBuilderFactory();
     								
     								docBF.setValidating(false);
     								docBF.setNamespaceAware(false);
     								docBF.setFeature("http://xml.org/sax/features/validation", false);
     								docBF.setFeature("http://apache.org/xml/features/nonvalidating/load-dtd-grammar", false);
-    								docBF.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
-    								docBF.setFeature("http://xml.org/sax/features/external-general-entities", false);
-    								docBF.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
     								
     								DocumentBuilder docBuilder = (DocumentBuilder) docBF.newDocumentBuilder();
     								

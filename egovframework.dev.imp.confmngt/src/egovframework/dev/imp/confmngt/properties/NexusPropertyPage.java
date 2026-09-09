@@ -13,13 +13,10 @@ package egovframework.dev.imp.confmngt.properties;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.InputStream;
-import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactoryConfigurationError;
@@ -50,7 +47,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
-import org.xml.sax.InputSource;
 
 import egovframework.dev.imp.confmngt.EgovConfMngtPlugin;
 import egovframework.dev.imp.confmngt.common.ConfMngtLog;
@@ -407,19 +403,13 @@ public class NexusPropertyPage extends PropertyPage implements
 					XmlUtil.addNode(rootNode, "/project", xmlStr, "\t", "\n");
 				}else{
 					//dependencies 바로 앞에 repositories 위치
-				    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-				    DocumentBuilder builder = factory.newDocumentBuilder();
-				    Document doc = builder.parse(new InputSource(new StringReader(xmlStr)));
-				    Node node = doc.getDocumentElement();
-				    
+				    // 고정된 빈 <repositories> 요소이므로 XML 파서를 거치지 않고 DOM 으로 직접 만든다.
 				    Document ownerDoc = rootNode.getOwnerDocument();
-				    Node importedNode = ownerDoc.importNode(node, true);
-//				    Text preValueText = ownerDoc.createTextNode("");
+				    Node repositoriesNode = ownerDoc.createElement("repositories"); //$NON-NLS-1$
+				    repositoriesNode.appendChild(ownerDoc.createTextNode("\n\t"));
 				    Text postValueText = ownerDoc.createTextNode("\n\t");					
 
-				    
-//				    rootNode.insertBefore(preValueText, findNode);
-					rootNode.insertBefore(importedNode, findNode);
+					rootNode.insertBefore(repositoriesNode, findNode);
 					rootNode.insertBefore(postValueText, findNode);
 				}
 				createXmlFile(rootNode);

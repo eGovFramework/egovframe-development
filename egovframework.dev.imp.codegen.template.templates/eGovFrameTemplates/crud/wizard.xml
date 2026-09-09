@@ -87,15 +87,6 @@
 				container="voPackage">
 				<condition variable="checkDataAccess" value="true" />
 			</template>
-			<!--
-			<template component="dao"
-				expression="${model.entity.pcName}DAO"
-				velocity="java/pkg/service/impl/Sample2DAO.vm"
-				extension="java"
-				container="daoPackage">
-				<condition variable="checkDataAccess" value="true" />
-			</template>
-			-->
 			<template component="mapper"
 				expression="${model.entity.pcName}Mapper"
 				velocity="java/pkg/service/impl/Sample2Mapper.vm"
