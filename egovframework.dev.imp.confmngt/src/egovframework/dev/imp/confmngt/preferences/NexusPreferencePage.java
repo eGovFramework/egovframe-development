@@ -140,15 +140,10 @@ public class NexusPreferencePage extends PreferencePage implements IWorkbenchPre
 	@Override
 	protected Control createContents(Composite composite) {
 		noDefaultAndApplyButton();
-		GridData gData = new GridData(GridData.FILL_BOTH);
-		gData.heightHint = 650;
-		gData.widthHint = 460;
-		GridLayout layout = new GridLayout();
 
 		Composite innerContainer = new Composite(composite, SWT.NONE);
-		GridLayout innerLayout = new GridLayout();
-		innerLayout.numColumns = 2;
-		innerContainer.setLayout(innerLayout);
+		innerContainer.setLayout(new GridLayout(2, false));
+		innerContainer.setLayoutData(new GridData(GridData.FILL_BOTH));
 
 		// Create table
 		tableViewer = new TableViewer(innerContainer,
@@ -156,12 +151,12 @@ public class NexusPreferencePage extends PreferencePage implements IWorkbenchPre
 		Table table = tableViewer.getTable();
 		table.setHeaderVisible(true);
 		table.setLinesVisible(true);
-		tableViewer.getControl().setLayoutData(gData);
+		tableViewer.getControl().setLayoutData(new GridData(GridData.FILL_BOTH));
 		String[] columnNames = new String[] { ConfMngtMessages.nexusPreferencePageID,
 				ConfMngtMessages.nexusPreferencePageURL, ConfMngtMessages.nexusPreferencePageRELEASE,
 				ConfMngtMessages.nexusPreferencePageSNAPSHOTS };
 
-		int[] columnWidth = new int[] { 70, 250, 73, 75 };
+		int[] columnWidth = new int[] { 70, 250, 73, 90 };
 		int[] columnAlignments = new int[] { SWT.LEFT, SWT.LEFT, SWT.CENTER, SWT.CENTER };
 
 		for (int i = 0; i < columnNames.length; i++) {
@@ -176,7 +171,7 @@ public class NexusPreferencePage extends PreferencePage implements IWorkbenchPre
 
 		Composite buttons = new Composite(innerContainer, SWT.NONE);
 		buttons.setLayoutData(new GridData(GridData.VERTICAL_ALIGN_BEGINNING));
-		layout = new GridLayout();
+		GridLayout layout = new GridLayout();
 		layout.marginHeight = 0;
 		layout.marginWidth = 0;
 		buttons.setLayout(layout);
