@@ -471,7 +471,7 @@ public class JobParameterDialog extends StatusDialog {
 
 	@Override
 	protected Point getInitialSize() {
-		return new Point(380, 265);
+		return new Point(460, 305);
 	}
 
 	@Override
