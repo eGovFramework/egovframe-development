@@ -143,7 +143,7 @@ public class VersionTest {
 	}
 
 	@Test
-	public void compareToKeepsLexicalOrderForLiterals() {
+	public void compareToOrdersLiteralVersions() {
 		assertTrue(new Version("4.2.0").compareTo(new Version("4.3.0")) < 0);
 		assertEquals(0, new Version("4.3.0").compareTo(new Version("4.3.0")));
 	}
@@ -157,6 +157,35 @@ public class VersionTest {
 		Version installed = new Version(element("version", "${spring.version}"), properties("spring.version", "4.3.0"));
 		assertFalse(installed.isOlderThan(new Version("4.2.0")));
 		assertTrue(installed.isOlderThan(new Version("4.4.0")));
+	}
+
+	// --- 자리별 수 비교
+
+	@Test
+	public void compareToComparesNumericSegmentsAsNumbers() {
+		assertTrue(new Version("6.2.9").compareTo(new Version("6.2.11")) < 0);
+		assertTrue(new Version("6.2.11").compareTo(new Version("6.2.9")) > 0);
+		assertTrue(new Version("3.9.0").compareTo(new Version("3.10.0")) < 0);
+		assertTrue(new Version("1.9").compareTo(new Version("1.10")) < 0);
+	}
+
+	@Test
+	public void isOlderThanDetectsUpdateOfTwoDigitSegment() {
+		assertTrue(new Version("6.2.9").isOlderThan(new Version("6.2.11")));
+		assertFalse(new Version("6.2.11").isOlderThan(new Version("6.2.9")));
+	}
+
+	@Test
+	public void trailingZeroAndReleaseQualifierDoNotChangeVersion() {
+		assertEquals(0, new Version("4.3").compareTo(new Version("4.3.0")));
+		assertEquals(0, new Version("5.6.15.Final").compareTo(new Version("5.6.15")));
+		assertEquals(0, new Version("4.3.0").compareTo(new Version("4.3.0.GA")));
+	}
+
+	@Test
+	public void snapshotIsOlderThanSameRelease() {
+		assertTrue(new Version("4.3.0-SNAPSHOT").isOlderThan(new Version("4.3.0")));
+		assertFalse(new Version("4.3.0").isOlderThan(new Version("4.3.0-SNAPSHOT")));
 	}
 
 	@Test
