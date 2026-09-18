@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
-        http://www.springframework.org/schema/jdbc  http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd">
-    
-    <bean id="${txtDatasourceName}" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-	    <property name="driverClassName" value="${txtDriver}"/>
-	    <property name="url" value="${txtUrl}"/>
-	    <property name="username" value="${txtUser}"/>
-#if(${txtPasswd} != "")	    
-	    <property name="password" value="${txtPasswd}"/>
-#end	    
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-6.0.xsd
+						http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-6.0.xsd">
+
+	<bean id="${txtDatasourceName}" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${txtDriver}"/>
+		<property name="url" value="${txtUrl}"/>
+		<property name="username" value="${txtUser}"/>
+#if(${txtPasswd} != "")
+		<property name="password" value="${txtPasswd}"/>
+#end
 		<!-- preparedStatement 풀링 여부 -->
-		<!-- 
-	    <property name="poolPreparedStatements" value="true"/>
-	    <property name="maxOpenPreparedStatements" value="50"/>
-	    -->
-    </bean>
-    
+		<!--
+		<property name="poolPreparedStatements" value="true"/>
+		<property name="maxOpenPreparedStatements" value="50"/>
+		-->
+	</bean>
+
     <!-- 다음 라이브러리 추가 필요
+    Spring Framework 6.x, Jakarta EE 9 호환
+    
     === Maven pom.xml ===
-	<dependency>
-	    <groupId>org.apache.commons</groupId>
-	    <artifactId>commons-dbcp2</artifactId>
-	    <version>2.9.0</version>
-	</dependency>
-	
-	=== Gradle ===
-	implementation 'org.apache.commons:commons-dbcp2:2.9.0'
-	-->
-	
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-dbcp2</artifactId>
+        <version>2.13.0</version>
+    </dependency>
+    
+    === Gradle ===
+    implementation 'org.apache.commons:commons-dbcp2:2.13.0'
+    -->
 </beans>

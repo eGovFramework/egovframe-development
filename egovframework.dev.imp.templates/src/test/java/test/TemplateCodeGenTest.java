@@ -87,16 +87,16 @@ public class TemplateCodeGenTest {
 	}
 	@Test
 	public void testJndiDatasource() throws Exception {
-		String templateFile = "eGovFrameTemplates/datasource/jeus.vm";
+		String templateFile = "eGovFrameTemplates/datasource/jndiDatasource.vm";
 		String targetFile = "eGovFrameTemplatesTarget/datasource/jndiDatasource.xm";
 		String valueFile = "eGovFrameTemplatesTestValue/datasource/jndiDatasource.properties";
 		genAndDiff(templateFile, valueFile, targetFile);
 	}
 	@Test
 	public void testDataSourceTransaction() throws Exception {
-		String templateFile = "eGovFrameTemplates/transaction/datasource.vm";
-		String targetFile = "eGovFrameTemplatesTarget/transaction/datasourceTransaction.xm";
-		String valueFile = "eGovFrameTemplatesTestValue/transaction/datasource.properties";
+		String templateFile = "eGovFrameTemplates/transaction/transaction.vm";
+		String targetFile = "eGovFrameTemplatesTarget/transaction/transaction.xm";
+		String valueFile = "eGovFrameTemplatesTestValue/transaction/transaction.properties";
 		genAndDiff(templateFile, valueFile, targetFile);
 	}
 	@Test
@@ -198,10 +198,10 @@ public class TemplateCodeGenTest {
 		genAndDiff(templateFile, valueFile, targetFile);
 	}
 	@Test
-	public void testDailyRollingFileAppender() throws Exception {
-		String templateFile = "eGovFrameTemplates/logging/dailyRollingFile.vm";
-		String targetFile = "eGovFrameTemplatesTarget/logging/dailyRollingFile.xm";
-		String valueFile = "eGovFrameTemplatesTestValue/logging/dailyRollingFile.properties";
+	public void testTimeBasedRollingFileAppender() throws Exception {
+		String templateFile = "eGovFrameTemplates/logging/timeBasedRollingFile.vm";
+		String targetFile = "eGovFrameTemplatesTarget/logging/timeBasedRollingFile.xm";
+		String valueFile = "eGovFrameTemplatesTestValue/logging/timeBasedRollingFile.properties";
 		genAndDiff(templateFile, valueFile, targetFile);
 	}
 	@Test
@@ -209,20 +209,6 @@ public class TemplateCodeGenTest {
 		String templateFile = "eGovFrameTemplates/logging/jdbc.vm";
 		String targetFile = "eGovFrameTemplatesTarget/logging/jdbc.xm";
 		String valueFile = "eGovFrameTemplatesTestValue/logging/jdbc.properties";
-		genAndDiff(templateFile, valueFile, targetFile);
-	}
-	@Test
-	public void testEgovDBAppender() throws Exception {
-		String templateFile = "eGovFrameTemplates/logging/egovDb.vm";
-		String targetFile = "eGovFrameTemplatesTarget/logging/egovDb.xm";
-		String valueFile = "eGovFrameTemplatesTestValue/logging/egovDb.properties";
-		genAndDiff(templateFile, valueFile, targetFile);
-	}
-	@Test
-	public void testEgovJDBCAppender() throws Exception {
-		String templateFile = "eGovFrameTemplates/logging/egovJdbc.vm";
-		String targetFile = "eGovFrameTemplatesTarget/logging/egovJdbc.xm";
-		String valueFile = "eGovFrameTemplatesTestValue/logging/egovJdbc.properties";
 		genAndDiff(templateFile, valueFile, targetFile);
 	}
 	

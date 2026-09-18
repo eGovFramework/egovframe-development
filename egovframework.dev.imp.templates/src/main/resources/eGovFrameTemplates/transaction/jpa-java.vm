@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
@@ -30,12 +31,14 @@ import org.springframework.transaction.interceptor.TransactionInterceptor;
 
 @Configuration
 @EnableAspectJAutoProxy(proxyTargetClass = true)
+#if(${chkAnnotationTransactionManagement})
 @EnableTransactionManagement
+#end
 @EnableJpaRepositories(basePackages = "${txtSpringDataJPAPackage}")
 public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
 
     @Bean(name = "${txtEttMgrFactory}")
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource) {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(@Qualifier("${txtDataSourceName}") DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
         em.setPackagesToScan("${txtPackagesToScan}");
@@ -56,7 +59,7 @@ public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
     }
 
     @Bean(name = "${txtTransactionName}")
-    public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory, DataSource dataSource) {
+    public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory, @Qualifier("${txtDataSourceName}") DataSource dataSource) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory);
         transactionManager.setDataSource(dataSource);
@@ -86,11 +89,13 @@ public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
 		txAttribute.setIsolationLevel(TransactionDefinition.ISOLATION_${cmbIsolation});
 		txAttribute.setReadOnly(false);
 		
+#if(${chkRollbackFor})
 		// Creating a list for rollback rules
         List<RollbackRuleAttribute> rollbackRules = new ArrayList<>();
 		// Set to rollback when an exception occurs
         rollbackRules.add(new RollbackRuleAttribute(${txtRollbackFor}.class));
         txAttribute.setRollbackRules(rollbackRules);
+#end
 		txMethods.put("${txtMethodName}", txAttribute);
 
 		return txMethods;

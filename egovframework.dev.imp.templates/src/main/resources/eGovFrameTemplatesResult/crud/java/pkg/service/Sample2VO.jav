@@ -1,8 +1,8 @@
 package pkg.service;
 
 /**
- * Sample2 VO class
- * 
+ * Sample2VO VO class
+ *
  * @author 홍길동
  * @since 실행환경 개발팀
  * @version 1.0
@@ -37,7 +37,7 @@ public class Sample2VO extends Sample2DefaultVO {
 	private String regUser;
 
 	public String getId() {
-		return this.id;
+		return id;
 	}
 
 	public void setId(String id) {
@@ -45,7 +45,7 @@ public class Sample2VO extends Sample2DefaultVO {
 	}
 
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
 	public void setName(String name) {
@@ -53,7 +53,7 @@ public class Sample2VO extends Sample2DefaultVO {
 	}
 
 	public String getDescription() {
-		return this.description;
+		return description;
 	}
 
 	public void setDescription(String description) {
@@ -61,7 +61,7 @@ public class Sample2VO extends Sample2DefaultVO {
 	}
 
 	public String getUseYn() {
-		return this.useYn;
+		return useYn;
 	}
 
 	public void setUseYn(String useYn) {
@@ -69,7 +69,7 @@ public class Sample2VO extends Sample2DefaultVO {
 	}
 
 	public String getRegUser() {
-		return this.regUser;
+		return regUser;
 	}
 
 	public void setRegUser(String regUser) {

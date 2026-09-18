@@ -1,16 +1,29 @@
 package ${txtConfigPackage};
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean;
 
 import ${txtServiceClass};
 
+/**
+ * Method Invoking Job Detail Configuration for Quartz Scheduler
+ * Spring Framework 6.x compatible
+ *
+ * Requirements:
+ * - Spring Framework 6.x
+ * - Quartz Scheduler 2.3.2+
+ * - JDK 17+
+ */
 @Configuration
 public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
 
-    // MethodInvoking JobDetail 설정
-    @Bean(name="${txtJobName}")
-    public MethodInvokingJobDetailFactoryBean testMethodInvokingJobDetail(${templateUtil.substringAfterLast(${txtServiceClass}, ".")} ${txtServiceName}) {
+    /**
+     * MethodInvoking JobDetail 설정
+     * @Service 등으로 등록된 Bean의 특정 메소드를 주기적으로 실행
+     */
+    @Bean(name = "${txtJobName}")
+    public MethodInvokingJobDetailFactoryBean ${txtJobName}(${templateUtil.substringAfterLast(${txtServiceClass}, ".")} ${txtServiceName}) {
         MethodInvokingJobDetailFactoryBean jobDetailFactory = new MethodInvokingJobDetailFactoryBean();
         jobDetailFactory.setTargetObject(${txtServiceName});
         jobDetailFactory.setTargetMethod("${txtServiceMethod}");
@@ -18,4 +31,6 @@ public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
         return jobDetailFactory;
     }
 
+    // 스케줄로 실행될 실제 서비스 로직인 ${txtServiceClass} 클래스를 생성한 후
+    // 그 클래스 내에서 "@Service" 등의 어노테이션을 사용하여 "${txtServiceName}" Bean을 등록한다.
 }

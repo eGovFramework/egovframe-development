@@ -6,7 +6,7 @@
         <component-page required="true">
         	<!-- NewEhcacheConfig	New Ehcache Configuration -->
             <description>Select config package or path.</description>
-			
+
             <group label="Configuration Options" required="true">
 	            <radio name="rdoConfigType" label="Configuration Type : " value="XML" required="true" listener="true">
 					<elements>
@@ -17,8 +17,11 @@
 				<container name="txtPath" label="Config Path : " required="true" type="folder" value="#webroot" radio="XML"/>
 				<textfield name="txtFileName" label="File Name :" required="true" value="context-cache" radio="XML"/>
 				<container name="txtConfigPackage" label="Config Package: " required="true" type="package" radio="Java"/>
-            	<textfield name="txtClassName" label="Class Name :" required="true" value="EgovConfigCache" radio="Java"/>
+            	<textfield name="txtClassName" label="Class Name :" required="true" value="EgovEhcacheSpringConfig" radio="Java"/>
 			</group>
+            <group label="Component Scan" required="true">
+            	<textfield name="txtComponentScanBasePackage" label="Base Package : " required="true" value="egovframework.example"/>
+            </group>
             <group label="Default Config Location" required="true" >
             	<file name="txtConfigLocation" label="Config Location : " required="true" type="folder" extensions="xml" value="#txtConfigLocation" />
            	</group>

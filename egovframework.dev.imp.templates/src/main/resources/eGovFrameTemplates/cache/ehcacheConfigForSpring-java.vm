@@ -1,34 +1,94 @@
 package ${txtConfigPackage};
 
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.cache.ehcache.EhCacheCacheManager;
-import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
+import org.springframework.cache.jcache.JCacheCacheManager;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 
+import javax.cache.CacheManager;
+import javax.cache.Caching;
+import javax.cache.spi.CachingProvider;
+
+/**
+* Ehcache Configuration for Spring Framework 6.x with JCache (JSR-107)
+*
+* Requirements:
+* - Ehcache 3.x
+* - Spring Framework 6.x with JCache (JSR-107)
+* - Jakarta EE 9+
+* - JDK 17+
+*/
 @Configuration
 @EnableCaching
+@ComponentScan(basePackages = "${txtComponentScanBasePackage}")
 public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
 
-    @Bean
-    public EhCacheManagerFactoryBean ehCacheManagerFactoryBean() {
-        EhCacheManagerFactoryBean factoryBean = new EhCacheManagerFactoryBean();
-        factoryBean.setConfigLocation(new ClassPathResource("${templateUtil.removeSourcePath(${txtConfigLocation})}"));
-        factoryBean.setShared(true);
-        return factoryBean;
-    }
+@PostConstruct
+public void init() {
 
-    @Bean
-    public EhCacheCacheManager cacheManager(EhCacheManagerFactoryBean ehCacheManagerFactoryBean) {
-        return new EhCacheCacheManager(ehCacheManagerFactoryBean.getObject());
-    }
-    
-	/* pom.xml에 다음 라이브러리 추가 필요
-	<dependency>
-	    <groupId>net.sf.ehcache</groupId>
-	    <artifactId>ehcache</artifactId>
-	    <version>2.10.9.2</version>
-	</dependency>
-	*/
+}
+
+/**
+* EhCache 기반 JCache 캐시 매니저 설정
+*/
+@Bean
+public CacheManager cacheManager() throws URISyntaxException {
+
+// EhCache 설정파일 위치 지정
+URL ehcacheUrl = getClass().getResource("${txtConfigLocation}");
+if (ehcacheUrl == null) {
+throw new RuntimeException("ehcache.xml not found");
+}
+
+// javax.cache.CacheManager 생성
+CachingProvider cachingProvider = Caching.getCachingProvider();
+javax.cache.CacheManager jCacheManager = cachingProvider.getCacheManager(
+ehcacheUrl.toURI(),
+getClass().getClassLoader()
+);
+
+// Spring용 JCacheCacheManager 생성
+JCacheCacheManager jCacheCacheManager = new JCacheCacheManager(jCacheManager);
+
+return jCacheCacheManager;
+}
+
+/*
+* pom.xml에 다음 라이브러리 추가 필요:
+*
+* <!-- ==================== Cache (EhCache + JCache) ==================== -->
+* <dependency>
+  * <groupId>org.ehcache</groupId>
+  * <artifactId>ehcache</artifactId>
+  * <version>3.10.8</version>
+  * <exclusions>
+    * <!-- EhCache 내장 JAXB 제외 (직접 추가) -->
+    * <exclusion>
+      * <groupId>org.glassfish.jaxb</groupId>
+      * <artifactId>jaxb-runtime</artifactId>
+      * </exclusion>
+    * </exclusions>
+  * </dependency>
+* <dependency>
+  * <groupId>javax.cache</groupId>
+  * <artifactId>cache-api</artifactId>
+  * <version>1.1.1</version>
+  * </dependency>
+*
+* <!-- JAXB (EhCache XML 파싱용, JDK 17에서 필요) -->
+* <dependency>
+  * <groupId>javax.xml.bind</groupId>
+  * <artifactId>jaxb-api</artifactId>
+  * <version>2.3.1</version>
+  * </dependency>
+* <dependency>
+  * <groupId>org.glassfish.jaxb</groupId>
+  * <artifactId>jaxb-runtime</artifactId>
+  * <version>2.3.9</version>
+  * </dependency>
+*
+* Note: ehcache.xml 파일은 Ehcache 3.x 형식이어야 합니다.
+* (${txtConfigLocation} 경로에 위치)
+*/
 }

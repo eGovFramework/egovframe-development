@@ -2,10 +2,10 @@
 <!DOCTYPE xml>
 <Configuration>
     <Appenders>
-		<JDBC name="appender1" tableName="${txtTableName}">
+		<JDBC name="appender1" tableName="log">
 			<!-- DriverManager 설정 -->
             <DriverManager
-                driverClassName="${txtDriverClass}"
+                driverClassName="com.mysql.cj.jdbc.Driver"
                 connectionString="hsql://localhost"
                 userName="sa"
                 password="1">
@@ -24,9 +24,6 @@
 			</Filters>
 			-->
 		</JDBC>
-        <File name="appender1" fileName="${txtLogFileName}" append="${cboAppend}">
-            <PatternLayout pattern="${txtConversionPattern}"/>
-        </File>
     </Appenders>
     <Loggers>
         <Logger name="egovframework" level="DEBUG" additivity="false">

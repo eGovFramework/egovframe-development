@@ -11,11 +11,11 @@
 	     Spring Framework 6.x, Jakarta EE 9 호환 -->
 
 	<!--
-	<jee:jndi-lookup id="${txtDatasourceName}" jndi-name="${txtJndiName}" resource-ref="true"/>
+	<jee:jndi-lookup id="a" jndi-name="b" resource-ref="true"/>
 	-->
 
-	<bean id="${txtDatasourceName}" class="org.springframework.jndi.JndiObjectFactoryBean">
-		<property name="jndiName" value="${txtJndiName}" />
+	<bean id="a" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="b" />
 		<!--<property name="resourceRef" value="true"></property>-->
 	</bean>
 

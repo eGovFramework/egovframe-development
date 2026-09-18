@@ -2,26 +2,25 @@
 <!DOCTYPE xml>
 <Configuration>
     <Appenders>
-        <RollingFile name="appender" fileName="./logs/rolling/rollingSample.log" filePattern="./logs/rolling/rollingSample.%i.log">
+		<RollingFile name="appender1" fileName="./logs/time/timeBasedRollingSample.log" filePattern="./logs/time/timeBasedRollingSample.%d{yyyy-MM-dd_HH-mm}.log">
             <PatternLayout pattern="%d %5p [%c] %m%n"/>
             <Policies>
-                <SizeBasedTriggeringPolicy size="1000"/>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
             </Policies>
-            <DefaultRolloverStrategy max="3"/>
         </RollingFile>
     </Appenders>
     <Loggers>
         <Logger name="egovframework" level="DEBUG" additivity="false">
-            <AppenderRef ref="appender" />
+            <AppenderRef ref="appender1" />
         </Logger>
         <Logger name="org.egovframe" level="DEBUG" additivity="false">
-            <AppenderRef ref="appender" />
+            <AppenderRef ref="appender1" />
         </Logger>
         <Logger name="org.springframework" level="DEBUG" additivity="false">
-            <AppenderRef ref="appender" />
+            <AppenderRef ref="appender1" />
         </Logger>
         <Root level="INFO">
-            <AppenderRef ref="appender" />
+            <AppenderRef ref="appender1" />
         </Root>
     </Loggers>
 </Configuration>

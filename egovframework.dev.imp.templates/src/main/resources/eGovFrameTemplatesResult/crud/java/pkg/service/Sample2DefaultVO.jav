@@ -2,9 +2,11 @@ package pkg.service;
 
 import java.io.Serializable;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 /**
- * Sample2 Default VO class
- * 
+ * Sample2DefaultVO Default VO class
+ *
  * @author 홍길동
  * @since 실행환경 개발팀
  * @version 1.0
@@ -21,6 +23,9 @@ import java.io.Serializable;
  */
 public class Sample2DefaultVO implements Serializable {
 
+	/**
+	 *  serialVersion UID
+	 */
 	private static final long serialVersionUID = 1L;
 
 	/** 검색조건 */
@@ -120,6 +125,11 @@ public class Sample2DefaultVO implements Serializable {
 
 	public void setPageSize(int pageSize) {
 		this.pageSize = pageSize;
+	}
+
+	@Override
+	public String toString() {
+		return ToStringBuilder.reflectionToString(this);
 	}
 
 }

@@ -1,4 +1,5 @@
 package ${txtConfigPackage};
+
 import java.security.NoSuchAlgorithmException;
 
 import org.egovframe.rte.fdl.cmmn.exception.FdlException;
@@ -9,17 +10,16 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
 
-    @Bean(name="${txtIdServiceName}")
-    public EgovUUIdGnrServiceImpl uuidIdGnrService() {
+    @Bean(name = "${txtIdServiceName}")
+    public EgovUUIdGnrServiceImpl ${txtIdServiceName}() {
         EgovUUIdGnrServiceImpl egovUUIdGnrService = new EgovUUIdGnrServiceImpl();
 #if(${rdoType} == "Address")
         try {
-			egovUUIdGnrService.setAddress("${txtAddress}");
-		} catch (FdlException | NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		}
+            egovUUIdGnrService.setAddress("${txtAddress}");
+        } catch (FdlException | NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
 #end
         return egovUUIdGnrService;
     }
-
 }

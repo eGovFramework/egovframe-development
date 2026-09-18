@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- <mapper namespace="sample2DAO"> -->
 <mapper namespace="pkg.service.impl.Sample2Mapper">
 	
 
@@ -14,42 +13,43 @@
 	</resultMap>
 	
 	<insert id="insertSample2">
-		<![CDATA[
+
 			INSERT INTO SAMPLE2 
 				( ID
 				  , NAME
 				  , DESCRIPTION
 				  , USE_YN
 				  , REG_USER )
-			VALUES ( #{id}
+			VALUES
+				( #{id}
 				  , #{name}
 				  , #{description}
 				  , #{useYn}
 				  , #{regUser} )
-		]]>
+
 	</insert>
 	
 	<update id="updateSample2">
-		<![CDATA[
+
 			UPDATE SAMPLE2
 			SET ID=#{id}
 				, NAME=#{name}
 				, DESCRIPTION=#{description}
 				, USE_YN=#{useYn}
 				, REG_USER=#{regUser}
-						WHERE ID=#{id}
-				]]>
+					WHERE ID=#{id}
+		
 	</update>
 	
 	<delete id="deleteSample2">
-		<![CDATA[
+
 			DELETE FROM SAMPLE2 
-						WHERE ID=#{id}
-				]]>
+					WHERE ID=#{id}
+		
 	</delete>
 	
 	<select id="selectSample2" resultMap="sample2">
-		<![CDATA[
+
 			SELECT
 				ID
 				, NAME
@@ -57,43 +57,48 @@
 				, USE_YN
 				, REG_USER
 			FROM SAMPLE2
-						WHERE ID=#{id}
-				]]>
+					WHERE ID=#{id}
+		
 	</select>
 	
-	<select id="selectSample2List" parameterType="pkg.service.Sample2VO" resultType="egovMap">
+	<select id="selectSample2List" resultMap="sample2">
 			SELECT
-								ID
-								, NAME
-								, DESCRIPTION
-								, USE_YN
-								, REG_USER
-					FROM SAMPLE2
+					ID
+					, NAME
+					, DESCRIPTION
+					, USE_YN
+					, REG_USER
+			FROM SAMPLE2
 			WHERE 1=1
 			<if test="searchKeyword != null and searchKeyword != ''">
-				<if test="searchCondition == 0">AND
-					ID = #{searchKeyword}
-				</if>
-				<if test="searchCondition == 1">AND
-					NAME LIKE CONCAT('%',#{searchKeyword},'%')
-				</if>
+		        <choose>
+		            <when test="searchCondition == 0">
+						AND	ID LIKE CONCAT('%',#{searchKeyword},'%')
+					</when>
+		            <when test="searchCondition == 1">
+						AND ID LIKE CONCAT('%',#{searchKeyword},'%')
+					</when>
+				</choose>
 			</if>
-				ORDER BY 
-						ID DESC
-					limit #{recordCountPerPage} offset #{firstIndex}	
+				ORDER BY
+				ID DESC
+			limit #{recordCountPerPage} offset #{firstIndex}	
 	</select>	
-	<select id="selectSample2ListTotCnt" parameterType="pkg.service.Sample2VO" resultType="int">
+	
+	<select id="selectSample2ListTotCnt" parameterType="searchVO" resultType="int">
 			SELECT COUNT(*) totcnt
 			FROM SAMPLE2
 			WHERE 1=1
 			<if test="searchKeyword != null and searchKeyword != ''">
-				<if test="searchCondition == 0">AND
-					ID = #{searchKeyword}
-				</if>
-				<if test="searchCondition == 1">AND
-					NAME LIKE CONCAT('%',#{searchKeyword},'%')
-				</if>
-			</if>			
+		        <choose>
+		            <when test="searchCondition == 0">
+						AND	ID LIKE CONCAT('%',#{searchKeyword},'%')
+					</when>
+		            <when test="searchCondition == 1">
+						AND ID LIKE CONCAT('%',#{searchKeyword},'%')
+					</when>
+				</choose>
+			</if>
 	</select>
 
 </mapper>

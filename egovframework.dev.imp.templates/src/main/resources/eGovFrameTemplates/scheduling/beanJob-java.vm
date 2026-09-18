@@ -1,24 +1,32 @@
 package ${txtConfigPackage};
+
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.quartz.CronTriggerFactoryBean;
-import org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean;
-import org.springframework.scheduling.quartz.QuartzJobBean;
-import org.springframework.scheduling.quartz.SchedulerFactoryBean;
-import org.springframework.scheduling.quartz.SimpleTriggerFactoryBean;
+import org.springframework.scheduling.quartz.JobDetailFactoryBean;
 
+/**
+ * Job Detail Bean Configuration for Quartz Scheduler
+ * Spring Framework 6.x compatible
+ *
+ * Requirements:
+ * - Spring Framework 6.x
+ * - Quartz Scheduler 2.3.2+
+ * - JDK 17+
+ */
 @Configuration
 public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
 
-    // Job Detail Bean 설정
-    @Bean(name="${txtJobName}")
-    public JobDetailFactoryBean jobDetail() {
+    /**
+     * Job Detail Bean 설정
+     * org.springframework.scheduling.quartz.QuartzJobBean을 구현한 클래스 필요
+     */
+    @Bean(name = "${txtJobName}")
+    public JobDetailFactoryBean ${txtJobName}() {
         JobDetailFactoryBean jobDetailFactory = new JobDetailFactoryBean();
-        jobDetailFactory.setJobClass(${txtServiceClass}.class); // QuartzJobBean 구현 클래스
-
+        jobDetailFactory.setJobClass(${txtServiceClass}.class); // org.springframework.scheduling.quartz.QuartzJobBean 구현 클래스
 #if(${chkProperty})
         Map<String, Object> jobDataMap = new HashMap<>();
         jobDataMap.put("${txtPropertyName}", "${txtPropertyValue}");
@@ -26,5 +34,4 @@ public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
 #end
         return jobDetailFactory;
     }
-
 }
