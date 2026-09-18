@@ -5,7 +5,7 @@
 		<layer>Core</layer>
 		<name>Foundation Common</name>
 		<dependencies>
-			<dependency>org.egovframe.rte.org.egovframe.rte.fdl.cmmn</dependency>
+			<dependency>org.egovframe.rte.egovframe-rte-fdl-cmmn</dependency>
 		</dependencies>
 	</service>
 
@@ -13,7 +13,7 @@
 		<layer>Foundation</layer>
 		<name>Server Security</name>
 		<dependencies>
-			<dependency>org.egovframe.rte.org.egovframe.rte.fdl.security</dependency>
+			<dependency>org.egovframe.rte.egovframe-rte-fdl-security</dependency>
 		</dependencies>
 	</service>
     
@@ -21,7 +21,7 @@
         <layer>Foundation</layer>
         <name>Encryption/Decryption</name>
         <dependencies>
-            <dependency>org.egovframe.rte.org.egovframe.rte.fdl.crypto</dependency>
+            <dependency>org.egovframe.rte.egovframe-rte-fdl-crypto</dependency>
         </dependencies>
     </service>
 
@@ -29,7 +29,7 @@
         <layer>Foundation</layer>
         <name>Excel</name>
         <dependencies>
-            <dependency>org.egovframe.rte.org.egovframe.rte.fdl.excel</dependency>
+            <dependency>org.egovframe.rte.egovframe-rte-fdl-excel</dependency>
         </dependencies>
     </service>
 
@@ -37,7 +37,7 @@
         <layer>Foundation</layer>
         <name>File Handling</name>
         <dependencies>
-            <dependency>org.egovframe.rte.org.egovframe.rte.fdl.filehandling</dependency>
+            <dependency>org.egovframe.rte.egovframe-rte-fdl-filehandling</dependency>
         </dependencies>
     </service>
     
@@ -45,8 +45,7 @@
         <layer>Foundation</layer>
         <name>XML Manipulation</name>
         <dependencies>
-            <dependency>org.egovframe.rte.org.egovframe.rte.fdl.xml</dependency>
-            <dependency>xerces.xercesImpl</dependency>
+            <dependency>org.egovframe.rte.egovframe-rte-fdl-xml</dependency>
         </dependencies>
     </service>
     
@@ -54,7 +53,7 @@
         <layer>Foundation</layer>
         <name>String Util</name>
         <dependencies>
-            <dependency>org.egovframe.rte.org.egovframe.rte.fdl.string</dependency>
+            <dependency>org.egovframe.rte.egovframe-rte-fdl-string</dependency>
         </dependencies>
     </service>
         
@@ -62,7 +61,7 @@
         <layer>Foundation</layer>
         <name>Id Generation</name>
         <dependencies>
-            <dependency>org.egovframe.rte.org.egovframe.rte.fdl.idgnr</dependency>
+            <dependency>org.egovframe.rte.egovframe-rte-fdl-idgnr</dependency>
         </dependencies>
     </service>
     
@@ -70,7 +69,7 @@
         <layer>Foundation</layer>
         <name>logging Service</name>
         <dependencies>
-            <dependency>org.egovframe.rte.org.egovframe.rte.fdl.logging</dependency>
+            <dependency>org.egovframe.rte.egovframe-rte-fdl-logging</dependency>
         </dependencies>
     </service>
     
@@ -78,7 +77,7 @@
         <layer>Foundation</layer>
         <name>property</name>
         <dependencies>
-            <dependency>org.egovframe.rte.org.egovframe.rte.fdl.property</dependency>
+            <dependency>org.egovframe.rte.egovframe-rte-fdl-property</dependency>
         </dependencies>
     </service>
         
@@ -86,7 +85,7 @@
         <layer>Presentation</layer>
         <name>MVC</name>
         <dependencies>
-            <dependency>org.egovframe.rte.org.egovframe.rte.ptl.mvc</dependency>
+            <dependency>org.egovframe.rte.egovframe-rte-ptl-mvc</dependency>
             <dependency>commons-validator.commons-validator</dependency>
         </dependencies>
     </service>
@@ -95,7 +94,7 @@
         <layer>Batch</layer>
         <name>Batch Process</name>
         <dependencies>
-            <dependency>org.egovframe.rte.org.egovframe.rte.bat.core</dependency>
+            <dependency>org.egovframe.rte.egovframe-rte-bat-core</dependency>
         </dependencies>
     </service>
     
@@ -103,7 +102,7 @@
         <name>Integration</name>
         <layer>Integration</layer>
         <dependencies>
-            <dependency>org.egovframe.rte.org.egovframe.rte.itl.integration</dependency>
+            <dependency>org.egovframe.rte.egovframe-rte-itl-integration</dependency>
         </dependencies>
     </service>
     
@@ -111,7 +110,7 @@
         <layer>Integration</layer>
         <name>Web Service</name>
         <dependencies>
-            <dependency>org.egovframe.rte.org.egovframe.rte.itl.webservice</dependency>
+            <dependency>org.egovframe.rte.egovframe-rte-itl-webservice</dependency>
         </dependencies>
     </service>
     
@@ -119,7 +118,7 @@
         <layer>Persistence</layer>
         <name>Data Access</name>
         <dependencies>
-            <dependency>org.egovframe.rte.org.egovframe.rte.psl.dataaccess</dependency>
+            <dependency>org.egovframe.rte.egovframe-rte-psl-dataaccess</dependency>
         </dependencies>
     </service>
     
@@ -127,7 +126,7 @@
         <layer>Persistence</layer>
         <name>JPA</name>
         <dependencies>
-            <dependency>org.egovframe.rte.org.egovframe.rte.psl.data.jpa</dependency>
+            <dependency>org.egovframe.rte.egovframe-rte-psl-data-jpa</dependency>
         </dependencies>
     </service>
 	
@@ -151,7 +150,7 @@
 		<layer>Foundation</layer>
 		<name>File Upload/Download</name>
 		<dependencies>
-			<dependency>commons-fileupload.commons-fileupload</dependency>
+			<dependency>org.apache.commons.commons-fileupload2-jakarta-servlet6</dependency>
 		</dependencies>
 	</service>
 	
@@ -170,7 +169,7 @@
 			<dependency>org.apache.logging.log4j.log4j-slf4j2-impl</dependency>
 			<dependency>org.slf4j.jcl-over-slf4j</dependency>
 			<dependency>org.slf4j.log4j-over-slf4j</dependency>
-			<dependency>javax.annotation.javax.annotation-api</dependency>
+			<dependency>jakarta.annotation.jakarta.annotation-api</dependency>
 			<dependency>junit.junit</dependency>
 		</dependencies>
 	</service>
@@ -218,8 +217,7 @@
         <name>ORM</name>
         <dependencies>
         	<dependency>org.springframework.spring-orm</dependency>
-            <dependency>org.hibernate.hibernate-entitymanager</dependency>
-            <dependency>org.hibernate.hibernate-annotations</dependency>
+            <dependency>org.hibernate.hibernate-core</dependency>
             <dependency>org.hibernate.validator.hibernate-validator</dependency>
         </dependencies>
     </service>
