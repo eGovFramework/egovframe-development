@@ -188,6 +188,62 @@ public class VersionTest {
 		assertFalse(new Version("4.3.0").isOlderThan(new Version("4.3.0-SNAPSHOT")));
 	}
 
+	// --- 한정자 비교
+
+	@Test
+	public void qualifierNumberIsComparedAsNumber() {
+		assertTrue(new Version("2.0.0-RC9").isOlderThan(new Version("2.0.0-RC10")));
+		assertFalse(new Version("2.0.0-RC10").isOlderThan(new Version("2.0.0-RC9")));
+		assertTrue(new Version("2.0.0-M2").compareTo(new Version("2.0.0-M10")) < 0);
+		assertTrue(new Version("1.0.0.beta2").compareTo(new Version("1.0.0.BETA12")) < 0);
+		assertEquals(0, new Version("2.0.0-RC01").compareTo(new Version("2.0.0-rc1")));
+		assertTrue(new Version("2.0.0-RC").compareTo(new Version("2.0.0-RC1")) < 0);
+	}
+
+	@Test
+	public void preReleaseQualifiersKeepTheirOrder() {
+		String[] ascending = { "1.0.0-alpha", "1.0.0-beta", "1.0.0-M1", "1.0.0-RC1", "1.0.0-SNAPSHOT", "1.0.0" };
+		assertAscending(ascending);
+	}
+
+	@Test
+	public void servicePackIsNewerThanSameRelease() {
+		assertFalse(new Version("1.0.0-SP1").isOlderThan(new Version("1.0.0")));
+		assertTrue(new Version("1.0.0").isOlderThan(new Version("1.0.0-SP1")));
+		assertTrue(new Version("1.0.0.Final").isOlderThan(new Version("1.0.0.SP1")));
+		assertTrue(new Version("1.0.0-SP1").isOlderThan(new Version("1.0.0-sp2")));
+		assertTrue(new Version("1.0.0-SP9").isOlderThan(new Version("1.0.0-SP10")));
+		assertTrue(new Version("1.0.0-SP1").isOlderThan(new Version("1.0.1")));
+		// sp 로 시작할 뿐 서비스 팩이 아닌 한정자는 릴리스 이전으로 남는다.
+		assertTrue(new Version("1.0.0-special").isOlderThan(new Version("1.0.0")));
+	}
+
+	@Test
+	public void compareToIsAntisymmetricAndTransitive() {
+		String[] ascending = { "1.0.0-alpha", "1.0.0-RC2", "1.0.0-RC10", "1.0.0-SNAPSHOT", "1.0.0", "1.0.0-SP1",
+				"1.0.0-SP2", "1.0.1", "1.0.9", "1.0.10", "1.9.0", "1.10.0", "2.0.0-M2", "2.0.0" };
+		assertAscending(ascending);
+	}
+
+	@Test
+	public void compareToHandlesSegmentsBeyondLongRange() {
+		assertTrue(new Version("1.0.99999999999999999999").compareTo(new Version("1.0.100000000000000000000")) < 0);
+		assertEquals(0, new Version("1.0.007").compareTo(new Version("1.0.7")));
+	}
+
+	/**
+	 * 오름차순으로 나열한 버전들의 모든 쌍이 양방향으로 그 순서대로 비교되는지 단언한다.
+	 */
+	private static void assertAscending(String[] ascending) {
+		for (int i = 0; i < ascending.length; i++) {
+			for (int j = 0; j < ascending.length; j++) {
+				int expected = i < j ? -1 : (i == j ? 0 : 1);
+				int actual = new Version(ascending[i]).compareTo(new Version(ascending[j]));
+				assertEquals(ascending[i] + " vs " + ascending[j], expected, Integer.signum(actual));
+			}
+		}
+	}
+
 	@Test
 	public void isOlderThanIsFalseWhenEitherSideIsUnresolved() {
 		Version unresolved = new Version(element("version", "${project.version}"), properties());

@@ -15,6 +15,8 @@
  */
 package egovframework.rte.rdt.pom.unit;
 
+import java.math.BigInteger;
+
 import org.jdom.Element;
 
 import egovframework.rte.rdt.pom.util.StringHelper;
@@ -47,6 +49,10 @@ public class Version extends PomString implements Comparable<Version> {
 	 * 정식 릴리스와 같은 것으로 취급하는 한정자. 뒤에 붙어도 버전이 낮아지지 않는다.
 	 */
 	private static final String[] RELEASE_QUALIFIERS = { "ga", "final", "release" };
+	/**
+	 * 정식 릴리스보다 뒤에 나오는 버전을 뜻하는 한정자(서비스 팩). 뒤에 붙으면 버전이 높아진다.
+	 */
+	private static final String POST_RELEASE_QUALIFIER = "sp";
 	
 	/**
 	 * 버전 인스턴스를 생성한다.
@@ -148,6 +154,11 @@ public class Version extends PomString implements Comparable<Version> {
 	 * 버전을 <code>.</code> <code>-</code> <code>_</code> 기준으로 자리별로 나눈 뒤,
 	 * 숫자 자리는 문자열이 아니라 수의 크기로 비교한다. 문자열로만 비교하면
 	 * <code>6.2.9</code> 가 <code>6.2.11</code> 보다 새 버전으로 판정된다.
+	 *
+	 * 주의: 이 순서는 equals 와 일관되지 않는다. <code>4.3</code> 과 <code>4.3.0</code>,
+	 * <code>5.6.15.Final</code> 과 <code>5.6.15</code> 처럼 표기가 달라도 같은 버전이면 0 을
+	 * 반환하지만, Version 은 equals 를 재정의하지 않으므로 두 인스턴스는 서로 같지 않다.
+	 * TreeSet, TreeMap 처럼 compareTo 로 동등성을 판단하는 컬렉션에 넣으면 두 표기가 하나로 합쳐진다.
 	 * @param o 비교할 버전
 	 * @return 비교 결과
 	 */
@@ -177,7 +188,8 @@ public class Version extends PomString implements Comparable<Version> {
 	/**
 	 * 같은 자리의 두 세그먼트를 비교한다. 한쪽에만 있는 자리는 그 자리의 값이
 	 * 0 이거나 정식 릴리스 한정자이면 없는 것과 같게 보고(4.3 = 4.3.0 = 4.3.Final),
-	 * 그 밖의 숫자면 더 높은 버전으로, SNAPSHOT 같은 한정자면 더 낮은 버전으로 본다.
+	 * 그 밖의 숫자나 SP 한정자면 더 높은 버전으로, SNAPSHOT 같은 한정자면 더 낮은 버전으로 본다.
+	 * 한정자끼리는 등급(릴리스 이전 &lt; 릴리스 &lt; 릴리스 이후)을 먼저 비교한다.
 	 * @param t1 기준 버전의 세그먼트(없으면 null)
 	 * @param t2 비교 버전의 세그먼트(없으면 null)
 	 * @return t1 이 더 낮으면 음수, 같으면 0, 더 높으면 양수
@@ -198,12 +210,66 @@ public class Version extends PomString implements Comparable<Version> {
 			// 숫자 자리는 한정자(alpha, RC 등)보다 높은 버전으로 본다.
 			return n1 ? 1 : -1;
 		}
-		boolean r1 = isReleaseQualifier(t1);
-		boolean r2 = isReleaseQualifier(t2);
+		int r1 = qualifierRank(t1);
+		int r2 = qualifierRank(t2);
 		if (r1 != r2) {
-			return r1 ? 1 : -1;
+			return r1 < r2 ? -1 : 1;
 		}
-		return t1.compareToIgnoreCase(t2);
+		return compareQualifier(t1, t2);
+	}
+
+	/**
+	 * 등급이 같은 두 한정자를 비교한다. 한정자를 이름과 뒤따르는 번호로 나눈 뒤 이름이 같으면
+	 * 번호를 수의 크기로 비교한다. 통째로 문자열 비교를 하면 <code>RC9</code> 가
+	 * <code>RC10</code> 보다 새 버전으로 판정된다.
+	 * @param t1 기준 한정자
+	 * @param t2 비교 한정자
+	 * @return t1 이 더 낮으면 음수, 같으면 0, 더 높으면 양수
+	 */
+	private static int compareQualifier(String t1, String t2) {
+		int p1 = qualifierNameLength(t1);
+		int p2 = qualifierNameLength(t2);
+		int result = t1.substring(0, p1).compareToIgnoreCase(t2.substring(0, p2));
+		if (result != 0) {
+			return result;
+		}
+		String n1 = t1.substring(p1);
+		String n2 = t2.substring(p2);
+		if (isNumeric(n1) && isNumeric(n2)) {
+			return compareNumeric(n1, n2);
+		}
+		return n1.compareToIgnoreCase(n2);
+	}
+
+	/**
+	 * 한정자에서 번호가 시작되기 전까지의 이름 부분의 길이를 가져온다.
+	 * @param s 한정자
+	 * @return 처음 나오는 숫자 앞까지의 길이(숫자가 없으면 전체 길이)
+	 */
+	private static int qualifierNameLength(String s) {
+		int i = 0;
+		while (i < s.length() && !Character.isDigit(s.charAt(i))) {
+			i++;
+		}
+		return i;
+	}
+
+	/**
+	 * 한정자의 등급을 가져온다.
+	 * @param s 한정자
+	 * @return 릴리스 이전(SNAPSHOT, alpha, RC 등)이면 -1, 정식 릴리스이면 0, 릴리스 이후(SP)이면 1
+	 */
+	private static int qualifierRank(String s) {
+		if (isReleaseQualifier(s)) {
+			return 0;
+		}
+		int nameLength = qualifierNameLength(s);
+		String number = s.substring(nameLength);
+		if (POST_RELEASE_QUALIFIER.equalsIgnoreCase(s.substring(0, nameLength))
+				&& (number.length() == 0 || isNumeric(number))) {
+			return 1;
+		}
+		return -1;
 	}
 
 	/**
@@ -215,36 +281,17 @@ public class Version extends PomString implements Comparable<Version> {
 		if (isNumeric(t)) {
 			return compareNumeric(t, "0");
 		}
-		return isReleaseQualifier(t) ? 0 : -1;
+		return qualifierRank(t);
 	}
 
 	/**
-	 * 숫자로만 이루어진 두 세그먼트를 수의 크기로 비교한다. 자릿수가 매우 큰 값도
-	 * 다루기 위해 앞의 0 을 없앤 뒤 길이와 사전순으로 비교한다.
+	 * 숫자로만 이루어진 두 세그먼트를 수의 크기로 비교한다. 자릿수가 매우 큰 값도 넘침 없이 다룬다.
 	 * @param t1 기준 세그먼트
 	 * @param t2 비교 세그먼트
 	 * @return t1 이 작으면 음수, 같으면 0, 크면 양수
 	 */
 	private static int compareNumeric(String t1, String t2) {
-		String d1 = stripLeadingZeros(t1);
-		String d2 = stripLeadingZeros(t2);
-		if (d1.length() != d2.length()) {
-			return d1.length() < d2.length() ? -1 : 1;
-		}
-		return d1.compareTo(d2);
-	}
-
-	/**
-	 * 앞자리의 0 을 제거한다.
-	 * @param s 숫자 문자열
-	 * @return 앞의 0 이 제거된 문자열(모두 0 이면 빈 문자열)
-	 */
-	private static String stripLeadingZeros(String s) {
-		int i = 0;
-		while (i < s.length() && s.charAt(i) == '0') {
-			i++;
-		}
-		return s.substring(i);
+		return new BigInteger(t1).compareTo(new BigInteger(t2));
 	}
 
 	/**
