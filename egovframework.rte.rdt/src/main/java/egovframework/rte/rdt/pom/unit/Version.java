@@ -38,6 +38,10 @@ public class Version extends PomString implements Comparable<Version> {
 	 */
 	protected boolean propertyVersion;
 	/**
+	 * 실제 버전 값을 담고 있는 프로퍼티의 키. 프로퍼티가 다른 프로퍼티를 참조하면 연쇄의 마지막 키이다.
+	 */
+	protected String propertyKey;
+	/**
 	 * 프로퍼티가 다른 프로퍼티를 참조하는 연쇄를 따라가는 최대 단계. 순환 참조에서 무한 반복을 막는다.
 	 */
 	private static final int MAX_PROPERTY_DEPTH = 10;
@@ -121,6 +125,15 @@ public class Version extends PomString implements Comparable<Version> {
 	 */
 	public void setPropertyVersion(boolean propertyVersion) {
 		this.propertyVersion = propertyVersion;
+	}
+
+	/**
+	 * 실제 버전 값을 담고 있는 프로퍼티의 키를 가져온다. 프로퍼티가 다른 프로퍼티를 참조하면
+	 * 연쇄의 마지막 키를 반환하므로, 버전을 바꾸려면 이 키의 값을 고쳐야 한다.
+	 * @return 프로퍼티 키. 프로퍼티 버전이 아니면 null
+	 */
+	public String getPropertyKey() {
+		return propertyKey;
 	}
 
 	/**
@@ -335,14 +348,17 @@ public class Version extends PomString implements Comparable<Version> {
 	public void setContent(String content) {
 		super.setContent(content);
 		setPropertyVersion(false);
+		propertyKey = null;
 		realVersion = content;
 		if (properties == null || content == null) {
 			return;
 		}
 		String resolved = content;
+		String key = null;
 		int depth = 0;
 		while (StringHelper.isPropertyString(resolved) && depth < MAX_PROPERTY_DEPTH) {
-			PomElement value = properties.getValue(StringHelper.getProperty(resolved));
+			key = StringHelper.getProperty(resolved);
+			PomElement value = properties.getValue(key);
 			if (value == null) {
 				return;
 			}
@@ -351,6 +367,7 @@ public class Version extends PomString implements Comparable<Version> {
 		}
 		if (depth > 0 && !StringHelper.isPropertyString(resolved)) {
 			setPropertyVersion(true);
+			propertyKey = key;
 			realVersion = resolved;
 		}
 	}

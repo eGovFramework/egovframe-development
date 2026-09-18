@@ -117,6 +117,15 @@ public class VersionTest {
 	}
 
 	@Test
+	public void propertyKeyIsLastKeyOfChain() {
+		PomMap properties = properties("lib.version", "${spring.version}", "spring.version", "4.3.0");
+		assertEquals("spring.version", new Version(element("version", "${lib.version}"), properties).getPropertyKey());
+		assertEquals("spring.version", new Version(element("version", "${spring.version}"), properties).getPropertyKey());
+		assertNull(new Version(element("version", "4.3.0"), properties).getPropertyKey());
+		assertNull(new Version(element("version", "${unknown.version}"), properties).getPropertyKey());
+	}
+
+	@Test
 	public void chainEndingInUnknownPropertyIsUnresolved() {
 		Version v = new Version(element("version", "${lib.version}"), properties("lib.version", "${spring.version}"));
 		assertFalse(v.isPropertyVersion());

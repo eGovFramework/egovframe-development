@@ -31,6 +31,13 @@ public class PomObjectTest {
 			+ "\t\t<dependency>\n\t\t\t<groupId>org.springframework</groupId>\n\t\t\t<artifactId>spring-core</artifactId>\n\t\t\t<version>6.2.9</version>\n\t\t</dependency>\n"
 			+ "\t</dependencies>\n</project>";
 
+	private static final String POM_WITH_CHAINED_PROPERTY = "<project>\n\t<modelVersion>4.0.0</modelVersion>\n\t<artifactId>app</artifactId>\n\t<version>1.0.0</version>\n"
+			+ "\t<properties>\n\t\t<spring.version>6.2.9</spring.version>\n\t\t<lib.version>${spring.version}</lib.version>\n\t</properties>\n"
+			+ "\t<dependencies>\n"
+			+ "\t\t<dependency>\n\t\t\t<groupId>org.springframework</groupId>\n\t\t\t<artifactId>spring-core</artifactId>\n\t\t\t<version>${lib.version}</version>\n\t\t</dependency>\n"
+			+ "\t\t<dependency>\n\t\t\t<groupId>org.springframework</groupId>\n\t\t\t<artifactId>spring-beans</artifactId>\n\t\t\t<version>${spring.version}</version>\n\t\t</dependency>\n"
+			+ "\t</dependencies>\n</project>";
+
 	private static final String POM_WITHOUT_PROPERTIES = "<project><modelVersion>4.0.0</modelVersion><artifactId>app</artifactId><version>1.0.0</version></project>";
 
 	private static PomObject parse(String xml) throws Exception {
@@ -90,5 +97,46 @@ public class PomObjectTest {
 
 		assertEquals("6.2.11",
 				pom.getDependencies().get("org.springframework.spring-core").getElement().getChildText("version"));
+	}
+
+	// --- 프로퍼티 버전 변경의 경계 조건
+
+	@Test
+	public void changeVersionWritesRealVersionWhenNewVersionIsPropertyReference() throws Exception {
+		PomObject master = parse(POM_WITH_PROPERTY_VERSIONS.replace("6.2.9", "6.2.11"));
+		PomObject pom = parse(POM_WITH_PROPERTY_VERSIONS);
+		pom.changeVersion("org.springframework.spring-core",
+				master.getDependencies().get("org.springframework.spring-core").getVersion());
+
+		assertEquals("6.2.11", pom.getProperties().getValue("spring.framework.version").toString());
+	}
+
+	@Test
+	public void changeVersionOfChainedPropertyUpdatesLastPropertyInChain() throws Exception {
+		PomObject pom = parse(POM_WITH_CHAINED_PROPERTY);
+		pom.changeVersion("org.springframework.spring-core", new Version("6.2.11"));
+
+		assertEquals("6.2.11", pom.getProperties().getValue("spring.version").toString());
+		assertEquals("${spring.version}", pom.getProperties().getValue("lib.version").toString());
+		assertEquals("6.2.11", pom.getDependencies().get("org.springframework.spring-beans").getVersion().getRealVersion());
+	}
+
+	@Test
+	public void changeVersionDoesNotLowerSharedProperty() throws Exception {
+		PomObject pom = parse(POM_WITH_PROPERTY_VERSIONS);
+		pom.changeVersion("org.springframework.spring-core", new Version("6.2.11"));
+		pom.changeVersion("org.springframework.spring-beans", new Version("6.2.10"));
+
+		assertEquals("6.2.11", pom.getProperties().getValue("spring.framework.version").toString());
+	}
+
+	@Test
+	public void changePropertyRefreshesRealVersionOfDependencies() throws Exception {
+		PomObject pom = parse(POM_WITH_PROPERTY_VERSIONS);
+		pom.changeProperty("spring.framework.version", "6.2.11");
+
+		Version version = pom.getDependencies().get("org.springframework.spring-beans").getVersion();
+		assertEquals("6.2.11", version.getRealVersion());
+		assertEquals("${spring.framework.version}", version.getContent());
 	}
 }

@@ -185,6 +185,20 @@ public class PomObject implements DetailPom {
 		Element e = ps.getElement();
 		e.setText(version);
 		ps.setContent(e);
+		refreshPropertyVersions();
+	}
+
+	/**
+	 * 프로퍼티로 지정된 dependency 버전들의 실제 버전을 현재 프로퍼티 값으로 다시 해석한다.
+	 * 프로퍼티 값을 고친 뒤에도 Version 이 옛 실제 버전을 들고 있으면 이후의 버전 비교가 틀어진다.
+	 */
+	private void refreshPropertyVersions() {
+		for (Dependency dependency : dependencies.values()) {
+			Version version = dependency.getVersion();
+			if (version != null && StringHelper.isPropertyString(version.getContent())) {
+				version.setContent(version.getContent());
+			}
+		}
 	}
 
 	/**
@@ -558,7 +572,8 @@ public class PomObject implements DetailPom {
 
 	}
 	/**
-	 * 디펜던시 버전을 변경한다.
+	 * 디펜던시 버전을 변경한다. 설치된 버전이 이 pom 의 프로퍼티로 지정돼 있으면 프로퍼티 값을 고치는데,
+	 * 이때는 바꿀 버전이 현재 값보다 높다고 확정할 수 있을 때만 고친다.
 	 * @param dependencyId 변경할 디펜던시ID
 	 * @param version 변경할 버전
 	 */
@@ -569,7 +584,12 @@ public class PomObject implements DetailPom {
 		// 프로퍼티 자체를 고친다. <version> 만 고치면 같은 프로퍼티를 쓰는 다른 dependency 는
 		// 옛 버전으로 남아 한 라이브러리의 모듈들이 서로 다른 버전으로 갈린다.
 		if (installedVersion != null && installedVersion.isPropertyVersion()) {
-			changeProperty(StringHelper.getProperty(installedVersion.getContent()), version.toString());
+			// 같은 프로퍼티를 쓰는 다른 dependency 가 이미 더 높은 값으로 올렸으면 낮추지 않는다.
+			// 고칠 키는 연쇄의 마지막 키이고, 기록하는 값은 실제 버전이다. 원본 문자열을 기록하면
+			// 바꿀 버전이 같은 키의 프로퍼티 참조일 때 프로퍼티가 자기 자신을 가리키게 된다.
+			if (installedVersion.isOlderThan(version)) {
+				changeProperty(installedVersion.getPropertyKey(), version.getRealVersion());
+			}
 			return;
 		}
 		dependencyTochange.getElement().getChild("version", getNamespace()).setText(version.toString());
