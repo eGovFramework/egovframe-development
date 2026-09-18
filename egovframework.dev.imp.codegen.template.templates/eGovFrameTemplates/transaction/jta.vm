@@ -21,7 +21,6 @@
 		<property name="transactionManager" ref="atomikosTransactionManager"></property>
 	</bean>
 
-#if(${chkConfigurationalTransactionManagement})
 	<!-- AOP 설정 - 트랜잭션 관리 및 포인트컷 설정 -->
 	<tx:advice id="${txtAdviceName}" transaction-manager="${txtTransactionName}">
 		<tx:attributes>
@@ -47,7 +46,6 @@
 		<aop:pointcut id="${txtPointCutName}" expression="${txtPointCutExpression}" />
 		<aop:advisor advice-ref="${txtAdviceName}" pointcut-ref="${txtPointCutName}" />
 	</aop:config>
-#end
 
 #if(${chkAnnotationTransactionManagement})
 	<tx:annotation-driven transaction-manager="${txtTransactionName}" proxy-target-class="true" />
