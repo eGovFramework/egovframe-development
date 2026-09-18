@@ -31,7 +31,9 @@ import org.springframework.transaction.interceptor.TransactionInterceptor;
 
 @Configuration
 @EnableAspectJAutoProxy(proxyTargetClass = true)
+#if(${chkAnnotationTransactionManagement})
 @EnableTransactionManagement
+#end
 @EnableJpaRepositories(basePackages = "${txtSpringDataJPAPackage}")
 public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
 
@@ -87,11 +89,13 @@ public class ${templateUtil.substringAfterLast(${txtClassName}, ".")} {
 		txAttribute.setIsolationLevel(TransactionDefinition.ISOLATION_${cmbIsolation});
 		txAttribute.setReadOnly(false);
 		
+#if(${chkRollbackFor})
 		// Creating a list for rollback rules
         List<RollbackRuleAttribute> rollbackRules = new ArrayList<>();
 		// Set to rollback when an exception occurs
         rollbackRules.add(new RollbackRuleAttribute(${txtRollbackFor}.class));
         txAttribute.setRollbackRules(rollbackRules);
+#end
 		txMethods.put("${txtMethodName}", txAttribute);
 
 		return txMethods;

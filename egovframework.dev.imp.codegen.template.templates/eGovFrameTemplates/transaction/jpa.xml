@@ -27,6 +27,11 @@
 				<textfield name="txtDataSourceName" label="DataSource Name: "
 					required="true" value="dataSource" />
 			</group>
+
+			<group label="Transaction Management" required="false">
+				<checkbox name="chkAnnotationTransactionManagement" label="Annotation Transaction Management: "
+					value="true" required="true" />
+			</group>
 			
 			<group label="Entity Manager" required="true">
 				<textfield name="txtEttMgrFactory" label="Entity Manager Factory: "
@@ -92,7 +97,7 @@
 				<group label="Method" required="true">
 					<textfield name="txtMethodName" label="Method Name: " required="true" value="*"/>
 					<textfield name="txtRollbackFor"
-						label="rollback-for: " required="false" value="Exception"/>
+						label="rollback-for: [[CHECK]chkRollbackFor:true]" required="false" value="Exception"/>
 
 					<combo name="cmbIsolation" label="isolation: " required="false"
 						value="DEFAULT">
