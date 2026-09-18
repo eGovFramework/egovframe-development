@@ -17,6 +17,7 @@ import egovframework.bdev.imp.batch.wizards.jobcreation.model.JobRWDetailInfoIte
 import egovframework.bdev.imp.batch.wizards.jobcreation.model.JobVo;
 import egovframework.bdev.imp.batch.wizards.jobcreation.model.StepAndDecisionVo;
 import egovframework.bdev.imp.batch.wizards.jobcreation.model.StepVo;
+import egovframework.bdev.imp.confmngt.preferences.readwrite.model.DefaultJobRW;
 import egovframework.dev.imp.core.utils.NullUtil;
 
 /**
@@ -485,7 +486,7 @@ public class CreateBatchJobXMLFileOperation {
 		
 		// create multiple partitioner beans
 		beanMap.put("partitioner" + partitionerType + prefix, partitionName + "<" + partitionerClass + "<" + resource);
-		beanMap.put("fileNameListener" + prefix , prefix + ".fileNameListener" + "<" + "org.egovframe.rte.bat.core.listener.EgovOutputFileListener" + "<" + resource);
+		beanMap.put("fileNameListener" + prefix , prefix + ".fileNameListener" + "<" + DefaultJobRW.EGOV_OUTPUT_FILE_LISTENER_CLASS + "<" + resource);
 
 		Element handler = new Element("handler");
 		partition.addContent(handler);
@@ -517,7 +518,7 @@ public class CreateBatchJobXMLFileOperation {
 						decision.setAttribute("id", decisionVOList.get(j).getName());						
 						decision.setAttribute("decider", jobName + "." + decisionVOList.get(j).getName() + "." +"egovDecider");
 						// each decision needs a own decider
-						beanMap.put("decider"+j, jobName + "." + decisionVOList.get(j).getName() + "." +"egovDecider" + "<" + "org.egovframe.rte.bat.core.job.flow.EgovDecider");
+						beanMap.put("decider"+j, jobName + "." + decisionVOList.get(j).getName() + "." +"egovDecider" + "<" + DefaultJobRW.EGOV_DECIDER_CLASS);
 						
 						// decision next on, to Optional
 						if (decisionVOList.get(j).getNextVo() != null && decisionVOList.get(j).getNextVo().length > 0) {

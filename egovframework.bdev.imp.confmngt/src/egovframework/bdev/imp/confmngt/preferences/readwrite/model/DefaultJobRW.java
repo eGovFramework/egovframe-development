@@ -49,6 +49,9 @@ public class DefaultJobRW {
 	final static public String CUSTOMIZE_DB_WRITER = "CustomizeDBWriter";
 	
 	
+	// 실행환경 배치 코어(egovframe-rte-bat-core)의 패키지. Job XML 에 기록하는 실행환경 클래스명은 모두 이 값에서 만든다.
+	final static public String EGOV_BAT_CORE_PACKAGE = "org.egovframe.rte.bat.core";
+
 	// Default Job Reader / Writer의 Class
 	final static public String FLAT_FILE_ITEM_READER_CLASS = "org.springframework.batch.item.file.FlatFileItemReader";
 	final static public String MULTI_RESOURCE_ITEM_READER_CLASS = "org.springframework.batch.item.file.MultiResourceItemReader";
@@ -58,8 +61,19 @@ public class DefaultJobRW {
 	final static public String FLAT_FILE_ITEM_WRITER_CLASS = "org.springframework.batch.item.file.FlatFileItemWriter";
 	final static public String IBATIS_BATCH_ITEM_WRITER_CLASS = "org.springframework.batch.item.database.IbatisBatchItemWriter";
 	final static public String JDBC_BATCH_ITEM_WRITER_CLASS = "org.springframework.batch.item.database.JdbcBatchItemWriter";
-	final static public String EGOV_JDBC_BATCH_ITEM_WRITER_CLASS = "org.egovframe.rte.bat.core.item.database.EgovJdbcBatchItemWriter";
+	final static public String EGOV_JDBC_BATCH_ITEM_WRITER_CLASS = EGOV_BAT_CORE_PACKAGE + ".item.database.EgovJdbcBatchItemWriter";
 	final static public String MULTI_RESOURCE_ITEM_WRITER_CLASS = "org.springframework.batch.item.file.MultiResourceItemWriter";
+
+	// Job XML 의 Reader / Writer 하위 bean, Listener, Decider 에 기록하는 실행환경 Class
+	final static public String EGOV_DEFAULT_LINE_MAPPER_CLASS = EGOV_BAT_CORE_PACKAGE + ".item.file.mapping.EgovDefaultLineMapper";
+	final static public String EGOV_OBJECT_MAPPER_CLASS = EGOV_BAT_CORE_PACKAGE + ".item.file.mapping.EgovObjectMapper";
+	final static public String EGOV_FIXED_LENGTH_TOKENIZER_CLASS = EGOV_BAT_CORE_PACKAGE + ".item.file.transform.EgovFixedLengthTokenizer";
+	final static public String EGOV_DELIMITED_LINE_TOKENIZER_CLASS = EGOV_BAT_CORE_PACKAGE + ".item.file.transform.EgovDelimitedLineTokenizer";
+	final static public String EGOV_FIELD_EXTRACTOR_CLASS = EGOV_BAT_CORE_PACKAGE + ".item.file.transform.EgovFieldExtractor";
+	final static public String EGOV_FIXED_LENGTH_LINE_AGGREGATOR_CLASS = EGOV_BAT_CORE_PACKAGE + ".item.file.transform.EgovFixedLengthLineAggregator";
+	final static public String EGOV_METHOD_MAP_ITEM_PREPARED_STATEMENT_SETTER_CLASS = EGOV_BAT_CORE_PACKAGE + ".item.database.support.EgovMethodMapItemPreparedStatementSetter";
+	final static public String EGOV_OUTPUT_FILE_LISTENER_CLASS = EGOV_BAT_CORE_PACKAGE + ".listener.EgovOutputFileListener";
+	final static public String EGOV_DECIDER_CLASS = EGOV_BAT_CORE_PACKAGE + ".job.flow.EgovDecider";
 
 	
 	// Default Job Reader / Writer의 Detail Info Type

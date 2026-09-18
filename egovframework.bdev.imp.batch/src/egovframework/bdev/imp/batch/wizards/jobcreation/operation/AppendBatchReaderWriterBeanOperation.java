@@ -2,6 +2,7 @@ package egovframework.bdev.imp.batch.wizards.jobcreation.operation;
 
 import org.jdom2.Element;
 
+import egovframework.bdev.imp.confmngt.preferences.readwrite.model.DefaultJobRW;
 import egovframework.dev.imp.core.utils.NullUtil;
 
 
@@ -217,7 +218,7 @@ public class AppendBatchReaderWriterBeanOperation {
 			
 			Element beanLineMapper = new Element("bean");
 			property2.addContent(beanLineMapper);
-			beanLineMapper.setAttribute("class", "org.egovframe.rte.bat.core.item.file.mapping.EgovDefaultLineMapper");
+			beanLineMapper.setAttribute("class", DefaultJobRW.EGOV_DEFAULT_LINE_MAPPER_CLASS);
 			
 			Element property3 = new Element("property");
 			beanLineMapper.addContent(property3);
@@ -225,7 +226,7 @@ public class AppendBatchReaderWriterBeanOperation {
 			
 			Element beanFixedLength = new Element("bean");
 			property3.addContent(beanFixedLength);
-			beanFixedLength.setAttribute("class", "org.egovframe.rte.bat.core.item.file.transform.EgovFixedLengthTokenizer");
+			beanFixedLength.setAttribute("class", DefaultJobRW.EGOV_FIXED_LENGTH_TOKENIZER_CLASS);
 			
 			Element property4 = new Element("property");
 			beanFixedLength.addContent(property4);
@@ -238,7 +239,7 @@ public class AppendBatchReaderWriterBeanOperation {
 			
 			Element beanBeanWrapperFieldSet = new Element("bean");
 			beanfieldSetMapper.addContent(beanBeanWrapperFieldSet);
-			beanBeanWrapperFieldSet.setAttribute("class", "org.egovframe.rte.bat.core.item.file.mapping.EgovObjectMapper");
+			beanBeanWrapperFieldSet.setAttribute("class", DefaultJobRW.EGOV_OBJECT_MAPPER_CLASS);
 			
 			Element beantargetType = new Element("property");
 			beanBeanWrapperFieldSet.addContent(beantargetType);
@@ -270,7 +271,7 @@ public class AppendBatchReaderWriterBeanOperation {
 			
 			Element beanLineMapper = new Element("bean");
 			property2.addContent(beanLineMapper);
-			beanLineMapper.setAttribute("class", "org.egovframe.rte.bat.core.item.file.mapping.EgovDefaultLineMapper");
+			beanLineMapper.setAttribute("class", DefaultJobRW.EGOV_DEFAULT_LINE_MAPPER_CLASS);
 			
 			Element property3 = new Element("property");
 			beanLineMapper.addContent(property3);
@@ -278,7 +279,7 @@ public class AppendBatchReaderWriterBeanOperation {
 			
 			Element beanFixedLength = new Element("bean");
 			property3.addContent(beanFixedLength);
-			beanFixedLength.setAttribute("class", "org.egovframe.rte.bat.core.item.file.transform.EgovDelimitedLineTokenizer");
+			beanFixedLength.setAttribute("class", DefaultJobRW.EGOV_DELIMITED_LINE_TOKENIZER_CLASS);
 			
 			Element property4 = new Element("property");
 			beanFixedLength.addContent(property4);
@@ -291,7 +292,7 @@ public class AppendBatchReaderWriterBeanOperation {
 			
 			Element beanBeanWrapperFieldSet = new Element("bean");
 			beanfieldSetMapper.addContent(beanBeanWrapperFieldSet);
-			beanBeanWrapperFieldSet.setAttribute("class", "org.egovframe.rte.bat.core.item.file.mapping.EgovObjectMapper");
+			beanBeanWrapperFieldSet.setAttribute("class", DefaultJobRW.EGOV_OBJECT_MAPPER_CLASS);
 			
 			Element beantargetType = new Element("property");
 			beanBeanWrapperFieldSet.addContent(beantargetType);
@@ -446,7 +447,7 @@ public class AppendBatchReaderWriterBeanOperation {
 			
 			Element beanDefaultLine = new Element("bean");
 			property3.addContent(beanDefaultLine);
-			beanDefaultLine.setAttribute("class", "org.egovframe.rte.bat.core.item.file.mapping.EgovDefaultLineMapper");
+			beanDefaultLine.setAttribute("class", DefaultJobRW.EGOV_DEFAULT_LINE_MAPPER_CLASS);
 			
 			Element property4 = new Element("property");
 			beanDefaultLine.addContent(property4);
@@ -454,7 +455,7 @@ public class AppendBatchReaderWriterBeanOperation {
 			
 			Element beanFixedLength = new Element("bean");
 			property4.addContent(beanFixedLength);
-			beanFixedLength.setAttribute("class", "org.egovframe.rte.bat.core.item.file.transform.EgovFixedLengthTokenizer");
+			beanFixedLength.setAttribute("class", DefaultJobRW.EGOV_FIXED_LENGTH_TOKENIZER_CLASS);
 				
 			Element property5 = new Element("property");
 			beanFixedLength.addContent(property5);
@@ -468,7 +469,7 @@ public class AppendBatchReaderWriterBeanOperation {
 			
 			Element beanEgovObject = new Element("bean");
 			property7.addContent(beanEgovObject);
-			beanEgovObject.setAttribute("class", "org.egovframe.rte.bat.core.item.file.mapping.EgovObjectMapper");
+			beanEgovObject.setAttribute("class", DefaultJobRW.EGOV_OBJECT_MAPPER_CLASS);
 			
 			Element property8 = new Element("property");
 			beanEgovObject.addContent(property8);
@@ -505,7 +506,7 @@ public class AppendBatchReaderWriterBeanOperation {
 			
 			Element beanDefaultLine = new Element("bean");
 			property3.addContent(beanDefaultLine);
-			beanDefaultLine.setAttribute("class", "org.egovframe.rte.bat.core.item.file.mapping.EgovDefaultLineMapper");
+			beanDefaultLine.setAttribute("class", DefaultJobRW.EGOV_DEFAULT_LINE_MAPPER_CLASS);
 			
 			Element property4 = new Element("property");
 			beanDefaultLine.addContent(property4);
@@ -513,7 +514,7 @@ public class AppendBatchReaderWriterBeanOperation {
 			
 			Element beanDelimited = new Element("bean");
 			property4.addContent(beanDelimited);
-			beanDelimited.setAttribute("class", "org.egovframe.rte.bat.core.item.file.transform.EgovDelimitedLineTokenizer");
+			beanDelimited.setAttribute("class", DefaultJobRW.EGOV_DELIMITED_LINE_TOKENIZER_CLASS);
 				
 			Element property5 = new Element("property");
 			beanDelimited.addContent(property5);
@@ -526,7 +527,7 @@ public class AppendBatchReaderWriterBeanOperation {
 			
 			Element beanEgovObject = new Element("bean");
 			property7.addContent(beanEgovObject);
-			beanEgovObject.setAttribute("class", "org.egovframe.rte.bat.core.item.file.mapping.EgovObjectMapper");
+			beanEgovObject.setAttribute("class", DefaultJobRW.EGOV_OBJECT_MAPPER_CLASS);
 			
 			Element property8 = new Element("property");
 			beanEgovObject.addContent(property8);
@@ -852,7 +853,7 @@ public class AppendBatchReaderWriterBeanOperation {
 			
 			Element beanWrapperField = new Element("bean");
 			property3.addContent(beanWrapperField);
-			beanWrapperField.setAttribute("class", "org.egovframe.rte.bat.core.item.file.transform.EgovFieldExtractor");
+			beanWrapperField.setAttribute("class", DefaultJobRW.EGOV_FIELD_EXTRACTOR_CLASS);
 			
 			Element property4 = new Element("property");
 			beanWrapperField.addContent(property4);
@@ -884,7 +885,7 @@ public class AppendBatchReaderWriterBeanOperation {
 			
 			Element beanDelimitedLine = new Element("bean");
 			property2.addContent(beanDelimitedLine);
-			beanDelimitedLine.setAttribute("class", "org.egovframe.rte.bat.core.item.file.transform.EgovFixedLengthLineAggregator");
+			beanDelimitedLine.setAttribute("class", DefaultJobRW.EGOV_FIXED_LENGTH_LINE_AGGREGATOR_CLASS);
 			
 			Element property3 = new Element("property");
 			beanDelimitedLine.addContent(property3);
@@ -892,7 +893,7 @@ public class AppendBatchReaderWriterBeanOperation {
 			
 			Element beanWrapperField = new Element("bean");
 			property3.addContent(beanWrapperField);
-			beanWrapperField.setAttribute("class", "org.egovframe.rte.bat.core.item.file.transform.EgovFieldExtractor");
+			beanWrapperField.setAttribute("class", DefaultJobRW.EGOV_FIELD_EXTRACTOR_CLASS);
 			
 			Element property4 = new Element("property");
 			beanWrapperField.addContent(property4);
@@ -1050,7 +1051,7 @@ public class AppendBatchReaderWriterBeanOperation {
 			
 			Element beanWrapperField= new Element("bean");
 			property5.addContent(beanWrapperField);
-			beanWrapperField.setAttribute("class", "org.egovframe.rte.bat.core.item.file.transform.EgovFieldExtractor");
+			beanWrapperField.setAttribute("class", DefaultJobRW.EGOV_FIELD_EXTRACTOR_CLASS);
 			
 			Element property6 = new Element("property");
 			beanWrapperField.addContent(property6);
@@ -1093,7 +1094,7 @@ public class AppendBatchReaderWriterBeanOperation {
 			
 			Element beanFixedLength = new Element("bean");
 			property4.addContent(beanFixedLength);
-			beanFixedLength.setAttribute("class", "org.egovframe.rte.bat.core.item.file.transform.EgovFixedLengthLineAggregator");
+			beanFixedLength.setAttribute("class", DefaultJobRW.EGOV_FIXED_LENGTH_LINE_AGGREGATOR_CLASS);
 			
 			Element property5 = new Element("property");
 			beanFixedLength.addContent(property5);
@@ -1101,7 +1102,7 @@ public class AppendBatchReaderWriterBeanOperation {
 			
 			Element beanWrapperField= new Element("bean");
 			property5.addContent(beanWrapperField);
-			beanWrapperField.setAttribute("class", "org.egovframe.rte.bat.core.item.file.transform.EgovFieldExtractor");
+			beanWrapperField.setAttribute("class", DefaultJobRW.EGOV_FIELD_EXTRACTOR_CLASS);
 			
 			Element property6 = new Element("property");
 			beanWrapperField.addContent(property6);
@@ -1212,7 +1213,7 @@ public class AppendBatchReaderWriterBeanOperation {
 			
 			Element beanFileItemWriter = new Element("bean");
 			property.addContent(beanFileItemWriter);
-			beanFileItemWriter.setAttribute("class", "org.egovframe.rte.bat.core.item.database.support.EgovMethodMapItemPreparedStatementSetter");
+			beanFileItemWriter.setAttribute("class", DefaultJobRW.EGOV_METHOD_MAP_ITEM_PREPARED_STATEMENT_SETTER_CLASS);
 						
 			Element property2 = new Element("property");
 			bean.addContent(property2);
