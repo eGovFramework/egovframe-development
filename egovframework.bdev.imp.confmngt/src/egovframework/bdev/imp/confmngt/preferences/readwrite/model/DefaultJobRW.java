@@ -58,7 +58,7 @@ public class DefaultJobRW {
 	final static public String FLAT_FILE_ITEM_WRITER_CLASS = "org.springframework.batch.item.file.FlatFileItemWriter";
 	final static public String IBATIS_BATCH_ITEM_WRITER_CLASS = "org.springframework.batch.item.database.IbatisBatchItemWriter";
 	final static public String JDBC_BATCH_ITEM_WRITER_CLASS = "org.springframework.batch.item.database.JdbcBatchItemWriter";
-	final static public String EGOV_JDBC_BATCH_ITEM_WRITER_CLASS = "egovframework.brte.core.item.database.EgovJdbcBatchItemWriter";
+	final static public String EGOV_JDBC_BATCH_ITEM_WRITER_CLASS = "org.egovframe.rte.bat.core.item.database.EgovJdbcBatchItemWriter";
 	final static public String MULTI_RESOURCE_ITEM_WRITER_CLASS = "org.springframework.batch.item.file.MultiResourceItemWriter";
 
 	
