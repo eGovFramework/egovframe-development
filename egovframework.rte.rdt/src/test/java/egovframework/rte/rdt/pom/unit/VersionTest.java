@@ -240,6 +240,61 @@ public class VersionTest {
 		assertEquals(0, new Version("1.0.007").compareTo(new Version("1.0.7")));
 	}
 
+	// --- 숫자 자리 수가 다른 버전
+
+	@Test
+	public void releaseQualifierEqualsTrailingZero() {
+		String[] same = { "4.3", "4.3.0", "4.3.GA", "4.3.0.GA", "4.3.Final", "4.3.0.0.RELEASE" };
+		for (int i = 0; i < same.length; i++) {
+			for (int j = 0; j < same.length; j++) {
+				assertEquals(same[i] + " vs " + same[j], 0, new Version(same[i]).compareTo(new Version(same[j])));
+			}
+		}
+		assertFalse(new Version("5.6.Final").isOlderThan(new Version("5.6.0")));
+	}
+
+	@Test
+	public void qualifierIsAlignedRegardlessOfNumericSegmentCount() {
+		assertEquals(0, new Version("1.0-SNAPSHOT").compareTo(new Version("1.0.0-SNAPSHOT")));
+		assertFalse(new Version("2.0-RC1").isOlderThan(new Version("2.0.0-M2")));
+		assertTrue(new Version("2.0.0-M2").isOlderThan(new Version("2.0-RC1")));
+		assertTrue(new Version("1.0-SNAPSHOT").isOlderThan(new Version("1.0.0")));
+		assertTrue(new Version("1.0-SP1").isOlderThan(new Version("1.0.0.1")));
+		assertTrue(new Version("1.2-RC1").compareTo(new Version("1.0.0-RC1")) > 0);
+	}
+
+	@Test
+	public void compareToIsTransitiveAcrossDifferentSegmentCounts() {
+		String[] ascending = { "1.0-alpha", "1.0.0-RC2", "1-SNAPSHOT", "1.0.0.GA", "1.0-SP1", "1.0.0.1", "1.1-M1",
+				"1.1", "1.10.0.Final", "2.0.0-M2", "2.0-RC1", "2" };
+		assertAscending(ascending);
+	}
+
+	// --- 공백이 포함된 버전
+
+	@Test
+	public void surroundingWhitespaceIsIgnored() {
+		assertFalse(new Version(" 7.0.0 ").isOlderThan(new Version("6.2.11")));
+		assertTrue(new Version("6.2.11").isOlderThan(new Version("\n\t\t7.0.0\n\t")));
+		assertEquals(0, new Version(" 6.2.11 ").compareTo(new Version("6.2.11")));
+
+		Version v = new Version(element("version", "\n\t6.2.9\n"), properties());
+		assertEquals("\n\t6.2.9\n", v.getContent());
+		assertEquals("6.2.9", v.getRealVersion());
+	}
+
+	@Test
+	public void whitespaceAroundPropertyReferenceAndValueIsIgnored() {
+		Version v = new Version(element("version", " ${spring.version} "), properties("spring.version", " 4.3.0\n"));
+		assertTrue(v.isPropertyVersion());
+		assertEquals("spring.version", v.getPropertyKey());
+		assertEquals("4.3.0", v.getRealVersion());
+
+		Version unresolved = new Version(element("version", " ${unknown.version} "), properties());
+		assertTrue(unresolved.isUnresolvedProperty());
+		assertFalse(unresolved.isOlderThan(new Version("9.9.9")));
+	}
+
 	/**
 	 * 오름차순으로 나열한 버전들의 모든 쌍이 양방향으로 그 순서대로 비교되는지 단언한다.
 	 */

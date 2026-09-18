@@ -142,7 +142,7 @@ public class Version extends PomString implements Comparable<Version> {
 	 */
 	public boolean isUnresolvedProperty() {
 		String content = getContent();
-		return content != null && StringHelper.isPropertyString(content) && !propertyVersion;
+		return content != null && StringHelper.isPropertyString(content.trim()) && !propertyVersion;
 	}
 
 	/**
@@ -180,7 +180,11 @@ public class Version extends PomString implements Comparable<Version> {
 	}
 
 	/**
-	 * 두 버전 문자열을 자리별로 비교한다.
+	 * 두 버전 문자열을 자리별로 비교한다. 앞쪽의 숫자 자리들을 먼저 비교하고(없는 자리는 0),
+	 * 같으면 그 뒤의 한정자 자리들을 비교한다. 숫자 자리와 한정자 자리를 나누지 않고 위치만 맞춰
+	 * 비교하면 숫자 자리 수가 다른 두 버전에서 한정자가 상대의 0 과 비교되어,
+	 * <code>4.3.GA</code> 가 <code>4.3.0</code> 보다, <code>1.0-SNAPSHOT</code> 이
+	 * <code>1.0.0-SNAPSHOT</code> 보다 낮게 판정된다.
 	 * @param v1 기준 버전
 	 * @param v2 비교 버전
 	 * @return v1 이 더 낮으면 음수, 같으면 0, 더 높으면 양수
@@ -188,14 +192,35 @@ public class Version extends PomString implements Comparable<Version> {
 	private static int compareVersion(String v1, String v2) {
 		String[] s1 = v1.split(SEGMENT_DELIMITER);
 		String[] s2 = v2.split(SEGMENT_DELIMITER);
-		int length = Math.max(s1.length, s2.length);
+		int n1 = numericPrefixLength(s1);
+		int n2 = numericPrefixLength(s2);
+		for (int i = 0; i < Math.max(n1, n2); i++) {
+			int result = compareNumeric(i < n1 ? s1[i] : "0", i < n2 ? s2[i] : "0");
+			if (result != 0) {
+				return result;
+			}
+		}
+		int length = Math.max(s1.length - n1, s2.length - n2);
 		for (int i = 0; i < length; i++) {
-			int result = compareSegment(i < s1.length ? s1[i] : null, i < s2.length ? s2[i] : null);
+			int result = compareSegment(n1 + i < s1.length ? s1[n1 + i] : null, n2 + i < s2.length ? s2[n2 + i] : null);
 			if (result != 0) {
 				return result;
 			}
 		}
 		return 0;
+	}
+
+	/**
+	 * 버전의 앞쪽에 연속으로 놓인 숫자 자리의 개수를 가져온다.
+	 * @param segments 버전을 나눈 세그먼트들
+	 * @return 처음 나오는 한정자 앞까지의 자리 수
+	 */
+	private static int numericPrefixLength(String[] segments) {
+		int i = 0;
+		while (i < segments.length && isNumeric(segments[i])) {
+			i++;
+		}
+		return i;
 	}
 
 	/**
@@ -227,6 +252,10 @@ public class Version extends PomString implements Comparable<Version> {
 		int r2 = qualifierRank(t2);
 		if (r1 != r2) {
 			return r1 < r2 ? -1 : 1;
+		}
+		if (r1 == 0) {
+			// GA, Final, RELEASE 는 모두 정식 릴리스를 뜻하므로 서로 같다.
+			return 0;
 		}
 		return compareQualifier(t1, t2);
 	}
@@ -349,11 +378,13 @@ public class Version extends PomString implements Comparable<Version> {
 		super.setContent(content);
 		setPropertyVersion(false);
 		propertyKey = null;
-		realVersion = content;
+		// pom 에 줄을 바꾸거나 공백을 두고 적은 버전도 같은 버전이다. 공백이 남으면 첫 자리가 숫자로
+		// 인식되지 않아 비교가 틀어지므로, 원본 내용은 그대로 두고 실제 버전에서만 공백을 없앤다.
+		realVersion = content == null ? null : content.trim();
 		if (properties == null || content == null) {
 			return;
 		}
-		String resolved = content;
+		String resolved = realVersion;
 		String key = null;
 		int depth = 0;
 		while (StringHelper.isPropertyString(resolved) && depth < MAX_PROPERTY_DEPTH) {
@@ -362,7 +393,7 @@ public class Version extends PomString implements Comparable<Version> {
 			if (value == null) {
 				return;
 			}
-			resolved = value.toString();
+			resolved = value.toString().trim();
 			depth++;
 		}
 		if (depth > 0 && !StringHelper.isPropertyString(resolved)) {
