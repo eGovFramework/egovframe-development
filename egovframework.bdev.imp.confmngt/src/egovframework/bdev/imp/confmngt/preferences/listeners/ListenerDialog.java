@@ -335,9 +335,9 @@ public class ListenerDialog extends StatusDialog {
 	protected Point getInitialSize() {
 		Point point;
 		if (isAddButton) {
-			point = new Point(380, 245);
+			point = new Point(380, 275);
 		} else {
-			point = new Point(380, 225);
+			point = new Point(380, 242);
 		}
 		return point;
 	}

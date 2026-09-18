@@ -100,9 +100,9 @@ public class NexusDialog extends StatusDialog {
 	protected Point getInitialSize() {
 		Point point;
 		if (isAddButton) {
-			point = new Point(550, 350);
+			point = new Point(450, 300);
 		} else {
-			point = new Point(550, 300);
+			point = new Point(450, 270);
 		}
 		return point;
 	}

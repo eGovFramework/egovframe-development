@@ -460,7 +460,7 @@ public class JobRWDialog extends StatusDialog {
 
 	@Override
 	protected Point getInitialSize() {
-		return new Point(380, 250);
+		return new Point(440, 305);
 	}
 	
 	@Override
