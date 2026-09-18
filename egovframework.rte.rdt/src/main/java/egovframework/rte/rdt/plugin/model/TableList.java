@@ -358,7 +358,7 @@ public class TableList {
 					} else {
 						if (isOlderThanMaster(insDMap.get(s), allDpendencyMap.get(s))) { // 버전이 낮을때
 							// 버전수정
-							pom.changeVersion(insDMap.get(s).getId(), allDpendencyMap.get(s).getVersion());
+							pom.changeVersion(insDMap.get(s).getId(), allDpendencyMap.get(s).getVersion(), allDpendencyMap);
 						}
 					}
 				}// end for

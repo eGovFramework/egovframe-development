@@ -17,6 +17,7 @@ package egovframework.rte.rdt.pom.unit;
 
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 일반적인 저장소 및 디펜던스의 추가 삭제만을 담당하는 간편화된 인터페이스
@@ -58,6 +59,16 @@ public interface Pom {
 	 * @param version 변경할 버전
 	 */
 	public void changeVersion(String dependencyId, Version version);
+
+	/**
+	 * 디펜던시 버전을 마스터 pom 의 기준에 맞춰 변경한다. 설치된 버전이 프로퍼티로 지정돼 있으면,
+	 * 그 프로퍼티를 쓰는 디펜던시가 모두 마스터에서 같은 버전일 때만 프로퍼티를 고치고
+	 * 그렇지 않으면 이 디펜던시의 version 만 고친다.
+	 * @param dependencyId 변경할 디펜던시ID
+	 * @param version 변경할 버전
+	 * @param masterDependencies 마스터 pom 의 디펜던시 맵(키는 디펜던시ID)
+	 */
+	public void changeVersion(String dependencyId, Version version, Map<String, Dependency> masterDependencies);
 	
 	/**
 	 * Pom 인스턴스의 변경사항을 반영한다.

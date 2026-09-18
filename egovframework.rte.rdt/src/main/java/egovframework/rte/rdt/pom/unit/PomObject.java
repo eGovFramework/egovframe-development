@@ -595,6 +595,55 @@ public class PomObject implements DetailPom {
 		dependencyTochange.getElement().getChild("version", getNamespace()).setText(version.toString());
 		//changeDependency(dependencyTochange);
 	}
+
+	/**
+	 * 디펜던시 버전을 마스터 pom 의 기준에 맞춰 변경한다. 프로퍼티를 고치면 그 프로퍼티를 쓰는 다른
+	 * 디펜던시의 버전도 함께 바뀌므로, 그 디펜던시들이 모두 마스터에서 같은 버전일 때만 프로퍼티를 고친다.
+	 * 마스터에 없거나 마스터 버전이 다른 디펜던시가 프로퍼티를 함께 쓰고 있으면 이 디펜던시의
+	 * version 만 실제 버전으로 고쳐 나머지에 영향을 주지 않는다.
+	 * @param dependencyId 변경할 디펜던시ID
+	 * @param version 변경할 버전
+	 * @param masterDependencies 마스터 pom 의 디펜던시 맵(키는 디펜던시ID)
+	 */
+	public void changeVersion(String dependencyId, Version version, Map<String, Dependency> masterDependencies) {
+		Dependency dependencyTochange = dependencies.get(dependencyId);
+		Version installedVersion = dependencyTochange.getVersion();
+		if (installedVersion == null || !installedVersion.isPropertyVersion()
+				|| isPropertySharedOnlyBySameMasterVersion(installedVersion.getPropertyKey(), version, masterDependencies)) {
+			changeVersion(dependencyId, version);
+			return;
+		}
+		if (installedVersion.isOlderThan(version)) {
+			dependencyTochange.getElement().getChild("version", getNamespace()).setText(version.getRealVersion());
+			installedVersion.setContent(version.getRealVersion());
+		}
+	}
+
+	/**
+	 * 주어진 프로퍼티로 버전을 지정한 디펜던시가 모두 마스터 pom 에서 주어진 버전과 같은 버전인지 여부를 가져온다.
+	 * @param propertyKey 프로퍼티 키
+	 * @param version 프로퍼티에 기록하려는 버전
+	 * @param masterDependencies 마스터 pom 의 디펜던시 맵
+	 * @return 프로퍼티를 고쳐도 마스터 기준에서 벗어나는 디펜던시가 없으면 true
+	 */
+	private boolean isPropertySharedOnlyBySameMasterVersion(String propertyKey, Version version,
+			Map<String, Dependency> masterDependencies) {
+		if (version == null || version.getRealVersion() == null) {
+			return false;
+		}
+		for (Dependency dependency : dependencies.values()) {
+			Version installedVersion = dependency.getVersion();
+			if (installedVersion == null || !propertyKey.equals(installedVersion.getPropertyKey())) {
+				continue;
+			}
+			Dependency master = masterDependencies == null ? null : masterDependencies.get(dependency.getId());
+			if (master == null || master.getVersion() == null || master.getVersion().getRealVersion() == null
+					|| master.getVersion().isUnresolvedProperty() || master.getVersion().compareTo(version) != 0) {
+				return false;
+			}
+		}
+		return true;
+	}
 	/**
 	 * Pom 인스턴스의 변경사항을 반영한다.
 	 */
