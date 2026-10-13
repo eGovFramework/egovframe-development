@@ -511,6 +511,19 @@ public class EgovComponentsInfo extends NLS {
 	public static String category7Component1web;
 	public static String category7Component1add;
 
+	public static String category7Component2nam;
+	public static String category7Component2pac;
+	public static String category7Component2de1;
+	public static String category7Component2de2;
+	public static String category7Component2de3;
+	public static String category7Component2de4;
+	public static String category7Component2de5;
+	public static String category7Component2de6;
+	public static String category7Component2des;
+	public static String category7Component2use;
+	public static String category7Component2web;
+	public static String category7Component2add;
+
 
 	public static String category8nam;
 	public static String category8des;
@@ -916,6 +929,19 @@ public class EgovComponentsInfo extends NLS {
 	public static String category17Component1use;
 	public static String category17Component1web;
 	public static String category17Component1add;
+
+	public static String category17Component2nam;
+	public static String category17Component2pac;
+	public static String category17Component2de1;
+	public static String category17Component2de2;
+	public static String category17Component2de3;
+	public static String category17Component2de4;
+	public static String category17Component2de5;
+	public static String category17Component2de6;
+	public static String category17Component2des;
+	public static String category17Component2use;
+	public static String category17Component2web;
+	public static String category17Component2add;
 
 
 	public static String category18nam;
