@@ -492,6 +492,19 @@
 			<webexist         >#category7Component1web#</webexist         >
 			<addedOptions     >#category7Component1add#</addedOptions     >
 		</component>
+		<component name="#category7Component2nam#" >
+			<packageName      >#category7Component2pac#</packageName      >
+			<dependencyPackage>#category7Component2de1#</dependencyPackage>
+			<dependencyPackage>#category7Component2de2#</dependencyPackage>
+			<dependencyPackage>#category7Component2de3#</dependencyPackage>
+			<dependencyPackage>#category7Component2de4#</dependencyPackage>
+			<dependencyPackage>#category7Component2de5#</dependencyPackage>
+			<dependencyPackage>#category7Component2de6#</dependencyPackage>
+			<description      >#category7Component2des#</description      >
+			<useTable         >#category7Component2use#</useTable         >
+			<webexist         >#category7Component2web#</webexist         >
+			<addedOptions     >#category7Component2add#</addedOptions     >
+		</component>
 	</category>
 	<category name="#category8nam#" description="#category8des#" >
 		<component name="#category8Component1nam#" >
@@ -877,6 +890,19 @@
 			<useTable         >#category17Component1use#</useTable         >
 			<webexist         >#category17Component1web#</webexist         >
 			<addedOptions     >#category17Component1add#</addedOptions     >
+		</component>
+		<component name="#category17Component2nam#" >
+			<packageName      >#category17Component2pac#</packageName      >
+			<dependencyPackage>#category17Component2de1#</dependencyPackage>
+			<dependencyPackage>#category17Component2de2#</dependencyPackage>
+			<dependencyPackage>#category17Component2de3#</dependencyPackage>
+			<dependencyPackage>#category17Component2de4#</dependencyPackage>
+			<dependencyPackage>#category17Component2de5#</dependencyPackage>
+			<dependencyPackage>#category17Component2de6#</dependencyPackage>
+			<description      >#category17Component2des#</description      >
+			<useTable         >#category17Component2use#</useTable         >
+			<webexist         >#category17Component2web#</webexist         >
+			<addedOptions     >#category17Component2add#</addedOptions     >
 		</component>
 	</category>
 	<category name="#category18nam#" description="#category18des#" >
