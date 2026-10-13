@@ -288,6 +288,7 @@ public class EgovComponentsInfo extends NLS {
 	public static String category5Component3de5;
 	public static String category5Component3de6;
 	public static String category5Component3de7;
+	public static String category5Component3de8;
 	public static String category5Component3des;
 	public static String category5Component3use;
 	public static String category5Component3web;
@@ -828,7 +829,6 @@ public class EgovComponentsInfo extends NLS {
 	public static String category14Component1de8;
 	public static String category14Component1de9;
 	public static String category14Component1de10;
-	public static String category14Component1de11;
 	public static String category14Component1des;
 	public static String category14Component1use;
 	public static String category14Component1web;
@@ -1184,8 +1184,6 @@ public class EgovComponentsInfo extends NLS {
 	public static String category19Component9de9;
 	public static String category19Component9de10;
 	public static String category19Component9de11;
-	public static String category19Component9de12;
-	public static String category19Component9de13;
 	public static String category19Component9des;
 	public static String category19Component9use;
 	public static String category19Component9web;
@@ -1654,8 +1652,6 @@ public class EgovComponentsInfo extends NLS {
 	public static String category20Component29de10;
 	public static String category20Component29de11;
 	public static String category20Component29de12;
-	public static String category20Component29de13;
-	public static String category20Component29de14;
 	public static String category20Component29des;
 	public static String category20Component29use;
 	public static String category20Component29web;
@@ -2786,7 +2782,6 @@ public class EgovComponentsInfo extends NLS {
 	public static String category37Component1de11;
 	public static String category37Component1de12;
 	public static String category37Component1de13;
-	public static String category37Component1de14;
 	public static String category37Component1des;
 	public static String category37Component1use;
 	public static String category37Component1web;
