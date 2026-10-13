@@ -17,8 +17,8 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
  * 생성된 파일의 내용을 각각의 실제 파일에 덮어쓴다.
  * 
  * 엑셀파일 형식 - 행 : 3행부터 데이터 시작 - 열 : B) 카테고리 명 C) 카테고리 설명 D) 컴포넌트 명 E) 패키지명 F)
- * dependency 패키지 (콤마 또는 줄바꿈으로 연결) G) 컴포넌트 설명 H) 테이블명 (줄바꿈으로 연결) I) 버전 J) web.xml
- * 배포여부 K) 게시판 추가기능 사용여부 (사용안함) L) 카테고리 명_영문 M) 카테고리 설명_영문 N) 컴포넌트 명_영문 O) 컴포넌트
+ * dependency 패키지 (콤마로 연결, 콤마 뒤 줄바꿈 허용) G) 컴포넌트 설명 H) 테이블명 (줄바꿈으로 연결) I) web.xml
+ * 배포여부 J) 게시판 추가기능 사용여부 (사용안함) K) 카테고리 명_영문 L) 카테고리 설명_영문 M) 컴포넌트 명_영문 N) 컴포넌트
  * 설명_영문
  * 
  * 생성 파일 : components_ko.properties (실제 파일경로 :  * egovframework.dev.imp.commngt\common) 
@@ -35,13 +35,13 @@ public class CreateComponentInfo {
 		try {
 			// 컴포넌트 정보 엑셀 파일 경로
 			//String readFilePath = "C:\\EGOV_DEV\\eclipse-rcp-2024-03-x64\\workspace\\egovframework.dev.imp.commngt\\examples\\components.xls";
-			String readFilePath = "/Users/EGOV-DEV/v5.0/04_RCP/eclipse-rcp-2025-09-for-macOS/workspace-rcp/egovframework.dev.imp.commngt/examples/components.xls";
+			String readFilePath = "/Users/EGOV-DEV/v5.1/03-rcp/eclipse-rcp-2026-06/egovframe-development/egovframework.dev.imp.commngt/examples/components.xls";
 			// 컴포넌트 정보 2가지 properties, java 파일 생성 경로
 			//String generateFilePath = "C:\\EGOV_DEV\\eclipse-rcp-2024-03-x64\\workspace\\egovframework.dev.imp.commngt\\src\\egovframework\\dev\\imp\\commngt\\common";
-			String generateFilePath = "/Users/EGOV-DEV/v5.0/04_RCP/eclipse-rcp-2025-09-for-macOS/workspace-rcp/egovframework.dev.imp.commngt/src/egovframework/dev/imp/commngt/common";
+			String generateFilePath = "/Users/EGOV-DEV/v5.1/03-rcp/eclipse-rcp-2026-06/egovframe-development/egovframework.dev.imp.commngt/src/egovframework/dev/imp/commngt/common";
 			// xml 파일 생성 경로
 			//String generateXMLFilePath = "C:\\EGOV_DEV\\eclipse-rcp-2024-03-x64\\workspace\\egovframework.dev.imp.commngt\\examples";
-			String generateXMLFilePath = "/Users/EGOV-DEV/v5.0/04_RCP/eclipse-rcp-2025-09-for-macOS/workspace-rcp/egovframework.dev.imp.commngt/examples";
+			String generateXMLFilePath = "/Users/EGOV-DEV/v5.1/03-rcp/eclipse-rcp-2026-06/egovframe-development/egovframework.dev.imp.commngt/examples";
 
 			// properties 파일
 			File propertiesKoFile = File.createTempFile("components_ko", ".properties", new File(generateFilePath));
@@ -103,20 +103,20 @@ public class CreateComponentInfo {
 				HSSFCell cellValue5 = rowValue.getCell(5);
 				HSSFCell cellValue6 = rowValue.getCell(6);
 				HSSFCell cellValue7 = rowValue.getCell(7);
-				HSSFCell cellValue8 = rowValue.getCell(8);
-				HSSFCell cellValue9 = rowValue.getCell(9);
-				HSSFCell cellValue10 = rowValue.getCell(10);
+				// 엑셀에서 버전 열(I)이 삭제되어 이후 열 번호를 하나씩 당김 - 2026-10-13
+				HSSFCell cellValue8 = rowValue.getCell(8); // category_Component_web
+				HSSFCell cellValue9 = rowValue.getCell(9); // category_Component_add
 				// 영문 부분
-				HSSFCell cellValue11 = rowValue.getCell(11); // category_nam_en
-				HSSFCell cellValue12 = rowValue.getCell(12); // category_des_en
-				HSSFCell cellValue13 = rowValue.getCell(13); // category_Component_nam_en
-				HSSFCell cellValue14 = rowValue.getCell(14); // category_Component_des_en
+				HSSFCell cellValue10 = rowValue.getCell(10); // category_nam_en
+				HSSFCell cellValue11 = rowValue.getCell(11); // category_des_en
+				HSSFCell cellValue12 = rowValue.getCell(12); // category_Component_nam_en
+				HSSFCell cellValue13 = rowValue.getCell(13); // category_Component_des_en
 
 				if (!category_nam.equals((cellValue1 + "").trim())) {
 					category_nam = (cellValue1 + "").trim();
 					category_des = (cellValue2 + "").trim();
-					category_nam_en = (cellValue11 + "").trim();
-					category_des_en = (cellValue12 + "").trim();
+					category_nam_en = (cellValue10 + "").trim();
+					category_des_en = (cellValue11 + "").trim();
 					catNum++;
 					comNum = 0;
 					// properties 쓰기
@@ -145,9 +145,8 @@ public class CreateComponentInfo {
 						.replace(")", "&#41;").replace("-", "&#45;").replace("/", "&#47;").replace("\n", "<br/>");
 				category_Component_use = (cellValue7 + "").trim().replace("\n", ", ");
 				// version 제거 - 2025-11-21
-				//category_Component_ver = (cellValue8 + "").trim().replace("\n", " ");
-				category_Component_web = (cellValue9 + "").trim().replace("\n", " ");
-				category_Component_add = (cellValue10 + "").trim().replace("\n", " ");
+				category_Component_web = (cellValue8 + "").trim().replace("\n", " ");
+				category_Component_add = (cellValue9 + "").trim().replace("\n", " ");
 				if (category_Component_use == null || category_Component_use.equals(""))
 					category_Component_use = "N/A";
 				if (category_Component_web.equals("Y"))
@@ -159,11 +158,11 @@ public class CreateComponentInfo {
 				else if (category_Component_add.equals("N"))
 					category_Component_add = "false";
 
-				category_nam_en = (cellValue11 + "").trim().replace("\n", " ");
-				category_des_en = (cellValue12 + "").trim().replace("\n", " ");
-				category_Component_nam_en = (cellValue13 + "").trim().replace("\n", " ").replace("(", "&#40;")
+				category_nam_en = (cellValue10 + "").trim().replace("\n", " ");
+				category_des_en = (cellValue11 + "").trim().replace("\n", " ");
+				category_Component_nam_en = (cellValue12 + "").trim().replace("\n", " ").replace("(", "&#40;")
 						.replace(")", "&#41;");
-				category_Component_des_en = (cellValue14 + "").trim().replace("&", "&#38;").replace("(", "&#40;")
+				category_Component_des_en = (cellValue13 + "").trim().replace("&", "&#38;").replace("(", "&#40;")
 						.replace(")", "&#41;").replace("-", "&#45;").replace("/", "&#47;").replace("\n", "<br/>");
 
 				StringTokenizer st = new StringTokenizer(category_Component_d01, ","); // dependency 정보
