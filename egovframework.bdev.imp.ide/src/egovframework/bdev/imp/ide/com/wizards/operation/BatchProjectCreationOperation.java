@@ -461,7 +461,7 @@ public abstract class BatchProjectCreationOperation implements IRunnableWithProg
 			line = line.replace("###VERSION###", version);
 			line = line.replace("###PACKAGE_NAME###", packageName);
 			line = line.replace("###NAME###", artifactId);
-			line = line.replace("###URL###", "http://www.egovframe.go.kr"); //$NON-NLS-2$
+			line = line.replace("###URL###", "https://www.egovframe.go.kr"); //$NON-NLS-2$
 			sb.append(line).append(lineSeparator);
 		}
 		br.close();

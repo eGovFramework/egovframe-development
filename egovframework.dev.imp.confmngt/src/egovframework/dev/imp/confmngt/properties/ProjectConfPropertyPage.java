@@ -796,7 +796,7 @@ public class ProjectConfPropertyPage extends PropertyPage implements IWorkbenchP
 						null);
 
 			} catch (Exception e) {
-				e.printStackTrace();
+				ConfMngtLog.logError(e);
 			}
 		}
 	}

@@ -437,7 +437,6 @@ public abstract class ProjectCreationOperation implements IRunnableWithProgress,
 		BufferedReader br = new BufferedReader(new InputStreamReader(stream));
 		StringBuffer sb = new StringBuffer();
 		
-		System.out.println("=============getArtifactId >>> " + context.getArtifactId());
 		
 		if (("".equals(context.getArtifactId())||context.getArtifactId()== null)){
 			
@@ -455,7 +454,7 @@ public abstract class ProjectCreationOperation implements IRunnableWithProgress,
 				line = line.replace("###VERSION###", version);
 				line = line.replace("###PACKAGE_NAME###", packageName);
 				line = line.replace("###NAME###", artifactId);
-				line = line.replace("###URL###", "http://www.egovframe.go.kr"); //$NON-NLS-2$
+				line = line.replace("###URL###", "https://www.egovframe.go.kr"); //$NON-NLS-2$
 				sb.append(line).append(lineSeparator);
 			}	
 		}	
@@ -623,9 +622,6 @@ public abstract class ProjectCreationOperation implements IRunnableWithProgress,
 	 */
 	private void createMsaTemplateProject(IProgressMonitor nullMointor, IProgressMonitor pmonitor) throws InterruptedException {
 
-		System.out.println("#################################################");
-		System.out.println("##### Create MSA Template Project start ... ");
-		System.out.println("#################################################");
 
 		try {
 
@@ -672,9 +668,6 @@ public abstract class ProjectCreationOperation implements IRunnableWithProgress,
 			pmonitor.done();
 		}
 
-		System.out.println("#################################################");
-		System.out.println("##### Create MSA Template Project end ... ");
-		System.out.println("#################################################");
 
 	}
 
@@ -683,9 +676,6 @@ public abstract class ProjectCreationOperation implements IRunnableWithProgress,
 	 */
 	public void run(IProgressMonitor pmonitor) throws InvocationTargetException, InterruptedException {
 
-		System.out.println("#################################################");
-		System.out.println("##### ProjectCreationOperation run start ... ");
-		System.out.println("#################################################");
 
 		IProgressMonitor nullMointor = new NullProgressMonitor();
 
@@ -744,9 +734,6 @@ public abstract class ProjectCreationOperation implements IRunnableWithProgress,
 
 				} else if (exampleFileName.contains("template")) {
 
-					System.out.println("#################################################");
-					System.out.println("##### ProjectCreationOperation template simple start ... ");
-					System.out.println("#################################################");
 					
 					pmonitor.worked(2);
 					createMavenNature(nullMointor);
