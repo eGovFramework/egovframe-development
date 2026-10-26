@@ -20,6 +20,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
+import egovframework.dev.imp.ide.common.IdeLog;
 import egovframework.dev.imp.ide.EgovIdePlugin;
 import egovframework.dev.imp.ide.common.IdeMessages;
 import egovframework.dev.imp.ide.wizards.examples.ExampleInfo;
@@ -211,7 +212,7 @@ public class TemplateProjectSelectPage extends WizardPage{
 			URL resolvedUrl = FileLocator.resolve(url);
 			imageData = new ImageData(new FileInputStream(new File(resolvedUrl.getFile())));
 		} catch (Exception e) {
-			e.printStackTrace();
+			IdeLog.logError(e);
 		}
 		
 		image = new Image(Display.getCurrent(), imageData);

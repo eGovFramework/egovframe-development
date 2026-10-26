@@ -103,13 +103,10 @@ public class InstallJob implements IRunnableWithProgress {
 				int compute = installed.getVersion().compareTo(unit.getVersion());
 
 				if (compute == 0) {
-//                    System.out.println(unit.getId() + " is installed : " + unit.getVersion());
 					return true;
 				} else if (compute > 0) {
-//                    System.out.println(unit.getId() + " is installed newer version (" + installed.getVersion() + ") vs. update site(" + unit.getVersion() + ")");
 					return true;
 //                } else {
-//                    System.out.println(unit.getId() + " needs update : " + installed.getVersion() + " -> " + unit.getVersion());
 				}
 			}
 		}
