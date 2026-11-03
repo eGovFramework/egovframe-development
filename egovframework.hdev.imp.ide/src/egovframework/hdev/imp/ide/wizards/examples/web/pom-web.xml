@@ -1,43 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>###GROUP_ID###</groupId>
 	<artifactId>###ARTIFACT_ID###</artifactId>
-	<packaging>jar</packaging>
 	<version>###VERSION###</version>
+	<packaging>jar</packaging>
 	<name>###NAME###</name>
 	<url>###URL###</url>
+
+	<!-- 표준프레임워크 Boot Parent: Spring Boot 3.5.x, 실행환경 5.1.0 -->
+	<parent>
+		<groupId>org.egovframe.boot</groupId>
+		<artifactId>egovframe-boot-starter-parent</artifactId>
+		<version>5.1.0</version>
+		<relativePath/>
+	</parent>
 
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
-			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
 		</license>
 	</licenses>
 
-	<!-- eGovFramework Boot Parent 설정 -->
-	<parent>
-		<groupId>org.egovframe.boot</groupId>
-		<artifactId>egovframe-boot-starter-parent</artifactId>
-		<version>5.0.0</version>
-	</parent>
-
 	<properties>
-		<java.version>17</java.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<jakarta.servlet.version>6.1.0</jakarta.servlet.version>
-		<jakarta.servlet.jsp.version>4.0.0</jakarta.servlet.jsp.version>
-		<protobuf.java.version>3.25.5</protobuf.java.version>
-		<springdoc.webmvc.ui.version>2.8.13</springdoc.webmvc.ui.version>
-		<javapns-jdk16.version>2.4.0</javapns-jdk16.version>
-		<json-simple.version>1.1.1</json-simple.version>
-		<google-api-client.version>2.8.1</google-api-client.version>
-		<google-oauth-client.version>1.39.0</google-oauth-client.version>
-		<google-http-client.version>2.0.2</google-http-client.version>
-		<guava.version>33.0.0-jre</guava.version>
+		<!-- FCM 서비스 계정 인증(GoogleCredentials) -->
+		<google-auth-library.version>1.30.0</google-auth-library.version>
 	</properties>
 
 	<repositories>
@@ -64,7 +54,7 @@
 	</repositories>
 
 	<dependencies>
-		<!-- 실행환경 라이브러리 -->
+		<!-- 실행환경 -->
 		<dependency>
 			<groupId>org.egovframe.rte</groupId>
 			<artifactId>egovframe-rte-ptl-mvc</artifactId>
@@ -81,13 +71,8 @@
 			<groupId>org.egovframe.rte</groupId>
 			<artifactId>egovframe-rte-fdl-property</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.egovframe.boot</groupId>
-			<artifactId>egovframe-boot-starter-crypto</artifactId>
-		</dependency>
 
-		<!-- 실행환경 라이브러리 끝 -->
-
+		<!-- Spring Boot. 로깅은 실행환경의 log4j2를 쓰므로 logback 제외 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -100,6 +85,10 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		<dependency>
@@ -108,7 +97,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-websocket</artifactId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -116,105 +105,48 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!-- DB: HSQL 파일 DB, DBCP2 커넥션 풀 -->
 		<dependency>
-			<groupId>jakarta.servlet</groupId>
-			<artifactId>jakarta.servlet-api</artifactId>
-			<version>${jakarta.servlet.version}</version>
-			<scope>provided</scope>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>jakarta.annotation</groupId>
-			<artifactId>jakarta.annotation-api</artifactId>
-		</dependency>
-
-		<!-- mysql driver -->
-		<dependency>
-			<groupId>com.mysql</groupId>
-			<artifactId>mysql-connector-j</artifactId>
-		</dependency>
-
-		<!-- CVE-2024-7254: mysql-connector-j에서 주입되는 protobuf-java 3.25.1 취약점
-		보완용 직접 주입 -->
-		<dependency>
-			<groupId>com.google.protobuf</groupId>
-			<artifactId>protobuf-java</artifactId>
-			<version>${protobuf.java.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.googlecode.log4jdbc</groupId>
-			<artifactId>log4jdbc</artifactId>
-			<exclusions>
-				<exclusion>
-					<artifactId>slf4j-api</artifactId>
-					<groupId>org.slf4j</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-dbcp2</artifactId>
 		</dependency>
 
+		<!-- Swagger(OpenAPI). Boot 3.5.x 라인. 3.x는 Boot 4용이라 쓰지 않는다. -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-			<version>${springdoc.webmvc.ui.version}</version>
+			<version>2.10.0</version>
 		</dependency>
 
-		<!-- Apple APNS Push -->
+		<!-- FCM HTTP v1 액세스 토큰 발급 -->
 		<dependency>
-			<groupId>com.github.fernandospr</groupId>
-			<artifactId>javapns-jdk16</artifactId>
-			<version>${javapns-jdk16.version}</version>
+			<groupId>com.google.auth</groupId>
+			<artifactId>google-auth-library-oauth2-http</artifactId>
+			<version>${google-auth-library.version}</version>
 		</dependency>
-		<!-- FCM(Firebase Cloud Messaging) 구성 시작  -->
-		<dependency>
-			<groupId>com.googlecode.json-simple</groupId>
-			<artifactId>json-simple</artifactId>
-			<version>${json-simple.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.api-client</groupId>
-			<artifactId>google-api-client</artifactId>
-			<version>${google-api-client.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.oauth-client</groupId>
-			<artifactId>google-oauth-client</artifactId>
-			<version>${google-oauth-client.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.http-client</groupId>
-			<artifactId>google-http-client</artifactId>
-			<version>${google-http-client.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>${guava.version}</version>
-		</dependency>
-		<!-- FCM(Firebase Cloud Messaging) 구성 끝  -->
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<!-- HsqlSchemaInitializer가 기동 시 적용하는 DATABASE/hsql 스크립트 -->
+			<resource>
+				<directory>DATABASE/hsql</directory>
+				<targetPath>db/hsql</targetPath>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

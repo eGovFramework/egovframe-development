@@ -5,8 +5,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>###GROUP_ID###</groupId>
 	<artifactId>###ARTIFACT_ID###</artifactId>
-	<packaging>jar</packaging>
 	<version>###VERSION###</version>
+	<packaging>jar</packaging>
 	<name>###NAME###</name>
 	<url>###URL###</url>
 
@@ -21,8 +21,12 @@
 	<parent>
 		<groupId>org.egovframe.boot</groupId>
 		<artifactId>egovframe-boot-starter-parent</artifactId>
-		<version>5.0.0</version>
+		<version>5.1.0</version>
 	</parent>
+
+	<properties>
+		<java.version>17</java.version>
+	</properties>
 
 	<repositories>
 		<repository>
@@ -68,9 +72,17 @@
 		<dependency>
 			<groupId>org.egovframe.rte</groupId>
 			<artifactId>egovframe-rte-ptl-reactive</artifactId>
+			<!-- 검증 어노테이션(@EgovNullCheck)만 사용하므로 WebFlux/Reactor 제외 -->
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-webflux</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
-		<!-- 실행환경 라이브러리 끝 -->
 
+		<!-- Spring Boot -->
+		<!-- 로깅은 Log4j2(spring-boot-starter-log4j2) 사용 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -95,22 +107,28 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
 		</dependency>
 
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-dbcp2</artifactId>
-		</dependency>
+		<!-- 샘플 DB(HSQLDB) JDBC 드라이버 : 코드에서 직접 참조하지 않으므로 runtime -->
 		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
+			<scope>runtime</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+			<optional>true</optional>
 		</dependency>
+
+		<!-- 테스트 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -118,13 +136,32 @@
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
+			<artifactId>selenium-chrome-driver</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-support</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<!-- 내장 HSQL DB 초기화 스크립트 : DATABASE/hsql 을 classpath:/db/hsql 로 패키징 -->
+			<resource>
+				<directory>DATABASE/hsql</directory>
+				<targetPath>db/hsql</targetPath>
+				<includes>
+					<include>all_*_hsql.sql</include>
+				</includes>
+			</resource>
+		</resources>
 		<plugins>
+			<!-- 실행 JAR 패키징 (lombok 제외) -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -140,9 +177,8 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<!-- release(${java.version})는 Parent 에서 설정 -->
 				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
 					<annotationProcessorPaths>
 						<path>
 							<groupId>org.projectlombok</groupId>

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>###GROUP_ID###</groupId>
 	<artifactId>###ARTIFACT_ID###</artifactId>
-	<packaging>war</packaging>
 	<version>###VERSION###</version>
+	<packaging>war</packaging>
 	<name>###NAME###</name>
 	<url>###URL###</url>
 
@@ -20,8 +21,17 @@
 	<parent>
 		<groupId>org.egovframe.web</groupId>
 		<artifactId>egovframe-web-config-parent</artifactId>
-		<version>5.0.0</version>
+		<version>5.1.0</version>
 	</parent>
+
+	<!-- Jakarta EE 9 / Servlet 5.0 라이브러리 버전은 Parent(egovframe-web-config-parent)에서 관리 -->
+	<properties>
+		<java.version>17</java.version>
+		<!-- 테스트 전용 Servlet API 버전 (Spring 6 MockMvc 가 Servlet 6.0 참조) -->
+		<test.jakarta.servlet-api.version>6.0.0</test.jakarta.servlet-api.version>
+		<!-- RTE BOM 이 관리하지 않는 테스트 라이브러리 버전 -->
+		<assertj.version>3.27.7</assertj.version>
+	</properties>
 
 	<repositories>
 		<repository>
@@ -44,22 +54,18 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-		<repository>
-			<id>projectRepository</id>
-			<name>Project Repository</name>
-			<url>file://${project.basedir}/src/main/webapp/WEB-INF/lib</url>
-		</repository>
 	</repositories>
 
 	<dependencies>
 		<!-- 표준프레임워크 실행환경 -->
+		<!-- commons-logging 제외 : jcl-over-slf4j(ptl-mvc 전이 의존성)와 클래스 중복 -->
 		<dependency>
 			<groupId>org.egovframe.rte</groupId>
 			<artifactId>egovframe-rte-ptl-mvc</artifactId>
 			<exclusions>
 				<exclusion>
-					<artifactId>commons-logging</artifactId>
 					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -74,7 +80,14 @@
 		<dependency>
 			<groupId>org.egovframe.rte</groupId>
 			<artifactId>egovframe-rte-fdl-property</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
+		<!-- SampleVO 의 @EgovNullCheck 검증 어노테이션 -->
 		<dependency>
 			<groupId>org.egovframe.rte</groupId>
 			<artifactId>egovframe-rte-ptl-reactive</artifactId>
@@ -112,31 +125,24 @@
 			<artifactId>hibernate-validator</artifactId>
 		</dependency>
 
+		<!-- 샘플 DB(HSQLDB) JDBC 드라이버 : 코드에서 직접 참조하지 않으므로 runtime -->
 		<dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
+			<scope>runtime</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.antlr</groupId>
-			<artifactId>antlr4</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse</groupId>
-			<artifactId>yasson</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish</groupId>
-			<artifactId>jakarta.json</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
-			<scope>test</scope>
-		</dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
+		</dependency>
+
+		<!-- 테스트 -->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -148,18 +154,57 @@
 			<artifactId>spring-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- Jakarta EL 4.0 구현체 : 테스트용 (운영은 Tomcat 이 제공) -->
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>jakarta.el</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- MockMvc ResultMatcher 컴파일용 -->
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<version>${assertj.version}</version>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
 		<defaultGoal>install</defaultGoal>
-		<directory>${basedir}/target</directory>
-		<finalName>${project.artifactId}-${project.version}</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			<!-- 내장 HSQL DB 초기화 스크립트 : DATABASE/hsql 을 classpath:/db/hsql 로 패키징 -->
+			<resource>
+				<directory>DATABASE/hsql</directory>
+				<targetPath>db/hsql</targetPath>
+				<includes>
+					<include>all_*_hsql.sql</include>
+				</includes>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
+				<!-- release(${java.version})는 Parent 에서 설정 -->
 				<configuration>
-					<release>${java.version}</release>
+					<!-- annotationProcessorPaths 의 버전을 dependencyManagement(RTE BOM)에서 가져옴 -->
+					<annotationProcessorPathsUseDepMgmt>true</annotationProcessorPathsUseDepMgmt>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</path>
+					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -169,17 +214,16 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
-			<!-- PMD manven plugin -->
+			<!-- PMD maven plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-pmd-plugin</artifactId>
 			</plugin>
-			<!-- EMMA -->
+			<!-- 단위 테스트 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
-					<skipTests>true</skipTests>
 					<reportFormat>xml</reportFormat>
 					<excludes>
 						<exclude>**/Abstract*.java</exclude>
@@ -188,9 +232,20 @@
 					<includes>
 						<include>**/*Test.java</include>
 					</includes>
+					<!-- 테스트 실행만 Servlet 6.0 API 사용 (Spring 6 MockHttpServletRequest 가 참조) -->
+					<classpathDependencyExcludes>
+						<classpathDependencyExclude>jakarta.servlet:jakarta.servlet-api</classpathDependencyExclude>
+					</classpathDependencyExcludes>
+					<additionalClasspathDependencies>
+						<additionalClasspathDependency>
+							<groupId>jakarta.servlet</groupId>
+							<artifactId>jakarta.servlet-api</artifactId>
+							<version>${test.jakarta.servlet-api.version}</version>
+						</additionalClasspathDependency>
+					</additionalClasspathDependencies>
 				</configuration>
 			</plugin>
-			<!--  JavaDoc -->
+			<!-- JavaDoc -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -199,7 +254,7 @@
 				</configuration>
 				<executions>
 					<execution>
-						<id>attach-sources</id>
+						<id>attach-javadocs</id>
 						<goals>
 							<goal>jar</goal>
 						</goals>
