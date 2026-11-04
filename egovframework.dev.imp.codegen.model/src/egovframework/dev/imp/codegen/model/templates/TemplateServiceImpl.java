@@ -72,7 +72,7 @@ public class TemplateServiceImpl implements IGenerator {
 	/** 템플릿 요소 3 */		
 	protected String TEXT_3 = "\")";
 	/** 템플릿 요소 4 */		
-	protected String TEXT_4 = " extends AbstractServiceImpl ";
+	protected String TEXT_4 = " extends EgovAbstractServiceImpl ";
 	/** 템플릿 요소 5 */		
 	protected String TEXT_5 = NL + "{";
 	/** 템플릿 요소 6 */		
@@ -144,8 +144,8 @@ public class TemplateServiceImpl implements IGenerator {
 		}
 
 		GenUtil.addImportSyntax(iptList, "import org.springframework.stereotype.Service;");
-		GenUtil.addImportSyntax(iptList, "import org.egovframe.rte.fdl.cmmn.AbstractServiceImpl;");
-		GenUtil.addImportSyntax(iptList, "import javax.annotation.Resource;");
+		GenUtil.addImportSyntax(iptList, "import org.egovframe.rte.fdl.cmmn.EgovAbstractServiceImpl;");
+		GenUtil.addImportSyntax(iptList, "import jakarta.annotation.Resource;");
 		/**************************** 스테레오타입 로직 삽입구 끝 ***************************/
 
 		ipt = GenUtil.getImportSyntax(iptList);

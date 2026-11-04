@@ -135,7 +135,7 @@ public class TemplateController implements IGenerator {
 		}
 
 		GenUtil.addImportSyntax(iptList, "import org.springframework.stereotype.Controller;");
-		GenUtil.addImportSyntax(iptList, "import javax.annotation.Resource;");
+		GenUtil.addImportSyntax(iptList, "import jakarta.annotation.Resource;");
 		/**************************** 스테레오타입 로직 삽입구 끝 ***************************/
 
 		ipt = GenUtil.getImportSyntax(iptList);
