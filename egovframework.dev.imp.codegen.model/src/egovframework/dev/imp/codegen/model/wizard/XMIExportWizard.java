@@ -26,6 +26,7 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.uml2.uml.Profile;
 
 import egovframework.dev.imp.codegen.model.EgovModelCodeGenPlugin;
+import egovframework.dev.imp.codegen.model.converter.UMLResourceCommonHandler;
 import egovframework.dev.imp.codegen.model.converter.XMIFileExporter;
 import egovframework.dev.imp.codegen.model.util.LogUtil;
 
@@ -145,7 +146,7 @@ public class XMIExportWizard extends Wizard {
 		}
 		
 		// apply profile
- 		profile.define();
+ 		UMLResourceCommonHandler.defineProfile(profile);
 
  		// 		EgovModelCodeGenPlugin.getDefault().getStateLocation().toString();
 

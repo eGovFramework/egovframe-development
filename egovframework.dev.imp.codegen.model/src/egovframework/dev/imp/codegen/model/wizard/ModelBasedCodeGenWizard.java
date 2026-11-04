@@ -40,6 +40,7 @@ import org.eclipse.uml2.uml.internal.impl.PrimitiveTypeImpl;
 import org.eclipse.uml2.uml.util.UMLUtil;
 
 import egovframework.dev.imp.codegen.model.EgovModelCodeGenPlugin;
+import egovframework.dev.imp.codegen.model.converter.UMLResourceCommonHandler;
 import egovframework.dev.imp.codegen.model.converter.XMIFileExporter;
 import egovframework.dev.imp.codegen.model.generator.StereoTypeWriter;
 import egovframework.dev.imp.codegen.model.util.LogUtil;
@@ -132,7 +133,7 @@ public class ModelBasedCodeGenWizard extends Wizard implements UMLModelBasedCode
     			exporter.addStereotypeToProfile(profile, element);
     		}
     		// apply profile
-     		profile.define();
+     		UMLResourceCommonHandler.defineProfile(profile);
 
     		exporter.applyingProfile(exporter.getModel(), profile);
     		// apply stereotype

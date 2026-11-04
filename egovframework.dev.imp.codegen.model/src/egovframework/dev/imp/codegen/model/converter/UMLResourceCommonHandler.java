@@ -21,6 +21,8 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.WrappedException;
@@ -369,13 +371,34 @@ public class UMLResourceCommonHandler {
 	}
 
 	/**
-	 *  프로필을 정의함. 
-	 * 
+	 *  프로필을 정의함.
+	 * <p>인자 없는 {@link Profile#define()} 은 UML2 5.x 에서 diagnostics 를 null 로 넘기면서
+	 * UNSETTABLE_PRIMITIVE_ATTRIBUTES / NULLABLE_ENUM_ATTRIBUTES 옵션을 REPORT 로 채우는데,
+	 * 해당 REPORT 분기에 null 검사가 없어 NullPointerException 이 발생한다.
+	 * 이를 피하기 위해 {@link Profile#define()} 과 같은 옵션에 DiagnosticChain 을 넘겨 정의한다.
+	 *
 	 * @param profile
-	 * 
+	 *
 	 */
-	protected static void defineProfile(Profile profile) {
-		profile.define();
+	public static void defineProfile(Profile profile) {
+		Map<String, String> options = new HashMap<String, String>();
+		options.put(UMLUtil.UML2EcoreConverter.OPTION__ECORE_TAGGED_VALUES, UMLUtil.OPTION__PROCESS);
+		options.put(UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_FEATURES, UMLUtil.OPTION__PROCESS);
+		options.put(UMLUtil.UML2EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE, UMLUtil.OPTION__PROCESS);
+		options.put(UMLUtil.UML2EcoreConverter.OPTION__INVARIANT_CONSTRAINTS, UMLUtil.OPTION__IGNORE);
+		options.put(UMLUtil.UML2EcoreConverter.OPTION__OPERATION_BODIES, UMLUtil.OPTION__IGNORE);
+		options.put(UMLUtil.UML2EcoreConverter.OPTION__PROPERTY_DEFAULT_EXPRESSIONS, UMLUtil.OPTION__IGNORE);
+		options.put(UMLUtil.UML2EcoreConverter.OPTION__COMMENTS, UMLUtil.OPTION__IGNORE);
+
+		BasicDiagnostic diagnostics = new BasicDiagnostic();
+		profile.define(options, diagnostics, null);
+
+		if (diagnostics.getSeverity() != Diagnostic.OK) {
+			Logger logger = Logger.getLogger(UMLResourceCommonHandler.class);
+			for (Diagnostic child : diagnostics.getChildren()) {
+				logger.debug("Profile define : " + child.getMessage());
+			}
+		}
 	}
 
 	/**
