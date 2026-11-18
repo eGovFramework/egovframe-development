@@ -88,7 +88,6 @@ public class CommngtLog {
      * @param exception
      */
     public static void logError(String message, Throwable exception) {
-        exception.printStackTrace();
         log(IStatus.ERROR, IStatus.OK, message, exception);
         return;
     }

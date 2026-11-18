@@ -280,7 +280,6 @@ public class SelectTableCreationTypePage extends WizardPage {
 			//이전 페이지에서 컴포넌트를 추가적으로 설치하였을 경우에
 //			if(checkedComponentNum != '0' && checkedComponentNum != checkedComponent.size() && !radioButton.getSelection()){
 //				//Finish 버튼 비활성화
-//				System.out.println(checkedComponentNum);
 //				isCheckedComponentNumChanged = "isCheckedComponentNumChanged";
 //			}
 			

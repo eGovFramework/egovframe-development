@@ -176,7 +176,7 @@ public class HandlingPropertiesUtil {
 			ResourceUtils.createFolderFile(context.getJavaProject().getProject(), realRoute[1], inStream, null);
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			CommngtLog.logError(e);
 		}
 	}
 

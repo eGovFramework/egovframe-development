@@ -257,12 +257,9 @@ public final class ComponentElementFactory {
 				return false;
 			}else{
 				//boolean rv = true;
-				//System.out.println(locationPath);
 				if(locationPath.contains("com.cmm")){
-					//System.out.println(">>>>>>>>>>>>>>>"+locationPath.contains("com.cmm"));
 					//IFile file =  realContainer.getFile(new Path("src/main/resources/egovframework/spring/com/context-common.xml"));
 					IFile file =  javaProject.getProject().getFile(new Path("src/main/resources/egovframework/spring/com/context-common.xml"));
-					//System.out.println(file.isAccessible());
 					if(!file.isAccessible()){
 						return false;
 					}

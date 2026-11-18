@@ -176,22 +176,8 @@ public class NewEgovCommngtWizard extends BasicNewResourceWizard implements INew
 			}
 
 			String webFile = "dontAction";
-			System.out.println("********** webExist : " + webExist);
 			if (webExist) {
-				/*
-				 * MessageDialog dg = new MessageDialog ( getShell(),
-				 * ComMngtMessages.newEgovCommngtWizard5, null,
-				 * ComMngtMessages.newEgovCommngtWizard6, MessageDialog.QUESTION_WITH_CANCEL,
-				 * new String[]{ "Yes", "No"}, 0 );
-				 * 
-				 * switch(dg.open()) { case 0: //yes context.setWebModify(true); webFile =
-				 * "Action"; System.out.println("********** 0 : "+ webFile + " = " +
-				 * context.isWebModify()); break; case 1: //no context.setWebModify(false);
-				 * webFile = "Action"; System.out.println("********** 1 : "+ webFile + " = " +
-				 * context.isWebModify()); break; default: // break; }
-				 * 
-				 * result = false;
-				 */
+
 				if (!MessageDialog.openConfirm(getShell(), ComMngtMessages.newEgovCommngtWizard5,
 						ComMngtMessages.newEgovCommngtWizard6)) {
 					return false;
@@ -202,7 +188,6 @@ public class NewEgovCommngtWizard extends BasicNewResourceWizard implements INew
 				}
 			} else {
 				webFile = "Action";
-				System.out.println("********** webFile : " + webFile);
 			}
 
 			if (!"dontAction".equals(webFile)) {

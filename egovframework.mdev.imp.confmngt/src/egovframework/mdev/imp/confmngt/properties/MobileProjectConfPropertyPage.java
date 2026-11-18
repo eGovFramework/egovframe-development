@@ -748,7 +748,7 @@ public class MobileProjectConfPropertyPage extends PropertyPage implements IWork
 			ResourceUtils.createFolderFile((IProject) element.getAdapter(IResource.class), fname[1], inStream, null);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			MobileConfMngtLog.logError(e);
 		}
 	}
 

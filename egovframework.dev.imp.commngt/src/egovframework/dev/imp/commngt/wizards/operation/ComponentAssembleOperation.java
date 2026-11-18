@@ -145,8 +145,6 @@ public class ComponentAssembleOperation implements IRunnableWithProgress{
 //							} else {
 								// 경로가 틀릴경우 xml 내부의 messageSource 노드를 확인, 수정하는 작업을 수행한다.
 								// 파일을 수정한다.
-							System.out.println(name);
-							System.out.println(entry.getName());
 								boolean newComp = ComResourceUtils.modifyMessageSource(project, entry.getName(), zipFile.getInputStream(entry), Policy.subMonitorFor(monitor, 1));
 								
 					    		// xml 내부의 leavertrace 노드를 확인하여 수정하는 작업을 수행한다.

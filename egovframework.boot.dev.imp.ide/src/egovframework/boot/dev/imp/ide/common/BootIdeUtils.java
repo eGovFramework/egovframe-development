@@ -61,15 +61,9 @@ public class BootIdeUtils {
 
     throws CoreException {
     	
-		System.out.println("#################################################");
-		System.out.println("##### BootIdeUtils addNatureToProject start ... ");
-		System.out.println("#################################################");
 		
         if (!project.hasNature(natureId)) {
         	
-        	System.out.println("#################################################");
-			System.out.println("##### BootIdeUtils addNatureToProject natureId >>> " + natureId);
-			System.out.println("#################################################");
 			
 			
             IProjectDescription description = project.getDescription();
