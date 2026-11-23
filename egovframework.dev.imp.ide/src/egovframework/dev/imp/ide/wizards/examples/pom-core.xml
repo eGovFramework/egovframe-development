@@ -54,6 +54,11 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
+		<repository>
+			<id>projectRepository</id>
+			<name>Project Repository</name>
+			<url>file://${project.basedir}/src/main/webapp/WEB-INF/lib</url>
+		</repository>
 	</repositories>
 
 	<dependencies>
